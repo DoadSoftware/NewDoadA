@@ -264,6 +264,7 @@ public class IndexController
 			session_match = new MatchAllData();
 			this_scene = new Scene();
 			this_animation = new Animation(new Infobar());
+			GetVariousDBData("NEW", session_configuration);
 						
 			if (select_type == null || select_type.trim().isEmpty() || 
 					select_type.equals(",")) {
@@ -344,7 +345,7 @@ public class IndexController
 		}
 	}
 
-	@RequestMapping(value = {"/processCricketProcedures"}, method={RequestMethod.GET,RequestMethod.POST})    
+	@RequestMapping(value = {"/processCricketProcedures.html"}, method={RequestMethod.GET,RequestMethod.POST})    
 	public @ResponseBody String processCricketProcedures(
 		@ModelAttribute("session_configuration") Configuration session_configuration,
 		@RequestParam(value = "whatToProcess", required = false, defaultValue = "") String whatToProcess,
@@ -1324,7 +1325,7 @@ public class IndexController
 				this_caption.this_fullFramesGfx.Playoffs = session_playoff;
 				break;
 			default:
-				session_statistics = cricketService.getAllStats();
+				//session_statistics = cricketService.getAllStats();
 				past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead.getH2hPlayer(), cricketService, session_match, null);
 				
 				session_performance_bug = cricketService.getPerformanceBugs();

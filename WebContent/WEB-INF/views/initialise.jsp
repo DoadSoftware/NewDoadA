@@ -196,7 +196,7 @@
     <img src="<c:url value='/resources/Images/Design.jpg'/>" alt="Logo">
     <h2>DESIGN ON A DIME</h2>
   </div>
-<form:form name="initialise_form" method="POST" action="output">
+<form:form name="initialise_form" method="POST" action="output" enctype="multipart/form-data">
 <div class="content py-5">
   <div class="container">
 	<div class="row">

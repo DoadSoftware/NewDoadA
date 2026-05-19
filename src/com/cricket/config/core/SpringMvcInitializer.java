@@ -4,6 +4,9 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import com.cricket.config.WebMvcConfig;
 
+import jakarta.servlet.MultipartConfigElement;
+import jakarta.servlet.ServletRegistration;
+
 public class SpringMvcInitializer extends
  AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -25,4 +28,10 @@ public class SpringMvcInitializer extends
  return new String[] { "/" };
  }
 
+ @Override
+ protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+     registration.setMultipartConfig(
+         new MultipartConfigElement("", -1L, -1L, 0)
+     );
+ }
 }
