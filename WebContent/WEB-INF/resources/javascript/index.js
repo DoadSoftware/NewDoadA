@@ -595,7 +595,7 @@ function processCricketProcedures(whatToProcess,dataToProcess)
 			default:
 				switch(whatToProcess) {
 				case 'POPULATE-GRAPHICS':
-					if(data.status == 'OK') {
+					if(data == 'OK') {
 						session_caption = data;
 						if(confirm('Animate In?') == true) {
 							$('.my_waiting_modal').modal('hide');
@@ -622,9 +622,10 @@ function processCricketProcedures(whatToProcess,dataToProcess)
 							processUserSelection($('#cancel_graphics_btn').attr('value','cancel_graphics_btn'));
 						}
 					} else {
-						if(data.status != 'YES'){
-							alert(data.status);
-						}	
+						if(data != 'YES' && typeof data !== 'object'){
+						      
+						        alert(data);
+						    }	
 						/*$("#select_graphic_options_div").empty();
 						document.getElementById('select_graphic_options_div').style.display = 'none';
 						$("#captions_div").show();*/

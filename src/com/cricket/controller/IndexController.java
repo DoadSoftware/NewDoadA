@@ -670,18 +670,18 @@ public class IndexController
 								case Constants.LOWER_THIRD: case Constants.NAME_SUPERS + Constants.LOWER_THIRD: 
 								case Constants.BOUNDARIES + Constants.LOWER_THIRD:
 									
-//									if(this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
-//										!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) {
-//										
-//										this_caption.setStatus("Alt_8 is on screen");
-//										return objectMapper.writeValueAsString(this_caption).toString();
-//										
-//									}else if(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
-//											!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty()) {
-//										
-//										this_caption.setStatus("Alt_3 or Alt_4 is on screen");
-//										return objectMapper.writeValueAsString(this_caption).toString();
-//									}
+									if(this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
+										!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) {
+										
+										this_caption.setStatus("Alt_8 is on screen");
+										return objectMapper.writeValueAsString(this_caption).toString();
+										
+									}else if(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
+											!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty()) {
+										
+										this_caption.setStatus("Alt_3 or Alt_4 is on screen");
+										return objectMapper.writeValueAsString(this_caption).toString();
+									}
 								
 									switch (this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess)) {
 									case Constants.FULL_FRAMER:
@@ -736,7 +736,7 @@ public class IndexController
 					}
 					break;
 				}
-				return objectMapper.writeValueAsString(this_caption).toString();
+				return objectMapper.writeValueAsString(this_caption.status);
 			}
 			else if(whatToProcess.contains("ANIMATE-IN-GRAPHICS") || whatToProcess.contains("ANIMATE-OUT-GRAPHICS")
 				|| whatToProcess.contains("ANIMATE-OUT-INFOBAR") || whatToProcess.contains("QUIDICH-COMMANDS") || 
@@ -1326,7 +1326,7 @@ public class IndexController
 				break;
 			default:
 				//session_statistics = cricketService.getAllStats();
-				past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead.getH2hPlayer(), cricketService, session_match, null);
+				//past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead.getH2hPlayer(), cricketService, session_match, null);
 				
 				session_performance_bug = cricketService.getPerformanceBugs();
 				session_bugs_everest = cricketService.getEverestBugs();
@@ -1347,21 +1347,6 @@ public class IndexController
 					session_dls = CricketFunctions.populateDuckWorthLewis(session_match);
 				}
 				
-				if(new File(CricketUtil.CRICKET_DIRECTORY + "TeamChanges.txt").exists()) {
-					String text_to_return = "";
-					try (BufferedReader br = new BufferedReader(new FileReader(CricketUtil.CRICKET_DIRECTORY + "TeamChanges.txt"))) {
-						while((text_to_return = br.readLine()) != null) {
-							if(text_to_return.contains("|")) {
-								
-							}else {
-								if(text_to_return.contains("H") || text_to_return.contains("A")) {
-									session_teamChanges.add(text_to_return);
-								}
-							}
-						}
-					}
-				}
-				
 				switch (typeOfUpdate) {
 				case "NEW":
 					this_caption = new Caption(print_writers, config, session_statistics,cricketService.getAllStatsType(), cricket_matches, session_name_super,
@@ -1370,17 +1355,17 @@ public class IndexController
 						new InfobarGfx(), new BugsAndMiniGfx(), 1, "", "-", past_tournament_stats,past_tape,session_dls, headToHead.getH2hPlayer(), 
 						past_tournament_stats, cricketService,session_bugs_everest);
 					
-					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
-					
-					this_caption.this_infobarGfx.previous_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
-					
-					this_caption.this_bugsAndMiniGfx.previous_sixes =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
-					
-					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
+//					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+//							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
+//					
+//					this_caption.this_infobarGfx.previous_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+//							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
+//					
+//					this_caption.this_bugsAndMiniGfx.previous_sixes =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+//							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
+//					
+//					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+//							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
 					
 					this_caption.this_fullFramesGfx.multilanguagedata = new MultiLanguageDatabase();
 					this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
