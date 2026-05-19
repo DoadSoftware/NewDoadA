@@ -37,6 +37,7 @@ import com.cricket.model.VariousText;
 import com.cricket.service.CricketService;
 import com.cricket.util.CricketFunctions;
 import com.cricket.util.CricketUtil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,6 +53,7 @@ public class FullFramesGfx
 	public int pervious_batperformer_id=0, batperformer_id = 0,pervious_ballperformer_id=0, ballperformer_id = 0;
 	public static int player_position = 0;
 	
+	@JsonIgnore
 	public List<PrintWriter> print_writers; 
 	public Configuration config;
 	public List<Statistics> statistics;
@@ -85,6 +87,8 @@ public class FullFramesGfx
 	public StatsType statsType;
 	public VariousText variousText;
 	public Tournament tournament;
+	
+	@JsonIgnore
 	public CricketService cricketService;
 	public MultiLanguageDatabase multilanguagedata;
 	public List<ForeignLanguageData> foreignLanguageDataList;

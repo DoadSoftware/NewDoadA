@@ -60,7 +60,7 @@ public class Scene
 		case Constants.BCCI: case Constants.TRI_SERIES:
 			switch (whatToProcess) {
 			case "FULL-FRAMERS":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER SET_OBJECT SCENE*/Default/gfx_Fullframes\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER SET_OBJECT SCENE*/Default/gfx_FullFrames\0", print_writers);
 		        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*SCENE_DATA INITIALIZE \0", print_writers);
 		        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*STAGE SHOW 0.0 \0", print_writers);
 				break;

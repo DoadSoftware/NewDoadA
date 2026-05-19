@@ -49,6 +49,7 @@ import com.cricket.model.Weather;
 import com.cricket.service.CricketService;
 import com.cricket.util.CricketFunctions;
 import com.cricket.util.CricketUtil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -63,6 +64,8 @@ public class LowerThirdGfx
 	public String match_name="",newDate = "",date_data = "",text = "",matchday = "";
 	
 	public Animation this_animation = new Animation();
+	
+	@JsonIgnore
 	public List<PrintWriter> print_writers; 
 	public Configuration config;
 	public List<Statistics> statistics;
@@ -105,6 +108,8 @@ public class LowerThirdGfx
 	public Team team;
 	public L3Griff l3griff;
 	public VariousText variousText;
+	
+	@JsonIgnore
 	public CricketService cricketService;
 	public static List<VariousStats> PlayerList;
 	public VariousStats VariousStats;

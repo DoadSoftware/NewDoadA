@@ -30,6 +30,7 @@ import com.cricket.model.Team;
 import com.cricket.model.Tournament;
 import com.cricket.model.VariousText;
 import com.cricket.service.CricketService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.cricket.model.Staff;
 
 public class Caption 
@@ -41,6 +42,7 @@ public class Caption
 	public Animation this_anim = new Animation();
 	public static Scene this_scene;
 	
+	@JsonIgnore
 	public List<PrintWriter> print_writers; 
 	public Configuration config;
 	public List<Statistics> statistics;
@@ -66,6 +68,7 @@ public class Caption
 	public List<HeadToHeadPlayer> headToHead;
 	public List<Tournament> past_tournament_stats;
 	public List<PerformanceBug> performanceBugs;
+	@JsonIgnore
 	public CricketService cricketService;
 	
 	public BattingCard battingCard;

@@ -50,6 +50,7 @@ import com.cricket.model.Weather;
 import com.cricket.service.CricketService;
 import com.cricket.util.CricketFunctions;
 import com.cricket.util.CricketUtil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -94,11 +95,14 @@ public class InfobarGfx
 	public List<Player> Players;
 	public List<HeadToHeadPlayer> headToHead;
 	public List<Tournament> past_tournament_stats;
+	
+	@JsonIgnore
 	public CricketService cricketService;
 	
 	public MultiLanguageDatabase multilanguagedata;
 	public List<ForeignLanguageData> foreignLanguageDataList;
 
+	@JsonIgnore
 	public List<PrintWriter> print_writers; 
 	public List<BattingCard> battingCardList = new ArrayList<BattingCard>();
 	public BowlingCard bowlingCard,lastBowler = new BowlingCard();

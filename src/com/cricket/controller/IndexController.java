@@ -805,7 +805,7 @@ public class IndexController
 			}else if(whatToProcess.contains("CANCLE-GRAPHICS")) {
 				this_caption.whichSide = 1;
 			}
-			return objectMapper.writeValueAsString(this_animation).toString();
+			return objectMapper.writeValueAsString(this_animation);
 		}
 	}
 	public void infobarAnimateOutAllSection(Configuration session_configuration, MatchAllData session_match, List<PrintWriter> print_writers) throws Exception {
