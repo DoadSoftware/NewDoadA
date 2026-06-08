@@ -299,7 +299,7 @@ public class IndexController
 			
 			session_match.getMatch().setMatchFileName(selectedMatch);
 			session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, 
-				CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,session_configuration), 
+				CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,session_configuration, CricketUtil.CRICKET_DIRECTORY), 
 				session_players, session_team, session_ground);
 			
 			if(!session_match.getMatch().getSourceOfThisMatchData().equalsIgnoreCase("WEBSITE")) {
@@ -309,9 +309,9 @@ public class IndexController
 			
 			session_match.getSetup().setMatchFileTimeStamp(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
 			session_match.getSetup().setGenerateInteractiveFile(session_configuration.getGenerateInteractiveFile());
-			CricketFunctions.getInteractive(session_match, "FULL_WRITE");
+			CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 
-			headToHead = CricketFunctions.extractHeadToHead(session_match, cricketService);
+			headToHead = CricketFunctions.extractHeadToHead(session_match, cricketService, CricketUtil.CRICKET_DIRECTORY);
 			//this_seriesPowerplay = CricketFunctions.PowerPlayTeamThisSeries(session_match, cricket_matches);
 				
 			//past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead, cricketService, session_match, null);
@@ -383,7 +383,7 @@ public class IndexController
 		    return objectMapper.writeValueAsString(matchNames).toString();
 		    
 		case "HEAD_TO_HEAD_FILE":
-			CricketFunctions.exportMatchData(session_match);
+			CricketFunctions.exportMatchData(session_match, CricketUtil.CRICKET_DIRECTORY);
 
 			return objectMapper.writeValueAsString(session_match).toString();
 		case "GET-CONFIG-DATA":
@@ -399,7 +399,7 @@ public class IndexController
 			return objectMapper.writeValueAsString(session_match).toString();
 			
 		case "RE_READ_DATA":
-			headToHead = CricketFunctions.extractHeadToHead(session_match, cricketService);
+			headToHead = CricketFunctions.extractHeadToHead(session_match, cricketService, CricketUtil.CRICKET_DIRECTORY);
 			//this_seriesPowerplay = CricketFunctions.PowerPlayTeamThisSeries(session_match, cricket_matches);
 			GetVariousDBData("UPDATE", session_configuration);
 			return objectMapper.writeValueAsString(session_match).toString();
@@ -431,12 +431,12 @@ public class IndexController
 			if(last_match_time_stamp != new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.MATCHES_DIRECTORY 
 				+ session_match.getMatch().getMatchFileName()).lastModified()) {
 				session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ,
-					CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,session_configuration), session_players, session_team, session_ground);
+					CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,session_configuration, CricketUtil.CRICKET_DIRECTORY), session_players, session_team, session_ground);
 				session_match.getSetup().setGenerateInteractiveFile(session_configuration.getGenerateInteractiveFile());
 				last_match_time_stamp = new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.MATCHES_DIRECTORY 
 						+ session_match.getMatch().getMatchFileName()).lastModified();
 				MatchStats = CricketFunctions.getAllEvents(session_match,session_configuration.getBroadcaster(), session_match.getEventFile().getEvents());
-				CricketFunctions.getInteractive(session_match, "FULL_WRITE");
+				CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 				
 				session_match.getMatch().setMatchStats(MatchStats);
 				
@@ -1254,11 +1254,11 @@ public class IndexController
 			switch (typeOfUpdate) {
 			case "ONLY_DB":
 				session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, 
-					CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,config), 
+					CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,config, CricketUtil.CRICKET_DIRECTORY), 
 					session_players, session_team, session_ground);
 				session_match.getSetup().setGenerateInteractiveFile(config.getGenerateInteractiveFile());
 				MatchStats = CricketFunctions.getAllEvents(session_match, config.getBroadcaster(), session_match.getEventFile().getEvents());
-				CricketFunctions.getInteractive(session_match, "FULL_WRITE");
+				CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 				session_match.getMatch().setMatchStats(MatchStats);
 				
 				session_performance_bug = cricketService.getPerformanceBugs();
@@ -1344,7 +1344,7 @@ public class IndexController
 				session_playoff = cricketService.getPlayOff();
 				
 				if(new File(CricketUtil.CRICKET_DIRECTORY + "ParScores BB.html").exists()) {
-					session_dls = CricketFunctions.populateDuckWorthLewis(session_match);
+					session_dls = CricketFunctions.populateDuckWorthLewis(session_match, CricketUtil.CRICKET_DIRECTORY);
 				}
 				
 				switch (typeOfUpdate) {
@@ -1383,10 +1383,10 @@ public class IndexController
 				case "UPDATE":
 					
 					session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, 
-						CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,config), 
+						CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,config, CricketUtil.CRICKET_DIRECTORY), 
 						session_players, session_team, session_ground);
 					session_match.getSetup().setGenerateInteractiveFile(config.getGenerateInteractiveFile());
-					CricketFunctions.getInteractive(session_match, "FULL_WRITE");
+					CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 					
 					session_match.getMatch().setMatchStats(MatchStats);
 					

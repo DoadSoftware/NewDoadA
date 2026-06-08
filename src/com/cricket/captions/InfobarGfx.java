@@ -7635,7 +7635,7 @@ public class InfobarGfx
 						if(dls.get(i).getOver_left().split("\\.")[0].equalsIgnoreCase(String.valueOf(inning.getTotalOvers()))) {
 							for(int j=0;j<6;j++) {
 								if(inning.getTotalBalls() == j) {
-									this_data_str.add(CricketFunctions.populateDuckWorthLewis(matchAllData).get(i+j).getWkts_down());
+									this_data_str.add(CricketFunctions.populateDuckWorthLewis(matchAllData, CricketUtil.CRICKET_DIRECTORY).get(i+j).getWkts_down());
 									break;
 								}
 							}
@@ -7866,39 +7866,39 @@ public class InfobarGfx
 					
 					switch (matchAllData.getSetup().getMatchType()) {
 					case CricketUtil.ODI:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
 					case CricketUtil.OD:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("LIST A")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("LIST A")).findAny().orElse(null);
 						break;	
 					case CricketUtil.IT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						break;
 					case CricketUtil.DT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("DT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 						break;
 					}
 					
 					if(statsType == null) {
 						return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
-					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 					if(stat == null) {
 						return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
 					
 					switch (matchAllData.getSetup().getMatchType()) {
 					case CricketUtil.ODI:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
 					case CricketUtil.OD:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("LIST A")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("LIST A")).findAny().orElse(null);
 						break;	
 					case CricketUtil.IT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						break;
 					case CricketUtil.DT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("DT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 						break;
 					}
 					
@@ -7912,10 +7912,10 @@ public class InfobarGfx
 //						
 //						break;
 //					case CricketUtil.IT20:
-//						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+//						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 //						break;
 //					case CricketUtil.DT20:
-//						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("T20")).findAny().orElse(null);
+//						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("T20")).findAny().orElse(null);
 //						break;
 //					}
 					
@@ -8415,33 +8415,33 @@ public class InfobarGfx
 					
 					switch (matchAllData.getSetup().getMatchType()) {
 					case CricketUtil.ODI:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
 					case CricketUtil.IT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						break;
 					case CricketUtil.DT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("T20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("T20")).findAny().orElse(null);
 						break;
 					}
 					
 					if(statsType == null) {
 						return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
-					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 					if(stat == null) {
 						return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
 					
 					switch (matchAllData.getSetup().getMatchType()) {
 					case CricketUtil.ODI:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
 					case CricketUtil.IT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						break;
 					case CricketUtil.DT20:
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("T20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("T20")).findAny().orElse(null);
 						break;
 					}
 					
@@ -8455,10 +8455,10 @@ public class InfobarGfx
 //						
 //						break;
 //					case CricketUtil.IT20:
-//						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+//						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 //						break;
 //					case CricketUtil.DT20:
-//						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("T20")).findAny().orElse(null);
+//						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("T20")).findAny().orElse(null);
 //						break;
 //					}
 					
@@ -8932,15 +8932,15 @@ public class InfobarGfx
 				    	break;
 				    }
 					
-					statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 					if(statsType == null) {
 						return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
-					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 					if(stat == null) {
 						return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
-					statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 					stat.setStats_type(statsType);
 					
 					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
@@ -9485,30 +9485,30 @@ public class InfobarGfx
 					}
 					
 					if(WhichProfile.equalsIgnoreCase("DT20")) {
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
 						if(statsType == null) {
 							return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 						}
-						stat = statistics.stream().filter(st -> st.getPlayer_id() == PP_Id && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+						stat = statistics.stream().filter(st -> st.getPlayer_id() == PP_Id && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 						if(stat == null) {
 							return "InfoBarPlayerProfile: Stats not found for Player Id [" + PP_Id + "]";
 						}
 						
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 					}else if(WhichProfile.equalsIgnoreCase("IT20")) {
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
 						if(statsType == null) {
 							return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 						}
-						stat = statistics.stream().filter(st -> st.getPlayer_id() == PP_Id && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+						stat = statistics.stream().filter(st -> st.getPlayer_id() == PP_Id && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 						if(stat == null) {
 							return "InfoBarPlayerProfile: Stats not found for Player Id [" + PP_Id + "]";
 						}
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
@@ -9583,11 +9583,11 @@ public class InfobarGfx
 						}
 						
 					}else {
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
 						if(statsType == null) {
 							return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 						}
-						stat = statistics.stream().filter(st -> st.getPlayer_id() == PP_Id && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+						stat = statistics.stream().filter(st -> st.getPlayer_id() == PP_Id && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 						if(stat == null) {
 							return "InfoBarPlayerProfile: Stats not found for Player Id [" + PP_Id + "]";
 						}
@@ -9726,34 +9726,34 @@ public class InfobarGfx
 			}
 			
 			if(whatToProcess.split(",")[3].equalsIgnoreCase("DT20")) {
-				statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
+				statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
 				if(statsType == null) {
 					statsData.add("InfoBarPlayerProfile: Stats Type not found for profile [" + whatToProcess.split(",")[3] + "]");
 					return (List<T>) statsData;
 				}
-				stat = statistics.stream().filter(st -> st.getPlayer_id() == player.getPlayerId() && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+				stat = statistics.stream().filter(st -> st.getPlayer_id() == player.getPlayerId() && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 				if(stat == null) {
 					statsData.add("InfoBarPlayerProfile: Player Id not found [" + whatToProcess.split(",")[2] + "]");
 					return (List<T>) statsData;
 				}
 				
-				statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+				statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 				stat.setStats_type(statsType);
 				
 				stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 				stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 			}else if(whatToProcess.split(",")[3].equalsIgnoreCase("IT20")) {
-				statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
+				statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
 				if(statsType == null) {
 					statsData.add("InfoBarPlayerProfile: Stats Type not found for profile [" + whatToProcess.split(",")[3] + "]");
 					return (List<T>) statsData;
 				}
-				stat = statistics.stream().filter(st -> st.getPlayer_id() == player.getPlayerId() && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+				stat = statistics.stream().filter(st -> st.getPlayer_id() == player.getPlayerId() && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 				if(stat == null) {
 					statsData.add("InfoBarPlayerProfile: Player Id not found [" + whatToProcess.split(",")[2] + "]");
 					return (List<T>) statsData;
 				}
-				statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
+				statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
 				stat.setStats_type(statsType);
 				
 				stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
@@ -9829,12 +9829,12 @@ public class InfobarGfx
 				}
 				
 			}else {
-				statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
+				statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(whatToProcess.split(",")[3])).findAny().orElse(null);
 				if(statsType == null) {
 					statsData.add("InfoBarPlayerProfile: Stats Type not found for profile [" + whatToProcess.split(",")[3] + "]");
 					return (List<T>) statsData;
 				}
-				stat = statistics.stream().filter(st -> st.getPlayer_id() == player.getPlayerId() && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+				stat = statistics.stream().filter(st -> st.getPlayer_id() == player.getPlayerId() && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 				if(stat == null) {
 					statsData.add("InfoBarPlayerProfile: Player Id not found [" + whatToProcess.split(",")[2] + "]");
 					return (List<T>) statsData;

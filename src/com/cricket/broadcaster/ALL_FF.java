@@ -2435,13 +2435,13 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + "$FooterStyle2$"
 							+ "Extras$Extras$txt_FooterText*GEOM*TEXT SET \0", print_writers);
 				}else {
-					if(statsType.getStats_short_name().equalsIgnoreCase("IT20")) {
+					if(statsType.getStatsShortName().equalsIgnoreCase("IT20")) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + "$FooterStyle2$"
 								+ "Extras$Extras$txt_FooterText*GEOM*TEXT SET " + WhichStyle.toUpperCase() + " IN T20Is"
 								+ "\0", print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + "$FooterStyle2$"
-								+ "Extras$Extras$txt_FooterText*GEOM*TEXT SET " + statsType.getStats_full_name().toUpperCase() + " - " + WhichStyle.toUpperCase() 
+								+ "Extras$Extras$txt_FooterText*GEOM*TEXT SET " + statsType.getStatsFullName().toUpperCase() + " - " + WhichStyle.toUpperCase() 
 								+ "\0", print_writers);
 					}
 				}

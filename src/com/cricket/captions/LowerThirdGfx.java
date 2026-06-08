@@ -965,13 +965,13 @@ public class LowerThirdGfx
 							case "DT20":
 								matchAllData.getSetup().setMatchType("DT20");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("DT20")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 								
 								break;
 							case "IT20":
 								matchAllData.getSetup().setMatchType("IT20");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 								
 								break;	
 							}
@@ -979,10 +979,10 @@ public class LowerThirdGfx
 								return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 							}
 							
-							System.out.println(statsType.getStats_full_name());
-							System.out.println(statsType.getStats_id());
+							System.out.println(statsType.getStatsFullName());
+							System.out.println(statsType.getStatsId());
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -997,13 +997,13 @@ public class LowerThirdGfx
 							case "TEST":
 								matchAllData.getSetup().setMatchType("TEST");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("TEST")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 								
 								break;
 							case "ODI":
 								matchAllData.getSetup().setMatchType("ODI");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 								
 								break;	
 							}
@@ -1012,7 +1012,7 @@ public class LowerThirdGfx
 								return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 							}
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -1038,7 +1038,7 @@ public class LowerThirdGfx
 				lowerThird = new LowerThird("DT20", battingCard.getPlayer().getFirstname(), surName,outOrNot, String.valueOf(battingCard.getRuns()),
 						String.valueOf(battingCard.getBalls()), 3, sponsorOrNot,inning.getBatting_team().getTeamName4(),new String[] {"DOTS","FOURS","SIXES","STRIKE RATE"},new String[] {Count[0],
 								String.valueOf(battingCard.getFours()),String.valueOf(battingCard.getSixes()),striktRate},
-						new String[] {stat.getStats_type().getStats_short_name(),String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBalls_faced(), 1))},null,
+						new String[] {stat.getStats_type().getStatsShortName(),String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBalls_faced(), 1))},null,
 						new String[] {"-178","-73","41","160"});
 			}
 			break;
@@ -1139,13 +1139,13 @@ public class LowerThirdGfx
 							case "DT20":
 								matchAllData.getSetup().setMatchType("DT20");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("DT20")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 								
 								break;
 							case "IT20":
 								matchAllData.getSetup().setMatchType("IT20");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 								
 								break;	
 							}
@@ -1153,10 +1153,10 @@ public class LowerThirdGfx
 								return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 							}
 							
-							System.out.println(statsType.getStats_full_name());
-							System.out.println(statsType.getStats_id());
+							System.out.println(statsType.getStatsFullName());
+							System.out.println(statsType.getStatsId());
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -1171,13 +1171,13 @@ public class LowerThirdGfx
 							case "TEST":
 								matchAllData.getSetup().setMatchType("TEST");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("TEST")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 								
 								break;
 							case "ODI":
 								matchAllData.getSetup().setMatchType("ODI");
 								
-								statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 								
 								break;	
 							}
@@ -1186,7 +1186,7 @@ public class LowerThirdGfx
 								return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 							}
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -1212,7 +1212,7 @@ public class LowerThirdGfx
 				lowerThird = new LowerThird("DT20", bowlingCard.getPlayer().getFirstname(), surName,"", "", "", 3, sponsorOrNot, inning.getBowling_team().getTeamName4(),
 						new String[] {"OVERS","DOTS", "RUNS", "WICKETS", "ECONOMY"},new String[]{CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()), 
 						String.valueOf(bowlingCard.getDots()),String.valueOf(bowlingCard.getRuns()),String.valueOf(bowlingCard.getWickets()), economy}
-						,new String[] {stat.getStats_type().getStats_short_name(), String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()), String.valueOf(CricketFunctions.getEconomy(stat.getRuns_conceded(),
+						,new String[] {stat.getStats_type().getStatsShortName(), String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()), String.valueOf(CricketFunctions.getEconomy(stat.getRuns_conceded(),
 								stat.getBalls_bowled(), 2, "-"))},null,new String[] {"-174","-100","-20","64","165"});
 			}
 			break;
@@ -1276,28 +1276,28 @@ public class LowerThirdGfx
 		}
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.TRI_SERIES:
-			statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
-			statsTypeDT20 = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("DT20")).findAny().orElse(null);
-			statsTypeODI = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
-			statsTypeTEST = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("TEST")).findAny().orElse(null);
+			statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+			statsTypeDT20 = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
+			statsTypeODI = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
+			statsTypeTEST = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 			
 			if(statsType == null) {
 				return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 			}
-			stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+			stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 			if(statsType != null) {
 				stat.setStats_type(statsType);	
 			}
 			stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 			//Domestic
-			statDT20 = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeDT20.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+			statDT20 = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeDT20.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 			statDT20.setStats_type(statsTypeDT20);
 			statDT20 = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 			//ODI
-			statODI = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeODI.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+			statODI = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeODI.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 			statODI.setStats_type(statsTypeODI);
 			//Dt20
-			statTEST = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeTEST.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+			statTEST = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeTEST.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 			statTEST.setStats_type(statsTypeTEST);
 			
 			break;
@@ -1509,13 +1509,13 @@ public class LowerThirdGfx
 					case "DT20":
 //						matchAllData.getSetup().setMatchType("DT20");
 						
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("DT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 						
 						break;
 					case "IT20":
 //						matchAllData.getSetup().setMatchType("IT20");
 						
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						
 						break;	
 					}
@@ -1523,7 +1523,7 @@ public class LowerThirdGfx
 						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
 					
-					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 					if(stat == null) {
 						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
@@ -1553,19 +1553,19 @@ public class LowerThirdGfx
 					case "TEST":
 						matchAllData.getSetup().setMatchType("TEST");
 						
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("TEST")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 						
 						break;
 					case "ODI":
 //						matchAllData.getSetup().setMatchType("ODI");
 						
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						
 						break;
 					case "LIST A":
 //						matchAllData.getSetup().setMatchType("ODI");
 						
-						statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase(WhichProfile.toUpperCase())).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile.toUpperCase())).findAny().orElse(null);
 						
 						break;	
 					}
@@ -1574,12 +1574,12 @@ public class LowerThirdGfx
 						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
 					
-					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStats_id() == st.getStats_type_id()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
 					if(stat == null) {
 						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
 					//Comment this when we do not add current match data
-					statsType = statsTypes.stream().filter(st -> st.getStats_short_name().equalsIgnoreCase("ODI")).findAny().orElse(null);
+					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 					stat.setStats_type(statsType);
 					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 					
@@ -3555,7 +3555,7 @@ public class LowerThirdGfx
 			if(dls.get(i).getOver_left().split("\\.")[0].equalsIgnoreCase(String.valueOf(overs))) {
 				for(int j=0;j<6;j++) {
 					if(balls == j) {
-						this_data_str.add(CricketFunctions.populateDuckWorthLewis(matchAllData).get(i+j).getWkts_down());
+						this_data_str.add(CricketFunctions.populateDuckWorthLewis(matchAllData, CricketUtil.CRICKET_DIRECTORY).get(i+j).getWkts_down());
 						break;
 					}
 				}
