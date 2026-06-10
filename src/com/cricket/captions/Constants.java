@@ -77,5 +77,8 @@ public class Constants
 	public final static String TRI_SERIES_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\TRI_SERIES\\\\Photos\\\\";
 	public final static String TRI_SERIES_PHOTO_PATH = "\\c\\Images\\TRI_SERIES\\Photos\\";
 	
+	public final static String TPL = "TPL";
+	
+	
 	
 }
