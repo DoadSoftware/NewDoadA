@@ -502,140 +502,140 @@ public class ALL_FF
 				break;
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			switch(whatToProcess) {
 			case "m":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$EventLogoAll$EventLogo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				break;
 			case "Control_m":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$EventLogoAll$EventLogo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$In$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + team.getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$SideColourBands$Side" + WhichSide + "$img_Base1"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$SideColourBands$Side" + WhichSide + "$img_Base2"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + team.getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + team.getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$Logo" + (WhichSide==1?"$Change_Out":"$Change_In") 
-						+ "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + team.getTeamBadge() + "\0", print_writers);
+						+ "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$GlassBG$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " 
-						+ Constants.TRI_SERIES_LOGO_BW + team.getTeamBadge() + "\0", print_writers);
+						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + team.getTeamBadge() + "\0", print_writers);
 				break;
 			case "Control_F7": case "Control_F11": case "Alt_F11": case "Shift_F11": case "Control_p": case "Control_Alt_F1":
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 			case "Alt_Shift_W":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
-						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
-						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$"
-						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$"
-						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				break;
 			case "Shift_F10":
 				String which_logo_color ="";
@@ -646,161 +646,161 @@ public class ALL_FF
 				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$Side" + WhichSide + 
-						"$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + which_logo_color + "\0", print_writers);
+						"$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + which_logo_color + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$Side" + WhichSide + 
-						"$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + which_logo_color + "\0", print_writers);
+						"$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + which_logo_color + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$Side" + WhichSide + 
-						"$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + which_logo_color + "\0", print_writers);
+						"$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + which_logo_color + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$Side" + WhichSide + 
-						"$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + which_logo_color + "\0", print_writers);
+						"$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + which_logo_color + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + which_logo_color + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + which_logo_color + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + which_logo_color + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + which_logo_color + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + which_logo_color + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + which_logo_color + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				break;
 				
 			case "F1": case "F4": case "Shift_K": case "Control_F10": case "Alt_F9": case "Control_F1": case "Alt_Shift_F1":
 			case "Control_Shift_F4":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
 						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
 						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$"
 						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$"
 						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				break;
 			case "F2": case "Control_Shift_F5":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
 						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
 						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$"
 						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$TeamColour$"
 						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				break;
 			case "Shift_D":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_1$"
 						+ "img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_1$"
 						+ "img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_2$"
 						+ "img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_2$"
 						+ "img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$In$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$In$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$In$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$In$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$In$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$In$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				break;
 			case "Control_Shift_F7":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$SideColourBands$"
 						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$SideColourBands$"
 						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + team.getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$LogoGrp$TeamColour$"
 						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$LogoGrp$TeamColour$"
 						+ "Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + team.getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$WipeFinal$In$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + team.getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + team.getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE2 + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				break;
 			}
@@ -809,83 +809,83 @@ public class ALL_FF
 		}
 	}
 	
-	public void teamColor(List<PrintWriter> print_writers, int WhichSide, String whatToProcess, MatchAllData matchAllData, Inning inning) throws InterruptedException {
+	public void teamColor(List<PrintWriter> print_writers, int WhichSide, String whatToProcess, MatchAllData matchAllData, Inning inning,Configuration config) throws InterruptedException {
 		switch (whatToProcess) {
 		case "Control_Shift_F4":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=13;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$BatterExtraGrp$" + i + "$BattingExtraData$"
-						+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$BatterExtraGrp$" + i + "$BattingExtraData$"
-						+ "Out$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Out$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$" + i + "$BattingExtraData$BatterExtraGrp$"
-						+ "Still_To_Bat$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Still_To_Bat$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$" + i + "$BattingExtraData$BatterExtraGrp$"
-						+ "Out$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Out$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$" + i + "$Highlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$" + i + "$Highlight$"
-						+ "img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			
 			for(int i=1;i<=6;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$ExtaData$DetailData$" + i + "$Dehighlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCardExtra$ExtaData$DetailData$" + i + "$Dehighlight$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			}
 			break;
 		case "Control_Shift_F5":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=13;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$BowlerExtraGrp$" + i + "$BowlerExtraData$"
-						+ "Dehighlight$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "Dehighlight$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$BowlerExtraGrp$" + i + "$BowlerExtraData$"
-						+ "Dehighlight$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "Dehighlight$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$" + i + "$Highlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$" + i + "$Highlight$"
-						+ "img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			
 			for(int i=1;i<=6;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$ExtaData$DetailData$" + i + "$Dehighlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$ExtaData$DetailData$" + i + "$Dehighlight$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			}
 			break;	
 		case "Alt_F11":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 			break;
 		case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 			
 			for(int i=1;i<=5;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + i + "$Dehighlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + i + "$Dehighlight$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + "EVENT" + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + "EVENT" + "\0", print_writers);
 			}
 			
 			
@@ -899,307 +899,308 @@ public class ALL_FF
 			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + which_logo_color + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + which_logo_color + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + which_logo_color + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + which_logo_color + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + which_logo_color + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + which_logo_color + "\0", print_writers);
 			
 			break;
 		case "Control_F10":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			break;
 		case "Shift_K":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$2$RunsGrp$"
-					+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$2$RunsGrp$"
-					+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$3$StikeRate$"
-					+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$3$StikeRate$"
-					+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$4$Contribution$Title$"
-					+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$4$Contribution$Title$"
-					+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$4$Contribution$1$"
-					+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$4$Contribution$1$"
-					+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$4$Contribution$2$"
-					+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Partnership$Stats$4$Contribution$2$"
-					+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			break;
 		case "F1": case "F4":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=13;i++) {
 				switch (whatToProcess) {
 				case "F1":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$LeftSplitBatData$"
-							+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$LeftSplitBatData$"
-							+ "Out$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "Out$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$Highlight$"
-							+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$Highlight$"
-							+ "img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + i + "$DismissalData$"
-							+ "Out$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "Out$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					break;
 				case "F4":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$PartnershipList$" + i + "$PartnershipListData$"
-							+ "Title$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "Title$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$PartnershipList$" + i + "$PartnershipListData$"
-							+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$PartnershipList$" + i + "$PartnershipListData$"
-							+ "Out$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "Out$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					break;
 				}
 			}
 			break;
 		case "Control_F1":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=6;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Top$" + i + "$TextGrp$Data$Out"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Top$" + i + "$TextGrp$Data$Out"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Top$" + i + "$TextGrp$Data$Stats"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Top$" + i + "$TextGrp$Data$Stats"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Bottom$" + i + "$TextGrp$Data$Out"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Bottom$" + i + "$TextGrp$Data$Out"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Bottom$" + i + "$TextGrp$Data$Stats"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$ImageBattingCard$Bottom$" + i + "$TextGrp$Data$Stats"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			break;
 		case "Alt_F9":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle2$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$TeamSingle$Rows$1$Title$Base"
-					+ "$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$TeamSingle$Rows$1$Title$Data"
-					+ "$img_Text2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					+ "$img_Text2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT2 : Constants.MT20_TEXT2) + inning.getBatting_team().getTeamBadge() 
+					+ "\0", print_writers);
 			
 			
 			for(int i=2;i<=12;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$TeamSingle$Rows$" + i + "$Name$Base"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$TeamSingle$Rows$" + i + "$Name"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			break;
 		case "Control_Alt_F1":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=13;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$LeftSplitBatData$"
-						+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$LeftSplitBatData$"
 						+ "Out$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$Highlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$Highlight$"
-						+ "img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$Players$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$Players$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$FOW_Title$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$FOW_Title$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$Wickets$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$Wickets$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$Score$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BowlerGrp$" + i + "$Score$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			}
 			
 			break;
 		case "Alt_Shift_F1":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=13;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$LeftSplitBatData$"
-						+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Still_To_Bat$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$LeftSplitBatData$"
-						+ "Out$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Out$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$Highlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$" + i + "$Highlight$"
-						+ "img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			
 			for(int i=1;i<=3;i++) {
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$ContributionGrp$" + i + "$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BattingCard$ContributionGrp$" + i + "$"
-						+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			break;
 		case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ShiftForImage$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " 
-					+ Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+					+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 			for(int i=3;i<=7;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ShiftForImage$DataAll$Side" + WhichSide + "$Row" + i + "$Dehighlight"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ShiftForImage$DataAll$Side" + WhichSide + "$Row" + i + "$Dehighlight"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + team.getTeamBadge() + "\0", print_writers);
 			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ShiftForImage$DataAll$Side" + WhichSide + "$Row8"
-					+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+					+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ShiftForImage$DataAll$Side" + WhichSide + "$Row8"
-					+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+					+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + team.getTeamBadge() + "\0", print_writers);
 			
 			break;
 			
 		case "Control_F11": case "Shift_F11":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle2$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 			
 			for(int i=1;i<=4;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Summary$Team1$Row_" + i + "$Batsman"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Summary$Team1$Row_" + i + "$Bowler"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + matchAllData.getMatch().getInning().get(0).getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getMatch().getInning().get(0).getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Summary$Team2$Row_" + i + "$Batsman"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Summary$Team2$Row_" + i + "$Bowler"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + matchAllData.getMatch().getInning().get(1).getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getMatch().getInning().get(1).getBowling_team().getTeamBadge() + "\0", print_writers);
 			}
 			break;
 		case "Control_F7":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle2$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + "EVENT" + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" + "\0", print_writers);
 			
 			for(int i=1;i<=11;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Teams$Team_1$" + i + "$NameGrp"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Teams$Team_1$" + i + "$NameGrp"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Teams$Team_2$" + i + "$NameGrp"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$Teams$Team_2$" + i + "$NameGrp"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				
 			}
 			break;
 		case "Control_Shift_F7":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Main$TitleGrp$Base$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Main$TitleGrp$Text$Side" + WhichSide + "$img_Text1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + team.getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=6;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Main$AllGraphics$Side" + WhichSide + "$1$Photo_" + i + "$Role"
-						+ "$img_base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						+ "$img_base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Main$AllGraphics$Side" + WhichSide + "$1$Photo_" + i + "$Role"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + team.getTeamBadge() + "\0", print_writers);
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Main$AllGraphics$Side" + WhichSide + "$2$Photo_" + i + "$Role"
-						+ "$img_base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + team.getTeamBadge() + "\0", print_writers);
+						+ "$img_base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Main$AllGraphics$Side" + WhichSide + "$2$Photo_" + i + "$Role"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + team.getTeamBadge() + "\0", print_writers);
 			}
 			break;	
 		case "F2":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Extras$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$FooterStyle1$Overs$img_Base1*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			
 			for(int i=1;i<=13;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerGrp$" + i + "$LeftBallSplitData$"
-						+ "Dehighlight$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "Dehighlight$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerDetailsGrp$" + i + "$BowlerDetailsData$"
-						+ "Title$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "Title$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerDetailsGrp$" + i + "$BowlerDetailsData$"
-						+ "Values$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "Values$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerDetailsGrp$" + i + "$BowlerDetailsData$"
-						+ "FOW_Title$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "FOW_Title$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerDetailsGrp$" + i + "$BowlerDetailsData$"
-						+ "Wickets$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "Wickets$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerDetailsGrp$" + i + "$BowlerDetailsData$"
-						+ "Score$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "Score$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerGrp$" + i + "$Highlight$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerGrp$" + i + "$Highlight$"
-						+ "img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			}
 			break;
 		}
@@ -1683,7 +1684,7 @@ public class ALL_FF
 			}
 			logosAndBaseColor(print_writers, WhichSide, whatToProcess, matchAllData, inning, config);
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			switch(whatToProcess) {
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 			case "Alt_Shift_W":
@@ -1746,7 +1747,7 @@ public class ALL_FF
 					break;	
 				}
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + 
-						"$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						"$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
@@ -1756,7 +1757,7 @@ public class ALL_FF
 						"$txt_lastName*GEOM*TEXT SET " + (player.getSurname() != null ? player.getSurname() : "") + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$TopTitleGrp$txt_Title"
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
@@ -1790,20 +1791,20 @@ public class ALL_FF
 				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle"
 						+ "$Side" + WhichSide + "$txt_SubTitle*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
-						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + 
-						"$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						"$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				break;
 			case "Shift_F10":
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				if(inning.getInningNumber() == 1) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$txt_Title"
@@ -1823,9 +1824,9 @@ public class ALL_FF
 							+ "$Side" + WhichSide + "$txt_SubTitle*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
-							+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo"
-							+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				}else if(inning.getInningNumber() == 2) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$txt_Title"
 							+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
@@ -1841,15 +1842,15 @@ public class ALL_FF
 							+ "$Side" + WhichSide + "$txt_SubTitle*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
-							+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+							+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + 
-							"$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+							"$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				}
 				break;
 				
 			case "Control_Alt_F1":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$txt_Title"
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
 				
@@ -1867,9 +1868,9 @@ public class ALL_FF
 						+ "$Side" + WhichSide + "$txt_SubTitle*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
-						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo"
-						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + "EVENT" + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				break;
 			
 			case "Shift_Control_F1": case "Shift_Control_F2":
@@ -1878,7 +1879,7 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TitleGrp$Text"
 					+ "$Side" + WhichSide + "$Style1$txt_Title2*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName1() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-					Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+					(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$txt_Title"
 					+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
 				break;
@@ -1892,7 +1893,7 @@ public class ALL_FF
 		
 				TimeUnit.MILLISECONDS.sleep(600);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$txt_Title"
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
 				
@@ -1905,9 +1906,9 @@ public class ALL_FF
 						+ "$Side" + WhichSide + "$txt_SubTitle*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
-						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo"
-						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				break;
 			case "F2": case "Control_Shift_F5":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TitleGrp$Text"
@@ -1917,7 +1918,7 @@ public class ALL_FF
 		
 				TimeUnit.MILLISECONDS.sleep(600);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$txt_Title"
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
@@ -1931,14 +1932,14 @@ public class ALL_FF
 						+ "$Side" + WhichSide + "$txt_SubTitle*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
-						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo"
-						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				break;
 			case "Control_Shift_F7":
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$TopTitleGrp$txt_Title"
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
@@ -1963,12 +1964,12 @@ public class ALL_FF
 						+ "$Side" + WhichSide + "$txt_SubTitle*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$LogoGrp$Logo"
-						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + team.getTeamBadge() + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + team.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Big_Logo"
-						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO_BW + team.getTeamBadge() + "\0", print_writers);
+						+ "$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + team.getTeamBadge() + "\0", print_writers);
 				break;
 			}
-			teamColor(print_writers, WhichSide, whatToProcess, matchAllData, inning);
+			teamColor(print_writers, WhichSide, whatToProcess, matchAllData, inning,config);
 			logosAndBaseColor(print_writers, WhichSide, whatToProcess, matchAllData, inning, config);
 			break;
 		}
@@ -1980,7 +1981,7 @@ public class ALL_FF
 			" : whichGraphicsToProcess = " + whichGraphicsToProcess + " : whatToProcess = " + whatToProcess 
 			+ " : config.getBroadcaster() = " + config.getBroadcaster());
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES: 
+		case Constants.TRI_SERIES: case Constants.MT20: 
 			switch(whichGraphicsToProcess) {
 			case "Control_Shift_F7":
 			case "ANIMATE-OUT-SECOND_PLAYING":
@@ -2367,7 +2368,7 @@ public class ALL_FF
 				break;
 			}
 			break;
-		case Constants.TRI_SERIES: 
+		case Constants.TRI_SERIES: case Constants.MT20: 
 			switch(whatToProcess) {
 			case "Control_F7":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
@@ -2837,7 +2838,7 @@ public class ALL_FF
 			this.numberOfRows = rowId;
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 			Collections.sort(inning.getBattingCard());
@@ -3233,7 +3234,7 @@ public class ALL_FF
 			}
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 13\0", print_writers);
 			Collections.sort(inning.getBattingCard());
@@ -3242,10 +3243,10 @@ public class ALL_FF
 						+ "$BatterExtraGrp$" + i + "*ACTIVE SET 0\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra$BatterExtraGrp$"
-						+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra$BatterExtraGrp$"
-						+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			rowId = 0;
@@ -3340,17 +3341,17 @@ public class ALL_FF
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra"
-							+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBatting_team().getTeamName4() + "\\\\" 
+							+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBatting_team().getTeamName4() + "\\\\" 
 							+ Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra"
-							+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_PHOTO_PATH + inning.getBatting_team().getTeamName4()+ "\\\\" + Constants.RIGHT 
+							+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + inning.getBatting_team().getTeamName4()+ "\\\\" + Constants.RIGHT 
 							+ "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra"
-							+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH +
+							+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +
 							inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra"
-							+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + 
+							+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + 
 							inning.getBatting_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}
 				
@@ -3361,7 +3362,7 @@ public class ALL_FF
 							+ "$BestPerformer$DetailData$" + i + "$select_Highlight*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				}
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra"
-						+ "$BestPerformer$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$BestPerformer$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra"
@@ -3425,41 +3426,41 @@ public class ALL_FF
 						+ "*GEOM*TEXT SET BALL" + CricketFunctions.Plural(inning.getPartnerships().get(inning.getPartnerships().size()-1).getTotalBalls()).toUpperCase()+"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$img_Logo"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$PieAll$img_Base1"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$PieAll$img_Base2"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4()+"\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4()+"\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_Player"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_Player"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_Player"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_Player"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}
 				break;
@@ -3598,7 +3599,7 @@ public class ALL_FF
 				break;
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			switch (WhichType.toUpperCase()) {
 			case "PERFORMER":
 				fullframes.setWhichhighlight("PERFORMER");
@@ -3617,30 +3618,30 @@ public class ALL_FF
 				
 				for(int i =1; i<= 13; i++) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$"
-							+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$"
-							+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					
 				}
 				
 				for(int i=1;i<=6;i++) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData$" + i + "$Dehighlight"
-							+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData$" + i + "$Dehighlight"
-							+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				}
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_Player"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBatting_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBatting_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBatting_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+							+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBatting_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_Player"
-							+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBatting_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+							+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBatting_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData"
@@ -3653,7 +3654,7 @@ public class ALL_FF
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_Logo"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData"
@@ -3708,10 +3709,10 @@ public class ALL_FF
 				
 				for(int i =1; i<= 13; i++) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$"
-							+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$BatterGrp$"
-							+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					
 				}
 				
@@ -3774,48 +3775,48 @@ public class ALL_FF
 						+ "$Player2$obj_RingAngle*GEOM*Angle SET " + ScaleFac2 + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Data$PieAll"
-						+ "$Player1$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$Player1$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Data$PieAll"
-						+ "$Player2$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "$Player2$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$img_Logo"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$PieAll$img_Base1"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$PieAll$img_Base2"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4()+"\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4()+"\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_Player"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image1$img_Player"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getFirstPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_Player"
-							+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_LOCAL_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_PlayerShadow"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$Partnership$Image2$img_Player"
-							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
+							+ "*TEXTURE*IMAGE SET "+ "\\\\" + config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +inning.getBatting_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\" +
 							inning.getPartnerships().get(inning.getPartnerships().size()-1).getSecondPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				}
 				break;
@@ -3828,7 +3829,7 @@ public class ALL_FF
 	public String BowlingCardBallPerformerBody(List<PrintWriter> print_writers, int WhichSide, Configuration config, MatchAllData matchAllData,Inning inning) throws Exception
 	{
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 14\0", print_writers);
 			
@@ -3844,10 +3845,10 @@ public class ALL_FF
 			}
 			for(int i=1; i<=13; i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$BowlerExtraGrp$"
-						+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra$BowlerExtraGrp$"
-						+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 
@@ -3909,17 +3910,17 @@ public class ALL_FF
 			
 			if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra"
-						+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBatting_team().getTeamName4() + "\\\\" 
+						+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBatting_team().getTeamName4() + "\\\\" 
 						+ Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra"
-						+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_PHOTO_PATH + inning.getBatting_team().getTeamName4()+ "\\\\" + Constants.RIGHT 
+						+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + inning.getBatting_team().getTeamName4()+ "\\\\" + Constants.RIGHT 
 						+ "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 			}else {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra"
-						+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH +
+						+ "$BestPerformer$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) +
 						inning.getBowling_team().getTeamName4() + "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra"
-						+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + 
+						+ "$BestPerformer$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + 
 						inning.getBowling_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}
 			
@@ -3930,7 +3931,7 @@ public class ALL_FF
 						+ "$BestPerformer$DetailData$" + i + "$select_Highlight*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 			}
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra"
-					+ "$BestPerformer$img_Logo*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					+ "$BestPerformer$img_Logo*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCardExtra"
@@ -4013,7 +4014,7 @@ public class ALL_FF
 					+ "*GEOM*TEXT SET " + bc.getEconomyRate() + "\0", print_writers);
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			
 			
 			String[] Count = CricketFunctions.getScoreTypeData(CricketUtil.BOWLER,matchAllData, inning.getInningNumber(), player.getPlayerId(),
@@ -4025,18 +4026,18 @@ public class ALL_FF
 			
 			for(int i =1; i<= 13; i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerGrp$"
-						+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ i + "$select_Colour$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BowlingCard$BowlerGrp$"
-						+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ i + "$select_Colour$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
 			}
 			
 			for(int i=1;i<=6;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData$" + i + "$Dehighlight"
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData$" + i + "$Dehighlight"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$select_Graphics"
@@ -4047,14 +4048,14 @@ public class ALL_FF
 			
 			if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_PlayerShadow"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBowling_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBowling_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_Player"
-						+ "*TEXTURE*IMAGE SET "+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBowling_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBowling_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 			}else {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_PlayerShadow"
-						+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBowling_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBowling_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_Player"
-						+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+Constants.TRI_SERIES_PHOTO_PATH+ inning.getBowling_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
+						+ "*TEXTURE*IMAGE SET "+"\\\\"+config.getPrimaryIpAddress()+(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)+ inning.getBowling_team().getTeamName4()+ "\\\\" +  Constants.RIGHT + "\\\\"  + player.getPhoto()+CricketUtil.PNG_EXTENSION+"\0", print_writers);
 			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData"
@@ -4066,7 +4067,7 @@ public class ALL_FF
 			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_Logo"
-					+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$DetailData"
@@ -4086,7 +4087,7 @@ public class ALL_FF
 			
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$img_Logo"
-					+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+					+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$ExtraData$Side" + WhichSide + "$HighestScorer$txt_SubTitle"
 					+ "*GEOM*TEXT SET BEST PERFORMER\0", print_writers);
 			if(player.getSurname() != null) {
@@ -4361,7 +4362,7 @@ public class ALL_FF
 			}
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 			
@@ -4838,7 +4839,7 @@ public class ALL_FF
 			}
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 5\0", print_writers);
 			
@@ -5298,7 +5299,7 @@ public class ALL_FF
 				
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 4\0", print_writers);
 			
@@ -5337,8 +5338,8 @@ public class ALL_FF
 								matchAllData.getMatch().getInning().get(i-1).getTotalBalls()) + "\0", print_writers);
 				if(i==1) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Summary$" + containerName + i + 
-							"$Title$Overs$txt_DLS_Value*GEOM*TEXT SET " + (Integer.valueOf(matchAllData.getSetup().getReducedOvers()) > 0 ? "(" + matchAllData.getSetup().getReducedOvers() 
-									+ ")":"") + "\0", print_writers);
+							"$Title$Overs$txt_DLS_Value*GEOM*TEXT SET " + (matchAllData.getSetup().getReducedOvers() != null ?(Integer.valueOf(matchAllData.getSetup().getReducedOvers()) > 0 ? "(" + matchAllData.getSetup().getReducedOvers() 
+									+ ")":"") : "") + "\0", print_writers);
 				}else if(i==2) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Summary$" + containerName + i + 
 							"$Title$Overs$txt_DLS_Value*GEOM*TEXT SET " + (matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().trim()
@@ -5584,7 +5585,7 @@ public class ALL_FF
 			}
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 6\0", print_writers);
 			
@@ -5620,33 +5621,33 @@ public class ALL_FF
 			
 			if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image1"
-						+ "$img_Player*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOCAL_PHOTO_PATH + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + 
+						+ "$img_Player*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + 
 						partnership.getFirstPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image1"
-						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOCAL_PHOTO_PATH + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + 
+						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + 
 						partnership.getFirstPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}else {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image1"
-						+ "$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TRI_SERIES_PHOTO_PATH + "\\\\" + 
+						+ "$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + "\\\\" + 
 						inning.getBatting_team().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + partnership.getFirstPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image1"
-						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TRI_SERIES_PHOTO_PATH + "\\\\" + 
+						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + "\\\\" + 
 						inning.getBatting_team().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + partnership.getFirstPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}
 			
 			if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image2"
-						+ "$img_Player*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOCAL_PHOTO_PATH + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + 
+						+ "$img_Player*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + 
 						partnership.getSecondPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image2"
-						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOCAL_PHOTO_PATH + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + 
+						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + "\\\\" + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + 
 						partnership.getSecondPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}else {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image2"
-						+ "$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TRI_SERIES_PHOTO_PATH + "\\\\" + 
+						+ "$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + "\\\\" + 
 						inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + partnership.getSecondPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Partnership$ImageGrp$Image2"
-						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TRI_SERIES_PHOTO_PATH + "\\\\" + 
+						+ "$img_PlayerShadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + "\\\\" + 
 						inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + partnership.getSecondPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}
 			break;
@@ -5902,7 +5903,7 @@ public class ALL_FF
 				}
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 8\0", print_writers);
 			
@@ -5937,18 +5938,18 @@ public class ALL_FF
 					value= "$img_Base2---";
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Manhattan$Bar$" + j + "$obj_ScaleY" 
-							+ powerPlay + "$Bar*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ powerPlay + "$Bar*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Manhattan$Bar$" + j + "$Wkt" 
-							+ powerPlay + "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ powerPlay + "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				}else {
 					powerplay_omo = 1;
 					powerPlay = "$Normal";
 					value= "$img_Base1-";
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Manhattan$Bar$" + j + "$obj_ScaleY" 
-							+ powerPlay + "$Bar*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ powerPlay + "$Bar*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Manhattan$Bar$" + j + "$Wkt" 
-							+ powerPlay + "$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+							+ powerPlay + "$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Manhattan$Bar$" + j + 
@@ -6277,7 +6278,7 @@ public class ALL_FF
 						+ CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(iTeam-1), "-", false) + " \0", print_writers);
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 9\0", print_writers);
 			
@@ -6326,10 +6327,10 @@ public class ALL_FF
 							value="img_Base2-";
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ManhattanComparison$Team_" 
-									+ iTeam + "$Bar$" + j + "$obj_ScaleY" + powerPlay + "$Bar*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + 
+									+ iTeam + "$Bar$" + j + "$obj_ScaleY" + powerPlay + "$Bar*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + 
 									matchAllData.getMatch().getInning().get(iTeam-1).getBatting_team().getTeamBadge() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ManhattanComparison$Team_" 
-									+ iTeam + "$Bar$" + j + "$Wkt" + powerPlay + "$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + 
+									+ iTeam + "$Bar$" + j + "$Wkt" + powerPlay + "$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + 
 									matchAllData.getMatch().getInning().get(iTeam-1).getBatting_team().getTeamBadge() + "\0", print_writers);
 						}else {
 							powerplay_omo = 1;
@@ -6337,10 +6338,10 @@ public class ALL_FF
 							value="img_Base1-";
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ManhattanComparison$Team_" 
-									+ iTeam + "$Bar$" + j + "$obj_ScaleY" + powerPlay + "$Bar*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + 
+									+ iTeam + "$Bar$" + j + "$obj_ScaleY" + powerPlay + "$Bar*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + 
 									matchAllData.getMatch().getInning().get(iTeam-1).getBatting_team().getTeamBadge() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ManhattanComparison$Team_" 
-									+ iTeam + "$Bar$" + j + "$Wkt" + powerPlay + "$img_Base2*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + 
+									+ iTeam + "$Bar$" + j + "$Wkt" + powerPlay + "$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + 
 									matchAllData.getMatch().getInning().get(iTeam-1).getBatting_team().getTeamBadge() + "\0", print_writers);
 						}
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ManhattanComparison$Team_" 
@@ -6675,7 +6676,7 @@ public class ALL_FF
 			}
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 7\0", print_writers);
 			
@@ -6693,12 +6694,13 @@ public class ALL_FF
 						+ "*GEOM*TEXT SET " + CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$1_Teams$Base$img_Base1"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$1_Teams$img_Text1"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT2 : Constants.MT20_TEXT2)
+						+ inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Worms$Graph$Worms$"
-						+ "Team_1$1$AnimWorm$img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "Team_1$1$AnimWorm$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				maxRuns = inning.getTotalRuns();
 			}
@@ -6725,19 +6727,19 @@ public class ALL_FF
 						+ "*GEOM*TEXT SET "+CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())+"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$2_Teams$Team1$Base$img_Base1"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$2_Teams$Team1$img_Text1"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT2 + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT2 : Constants.MT20_TEXT2) + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$2_Teams$Team2$Base$img_Base1"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$2_Teams$Team2$img_Text1"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT2 + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT2 : Constants.MT20_TEXT2) + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Worms$Graph$Worms$Team_1$1$AnimWorm$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$Worms$Graph$Worms$Team_2$2$AnimWorm$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2) + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				if(matchAllData.getMatch().getInning().get(0).getTotalRuns() > matchAllData.getMatch().getInning().get(1).getTotalRuns()) {
 					maxRuns = matchAllData.getMatch().getInning().get(0).getTotalRuns();
@@ -6944,11 +6946,11 @@ public class ALL_FF
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$gfx_FullFrames$Main$All_Graphics$Side" + WhichSide + "$ImageBattingCard" + containerName 
-							+ rowId + "$img_Player*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOCAL_PHOTO_PATH + inning.getBatting_team().getTeamName4() + "\\\\" 
+							+ rowId + "$img_Player*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + inning.getBatting_team().getTeamName4() + "\\\\" 
 							+ Constants.CENTER + "\\\\" + inning.getBattingCard().get(iRow-1).getPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$gfx_FullFrames$Main$All_Graphics$Side" + WhichSide + "$ImageBattingCard" + containerName 
-							+ rowId + "$img_Player*TEXTURE*IMAGE SET \\\\" + config.getPrimaryIpAddress() + "\\" + Constants.TRI_SERIES_PHOTO_PATH 
+							+ rowId + "$img_Player*TEXTURE*IMAGE SET \\\\" + config.getPrimaryIpAddress() + "\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) 
 							+ inning.getBatting_team().getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + inning.getBattingCard().get(iRow-1).getPlayer().getPhoto() 
 							+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}
@@ -7002,7 +7004,7 @@ public class ALL_FF
 				}
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 11\0", print_writers);
 			
@@ -7045,11 +7047,11 @@ public class ALL_FF
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ImageBatting" + containerName 
-							+ rowId + "$img_Play3r*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_LOCAL_PHOTO_PATH + inning.getBatting_team().getTeamName4() + "\\\\" 
+							+ rowId + "$img_Play3r*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + inning.getBatting_team().getTeamName4() + "\\\\" 
 							+ Constants.CENTER + "\\\\" + inning.getBattingCard().get(iRow-1).getPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ImageBatting" + containerName 
-							+ rowId + "$img_Play3r*TEXTURE*IMAGE SET \\\\" + config.getPrimaryIpAddress() + "\\" + Constants.TRI_SERIES_PHOTO_PATH 
+							+ rowId + "$img_Play3r*TEXTURE*IMAGE SET \\\\" + config.getPrimaryIpAddress() + "\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) 
 							+ inning.getBatting_team().getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + inning.getBattingCard().get(iRow-1).getPlayer().getPhoto() 
 							+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}
@@ -7282,7 +7284,7 @@ public class ALL_FF
 			}
 			
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 			Collections.sort(inning.getBattingCard());
@@ -7562,7 +7564,7 @@ public class ALL_FF
 						+ "$ContributionGrp$BarAll$" + (i+1) + "$BarGrp$StatGrp$txt_StatValue*GEOM*TEXT SET " + roundedPercent.get(i) + "\0", print_writers);
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
@@ -7959,20 +7961,20 @@ public class ALL_FF
 				break;
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			switch(whatToProcess) {
 			case "m":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$Big_Logo$Team1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$img_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$img_LogoShadow*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$TeamName$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$TeamName$img_Text1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_TEXT1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$MatchNumberGrp$txt_MatchNumber"
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
@@ -7984,35 +7986,35 @@ public class ALL_FF
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getHomeTeam().getTeamName1() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$Big_Logo$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$img_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$img_LogoShadow*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$TeamName$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$TeamName$img_Text1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_TEXT1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$TeamName$txt_TeamName"
 						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getAwayTeam().getTeamName1() + "\0", print_writers);
 				break;
 			case "Control_m":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$Big_Logo$Team1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$img_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$img_LogoShadow*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$TeamName$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$TeamName$img_Text1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_TEXT1 + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				
 				if(fixture.getMatchnumber() <= 9) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$MatchNumberGrp$txt_MatchNumber"
@@ -8030,19 +8032,19 @@ public class ALL_FF
 				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + "EVENT" + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$Big_Logo$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO_BW + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$img_Logo*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$img_LogoShadow*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_LOGO + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$TeamName$img_Base1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_BASE1 + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$TeamName$img_Text1*TEXTURE*IMAGE SET " + 
-						Constants.TRI_SERIES_TEXT1 + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
+						(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + fixture.getAway_Team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$TeamName$txt_TeamName"
 						+ "*GEOM*TEXT SET " + fixture.getAway_Team().getTeamName1() + "\0", print_writers);
@@ -8214,7 +8216,7 @@ public class ALL_FF
 			    		"$ScoreGrp$txt_SubHead*GEOM*TEXT SET " + StatData[i] + "\0", print_writers);
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			if(WhichProfile.equalsIgnoreCase("DT20")) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$DataAll$Data$Side" + WhichSide + "$Row2$txt_Career"
 						+ "*GEOM*TEXT SET " + "T20 CAREER" + "\0", print_writers);
@@ -8234,10 +8236,11 @@ public class ALL_FF
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ImageAll$Image$Side" + WhichSide + "$img_Player*TEXTURE*IMAGE SET "
-							+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+							+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ImageAll$Image$Side" + WhichSide + "$img_Player*TEXTURE*IMAGE SET "
-							+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TRI_SERIES_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()
+							+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH)
+							+ "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()
 							+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}
 			}else {
@@ -8516,7 +8519,7 @@ public class ALL_FF
 			}
 			break;
 			
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 			
@@ -8552,38 +8555,39 @@ public class ALL_FF
 				if(hs.getRole().equalsIgnoreCase("BATSMAN") || hs.getRole().equalsIgnoreCase("BATTER") || hs.getRole().equalsIgnoreCase("BAT/KEEPER")) {
 					if(hs.getBattingStyle().equalsIgnoreCase("LHB")) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Batsman_Lefthand" + "\0", print_writers);
+								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) 
+								+ "Batsman_Lefthand" + "\0", print_writers);
 						
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Bat_Icon" + "\0", print_writers);
+								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Bat_Icon" + "\0", print_writers);
 						
 					}
 				}else if(hs.getRole().equalsIgnoreCase("BOWLER")) {
 					if(hs.getBowlingStyle() == null) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Bowler" + "\0", print_writers);
+								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Bowler" + "\0", print_writers);
 						
 					}else {
 						switch(hs.getBowlingStyle()) {
 						case "RF": case "RFM": case "RMF": case "RM": case "RSM": case "LF": case "LFM": case "LMF": case "LM":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "FastBowler" + "\0", print_writers);
+									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "FastBowler" + "\0", print_writers);
 							
 							break;
 						case "LSL": case "WSL": case "LCH": case "RLG": case "WSR": case "LSO":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "SpinBowler" + "\0", print_writers);
+									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "SpinBowler" + "\0", print_writers);
 							
 							break;
 						case "ROB":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin" + "\0", print_writers);
+									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin" + "\0", print_writers);
 							
 							break;
 						case "RLB":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Leg_Spin" + "\0", print_writers);
+									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Leg_Spin" + "\0", print_writers);
 							
 							break;	
 						}
@@ -8592,11 +8596,11 @@ public class ALL_FF
 					if(hs.getBowlingStyle() == null) {
 						if(hs.getBattingStyle().equalsIgnoreCase("LHB")) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin_Allrounder_Left" + "\0", print_writers);
+									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin_Allrounder_Left" + "\0", print_writers);
 							
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "FastBowlerAllrounder" + "\0", print_writers);
+									+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "FastBowlerAllrounder" + "\0", print_writers);
 							
 						}
 					}else {
@@ -8604,22 +8608,22 @@ public class ALL_FF
 						case "RF": case "RFM": case "RMF": case "RM": case "RSM": case "LF": case "LFM": case "LMF": case "LM":
 							if(hs.getBattingStyle().equalsIgnoreCase("LHB")) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Pace_BowlerAllrounerLeftHand" + "\0", print_writers);
+										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Pace_BowlerAllrounerLeftHand" + "\0", print_writers);
 								
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "FastBowlerAllrounder" + "\0", print_writers);
+										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "FastBowlerAllrounder" + "\0", print_writers);
 								
 							}
 							break;
 						case "ROB": case "RLB": case "LSL": case "WSL": case "LCH": case "RLG": case "WSR": case "LSO":
 							if(hs.getBattingStyle().equalsIgnoreCase("LHB")) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin_Allrounder_Left" + "\0", print_writers);
+										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin_Allrounder_Left" + "\0", print_writers);
 								
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin_Bat" + "\0", print_writers);
+										+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin_Bat" + "\0", print_writers);
 								
 							}
 							break;
@@ -8637,7 +8641,7 @@ public class ALL_FF
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$txt_Description*GEOM*TEXT SET KEEPER\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Keeper" + "\0", print_writers);
+								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Keeper" + "\0", print_writers);
 						
 					}else if(hs.getCaptainWicketKeeper().equalsIgnoreCase(CricketUtil.WICKET_KEEPER)) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -8645,7 +8649,7 @@ public class ALL_FF
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$txt_Description*GEOM*TEXT SET KEEPER\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Keeper" + "\0", print_writers);
+								+ "$Teams$Team_1$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Keeper" + "\0", print_writers);
 						
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -8684,38 +8688,38 @@ public class ALL_FF
 				if(as.getRole().equalsIgnoreCase("BATSMAN") || as.getRole().equalsIgnoreCase("BATTER") || as.getRole().equalsIgnoreCase("BAT/KEEPER")) {
 					if(as.getBattingStyle().equalsIgnoreCase("LHB")) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Batsman_Lefthand" + "\0", print_writers);
+								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Batsman_Lefthand" + "\0", print_writers);
 						
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Bat_Icon" + "\0", print_writers);
+								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Bat_Icon" + "\0", print_writers);
 						
 					}
 				}else if(as.getRole().equalsIgnoreCase("BOWLER")) {
 					if(as.getBowlingStyle() == null) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Bowler" + "\0", print_writers);
+								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Bowler" + "\0", print_writers);
 						
 					}else {
 						switch(as.getBowlingStyle()) {
 						case "RF": case "RFM": case "RMF": case "RM": case "RSM": case "LF": case "LFM": case "LMF": case "LM":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "FastBowler" + "\0", print_writers);
+									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "FastBowler" + "\0", print_writers);
 							
 							break;
 						case "LSL": case "WSL": case "LCH": case "RLG": case "WSR": case "LSO":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "SpinBowler" + "\0", print_writers);
+									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "SpinBowler" + "\0", print_writers);
 							
 							break;
 						case "ROB":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin" + "\0", print_writers);
+									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin" + "\0", print_writers);
 							
 							break;
 						case "RLB":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Leg_Spin" + "\0", print_writers);
+									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Leg_Spin" + "\0", print_writers);
 							
 							break;	
 						}
@@ -8724,11 +8728,11 @@ public class ALL_FF
 					if(as.getBowlingStyle() == null) {
 						if(as.getBattingStyle().equalsIgnoreCase("LHB")) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin_Allrounder_Left" + "\0", print_writers);
+									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin_Allrounder_Left" + "\0", print_writers);
 							
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "FastBowlerAllrounder" + "\0", print_writers);
+									+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "FastBowlerAllrounder" + "\0", print_writers);
 							
 						}
 					}else {
@@ -8736,22 +8740,22 @@ public class ALL_FF
 						case "RF": case "RFM": case "RMF": case "RM": case "RSM": case "LF": case "LFM": case "LMF": case "LM":
 							if(as.getBattingStyle().equalsIgnoreCase("LHB")) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Pace_BowlerAllrounerLeftHand" + "\0", print_writers);
+										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Pace_BowlerAllrounerLeftHand" + "\0", print_writers);
 								
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "FastBowlerAllrounder" + "\0", print_writers);
+										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "FastBowlerAllrounder" + "\0", print_writers);
 								
 							}
 							break;
 						case "ROB": case "RLB": case "LSL": case "WSL": case "LCH": case "RLG": case "WSR": case "LSO":
 							if(as.getBattingStyle().equalsIgnoreCase("LHB")) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin_Allrounder_Left" + "\0", print_writers);
+										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin_Allrounder_Left" + "\0", print_writers);
 								
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Off_Spin_Bat" + "\0", print_writers);
+										+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Off_Spin_Bat" + "\0", print_writers);
 								
 							}
 							break;
@@ -8769,7 +8773,7 @@ public class ALL_FF
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$txt_Description*GEOM*TEXT SET KEEPER\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Keeper" + "\0", print_writers);
+								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Keeper" + "\0", print_writers);
 						
 					}else if(as.getCaptainWicketKeeper().equalsIgnoreCase(CricketUtil.WICKET_KEEPER)) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -8777,7 +8781,7 @@ public class ALL_FF
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$txt_Description*GEOM*TEXT SET KEEPER\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_ICONS+ "Keeper" + "\0", print_writers);
+								+ "$Teams$Team_2$Rows$" + rowId + "$NameGrp$img_Icon*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_ICONS : Constants.MT20_ICONS) + "Keeper" + "\0", print_writers);
 						
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -8999,25 +9003,25 @@ public class ALL_FF
 				}
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$TopTitleGrp$txt_Title"
 					+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$TeamLogo$Team_1$img_LogoShadow*TEXTURE*IMAGE SET "
-					+ Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+					+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$TeamLogo$Team_1$img_Logo*TEXTURE*IMAGE SET "
-					+ Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+					+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$TeamLogo$Team_2$img_LogoShadow*TEXTURE*IMAGE SET "
-					+ Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+					+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$TeamLogo$Team_2$img_Logo*TEXTURE*IMAGE SET "
-					+ Constants.TRI_SERIES_LOGO + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+					+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$Big_Logo$Team1$img_Logos_BW*TEXTURE*IMAGE SET "
-					+ Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+					+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$Big_Logo$Team_2$img_Logos_BW*TEXTURE*IMAGE SET "
-					+ Constants.TRI_SERIES_LOGO_BW + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+					+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 			
 			
 			for(Player plyr : matchAllData.getSetup().getHomeSquad()) {
@@ -9026,16 +9030,17 @@ public class ALL_FF
 						
 						if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team1$img_PlayerShadow*TEXTURE*IMAGE SET "
-									+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + matchAllData.getSetup().getHomeTeam().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
+									+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH)
+									+ matchAllData.getSetup().getHomeTeam().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team1$img_Player*TEXTURE*IMAGE SET "
-									+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + matchAllData.getSetup().getHomeTeam().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
+									+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + matchAllData.getSetup().getHomeTeam().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 							break;
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team1$img_PlayerShadow*TEXTURE*IMAGE SET "
-									+ "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + matchAllData.getSetup().getHomeTeam().getTeamName4() + 
+									+ "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + matchAllData.getSetup().getHomeTeam().getTeamName4() + 
 									"\\\\" + Constants.LEFT + "\\\\" + plyr.getPhoto() + CricketUtil.PNG_EXTENSION+ "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team1$img_Player*TEXTURE*IMAGE SET "
-									+ "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + matchAllData.getSetup().getHomeTeam().getTeamName4() + 
+									+ "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + matchAllData.getSetup().getHomeTeam().getTeamName4() + 
 									"\\\\" + Constants.LEFT + "\\\\" + plyr.getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 							break;
 						}
@@ -9049,16 +9054,16 @@ public class ALL_FF
 						
 						if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team2$img_PlayerShadow*TEXTURE*IMAGE SET "
-									+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + matchAllData.getSetup().getAwayTeam().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
+									+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + matchAllData.getSetup().getAwayTeam().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team2$img_Player*TEXTURE*IMAGE SET "
-									+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + matchAllData.getSetup().getAwayTeam().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
+									+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + matchAllData.getSetup().getAwayTeam().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + plyr.getPhoto()+CricketUtil.PNG_EXTENSION + "\0", print_writers);
 							break;
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team2$img_PlayerShadow*TEXTURE*IMAGE SET "
-									+ "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + matchAllData.getSetup().getAwayTeam().getTeamName4() + 
+									+ "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + matchAllData.getSetup().getAwayTeam().getTeamName4() + 
 									"\\\\" + Constants.RIGHT + "\\\\" + plyr.getPhoto() + CricketUtil.PNG_EXTENSION+ "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$PlayerImage$Team2$img_Player*TEXTURE*IMAGE SET "
-									+ "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + matchAllData.getSetup().getAwayTeam().getTeamName4() + 
+									+ "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + matchAllData.getSetup().getAwayTeam().getTeamName4() + 
 									"\\\\" + Constants.RIGHT + "\\\\" + plyr.getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 							break;
 						}
@@ -9146,15 +9151,15 @@ public class ALL_FF
 			
 			if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$LineUpBig$Side" + WhichSide  + containerName + "$Photo_" + rowId + "$img_PhotoShadow*TEXTURE*IMAGE SET " 
-						+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$LineUpBig$Side" + WhichSide  + containerName + "$Photo_" + rowId + "$img_Photo*TEXTURE*IMAGE SET " 
-						+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}else {
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$LineUpBig$Side" + WhichSide  + containerName + "$Photo_" + rowId + "$img_Photo*TEXTURE*IMAGE SET " 
-					+ "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + team.getTeamName4() + "\\" + Constants.CENTER + "\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					+ "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + team.getTeamName4() + "\\" + Constants.CENTER + "\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$LineUpBig$Side" + WhichSide  + containerName + "$Photo_" + rowId + "$img_PhotoShadow*TEXTURE*IMAGE SET " 
-						+ "\\\\" + config.getPrimaryIpAddress() + Constants.TRI_SERIES_PHOTO_PATH + team.getTeamName4() + "\\" + Constants.CENTER + "\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						+ "\\\\" + config.getPrimaryIpAddress() + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + team.getTeamName4() + "\\" + Constants.CENTER + "\\" + PlayingXI.get(i-1).getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}
 			
 			if(PlayingXI.get(i-1).getRole().equalsIgnoreCase(CricketUtil.BATSMAN) || PlayingXI.get(i-1).getRole().equalsIgnoreCase("BAT/KEEPER")) {
@@ -10022,7 +10027,7 @@ public class ALL_FF
 				}
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 12\0", print_writers);
 			
@@ -10035,9 +10040,9 @@ public class ALL_FF
 						if(FirstPlayerId == top_batsman_beststat.get(i).getPlayer().getPlayerId()) {
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + Teams.get(top_batsman_beststat.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + Teams.get(top_batsman_beststat.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + Teams.get(top_batsman_beststat.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + Teams.get(top_batsman_beststat.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -10045,13 +10050,13 @@ public class ALL_FF
 							
 							if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + Teams.get(top_batsman_beststat.get(i).getPlayer().
+										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + Teams.get(top_batsman_beststat.get(i).getPlayer().
 												getTeamId() - 1).getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + top_batsman_beststat.get(i).getPlayer().getPhoto() 
 										+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ "\\\\"+config.getPrimaryIpAddress()+
-											"\\\\" + Constants.TRI_SERIES_PHOTO_PATH + Teams.get(top_batsman_beststat.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
+											"\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + Teams.get(top_batsman_beststat.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
 											+ "\\\\" + Constants.RIGHT + "\\\\" + top_batsman_beststat.get(i).getPlayer().getPhoto() 
 											+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}
@@ -10098,9 +10103,9 @@ public class ALL_FF
 						if(FirstPlayerId == top_bowler_beststats.get(i).getPlayer().getPlayerId()) {
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + Teams.get(top_bowler_beststats.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + Teams.get(top_bowler_beststats.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + Teams.get(top_bowler_beststats.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + Teams.get(top_bowler_beststats.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -10108,13 +10113,13 @@ public class ALL_FF
 							
 							if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + Teams.get(top_bowler_beststats.get(i).getPlayer().
+										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + Teams.get(top_bowler_beststats.get(i).getPlayer().
 												getTeamId() - 1).getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + top_bowler_beststats.get(i).getPlayer().getPhoto() 
 										+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ "\\\\"+config.getPrimaryIpAddress()+
-											"\\\\" + Constants.TRI_SERIES_PHOTO_PATH + Teams.get(top_bowler_beststats.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
+											"\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + Teams.get(top_bowler_beststats.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
 											+ "\\\\" + Constants.RIGHT + "\\\\" + top_bowler_beststats.get(i).getPlayer().getPhoto() 
 											+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}
@@ -10169,9 +10174,9 @@ public class ALL_FF
 						if(FirstPlayerId == tournaments.get(i).getPlayer().getPlayerId()) {
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -10179,13 +10184,13 @@ public class ALL_FF
 							
 							if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().
+										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + Teams.get(tournaments.get(i).getPlayer().
 												getTeamId() - 1).getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 										+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ "\\\\"+config.getPrimaryIpAddress()+
-											"\\\\" + Constants.TRI_SERIES_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
+											"\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
 											+ "\\\\" + Constants.RIGHT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 											+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}
@@ -10226,22 +10231,22 @@ public class ALL_FF
 						if(FirstPlayerId == tournaments.get(i).getPlayer().getPlayerId()) {
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-									+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+									+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 									+"$LeaderBoard$Rows$"+rowId+"$select_Highlight*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 							
 							if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().
+										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + Teams.get(tournaments.get(i).getPlayer().
 												getTeamId() - 1).getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 										+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 										+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ "\\\\"+config.getPrimaryIpAddress()+
-											"\\\\" + Constants.TRI_SERIES_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
+											"\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
 											+ "\\\\" + Constants.RIGHT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 											+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							}
@@ -10282,9 +10287,9 @@ public class ALL_FF
 						
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-								+ "img_Base1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE1 + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+								+ "img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$AllGraphics$Side" + WhichSide + "$LeaderBoard$Rows$" + rowId + "$Highlight$"
-								+ "img_Text1*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_TEXT1 + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
+								+ "img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamBadge() + "\0", print_writers);
 						
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -10292,13 +10297,13 @@ public class ALL_FF
 						
 						if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-									+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().
+									+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + Teams.get(tournaments.get(i).getPlayer().
 											getTeamId() - 1).getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 									+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 									+"$LeaderBoard$Image$img_Player*TEXTURE*IMAGE SET "+ "\\\\"+config.getPrimaryIpAddress()+
-										"\\\\" + Constants.TRI_SERIES_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
+										"\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
 										+ "\\\\" + Constants.RIGHT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 										+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 						}
@@ -10611,7 +10616,7 @@ public class ALL_FF
 			    		"$ScoreGrp$txt_SubHead*GEOM*TEXT SET " + StatData[i] + "\0", print_writers);
 			}
 			break;
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$DataAll$Data$Side" + WhichSide + "$Row2$txt_Career"
 					+ "*GEOM*TEXT SET " + "THIS SERIES" + "\0", print_writers);
 			
@@ -10620,10 +10625,10 @@ public class ALL_FF
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ImageAll$Image$Side" + WhichSide + "$img_Player*TEXTURE*IMAGE SET "
-							+ Constants.TRI_SERIES_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+							+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOCAL_PHOTO_PATH : Constants.MT20_LOCAL_PHOTO_PATH) + "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$ImageAll$Image$Side" + WhichSide + "$img_Player*TEXTURE*IMAGE SET "
-							+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TRI_SERIES_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()
+							+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_PHOTO_PATH : Constants.MT20_PHOTO_PATH) + "\\\\" + team.getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" + player.getPhoto()
 							+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 				}
 			}else {

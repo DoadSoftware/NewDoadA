@@ -77,6 +77,21 @@ public class Constants
 	public final static String TRI_SERIES_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\TRI_SERIES\\\\Photos\\\\";
 	public final static String TRI_SERIES_PHOTO_PATH = "\\c\\Images\\TRI_SERIES\\Photos\\";
 	
+	
+	public final static String MT20 = "MT20";
+	public final static String MT20_LOGO = "IMAGE*/Default/Assets/Logos/";
+	public final static String MT20_LOGO_BW = "IMAGE*/Default/Assets/Logos_BW/";
+	public final static String MT20_BASE1 = "IMAGE*/Default/Assets/Base1/";
+	public final static String MT20_TEXT1 = "IMAGE*/Default/Assets/Text1/";
+	public final static String MT20_BASE2 = "IMAGE*/Default/Assets/Base2/";
+	public final static String MT20_TEXT2 = "IMAGE*/Default/Assets/Text2/";
+	public final static String MT20_WEATHERICON = "IMAGE*/Default/Assets/WeatherIcons/";
+	public final static String MT20_ICONS = "IMAGE*/Default/Assets/Icons/";
+	public final static String MT20_SPONSOR = "IMAGE*/Default/Assets/Sponsors/";
+	
+	public final static String MT20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\MT20\\\\Photos\\\\";
+	public final static String MT20_PHOTO_PATH = "\\c\\Images\\MT20\\Photos\\";
+	
 	public final static String TPL = "TPL";
 	
 	

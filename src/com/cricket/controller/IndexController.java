@@ -320,7 +320,7 @@ public class IndexController
 			
 			switch (select_broadcaster) {
 			case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES:
-			case Constants.TPL:	
+			case Constants.MT20:	
 				if(session_configuration.getPrimaryVariousOptions().contains(Constants.FULL_FRAMER)) {
 					this_scene.LoadScene("FULL-FRAMERS", print_writers, session_configuration);
 				}
@@ -596,7 +596,7 @@ public class IndexController
 				default:
 					switch (session_configuration.getBroadcaster()) {
 					case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES:
-					case Constants.TPL:	
+					case Constants.MT20:	
 						if(!session_configuration.getPrimaryVariousOptions().contains(Constants.FULL_FRAMER)
 							&& this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.FULL_FRAMER)) {
 							this_caption.setStatus("Error: Full framers captions NOT selected on start-up");
@@ -762,7 +762,7 @@ public class IndexController
 				processAnimations(whatToProcess, session_configuration, valueToProcess, print_writers);
 			}else if(whatToProcess.contains("ANIMATE-OUT-SECOND_PLAYING")) {
 				switch (session_configuration.getBroadcaster()) {
-				case Constants.TRI_SERIES: case Constants.TPL:
+				case Constants.TRI_SERIES: case Constants.MT20:
 					if(this_animation.whichGraphicOnScreen.contains("Control_Shift_F7")) {
 						this_animation.lineUpCount++;
 //						if(this_animation.lineUpCount == 3) {
@@ -838,7 +838,7 @@ public class IndexController
 				processAnimations("ANIMATE-IN-GRAPHICS", session_configuration, "Alt_8,,BLANK", print_writers);
 			}
 			break;	
-		case Constants.TRI_SERIES: case Constants.TPL:
+		case Constants.TRI_SERIES: case Constants.MT20:
 			if(this_caption.this_infobarGfx.infobar.getSection2() != null && !this_caption.this_infobarGfx.infobar.getSection2().isEmpty()) {
 				this_caption.PopulateGraphics("Alt_2,,BLANK", session_match);
 				this_animation.caption = this_caption;
@@ -879,7 +879,7 @@ public class IndexController
 			case Constants.INFO_BAR:
 				if(valueToProcess.split(",")[0].equalsIgnoreCase("Control_F12")) {
 					switch (session_configuration.getBroadcaster()) {
-					case Constants.TRI_SERIES: case Constants.AFG_SL_SERIES: case Constants.TPL:
+					case Constants.TRI_SERIES: case Constants.AFG_SL_SERIES: case Constants.MT20:
 						if(this_animation.infobar.isInfobar_on_screen()) {
 							this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 							TimeUnit.MILLISECONDS.sleep(2000);
@@ -917,7 +917,7 @@ public class IndexController
 				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_2")) {
 					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 					switch (session_configuration.getBroadcaster()) {
-					case Constants.TRI_SERIES: case Constants.TPL:
+					case Constants.TRI_SERIES: case Constants.MT20:
 						TimeUnit.MILLISECONDS.sleep(300);
 						break;
 					case Constants.BAN_AFG_SERIES:  case Constants.ACC: case Constants.AFG_SL_SERIES:
@@ -932,7 +932,7 @@ public class IndexController
 				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_5")) {
 					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 					switch (session_configuration.getBroadcaster()) {
-					case Constants.TRI_SERIES:  case Constants.TPL:
+					case Constants.TRI_SERIES:  case Constants.MT20:
 						TimeUnit.MILLISECONDS.sleep(300);
 						break;
 					case Constants.BAN_AFG_SERIES:  case Constants.ACC:
@@ -999,7 +999,7 @@ public class IndexController
 					default:
 						this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 						switch (session_configuration.getBroadcaster()) {
-						case Constants.TRI_SERIES: case Constants.TPL:
+						case Constants.TRI_SERIES: case Constants.MT20:
 							TimeUnit.MILLISECONDS.sleep(400);
 							break;
 						case Constants.BAN_AFG_SERIES:  case Constants.ACC: case Constants.AFG_SL_SERIES:
@@ -1252,7 +1252,7 @@ public class IndexController
 	{
 		switch (config.getBroadcaster()) {
 		case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES:
-		case Constants.TPL:	
+		case Constants.MT20:	
 			switch (typeOfUpdate) {
 			case "ONLY_DB":
 				session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, 
@@ -1391,7 +1391,6 @@ public class IndexController
 					CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 					
 					session_match.getMatch().setMatchStats(MatchStats);
-					
 					cricket_matches = CricketFunctions.getTournamentMatches(new File(CricketUtil.CRICKET_SERVER_DIRECTORY + 
 							CricketUtil.MATCHES_DIRECTORY).listFiles(new FileFilter() {
 						@Override

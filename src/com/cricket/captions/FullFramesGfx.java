@@ -1023,7 +1023,7 @@ public class FullFramesGfx
 		this_ALL_FF.Teams = Teams;
 				
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC:
 			if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
 				this_ALL_FF.tournaments = past_tournament_stats;
 			}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
@@ -1300,7 +1300,7 @@ public class FullFramesGfx
 	{
 		String offset = "";
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES:  case Constants.MT20:
 			offset = "";
 			switch(this_ALL_FF.numberOfRows) {
 			case 11:
@@ -1354,7 +1354,7 @@ public class FullFramesGfx
 	{
 		String Position_footer = "",Position_Base_X_IN ="",Position_Base_X_Out="";
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES:
+		case Constants.TRI_SERIES:  case Constants.MT20:
 			switch(whatToProcess.split(",")[0]) {
 			case "Shift_K": case "Alt_F11":
 				Position_footer = "1.103";

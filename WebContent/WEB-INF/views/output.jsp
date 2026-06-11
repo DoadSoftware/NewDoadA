@@ -9,15 +9,17 @@
   
   <title>Output</title>
 	
-  <script type="text/javascript" src="<c:url value='/webjars/jquery/3.6.0/jquery.min.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/javascript/index.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/webjars/npm/select2/4.1.0-rc.0/dist/js/select2.min.js'/>"></script>
+	  <script type="text/javascript" src="<c:url value='/webjars/jquery/3.6.0/jquery.min.js'/>"></script>
+	  <script type="text/javascript" src="<c:url value='/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js'/>"></script>
+	  <script type="text/javascript" src="<c:url value='/resources/javascript/index.js'/>"></script>
+ 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   <link rel="stylesheet" href="<c:url value="/resources/css/output.css"/>">
   <link rel="stylesheet" href="<c:url value='/webjars/bootstrap/5.1.3/css/bootstrap.min.css'/>">
   <link rel="stylesheet" href="<c:url value='/webjars/font-awesome/6.5.0/css/all.min.css'/>">
-  <link rel="stylesheet" href="<c:url value='/webjars/npm/select2/4.1.0-rc.0/dist/css/select2.min.css'/>">
 
   <style>
 	#stats-container {
