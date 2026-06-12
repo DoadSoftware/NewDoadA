@@ -4020,7 +4020,7 @@ public class InfobarGfx
 				if(bowlingCard.getSpeeds()== null) {
 					return "Speed is null";
 				}
-				List<Speed> Speed = CricketFunctions.getThisOverSpeeds(bowlingCard);
+				List<Speed> Speed = CricketFunctions.getThisOverSpeeds(bowlingCard,inning);
 				
 				if(Speed == null) {
 					return "This Over Speed is null";
@@ -4840,9 +4840,9 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$Section1$Side" + WhichSide + "$Select_DataType"
 							+ "*FUNCTION*Omo*vis_con SET 0\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$Section1$Side" + WhichSide + "$TeamNames"
-							+ "$txt_BattingTeamName*GEOM*TEXT SET " + inning.getBatting_team().getTeamName1() + "\0", print_writers);
+							+ "$txt_BattingTeamName*GEOM*TEXT SET " + inning.getBatting_team().getTeamName3() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$Section1$Side" + WhichSide + "$TeamNames"
-							+ "$txt_BowlingTeamName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName1() + "\0", print_writers);
+							+ "$txt_BowlingTeamName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName3() + "\0", print_writers);
 					break;
 				case "VENUE":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$Section1$Side" + WhichSide + "$Select_DataType"

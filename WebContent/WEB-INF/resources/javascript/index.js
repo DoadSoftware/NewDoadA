@@ -1824,9 +1824,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 		            });
 		
 		        } else {
-		            //addOption('TEAMNAME', 'TeamName');
-		            //addOption('VENUE', 'Venue');
-		            //addOption('Ident', 'Ident');
+		            addOption('TEAMNAME', 'TeamName');
+		            addOption('VENUE', 'Venue');
+		            addOption('Ident', 'Ident');
 		            
 		            session_match.match.inning.forEach(function(inn){
 		                if(inn.isCurrentInning === 'YES'){

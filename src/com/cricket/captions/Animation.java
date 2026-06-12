@@ -3305,14 +3305,16 @@ public class Animation
 			case "Alt_2":
 				if (caption.this_infobarGfx.infobar.getSection2() == null || caption.this_infobarGfx.infobar.getSection2().isEmpty()) {
 				    processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_2$InOut", "CONTINUE");
+				    TimeUnit.MILLISECONDS.sleep(400);
 				    processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Batsman_Name_Change", "START");
+				    TimeUnit.MILLISECONDS.sleep(400);
 				    if(caption.this_infobarGfx.infobar.getLast_section2().equalsIgnoreCase("PROJECTED_SCORE")) {
 						processAnimation(Constants.FRONT, print_writers, "Extra_Popup2$InOut", "CONTINUE");
 					}
 				} else {
 					if(caption.this_infobarGfx.infobar.getLast_section2() != null && !caption.this_infobarGfx.infobar.getLast_section2().isEmpty()) {
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_2$Change_Section_2", "START");
-						
+						TimeUnit.MILLISECONDS.sleep(400);
 						if(caption.this_infobarGfx.infobar.getLast_section2().equalsIgnoreCase("PROJECTED_SCORE")) {
 							processAnimation(Constants.FRONT, print_writers, "Extra_Popup2$InOut", "CONTINUE");
 						}else if(caption.this_infobarGfx.infobar.getSection2().equalsIgnoreCase("PROJECTED_SCORE")) {
@@ -3321,7 +3323,9 @@ public class Animation
 						
 					}else {
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_2$InOut", "START");
+						TimeUnit.MILLISECONDS.sleep(400);
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Batsman_Name_Change", "START");
+						TimeUnit.MILLISECONDS.sleep(400);
 						if(caption.this_infobarGfx.infobar.getSection2().equalsIgnoreCase("PROJECTED_SCORE")) {
 							processAnimation(Constants.FRONT, print_writers, "Extra_Popup2$InOut", "START");
 						}
@@ -3337,7 +3341,7 @@ public class Animation
 						if(caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && !caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) {
 							processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$InOut", "CONTINUE");
 							processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Lt_Analytics$InOut", "CONTINUE");
-							TimeUnit.MILLISECONDS.sleep(500);
+							TimeUnit.MILLISECONDS.sleep(400);
 							processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$InOut", "SHOW 0.0");
 						}else {
 							processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Lt_Analytics$InOut", "START");
@@ -3353,12 +3357,14 @@ public class Animation
 				} else {
 				    processAnimation(Constants.FRONT, print_writers, (caption.this_infobarGfx.infobar.getLast_section5() != null && 
 				    		!caption.this_infobarGfx.infobar.getLast_section5().isEmpty())?"anim_Infobar$Section_5$Change":"anim_Infobar$Section_5$InOut", "START");
+				    TimeUnit.MILLISECONDS.sleep(400);
 				}
 				caption.this_infobarGfx.infobar.setLast_section5(caption.this_infobarGfx.infobar.getSection5());
 				break;
 			case "Alt_6":
 				if (caption.this_infobarGfx.infobar.getSection4() == null || caption.this_infobarGfx.infobar.getSection4().isEmpty()) {
 				    processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_4$InOut", "CONTINUE");
+				    TimeUnit.MILLISECONDS.sleep(400);
 				    processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Bowler_Name_Change", "START");
 //				    processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_3_Change", "START");
 				} else {
@@ -3366,6 +3372,7 @@ public class Animation
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_4$Change_Section_4", "START");
 					}else {
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_4$InOut", "START");
+						TimeUnit.MILLISECONDS.sleep(400);
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Bowler_Name_Change", "START");
 //						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_3_Change", "START");
 					}
@@ -3383,6 +3390,7 @@ public class Animation
 				} else {
 					if(caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && !caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) {
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$Change", "START");
+						TimeUnit.MILLISECONDS.sleep(500);
 					}else {
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$InOut", "START");
 						processAnimation(Constants.FRONT, print_writers, "Fade_For_Analytics", "START");
@@ -4334,6 +4342,7 @@ public class Animation
 					break;
 				case "Alt_8":
 					if(caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
+						TimeUnit.MILLISECONDS.sleep(1000);
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$Change", "SHOW 0.0");
 					}
 					break;

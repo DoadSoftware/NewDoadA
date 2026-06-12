@@ -303,7 +303,8 @@ public class BugsAndMiniGfx
 		
 		this_data_str = new ArrayList<String>();
 		
-		today_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixes("CURRENT_MATCH_DATA",tournament_matches, matchAllData, null).getTournament_fours());
+		today_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("CURRENT_MATCH_DATA", null, matchAllData, null).getTournament_fours());
+//		today_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixes("CURRENT_MATCH_DATA",tournament_matches, matchAllData, null).getTournament_fours());
 		
 		if(Integer.valueOf(today_fours) > 0 && matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventType().equalsIgnoreCase(CricketUtil.FOUR)) {
 			if(matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventWasABoundary() != null && 
@@ -327,8 +328,9 @@ public class BugsAndMiniGfx
 	public String populateThisMatchSixCounter(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws CloneNotSupportedException {
 		
 		this_data_str = new ArrayList<String>();
+		today_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("CURRENT_MATCH_DATA", null, matchAllData, null).getTournament_sixes());
 		
-		today_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixes("CURRENT_MATCH_DATA",tournament_matches, matchAllData, null).getTournament_sixes());
+//		today_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixes("CURRENT_MATCH_DATA",tournament_matches, matchAllData, null).getTournament_sixes());
 		
 		if(Integer.valueOf(today_fours) > 0 && matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventType().equalsIgnoreCase(CricketUtil.SIX)) {
 			if(matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventWasABoundary() != null && 

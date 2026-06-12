@@ -961,7 +961,7 @@ public class IndexController
 					}
 					this_caption.whichSide = 1;
 					this_caption.PopulateGraphics(valueToProcess, session_match);
-					TimeUnit.MILLISECONDS.sleep(100);
+					//TimeUnit.MILLISECONDS.sleep(100);
 					this_animation.CutBack(valueToProcess, print_writers, session_configuration);
 				}else {
 					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
