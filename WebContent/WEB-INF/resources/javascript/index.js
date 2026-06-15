@@ -4281,7 +4281,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectPlayer';
 			select.name = select.id;
 			
-			session_match.match.inning.forEach(function(inn){
+			/*session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
 					inn.battingCard.sort(function(a, b) {
 				      if (b.runs === a.runs) {
@@ -4302,6 +4302,30 @@ function addItemsToList(whatToProcess,dataToProcess)
 						select.appendChild(option);
 					});
 				}
+			});*/
+			session_match.match.inning.forEach(function(inn) {
+			    if (inn.inningNumber == document.getElementById('which_inning').value) {
+			        inn.battingCard.sort(function(a, b) {
+			            if (b.runs === a.runs) {
+			                if (a.balls === b.balls) {
+			                    return b.fours - a.fours;
+			                }
+			                return a.balls - b.balls;
+			            }
+			            return b.runs - a.runs;
+			        });
+			        select.innerHTML = "";
+			        inn.battingCard.forEach(function(bc) {
+			            let status = (bc.status || "").toUpperCase().replace(/\s+/g, "");
+			            if (status === "STILLTOBAT") {
+			                return;
+			            }
+			            let option = document.createElement("option");
+			            option.value = bc.playerId;
+			            option.text = bc.player.full_name + " - " + bc.status;
+			            select.appendChild(option);
+			        });
+			    }
 			});
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
