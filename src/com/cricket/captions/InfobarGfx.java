@@ -280,6 +280,7 @@ public class InfobarGfx
 			if(infobar.isResult_on_screen() == false) {
 
 				populateInfobarTeamNameScore(true,print_writers,matchAllData,1);
+				populatePowerPlay(print_writers, matchAllData);
 				populateCurrentBatsmen(print_writers, matchAllData, 1, 2);
 				populateInfobarBowler(1, 1, print_writers, matchAllData);
 				populateSection1(print_writers, matchAllData, 1);
@@ -503,11 +504,13 @@ public class InfobarGfx
 			break;
 		case Constants.TRI_SERIES:  case Constants.MT20:
 			if(infobar.isPowerplay_on_screen() == false) {
-				this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Infobar$PowerPlay", "START");
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay START\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+						+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
 				infobar.setPowerplay_on_screen(true);
 				infobar.setForced_powerplay_out(false);
 			}else {
-				this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Infobar$PowerPlay", "CONTINUE REVERSE");
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay CONTINUE REVERSE\0", print_writers);
 				infobar.setPowerplay_on_screen(false);
 				infobar.setForced_powerplay_out(true);
 			}
@@ -1256,6 +1259,9 @@ public class InfobarGfx
 			if(status == Constants.OK) {
 				this.infobar.setSection1(whatToProcess.split(",")[2]);
 				this.infobar.setSection3(whatToProcess.split(",")[3]);
+				
+				populatePowerPlay(print_writers, matchAllData);
+				
 				bowlerOnScreen = true;
 				batterOnScreen = true;
 				bowlingCard = inning.getBowlingCard().stream().filter(boc -> boc.getStatus().toUpperCase().equalsIgnoreCase(CricketUtil.CURRENT+CricketUtil.BOWLER)
@@ -1583,65 +1589,124 @@ public class InfobarGfx
 	
 	public String populatePowerPlay(List<PrintWriter> print_writers, MatchAllData matchAllData) 
 	{
-		if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER)) {
-//			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay SHOW 0.0\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-					+ "*GEOM*TEXT SET S\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-					+ "*GEOM*TEXT SET \0", print_writers);
+		switch(config.getBroadcaster()) {
+		case Constants.MT20: case Constants.TRI_SERIES:
 			
-			if (infobar.isPowerplay_on_screen() == true) {
-			} else {
-				if (infobar.isPowerplay_on_screen() == false) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*Anim_Infobar$PowerPlayIn START\0", print_writers);
-					infobar.setPowerplay_on_screen(true);
-				}
-			}
-		}else {
-			if (!CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData).isEmpty()) {
+			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER)) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay*ACTIVE SET 0\0", print_writers);
+				
 				if (infobar.isPowerplay_on_screen() == true) {
 				} else {
 					if (infobar.isPowerplay_on_screen() == false) {
-						switch (matchAllData.getSetup().getMatchType()) {
-						case CricketUtil.ODI: case CricketUtil.OD:
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-									+ "*GEOM*TEXT SET " + CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-									+ "*GEOM*TEXT SET " + "" + "\0", print_writers);
-							break;
-						default:
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-									+ "*GEOM*TEXT SET P\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-									+ "*GEOM*TEXT SET \0", print_writers);
-							break;
-						}
-						
-						if(infobar.isForced_powerplay_out() == false) {
-							if (infobar.isPowerplay_on_screen() == true) {
-							} else {
-								if (infobar.isPowerplay_on_screen() == false) {
-									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*Anim_Infobar$PowerPlayIn START\0", print_writers);
-									infobar.setPowerplay_on_screen(true);
-								}
-							}
-						}
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlayIn START\0", print_writers);
-//						infobar.setPowerplay_on_screen(true);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay START\0", print_writers);
+						infobar.setPowerplay_on_screen(true);
 					}
 				}
 			}else {
-				if (infobar.isPowerplay_on_screen() == true) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*Anim_Infobar$PowerPlayIn CONTINUE REVERSE\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-							+ "*GEOM*TEXT SET \0", print_writers);
-					infobar.setPowerplay_on_screen(false);
+				if (!CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData).isEmpty()) {
+					if (infobar.isPowerplay_on_screen() == true) {
+					} else {
+						if (infobar.isPowerplay_on_screen() == false) {
+							switch (matchAllData.getSetup().getMatchType()) {
+							case CricketUtil.ODI: case CricketUtil.OD:
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+										+ "*GEOM*TEXT SET " + CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
+								break;
+							default:
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+										+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+								break;
+							}
+							
+							if(infobar.isForced_powerplay_out() == false) {
+								if (infobar.isPowerplay_on_screen() == true) {
+								} else {
+									if (infobar.isPowerplay_on_screen() == false) {
+										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay START\0", print_writers);
+										infobar.setPowerplay_on_screen(true);
+									}
+								}
+							}
+//							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlayIn START\0", print_writers);
+//							infobar.setPowerplay_on_screen(true);
+						}
+					}
 				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
-							+ "*GEOM*TEXT SET \0", print_writers);
+					if (infobar.isPowerplay_on_screen() == true) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay CONTINUE REVERSE\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+								+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+						infobar.setPowerplay_on_screen(false);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+								+ "*GEOM*TEXT SET \0", print_writers);
+					}
 				}
 			}
+			break;
+		default:
+			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER)) {
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay SHOW 0.0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+						+ "*GEOM*TEXT SET S\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+						+ "*GEOM*TEXT SET \0", print_writers);
+				
+				if (infobar.isPowerplay_on_screen() == true) {
+				} else {
+					if (infobar.isPowerplay_on_screen() == false) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*Anim_Infobar$PowerPlayIn START\0", print_writers);
+						infobar.setPowerplay_on_screen(true);
+					}
+				}
+			}else {
+				if (!CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData).isEmpty()) {
+					if (infobar.isPowerplay_on_screen() == true) {
+					} else {
+						if (infobar.isPowerplay_on_screen() == false) {
+							switch (matchAllData.getSetup().getMatchType()) {
+							case CricketUtil.ODI: case CricketUtil.OD:
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+										+ "*GEOM*TEXT SET " + CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+										+ "*GEOM*TEXT SET " + "" + "\0", print_writers);
+								break;
+							default:
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+										+ "*GEOM*TEXT SET P\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+										+ "*GEOM*TEXT SET \0", print_writers);
+								break;
+							}
+							
+							if(infobar.isForced_powerplay_out() == false) {
+								if (infobar.isPowerplay_on_screen() == true) {
+								} else {
+									if (infobar.isPowerplay_on_screen() == false) {
+										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*Anim_Infobar$PowerPlayIn START\0", print_writers);
+										infobar.setPowerplay_on_screen(true);
+									}
+								}
+							}
+//							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlayIn START\0", print_writers);
+//							infobar.setPowerplay_on_screen(true);
+						}
+					}
+				}else {
+					if (infobar.isPowerplay_on_screen() == true) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*Anim_Infobar$PowerPlayIn CONTINUE REVERSE\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+								+ "*GEOM*TEXT SET \0", print_writers);
+						infobar.setPowerplay_on_screen(false);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$SB_Small$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
+								+ "*GEOM*TEXT SET \0", print_writers);
+					}
+				}
+			}
+			break;
 		}
+		
 		return Constants.OK;
 	}
 	
@@ -1960,31 +2025,40 @@ public class InfobarGfx
 							!matchAllData.getSetup().getTargetType().isEmpty()) ? matchAllData.getSetup().getTargetType().toUpperCase() : "") + "\0", print_writers);
 				}
 			}
-			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER)) {
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay*ACTIVE SET 0\0", print_writers);
-			}else {
-				if (!CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData).isEmpty()) {
-					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
-							+ "*GEOM*TEXT SET " + (matchAllData.getSetup().getNumberOfPowerplays() == 1 ? "POWERPLAY" : 
-								CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData)) + "\0", print_writers);
-					
-					if(infobar.isForced_powerplay_out() == false) {
-						if (infobar.isPowerplay_on_screen() == true) {
-						} else {
-							if (infobar.isPowerplay_on_screen() == false) {
-								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay START\0", print_writers);
-								infobar.setPowerplay_on_screen(true);
-							}
-						}
-					}
-				}else {
-					if (infobar.isPowerplay_on_screen() == true) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay CONTINUE REVERSE\0", print_writers);
-						infobar.setPowerplay_on_screen(false);
-					}
-				}
-			}
+//			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER)) {
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay*ACTIVE SET 0\0", print_writers);
+//			}else {
+//				if (!CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData).isEmpty()) {
+//					
+//					System.out.println("matchAllData.getSetup().getNumberOfPowerplays() = " + matchAllData.getSetup().getNumberOfPowerplays());
+//					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)){
+//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+//								+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+//					}else {
+//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+//								+ "*GEOM*TEXT SET " + (matchAllData.getSetup().getNumberOfPowerplays() == 1 ? "POWERPLAY" : 
+//									CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData)) + "\0", print_writers);
+//					}
+////					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+////							+ "*GEOM*TEXT SET " + (matchAllData.getSetup().getNumberOfPowerplays() == 1 ? "POWERPLAY" : 
+////								CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData)) + "\0", print_writers);
+//					
+//					if(infobar.isForced_powerplay_out() == false) {
+//						if (infobar.isPowerplay_on_screen() == true) {
+//						} else {
+//							if (infobar.isPowerplay_on_screen() == false) {
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay START\0", print_writers);
+//								infobar.setPowerplay_on_screen(true);
+//							}
+//						}
+//					}
+//				}else {
+//					if (infobar.isPowerplay_on_screen() == true) {
+//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay CONTINUE REVERSE\0", print_writers);
+//						infobar.setPowerplay_on_screen(false);
+//					}
+//				}
+//			}
 			break;
 			
 		case Constants.BCCI:
@@ -9347,7 +9421,7 @@ public class InfobarGfx
 					        .collect(Collectors.collectingAndThen(Collectors.toList(), list -> {Collections.reverse(list); return list;}))
 					        .toArray(new String[0])));
 					
-					if(this_data_str.get(this_data_str.size()-1) == null || this_data_str.get(this_data_str.size()-1).split(",").length < 20) {
+					if(this_data_str.get(this_data_str.size()-1) == null || this_data_str.get(this_data_str.size()-1).split(",").length < 6) {
 						return "populateSectionAnalytics: TIMELINE data returned invalid";
 					}
 					//String[] elements = this_data_str.get(this_data_str.size() - 1).split(",");
@@ -9364,7 +9438,7 @@ public class InfobarGfx
 							+ "$select_BallNumber*FUNCTION*Omo*vis_con SET " + Math.min(elements.length, 18) + "\0", print_writers);
 					
 					for(int iBall = 0; iBall < elements.length; iBall++) {
-						if(iBall < 18) {
+						if(iBall < elements.length) {
 							switch (elements[iBall].toUpperCase()) {
 							case "|":
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
