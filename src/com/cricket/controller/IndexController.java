@@ -1255,14 +1255,6 @@ public class IndexController
 		case Constants.MT20: case Constants.TG20:
 			switch (typeOfUpdate) {
 			case "ONLY_DB":
-				session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, 
-					CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,config, CricketUtil.CRICKET_DIRECTORY), 
-					session_players, session_team, session_ground);
-				session_match.getSetup().setGenerateInteractiveFile(config.getGenerateInteractiveFile());
-				MatchStats = CricketFunctions.getAllEvents(session_match, config.getBroadcaster(), session_match.getEventFile().getEvents());
-				CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
-				session_match.getMatch().setMatchStats(MatchStats);
-				
 				session_performance_bug = cricketService.getPerformanceBugs();
 				session_name_super =  cricketService.getNameSupers();
 				session_team =  cricketService.getTeams();
@@ -1327,6 +1319,16 @@ public class IndexController
 				this_caption.this_fullFramesGfx.VariousText = session_variousText;
 				this_caption.this_fullFramesGfx.Potts = session_pott;
 				this_caption.this_fullFramesGfx.Playoffs = session_playoff;
+				
+				this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
+				this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
+				this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+				this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+				
+				this_caption.this_infobarGfx.multilanguagedata.players = session_players;
+				this_caption.this_infobarGfx.multilanguagedata.team = session_team;
+				this_caption.this_infobarGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+				this_caption.this_infobarGfx.multilanguagedata.venue = cricketService.getVenues();
 				break;
 			default:
 				session_statistics = cricketService.getAllStats();
@@ -1384,23 +1386,24 @@ public class IndexController
 					this_caption.this_infobarGfx.multilanguagedata.venue = cricketService.getVenues();
 					break;
 					
-				case "UPDATE":
-					
+				case "UPDATE":				
 					session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, 
 						CricketUtil.SETUP + "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, session_match,config, CricketUtil.CRICKET_DIRECTORY), 
 						session_players, session_team, session_ground);
 					session_match.getSetup().setGenerateInteractiveFile(config.getGenerateInteractiveFile());
+					MatchStats = CricketFunctions.getAllEvents(session_match, config.getBroadcaster(), session_match.getEventFile().getEvents());
 					CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
-					
 					session_match.getMatch().setMatchStats(MatchStats);
-					cricket_matches = CricketFunctions.getTournamentMatches(new File(CricketUtil.CRICKET_SERVER_DIRECTORY + 
-							CricketUtil.MATCHES_DIRECTORY).listFiles(new FileFilter() {
-						@Override
-					    public boolean accept(File pathname) {
-					        String name = pathname.getName().toLowerCase();
-					        return name.endsWith(".json") && pathname.isFile();
-					    }
-					}), cricketService);
+					
+					this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
+					this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
+					this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+					
+					this_caption.this_infobarGfx.multilanguagedata.players = session_players;
+					this_caption.this_infobarGfx.multilanguagedata.team = session_team;
+					this_caption.this_infobarGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_infobarGfx.multilanguagedata.venue = cricketService.getVenues();
 					
 					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
@@ -1413,6 +1416,8 @@ public class IndexController
 					
 					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
+					
+					
 
 					//Bug and Mini
 					this_caption.this_bugsAndMiniGfx.bugs = session_bugs;

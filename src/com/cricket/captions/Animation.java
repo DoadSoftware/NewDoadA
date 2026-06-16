@@ -3304,13 +3304,13 @@ public class Animation
 				break;
 			case "Alt_2":
 				if (caption.this_infobarGfx.infobar.getSection2() == null || caption.this_infobarGfx.infobar.getSection2().isEmpty()) {
+					if(caption.this_infobarGfx.infobar.getLast_section2().equalsIgnoreCase("PROJECTED_SCORE")) {
+						processAnimation(Constants.FRONT, print_writers, "Extra_Popup2$InOut", "CONTINUE");
+						TimeUnit.MILLISECONDS.sleep(400);
+					}
 				    processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_2$InOut", "CONTINUE");
 				    TimeUnit.MILLISECONDS.sleep(400);
 				    processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Batsman_Name_Change", "START");
-				    TimeUnit.MILLISECONDS.sleep(400);
-				    if(caption.this_infobarGfx.infobar.getLast_section2().equalsIgnoreCase("PROJECTED_SCORE")) {
-						processAnimation(Constants.FRONT, print_writers, "Extra_Popup2$InOut", "CONTINUE");
-					}
 				} else {
 					if(caption.this_infobarGfx.infobar.getLast_section2() != null && !caption.this_infobarGfx.infobar.getLast_section2().isEmpty()) {
 						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Section_2$Change_Section_2", "START");

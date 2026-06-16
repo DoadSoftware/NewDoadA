@@ -6082,8 +6082,13 @@ public class InfobarGfx
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$ExtraPopUp$Side" + WhichSide + "$English"
 								+ "$txt_Info*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 						
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$Section2$Side" + WhichSide + "$Stats"
-								+ "$txt_StatHead*GEOM*TEXT SET @ CRR (" + this_data_str.get(0) + ")\0", print_writers);
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$Section2$Side" + WhichSide + "$Stats$select_Language"
+								+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, " @ CRR (" + this_data_str.get(0) + ")", "", 
+								null, 0, foreignLanguageDataList);
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$Section2$Side" + WhichSide + "$Stats$English"
+								+ "$txt_StatHead*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$Section2$Side" + WhichSide + "$Stats"
 								+ "$txt_StatValue*GEOM*TEXT SET " + this_data_str.get(1) + "\0", print_writers);
 						break;
