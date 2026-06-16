@@ -9356,7 +9356,7 @@ public class LowerThirdGfx
 //							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y_In_Out$SublineGrp$Side" + WhichSide +
 //								"$select_Subline$"+ iSubLine + "$Title$" + iTitle + "$English$txt_1*ACTIVE SET 1 \0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
-								"$select_Subline$"+ iSubLine + "$Title$" + iTitle + "*TRANSFORMATION*POSITION*X SET " 
+								"$select_Subline$"+ iSubLine + "$Title$" + iTitle + "$English$txt_1*TRANSFORMATION*POSITION*X SET " 
 								+ lowerThird.getPosition()[iTitle-1] + "\0",print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
 									"$select_Subline$"+ iSubLine + "$Title$" + iTitle + "$Telugu$txt_1*TRANSFORMATION*POSITION*X SET " 
