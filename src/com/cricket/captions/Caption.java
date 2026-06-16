@@ -132,7 +132,7 @@ public class Caption
 		this.this_infobarGfx = new InfobarGfx(config, slashOrDash, print_writers, statistics, statsTypes, infobarStats, Grounds, Commentators, 
 				tournament_matches, dls, players, headToHead, past_tournament_stats, cricketService, Teams);
 		this.this_bugsAndMiniGfx = new BugsAndMiniGfx(print_writers, config, bugs, performanceBugs, Teams, VariousText, cricketService, headToHead, tournament_matches,
-				statistics, statsTypes, past_tournament_stats,everestBugs);
+				statistics, statsTypes, past_tournament_stats,everestBugs, players);
 		this.status = "";
 	}
 

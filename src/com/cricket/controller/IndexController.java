@@ -1279,6 +1279,7 @@ public class IndexController
 				this_caption.this_bugsAndMiniGfx.performanceBugs = session_performance_bug;
 				this_caption.this_bugsAndMiniGfx.statistics = session_statistics;
 				this_caption.this_bugsAndMiniGfx.statsTypes = cricketService.getAllStatsType();
+				this_caption.this_bugsAndMiniGfx.Players = session_players;
 				
 				this_caption.this_infobarGfx.statistics = session_statistics;
 				this_caption.this_infobarGfx.statsTypes = cricketService.getAllStatsType();
@@ -1334,6 +1335,11 @@ public class IndexController
 				this_caption.this_infobarGfx.multilanguagedata.team = session_team;
 				this_caption.this_infobarGfx.multilanguagedata.dictionary = cricketService.getDictionary();
 				this_caption.this_infobarGfx.multilanguagedata.venue = cricketService.getVenues();
+				
+				this_caption.this_bugsAndMiniGfx.multilanguagedata.players = session_players;
+				this_caption.this_bugsAndMiniGfx.multilanguagedata.team = session_team;
+				this_caption.this_bugsAndMiniGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+				this_caption.this_bugsAndMiniGfx.multilanguagedata.venue = cricketService.getVenues();
 				break;
 			default:
 				session_statistics = cricketService.getAllStats();
@@ -1395,6 +1401,12 @@ public class IndexController
 					this_caption.this_infobarGfx.multilanguagedata.team = session_team;
 					this_caption.this_infobarGfx.multilanguagedata.dictionary = cricketService.getDictionary();
 					this_caption.this_infobarGfx.multilanguagedata.venue = cricketService.getVenues();
+					
+					this_caption.this_bugsAndMiniGfx.multilanguagedata = new MultiLanguageDatabase();
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.players = session_players;
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.team = session_team;
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.venue = cricketService.getVenues();
 					break;
 					
 				case "UPDATE":				
@@ -1421,6 +1433,11 @@ public class IndexController
 					this_caption.this_infobarGfx.multilanguagedata.dictionary = cricketService.getDictionary();
 					this_caption.this_infobarGfx.multilanguagedata.venue = cricketService.getVenues();
 					
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.players = session_players;
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.team = session_team;
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_bugsAndMiniGfx.multilanguagedata.venue = cricketService.getVenues();
+					
 					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
 					
@@ -1433,8 +1450,6 @@ public class IndexController
 					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
 					
-					
-
 					//Bug and Mini
 					this_caption.this_bugsAndMiniGfx.bugs = session_bugs;
 					this_caption.this_bugsAndMiniGfx.Teams = session_team;
@@ -1443,6 +1458,8 @@ public class IndexController
 					this_caption.this_bugsAndMiniGfx.statistics = session_statistics;
 					this_caption.this_bugsAndMiniGfx.everestBugs = session_bugs_everest;
 					this_caption.this_bugsAndMiniGfx.statsTypes = cricketService.getAllStatsType();
+					this_caption.this_bugsAndMiniGfx.Players = session_players;
+					
 					//InfoBar
 					this_caption.this_infobarGfx.statistics = session_statistics;
 					this_caption.this_infobarGfx.statsTypes = cricketService.getAllStatsType();

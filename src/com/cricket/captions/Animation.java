@@ -1608,8 +1608,14 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "Alt_p":
-				processAnimation(Constants.FRONT, print_writers, "anim__Bug", "START");
-//				processAnimation(Constants.FRONT, print_writers, "anim__TossBug", "START");
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					processAnimation(Constants.FRONT, print_writers, "anim__TossBug", "START");
+					break;
+				default:
+					processAnimation(Constants.FRONT, print_writers, "anim__Bug", "START");
+					break;
+				}
 				this.specialBugOnScreen = CricketUtil.TOSS;
 				break;
 			case "Alt_g":
@@ -2620,13 +2626,23 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 			case "Alt_p":
-				if(this.specialBugOnScreen.equalsIgnoreCase(CricketUtil.TOSS)) {
-					processAnimation(Constants.FRONT, print_writers, "anim__Bug$In_Out", "CONTINUE");
-//					processAnimation(Constants.FRONT, print_writers, "anim__TossBug$In_Out", "CONTINUE");
-					TimeUnit.MILLISECONDS.sleep(700);
-					processAnimation(Constants.FRONT, print_writers, "anim__Bug", "SHOW 0.0");
-//					processAnimation(Constants.FRONT, print_writers, "anim__TossBug", "SHOW 0.0");
-					this.specialBugOnScreen = "";
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					if(this.specialBugOnScreen.equalsIgnoreCase(CricketUtil.TOSS)) {
+						processAnimation(Constants.FRONT, print_writers, "anim__TossBug$In_Out", "CONTINUE");
+						TimeUnit.MILLISECONDS.sleep(700);
+						processAnimation(Constants.FRONT, print_writers, "anim__TossBug", "SHOW 0.0");
+						this.specialBugOnScreen = "";
+					}
+					break;
+				default:
+					if(this.specialBugOnScreen.equalsIgnoreCase(CricketUtil.TOSS)) {
+						processAnimation(Constants.FRONT, print_writers, "anim__Bug$In_Out", "CONTINUE");
+						TimeUnit.MILLISECONDS.sleep(700);
+						processAnimation(Constants.FRONT, print_writers, "anim__Bug", "SHOW 0.0");
+						this.specialBugOnScreen = "";
+					}
+					break;
 				}
 				break;
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
@@ -6009,11 +6025,22 @@ public class Animation
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
-					case ".": case "/": case "Shift_C": case "Control_Shift_R": case "Control_Shift_F3": case "Control_Shift_J": case "Alt_p": case "o": case "t":
+					case ".": case "/": case "Shift_C": case "Control_Shift_R": case "Control_Shift_F3": case "Control_Shift_J": case "o": case "t":
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 								+ "Shrink$InOut 0.400 anim__Bug 0.720 anim__Bug$In_Out 0.720 anim__Bug$In_Out$Bug_In 0.720\0", print_writer);
-						
+						break;
+					case "Alt_p":
+						switch(config.getBroadcaster()) {
+						case Constants.TG20:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+									+ "Shrink$InOut 0.400 anim__TossBug$In_Out$Bug_In 0.714 \0", print_writer);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+									+ "Shrink$InOut 0.400 anim__Bug 0.720 anim__Bug$In_Out 0.720 anim__Bug$In_Out$Bug_In 0.720\0", print_writer);
+							break;
+						}
 						break;
 					 case "Control_Shift_U": case "Control_Shift_V":
 						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "

@@ -2481,13 +2481,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 					const dropdown = [
 					  { value: 'BLANK', text: 'Blank' },
 					  { value: 'IDENT', text: 'Ident' },
-					  //{ value: 'FreeText', text: 'FreeText' },
 					  { value: 'Commentators', text: 'Commentators' },
-					  { value: 'FreeTextDb', text: 'FreeText DB' },
-					  { value: 'TIMELINE', text: 'TimeLine' },
-					  //{ value: 'Sponsor', text: 'Sponsor' },
+  					  { value: 'FreeTextDb', text: 'FreeText DB' },
+  					  { value: 'TIMELINE', text: 'TimeLine' },
 					  { value: 'BatMileStone', text: 'Batter MileStone' },
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
+					  //{ value: 'FreeText', text: 'FreeText' },
+					  //{ value: 'Sponsor', text: 'Sponsor' },
 					];
 					
 					session_match.match.inning.forEach(function(inn){
@@ -4288,25 +4288,53 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select = document.createElement('select');
 			select.id = 'selectTeams';
 			select.name = select.id;
-			option = document.createElement('option');
-			option.value = session_match.setup.homeTeam.teamName4 + '-' + 'BAT';
-			option.text = session_match.setup.homeTeam.teamName3 + '-' + 'BAT';
-			select.appendChild(option);
 			
-			option = document.createElement('option');
-			option.value = session_match.setup.homeTeam.teamName4 + '-' + 'FIELD';
-			option.text = session_match.setup.homeTeam.teamName3 + '-' + 'FIELD';
-			select.appendChild(option);
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'TG20':
+				option = document.createElement('option');
+				option.value = session_match.setup.homeTeam.teamName4 + ',' + 'BAT';
+				option.text = session_match.setup.homeTeam.teamName3 + '-' + 'BAT';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = session_match.setup.homeTeam.teamName4 + ',' + 'FIELD';
+				option.text = session_match.setup.homeTeam.teamName3 + '-' + 'FIELD';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = session_match.setup.awayTeam.teamName4 + ',' + 'BAT';
+				option.text = session_match.setup.awayTeam.teamName3 + '-' + 'BAT';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = session_match.setup.awayTeam.teamName4 + ',' + 'FIELD';
+				option.text = session_match.setup.awayTeam.teamName3 + '-' + 'FIELD';
+				select.appendChild(option);
+				break;
+			default:
+				option = document.createElement('option');
+				option.value = session_match.setup.homeTeam.teamName4 + '-' + 'BAT';
+				option.text = session_match.setup.homeTeam.teamName3 + '-' + 'BAT';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = session_match.setup.homeTeam.teamName4 + '-' + 'FIELD';
+				option.text = session_match.setup.homeTeam.teamName3 + '-' + 'FIELD';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = session_match.setup.awayTeam.teamName4 + '-' + 'BAT';
+				option.text = session_match.setup.awayTeam.teamName3 + '-' + 'BAT';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = session_match.setup.awayTeam.teamName4 + '-' + 'FIELD';
+				option.text = session_match.setup.awayTeam.teamName3 + '-' + 'FIELD';
+				select.appendChild(option);
+				break;
+			}
 			
-			option = document.createElement('option');
-			option.value = session_match.setup.awayTeam.teamName4 + '-' + 'BAT';
-			option.text = session_match.setup.awayTeam.teamName3 + '-' + 'BAT';
-			select.appendChild(option);
 			
-			option = document.createElement('option');
-			option.value = session_match.setup.awayTeam.teamName4 + '-' + 'FIELD';
-			option.text = session_match.setup.awayTeam.teamName3 + '-' + 'FIELD';
-			select.appendChild(option);
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
 			row.insertCell(cellCount).appendChild(select);

@@ -24,6 +24,7 @@ public class Constants
 	public final static String LEFT = "LEFT";
 	public final static String RIGHT = "RIGHT";
 	public final static String CENTER = "CENTER";
+	public final static String BLANK = "Blank";
 
 	public final static String LOCALHOST = "localhost";
 	public final static String BCCI = "BCCI";
@@ -103,7 +104,7 @@ public class Constants
 	public final static String TG20_ICONS = "IMAGE*/Default/Assets/Icons/";
 	public final static String TG20_SPONSOR = "IMAGE*/Default/Assets/Sponsors/";
 	
-	public final static String TG20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\MT20\\\\Photos\\\\";
+	public final static String TG20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\TG20\\\\Photos\\\\";
 	public final static String TG20_PHOTO_PATH = "\\c\\Images\\TG20\\Photos\\";
 	
 	
