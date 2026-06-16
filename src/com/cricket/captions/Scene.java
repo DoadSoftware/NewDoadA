@@ -57,7 +57,7 @@ public class Scene
 				break;	
 			}
 			break;
-		case Constants.BCCI: case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.BCCI: case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess) {
 			case "FULL-FRAMERS":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER SET_OBJECT SCENE*/Default/gfx_FullFrames\0", print_writers);

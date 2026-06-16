@@ -1038,7 +1038,8 @@ public class LowerThirdGfx
 				lowerThird = new LowerThird("DT20", battingCard.getPlayer().getFirstname(), surName,outOrNot, String.valueOf(battingCard.getRuns()),
 						String.valueOf(battingCard.getBalls()), 3, sponsorOrNot,inning.getBatting_team().getTeamName4(),new String[] {"DOTS","FOURS","SIXES","STRIKE RATE"},new String[] {Count[0],
 								String.valueOf(battingCard.getFours()),String.valueOf(battingCard.getSixes()),striktRate},
-						new String[] {stat.getStats_type().getStatsShortName(),String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 1))},null,
+						new String[] {stat.getStats_type().getStatsShortName(),String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),
+								String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 1))},null,
 						new String[] {"-178","-73","41","160"});
 			}
 			break;
@@ -1381,8 +1382,7 @@ public class LowerThirdGfx
 			short_nameTEST = (player.getSurname() == null) ? "" : player.getSurname();
 
 			BestTEST = (statTEST.getBestScore() == null || statTEST.getBestScore().trim().equals("0"))
-			        ? "-"
-			        : statTEST.getBestScore().trim();
+			        ? "-" : statTEST.getBestScore().trim();
 
             //for name
 			short_nameODI =  "ODI CAREER";

@@ -92,7 +92,19 @@ public class Constants
 	public final static String MT20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\MT20\\\\Photos";
 	public final static String MT20_PHOTO_PATH = "\\\\c\\\\Images\\\\MT20\\\\Photos";
 	
-	public final static String TPL = "TPL";
+	public final static String TG20 = "TG20";
+	public final static String TG20_LOGO = "IMAGE*/Default/Assets/Logos/";
+	public final static String TG20_LOGO_BW = "IMAGE*/Default/Assets/Logos_BW/";
+	public final static String TG20_BASE1 = "IMAGE*/Default/Assets/Base1/";
+	public final static String TG20_TEXT1 = "IMAGE*/Default/Assets/Text1/";
+	public final static String TG20_BASE2 = "IMAGE*/Default/Assets/Base2/";
+	public final static String TG20_TEXT2 = "IMAGE*/Default/Assets/Text2/";
+	public final static String TG20_WEATHERICON = "IMAGE*/Default/Assets/WeatherIcons/";
+	public final static String TG20_ICONS = "IMAGE*/Default/Assets/Icons/";
+	public final static String TG20_SPONSOR = "IMAGE*/Default/Assets/Sponsors/";
+	
+	public final static String TG20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\MT20\\\\Photos\\\\";
+	public final static String TG20_PHOTO_PATH = "\\c\\Images\\TG20\\Photos\\";
 	
 	
 	

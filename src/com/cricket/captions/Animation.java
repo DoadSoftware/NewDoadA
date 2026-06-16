@@ -118,7 +118,7 @@ public class Animation
 				return Constants.FULL_FRAMER;
 			}
 			break;	
-		case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "Shift_F12":
 			case "Alt_1": case "Alt_2": case "Alt_3": case "Alt_4": case "Alt_5": case "Alt_6": 
@@ -1038,7 +1038,7 @@ public class Animation
 				break;
 			}
 			break;
-		case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess.split(",")[0]) {
 			case "ArrowUp":
 				if(this.infobar.isInfobar_on_screen() == true && this.infobar.isInfobar_pushed()) {
@@ -1172,7 +1172,7 @@ public class Animation
 				}
 				
 				processAnimation(Constants.FRONT, print_writers, "Loop", "START");
-				processAnimation(Constants.FRONT, print_writers, "EventLoop", "START");
+//				processAnimation(Constants.FRONT, print_writers, "EventLoop", "START");
 				
 				this.infobar.setInfobar_on_screen(true);
 				caption.this_infobarGfx.infobar.setInfobar_on_screen(true);
@@ -1199,7 +1199,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "BatsmanStrike", "START");
 				
 				processAnimation(Constants.FRONT, print_writers, "Loop", "START");
-				processAnimation(Constants.FRONT, print_writers, "EventLoop", "START");
+//				processAnimation(Constants.FRONT, print_writers, "EventLoop", "START");
 
 				this.infobar.setInfobar_on_screen(true);
 				caption.this_infobarGfx.infobar.setInfobar_on_screen(true);
@@ -2227,7 +2227,7 @@ public class Animation
 				break;	
 			}
 			break;
-		case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_Infobar$InOut$Essencials", "CONTINUE");
@@ -3290,7 +3290,7 @@ public class Animation
 				break;	
 			}
 			break;
-		case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_Infobar$IdentType_Change", "START");
@@ -4297,7 +4297,7 @@ public class Animation
 				break;	
 			}
 			break;
-		case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_Infobar$IdentType_Change", "SHOW 0.0");
@@ -4731,7 +4731,7 @@ public class Animation
 			}
 			this.whichGraphicOnScreen = "";
 			break;
-		case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			processAnimation(Constants.BACK, print_writers, "anim_Ident", "SHOW 0.0");
 			
 			processAnimation(Constants.BACK, print_writers, "anim_Playerprofile", "SHOW 0.0");
@@ -4773,7 +4773,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "PopUps", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim__Bug", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim__TossBug", "SHOW 0.0");
-				processAnimation(Constants.FRONT, print_writers, "Bug_Change", "SHOW 0.0");
+//				processAnimation(Constants.FRONT, print_writers, "Bug_Change", "SHOW 0.0");
 //				processAnimation(Constants.FRONT, print_writers, "Watermark", "SHOW 0.0");
 				
 				this.infobar.setInfobar_on_screen(false);
@@ -5192,7 +5192,7 @@ public class Animation
 					}
 					break;
 				
-				case Constants.TRI_SERIES:  case Constants.MT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Control_F10": case "F4": case "Shift_K": case "F1": case "F2": case "Alt_F9":
 					case "Control_F1": case "Control_Alt_F1": case "Alt_Shift_F1":
@@ -5680,7 +5680,7 @@ public class Animation
 						break;
 					}
 					break;
-				case Constants.TRI_SERIES:  case Constants.MT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Control_Shift_F7":
 						
@@ -5777,7 +5777,7 @@ public class Animation
 				}
 			}
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20:
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_FullFrames " + "C:/Temp/Preview.tga " + previewCommand + "\0", print_writer);
 				break;
 			case Constants.BAN_AFG_SERIES: case Constants.ACC:
@@ -5796,7 +5796,7 @@ public class Animation
 			String previewCommand = "";
 			if(whichside == 1) {
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.TRI_SERIES:  case Constants.MT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					if(this.infobar.isInfobar_on_screen() == true) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y*"
 							+ "TRANSFORMATION*POSITION*Y SET 15.0 \0",print_writer);
@@ -5843,7 +5843,7 @@ public class Animation
 						break;
 					}
 					break;
-				case Constants.TRI_SERIES:  case Constants.MT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
 					
 					case "Control_Shift_B":
@@ -5907,7 +5907,7 @@ public class Animation
 						break;
 					}
 					break;
-				case Constants.TRI_SERIES:  case Constants.MT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
 					case "F5": case "F6": case "Control_F6": case "Shift_F6": case "F7": case "F11": case "Control_s": case "Control_f": case "u": case "Shift_F3": 
 					case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a": case "Alt_Shift_F3": case "Control_Shift_Q": case "Alt_F1": case "Alt_F2":
@@ -5928,7 +5928,7 @@ public class Animation
 				}
 			}
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.TRI_SERIES:  case Constants.MT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays " + "C:/Temp/Preview.tga " + previewCommand + "\0", print_writer);
 				break;
 			default:
@@ -6006,7 +6006,7 @@ public class Animation
 						break;	
 					}
 					break;
-				case Constants.TRI_SERIES:  case Constants.MT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
 					case ".": case "/": case "Shift_C": case "Control_Shift_R": case "Control_Shift_F3": case "Control_Shift_J": case "Alt_p": case "o": case "t":
@@ -6048,7 +6048,7 @@ public class Animation
 						break;
 					}
 					break;
-				case Constants.TRI_SERIES:  case Constants.MT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
 					case ".": case "/":	case "Control_Shift_F3": case "Control_Shift_J":
@@ -6093,7 +6093,7 @@ public class Animation
 					}
 				}
 				break;
-			case Constants.TRI_SERIES:  case Constants.MT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 				if(whatToProcess.contains(",")) {
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7":
