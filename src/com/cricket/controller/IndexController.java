@@ -1325,6 +1325,11 @@ public class IndexController
 				this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
 				this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
 				
+				this_caption.this_lowerThirdGfx.multilanguagedata.players = session_players;
+				this_caption.this_lowerThirdGfx.multilanguagedata.team = session_team;
+				this_caption.this_lowerThirdGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+				this_caption.this_lowerThirdGfx.multilanguagedata.venue = cricketService.getVenues();
+				
 				this_caption.this_infobarGfx.multilanguagedata.players = session_players;
 				this_caption.this_infobarGfx.multilanguagedata.team = session_team;
 				this_caption.this_infobarGfx.multilanguagedata.dictionary = cricketService.getDictionary();
@@ -1379,6 +1384,12 @@ public class IndexController
 					this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
 					this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
 					
+					this_caption.this_lowerThirdGfx.multilanguagedata = new MultiLanguageDatabase();
+					this_caption.this_lowerThirdGfx.multilanguagedata.players = session_players;
+					this_caption.this_lowerThirdGfx.multilanguagedata.team = session_team;
+					this_caption.this_lowerThirdGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_lowerThirdGfx.multilanguagedata.venue = cricketService.getVenues();
+					
 					this_caption.this_infobarGfx.multilanguagedata = new MultiLanguageDatabase();
 					this_caption.this_infobarGfx.multilanguagedata.players = session_players;
 					this_caption.this_infobarGfx.multilanguagedata.team = session_team;
@@ -1399,6 +1410,11 @@ public class IndexController
 					this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
 					this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
 					this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+					
+					this_caption.this_lowerThirdGfx.multilanguagedata.players = session_players;
+					this_caption.this_lowerThirdGfx.multilanguagedata.team = session_team;
+					this_caption.this_lowerThirdGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_lowerThirdGfx.multilanguagedata.venue = cricketService.getVenues();
 					
 					this_caption.this_infobarGfx.multilanguagedata.players = session_players;
 					this_caption.this_infobarGfx.multilanguagedata.team = session_team;
