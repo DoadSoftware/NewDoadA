@@ -1560,7 +1560,7 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
-			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": 
+			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3":
 			
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y*"
@@ -1584,7 +1584,7 @@ public class Animation
 				
 			case "F7": case "F11": case "Control_s": case "Control_f": case "F5": case "F6": case "Control_F6": case "Shift_F6":
 			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
-			case "Alt_Shift_F3": case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": 
+			case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": 
 			case "Control_c":
 				
 				if(this.infobar.isInfobar_on_screen() == true) {
@@ -2586,7 +2586,7 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 			
-			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": 
+			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3":
 			
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third$InOut$Essentials", "CONTINUE");
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third$InOut$Logo", "CONTINUE");
@@ -2604,7 +2604,7 @@ public class Animation
 				break;
 			case "F7": case "F11": case "Control_s": case "Control_f": case "F5": case "F6": case "Control_F6": case "Shift_F6":
 			case "u": case "Shift_F3":	case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
-			case "Alt_Shift_F3": case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": 
+			case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": 
 			case "Control_c":
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "CONTINUE");
 				
@@ -3644,7 +3644,7 @@ public class Animation
 				
 			case "F5": case "F6": case "Control_F6": case "Shift_F6": case "F7": case "F11": 
 			case "Control_s": case "Control_f": case "u": case "Shift_F3": case "Shift_F5": 
-			case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a": case "Alt_Shift_F3":
+			case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
 			case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": 
 			case "Control_Shift_K": case "Control_c":
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Headerband", "START");
@@ -3661,7 +3661,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperChange", "START");
 				break;
 				
-			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e":  
+			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3":
 			
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Headerband", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Header", "START");
@@ -4510,7 +4510,7 @@ public class Animation
 				
 			case "F5": case "F6": case "Control_F6": case "Shift_F6": case "F7": case "F11": 
 			case "Control_s": case "Control_f": case "u": case "Shift_F3": case "Shift_F5": 
-			case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a": case "Alt_Shift_F3":
+			case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
 			case "Control_Shift_Q":	 case "Alt_F1": case "Alt_F2": case "Control_Shift_X": 
 			case "Control_Shift_K": case "Control_c":
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Headerband", "SHOW 0.0");
@@ -4527,7 +4527,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperChange", "SHOW 0.0");
 				break;
 				
-			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": 
+			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3":
 			
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Headerband", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Header", "SHOW 0.0");

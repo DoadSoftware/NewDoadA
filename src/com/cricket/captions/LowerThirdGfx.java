@@ -982,7 +982,7 @@ public class LowerThirdGfx
 							System.out.println(statsType.getStatsFullName());
 							System.out.println(statsType.getStatsId());
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -1012,7 +1012,7 @@ public class LowerThirdGfx
 								return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 							}
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -1038,7 +1038,7 @@ public class LowerThirdGfx
 				lowerThird = new LowerThird("DT20", battingCard.getPlayer().getFirstname(), surName,outOrNot, String.valueOf(battingCard.getRuns()),
 						String.valueOf(battingCard.getBalls()), 3, sponsorOrNot,inning.getBatting_team().getTeamName4(),new String[] {"DOTS","FOURS","SIXES","STRIKE RATE"},new String[] {Count[0],
 								String.valueOf(battingCard.getFours()),String.valueOf(battingCard.getSixes()),striktRate},
-						new String[] {stat.getStats_type().getStatsShortName(),String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBalls_faced(), 1))},null,
+						new String[] {stat.getStats_type().getStatsShortName(),String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 1))},null,
 						new String[] {"-178","-73","41","160"});
 			}
 			break;
@@ -1156,7 +1156,7 @@ public class LowerThirdGfx
 							System.out.println(statsType.getStatsFullName());
 							System.out.println(statsType.getStatsId());
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -1186,7 +1186,7 @@ public class LowerThirdGfx
 								return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 							}
 							
-							stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+							stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 							if(stat == null) {
 								return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 							}
@@ -1212,8 +1212,8 @@ public class LowerThirdGfx
 				lowerThird = new LowerThird("DT20", bowlingCard.getPlayer().getFirstname(), surName,"", "", "", 3, sponsorOrNot, inning.getBowling_team().getTeamName4(),
 						new String[] {"OVERS","DOTS", "RUNS", "WICKETS", "ECONOMY"},new String[]{CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()), 
 						String.valueOf(bowlingCard.getDots()),String.valueOf(bowlingCard.getRuns()),String.valueOf(bowlingCard.getWickets()), economy}
-						,new String[] {stat.getStats_type().getStatsShortName(), String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()), String.valueOf(CricketFunctions.getEconomy(stat.getRuns_conceded(),
-								stat.getBalls_bowled(), 2, "-"))},null,new String[] {"-174","-100","-20","64","165"});
+						,new String[] {stat.getStats_type().getStatsShortName(), String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()), String.valueOf(CricketFunctions.getEconomy(stat.getRunsConceded(),
+								stat.getBallsBowled(), 2, "-"))},null,new String[] {"-174","-100","-20","64","165"});
 			}
 			break;
 		}
@@ -1284,20 +1284,20 @@ public class LowerThirdGfx
 			if(statsType == null) {
 				return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 			}
-			stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+			stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 			if(statsType != null) {
 				stat.setStats_type(statsType);	
 			}
 			stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 			//Domestic
-			statDT20 = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeDT20.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+			statDT20 = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsTypeDT20.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 			statDT20.setStats_type(statsTypeDT20);
 			statDT20 = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 			//ODI
-			statODI = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeODI.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+			statODI = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsTypeODI.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 			statODI.setStats_type(statsTypeODI);
 			//Dt20
-			statTEST = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsTypeTEST.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+			statTEST = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsTypeTEST.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 			statTEST.setStats_type(statsTypeTEST);
 			
 			break;
@@ -1316,9 +1316,9 @@ public class LowerThirdGfx
 			if (fiftyIT20.equals("-") && !hundredIT20.equals("-"))  fiftyIT20 = "0";
 			if (hundredIT20.equals("-") && !fiftyIT20.equals("-")) hundredIT20 = "0";
 
-			strikeRateIT20 = (CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBalls_faced(), 1).trim().isEmpty()) 
+			strikeRateIT20 = (CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 1).trim().isEmpty()) 
 			        ? "-" 
-			        : String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBalls_faced(), 0));
+			        : String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0));
 
 			RunsIT20 = (stat.getRuns() == 0) 
 			        ? "-" 
@@ -1326,7 +1326,7 @@ public class LowerThirdGfx
 
 			surName = (player.getSurname() == null) ? "" : player.getSurname();
 
-			BestIT20 = (stat.getBest_score().equals("0")) ? "-" : stat.getBest_score();
+			BestIT20 = (stat.getBestScore().equals("0")) ? "-" : stat.getBestScore();
 
 			
 			//dt20
@@ -1335,9 +1335,9 @@ public class LowerThirdGfx
 			if (fiftyDT20.equals("-") && !hundredDT20.equals("-"))  fiftyDT20 = "0";
 			if (hundredDT20.equals("-") && !fiftyDT20.equals("-")) hundredDT20 = "0";
 
-			strikeRateDT20 = (CricketFunctions.generateStrikeRate(statDT20.getRuns(), statDT20.getBalls_faced(), 1).trim().isEmpty()) 
+			strikeRateDT20 = (CricketFunctions.generateStrikeRate(statDT20.getRuns(), statDT20.getBallsFaced(), 1).trim().isEmpty()) 
 			        ? "-" 
-			        : String.valueOf(CricketFunctions.generateStrikeRate(statDT20.getRuns(), statDT20.getBalls_faced(), 0));
+			        : String.valueOf(CricketFunctions.generateStrikeRate(statDT20.getRuns(), statDT20.getBallsFaced(), 0));
 
 			runsDT20 = (statDT20.getRuns() == 0) 
 			        ? "-" 
@@ -1345,7 +1345,7 @@ public class LowerThirdGfx
 
 			short_nameDT20 = (player.getSurname() == null) ? "" : player.getSurname();
 
-			BestDT20 = (statDT20.getBest_score().equals("0")) ? "-" : statDT20.getBest_score();
+			BestDT20 = (statDT20.getBestScore().equals("0")) ? "-" : statDT20.getBestScore();
 			
 			//odi
 			fiftyODI   = (statODI.getFifties() == 0) ? "-" : String.valueOf(statODI.getFifties());
@@ -1354,9 +1354,9 @@ public class LowerThirdGfx
 			if (fiftyODI.equals("-") && !hundredODI.equals("-"))  fiftyODI = "0";
 			if (hundredODI.equals("-") && !fiftyODI.equals("-")) hundredODI = "0";
 
-			strikeRateODI = (CricketFunctions.generateStrikeRate(statODI.getRuns(), statODI.getBalls_faced(), 1).trim().isEmpty()) 
+			strikeRateODI = (CricketFunctions.generateStrikeRate(statODI.getRuns(), statODI.getBallsFaced(), 1).trim().isEmpty()) 
 			        ? "-" 
-			        : String.valueOf(CricketFunctions.generateStrikeRate(statODI.getRuns(), statODI.getBalls_faced(), 0));
+			        : String.valueOf(CricketFunctions.generateStrikeRate(statODI.getRuns(), statODI.getBallsFaced(), 0));
 
 			RunsODI = (statODI.getRuns() == 0) 
 			        ? "-" 
@@ -1364,7 +1364,7 @@ public class LowerThirdGfx
 
 			short_nameODI = (player.getSurname() == null) ? "" : player.getSurname();
 
-			BestODI = (statODI.getBest_score().equals("0")) ? "-" : statODI.getBest_score();
+			BestODI = (statODI.getBestScore().equals("0")) ? "-" : statODI.getBestScore();
 			
 			//test
 			fiftyTEST   = (statTEST.getFifties() == 0) ? "-" : String.valueOf(statTEST.getFifties());
@@ -1372,17 +1372,17 @@ public class LowerThirdGfx
 			if (fiftyTEST.equals("-") && !hundredTEST.equals("-"))  fiftyTEST = "0";
 			if (hundredTEST.equals("-") && !fiftyTEST.equals("-")) hundredTEST = "0";
 
-			strikeRateTEST = (CricketFunctions.generateStrikeRate(statTEST.getRuns(), statTEST.getBalls_faced(), 1).trim().isEmpty()) 
+			strikeRateTEST = (CricketFunctions.generateStrikeRate(statTEST.getRuns(), statTEST.getBallsFaced(), 1).trim().isEmpty()) 
 			        ? "-" 
-			        : String.valueOf(CricketFunctions.generateStrikeRate(statTEST.getRuns(), statTEST.getBalls_faced(), 0));
+			        : String.valueOf(CricketFunctions.generateStrikeRate(statTEST.getRuns(), statTEST.getBallsFaced(), 0));
 
 			RunsTEST = String.format("%,d", statTEST.getRuns());  // will show 0 if runs=
 
 			short_nameTEST = (player.getSurname() == null) ? "" : player.getSurname();
 
-			BestTEST = (statTEST.getBest_score() == null || statTEST.getBest_score().trim().equals("0"))
+			BestTEST = (statTEST.getBestScore() == null || statTEST.getBestScore().trim().equals("0"))
 			        ? "-"
-			        : statTEST.getBest_score().trim();
+			        : statTEST.getBestScore().trim();
 
             //for name
 			short_nameODI =  "ODI CAREER";
@@ -1503,6 +1503,31 @@ public class LowerThirdGfx
 			
 			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC:
 				switch (WhichProfile.toUpperCase()) {
+				case "MAHARAJA_CAREER":
+			         statsType = statsTypes.stream()
+			            .filter(st -> st.getStatsShortName().equalsIgnoreCase("MAHARAJA_CAREER"))
+			            .findAny().orElse(null);
+			         
+			         for(StatsType stt : statsTypes) {
+			        	 	System.out.println("stt = " + stt);
+			         }
+			         
+			        if (statsType == null) {
+			            return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
+			        }
+			        
+			        stat = statistics.stream()
+			            .filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId())
+			            .findAny().orElse(null);
+			        if (stat == null) {
+			            return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
+			        }
+			        
+			        statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
+					stat.setStats_type(statsType);
+			        stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+			        stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+			        break;
 				case "DT20": case "IT20":
 					
 					switch (WhichProfile.toUpperCase()) {
@@ -1523,7 +1548,7 @@ public class LowerThirdGfx
 						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
 					
-					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 					if(stat == null) {
 						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
@@ -1531,19 +1556,19 @@ public class LowerThirdGfx
 					stat.setStats_type(statsType);
 					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 					
-					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
-						switch (WhichProfile.toUpperCase()) {
-						case "DT20":
-							matchAllData.getSetup().setMatchType(CricketUtil.DT20);
-							break;
-						}
-						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
-						if(WhichProfile.equalsIgnoreCase(CricketUtil.DT20)) {
-							matchAllData.getSetup().setMatchType(CricketUtil.IT20);
-						}
-					}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
-						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
-					}
+//					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+//						switch (WhichProfile.toUpperCase()) {
+//						case "DT20":
+//							matchAllData.getSetup().setMatchType(CricketUtil.DT20);
+//							break;
+//						}
+//						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+//						if(WhichProfile.equalsIgnoreCase(CricketUtil.DT20)) {
+//							matchAllData.getSetup().setMatchType(CricketUtil.IT20);
+//						}
+//					}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
+//						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+//					}
 					
 					
 					break;
@@ -1574,7 +1599,7 @@ public class LowerThirdGfx
 						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
 					
-					stat = statistics.stream().filter(st -> st.getPlayer_id() == FirstPlayerId && statsType.getStatsId() == st.getStats_type_id()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
 					if(stat == null) {
 						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
@@ -1597,10 +1622,10 @@ public class LowerThirdGfx
 			String Data = "",hundred = "",fifty = "",strikeRate = "", thirty = "",
 				batAverage = "",economy = "",best = "",runs = "",short_name = "";;
 			
-			if(stat.getRuns_conceded() == 0 || stat.getWickets() == 0) {
+			if(stat.getRunsConceded() == 0 || stat.getWickets() == 0) {
 				Data = "-";
 			}else {
-				average = stat.getRuns_conceded()/stat.getWickets();
+				average = stat.getRunsConceded()/stat.getWickets();
 				DecimalFormat df_bo = new DecimalFormat("0.00");
 				Data = df_bo.format(average);
 			}
@@ -1633,10 +1658,10 @@ public class LowerThirdGfx
 				}
 				
 				if(CricketFunctions.generateStrikeRate(stat.getRuns(), 
-						stat.getBalls_faced(), 1).trim().isEmpty()) {
+						stat.getBallsFaced(), 1).trim().isEmpty()) {
 					strikeRate = "-";
 				}else {
-					strikeRate = String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBalls_faced(), 0));
+					strikeRate = String.valueOf(CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0));
 				}
 				
 				if(stat.getRuns() == 0) {
@@ -1645,10 +1670,10 @@ public class LowerThirdGfx
 					runs = String.format("%,d\n", stat.getRuns());
 				}
 				
-				if(CricketFunctions.getAverage(stat.getInnings(), stat.getNot_out(), stat.getRuns(), 2, "-").equalsIgnoreCase("0.00")) {
+				if(CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 2, "-").equalsIgnoreCase("0.00")) {
 					batAverage = "-";
 				}else {
-					batAverage = CricketFunctions.getAverage(stat.getInnings(), stat.getNot_out(), stat.getRuns(), 2, "-");
+					batAverage = CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 2, "-");
 				}
 				
 				if(player.getSurname() == null) {
@@ -1657,10 +1682,10 @@ public class LowerThirdGfx
 					surName = player.getSurname();
 				}
 				
-				if(stat.getBest_score().equalsIgnoreCase("0")) {
+				if(stat.getBestScore().equalsIgnoreCase("0")) {
 					best = "-";
 				}else {
-					best = stat.getBest_score();
+					best = stat.getBestScore();
 				}
 				
 				switch (config.getBroadcaster().toUpperCase()) {
@@ -1675,6 +1700,8 @@ public class LowerThirdGfx
 						short_name =  "TEST CAREER";
 					}else if(WhichProfile.equalsIgnoreCase("LIST A")) {
 						short_name =  "LIST A CAREER";
+					}else if(WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
+						short_name =  "MAHARAJA T20 CAREER";
 					}else {
 						short_name = "T20 CAREER";
 					}
@@ -1682,7 +1709,8 @@ public class LowerThirdGfx
 					
 					case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC:
 						
-						if(WhichProfile.equalsIgnoreCase("DT20") || WhichProfile.equalsIgnoreCase("IT20")) {
+						if(WhichProfile.equalsIgnoreCase("DT20") || WhichProfile.equalsIgnoreCase("IT20") || 
+								WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
 							lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),
 									CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),
 									new String[]{"MATCHES", "RUNS", "50s / 100s", "BEST", "STRIKE RATE"},
@@ -1704,10 +1732,10 @@ public class LowerThirdGfx
 				
 			}	
 			else if(whatToProcess.split(",")[0].equalsIgnoreCase("F11")) {
-				if(CricketFunctions.getEconomy(stat.getRuns_conceded(), stat.getBalls_bowled(),2,"-").equalsIgnoreCase("0.00")) {
+				if(CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(),2,"-").equalsIgnoreCase("0.00")) {
 					economy = "-";
 				}else {
-					economy = CricketFunctions.getEconomy(stat.getRuns_conceded(), stat.getBalls_bowled(),2,"-");
+					economy = CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(),2,"-");
 				}
 				
 				if(player.getSurname() == null) {
@@ -1729,14 +1757,16 @@ public class LowerThirdGfx
 						short_name =  "TEST CAREER";
 					}else if(WhichProfile.equalsIgnoreCase("LIST A")) {
 						short_name =  "LIST A CAREER";
+					}else if(WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
+						short_name =  "MAHARAJA T20 CAREER";
 					}else {
 						short_name = "T20I CAREER";
 					}
 					
 					lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),CricketUtil.FULL, true, false).toUpperCase(), 
 							player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),new String[]{"MATCHES", "WICKETS", "3WI / 5WI", "BEST", "ECONOMY"},
-							new String[]{String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()),String.valueOf(stat.getPlus_3()) +" / "+ String.valueOf(stat.getPlus_5()), 
-							stat.getBest_figures(),economy},null,null,new String[] {"-165","-77","11","83","163"});
+							new String[]{String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()),String.valueOf(stat.getPlus3()) +" / "+ String.valueOf(stat.getPlus5()), 
+							stat.getBestFigures(),economy},null,null,new String[] {"-165","-77","11","83","163"});
 					
 					
 					break;
@@ -2785,19 +2815,19 @@ public class LowerThirdGfx
 					lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(),
 							matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
 							inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + 
-									CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS",runRate},null,null);
+									CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS",""},null,null);
 				}
 				if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("VJD")) {
 					
 					lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
 							matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),inning.getBatting_team().getTeamBadge(),null,null,
-							new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS",runRate + " (VJD)"},null,null);
+							new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS"," (VJD)"},null,null);
 					
 				}else if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("DLS")) {
 					
 					lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), matchAllData.getSetup().getAwayTeam().getTeamName1(), 
 							matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),inning.getBatting_team().getTeamBadge(),null,null,
-							new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS",runRate + " (DLS)"},null,null);
+							new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS"," (DLS)"},null,null);
 				}
 			}else {
 				summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS" + " TO WIN";
@@ -2809,7 +2839,7 @@ public class LowerThirdGfx
 				lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
 						matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
 						inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ 
-						" OVERS",runRate},null,null);
+						" OVERS",""},null,null);
 
 			}
 		}
@@ -6019,7 +6049,7 @@ public class LowerThirdGfx
 	    							"$select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$TopLine$Text$Side" + WhichSide 
-									+ "$select_DataType$Name$txt_FirstName*GEOM*TEXT SET " + lowerThird.getFirstName() + "\0", print_writers);
+									+ "$select_DataType$Name$txt_FirstName*GEOM*TEXT SET " + teamNameAsCity + "\0", print_writers);
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$TopLine$Text$Side" + WhichSide 
 									+ "$select_DataType$Name$txt_LastName*GEOM*TEXT SET\0", print_writers);
@@ -6152,6 +6182,11 @@ public class LowerThirdGfx
 		switch (config.getBroadcaster().toUpperCase()) {
         case Constants.TRI_SERIES:  case Constants.MT20:
             switch (whatToProcess) {
+            case "Alt_Shift_F3":
+            	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TopLine$Header_Out$Side" + whichSide + 
+            			"$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? 
+								Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1) + "EVENT" +"\0", print_writers);
+            		break;
             	case "Alt_F1": case "Alt_F2":
             		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TopLine$Header_Out$Side" + whichSide + 
                 			"$img_Base1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? 
@@ -7967,7 +8002,7 @@ public class LowerThirdGfx
 	    							"$select_Subline$1$Stat*ACTIVE SET 0 \0", print_writers);
 	    					
     						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide +
-									"$select_Subline$1$Left$txt_1*GEOM*TEXT SET NEED " + lowerThird.getHeaderText().split("NEED")[1] + " " + lowerThird.getLeftText()[0] + "\0", print_writers);
+									"$select_Subline$1$Left$txt_1*GEOM*TEXT SET NEED " + lowerThird.getHeaderText().split("NEED")[1] + " " + lowerThird.getLeftText()[0] + lowerThird.getLeftText()[1] + "\0", print_writers);
 	    						
 	    					break;
 	    				}
@@ -8062,9 +8097,9 @@ public class LowerThirdGfx
 	    					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide +
 									"$select_Subline$1$Left$txt_1*GEOM*TEXT SET " + lowerThird.getLeftText()[0] + "\0", print_writers);
 	    					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide +
-									"$select_Subline$2$Left$txt_1*GEOM*TEXT SET " + inning.getBatting_team().getTeamName4() + "\0", print_writers);
+									"$select_Subline$2$Left$txt_1*GEOM*TEXT SET " + inning.getBatting_team().getTeamName3() + "\0", print_writers);
 	    					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide +
-									"$select_Subline$3$Left$txt_1*GEOM*TEXT SET " + inning2.getBatting_team().getTeamName4() + "\0", print_writers);
+									"$select_Subline$3$Left$txt_1*GEOM*TEXT SET " + inning2.getBatting_team().getTeamName3() + "\0", print_writers);
 	    					
 	    					for(int i = 0; i < lowerThird.getTitlesText().length; i++) {
 	    					    String title = lowerThird.getTitlesText()[i];

@@ -89,8 +89,8 @@ public class Constants
 	public final static String MT20_ICONS = "IMAGE*/Default/Assets/Icons/";
 	public final static String MT20_SPONSOR = "IMAGE*/Default/Assets/Sponsors/";
 	
-	public final static String MT20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\MT20\\\\Photos\\\\";
-	public final static String MT20_PHOTO_PATH = "\\c\\Images\\MT20\\Photos\\";
+	public final static String MT20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\MT20\\\\Photos";
+	public final static String MT20_PHOTO_PATH = "\\\\c\\\\Images\\\\MT20\\\\Photos";
 	
 	public final static String TPL = "TPL";
 	

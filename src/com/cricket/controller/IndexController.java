@@ -1154,8 +1154,8 @@ public class IndexController
 				
 				for(Statistics stats : session_statistics) {
 					for(int i=0;i<=database_statistics.size()-1;i++) {
-						if(database_statistics.get(i).getPlayerId() == stats.getPlayer_id()) {
-							stats.setStats_type(cricketService.getStatsType(stats.getStats_type_id()));
+						if(database_statistics.get(i).getPlayerId() == stats.getPlayerID()) {
+							stats.setStats_type(cricketService.getStatsType(stats.getStatsTypeId()));
 							database_statistics.get(i).getStatsList().add(stats);
 						}
 					}
@@ -1168,8 +1168,8 @@ public class IndexController
 			
 			for(Statistics stats : session_statistics) {
 				for(int i=0;i<=statistics.size()-1;i++) {
-					if(statistics.get(i).getPlayerId() == stats.getPlayer_id()) {
-						stats.setStats_type(cricketService.getStatsType(stats.getStats_type_id()));
+					if(statistics.get(i).getPlayerId() == stats.getPlayerID()) {
+						stats.setStats_type(cricketService.getStatsType(stats.getStatsTypeId()));
 						stats = CricketFunctions.updateTournamentWithH2h(stats, headToHead.getH2hPlayer(), session_match, CricketUtil.FULL);
 						stats = CricketFunctions.updateStatisticsWithMatchData(stats, session_match, CricketUtil.FULL);
 						statistics.get(i).setStats(stats);
@@ -1277,6 +1277,7 @@ public class IndexController
 				session_players = cricketService.getAllPlayer();
 				session_pott = cricketService.getPott();
 				session_playoff = cricketService.getPlayOff();
+				session_statistics = cricketService.getAllStats();
 				
 				//Bug and Mini
 				this_caption.this_bugsAndMiniGfx.bugs = session_bugs;
@@ -1327,7 +1328,7 @@ public class IndexController
 				this_caption.this_fullFramesGfx.Playoffs = session_playoff;
 				break;
 			default:
-				//session_statistics = cricketService.getAllStats();
+				session_statistics = cricketService.getAllStats();
 				//past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead.getH2hPlayer(), cricketService, session_match, null);
 				
 				session_performance_bug = cricketService.getPerformanceBugs();

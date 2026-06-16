@@ -1148,8 +1148,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20':
 			        select = document.createElement('select');
 					select.id = select.name = 'selectWhichIdent';
-					[{ value: 'SHORT', text: 'Short Name' }, 
-					 { value: 'FULL', text: 'Full Name' }
+					[{ value: 'FULL', text: 'Full Name' },
+						{ value: 'SHORT', text: 'Short Name' }
 					].forEach(({ value, text }) => {
 						const option = new Option(text, value);
 						select.appendChild(option);
@@ -1259,14 +1259,19 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20':
 				    
-				    option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
-					select.appendChild(option);
-					
 					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'MAHARAJA_CAREER';
+					option.text = 'MAHARAJA';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'T20-I';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
@@ -1424,13 +1429,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20':
 					
 					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
+					option.value = 'DT20';
+					option.text = 'T20';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
-					option.value = 'DT20';
-					option.text = 'T20';
+					option.value = 'MAHARAJA_CAREER';
+					option.text = 'MAHARAJA';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'T20-I';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
@@ -2985,15 +2995,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
 					inn.battingCard.forEach(function(bc,bc_index,bc_arr){
-						if(inn.fallsOfWickets.length > 0){
-							if(bc.playerId == inn.fallsOfWickets[inn.fallsOfWickets.length-1].fowPlayerID){
-								option = document.createElement('option');
-								option.value = bc.playerId;
-								option.text = bc.player.full_name + " - " + bc.status;	
-								select.appendChild(option);
+						if(inn.fallsOfWickets != null){
+							if(inn.fallsOfWickets.length > 0){
+								if(bc.playerId == inn.fallsOfWickets[inn.fallsOfWickets.length-1].fowPlayerID){
+									option = document.createElement('option');
+									option.value = bc.playerId;
+									option.text = bc.player.full_name + " - " + bc.status;	
+									select.appendChild(option);
+								}
 							}
 						}
-						
 					});
 					
 					inn.battingCard.forEach(function(bc,bc_index,bc_arr){
@@ -3262,13 +3273,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'MT20':
 				
 					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
+					option.value = 'DT20';
+					option.text = 'T20';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
-					option.value = 'DT20';
-					option.text = 'T20';
+					option.value = 'MAHARAJA_CAREER';
+					option.text = 'MAHARAJA';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'T20-I';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
@@ -3462,13 +3478,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'MT20':
 					
 					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
+					option.value = 'DT20';
+					option.text = 'T20';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
-					option.value = 'DT20';
-					option.text = 'T20';
+					option.value = 'MAHARAJA_CAREER';
+					option.text = 'MAHARAJA';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'T20-I';
 					select.appendChild(option);
 					
 					option = document.createElement('option');

@@ -2326,9 +2326,9 @@ public class BugsAndMiniGfx
 			case "Control_Shift_U": 
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band" + 
-						"$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
+						"$Base*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band" + 
-						"$img_Text2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT2 : Constants.MT20_TEXT2)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
+						"$Text*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$Badge" + 
 						"$img_Base01*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
@@ -2336,9 +2336,9 @@ public class BugsAndMiniGfx
 						"$img_Base02*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$Side" + WhichSide + "$Sub_Header"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
+						+ "$Text*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$Side" + WhichSide + "$ScoreGrp"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
+						+ "$Text*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
@@ -2409,9 +2409,9 @@ public class BugsAndMiniGfx
 			case "Control_Shift_V":
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band" + 
-						"$img_Base2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
+						"$Base*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band" + 
-						"$img_Text2*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT2 : Constants.MT20_TEXT2)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
+						"$Text*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$Badge" + 
 						"$img_Base01*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
@@ -2419,9 +2419,9 @@ public class BugsAndMiniGfx
 						"$img_Base02*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$Side" + WhichSide + "$Sub_Header"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
+						+ "$Text*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$Side" + WhichSide + "$ScoreGrp"
-						+ "$img_Text1*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
+						+ "$Text*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_TEXT1 : Constants.MT20_TEXT1)  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
