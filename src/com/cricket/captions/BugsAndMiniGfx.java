@@ -346,7 +346,7 @@ public class BugsAndMiniGfx
 		
 //		today_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixes("CURRENT_MATCH_DATA",tournament_matches, matchAllData, null).getTournament_sixes());
 		
-		if(Integer.valueOf(today_fours) > 0 && matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventType().equalsIgnoreCase(CricketUtil.SIX)) {
+		if(Integer.valueOf(today_sixes) > 0 && matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventType().equalsIgnoreCase(CricketUtil.SIX)) {
 			if(matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventWasABoundary() != null && 
 					matchAllData.getEventFile().getEvents().get(matchAllData.getEventFile().getEvents().size()-1).getEventWasABoundary().equalsIgnoreCase(CricketUtil.YES)) {
 				
@@ -1940,94 +1940,51 @@ public class BugsAndMiniGfx
 							+ team_name + " " + summary+"\0", print_writers);
 					break;
 				case Constants.TG20:
+					ForeignLanguageData target = null;
+					String targetType = null;
+					
 					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER) && matchAllData.getSetup().getMaxOvers() == 1) {
 					    team_name = inning.getBatting_team().getTeamName1();
 					    summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS TO WIN FROM "
 					            + (matchAllData.getSetup().getMaxOvers()*6) + " BALLS";
-
-					    // ---- Multi-language assembly (BALLS case) ----
-					    String teamName = team_name;
-					    String afterNeed = summary.split("NEED")[1].trim();
-					    String runs = afterNeed.split("RUNS")[0].trim();
-					    String balls = summary.split("FROM")[1].trim().split("BALLS")[0].trim();
-
-					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,
-					            teamName, "", null, 1, foreignLanguageDataList);
-					    List<String> inserts = Arrays.asList(balls, runs); // [0]=balls, [1]=runs
-					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
-					            "NEED RUNS TO WIN FROM BALLS", "", inserts, 2, foreignLanguageDataList);
-
-					    ForeignLanguageData merged = CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList);
-					    foreignLanguageData.add(merged);
-					    System.out.println("EQUATION English : " + merged.getEnglishText());
-					    System.out.println("EQUATION Telugu  : " + merged.getTeluguText());
-
+					    target = CricketFunctions.generateTargetAndEquationForeignLanguage(team_name, summary, "BALLS", null, multilanguagedata);
 					} else {
 					    if(matchAllData.getSetup().getTargetOvers() != null && matchAllData.getSetup().getTargetRuns() != 0) {
 					        if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
 					            team_name = inning.getBatting_team().getTeamName1();
-					            String targetType = (matchAllData.getSetup().getTargetType() != null
-					                    && !matchAllData.getSetup().getTargetType().isEmpty())
+					            targetType = (matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty())
 					                    ? matchAllData.getSetup().getTargetType().toUpperCase() : null;
-
 					            summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS TO WIN FROM "
 					                    + CricketFunctions.GetTargetData(matchAllData).getTargetOvers() + " OVERS"
 					                    + (targetType != null ? " (" + targetType + ")" : "");
-
-					            // ---- Multi-language assembly (OVERS case, with optional target type) ----
-					            String teamName = team_name;
-					            String afterNeed = summary.split("NEED")[1].trim();
-					            String runs = afterNeed.split("RUNS")[0].trim();
-					            String overs = summary.split("FROM")[1].trim().split("OVERS")[0].trim();
-
-					            foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,
-					                    teamName, "", null, 1, foreignLanguageDataList);
-					            List<String> inserts = Arrays.asList(overs, runs); // [0]=overs, [1]=runs
-					            foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
-					                    "NEED RUNS TO WIN FROM OVERS", "", inserts, 2, foreignLanguageDataList);
-
-					            ForeignLanguageData merged = CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList);
-
-					            // Target type (e.g. D/L) appended as-is, untranslated, same as original logic
-					            if(targetType != null) {
-					                merged.setEnglishText(merged.getEnglishText() + " (" + targetType + ")");
-					                merged.setTeluguText(merged.getTeluguText() + " (" + targetType + ")");
-					            }
-
-					            foreignLanguageData.add(merged);
-					            System.out.println("EQUATION English : " + merged.getEnglishText());
-					            System.out.println("EQUATION Telugu  : " + merged.getTeluguText());
+					            
+					            target = CricketFunctions.generateTargetAndEquationForeignLanguage(team_name, summary, "OVERS", targetType, multilanguagedata);
 					        }
 					    } else {
 					        team_name = inning.getBatting_team().getTeamName1();
 					        summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS TO WIN FROM "
 					                + CricketFunctions.GetTargetData(matchAllData).getTargetOvers() + " OVERS";
-
-					        // ---- Multi-language assembly (OVERS case, no target type) ----
-					        String teamName = team_name;
-					        String afterNeed = summary.split("NEED")[1].trim();
-					        String runs = afterNeed.split("RUNS")[0].trim();
-					        String overs = summary.split("FROM")[1].trim().split("OVERS")[0].trim();
-
-					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,
-					                teamName, "", null, 1, foreignLanguageDataList);
-					        List<String> inserts = Arrays.asList(overs, runs); // [0]=overs, [1]=runs
-					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
-					                "NEED RUNS TO WIN FROM OVERS", "", inserts, 2, foreignLanguageDataList);
-
-					        ForeignLanguageData merged = CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList);
-					        foreignLanguageData.add(merged);
-					        System.out.println("EQUATION English : " + merged.getEnglishText());
-					        System.out.println("EQUATION Telugu  : " + merged.getTeluguText());
+					        target = CricketFunctions.generateTargetAndEquationForeignLanguage(team_name, summary, "OVERS", null, multilanguagedata);
 					    }
 					}
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$"
+							+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+					foreignLanguageData.add(new ForeignLanguageData(target.getEnglishText(), target.getHindiText(), target.getTamilText(), target.getTeluguText()));
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$"
+							+ "English$Info03*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info01*ACTIVE SET 0\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info03*ACTIVE SET 1\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info02*ACTIVE SET 0\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info04*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info01*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info03*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info02*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info04*ACTIVE SET 0\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info01*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info03*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info02*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info04*ACTIVE SET 0\0", print_writers);
 				
 				break;
 			case "Control_Shift_R":
@@ -2317,7 +2274,7 @@ public class BugsAndMiniGfx
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$English$txt_Header*GEOM*TEXT SET ", 
 							config, Constants.TG20, print_writers, foreignLanguageData);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Base2*TEXTURE*IMAGE SET " + base2Path  + "EVENT" +"\0", print_writers);
@@ -2659,7 +2616,7 @@ public class BugsAndMiniGfx
 					case Constants.TG20:
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$Side" + WhichSide + "$Sub_Header$select_Language"
 								+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
-						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "TECONOMY", "", null, 0, foreignLanguageDataList);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "ECONOMY", "", null, 0, foreignLanguageDataList);
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$Side" + WhichSide + "$Sub_Header$English$StatHead1*GEOM*TEXT SET ", 
 								config, Constants.TG20, print_writers, foreignLanguageData);
 						break;
@@ -3193,10 +3150,15 @@ public class BugsAndMiniGfx
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info01*ACTIVE SET 1\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info02*ACTIVE SET 1\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info03*ACTIVE SET 1\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$Info04*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info01*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info03*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info02*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$English$Info04*ACTIVE SET 1\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info01*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info03*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info02*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Single$PlayerNameGrp$Telugu$Info04*ACTIVE SET 1\0", print_writers);
 
 				break;
 			case "Alt_p":

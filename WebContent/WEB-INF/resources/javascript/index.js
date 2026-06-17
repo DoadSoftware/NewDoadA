@@ -2391,6 +2391,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						  { value: 'BOUNDARY', text: 'Boundaries' },
 						  { value: 'EXTRAS', text: 'Extras' },
 						  { value: 'LAST_WICKET', text: 'Last Wicket' },
+						  { value: 'REVIEWS_REMAINING', text: 'Review'},
 						  { value: 'BALLS_SINCE_LAST_BOUNDARY', text: 'Balls Since Last Boundaries' }
 						];
 						
