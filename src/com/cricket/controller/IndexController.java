@@ -1440,13 +1440,11 @@ public class IndexController
 					
 					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
-					
 					this_caption.this_infobarGfx.previous_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
 						
 					this_caption.this_bugsAndMiniGfx.previous_sixes =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
-					
 					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
 					

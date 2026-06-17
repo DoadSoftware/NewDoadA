@@ -2542,12 +2542,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'TRI_SERIES': case 'MT20': case 'TG20':
 					const options = [
 					  { value: 'BLANK', text: 'Blank' },
-					  { value: 'FreeText', text: 'FreeText' },
+					  //{ value: 'FreeText', text: 'FreeText' },
 					  { value: 'IDENT', text: 'Ident' },
 					  { value: 'EXTRAS', text: 'Extras' },
 					  { value: 'Commentators', text: 'Commentators' },
 					  { value: 'FreeTextDb', text: 'FreeText DB' },
-					  { value: 'Sponsor', text: 'Sponsor' },
+					  //{ value: 'Sponsor', text: 'Sponsor' },
 					  { value: 'TIMELINE', text: 'TimeLine' },
 					  { value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
 					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
@@ -4419,6 +4419,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 			option.text = 'Boundary';
 			select.appendChild(option);
 			
+			option = document.createElement('option');
+			option.value = 'boundary_percent';
+			option.text = 'Boundary %';
+			select.appendChild(option);
+			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
@@ -4461,6 +4466,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectStatsType';
 			select.name = select.id;
 			header_text.innerHTML = 'BALL POP UP';
+			
 			option = document.createElement('option');
 			option.value = 'figure';
 			option.text = 'Bowler Figure';
@@ -4470,6 +4476,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 			option.value = 'economy';
 			option.text = 'Economy';
 			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = 'dot_percent';
+			option.text = 'Dot Ball %';
+			select.appendChild(option);
+			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
