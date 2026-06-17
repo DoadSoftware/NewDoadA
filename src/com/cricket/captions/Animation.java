@@ -1542,10 +1542,10 @@ public class Animation
 			
 			case "Alt_F8": case "F8": case "F10":
 				if(this.infobar.isInfobar_on_screen() == true || this.specialBugOnScreen.equalsIgnoreCase(CricketUtil.TOSS)) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$Overall_Position_Y*"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper_Center$Overall_Position_Y*"
 						+ "TRANSFORMATION*POSITION*Y SET -22.0\0",print_writers);
 				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$Overall_Position_Y*"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper_Center$Overall_Position_Y*"
 							+ "TRANSFORMATION*POSITION*Y SET -44.0\0",print_writers);
 				}
 				
@@ -1556,7 +1556,7 @@ public class Animation
 						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
 					}
 				}
-				processAnimation(Constants.FRONT, print_writers, "anim_Namesuper$InOut", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperCenter$InOut", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
@@ -2577,7 +2577,7 @@ public class Animation
 				break;
 				
 			case "Alt_F8": case "F8": case "F10":
-				processAnimation(Constants.FRONT, print_writers, "anim_Namesuper$InOut", "CONTINUE");
+				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperCenter$InOut", "CONTINUE");
 				
 				if(infobar.getInfobar_status() != null) {
 					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
@@ -2588,7 +2588,7 @@ public class Animation
 				}
 				
 				TimeUnit.MILLISECONDS.sleep(1000);
-				processAnimation(Constants.FRONT, print_writers, "anim_Namesuper", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperCenter", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 			
@@ -3674,7 +3674,7 @@ public class Animation
 				break;
 				
 			case "Alt_F8": case "F8": case "F10":
-				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperChange", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperCenterChange", "START");
 				break;
 				
 			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3":
@@ -4540,7 +4540,7 @@ public class Animation
 				break;
 				
 			case "Alt_F8": case "F8": case "F10":
-				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperChange", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_NamesuperCenterChange", "SHOW 0.0");
 				break;
 				
 			case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3":
@@ -5889,8 +5889,8 @@ public class Animation
 						break;
 						
 					case "Alt_F8": case "F8": case "F10":
-						previewCommand = "Shrink$InOut 0.400 anim_Namesuper$InOut 1.200 anim_Namesuper$InOut$Essentials$In 0.900 "
-								+ "anim_Namesuper$InOut$Logo$In 1.000 anim_Namesuper$InOut$Colour$In 1.200";
+						previewCommand = "Shrink$InOut 0.400 anim_NamesuperCenter$InOut 1.200 anim_NamesuperCenter$InOut$Essentials$In 0.900 "
+								+ "anim_NamesuperCenter$InOut$Logo$In 1.000 anim_NamesuperCenter$InOut$Colour$In 1.200";
 						break;
 					
 					case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": 
@@ -5932,8 +5932,8 @@ public class Animation
 								+ "anim_LtChange$Lt_Position 1.000 anim_LtChange$HeaderDynamic 0.000";
 						break;
 					case "Alt_F8": case "F8": case "F10":
-						previewCommand = "anim_NamesuperChange 1.000 anim_NamesuperChange$Text 1.000 anim_NamesuperChange$Logo 1.000 "
-								+ "anim_NamesuperChange$Colour 0.400 ";
+						previewCommand = "anim_NamesuperCenterChange 1.000 anim_NamesuperCenterChange$Text 1.000 anim_NamesuperCenterChange$Logo 1.000 "
+								+ "anim_NamesuperCenterChange$Colour 0.400 ";
 						break;
 					case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "j": case "Alt_a": case "Alt_s":
 						previewCommand = "anim_LtChange 1.000 anim_LtChange$Headerband 1.000 anim_LtChange$Header 1.000 anim_LtChange$Logo 1.000 anim_LtChange$Subline 1.000 "

@@ -1393,11 +1393,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 				session_match.match.inning.forEach(function(inn){
 					if(inn.isCurrentInning == 'YES'){
 						inn.bowlingCard.forEach(function(boc){
-							if(boc.status == 'CURRENTBOWLER'){
-								option = document.createElement('option');
-								option.value = boc.player.playerId;
-								option.text = boc.player.full_name;
-								select.appendChild(option);
+							if(boc.status != null){
+								if(boc.status == 'CURRENTBOWLER'){
+									option = document.createElement('option');
+									option.value = boc.player.playerId;
+									option.text = boc.player.full_name;
+									select.appendChild(option);
+								}
 							}
 						});
 						
@@ -1475,12 +1477,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					
 					switch(whatToProcess){
-						case "Alt_4":
-							option = document.createElement('option');
-							option.value = 'THIS_SERIES';
-							option.text = 'THIS SERIES';
-							select.appendChild(option);
-							break;
+					case "Control_e":
+						option = document.createElement('option');
+						option.value = 'DT20';
+						option.text = 'T20';
+						select.appendChild(option);
+						break;
+					case "Alt_4":
+						option = document.createElement('option');
+						option.value = 'THIS_SERIES';
+						option.text = 'THIS SERIES';
+						select.appendChild(option);
+						break;
 					}
 					break;
 				}
@@ -2816,11 +2824,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 				session_match.match.inning.forEach(function(inn){
 					if(inn.inningNumber == document.getElementById('which_inning').value){
 						inn.bowlingCard.forEach(function(boc){
-							if(boc.status == 'CURRENTBOWLER'){
-								option = document.createElement('option');
-								option.value = boc.player.playerId;
-								option.text = boc.player.full_name;
-								select.appendChild(option);
+							if(boc.status != null){
+								if(boc.status == 'CURRENTBOWLER'){
+									option = document.createElement('option');
+									option.value = boc.player.playerId;
+									option.text = boc.player.full_name;
+									select.appendChild(option);
+								}
 							}
 						});
 						
@@ -2898,17 +2908,19 @@ function addItemsToList(whatToProcess,dataToProcess)
 				session_match.match.inning.forEach(function(inn){
 					if(inn.inningNumber == document.getElementById('which_inning').value){
 						inn.battingCard.forEach(function(bc){
-							if(bc.status == 'NOT OUT'){
-								if(bc.onStrike == 'YES'){
-									option = document.createElement('option');
-									option.value = bc.player.playerId;
-									option.text = bc.player.full_name;
-									select.appendChild(option);
-								}else{
-									option = document.createElement('option');
-									option.value = bc.player.playerId;
-									option.text = bc.player.full_name;
-									select.appendChild(option);
+							if(bc.status != null){
+								if(bc.status == 'NOT OUT'){
+									if(bc.onStrike == 'YES'){
+										option = document.createElement('option');
+										option.value = bc.player.playerId;
+										option.text = bc.player.full_name;
+										select.appendChild(option);
+									}else{
+										option = document.createElement('option');
+										option.value = bc.player.playerId;
+										option.text = bc.player.full_name;
+										select.appendChild(option);
+									}
 								}
 							}
 						});
@@ -3286,7 +3298,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'MT20': case 'TG20':
+				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'MT20':
 				
 					option = document.createElement('option');
 					option.value = 'DT20';
@@ -3317,7 +3329,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.value = 'TEST';
 					option.text = 'TEST MATCHES';
 					select.appendChild(option);
-					break;	
+					break;
+				case 'TG20':	
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+					break;		
 			}
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 			row.insertCell(cellCount).appendChild(select);
@@ -3441,11 +3459,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
 					inn.bowlingCard.forEach(function(boc){
-						if(boc.status == 'CURRENTBOWLER'){
-							option = document.createElement('option');
-							option.value = boc.player.playerId;
-							option.text = boc.player.full_name;
-							select.appendChild(option);
+						if(boc.status != null){
+							if(boc.status == 'CURRENTBOWLER'){
+								option = document.createElement('option');
+								option.value = boc.player.playerId;
+								option.text = boc.player.full_name;
+								select.appendChild(option);
+							}
 						}
 					});
 					
@@ -3491,7 +3511,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'MT20': case 'TG20':
+				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'MT20':
 					
 					option = document.createElement('option');
 					option.value = 'DT20';
@@ -3523,6 +3543,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.text = 'TEST MATCHES';
 					select.appendChild(option);
 					break;
+				case 'TG20':			
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+					break;	
 			}
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
@@ -3619,11 +3645,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
 					inn.bowlingCard.forEach(function(boc){
-						if(boc.status == 'CURRENTBOWLER'){
-							option = document.createElement('option');
-							option.value = boc.player.playerId;
-							option.text = boc.player.full_name;
-							select.appendChild(option);
+						if(boc.status != null){
+							if(boc.status == 'CURRENTBOWLER'){
+								option = document.createElement('option');
+								option.value = boc.player.playerId;
+								option.text = boc.player.full_name;
+								select.appendChild(option);
+							}
 						}
 					});
 					
@@ -5085,11 +5113,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
 					inn.bowlingCard.forEach(function(boc){
-						if(boc.status == 'CURRENTBOWLER'){
-							option = document.createElement('option');
-							option.value = boc.player.playerId;
-							option.text = boc.player.full_name;
-							select.appendChild(option);
+						if(boc.status != null){
+							if(boc.status == 'CURRENTBOWLER'){
+								option = document.createElement('option');
+								option.value = boc.player.playerId;
+								option.text = boc.player.full_name;
+								select.appendChild(option);
+							}
 						}
 					});
 					
