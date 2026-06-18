@@ -1282,6 +1282,7 @@ public class Animation
 				}
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
+				processAnimation(Constants.BACK, print_writers, "Loop", "START");
 				processAnimation(Constants.BACK, print_writers, "Anim_LineUp_Image$In_Out", "START");
 				lineUpCount = 0;
 				this.whichGraphicOnScreen = whatToProcess;
