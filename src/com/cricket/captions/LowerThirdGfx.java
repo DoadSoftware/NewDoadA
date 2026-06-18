@@ -2836,53 +2836,103 @@ public class LowerThirdGfx
 		
 		teamNameAsCity = inning.getBatting_team().getTeamName1();
 		
-		if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER) && matchAllData.getSetup().getMaxOvers() == 1) {
-			summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS" + " TO WIN";
+		switch(config.getBroadcaster()) {
+		case Constants.TG20:
+			ForeignLanguageData target = null;
+			String targetType = null;
+			
+			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER) && matchAllData.getSetup().getMaxOvers() == 1) {
+			    summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS TO WIN FROM "
+			            + (matchAllData.getSetup().getMaxOvers()*6) + " BALLS";
+			    target = CricketFunctions.generateTargetAndEquationForeignLanguage("", summary, "BALLS", null, multilanguagedata);
+			} else {
+			    if(matchAllData.getSetup().getTargetOvers() != null && matchAllData.getSetup().getTargetRuns() != 0) {
+			        if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
+			            targetType = (matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty())
+			                    ? matchAllData.getSetup().getTargetType().toUpperCase() : null;
+			            summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS TO WIN FROM "
+			                    + CricketFunctions.GetTargetData(matchAllData).getTargetOvers() + " OVERS"
+			                    + (targetType != null ? " (" + targetType + ")" : "");
+			            
+			            target = CricketFunctions.generateTargetAndEquationForeignLanguage("", summary, "OVERS", targetType, multilanguagedata);
+			        }
+			    } else {
+			        summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS TO WIN FROM "
+			                + CricketFunctions.GetTargetData(matchAllData).getTargetOvers() + " OVERS";
+			        target = CricketFunctions.generateTargetAndEquationForeignLanguage("", summary, "OVERS", null, multilanguagedata);
+			    }
+			}
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+					"$select_Subline$1$Right*ACTIVE SET 0 \0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+					"$select_Subline$1$Title*ACTIVE SET 0 \0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+					"$select_Subline$1$Stat*ACTIVE SET 0 \0", print_writers);
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + WhichSide + "$"
+					+ "select_Subline$1$Left$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+			
+			foreignLanguageData.add(new ForeignLanguageData(target.getEnglishText(), target.getHindiText(), target.getTamilText(), target.getTeluguText()));
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + WhichSide
+					+ "$select_Subline$1$Left$English$txt_1*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 			
 			lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
 					matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
-					inning.getBatting_team().getTeamBadge(),null,null,new String[]{"THE SUPER OVER",""},null,null);
-		}else {
+					inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ 
+					" OVERS",""},null,null);
 			
-			if(matchAllData.getSetup().getTargetOvers() != null && matchAllData.getSetup().getTargetRuns() != 0) {
+			break;
+		default:
+			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER) && matchAllData.getSetup().getMaxOvers() == 1) {
 				summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS" + " TO WIN";
-				runRate = "@ " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getTargetRuns(), 
-						Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[0]),
-						(Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.").length >1 ? 
-								Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[1]):0)), 2,matchAllData) + " RPO";
-				
-				if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
-					
-					lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(),
-							matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
-							inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + 
-									CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS",""},null,null);
-				}
-				if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("VJD")) {
-					
-					lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
-							matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),inning.getBatting_team().getTeamBadge(),null,null,
-							new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS"," (VJD)"},null,null);
-					
-				}else if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("DLS")) {
-					
-					lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), matchAllData.getSetup().getAwayTeam().getTeamName1(), 
-							matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),inning.getBatting_team().getTeamBadge(),null,null,
-							new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS"," (DLS)"},null,null);
-				}
-			}else {
-				summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS" + " TO WIN";
-				runRate = "@ " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getTargetRuns(), 
-						Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[0]),
-						(Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.").length >1 ? 
-								Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[1]):0)), 2, matchAllData) + " RPO";
 				
 				lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
 						matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
-						inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ 
-						" OVERS",""},null,null);
+						inning.getBatting_team().getTeamBadge(),null,null,new String[]{"THE SUPER OVER",""},null,null);
+			}else {
+				
+				if(matchAllData.getSetup().getTargetOvers() != null && matchAllData.getSetup().getTargetRuns() != 0) {
+					summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS" + " TO WIN";
+					runRate = "@ " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getTargetRuns(), 
+							Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[0]),
+							(Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.").length >1 ? 
+									Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[1]):0)), 2,matchAllData) + " RPO";
+					
+					if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
+						
+						lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(),
+								matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
+								inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + 
+										CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS",""},null,null);
+					}
+					if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("VJD")) {
+						
+						lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
+								matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),inning.getBatting_team().getTeamBadge(),null,null,
+								new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS"," (VJD)"},null,null);
+						
+					}else if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("DLS")) {
+						
+						lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), matchAllData.getSetup().getAwayTeam().getTeamName1(), 
+								matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),inning.getBatting_team().getTeamBadge(),null,null,
+								new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ " OVERS"," (DLS)"},null,null);
+					}
+				}else {
+					summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + " RUNS" + " TO WIN";
+					runRate = "@ " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getTargetRuns(), 
+							Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[0]),
+							(Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.").length >1 ? 
+									Integer.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers().split("\\.")[1]):0)), 2, matchAllData) + " RPO";
+					
+					lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
+							matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
+							inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ 
+							" OVERS",""},null,null);
 
+				}
 			}
+			break;
 		}
 		
 		status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
@@ -2909,40 +2959,100 @@ public class LowerThirdGfx
 		
 		teamNameAsCity = inning.getBatting_team().getTeamName1();
 		
-		if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() < 100) {
-			line_1 = "FROM " + CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
-		}else {
-			if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()%6 == 0) {
-				 line_1 = "FROM " + CricketFunctions.GetTargetData(matchAllData).getRemaningBall()/6 + " OVERS";
-			}else {
-				line_1 = "FROM " + CricketFunctions.OverBalls(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()/6, CricketFunctions.GetTargetData(matchAllData).getRemaningBall()%6) + " OVERS";
-			}
-		}
-		
-		summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns();
-		
-		switch (config.getBroadcaster().toUpperCase()) {
-		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
+		switch(config.getBroadcaster()) {
+		case Constants.TG20:
+			ForeignLanguageData target = null;
+			String targetType = null;
 			
-			if(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() < 2) {
-				summary = summary + " RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN";
-				
-			}else {
-				summary = summary + " MORE RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN";
-				
+			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER) && matchAllData.getSetup().getMaxOvers() == 1) {
+			    summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + " RUN" + 
+			    		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN FROM "
+			            + CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" + 
+			    		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+			    target = CricketFunctions.generateTargetAndEquationForeignLanguage("", summary, "BALL" + 
+			    		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), null, multilanguagedata);
+			} else {
+			    if(matchAllData.getSetup().getTargetOvers() != null && matchAllData.getSetup().getTargetRuns() != 0) {
+			        if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
+			            targetType = (matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty())
+			                    ? matchAllData.getSetup().getTargetType().toUpperCase() : null;
+			            summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + " RUN" + 
+			            		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN FROM "
+			                    + CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" + 
+			            		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase()
+			                    + (targetType != null ? " (" + targetType + ")" : "");
+			            
+			            target = CricketFunctions.generateTargetAndEquationForeignLanguage("", summary, "BALL" + 
+			            		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), targetType, multilanguagedata);
+			        }
+			    } else {
+			        summary = "NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + " RUN" + 
+			        		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN FROM "
+			                + CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" + 
+			        		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+			        target = CricketFunctions.generateTargetAndEquationForeignLanguage("", summary, "BALL" + 
+			        		CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), null, multilanguagedata);
+			    }
 			}
 			
-			line_2 = "";
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+					"$select_Subline$1$Right*ACTIVE SET 0 \0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+					"$select_Subline$1$Title*ACTIVE SET 0 \0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+					"$select_Subline$1$Stat*ACTIVE SET 0 \0", print_writers);
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + WhichSide + "$"
+					+ "select_Subline$1$Left$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+			
+			foreignLanguageData.add(new ForeignLanguageData(target.getEnglishText(), target.getHindiText(), target.getTamilText(), target.getTeluguText()));
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + WhichSide
+					+ "$select_Subline$1$Left$English$txt_1*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+			
+			lowerThird = new LowerThird(summary, inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),matchAllData.getSetup().getHomeTeam().getTeamName1(), 
+					matchAllData.getSetup().getAwayTeam().getTeamName1(), matchAllData.getSetup().getHomeTeam().getTeamBadge(),1,matchAllData.getSetup().getAwayTeam().getTeamBadge(),
+					inning.getBatting_team().getTeamBadge(),null,null,new String[]{String.valueOf("FROM " + CricketFunctions.GetTargetData(matchAllData).getTargetOvers())+ 
+					" OVERS",""},null,null);
+			
+			break;
+		default:
+			if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() < 100) {
+				line_1 = "FROM " + CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+			}else {
+				if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()%6 == 0) {
+					 line_1 = "FROM " + CricketFunctions.GetTargetData(matchAllData).getRemaningBall()/6 + " OVERS";
+				}else {
+					line_1 = "FROM " + CricketFunctions.OverBalls(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()/6, CricketFunctions.GetTargetData(matchAllData).getRemaningBall()%6) + " OVERS";
+				}
+			}
+			
+			summary = teamNameAsCity + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns();
+			
+			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
+				
+				if(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() < 2) {
+					summary = summary + " RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN";
+					
+				}else {
+					summary = summary + " MORE RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN";
+					
+				}
+				
+				line_2 = "";
+				break;
+			}
+			
+			if(matchAllData.getSetup().getTargetType()!= null) {
+				if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("VJD")) {
+					line_1 = line_1 + " (" + CricketUtil.VJD + ")";
+				}else if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("DLS")) {
+					line_1 = line_1 + " (" + CricketUtil.DLS + ")";
+				}
+			}
 			break;
 		}
 		
-		if(matchAllData.getSetup().getTargetType()!= null) {
-			if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("VJD")) {
-				line_1 = line_1 + " (" + CricketUtil.VJD + ")";
-			}else if(matchAllData.getSetup().getTargetType().toUpperCase().equalsIgnoreCase("DLS")) {
-				line_1 = line_1 + " (" + CricketUtil.DLS + ")";
-			}
-		}
 		
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
@@ -3525,16 +3635,6 @@ public class LowerThirdGfx
 			return "Fixture id [" + Integer.valueOf(whatToProcess.split(",")[2]) + "] from database is returning NULL";
 		}
 		
-		String[] dateSuffix = {
-				"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th",
-				
-				"th", "th", "th", "th", "th", "th", "th", "th", "th", "th",
-				
-				"th", "st", "nd", "rd", "th", "th", "th", "th", "th","th",
-				
-				"th", "st"
-		};
-		
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.ACC:
 			match_name = fixture.getTeamgroup();
@@ -3549,38 +3649,6 @@ public class LowerThirdGfx
 			break;
 		}
 		
-		
-		Calendar cal_bengal = Calendar.getInstance();
-		cal_bengal.add(Calendar.DATE, +1);
-		if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
-			
-			text = "TOMORROW - " + fixture.getLocalTime() + " - " + fixture.getVenue();
-			matchday = "TOMORROW - " + fixture.getLocalTime() + " - " + fixture.getVenue();
-		}else {
-			cal_bengal.add(Calendar.DATE, -1);
-			if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
-				text = "UP NEXT - " + match_name + " - LIVE FROM " + fixture.getVenue();
-				matchday = "UP NEXT " + " - LIVE FROM " + fixture.getVenue();
-			}else {
-				newDate = fixture.getDate().split("-")[0];
-				if(Integer.valueOf(newDate) < 10) {
-					newDate = newDate.replaceFirst("0", "");
-				}
-				date_data = newDate + dateSuffix[Integer.valueOf(newDate)] + " " + 
-						Month.of(Integer.valueOf(fixture.getDate().split("-")[1]));
-				
-				text = date_data + " - " + fixture.getLocalTime() + " - " + fixture.getVenue();
-				matchday = date_data + " - " + fixture.getLocalTime() + " - " + fixture.getVenue();
-			}
-		}
-		
-		for(VariousText vt : VariousText) {
-			if(vt.getVariousType().equalsIgnoreCase("LT_MATCH_PROMO") && vt.getUseThis().equalsIgnoreCase(CricketUtil.YES)) {
-				matchday = vt.getVariousText();
-				break;
-			}
-		}
-		
 		switch (config.getBroadcaster()) {
 		case Constants.TG20:
 			lowerThird = new LowerThird(fixture.getHome_Team().getTeamName1() + "-" + fixture.getHome_Team().getTeamName3(), 
@@ -3589,6 +3657,47 @@ public class LowerThirdGfx
 					null,null,null);
 			break;
 		default :
+			String[] dateSuffix = {
+					"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th",
+					
+					"th", "th", "th", "th", "th", "th", "th", "th", "th", "th",
+					
+					"th", "st", "nd", "rd", "th", "th", "th", "th", "th","th",
+					
+					"th", "st"
+			};
+			
+			Calendar cal_bengal = Calendar.getInstance();
+			cal_bengal.add(Calendar.DATE, +1);
+			if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
+				
+				text = "TOMORROW - " + fixture.getLocalTime() + " - " + fixture.getVenue();
+				matchday = "TOMORROW - " + fixture.getLocalTime() + " - " + fixture.getVenue();
+			}else {
+				cal_bengal.add(Calendar.DATE, -1);
+				if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
+					text = "UP NEXT - " + match_name + " - LIVE FROM " + fixture.getVenue();
+					matchday = "UP NEXT " + " - LIVE FROM " + fixture.getVenue();
+				}else {
+					newDate = fixture.getDate().split("-")[0];
+					if(Integer.valueOf(newDate) < 10) {
+						newDate = newDate.replaceFirst("0", "");
+					}
+					date_data = newDate + dateSuffix[Integer.valueOf(newDate)] + " " + 
+							Month.of(Integer.valueOf(fixture.getDate().split("-")[1]));
+					
+					text = date_data + " - " + fixture.getLocalTime() + " - " + fixture.getVenue();
+					matchday = date_data + " - " + fixture.getLocalTime() + " - " + fixture.getVenue();
+				}
+			}
+			
+			for(VariousText vt : VariousText) {
+				if(vt.getVariousType().equalsIgnoreCase("LT_MATCH_PROMO") && vt.getUseThis().equalsIgnoreCase(CricketUtil.YES)) {
+					matchday = vt.getVariousText();
+					break;
+				}
+			}
+			
 			lowerThird = new LowerThird(fixture.getHome_Team().getTeamName2() + "-" + fixture.getHome_Team().getTeamName3(), 
 					fixture.getAway_Team().getTeamName2() + "-" + fixture.getAway_Team().getTeamName3(),
 					"",fixture.getHome_Team().getTeamBadge(), fixture.getAway_Team().getTeamBadge(), text,2,"Emirates","",null,null,
@@ -9159,7 +9268,7 @@ public class LowerThirdGfx
 	    				break;
 	    			case "e": case "d":
 	    				switch (config.getBroadcaster().toUpperCase()) {
-	    				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
+	    				case Constants.TRI_SERIES:  case Constants.MT20: //case Constants.TG20:
 	    					
 	    					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + whichSide +
 	    							"$select_Subline$1$Right*ACTIVE SET 0 \0", print_writers);
@@ -9845,24 +9954,92 @@ public class LowerThirdGfx
 	    			  case "Control_Shift_L":
 	    				  switch (config.getBroadcaster().toUpperCase()) {
 	    				  case Constants.TG20:
+	    					  
 	    					  CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Lt_MatchID$Side0" + whichSide + "$DataPart$BottomPart"
 										+ "$Side" + whichSide +"$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 	    					  
-	    					  foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getBallsFacedText().split(" - ")[0].trim(),
-  							    "", null, 1,foreignLanguageDataList);
-  						
-	    					  foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata," - ",
-	    							    "", null, 2,foreignLanguageDataList);
+	    					  String[] dateSuffix = {
+	    								"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th",
+	    								
+	    								"th", "th", "th", "th", "th", "th", "th", "th", "th", "th",
+	    								
+	    								"th", "st", "nd", "rd", "th", "th", "th", "th", "th","th",
+	    								
+	    								"th", "st"
+	    						};
 	    					  
-	    					  foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getBallsFacedText().split(" - ")[1].trim(),
-  							    "", null, 3,foreignLanguageDataList);
-	    					  
-	    					  foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata," - ",
-	    							    "", null, 4,foreignLanguageDataList);
-	    					  
-	    					  foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getBallsFacedText().split(" - ")[2].trim(),
-								"", null, 5,foreignLanguageDataList);
-
+	    					  Calendar cal_bengal = Calendar.getInstance();
+	    						cal_bengal.add(Calendar.DATE, +1);
+	    						if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
+	    							
+	    							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"TOMORROW",
+	    	  							    "", null, 1,foreignLanguageDataList);
+	    	  						
+    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+    		    							    "", null, 2,foreignLanguageDataList);
+    		    					  
+    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime(),
+    	  							    "", null, 3,foreignLanguageDataList);
+    		    					  
+    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+    		    							    "", null, 4,foreignLanguageDataList);
+    		    					  
+    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
+	    									"", null, 5,foreignLanguageDataList);
+	    						}else {
+	    							cal_bengal.add(Calendar.DATE, -1);
+	    							if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
+	    								foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"UP-NEXT",
+		    	  							    "", null, 1,foreignLanguageDataList);
+		    	  						
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+	    		    							    "", null, 2,foreignLanguageDataList);
+	    		    					  
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,match_name.split(" ")[0],
+	    	  							    "", null, 3,foreignLanguageDataList);
+	    		    					  
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,match_name.split(" ")[1],
+	    		    							    "", null, 4,foreignLanguageDataList);
+	    		    					  	
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+	    		    							    "", null, 5,foreignLanguageDataList);
+	    		    					  	
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"FROM " + fixture.getVenue(),
+	    		    							    "", null, 6,foreignLanguageDataList);
+	    							}else {
+	    								newDate = fixture.getDate().split("-")[0];
+	    								if(Integer.valueOf(newDate) < 10) {
+	    									newDate = newDate.replaceFirst("0", "");
+	    								}
+	    								date_data = newDate + dateSuffix[Integer.valueOf(newDate)] + " " + 
+	    										Month.of(Integer.valueOf(fixture.getDate().split("-")[1]));
+	    								
+	    								foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,date_data,
+		    	  							    "", null, 1,foreignLanguageDataList);
+		    	  						
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+	    		    							    "", null, 2,foreignLanguageDataList);
+	    		    					  
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime(),
+	    	  							    "", null, 3,foreignLanguageDataList);
+	    		    					  	
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+	    		    							    "", null, 4,foreignLanguageDataList);
+	    		    					  	
+	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
+	    		    							    "", null, 5,foreignLanguageDataList);
+	    							}
+	    						}
+	    						
+	    						for(VariousText vt : VariousText) {
+	    							if(vt.getVariousType().equalsIgnoreCase("LT_MATCH_PROMO") && vt.getUseThis().equalsIgnoreCase(CricketUtil.YES)) {
+	    								foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,vt.getVariousText(),
+		    	  							    "", null, 1,foreignLanguageDataList);
+	    								matchday = vt.getVariousText();
+	    								break;
+	    							}
+	    						}
+	    						
 						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 	    					
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Lt_MatchID$Side0" + whichSide + "$DataPart$BottomPart"
