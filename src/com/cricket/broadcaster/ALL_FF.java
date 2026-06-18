@@ -2579,21 +2579,24 @@ public class ALL_FF
 				switch(config.getBroadcaster()) {
 				case Constants.TG20:
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
-							"$FooterStyle2$Extras$Extras$txt_FooterText$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.TG20, print_writers, foreignLanguageOmo);
-					
-					System.out.println(CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", Constants.BCCI, false, multilanguagedata));
+							"$FooterStyle2$Extras$Extras$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.TG20, print_writers, foreignLanguageOmo);
 					
 					for(VariousText vt : VariousText) {
 						if(vt.getVariousType().equalsIgnoreCase("MATCHSUMMARYFOOTER") && vt.getUseThis().equalsIgnoreCase(CricketUtil.YES)) {
 							foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,vt.getVariousText().toUpperCase(),
 								    "", null,0,foreignLanguageDataList);
 							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
-									"$FooterStyle2$Extras$Extras$txt_FooterText*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+									"$FooterStyle2$Extras$Extras$English$txt_FooterText*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 							break;
 						}else if(vt.getVariousType().equalsIgnoreCase("MATCHSUMMARYFOOTER") && vt.getUseThis().equalsIgnoreCase(CricketUtil.NO)) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + "$FooterStyle2$"
-									+ "Extras$Extras$txt_FooterText*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", 
-											Constants.BCCI, false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+							String matchResult="", teluguMatchResult = "";
+							matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
+							teluguMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
+									multilanguagedata).getTeluguText().toUpperCase();
+							
+							foreignLanguageData.add(new ForeignLanguageData(matchResult, "", "", teluguMatchResult));
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
+									"$FooterStyle2$Extras$Extras$English$txt_FooterText*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 						}
 					}
 					break;
@@ -2756,40 +2759,76 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
 						+ "$Side" + WhichSide + "$select_FooterStyle*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
-						+ "$Side" + WhichSide + "$FooterStyle1$Extras$Extras$txt_StatHead*GEOM*TEXT SET Extras\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
-						+ "$Side" + WhichSide + "$FooterStyle1$Extras$Extras$txt_StatValue*GEOM*TEXT SET " + inning.getTotalExtras() + "\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
-						+ "$Side" + WhichSide + "$FooterStyle1$Extras$Overs$txt_StatHead*GEOM*TEXT SET " + (inning.getTotalOvers() == 1 && 
-						inning.getTotalBalls()==0 ?"Over":"Overs") + "\0", print_writers);
-				
-				if(inning.getInningNumber() == 1) {
-					if(matchAllData.getSetup().getReducedOvers() != null) {
-						OverDat = (Integer.valueOf(matchAllData.getSetup().getReducedOvers()) > 0 ? " (" + 
-								matchAllData.getSetup().getReducedOvers() + ")":"");
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
+							"$FooterStyle1$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.TG20, print_writers, foreignLanguageOmo);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"EXTRAS","", null,0,foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
+							"$FooterStyle1$English$Extras$txt_StatHead*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata,String.valueOf(inning.getTotalExtras()),"", null,0,foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
+							"$FooterStyle1$English$Extras$txt_StatValue*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (inning.getTotalOvers() == 1 && 
+							inning.getTotalBalls()==0 ?"OVER":"OVERS"),"", null,0,foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
+							"$FooterStyle1$English$Overs$txt_StatHead*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					if(inning.getInningNumber() == 1) {
+						OverDat = (matchAllData.getSetup().getReducedOvers() != null && !matchAllData.getSetup().getReducedOvers().isEmpty() ? " (" + matchAllData.getSetup().getReducedOvers() + ")":"");
+					}else if(inning.getInningNumber() == 2) {
+						OverDat = (matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().trim().isEmpty() ? " (" + matchAllData.getSetup().getTargetOvers() + ")":"");
 					}
-				}else if(inning.getInningNumber() == 2) {
-					OverDat = (matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().trim().isEmpty() ? 
-							" (" + matchAllData.getSetup().getTargetOvers() + ")":"");
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata,CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())
+							+ OverDat,"", null,0,foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
+							"$FooterStyle1$English$Overs$txt_StatValue*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata,CricketFunctions.getTeamScore(inning, "-", false),"", null,0,foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
+							"$FooterStyle1$English$Total$txt_TotalScore*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
+							+ "$Side" + WhichSide + "$FooterStyle1$Extras$Extras$txt_StatHead*GEOM*TEXT SET Extras\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
+							+ "$Side" + WhichSide + "$FooterStyle1$Extras$Extras$txt_StatValue*GEOM*TEXT SET " + inning.getTotalExtras() + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
+							+ "$Side" + WhichSide + "$FooterStyle1$Extras$Overs$txt_StatHead*GEOM*TEXT SET " + (inning.getTotalOvers() == 1 && 
+							inning.getTotalBalls()==0 ?"Over":"Overs") + "\0", print_writers);
+					
+					if(inning.getInningNumber() == 1) {
+						if(matchAllData.getSetup().getReducedOvers() != null) {
+							OverDat = (Integer.valueOf(matchAllData.getSetup().getReducedOvers()) > 0 ? " (" + 
+									matchAllData.getSetup().getReducedOvers() + ")":"");
+						}
+					}else if(inning.getInningNumber() == 2) {
+						OverDat = (matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().trim().isEmpty() ? 
+								" (" + matchAllData.getSetup().getTargetOvers() + ")":"");
+					}
+					System.out.println("OverDat = " + OverDat);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
+							+ "$Side" + WhichSide + "$FooterStyle1$Extras$Overs$txt_StatValue*GEOM*TEXT SET " + 
+							CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + "\0", print_writers);
+					
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
+							+ "$Side" + WhichSide + "$FooterStyle1$Overs$Overs$txt_StatHead*GEOM*TEXT SET " + (inning.getTotalOvers() == 1 && 
+							inning.getTotalBalls()==0 ?"Over":"Overs") + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
+							+ "$Side" + WhichSide + "$FooterStyle1$Overs$Overs$txt_StatValue*GEOM*TEXT SET " + 
+							CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + OverDat + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
+							+ "$Side" + WhichSide + "$FooterStyle1$Total$txt_TotalScore*GEOM*TEXT SET " + 
+							CricketFunctions.getTeamScore(inning, "-", false) + "\0", print_writers);
+					break;
 				}
-				System.out.println("OverDat = " + OverDat);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
-						+ "$Side" + WhichSide + "$FooterStyle1$Extras$Overs$txt_StatValue*GEOM*TEXT SET " + 
-						CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + "\0", print_writers);
-				
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
-						+ "$Side" + WhichSide + "$FooterStyle1$Overs$Overs$txt_StatHead*GEOM*TEXT SET " + (inning.getTotalOvers() == 1 && 
-						inning.getTotalBalls()==0 ?"Over":"Overs") + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
-						+ "$Side" + WhichSide + "$FooterStyle1$Overs$Overs$txt_StatValue*GEOM*TEXT SET " + 
-						CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + OverDat + "\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer"
-						+ "$Side" + WhichSide + "$FooterStyle1$Total$txt_TotalScore*GEOM*TEXT SET " + 
-						CricketFunctions.getTeamScore(inning, "-", false) + "\0", print_writers);
 				break;	
 			}
 			break;
@@ -6117,7 +6156,7 @@ public class ALL_FF
 			}
 			
 			break;
-		case Constants.TRI_SERIES: case Constants.MT20:
+		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$select_GraphicsType*FUNCTION*Omo*vis_con SET 6\0", print_writers);
 			
