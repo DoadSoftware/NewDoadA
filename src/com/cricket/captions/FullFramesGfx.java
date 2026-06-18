@@ -150,6 +150,8 @@ public class FullFramesGfx
 		this.headToHead = headToHead;
 		this.past_tournament_stats = past_tournament_stats;
 		this.cricketService = cricketService;
+		this_ALL_FF.foreignLanguageData.add(new ForeignLanguageData("", "", "", ""));
+		this_ALL_FF.foreignLanguageOmo.add(new ForeignLanguageData("0", "2", "3", "1"));
 	}
 
 	public String populateSingleTeamsCareer(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception
@@ -1375,7 +1377,7 @@ public class FullFramesGfx
 	{
 		String Position_footer = "",Position_Base_X_IN ="",Position_Base_X_Out="";
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES:  case Constants.MT20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch(whatToProcess.split(",")[0]) {
 			case "Shift_K": case "Alt_F11":
 				Position_footer = "1.103";

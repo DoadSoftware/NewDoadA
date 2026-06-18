@@ -326,6 +326,7 @@ public class IndexController
 				}
 				this_scene.LoadScene("OVERLAYS", print_writers, session_configuration);
 				this_animation.ResetAnimation("CLEAR-ALL", print_writers, session_configuration);
+				this_caption.this_fullFramesGfx.this_ALL_FF.getColor(session_configuration);
 				break;
 			}
 			
@@ -1321,10 +1322,20 @@ public class IndexController
 				this_caption.this_fullFramesGfx.Potts = session_pott;
 				this_caption.this_fullFramesGfx.Playoffs = session_playoff;
 				
-				this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
-				this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
-				this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
-				this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+				switch(config.getBroadcaster()) {
+				case Constants.BCCI:
+					this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
+					this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
+					this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+					break;
+				case Constants.TG20:
+					this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.players = session_players;
+					this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.team = session_team;
+					this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.dictionary = cricketService.getDictionary();
+					this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.venue = cricketService.getVenues();
+					break;
+				}
 				
 				this_caption.this_lowerThirdGfx.multilanguagedata.players = session_players;
 				this_caption.this_lowerThirdGfx.multilanguagedata.team = session_team;
@@ -1384,11 +1395,22 @@ public class IndexController
 //					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 //							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
 					
-					this_caption.this_fullFramesGfx.multilanguagedata = new MultiLanguageDatabase();
-					this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
-					this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
-					this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
-					this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+					switch(config.getBroadcaster()) {
+					case Constants.BCCI:
+						this_caption.this_fullFramesGfx.multilanguagedata = new MultiLanguageDatabase();
+						this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
+						this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
+						this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+						this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+						break;
+					case Constants.TG20:
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata = new MultiLanguageDatabase();
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.players = session_players;
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.team = session_team;
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.dictionary = cricketService.getDictionary();
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.venue = cricketService.getVenues();
+						break;
+					}
 					
 					this_caption.this_lowerThirdGfx.multilanguagedata = new MultiLanguageDatabase();
 					this_caption.this_lowerThirdGfx.multilanguagedata.players = session_players;
@@ -1418,10 +1440,20 @@ public class IndexController
 					CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 					session_match.getMatch().setMatchStats(MatchStats);
 					
-					this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
-					this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
-					this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
-					this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+					switch(config.getBroadcaster()) {
+					case Constants.BCCI:
+						this_caption.this_fullFramesGfx.multilanguagedata.players = session_players;
+						this_caption.this_fullFramesGfx.multilanguagedata.team = session_team;
+						this_caption.this_fullFramesGfx.multilanguagedata.dictionary = cricketService.getDictionary();
+						this_caption.this_fullFramesGfx.multilanguagedata.venue = cricketService.getVenues();
+						break;
+					case Constants.TG20:
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.players = session_players;
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.team = session_team;
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.dictionary = cricketService.getDictionary();
+						this_caption.this_fullFramesGfx.this_ALL_FF.multilanguagedata.venue = cricketService.getVenues();
+						break;
+					}
 					
 					this_caption.this_lowerThirdGfx.multilanguagedata.players = session_players;
 					this_caption.this_lowerThirdGfx.multilanguagedata.team = session_team;
