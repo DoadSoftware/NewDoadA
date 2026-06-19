@@ -515,8 +515,20 @@ public class InfobarGfx
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			if(infobar.isPowerplay_on_screen() == false) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay START\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
-						+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$"
+							+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "POWERPLAY", "", null, 
+							0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$English"
+							+ "$txt_PowerPlay*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+							+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+					break;
+				}
 				infobar.setPowerplay_on_screen(true);
 				infobar.setForced_powerplay_out(false);
 			}else {
@@ -1961,8 +1973,19 @@ public class InfobarGfx
 										+ "*GEOM*TEXT SET " + CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
 								break;
 							default:
-								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
-										+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+								switch(config.getBroadcaster()) {
+								case Constants.TG20:
+									CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$"
+											+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
+									foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "POWERPLAY", "", null, 0, foreignLanguageDataList);
+									CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$English"
+											+ "$txt_PowerPlay*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+									break;
+								default:
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+											+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+									break;
+								}
 								break;
 							}
 							
@@ -1982,12 +2005,34 @@ public class InfobarGfx
 				}else {
 					if (infobar.isPowerplay_on_screen() == true) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*PowerPlay CONTINUE REVERSE\0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
-								+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+						switch(config.getBroadcaster()) {
+						case Constants.TG20:
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$"
+									+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
+							foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "POWERPLAY", "", null, 0, foreignLanguageDataList);
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$English"
+									+ "$txt_PowerPlay*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+									+ "*GEOM*TEXT SET POWERPLAY\0", print_writers);
+							break;
+						}
 						infobar.setPowerplay_on_screen(false);
 					}else {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
-								+ "*GEOM*TEXT SET \0", print_writers);
+						switch(config.getBroadcaster()) {
+						case Constants.TG20:
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$"
+									+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
+							foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$English"
+									+ "$txt_PowerPlay*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
+									+ "*GEOM*TEXT SET \0", print_writers);
+							break;
+						}
 					}
 				}
 			}
@@ -2347,11 +2392,11 @@ public class InfobarGfx
 				+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
 			switch(config.getBroadcaster()) {
 			case Constants.TG20:
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$select_Langiage"
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$Overs$select_Langiage"
 						+ "*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
 						(inning.getTotalOvers() == 1 && inning.getTotalBalls() == 0 ? "OVER" : "OVERS"), "", null, 0, foreignLanguageDataList);
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$English$txt_Overs"
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$Overs$English$txt_Overs"
 						+ "*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
 				break;
 			default:
@@ -8680,9 +8725,27 @@ public class InfobarGfx
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Section5$Side" + WhichSide 
 								+ "$Last_Wicket$ScoreGrp$txt_Runs*GEOM*TEXT SET " + battingCard.getRuns() + "\0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Section5$Side" + WhichSide 
-								+ "$Last_Wicket$ScoreGrp$txt_Balls*GEOM*TEXT SET " + battingCard.getBalls() + " BALL" + CricketFunctions.Plural(battingCard.
-										getBalls()).toUpperCase() + "\0", print_writers);
+						
+						switch(config.getBroadcaster()) {
+						case Constants.TG20:
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Section5$Side" + WhichSide + "$Last_Wicket$ScoreGrp$"
+									+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(battingCard.getBalls()), "", 
+									null, 1,foreignLanguageDataList);
+							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "BALL" + CricketFunctions.Plural(battingCard.getBalls()).toUpperCase(), 
+									"", null, 2,foreignLanguageDataList);
+							
+							foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Section5$Side" + WhichSide + "$Last_Wicket$ScoreGrp$"
+									+ "English$txt_Balls*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Section5$Side" + WhichSide 
+									+ "$Last_Wicket$ScoreGrp$txt_Balls*GEOM*TEXT SET " + battingCard.getBalls() + " BALL" + CricketFunctions.Plural(battingCard.
+											getBalls()).toUpperCase() + "\0", print_writers);
+							break;
+						}
+						
 						break;
 					case "BALLS_SINCE_LAST_BOUNDARY":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Section5$Side" + WhichSide 
@@ -10375,9 +10438,26 @@ public class InfobarGfx
 				    	
 				    	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
 								+ "$txt_Runs*GEOM*TEXT SET " + battingCard.getRuns() + "*" + "\0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
-								+ "$txt_Balls*GEOM*TEXT SET " + battingCard.getBalls() + " BALL" + CricketFunctions.Plural(battingCard.getBalls()).toUpperCase() 
-								+ "\0", print_writers);
+				    	
+				    	switch(config.getBroadcaster()) {
+						case Constants.TG20:
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
+									+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata,String.valueOf(battingCard.getBalls()), "", null, 1,foreignLanguageDataList);
+							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "BALL" + CricketFunctions.Plural(battingCard.getBalls()).toUpperCase(), 
+									"", null, 2, foreignLanguageDataList);
+							foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+							
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
+									+ "$English$txt_Balls*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
+									+ "$txt_Balls*GEOM*TEXT SET " + battingCard.getBalls() + " BALL" + CricketFunctions.Plural(battingCard.getBalls()).toUpperCase() 
+									+ "\0", print_writers);
+							break;
+						}
+
 				    	break;
 				    case "BALLMILESTONE":
 				    	switch(config.getBroadcaster()) {
@@ -10416,9 +10496,26 @@ public class InfobarGfx
 				    	
 				    	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
 								+ "$txt_Runs*GEOM*TEXT SET " + bowlingCard.getWickets() + "-" + bowlingCard.getRuns() + "\0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
-								+ "$txt_Balls*GEOM*TEXT SET " + CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()) + 
-								(bowlingCard.getOvers() == 1 && bowlingCard.getBalls() == 0 ? " OVER" : " OVERS") + "\0", print_writers);
+				    	
+				    	switch(config.getBroadcaster()) {
+						case Constants.TG20:
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
+									+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata,CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()), 
+								    "", null, 1,foreignLanguageDataList);
+							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,(bowlingCard.getOvers() == 1 && bowlingCard.getBalls() == 0 ? 
+									"OVER" : "OVERS"), "", null, 2, foreignLanguageDataList);
+							foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+							
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
+									+ "$English$txt_Balls*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Stat_1"
+									+ "$txt_Balls*GEOM*TEXT SET " + CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()) + 
+									(bowlingCard.getOvers() == 1 && bowlingCard.getBalls() == 0 ? " OVER" : " OVERS") + "\0", print_writers);
+							break;
+						}
 				    	break;
 				    }
 				    

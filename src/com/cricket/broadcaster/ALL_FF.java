@@ -3382,7 +3382,6 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$BattingCard$DismissalGrp$Rows*FUNCTION*Grid*num_row SET " + rowId + "\0", print_writers);
 				
-				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 					+ "$BattingCard$BatterGrp$Rows$" + rowId + "*ACTIVE SET 1\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
@@ -3690,6 +3689,23 @@ public class ALL_FF
 						break;
 					}
 				}
+			}
+			
+			if(rowId == 12) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCard$BatterGrp$Rows*FUNCTION*Grid*row_offset SET 22\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCard$DismissalGrp$Rows*FUNCTION*Grid*row_offset SET 22\0", print_writers);
+			}else if(rowId == 13) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCard$BatterGrp$Rows*FUNCTION*Grid*row_offset SET 20\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCard$DismissalGrp$Rows*FUNCTION*Grid*row_offset SET 20\0", print_writers);
+			}else if(rowId == 11) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCard$BatterGrp$Rows*FUNCTION*Grid*row_offset SET 24\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCard$DismissalGrp$Rows*FUNCTION*Grid*row_offset SET 24\0", print_writers);
 			}
 			this.numberOfRows = rowId;
 			break;

@@ -1,9 +1,7 @@
 package com.cricket.controller;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -264,7 +262,7 @@ public class IndexController
 			session_match = new MatchAllData();
 			this_scene = new Scene();
 			this_animation = new Animation(new Infobar());
-			GetVariousDBData("NEW", session_configuration);
+			GetVariousDBData("START_DB", session_configuration);
 						
 			if (select_type == null || select_type.trim().isEmpty() || 
 					select_type.equals(",")) {
@@ -312,9 +310,6 @@ public class IndexController
 			CricketFunctions.getInteractive(session_match, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 
 			headToHead = CricketFunctions.extractHeadToHead(session_match, cricketService, CricketUtil.CRICKET_DIRECTORY);
-			//this_seriesPowerplay = CricketFunctions.PowerPlayTeamThisSeries(session_match, cricket_matches);
-				
-			//past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead, cricketService, session_match, null);
 			session_match.getMatch().setMatchStats(MatchStats);
 			GetVariousDBData("NEW", session_configuration);
 			
@@ -1255,6 +1250,23 @@ public class IndexController
 		case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES:
 		case Constants.MT20: case Constants.TG20:
 			switch (typeOfUpdate) {
+			case "START_DB":
+				session_performance_bug = cricketService.getPerformanceBugs();
+				session_name_super =  cricketService.getNameSupers();
+				session_team =  cricketService.getTeams();
+				session_ground =  cricketService.getGrounds();
+				session_bugs = cricketService.getBugs();
+				session_bugs_everest = cricketService.getEverestBugs();
+				session_infoBarStats = cricketService.getInfobarStats();
+				session_variousText = cricketService.getVariousTexts();
+				session_commentator = cricketService.getCommentator();
+				session_staff = cricketService.getStaff();
+				session_fixture =  CricketFunctions.processAllFixtures(cricketService);
+				session_players = cricketService.getAllPlayer();
+				session_pott = cricketService.getPott();
+				session_playoff = cricketService.getPlayOff();
+				session_statistics = cricketService.getAllStats();
+				break;
 			case "ONLY_DB":
 				session_performance_bug = cricketService.getPerformanceBugs();
 				session_name_super =  cricketService.getNameSupers();
