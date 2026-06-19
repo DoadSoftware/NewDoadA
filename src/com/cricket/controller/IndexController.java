@@ -1307,7 +1307,6 @@ public class IndexController
 				this_caption.this_lowerThirdGfx.Potts = session_pott;
 				this_caption.this_lowerThirdGfx.fixTures = session_fixture;
 				
-				
 				//FullFrames
 				this_caption.this_fullFramesGfx.statistics = session_statistics;
 				this_caption.this_fullFramesGfx.statsTypes = cricketService.getAllStatsType();
@@ -1354,7 +1353,8 @@ public class IndexController
 				break;
 			default:
 				session_statistics = cricketService.getAllStats();
-				//past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead.getH2hPlayer(), cricketService, session_match, null);
+				past_tournament_stats = CricketFunctions.extractTournamentData("PAST_MATCHES_DATA", false, headToHead.getH2hPlayer(), 
+						cricketService, session_match, null);
 				
 				session_performance_bug = cricketService.getPerformanceBugs();
 				session_bugs_everest = cricketService.getEverestBugs();
@@ -1383,17 +1383,15 @@ public class IndexController
 						new InfobarGfx(), new BugsAndMiniGfx(), 1, "", "-", past_tournament_stats,past_tape,session_dls, headToHead.getH2hPlayer(), 
 						past_tournament_stats, cricketService,session_bugs_everest);
 					
-//					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-//							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
-//					
-//					this_caption.this_infobarGfx.previous_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-//							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
-//					
-//					this_caption.this_bugsAndMiniGfx.previous_sixes =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-//							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
-//					
-//					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
-//							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
+					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
+					this_caption.this_infobarGfx.previous_fours = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
+					
+					this_caption.this_bugsAndMiniGfx.previous_sixes =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
+					this_caption.this_bugsAndMiniGfx.previous_fours =  String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
+							headToHead.getH2hPlayer(), session_match, null).getTournament_fours());
 					
 					switch(config.getBroadcaster()) {
 					case Constants.BCCI:
@@ -1516,7 +1514,6 @@ public class IndexController
 					this_caption.this_lowerThirdGfx.Potts = session_pott;
 					this_caption.this_lowerThirdGfx.fixTures = session_fixture;
 					
-					
 					//FullFrames
 					this_caption.this_fullFramesGfx.statistics = session_statistics;
 					this_caption.this_fullFramesGfx.statsTypes = cricketService.getAllStatsType();
@@ -1531,21 +1528,6 @@ public class IndexController
 					this_caption.this_fullFramesGfx.VariousText = session_variousText;
 					this_caption.this_fullFramesGfx.Potts = session_pott;
 					this_caption.this_fullFramesGfx.Playoffs = session_playoff;
-					if(new File(CricketUtil.CRICKET_DIRECTORY + "TeamChanges.txt").exists()) {
-						String text_to_return = "";
-						this_caption.this_fullFramesGfx.TeamChanges.clear();
-						try (BufferedReader br = new BufferedReader(new FileReader(CricketUtil.CRICKET_DIRECTORY + "TeamChanges.txt"))) {
-							while((text_to_return = br.readLine()) != null) {
-								if(text_to_return.contains("|")) {
-									
-								}else {
-									if(text_to_return.contains("H") || text_to_return.contains("A")) {
-										this_caption.this_fullFramesGfx.TeamChanges.add(text_to_return);
-									}
-								}
-							}
-						}
-					}
 					
 					break;
 				}

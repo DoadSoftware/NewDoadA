@@ -9744,13 +9744,17 @@ public class LowerThirdGfx
 		    								+ "$TopLine$img_Text1$" + row_id + "$Name_Grp$English$txt_LastName*GEOM*TEXT SET ",config, Constants.BCCI, print_writers, foreignLanguageData);
 		    						
 		    						if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
+		    							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
+		  	    								+ Constants.TG20_LOCAL_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+		    							
 		  	    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
-		  	    								+ Constants.TG20_LOCAL_PHOTO_PATH
-		  	    								+ "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+		  	    								+ Constants.TG20_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 		  	    					}else {
 		  	    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
-		  	    								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TG20_PHOTO_PATH 
-		  	    								+ "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPhoto()
+		  	    								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TG20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+		  	    						
+		  	    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
+		  	    								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TG20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPhoto()
 		  	    								+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 		  	    					}
 		    					}
@@ -10052,13 +10056,17 @@ public class LowerThirdGfx
 		    								+ "$TopLine$img_Text1$" + row_id + "$Name_Grp$English$txt_LastName*GEOM*TEXT SET ",config, Constants.BCCI, print_writers, foreignLanguageData);
 		    						
 		    						if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
+		    							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
+		  	    								+ Constants.TG20_LOCAL_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+		    							
 		  	    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
-		  	    								+ Constants.TG20_LOCAL_PHOTO_PATH
-		  	    								+ "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPlayer().getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+		  	    								+ Constants.TG20_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 		  	    					}else {
 		  	    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
-		  	    								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TG20_PHOTO_PATH 
-		  	    								+ "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPlayer().getPhoto()
+		  	    								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TG20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+		  	    						
+		  	    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_PlayingXI$Side" + whichSide + "$TopLine$img_Text1$" + row_id + "$Pic$img*TEXTURE*IMAGE SET "
+		  	    								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.TG20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.CENTER + "\\\\" + bc.getPlayer().getPhoto()
 		  	    								+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 		  	    					}
 		    					}

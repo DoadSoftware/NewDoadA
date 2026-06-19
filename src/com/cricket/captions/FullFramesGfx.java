@@ -625,8 +625,10 @@ public class FullFramesGfx
 		this_ALL_FF.WhichProfile = whatToProcess.split(",")[3];
 		System.out.println("this_ALL_FF.WhichProfile = " + this_ALL_FF.WhichProfile);
 		System.out.println("this_ALL_FF.FirstPlayerId = " + this_ALL_FF.FirstPlayerId);
-		if(config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) || config.getBroadcaster().equalsIgnoreCase(Constants.MT20)) {
+		switch(config.getBroadcaster()) {
+		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20:
 			this_ALL_FF.ImageType = whatToProcess.split(",")[4];
+			break;
 		}
 		
 		if(this_ALL_FF.FirstPlayerId <= 0 || this_ALL_FF.WhichProfile == null) {

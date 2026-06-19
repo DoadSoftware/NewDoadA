@@ -1328,19 +1328,19 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch(whatToProcess){
 				case 'Control_d':
 					switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TRI_SERIES': case 'MT20':
+					case 'TRI_SERIES': case 'MT20': case 'TG20':
 						select = document.createElement('select');
 						select.id = 'selectImage';
 						select.name = select.id;
 						
 						option = document.createElement('option');
-						option.value = 'WITH';
-						option.text = 'With Image';
+						option.value = 'WITHOUT';
+						option.text = 'WithOut Image';
 						select.appendChild(option);
 						
 						option = document.createElement('option');
-						option.value = 'WITHOUT';
-						option.text = 'WithOut Image';
+						option.value = 'WITH';
+						option.text = 'With Image';
 						select.appendChild(option);
 						
 						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
@@ -1526,13 +1526,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 						select.name = select.id;
 						
 						option = document.createElement('option');
-						option.value = 'WITH';
-						option.text = 'With Image';
-						select.appendChild(option);
-						
-						option = document.createElement('option');
 						option.value = 'WITHOUT';
 						option.text = 'WithOut Image';
+						select.appendChild(option);
+												
+						option = document.createElement('option');
+						option.value = 'WITH';
+						option.text = 'With Image';
 						select.appendChild(option);
 						
 						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
