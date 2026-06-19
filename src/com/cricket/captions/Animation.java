@@ -75,12 +75,10 @@ public class Animation
 			case "Control_y": case "Control_4": case "Alt_Shift_J": case "Control_Shift_U_change_on": case "Control_Shift_V_change_on": case "5": case ";":
 			case "Control_Shift_*":
 				return Constants.BUGS;
-			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8":
-			case "Control_F6": case "Control_F5": case "Control_F9":
-			case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12":
-			case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
-			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B":
-			case "Control_Shift_O": case "Control_h": case "Control_F3": case "d":	
+			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
+			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
+			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": case "Control_h": case "Control_F3": 
+			case "d":	
 				return Constants.LOWER_THIRD;
 			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7":
 				return Constants.MINIS;	
