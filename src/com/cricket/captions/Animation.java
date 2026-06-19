@@ -145,7 +145,7 @@ public class Animation
 			case "Shift_E":	case "d": case "e": case "Control_h": case "Alt_Shift_F3": case "Control_F3":
 			case "Control_Shift_M":	case "Control_a": case "Control_Shift_F10": case "Control_Shift_B":
 			case "Control_Shift_L":	case "Control_6": case "Control_Shift_O": case "Control_Shift_Q": case "Alt_F1":
-			case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": case "Control_c":
+			case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": case "Control_c": case "l":
 				switch (whatToProcess.split(",")[0]) {
 				case "Alt_F8": case "F8": case "F10": case "j": case "Alt_a": case "Alt_s": // Name super L3rd
 					return Constants.NAME_SUPERS + Constants.LOWER_THIRD;
@@ -1586,7 +1586,7 @@ public class Animation
 			case "F7": case "F11": case "Control_s": case "Control_f": case "F5": case "F6": case "Control_F6": case "Shift_F6":
 			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
 			case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": 
-			case "Control_c":
+			case "Control_c": case "l":
 				
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y*"
@@ -2612,7 +2612,7 @@ public class Animation
 			case "F7": case "F11": case "Control_s": case "Control_f": case "F5": case "F6": case "Control_F6": case "Shift_F6":
 			case "u": case "Shift_F3":	case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
 			case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": 
-			case "Control_c":
+			case "Control_c": case "l":
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "CONTINUE");
 				
 				if(infobar.getInfobar_status() != null) {
@@ -3663,7 +3663,7 @@ public class Animation
 			case "Control_s": case "Control_f": case "u": case "Shift_F3": case "Shift_F5": 
 			case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
 			case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": 
-			case "Control_Shift_K": case "Control_c":
+			case "Control_Shift_K": case "Control_c": case "l":
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Headerband", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Header", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Score_Band", "START");
@@ -4529,7 +4529,7 @@ public class Animation
 			case "Control_s": case "Control_f": case "u": case "Shift_F3": case "Shift_F5": 
 			case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
 			case "Control_Shift_Q":	 case "Alt_F1": case "Alt_F2": case "Control_Shift_X": 
-			case "Control_Shift_K": case "Control_c":
+			case "Control_Shift_K": case "Control_c": case "l":
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Headerband", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Header", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$Score_Band", "SHOW 0.0");
@@ -5901,7 +5901,7 @@ public class Animation
 					case "Alt_Shift_F3": case "F7": case "F11": case "Control_s": case "Control_f": case "F5": case "F6": case "Control_F6": 
 					case "Shift_F6": case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": 
 					case "Control_a": case "Control_Shift_Q": case "Alt_F1": case "Alt_F2": case "Control_Shift_X": case "Control_Shift_K": 
-					case "Control_c":
+					case "Control_c": case "l":
 					
 						previewCommand = "Shrink$InOut 0.400 anim_Lower_Third$InOut 1.500 anim_Lower_Third$InOut$Essentials$In 1.300 "
 								+ "anim_Lower_Third$InOut$Logo$In 1.500 anim_LtChange$HeaderDynamic 0.000";
@@ -5928,7 +5928,7 @@ public class Animation
 					switch(whatToProcess.split(",")[0]) {
 					case "F5": case "F6": case "Control_F6": case "Shift_F6": case "F7": case "F11": case "Control_s": case "Control_f": case "u": case "Shift_F3": 
 					case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a": case "Alt_Shift_F3": case "Control_Shift_Q": case "Alt_F1": case "Alt_F2":
-					case "Control_Shift_X": case "Control_Shift_K": case "Control_c":
+					case "Control_Shift_X": case "Control_Shift_K": case "Control_c": case "l":
 						previewCommand = "anim_LtChange 1.000 anim_LtChange$Headerband 1.000 anim_LtChange$Header 1.000 anim_LtChange$Score_Band 1.000 anim_LtChange$Score 1.000 anim_LtChange$Logo 1.000 anim_LtChange$Subline 1.000 "
 								+ "anim_LtChange$Lt_Position 1.000 anim_LtChange$HeaderDynamic 0.000";
 						break;
