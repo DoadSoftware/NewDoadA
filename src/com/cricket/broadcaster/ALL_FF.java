@@ -3511,51 +3511,104 @@ public class ALL_FF
 										"", multilanguagedata);
 							}
 							
-							System.out.println("English = " + howOut.getEnglishText());
+							foreignLanguageData.clear();
 							foreignLanguageData.add(new ForeignLanguageData(howOut.getEnglishText(), howOut.getHindiText(), howOut.getTamilText(), howOut.getTeluguText()));
-							how_out_txt = CricketFunctions.GetVariousLanguageTextToEachViz(config, Constants.BCCI, print_writers, foreignLanguageData);
 							
-							if(how_out_txt != null && how_out_txt.split("\\|").length >= 4) {
+							System.out.println(foreignLanguageData);
+
+							String englishText = foreignLanguageData.get(0).getEnglishText();
+							String teluguText  = foreignLanguageData.get(0).getTeluguText();
+
+							String[] engParts = (englishText != null && englishText.contains("|")) ? englishText.split("\\|") : new String[] { englishText };
+							String[] telParts = (teluguText != null && teluguText.contains("|")) ? teluguText.split("\\|"): new String[] { teluguText };
+
+							String eng0 = engParts.length > 0 ? engParts[0].trim() : "";
+							String eng1 = engParts.length > 1 ? engParts[1].trim() : "";
+							String eng2 = engParts.length > 2 ? engParts[2].trim() : "";
+							String eng3 = engParts.length > 3 ? engParts[3].trim() : "";
+
+							String tel0 = telParts.length > 0 ? telParts[0].trim() : "";
+							String tel1 = telParts.length > 1 ? telParts[1].trim() : "";
+							String tel2 = telParts.length > 2 ? telParts[2].trim() : "";
+							String tel3 = telParts.length > 3 ? telParts[3].trim() : "";
+							
+							
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" 
+									+ rowId + "$Out$Out$HowOut$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + rowId 
+									+ "$DismissalData*ACTIVE SET 1\0", print_writers);
+
+							if (engParts.length >= 4) {
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[0], "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng0, tel0));
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[1], "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng1, tel1));
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[2], "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng2, tel2));
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[3], "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng3, tel3));
+							}else if(engParts.length == 3) {
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
-								
-							}else if(how_out_txt != null) {
-								
+										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData("", ""));
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng0, tel0));
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt, "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng1, tel1));
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng2, tel2));
+							}else {
+								System.out.println("HELLO");
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
-								
-								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData("", ""));
 								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
-										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData(eng0, tel0));
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData("", ""));
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, CricketFunctions.createLanguageData("", ""));
 							}
+							
+//							if(how_out_txt != null && how_out_txt.split("\\|").length >= 4) {
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[0], "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[1], "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[2], "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt.split("\\|")[3], "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//								
+//							}else if(how_out_txt != null) {
+//								
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.BCCI, print_writers, foreignLanguageOmo);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, how_out_txt, "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_1$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_OutType*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//								
+//								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+//								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCard$DismissalGrp$" + 
+//										rowId + "$Out$Out$HowOut$English$How_Out_2$txt_FielderName*GEOM*TEXT SET ", config, Constants.BCCI, print_writers, foreignLanguageData);
+//							}
 						}
 						break;
 					default:
@@ -10010,11 +10063,11 @@ public class ALL_FF
 							"$Rows$" + rowId + "$NameGrp$NameGrp$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.FIRSTNAME, multilanguagedata, plyr.getFirstname(), "", null, 0, foreignLanguageDataList);
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + i +
-							"$Rows$" + rowId + "$NameGrp$NameGrp$txt_FirstName$txt_Tittle*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+							"$Rows$" + rowId + "$NameGrp$NameGrp$English$txt_FirstName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 					
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.SURNAME, multilanguagedata, plyr.getSurname(), "", null, 0, foreignLanguageDataList);
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + i +
-							"$Rows$" + rowId + "$NameGrp$NameGrp$txt_FirstName$txt_Tittle*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+							"$Rows$" + rowId + "$NameGrp$NameGrp$English$txt_LastName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 					
 					if(plyr.getRole().equalsIgnoreCase("BATSMAN") || plyr.getRole().equalsIgnoreCase("BATTER") || plyr.getRole().equalsIgnoreCase("BAT/KEEPER")) {
 						if(plyr.getBattingStyle().equalsIgnoreCase("LHB")) {

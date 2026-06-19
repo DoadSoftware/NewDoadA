@@ -3639,7 +3639,13 @@ public class LowerThirdGfx
 		case Constants.ACC:
 			match_name = fixture.getTeamgroup();
 			break;
-
+		case Constants.TG20:
+			if(fixture.getMatchnumber() > 9) {
+				match_name = fixture.getMatchfilename();
+			}else {
+				match_name = "MATCH " + fixture.getMatchnumber();
+			}
+			break;
 		default:
 			if(fixture.getMatchnumber() > 9) {
 				match_name = String.valueOf(getOrdinalMatch(fixture.getMatchfilename().replace("MATCH", "")));
