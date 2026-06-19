@@ -224,15 +224,18 @@ function initialiseForm(whatToProcess,dataToProcess)
 						//});
 					}
 				});
-				inn.bowlingCard.forEach(function(boc){
-					if(boc.status == 'CURRENTBOWLER' || boc.status == 'LASTBOWLER'){
-						document.getElementById('bowler_text').innerHTML = boc.player.full_name + ' ' + boc.wickets 
-									+ '-' + boc.runs + ' [' + boc.overs + '.' + boc.balls + ']'+'&emsp;&ensp;';
-						document.getElementById('thisover_text').innerHTML = 'THIS OVER : ' + thisOverArr.map(s => s.replace("WIDE", "WD")
-								.replace("NO_BALL", "NB").replace("LEG_BYE", "LB").replace("BYE", "B").replace("PENALTY", "PN")
-								.replace("LOG_WICKET", "W").replace("WICKET", "W").replace("BOUNDARY", "")).reverse().join(" , ");
-					}
-				});	
+				
+				if(inn.bowlingCard != null){
+					inn.bowlingCard.forEach(function(boc){
+						if(boc.status == 'CURRENTBOWLER' || boc.status == 'LASTBOWLER'){
+							document.getElementById('bowler_text').innerHTML = boc.player.full_name + ' ' + boc.wickets 
+										+ '-' + boc.runs + ' [' + boc.overs + '.' + boc.balls + ']'+'&emsp;&ensp;';
+							document.getElementById('thisover_text').innerHTML = 'THIS OVER : ' + thisOverArr.map(s => s.replace("WIDE", "WD")
+									.replace("NO_BALL", "NB").replace("LEG_BYE", "LB").replace("BYE", "B").replace("PENALTY", "PN")
+									.replace("LOG_WICKET", "W").replace("WICKET", "W").replace("BOUNDARY", "")).reverse().join(" , ");
+						}
+					});	
+				}
 			}
 		});
 		break;
@@ -1385,23 +1388,25 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'Alt_4': case 'Control_e':
 			header_text.innerHTML = 'INFOBAR - BOWLER CAREER';
 			switch($('#selected_broadcaster').val().toUpperCase()){
-			case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20':
+			case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20':
 				select = document.createElement('select');
 				select.id = 'selectPlayerName';
 				select.name = select.id;
 				
 				session_match.match.inning.forEach(function(inn){
 					if(inn.isCurrentInning == 'YES'){
-						inn.bowlingCard.forEach(function(boc){
-							if(boc.status != null){
-								if(boc.status == 'CURRENTBOWLER'){
-									option = document.createElement('option');
-									option.value = boc.player.playerId;
-									option.text = boc.player.full_name;
-									select.appendChild(option);
+						if(inn.bowlingCard != null){
+							inn.bowlingCard.forEach(function(boc){
+								if(boc.status != null){
+									if(boc.status == 'CURRENTBOWLER'){
+										option = document.createElement('option');
+										option.value = boc.player.playerId;
+										option.text = boc.player.full_name;
+										select.appendChild(option);
+									}
 								}
-							}
-						});
+							});
+						}
 						
 						if(inn.bowlingTeamId == session_match.setup.homeTeamId){
 							session_match.setup.homeSquad.forEach(function(hs){
@@ -1444,6 +1449,20 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.name = select.id;
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'TG20':	
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+				switch(whatToProcess){
+					case "Alt_4":
+						option = document.createElement('option');
+						option.value = 'THIS_SERIES';
+						option.text = 'THIS SERIES';
+						select.appendChild(option);
+						break;
+					}
+					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20':
 					
 					option = document.createElement('option');
@@ -1501,7 +1520,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch(whatToProcess){
 				case 'Control_e':
 					switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TRI_SERIES': case 'MT20':
+					case 'TRI_SERIES': case 'MT20': case 'TG20':
 						select = document.createElement('select');
 						select.id = 'selectImage';
 						select.name = select.id;
@@ -2824,17 +2843,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 				session_match.match.inning.forEach(function(inn){
 					if(inn.inningNumber == document.getElementById('which_inning').value){
-						inn.bowlingCard.forEach(function(boc){
-							if(boc.status != null){
-								if(boc.status == 'CURRENTBOWLER'){
-									option = document.createElement('option');
-									option.value = boc.player.playerId;
-									option.text = boc.player.full_name;
-									select.appendChild(option);
+						if(inn.bowlingCard != null){
+							inn.bowlingCard.forEach(function(boc){
+								if(boc.status != null){
+									if(boc.status == 'CURRENTBOWLER'){
+										option = document.createElement('option');
+										option.value = boc.player.playerId;
+										option.text = boc.player.full_name;
+										select.appendChild(option);
+									}
 								}
-							}
-						});
-						
+							});
+						}
 						if(inn.bowlingTeamId == session_match.setup.homeTeamId){
 							session_match.setup.homeSquad.forEach(function(hs){
 								option = document.createElement('option');
@@ -3459,16 +3479,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
-					inn.bowlingCard.forEach(function(boc){
-						if(boc.status != null){
-							if(boc.status == 'CURRENTBOWLER'){
-								option = document.createElement('option');
-								option.value = boc.player.playerId;
-								option.text = boc.player.full_name;
-								select.appendChild(option);
+					if(inn.bowlingCard != null){
+						inn.bowlingCard.forEach(function(boc){
+							if(boc.status != null){
+								if(boc.status == 'CURRENTBOWLER'){
+									option = document.createElement('option');
+									option.value = boc.player.playerId;
+									option.text = boc.player.full_name;
+									select.appendChild(option);
+								}
 							}
-						}
-					});
+						});
+					}
 					
 					if(inn.bowlingTeamId == session_match.setup.homeTeamId){
 						session_match.setup.homeSquad.forEach(function(hs){
@@ -3645,16 +3667,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
-					inn.bowlingCard.forEach(function(boc){
-						if(boc.status != null){
-							if(boc.status == 'CURRENTBOWLER'){
-								option = document.createElement('option');
-								option.value = boc.player.playerId;
-								option.text = boc.player.full_name;
-								select.appendChild(option);
+					if(inn.bowlingCard != null){
+						inn.bowlingCard.forEach(function(boc){
+							if(boc.status != null){
+								if(boc.status == 'CURRENTBOWLER'){
+									option = document.createElement('option');
+									option.value = boc.player.playerId;
+									option.text = boc.player.full_name;
+									select.appendChild(option);
+								}
 							}
-						}
-					});
+						});
+					}
 					
 					if(inn.bowlingTeamId == session_match.setup.homeTeamId){
 						session_match.setup.homeSquad.forEach(function(hs){
@@ -5113,16 +5137,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
-					inn.bowlingCard.forEach(function(boc){
-						if(boc.status != null){
-							if(boc.status == 'CURRENTBOWLER'){
-								option = document.createElement('option');
-								option.value = boc.player.playerId;
-								option.text = boc.player.full_name;
-								select.appendChild(option);
+					if(inn.bowlingCard != null){
+						inn.bowlingCard.forEach(function(boc){
+							if(boc.status != null){
+								if(boc.status == 'CURRENTBOWLER'){
+									option = document.createElement('option');
+									option.value = boc.player.playerId;
+									option.text = boc.player.full_name;
+									select.appendChild(option);
+								}
 							}
-						}
-					});
+						});
+					}
 					
 					if(inn.bowlingTeamId == session_match.setup.homeTeamId){
 						session_match.setup.homeSquad.forEach(function(hs){

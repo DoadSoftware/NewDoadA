@@ -9997,17 +9997,27 @@ public class LowerThirdGfx
 	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
 	    		    							    "", null, 2,foreignLanguageDataList);
 	    		    					  
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,match_name.split(" ")[0],
-	    	  							    "", null, 3,foreignLanguageDataList);
-	    		    					  
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,match_name.split(" ")[1],
-	    		    							    "", null, 4,foreignLanguageDataList);
-	    		    					  	
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
-	    		    							    "", null, 5,foreignLanguageDataList);
-	    		    					  	
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"FROM " + fixture.getVenue(),
-	    		    							    "", null, 6,foreignLanguageDataList);
+	    		    					  	if(match_name.contains("MATCH")){
+	    		    					  		foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,match_name.split(" ")[0],
+	    		    	  							    "", null, 3,foreignLanguageDataList);
+	    		    		    					  
+    		    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,match_name.split(" ")[1],
+    		    		    							    "", null, 4,foreignLanguageDataList);
+    		    		    					  	
+    		    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+    		    		    							    "", null, 5,foreignLanguageDataList);
+    		    		    					  	
+    		    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"FROM " + fixture.getVenue(),
+    		    		    							    "", null, 6,foreignLanguageDataList);
+	    		    					  	}else {
+	    		    					  		foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,match_name,
+	    		    	  							    "", null, 3,foreignLanguageDataList);
+    		    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+    		    		    							    "", null, 4,foreignLanguageDataList);
+    		    		    					  	
+    		    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"FROM " + fixture.getVenue(),
+    		    		    							    "", null, 5,foreignLanguageDataList);
+	    		    					  	}
 	    							}else {
 	    								newDate = fixture.getDate().split("-")[0];
 	    								if(Integer.valueOf(newDate) < 10) {
