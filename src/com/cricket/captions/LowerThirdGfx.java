@@ -2452,7 +2452,7 @@ public class LowerThirdGfx
 					economy = df_b.format(economy_rate);
 				}
 				
-				lowerThird = new LowerThird(player.getFull_name(),team.getTeamName1(), "","THIS TOURNAMENT", "","", 
+				lowerThird = new LowerThird(player.getFull_name(),team.getTeamName1(), "","THIS SEASON", "","", 
 						2, "" ,team.getTeamBadge(),new String[]{"MATCHES","RUNS","S/R","WICKETS","ECONOMY"},
 						new String[]{String.valueOf(tournament.getMatches()), String.format("%,d\n", tournament.getRuns()),
 								bat_sr,String.valueOf(tournament.getWickets()),economy},null,
