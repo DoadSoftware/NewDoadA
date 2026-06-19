@@ -475,7 +475,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Control_Shift_U': case 'Control_Shift_V': case 'Shift_F': case 'Control_Shift_O': case 'Control_Shift_Q':
 			case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K':
-			case 'Shift_T': case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d':
+			case 'Shift_T': case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -959,7 +959,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Control_Shift_*': case 'Alt_F9': case 'Shift_F11': case 'z': case 'x': case 'c': case 'v': case 'Control_z': case 'Control_x':
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
-	case 'Alt_d':
+	case 'Alt_d': case 'r':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -2986,6 +2986,47 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'Alt_0': 
 			header_text.innerHTML = 'FULL INFOBAR SECTION';
 			break;
+		case 'r':
+			header_text.innerHTML = 'Bug Review';
+			
+			select = document.createElement('select');
+			select.id = 'selectTeams';
+			select.name = select.id;
+			session_match.match.inning.forEach(function(inn){
+				if(inn.isCurrentInning == 'YES'){
+					option = document.createElement('option');
+					option.value = inn.battingTeamId;
+					option.text = inn.batting_team.teamName1;
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = inn.bowlingTeamId;
+					option.text = inn.bowling_team.teamName1;
+					select.appendChild(option);
+				}
+			});
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			cellCount = cellCount + 1;
+		
+			select = document.createElement('select');
+			select.id = 'selectType';
+			select.name = select.id;
+			
+			['Original Decision Out','Original Decision Not Out', 'Wide Not Given', 'No-Ball Not Given', 'Wide Given', 
+			 'No-Ball Given', 'Decision Overturned', 'Decision Upheld', 'Review lost', 'Review Retained'].forEach(stat => {
+		        const option = document.createElement('option');
+		        option.value = stat;
+		        option.text = stat
+		        select.appendChild(option);
+		    });
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),1);
+			cellCount = cellCount + 1
+			break;	
 		case 'Alt_d':
 			header_text.innerHTML = 'LT - DLS PAR SCORE';
 		
@@ -5417,7 +5458,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'Control_Shift_*': case 'Alt_F9': case 'Shift_F11': case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': 
 		case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': 
 		case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
-		case 'Alt_d':
+		case 'Alt_d': case 'r':
 			option = document.createElement('input');
 			option.type = 'button';
 			option.name = 'populate_btn';

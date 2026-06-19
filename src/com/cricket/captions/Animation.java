@@ -127,7 +127,7 @@ public class Animation
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_Shift_R": case "Control_Shift_U": case "Control_Shift_V":
 			case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "Alt_p": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J": case "6":
 			case "Control_y": case "Control_4": case "Alt_Shift_J": case "Control_Shift_U_change_on": case "Control_Shift_V_change_on": case "5": case ";":
-			case "Control_Shift_*":	
+			case "Control_Shift_*":	case "r":
 				return Constants.BUGS;
 			case "Shift_F1": case "Shift_F2": case "Alt_F7":
 				return Constants.MINIS;
@@ -1262,6 +1262,10 @@ public class Animation
 				
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+			case "r":
+				processAnimation(Constants.FRONT, print_writers, "Anim_DRS_Bug$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 			case "Control_Shift_*":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Sponsor$Overall_Position_Y*"
@@ -2348,10 +2352,16 @@ public class Animation
 				}
 				this.whichGraphicOnScreen = "";
 				break;	
+				
+			case "r":
+				processAnimation(Constants.FRONT, print_writers, "Anim_DRS_Bug$In_Out", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(800);
+				processAnimation(Constants.FRONT, print_writers, "Anim_DRS_Bug", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+				
 			case "Control_Shift_*":
-				
 				processAnimation(Constants.FRONT, print_writers, "anim_Sponsor", "CONTINUE");
-				
 				this.whichGraphicOnScreen = "";
 				break;	
 			case "Control_Shift_F7":
@@ -3454,6 +3464,11 @@ public class Animation
 //					}
 //				}
 //				break;
+				
+			case "r":
+				processAnimation(Constants.FRONT, print_writers, "DRS_Change", "START");
+				break;
+				
 			case "Control_Shift_F7":
 				caption.this_fullFramesGfx.this_ALL_FF.populateTeamLineUpFooter(print_writers, 2, 
 					whatToProcess.split(",")[0], config, "SHOW-TOSS", matchAllData);
@@ -4365,6 +4380,12 @@ public class Animation
 					break;
 				}
 				break;
+				
+			case "r":
+				processAnimation(Constants.FRONT, print_writers, "DRS_Change", "SHOW 0.0");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
+				
 			case "Control_Shift_F7":
 //				processAnimation(Constants.BACK, print_writers, "Anim_LineUp_Image$In_Out", "SHOW 3");
 //				TimeUnit.MILLISECONDS.sleep(1000);
@@ -4790,6 +4811,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "PopUps", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim__Bug", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim__TossBug", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Anim_DRS_Bug", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "DRS_Change", "SHOW 0.0");
 //				processAnimation(Constants.FRONT, print_writers, "Bug_Change", "SHOW 0.0");
 //				processAnimation(Constants.FRONT, print_writers, "Watermark", "SHOW 0.0");
 				
@@ -6055,6 +6078,10 @@ public class Animation
 						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/gfx_Overlays C:/Temp/Preview.tga "
 									+ "anim_Sponsor$InOut 1.2 anim_Sponsor$InOut$In 0.9\0", print_writer);
 						 break;
+					 case "r":
+						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/gfx_Overlays C:/Temp/Preview.tga "
+									+ "Anim_DRS_Bug$In_Out$In 0.500\0", print_writer);
+						break;
 					}
 					break;
 				}
@@ -6086,7 +6113,11 @@ public class Animation
 					case "Control_Shift_U": case "Control_Shift_V":
 						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/gfx_Overlays C:/Temp/Preview.tga "
 									+ "PopUps$Change 1.000\0", print_writer);
-						 break;	
+						 break;
+					case "r":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/gfx_Overlays C:/Temp/Preview.tga "
+								+ "DRS_Change 0.500\0", print_writer);
+						break;
 					}
 					break;	
 				}

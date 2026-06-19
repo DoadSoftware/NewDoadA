@@ -305,14 +305,10 @@ public class InfobarGfx
 				}
 				
 				if(infobar.isInfobar_on_screen()) {
-//					stats_text = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, 
-//							CricketUtil.FULL, "|", config.getBroadcaster(), false).toUpperCase();
-//					if(stats_text.contains(" " + CricketUtil.BEAT + " ") || stats_text.contains(CricketUtil.TIED) || 
-//							stats_text.contains(" WIN BY ") || stats_text.contains(" WIN THE ")) {
 					this_targetData = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, 
 						CricketUtil.FULL, "|", config.getBroadcaster(), false);
 					if(this_targetData.isMatchFinished() == true) {
-						
+						System.out.println("HELLO");
 						this.infobar.setResult_on_screen(true);
 						this.infobar.setFreeText(Arrays.asList(this_targetData.getTargetOrResult().split("\\|")));
 						populateInfoBarResult(print_writers, matchAllData);
@@ -1516,6 +1512,9 @@ public class InfobarGfx
 			matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 			teluguMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
 					multilanguagedata).getTeluguText().toUpperCase();
+			
+			System.out.println("matchResult - " + matchResult);
+			System.out.println("teluguMatchResult - " + teluguMatchResult);
 			
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataPart$BottomPart$Text$SubTitle$select_Language"
 					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);

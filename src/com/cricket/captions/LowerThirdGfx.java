@@ -10241,20 +10241,21 @@ public class LowerThirdGfx
 	    								date_data = newDate + dateSuffix[Integer.valueOf(newDate)] + " " + 
 	    										Month.of(Integer.valueOf(fixture.getDate().split("-")[1]));
 	    								
-	    								foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,date_data,
+	    								foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, newDate + dateSuffix[Integer.valueOf(newDate)],
 		    	  							    "", null, 1,foreignLanguageDataList);
+	    								foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(Month.of(Integer.
+	    										valueOf(fixture.getDate().split("-")[1]))),"", null, 2,foreignLanguageDataList);
 		    	  						
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
-	    		    							    "", null, 2,foreignLanguageDataList);
+	    		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-","", null, 3,foreignLanguageDataList);
 	    		    					  
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime(),
-	    	  							    "", null, 3,foreignLanguageDataList);
+	    		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime(),
+	    	  							    "", null, 4,foreignLanguageDataList);
 	    		    					  	
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
-	    		    							    "", null, 4,foreignLanguageDataList);
-	    		    					  	
-	    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
-	    		    							    "", null, 5,foreignLanguageDataList);
+    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
+    		    							    "", null, 5,foreignLanguageDataList);
+    		    					  	
+    		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
+    		    							    "", null, 6,foreignLanguageDataList);
 	    							}
 	    						}
 	    						

@@ -521,6 +521,9 @@ public class Caption
 			case "Alt_p":
 				status = this_bugsAndMiniGfx.bugsToss(whatToProcess,matchAllData,whichSide);
 				break;
+			case "r":
+				status = this_bugsAndMiniGfx.populateBugReview(whatToProcess, whichSide, matchAllData);
+				break;
 			case "Control_Shift_U_change_on": case "Control_Shift_V_change_on":
 				status = this_bugsAndMiniGfx.populatePopupChangeOn(whatToProcess, whichSide, matchAllData);
 				break;
