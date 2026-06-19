@@ -5746,7 +5746,7 @@ public class Animation
 								+ "Change_LineUp_Image$Main$Change_Out 0.38 Change_LineUp_Image$Main$Change_In 0.74 Change_LineUp_Image$Footer 0.5";
 						break;
 					case "F1": case "F2": case "F4": case "Control_F11":
-						previewCommand = "Change$Big_Logo 1.5 Change$SideTeamColour 0.5 Change$Title 0.8 Change$TitleBase 0.8 Change$SubTitle 0.8 Change$Logo 0.8 "
+						previewCommand = "Change$Big_Logo 1.5 Change$SideTeamColour 0.5 Change$Title 0.8 Change$TitleBase 0.8 Change$Logo 0.8 "
 								+ "Change$Footer 0.98 Change$Footer$Change_Out 0.5 Change$Footer$Change_In 0.98 ";
 						previewCommand = previewCommand + " BaseDynamic 1.4 BaseScaleForFooter 1.0 ";
 						break;

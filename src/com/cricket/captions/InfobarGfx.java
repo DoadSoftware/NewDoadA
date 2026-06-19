@@ -11038,8 +11038,9 @@ public class InfobarGfx
 						return "populateSectionAnalytics: This over data returned invalid";
 					}
 					
-					String[] plyrelements = Arrays.stream(this_data_str.get(this_data_str.size() - 1).split(","))
-						    .map(String::trim).filter(s -> !s.isEmpty()).toArray(String[]::new);
+					String[] plyrelements = Arrays.stream(String.join(",", this_data_str).split(","))
+						    .map(String::trim).filter(s -> !s.isEmpty()).limit(12)   // keep first 12 elements
+						    .toArray(String[]::new);
 					
 					if (plyrelements.length > 12) {
 						plyrelements = Arrays.copyOfRange(plyrelements, plyrelements.length - 12, plyrelements.length);

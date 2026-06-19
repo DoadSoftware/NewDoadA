@@ -562,17 +562,17 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$EventLogoAll$EventLogo*TEXTURE*IMAGE SET " + 
-						logoPath + "EVENT" + "\0", print_writers);
+						logoPath + "EVENT_White" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
@@ -603,17 +603,17 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$EventLogoAll$EventLogo*TEXTURE*IMAGE SET " + 
-						logoPath + "EVENT" + "\0", print_writers);
+						logoPath + "EVENT_White" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$SideColourBands$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
@@ -637,7 +637,7 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$SideColourBands$Side" + WhichSide + "$img_Base1"
 						+ "*TEXTURE*IMAGE SET " + base1Path + team.getTeamBadge() + "\0", print_writers);
@@ -666,14 +666,14 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPath + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPath + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				break;
 			case "Shift_F10":
 				String which_logo_color ="";
@@ -698,14 +698,14 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + which_logo_color + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + which_logo_color + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				break;
 				
 			case "F1": case "F4": case "Shift_K": case "Control_F10": case "Alt_F9": case "Control_F1": case "Alt_Shift_F1":
@@ -732,7 +732,7 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				break;
 			case "F2": case "Control_Shift_F5":
@@ -762,21 +762,17 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				break;
 			case "Shift_D":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_1$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_1$"
-						+ "img_Base2*TEXTURE*IMAGE SET " + 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_2$"
-						+ "img_Base1*TEXTURE*IMAGE SET " + 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_2$"
-						+ "img_Base2*TEXTURE*IMAGE SET " + 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$SideColourBands$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$In$Team_1$img_Base1*TEXTURE*IMAGE SET " + 
@@ -798,14 +794,14 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_1$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_1$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_2$img_Base1*TEXTURE*IMAGE SET " + 
 						base1Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_2$img_Base2*TEXTURE*IMAGE SET " + 
 						base2Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$WipeFinal$Out$Team_2$img_Logos_BW*TEXTURE*IMAGE SET " + 
-						logoPathBW + "EVENT" + "\0", print_writers);
+						logoPathBW + "EVENT_White" + "\0", print_writers);
 				break;
 			case "Control_Shift_F7":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$SideColourBands$"
@@ -1780,8 +1776,8 @@ public class ALL_FF
 							+ "$Side" + WhichSide + "$LeaderBoard$SubTitle$txt_SubTitle*GEOM*TEXT SET MINIMUM 5 OVERS BOWLED\0", print_writers);
 					break;	
 				}
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + 
-						"$img_Logos_BW*TEXTURE*IMAGE SET " + (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + "$img_Logos_BW*TEXTURE*IMAGE SET " 
+						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO_BW : Constants.MT20_LOGO_BW) + "EVENT" + "\0", print_writers);
 				
 				break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
@@ -1798,8 +1794,8 @@ public class ALL_FF
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$TitleGrp$Title$Side" + WhichSide 
 						+ "$English$txt_LastName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 				
-//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
-//						logoPath + "EVENT" + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$EventLogo$Event_Logo*TEXTURE*IMAGE SET " + 
+						logoPath + "EVENT_White" + "\0", print_writers);
 				
 //				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
 //						matchAllData.getSetup().getTournament(), "", null, 0, foreignLanguageDataList);
@@ -1894,7 +1890,7 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
 						+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + logoPath + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + 
-						"$img_Logos_BW*TEXTURE*IMAGE SET " + logoPathBW + "EVENT" + "\0", print_writers);
+						"$img_Logos_BW*TEXTURE*IMAGE SET " + logoPathBW + "EVENT_White" + "\0", print_writers);
 				break;
 			case "Shift_F10":
 				
@@ -1931,14 +1927,12 @@ public class ALL_FF
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$Text"
 							+ "$English$txt_Title*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 					
-					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TitleGrp"
 							+ "$select_TitleType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TitleGrp$select_TitleType$NormalTitle$Text"
 							+ "$Side" + WhichSide + "$English$select_HeaderStyle*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TitleGrp$select_TitleType$NormalTitle$Text"
 							+ "$Side" + WhichSide + "$Telugu$select_HeaderStyle*FUNCTION*Omo*vis_con SET 1\0", print_writers);
-					
 					
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TitleGrp$NormalTitle$Text$Side" + WhichSide
 							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
@@ -1964,7 +1958,7 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$LogoGrp$Logo"
 							+ "$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET " + logoPath + "EVENT" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + 
-							"$img_Logos_BW*TEXTURE*IMAGE SET " + logoPathBW + "EVENT" + "\0", print_writers);
+							"$img_Logos_BW*TEXTURE*IMAGE SET " + logoPathBW + "EVENT_White" + "\0", print_writers);
 				}
 				break;
 				
