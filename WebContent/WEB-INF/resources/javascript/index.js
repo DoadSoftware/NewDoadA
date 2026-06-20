@@ -4567,6 +4567,26 @@ function addItemsToList(whatToProcess,dataToProcess)
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1;
+			
+			select = document.createElement('select');
+			select.id = 'selectsponsor';
+			select.name = select.id;
+			
+			header_text.innerHTML = 'BAT POP UP';
+			option = document.createElement('option');
+			option.value = 'without';
+			option.text = 'without sponsor';
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = 'with';
+			option.text = 'with sponsor';
+			select.appendChild(option);
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),2);
+			cellCount = cellCount + 1;
 			break;
 		case 'Control_Shift_V':
 			
@@ -4624,6 +4644,26 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
+			cellCount = cellCount + 1;
+			
+			select = document.createElement('select');
+			select.id = 'selectsponsor';
+			select.name = select.id;
+			
+			header_text.innerHTML = 'BAT POP UP';
+			option = document.createElement('option');
+			option.value = 'without';
+			option.text = 'without sponsor';
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = 'with';
+			option.text = 'with sponsor';
+			select.appendChild(option);
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),2);
 			cellCount = cellCount + 1;
 			break;
 		case 'Shift_F':

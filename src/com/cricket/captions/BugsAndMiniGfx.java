@@ -2429,6 +2429,8 @@ public class BugsAndMiniGfx
 							config, Constants.TG20, print_writers, foreignLanguageData);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$Sponsor$Base*TEXTURE*IMAGE SET "
+							+ Constants.TG20_SPONSOR + "SREENIDHI" + "\0", print_writers);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Base2*TEXTURE*IMAGE SET " + base2Path  + "EVENT" +"\0", print_writers);
@@ -2474,7 +2476,9 @@ public class BugsAndMiniGfx
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$English$txt_Header*GEOM*TEXT SET ", 
 							config, Constants.TG20, print_writers, foreignLanguageData);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$Sponsor$Base*TEXTURE*IMAGE SET "
+							+ Constants.TG20_SPONSOR + "GMR_MAIN" + "\0", print_writers);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Base2*TEXTURE*IMAGE SET " + base2Path  + "EVENT" +"\0", print_writers);
@@ -2521,6 +2525,27 @@ public class BugsAndMiniGfx
 							"", null, 0, foreignLanguageDataList);
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$Text$English$txt_Header*GEOM*TEXT SET ", 
 							config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					switch (whatToProcess.split(",")[4].toUpperCase()) {
+					case "WITHOUT":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$POP_UP$band$select_Sponsor"
+								+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+						break;
+					case "WITH":
+						switch (whatToProcess.split(",")[3].toUpperCase()) {
+						case "STRIKERATE":
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$POP_UP$band$select_Sponsor"
+									+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$Sponsor$Base*TEXTURE*IMAGE SET "
+									+ Constants.TG20_SPONSOR + "CREADAI_MAIN" + "\0", print_writers);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$POP_UP$band$select_Sponsor"
+									+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+							break;
+						}
+						break;
+					}
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$Base*TEXTURE*IMAGE SET " + base1Path + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
@@ -2650,6 +2675,27 @@ public class BugsAndMiniGfx
 							"", null, 0, foreignLanguageDataList);
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$Text$English$txt_Header*GEOM*TEXT SET ", 
 							config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					switch (whatToProcess.split(",")[4].toUpperCase()) {
+					case "WITHOUT":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$POP_UP$band$select_Sponsor"
+								+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+						break;
+					case "WITH":
+						switch (whatToProcess.split(",")[3].toUpperCase()) {
+						case "FIGURE":
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$POP_UP$band$select_Sponsor"
+									+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$Sponsor$Base*TEXTURE*IMAGE SET "
+									+ Constants.TG20_SPONSOR + "CREADAI_MAIN" + "\0", print_writers);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$POP_UP$band$select_Sponsor"
+									+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+							break;
+						}
+						break;
+					}
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$Base*TEXTURE*IMAGE SET " + base1Path + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
