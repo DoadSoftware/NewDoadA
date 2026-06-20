@@ -3,7 +3,9 @@ package com.cricket.captions;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import jakarta.xml.bind.JAXBContext;
@@ -765,6 +767,49 @@ public class FullFramesGfx
 			return status;
 		}
 	}
+	
+	public String populateDoubleMatchIDAndPromo(int WhichSide, String whatToProcess, MatchAllData matchAllData) throws Exception
+	{
+		Calendar cal = Calendar.getInstance();
+		String Date = "";
+		this_ALL_FF.WhichStyle = whatToProcess.split(",")[2];
+		
+		if (whatToProcess.split(",")[2].toUpperCase().equalsIgnoreCase("TODAY")) {
+			Date = new SimpleDateFormat("dd-MM-yyyy").format(cal.getTime());
+			
+		} else if (whatToProcess.split(",")[2].toUpperCase().equalsIgnoreCase("TOMORROW")) {
+			cal.add(Calendar.DATE, +1);
+			Date = new SimpleDateFormat("dd-MM-yyyy").format(cal.getTime());
+			
+		} else if (whatToProcess.split(",")[2].toUpperCase().equalsIgnoreCase("DAY_AFTER_TOMORROW")) {
+			cal.add(Calendar.DATE, +2);
+			Date = new SimpleDateFormat("dd-MM-yyyy").format(cal.getTime());
+		}
+		this_ALL_FF.FixturesList.clear();
+		for(Fixture fixture : fixTures) {
+			if(fixture.getDate().equalsIgnoreCase(Date)) {
+				this_ALL_FF.FixturesList.add(fixture);
+			}
+		}
+		
+		System.out.println("whatToProcess1 - " + whatToProcess);
+		
+		if(this_ALL_FF.FixturesList == null) {
+			return "populateDoubleMatchIDAndPromo : FixturesList is returning NULL";
+		}
+		status = PopulateFfHeader(WhichSide, whatToProcess.split(",")[0], matchAllData, 0);
+		System.out.println("status - " + status);
+		if(status == Constants.OK) {
+			status = PopulateFfBody(WhichSide, whatToProcess.split(",")[0], matchAllData, 0);
+			if(status == Constants.OK) {
+				return PopulateFfFooter(WhichSide, whatToProcess.split(",")[0], matchAllData, 0);
+			} else {
+				return status;
+			}
+		} else {
+			return status;
+		}
+	}
 
 	public String PopulateDoubleTeams(int WhichSide, String whatToProcess,MatchAllData matchAllData) throws Exception
 	{
@@ -1254,6 +1299,8 @@ public class FullFramesGfx
 			default:
 				return this_ALL_FF.MatchIdentAndPromoBody(print_writers, whatToProcess,WhichSide, matchAllData, config); 
 			}
+		case "Control_Shift_D":
+			return this_ALL_FF.DoubleMatchIdentAndPromoBody(print_writers, whatToProcess,WhichSide, matchAllData, config); 
 		case "Control_d": case "Control_e":
 			return this_ALL_FF.PlayerProfileBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Control_F7":
@@ -1294,7 +1341,7 @@ public class FullFramesGfx
 		case "Shift_K": case "Control_F10": case "Shift_F10": case "Shift_D": case "Control_Shift_F7": case "Alt_F9": case "Alt_F11":
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
-		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1":
+		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
@@ -1310,7 +1357,7 @@ public class FullFramesGfx
 		case "F1": case "F2": case "F4": case "Control_F11": case "m": case "Control_d": case "Control_e": case "Control_m": case "Control_F7":
 		case "Shift_K": case "Control_F10": case "Shift_F10": case "Control_Shift_F7": case "Alt_F9": case "Alt_F11": case "Control_F1":
 		case "Shift_F11": case "Control_Alt_F1": case "Alt_Shift_F1": case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5":
-		case "Shift_T": case "Control_Shift_F1":
+		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateFooter(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 

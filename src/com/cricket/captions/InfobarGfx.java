@@ -3172,6 +3172,9 @@ public class InfobarGfx
 			this_data_str.add(CricketFunctions.hundredsTensUnitsTeamScore(String.valueOf(battingCardList.get(WhichBatsman - 1).getBalls())));
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$BatsmanGrp_" + WhichBatsman + "$Side" + WhichSide 
+					+ "$ScoreGrp$Runs$Hundreths*ACTIVE SET 1\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$BatsmanGrp_" + WhichBatsman + "$Side" + WhichSide 
 					+ "$ScoreGrp$Runs$Hundreths$Side1$txt_Runs*GEOM*TEXT SET " + this_data_str.get(0).split(",")[0] + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$BatsmanGrp_" + WhichBatsman + "$Side" + WhichSide 
 					+ "$ScoreGrp$Runs$Tenths$Side1$txt_Runs*GEOM*TEXT SET " + this_data_str.get(0).split(",")[1] + "\0", print_writers);

@@ -234,6 +234,9 @@ public class Caption
 			case "Control_d": case "Control_e":
 				status = this_fullFramesGfx.populatePlayerProfile(whichSide, whatToProcess, matchAllData, 0);
 				break;
+			case "Control_Shift_D":
+				status = this_fullFramesGfx.populateDoubleMatchIDAndPromo(whichSide, whatToProcess, matchAllData);
+				break;
 			case "Control_m": //MATCH PROMO
 				status = this_fullFramesGfx.populateFFMatchPromo(whichSide, whatToProcess,matchAllData);
 				break;
@@ -323,6 +326,27 @@ public class Caption
 				
 			case "Alt_e":
 				status = this_infobarGfx.powerplay(print_writers, matchAllData);
+				break;
+				
+			case "7":
+				System.out.println("coming here in caption");
+				this_scene = new Scene();
+				this_scene.LoadScene("FieldPlotter", print_writers, config);
+				
+				status = this_infobarGfx.populateFieldPlotter(print_writers, matchAllData);
+				break;	
+			case "Alt_Shift_Q":
+				this_scene = new Scene();
+				this_scene.LoadScene("LOF_PLOTTER", print_writers, config);
+				this_infobarGfx.containerName = "m";
+//				if(config.getBroadcaster().equalsIgnoreCase(Constants.MPL)||
+//						config.getBroadcaster().equalsIgnoreCase(Constants.NPL)||
+//						config.getBroadcaster().equalsIgnoreCase(Constants.LEGENDS) ||
+//						config.getBroadcaster().equalsIgnoreCase(Constants.BENGAL_T20)) {
+//					this_infobarGfx.containerName = " " + whatToProcess.split(",")[2];	
+//				}
+				
+				status = this_infobarGfx.populateLofDimension(print_writers, matchAllData);
 				break;
 				
 			case "Control_F12":
@@ -563,18 +587,7 @@ public class Caption
 			case "Shift_C":
 				status = this_bugsAndMiniGfx.populateBugSixDistance(whatToProcess,matchAllData,whichSide);
 				break;
-			case "Alt_Shift_Q":
-				this_scene = new Scene();
-				this_scene.LoadScene("LOF_PLOTTER", print_writers, config);
-				this_infobarGfx.containerName = "m";
-//				if(config.getBroadcaster().equalsIgnoreCase(Constants.MPL)||
-//						config.getBroadcaster().equalsIgnoreCase(Constants.NPL)||
-//						config.getBroadcaster().equalsIgnoreCase(Constants.LEGENDS) ||
-//						config.getBroadcaster().equalsIgnoreCase(Constants.BENGAL_T20)) {
-//					this_infobarGfx.containerName = " " + whatToProcess.split(",")[2];	
-//				}
-				status = this_infobarGfx.populateLofDimension(print_writers, matchAllData);
-				break;	
+				
 			case "Alt_1":
 				this_infobarGfx.infobar.setSection1(whatToProcess.split(",")[2]);
 				switch (config.getBroadcaster().toUpperCase()) {

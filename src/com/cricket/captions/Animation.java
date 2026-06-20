@@ -125,7 +125,7 @@ public class Animation
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_Shift_R": case "Control_Shift_U": case "Control_Shift_V":
 			case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "Alt_p": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J": case "6":
 			case "Control_y": case "Control_4": case "Alt_Shift_J": case "Control_Shift_U_change_on": case "Control_Shift_V_change_on": case "5": case ";":
-			case "Control_Shift_*":	case "r":
+			case "Control_Shift_*":	case "r": case "7": case "Alt_Shift_Q":
 				return Constants.BUGS;
 			case "Shift_F1": case "Shift_F2": case "Alt_F7":
 				return Constants.MINIS;
@@ -135,7 +135,7 @@ public class Animation
 			case "Control_Shift_F1": case "Control_Shift_F2": case "Shift_D": case "Control_Shift_F7": case "F4": case "Alt_F9": case "Alt_F11":
 			case "Control_F10": case "Shift_F10": case "Shift_K": case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1":
 			case "Alt_Shift_F1": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": 
-			case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_P": case "Shift_Q":
+			case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_P": case "Shift_Q": case "Control_Shift_D":
 				return Constants.FULL_FRAMER;	
 			case "F5": case "F6": case "F7": case "F8": case "F9": case "F10": case "F11": case "Alt_F8":
 			case "Control_s": case "Control_f": case "Control_F6": case "Control_F5": case "Control_F9":
@@ -1038,6 +1038,22 @@ public class Animation
 			break;
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess.split(",")[0]) {
+			case "7":
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.MIDDLE, print_writers, "sfx_In", "START");
+				}
+				processAnimation(Constants.MIDDLE, print_writers, "Plotter", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				caption.this_infobarGfx.infobar.setFieldPlotter_on_screen(true);
+				break;
+			case "Alt_Shift_Q":
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.MIDDLE, print_writers, "sfx_In", "START");
+				}
+				processAnimation(Constants.MIDDLE, print_writers, "Plotter", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				caption.this_infobarGfx.infobar.setFieldPlotter_on_screen(true);
+				break;
 			case "ArrowUp":
 				if(this.infobar.isInfobar_on_screen() == true && this.infobar.isInfobar_pushed()) {
 					processAnimation(Constants.FRONT, print_writers, "Push", "CONTINUE REVERSE");
@@ -1306,6 +1322,19 @@ public class Animation
 				lineUpCount = 0;
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+				
+			case "Control_Shift_D":
+				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+				TimeUnit.MILLISECONDS.sleep(500);
+				processAnimation(Constants.BACK, print_writers, "Loop", "START");
+				
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				processAnimation(Constants.BACK, print_writers, "anim_IdentDouble$in_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
+				
 			case "Control_Alt_F1":
 				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
 					processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
@@ -2268,6 +2297,16 @@ public class Animation
 			break;
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 			switch (whatToProcess.split(",")[0]) {
+			case "7":
+				processAnimation(Constants.MIDDLE, print_writers, "Plotter", "CONTINUE");
+				this.whichGraphicOnScreen = "";
+				caption.this_infobarGfx.infobar.setFieldPlotter_on_screen(false);
+				break;
+			case "Alt_Shift_Q":
+				processAnimation(Constants.MIDDLE, print_writers, "Plotter", "CONTINUE");
+				this.whichGraphicOnScreen = "";
+				caption.this_infobarGfx.infobar.setFieldPlotter_on_screen(false);
+				break;
 			case "Control_F12": case "F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_Infobar$InOut$Essencials", "CONTINUE");
 				
@@ -2399,6 +2438,17 @@ public class Animation
 				} else {
 					processAnimation(Constants.BACK, print_writers, "Anim_LineUp_Image$In_Out", "CONTINUE");
 				}
+				TimeUnit.MILLISECONDS.sleep(1000);
+				AnimateIn("ArrowUp,", print_writers, config); // Restore infobar
+				TimeUnit.MILLISECONDS.sleep(1000);
+				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+					processAnimation(Constants.FRONT, print_writers, "Watermark", "START");
+				}
+				this.whichGraphicOnScreen = "";
+				break;
+				
+			case "Control_Shift_D":
+				processAnimation(Constants.BACK, print_writers, "anim_IdentDouble$in_Out", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(1000);
 				AnimateIn("ArrowUp,", print_writers, config); // Restore infobar
 				TimeUnit.MILLISECONDS.sleep(1000);
@@ -4819,6 +4869,9 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "PlayerHighlight", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "Sponsor", "SHOW 0.0");
 			
+			processAnimation(Constants.BACK, print_writers, "anim_Target", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "anim_IdentDouble", "SHOW 0.0");
+			
 			if(whatToProcess.contains("CLEAR-ALL")) {
 				processAnimation(Constants.FRONT, print_writers, "anim_Infobar", "SHOW 0.0");
 				
@@ -5301,6 +5354,9 @@ public class Animation
 					}
 					
 					switch(whatToProcess.split(",")[0]) {
+					case "Control_Shift_D":
+						previewCommand = previewCommand + " anim_IdentDouble$in_Out$In 1.800";
+						break;
 					case "Control_Alt_F1":
 						previewCommand = previewCommand + " Anim_FullFrames$In_Out$Main$Batting_Card 3 "
 								+ "Anim_FullFrames$In_Out$Main$Batting_Card$BatterBase 3 Anim_FullFrames$In_Out$Main$Batting_Card$BatterBase$In 1.2 "
@@ -6089,6 +6145,14 @@ public class Animation
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 								+ "Shrink$InOut 0.400 anim__Bug 0.720 anim__Bug$In_Out 0.720 anim__Bug$In_Out$Bug_In 0.720\0", print_writer);
+						break;
+					case "7":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/FieldPlotter C:/Temp/Preview.tga "
+								+ "Plotter 1.000 \0", print_writer);
+						break;
+					case "Alt_Shift_Q":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/FieldDimesnsion C:/Temp/Preview.tga "
+								+ "Plotter 1.000 \0", print_writer);
 						break;
 					case "Alt_p":
 						switch(config.getBroadcaster()) {
