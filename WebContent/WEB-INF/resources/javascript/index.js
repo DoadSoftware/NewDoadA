@@ -955,7 +955,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Control_Shift_*': case 'Alt_F9': case 'Shift_F11': case 'z': case 'x': case 'c': case 'v': case 'Control_z': case 'Control_x':
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
-	case 'Alt_d': case 'r': case 'Control_Shift_D':
+	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -974,6 +974,25 @@ function addItemsToList(whatToProcess,dataToProcess)
 		row = tbody.insertRow(tbody.rows.length);
 		
 		switch(whatToProcess) {
+		case 'Alt_z':
+			header_text.innerHTML = 'SQUAD';
+			
+			select = document.createElement('select');
+			select.id = 'selectTeams';
+			select.name = select.id;
+			
+			dataToProcess.forEach(function(teams){
+				option = document.createElement('option');
+				option.value = teams.teamId;
+				option.text = teams.teamName1;
+				select.appendChild(option);
+			});
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			cellCount = cellCount + 1;
+			break;
 		case 'Shift_!':
 			header_text.innerHTML = 'PLAYER CAREER STATS';
 			
@@ -1887,6 +1906,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		                        //addOption('EQUATION', 'Equation');
 		                        addOption('TARGET', 'Target');
 		                        addOption('RRR', 'Required Rate');
+								addOption('DLS_PAR_SCORE', 'DLS Par Score');
 		                    }
 		                }
 		            });
@@ -1968,8 +1988,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 					break;
 				}
 				
-				
-				
 				option = document.createElement('option');
 				option.value = 'CRR';
 				option.text = 'Run Rate';
@@ -1979,8 +1997,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 				option.value = 'CURR_PARTNERSHIP';
 				option.text = 'Current Partnership';
 				select.appendChild(option);
-				
-				
 				
 				session_match.match.inning.forEach(function(inn){
 					if(inn.isCurrentInning == 'YES'){
@@ -5183,13 +5199,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			option = document.createElement('option');
-			option.value = 'WITH';
-			option.text = 'With Image';
+			option.value = 'WITHOUT';
+			option.text = 'WithOut Image';
 			select.appendChild(option);
 			
 			option = document.createElement('option');
-			option.value = 'WITHOUT';
-			option.text = 'WithOut Image';
+			option.value = 'WITH';
+			option.text = 'With Image';
 			select.appendChild(option);
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
@@ -5280,13 +5296,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			option = document.createElement('option');
-			option.value = 'WITH';
-			option.text = 'With Image';
+			option.value = 'WITHOUT';
+			option.text = 'WithOut Image';
 			select.appendChild(option);
 			
 			option = document.createElement('option');
-			option.value = 'WITHOUT';
-			option.text = 'WithOut Image';
+			option.value = 'WITH';
+			option.text = 'With Image';
 			select.appendChild(option);
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
@@ -5487,7 +5503,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'Control_Shift_*': case 'Alt_F9': case 'Shift_F11': case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': 
 		case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': 
 		case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
-		case 'Alt_d': case 'r': case 'Control_Shift_D':
+		case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z':
 			option = document.createElement('input');
 			option.type = 'button';
 			option.name = 'populate_btn';

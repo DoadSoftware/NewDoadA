@@ -265,6 +265,9 @@ public class Caption
 				status = this_fullFramesGfx.populateSecondPlayingXI(whichSide, whatToProcess.split(",")[0],
 					Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
 				break;
+			case "Alt_z": //Squad
+				status = this_fullFramesGfx.populateSquad(whichSide, whatToProcess.split(",")[0], Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
+				break;	
 			case "Alt_F9": // Single Teams Career
 				status = this_fullFramesGfx.populateSingleTeamsCareer(whichSide, whatToProcess, matchAllData, 0);
 				break;
@@ -329,10 +332,8 @@ public class Caption
 				break;
 				
 			case "7":
-				System.out.println("coming here in caption");
 				this_scene = new Scene();
-				this_scene.LoadScene("FieldPlotter", print_writers, config);
-				
+				this_scene.LoadScene("PLOTTER", print_writers, config);
 				status = this_infobarGfx.populateFieldPlotter(print_writers, matchAllData);
 				break;	
 			case "Alt_Shift_Q":

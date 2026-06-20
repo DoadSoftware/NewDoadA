@@ -1096,6 +1096,8 @@ public class IndexController
 			break;
 		case "k": case "Shift_Y":
 			return (List<T>) session_bugs;
+		case "Alt_z": 
+			return (List<T>) session_team;
 		case "F10": 
 		    return (List<T>) session_name_super;
 		case "Control_Shift_*":

@@ -155,6 +155,36 @@ public class FullFramesGfx
 		this_ALL_FF.foreignLanguageData.add(new ForeignLanguageData("", "", "", ""));
 		this_ALL_FF.foreignLanguageOmo.add(new ForeignLanguageData("0", "2", "3", "1"));
 	}
+	
+	public String populateSquad(int WhichSide, String whatToProcess,int teamId, MatchAllData matchAllData, int WhichInning) throws Exception
+	{
+		this_ALL_FF.team = Teams.stream().filter(tm -> tm.getTeamId() == teamId).findAny().orElse(null);
+		
+		this_ALL_FF.PlayingXI = new ArrayList<Player>();
+		for (Player plyr : Players) {
+			if (plyr.getTeamId() == this_ALL_FF.team.getTeamId() && plyr.getSquad() != null 
+					&& plyr.getSquad().equalsIgnoreCase("yes")) {
+				this_ALL_FF.PlayingXI.add(plyr);
+			}
+		}
+		
+		if(this_ALL_FF.PlayingXI == null) {
+			return "populateSquad squad is NULL";
+		}
+		
+		status = PopulateFfHeader(WhichSide, whatToProcess, matchAllData, WhichInning);
+		if(status == Constants.OK) {
+			status = PopulateFfBody(WhichSide, whatToProcess, matchAllData, WhichInning);
+			if(status == Constants.OK) {
+				this.numberOfRows = 11;
+				return PopulateFfFooter(WhichSide, whatToProcess, matchAllData, WhichInning);
+			} else {
+				return status;
+			}
+		} else {
+			return status;
+		}
+	}
 
 	public String populateSingleTeamsCareer(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception
 	{	
@@ -1305,6 +1335,8 @@ public class FullFramesGfx
 			return this_ALL_FF.PlayerProfileBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Control_F7":
 			return this_ALL_FF.DoubleTeamsBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
+		case "Alt_z":
+			return this_ALL_FF.SquadBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Shift_K":
 			return this_ALL_FF.CurrentPartnerShipBody(print_writers, WhichSide, config, matchAllData, inning);
 		case "Control_F10":
@@ -1341,7 +1373,7 @@ public class FullFramesGfx
 		case "Shift_K": case "Control_F10": case "Shift_F10": case "Shift_D": case "Control_Shift_F7": case "Alt_F9": case "Alt_F11":
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
-		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D":
+		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
@@ -1357,7 +1389,7 @@ public class FullFramesGfx
 		case "F1": case "F2": case "F4": case "Control_F11": case "m": case "Control_d": case "Control_e": case "Control_m": case "Control_F7":
 		case "Shift_K": case "Control_F10": case "Shift_F10": case "Control_Shift_F7": case "Alt_F9": case "Alt_F11": case "Control_F1":
 		case "Shift_F11": case "Control_Alt_F1": case "Alt_Shift_F1": case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5":
-		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D":
+		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateFooter(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
