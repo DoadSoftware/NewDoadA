@@ -514,6 +514,9 @@ public class Caption
 				break;
 			case "Alt_d":// DLS Target
 				status = this_lowerThirdGfx.populateDlsTarget(whatToProcess,whichSide,matchAllData);
+				break;
+			case "Alt_Shift_F12":
+				status = this_lowerThirdGfx.populatePhaseWiseRunRate(whatToProcess,whichSide,matchAllData);
 				break;	
 			case "Shift_F": //wicket sequencing
 				status = this_bugsAndMiniGfx.populateWicketSequencing(whatToProcess, matchAllData, whichSide);
