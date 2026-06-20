@@ -1092,7 +1092,7 @@ public class Animation
 				break;
 			case "8":
 				TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
-				Data = "ON HAT-TRICK";
+				Data = "ON A HAT-TRICK";
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$BaseAll$img_Base2"
 						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + TeamName + "\0", print_writers);
@@ -1120,40 +1120,61 @@ public class Animation
 					break;
 				case "w": case "0":
 					TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
-					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT TRICK");
+					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT-TRICK");
 					break;
 				case "9": case ".":
 					TeamName = "EVENT";
 					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "NO BALL" : "WIDE");
 					break;
 				}
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$AllMask*TEXTURE*IMAGE SET " 
-						+ Constants.TRI_SERIES_BASE1 + TeamName + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
-						+ Constants.TRI_SERIES_BASE1 + TeamName + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$BaseAll$img_Base2*TEXTURE*IMAGE SET " 
-						+ Constants.TRI_SERIES_BASE2 + TeamName + "\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$img_Base2"
-						+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + TeamName + "\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$img_Base2"
-						+ "$txt_Title*GEOM*TEXT SET " + Data + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$img_Base2"
-						+ "$txt_TitleOutline*GEOM*TEXT SET " + Data + "\0", print_writers);
-				
-				for(int j=1;j<=2;j++) {
-					containerName= (j==1 ? "Top" : "Bottom");
-					for (int i = 1; i <= 40; i++) {
-						containerName2 = (i % 2 == 1 ? "$img_Base1" : "$img_Text2");
-						containerName3 = (i % 2 == 1 ? Constants.TRI_SERIES_BASE1 : Constants.TRI_SERIES_TEXT2);
-						
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$SmallTexts$" + containerName 
-								+ "$" + i + containerName2 + "*TEXTURE*IMAGE SET " + containerName3 + TeamName + "\0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$SmallTexts$" + containerName
-								+ "$" + i + containerName2 + "$txt_Title*GEOM*TEXT SET " + Data + "\0", print_writers);
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
+							+ Constants.TG20_BASE1 + TeamName + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$3$img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.TG20_TEXT1 + TeamName + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$1$img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.TG20_TEXT1 + TeamName + "\0", print_writers);
+					
+					for(int j=1;j<=3;j++) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$SmallTexts$" 
+								+ "$txt_Title*GEOM*TEXT SET " + Data + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$"
+								+ "$" + j + "$txt_Title*GEOM*TEXT SET " + Data + "\0", print_writers);
 					}
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$AllMask*TEXTURE*IMAGE SET " 
+							+ Constants.TRI_SERIES_BASE1 + TeamName + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
+							+ Constants.TRI_SERIES_BASE1 + TeamName + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$BaseAll$img_Base2*TEXTURE*IMAGE SET " 
+							+ Constants.TRI_SERIES_BASE2 + TeamName + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$img_Base2"
+							+ "*TEXTURE*IMAGE SET " + Constants.TRI_SERIES_BASE2 + TeamName + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$img_Base2"
+							+ "$txt_Title*GEOM*TEXT SET " + Data + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$img_Base2"
+							+ "$txt_TitleOutline*GEOM*TEXT SET " + Data + "\0", print_writers);
+					
+					for(int j=1;j<=2;j++) {
+						containerName= (j==1 ? "Top" : "Bottom");
+						for (int i = 1; i <= 40; i++) {
+							containerName2 = (i % 2 == 1 ? "$img_Base1" : "$img_Text2");
+							containerName3 = (i % 2 == 1 ? Constants.TRI_SERIES_BASE1 : Constants.TRI_SERIES_TEXT2);
+							
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$SmallTexts$" 
+									+ "$" + i + containerName2 + "*TEXTURE*IMAGE SET " + containerName3 + TeamName + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$SmallTexts$"
+									+ "$" + i + containerName2 + "$txt_Title*GEOM*TEXT SET " + Data + "\0", print_writers);
+						}
+					}
+					break;
 				}
 				
 				if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
