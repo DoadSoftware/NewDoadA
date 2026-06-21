@@ -4876,6 +4876,8 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "anim_Target", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "anim_IdentDouble", "SHOW 0.0");
 			
+			processAnimation("", print_writers, "Plotter", "SHOW 0.0");
+			
 			if(whatToProcess.contains("CLEAR-ALL")) {
 				processAnimation(Constants.FRONT, print_writers, "anim_Infobar", "SHOW 0.0");
 				
@@ -6013,7 +6015,7 @@ public class Animation
 								+ "anim_NamesuperCenter$InOut$Logo$In 1.000 anim_NamesuperCenter$InOut$Colour$In 1.200";
 						break;
 					
-					case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3":
+					case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3": case "Alt_d":
 						previewCommand = "Shrink$InOut 0.400 anim_Lower_Third$InOut 1.500 anim_Lower_Third$InOut$Essentials$In 1.300 "
 								+ "anim_Lower_Third$InOut$Logo$In 1.500 anim_LtChange$HeaderDynamic 1.000";
 						break;

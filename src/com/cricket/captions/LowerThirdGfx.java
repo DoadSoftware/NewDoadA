@@ -16,6 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.hsqldb.result.ResultMetaData.SysOffsets;
+
 import com.cricket.containers.Infobar;
 import com.cricket.containers.L3Griff;
 import com.cricket.containers.LowerThird;
@@ -3923,6 +3925,7 @@ public class LowerThirdGfx
 		if(CricketFunctions.populateDls(matchAllData, CricketUtil.FULL, Integer.valueOf(this_data_str.get(0))).trim().isEmpty()) {
 			return "error";
 		}
+		System.out.println(CricketFunctions.populateDls(matchAllData, CricketUtil.FULL, Integer.valueOf(this_data_str.get(0))));
 		
 		this_data_str.add(CricketFunctions.populateDls(matchAllData, CricketUtil.FULL, Integer.valueOf(this_data_str.get(0))));
 		
@@ -8673,15 +8676,16 @@ public class LowerThirdGfx
 						    "", null, 2,foreignLanguageDataList);
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getLeftText()[0],
 						    "", null, 3,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"RUN" + CricketFunctions.Plural(Integer.valueOf(lowerThird.getLeftText()[0])).toUpperCase(),
-						    "", null, 4,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+							"RUN" + CricketFunctions.Plural(Integer.valueOf(lowerThird.getLeftText()[0])).toUpperCase(), "", null, 4,foreignLanguageDataList);
 
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 				
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide 
 							+ "$select_Subline$1$Left$English$txt_1*GEOM*TEXT SET ",config, Constants.BCCI, print_writers, foreignLanguageData);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide +
-							"$select_Subline$1$Left$English$txt_1*GEOM*TEXT SET AFTER " + lowerThird.getScoreText() + " OVERS - " + lowerThird.getLeftText()[0] + " RUNS\0", print_writers);
+							"$select_Subline$1$Left$English$txt_1*GEOM*TEXT SET AFTER " + lowerThird.getScoreText() + " OVERS - " + lowerThird.getLeftText()[0] + " RUN" 
+							+ CricketFunctions.Plural(Integer.valueOf(lowerThird.getLeftText()[0])).toUpperCase() + "\0", print_writers);
 					
 					if(lowerThird.getLeftText()[1].trim().toUpperCase().contains("LEVEL")) {
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[1].trim().toUpperCase(), 
@@ -8694,11 +8698,10 @@ public class LowerThirdGfx
 						insertText.add(result[0]);
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,result[0],
 							    "", null, 1,foreignLanguageDataList);
-						
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,result[1],
 							    "", null, 2,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,lowerThird.getLeftText()[1].toUpperCase().split("ARE ")[0].trim(),
-							    "", null, 3,foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,
+								lowerThird.getLeftText()[1].toUpperCase().split("ARE ")[0].trim(),"", null, 3,foreignLanguageDataList);
 //						if(lowerThird.getLeftText()[1].toUpperCase().contains("RUNS")) {
 //							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getLeftText()[1].toUpperCase().split("RUNS")[0].split("ARE")[1].trim(),
 //								    "", null, 3,foreignLanguageDataList);

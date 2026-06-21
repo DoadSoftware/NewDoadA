@@ -11664,26 +11664,26 @@ public class InfobarGfx
 			return "populateVizInfobarLeftBottom: Ground Name [" + matchAllData.getSetup().getVenueName() + "] from database is returning NULL";
 		}
 		
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$Grp$5" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$Grp$5" + 
 				"*ACTIVE SET 0\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$Data$5" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$Data$5" + 
 				"*ACTIVE SET 0\0", print_writers);
 		
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$1$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$1$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_six_o_clock() +containerName+ "\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$2$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$2$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_five_o_clock() +containerName+ "\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$3$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$3$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_three_o_clock() +containerName+ "\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$4$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$4$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_two_o_clock() +containerName+ "\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$5$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$5$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_twelve_o_clock() +containerName+ "\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$6$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$6$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_ten_o_clock() +containerName+ "\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$7$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$7$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_nine_o_clock() +containerName+ "\0", print_writers);
-		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$8$Text$txt_Data" + 
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$Main$All$Geom_GroundAll$RotationGrp$dime_final$8$Text$txt_Data" + 
 				"*GEOM*TEXT SET " + ground.getDimension_seven_o_clock() +containerName+ "\0", print_writers);
 		
 		TimeUnit.MILLISECONDS.sleep(100);

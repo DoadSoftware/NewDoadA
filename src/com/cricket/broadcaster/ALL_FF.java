@@ -10616,6 +10616,11 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + i + "$Rows$" 
 							+ rowId + "$NameGrp$select_Status*FUNCTION*Omo*vis_con SET " + (!PlayerIdIn.contains(plyr.getPlayerId())?"1":"0") + "\0", print_writers);
 					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + i + "$Rows$" 
+							+ rowId + "$NameGrp$Base$img_Base1*TEXTURE*IMAGE SET " + Constants.TG20_BASE1 + team.getTeamBadge() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + i + "$Rows$" 
+							+ rowId + "$NameGrp$NameGrp$img_Text1*TEXTURE*IMAGE SET " + Constants.TG20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+					
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + i + 
 							"$Rows$" + rowId + "$NameGrp$NameGrp$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.FIRSTNAME, multilanguagedata, plyr.getFirstname(), "", null, 0, foreignLanguageDataList);
@@ -10759,6 +10764,11 @@ public class ALL_FF
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + j + "$Rows"
 						+ "*FUNCTION*Grid*num_row SET " + (rowId <= 11 ? (rowId+1) : ((rowId - 11) + 1)) + "\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + j + "$Rows$" 
+						+ rowId1 + "$NameGrp$Base$img_Base1*TEXTURE*IMAGE SET " + Constants.TG20_BASE2 + "EVENT" + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + j + "$Rows$" 
+						+ rowId + "$NameGrp$NameGrp$img_Text1*TEXTURE*IMAGE SET " + Constants.TG20_TEXT2 + "EVENT" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$Teams$Team_" + j + "$Rows$" 
 						+ rowId1 + "$NameGrp$select_Status*FUNCTION*Omo*vis_con SET 0\0", print_writers);
