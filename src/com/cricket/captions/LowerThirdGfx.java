@@ -8655,36 +8655,50 @@ public class LowerThirdGfx
 							+ "$select_Subline$1$Right$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 					
 					
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"AFTER",
-						    "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getScoreText(),
-						    "", null, 2,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OVERS",
-						    "", null, 3,foreignLanguageDataList);
+					String[] result1 = splitText("AFTER OVERS");
+            	   	
+					List<String> insertText1 = new ArrayList<>();
+
+					insertText1.add(lowerThird.getScoreText());
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,result1[1],
+						    "", insertText1, 1,foreignLanguageDataList);
+					
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"AFTER",
+//						    "", null, 1,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getScoreText(),
+//						    "", null, 2,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OVERS",
+//						    "", null, 3,foreignLanguageDataList);
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
-						    "", null, 4,foreignLanguageDataList);
+						    "", null, 2,foreignLanguageDataList);
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getLeftText()[0],
-						    "", null, 5,foreignLanguageDataList);
+						    "", null, 3,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"RUN" + CricketFunctions.Plural(Integer.valueOf(lowerThird.getLeftText()[0])).toUpperCase(),
+						    "", null, 4,foreignLanguageDataList);
 
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 				
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide 
 							+ "$select_Subline$1$Left$English$txt_1*GEOM*TEXT SET ",config, Constants.BCCI, print_writers, foreignLanguageData);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide +
+							"$select_Subline$1$Left$English$txt_1*GEOM*TEXT SET AFTER " + lowerThird.getScoreText() + " OVERS - " + lowerThird.getLeftText()[0] + " RUNS\0", print_writers);
 					
 					if(lowerThird.getLeftText()[1].trim().toUpperCase().contains("LEVEL")) {
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[1].trim().toUpperCase(), 
 								"", null, 0, foreignLanguageDataList);
 					}else {
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,lowerThird.getLeftText()[1].toUpperCase().split("ARE ")[0].trim(),
-							    "", null, 1,foreignLanguageDataList);
 						
 						String[] result = splitText(lowerThird.getLeftText()[1].toUpperCase());
 						List<String> insertText = new ArrayList<>();
 
 						insertText.add(result[0]);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,result[1],
-							    "", insertText, 2,foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,result[0],
+							    "", null, 1,foreignLanguageDataList);
 						
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,result[1],
+							    "", null, 2,foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,lowerThird.getLeftText()[1].toUpperCase().split("ARE ")[0].trim(),
+							    "", null, 3,foreignLanguageDataList);
 //						if(lowerThird.getLeftText()[1].toUpperCase().contains("RUNS")) {
 //							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getLeftText()[1].toUpperCase().split("RUNS")[0].split("ARE")[1].trim(),
 //								    "", null, 3,foreignLanguageDataList);
