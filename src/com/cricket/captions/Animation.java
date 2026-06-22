@@ -1261,6 +1261,13 @@ public class Animation
 				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Title", "START");
 				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Base", "START");
 				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main$LeaderBoard", "START");
+				
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Footer", "START");
+					break;
+				}
+				
 				this.whichGraphicOnScreen = whatToProcess;
 				break;	
 				
@@ -2411,6 +2418,11 @@ public class Animation
 				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$SideTeamColour", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Title", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main$LeaderBoard", "CONTINUE");
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Footer", "CONTINUE");
+					break;
+				}
 				
 				TimeUnit.MILLISECONDS.sleep(1600);
 				

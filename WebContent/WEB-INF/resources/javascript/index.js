@@ -4401,6 +4401,25 @@ function addItemsToList(whatToProcess,dataToProcess)
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),0);
 			cellCount = cellCount + 1;
+			
+			select = document.createElement('select');
+			select.id = 'selectsponsor';
+			select.name = select.id;
+			
+			option = document.createElement('option');
+			option.value = 'without';
+			option.text = 'without sponsor';
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = 'with';
+			option.text = 'with sponsor';
+			select.appendChild(option);
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),1);
+			cellCount = cellCount + 1;
 			break;
 		case 'Shift_F4':
 			header_text.innerHTML = 'BUG MULTI PARTNERSHIP';
