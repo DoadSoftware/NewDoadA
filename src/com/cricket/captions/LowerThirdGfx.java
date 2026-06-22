@@ -3677,6 +3677,9 @@ public class LowerThirdGfx
 			        }
 			    }
 			}
+			if (MatchFileName == null) {
+				MatchFileName = matchAllData.getMatch().getMatchFileName();
+	        }
 		}else {
 			MatchFileName = matchAllData.getMatch().getMatchFileName();
 		}
