@@ -204,7 +204,6 @@ public class BugsAndMiniGfx
 						new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION));
 			}
 			break;
-
 		default:
 			if(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + "LeagueTable" + CricketUtil.XML_EXTENSION).exists()) {
 				leagueTable = (LeagueTable)JAXBContext.newInstance(LeagueTable.class).createUnmarshaller().unmarshal(
@@ -5164,73 +5163,161 @@ public class BugsAndMiniGfx
 				break;	
 			case "Alt_F7":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp"
-						+ "*FUNCTION*Grid*num_row SET 4\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1" + 
-						"$Select_Row_Type*FUNCTION*Omo*vis_con SET 0\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$img_Flag*TEXTURE*IMAGE SET " 
-						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_LOGO : Constants.MT20_LOGO)  + "EVENT \0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$img_Base02*TEXTURE*IMAGE SET " 
-						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE2 : Constants.MT20_BASE2)  + "EVENT \0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$img_Base01*TEXTURE*IMAGE SET " 
-						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TRI_SERIES) ? Constants.TRI_SERIES_BASE1 : Constants.MT20_BASE1)  + "EVENT \0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$Header$txt_FirstName"
-						+ "*GEOM*TEXT SET POINTS TABLE\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1$Players_Dehighlight$txt_Name"
-						+ "*GEOM*TEXT SET \0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1$Players_Dehighlight$fig_Points"
-						+ "*GEOM*TEXT SET PTS\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1$Players_Dehighlight$fig_Lost"
-						+ "*GEOM*TEXT SET L\0", print_writers);
-								
-				rowId = 1;
-				for(int i=0; i<=leagueTable.getLeagueTeams().size()-1;i++) {
-					rowId++;
-					
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp"
-							+ "*FUNCTION*Grid*num_row SET " + rowId + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp$Row"
-							+ rowId + "*ACTIVE SET 1\0", print_writers);
+							+ "*FUNCTION*Grid*num_row SET 9\0", print_writers);
 					
-					if(matchAllData.getSetup().getHomeTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
-							|| matchAllData.getSetup().getAwayTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
-								"$Select_Row_Type*FUNCTION*Omo*vis_con SET 1\0", print_writers);
-						containerName = "$Players_Highlight";
-					}else {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
-								"$Select_Row_Type*FUNCTION*Omo*vis_con SET 0\0", print_writers);
-						containerName = "$Players_Dehighlight";
-					}
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow1" + 
+							"$Select_Row_Type*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					
-					if(leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim().equalsIgnoreCase("")) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
-								containerName + "$txt_Rank*GEOM*TEXT SET " + (rowId - 1) + "\0", print_writers);
-					}else {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
-								containerName + "$txt_Rank*GEOM*TEXT SET Q\0", print_writers);
-					}
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$img_Flag*TEXTURE*IMAGE SET " 
+							+ logoPath  + "EVENT \0", print_writers);
 					
-					for(Team team : Teams) {
-						if(team.getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId 
-									+ containerName + "$txt_Name*GEOM*TEXT SET " + team.getTeamName1() + "\0", print_writers);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$Header$HeaderText$Name$"
+							+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "POINTS TABLE", 
+							"", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$Header$HeaderText$Name$"
+							+ "English$txt_FirstName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow1$Title$PointsData$"
+							+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "P", "", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow1$Title$PointsData$"
+							+ "English$fig_Played*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "W", "", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow1$Title$PointsData$"
+							+ "English$fig_Won*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "L", "", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow1$Title$PointsData$"
+							+ "English$fig_Lost*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PTS", "", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow1$Title$PointsData$"
+							+ "English$fig_Points*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "NRR", "", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow1$Title$PointsData$"
+							+ "English$fig_NRR*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+		
+					rowId = 1;
+					for(int i=0; i<=leagueTable.getLeagueTeams().size()-1;i++) {
+						rowId++;
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp"
+								+ "*FUNCTION*Grid*num_row SET " + rowId + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp$MiniPartRow"
+								+ rowId + "*ACTIVE SET 1\0", print_writers);
+						
+						if(matchAllData.getSetup().getHomeTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
+								|| matchAllData.getSetup().getAwayTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + 
+									"$Select_Row_Type*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+							containerName = "$Highlight";
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + 
+									"$Select_Row_Type*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+							containerName = "$Dehighlight";
 						}
+						
+						if(leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim().equalsIgnoreCase("")) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + 
+									containerName + "$txt_Rank*GEOM*TEXT SET " + (rowId - 1) + "\0", print_writers);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + 
+									containerName + "$txt_Rank*GEOM*TEXT SET Q\0", print_writers);
+						}
+						
+						for(Team team : Teams) {
+							if(team.getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + 
+										containerName + "$Name$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_4, multilanguagedata, team.getTeamName1(), "", 
+										null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + 
+										containerName + "$Name$English$txt_Name*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+								break;
+							}
+						}
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
+								+ "$fig_Played*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getPlayed() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
+								+ "$fig_Won*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getWon() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
+								+ "$fig_Lost*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getLost() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
+								+ "$fig_Points*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getPoints() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
+								+ "$fig_NRR*GEOM*TEXT SET " + String.format("%.2f", leagueTable.getLeagueTeams().get(i).getNetRunRate()) + "\0", print_writers);
 					}
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp"
+							+ "*FUNCTION*Grid*num_row SET 4\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
-							+ "$fig_Played*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getPlayed() + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
-							+ "$fig_Won*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getWon() + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
-							+ "$fig_Lost*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getLost() + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
-							+ "$fig_Points*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getPoints() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1" + 
+							"$Select_Row_Type*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$img_Flag*TEXTURE*IMAGE SET " + logoPath  + "EVENT \0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$img_Base02*TEXTURE*IMAGE SET " + base2Path  + "EVENT \0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$img_Base01*TEXTURE*IMAGE SET " + base1Path  + "EVENT \0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$Header$txt_FirstName"
+							+ "*GEOM*TEXT SET POINTS TABLE\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1$Players_Dehighlight$txt_Name"
+							+ "*GEOM*TEXT SET \0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1$Players_Dehighlight$fig_Points"
+							+ "*GEOM*TEXT SET PTS\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row1$Players_Dehighlight$fig_Lost"
+							+ "*GEOM*TEXT SET L\0", print_writers);
+									
+					rowId = 1;
+					for(int i=0; i<=leagueTable.getLeagueTeams().size()-1;i++) {
+						rowId++;
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp"
+								+ "*FUNCTION*Grid*num_row SET " + rowId + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp$Row"
+								+ rowId + "*ACTIVE SET 1\0", print_writers);
+						
+						if(matchAllData.getSetup().getHomeTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
+								|| matchAllData.getSetup().getAwayTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
+									"$Select_Row_Type*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+							containerName = "$Players_Highlight";
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
+									"$Select_Row_Type*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+							containerName = "$Players_Dehighlight";
+						}
+						
+						if(leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim().equalsIgnoreCase("")) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
+									containerName + "$txt_Rank*GEOM*TEXT SET " + (rowId - 1) + "\0", print_writers);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + 
+									containerName + "$txt_Rank*GEOM*TEXT SET Q\0", print_writers);
+						}
+						
+						for(Team team : Teams) {
+							if(team.getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId 
+										+ containerName + "$txt_Name*GEOM*TEXT SET " + team.getTeamName1() + "\0", print_writers);
+							}
+						}
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
+								+ "$fig_Played*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getPlayed() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
+								+ "$fig_Won*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getWon() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
+								+ "$fig_Lost*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getLost() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$Row" + rowId + containerName 
+								+ "$fig_Points*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getPoints() + "\0", print_writers);
+					}
+					break;
 				}
 				break;
 			}

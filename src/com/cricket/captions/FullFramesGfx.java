@@ -1087,7 +1087,6 @@ public class FullFramesGfx
 	public String populateFFPointsTable(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception
 	{
 		this_ALL_FF.Teams = Teams;
-		
 		this_ALL_FF.WhichProfile = (WhichGroup.equalsIgnoreCase("GroupA") ? "GROUP A" : "GROUP B");
 		
 		if(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION).exists()) {
@@ -1103,7 +1102,14 @@ public class FullFramesGfx
 				this_ALL_FF.varText = vt.getVariousText();
 				break;
 			}else {
-				this_ALL_FF.varText = "TOP TWO TEAMS QUALIFY FOR SEMI-FINALS";
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					this_ALL_FF.varText = "TOP F TEAMS QUALIFY FOR SEMI-FINALS";
+					break;
+				default:
+					this_ALL_FF.varText = "TOP TWO TEAMS QUALIFY FOR SEMI-FINALS";
+					break;
+				}
 			}
 		}
 		

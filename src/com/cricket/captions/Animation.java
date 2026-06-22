@@ -6153,11 +6153,11 @@ public class Animation
 						break;
 					case "7":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/FieldPlotter C:/Temp/Preview.tga "
-								+ "Plotter 1.000 \0", print_writer);
+								+ "Plotter 1.000 Plotter 1.000 \0", print_writer);
 						break;
 					case "Alt_Shift_Q":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/FieldDimesnsion C:/Temp/Preview.tga "
-								+ "Plotter 1.000 \0", print_writer);
+								+ "Plotter 1.000 Plotter$In 1.000 \0", print_writer);
 						break;
 					case "Alt_p":
 						switch(config.getBroadcaster()) {
