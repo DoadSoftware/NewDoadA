@@ -2423,6 +2423,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						  { value: 'EXTRAS', text: 'Extras' },
 						  { value: 'LAST_WICKET', text: 'Last Wicket' },
 						  { value: 'REVIEWS_REMAINING', text: 'Review'},
+						  { value: 'TEAMS_STANDINGS', text: 'Standing'},
 						  { value: 'BALLS_SINCE_LAST_BOUNDARY', text: 'Balls Since Last Boundaries' }
 						];
 						
@@ -2590,6 +2591,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  //{ value: 'Sponsor', text: 'Sponsor' },
 					  { value: 'TIMELINE', text: 'TimeLine' },
 					  { value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
+					  { value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise Run-Rates' },
 					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
 					  { value: 'BatMileStone', text: 'Batter MileStone' },
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },

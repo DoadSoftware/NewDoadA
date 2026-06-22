@@ -1044,6 +1044,9 @@ public class FullFramesGfx
 			        }
 			    }
 			}
+			if (MatchFileName == null) {
+				MatchFileName = matchAllData.getMatch().getMatchFileName();
+	        }
 		}else {
 			MatchFileName = matchAllData.getMatch().getMatchFileName();
 		}
@@ -1061,10 +1064,8 @@ public class FullFramesGfx
 		    	    }
 		    	}
 		        if (!playerFound) {  
-//		        	PlayerId.add(headToHead.getPlayerId());
 		        	this_ALL_FF.PlayerId.add(headToHead.getPlayerId());
 		        }else {
-//		        	PlayerIdIn.add(headToHead.getPlayerId());
 		        	this_ALL_FF.PlayerIdIn.add(headToHead.getPlayerId());
 		        }
 			}
@@ -1129,7 +1130,7 @@ public class FullFramesGfx
 		this_ALL_FF.Teams = Teams;
 				
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
 			if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
 				this_ALL_FF.tournaments = past_tournament_stats;
 			}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
