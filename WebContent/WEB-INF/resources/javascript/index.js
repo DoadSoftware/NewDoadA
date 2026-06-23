@@ -4407,13 +4407,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			option = document.createElement('option');
-			option.value = 'without';
-			option.text = 'without sponsor';
+			option.value = 'with';
+			option.text = 'with sponsor';
 			select.appendChild(option);
 			
 			option = document.createElement('option');
-			option.value = 'with';
-			option.text = 'with sponsor';
+			option.value = 'without';
+			option.text = 'without sponsor';
 			select.appendChild(option);
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");

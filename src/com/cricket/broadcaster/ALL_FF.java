@@ -12213,8 +12213,8 @@ public class ALL_FF
 			rowId = 0;
 			for(int i=0; i<=leagueTable.getLeagueTeams().size()-1;i++) {
 				rowId++;
-				if(matchAllData.getSetup().getHomeTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
-						|| matchAllData.getSetup().getAwayTeam().getTeamBadge().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
+				if(matchAllData.getSetup().getHomeTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
+						|| matchAllData.getSetup().getAwayTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + 
 							"$Standings$Row_" + rowId + "$select_Highlight*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					containerName = "$Highlight";
