@@ -1150,9 +1150,9 @@ public class Animation
 							+ Constants.TG20_BASE1 + TeamName + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$3$img_Text1"
-							+ "*TEXTURE*IMAGE SET " + Constants.TG20_TEXT1 + TeamName + "\0", print_writers);
+							+ "*TEXTURE*IMAGE SET " + Constants.TG20_TEXT1 + (TeamName.equalsIgnoreCase("CHAMPIONS")?"EVENT":TeamName) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$MainTextAll$1$img_Text1"
-							+ "*TEXTURE*IMAGE SET " + Constants.TG20_TEXT1 + TeamName + "\0", print_writers);
+							+ "*TEXTURE*IMAGE SET " + Constants.TG20_TEXT1 + (TeamName.equalsIgnoreCase("CHAMPIONS")?"EVENT":TeamName) + "\0", print_writers);
 					
 					for(int j=1;j<=3;j++) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BigEvents$TextAll$SmallTexts$" 
@@ -6205,7 +6205,7 @@ public class Animation
 						break;
 					case "7":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/FieldPlotter C:/Temp/Preview.tga "
-								+ "Plotter 1.000 Plotter 1.000 \0", print_writer);
+								+ "Plotter 1.000 \0", print_writer);
 						break;
 					case "Alt_Shift_Q":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/FieldDimesnsion C:/Temp/Preview.tga "
