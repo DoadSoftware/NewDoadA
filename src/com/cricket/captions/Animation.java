@@ -3600,6 +3600,21 @@ public class Animation
 				}
 				break;
 				
+			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Alt_Shift_W":
+				
+				processAnimation(Constants.BACK, print_writers, "BaseDynamic", "START");
+				processAnimation(Constants.BACK, print_writers, "Change$Big_Logo", "START");
+				processAnimation(Constants.BACK, print_writers, "Change$SideTeamColour", "START");
+				processAnimation(Constants.BACK, print_writers, "Change$Title", "START");
+				processAnimation(Constants.BACK, print_writers, "Change$LeaderBoard", "START");
+				
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					processAnimation(Constants.BACK, print_writers, "Change$Footer", "START");
+					break;
+				}
+				break;
+				
 			case "F1": case "F2": case "Control_F11": case "F4": case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5":
 			
 				switch(whatToProcess.split(",")[0]) {
@@ -4527,6 +4542,22 @@ public class Animation
 //				caption.this_fullFramesGfx.whichGFX = whatToProcess.split(",")[0];
 //				this.whichGraphicOnScreen = whatToProcess;
 //				break;
+				
+			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Alt_Shift_W":
+				
+				processAnimation(Constants.BACK, print_writers, "BaseDynamic", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "Change$Big_Logo", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "Change$SideTeamColour", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "Change$Title", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "Change$LeaderBoard", "SHOW 0.0");
+				
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					processAnimation(Constants.BACK, print_writers, "Change$Footer", "SHOW 0.0");
+					break;
+				}
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 					
 			case "F1": case "F2": case "Control_F11": case "F4": case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5":
 				
@@ -5832,6 +5863,15 @@ public class Animation
 					break;
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
 					switch(whatToProcess.split(",")[0]) {
+					case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Alt_Shift_W":
+						previewCommand = "Change$Big_Logo 1.5 Change$SideTeamColour 0.5 Change$Title 0.8 Change$LeaderBoard 1.940 Change$LeaderBoard$Change_Out 1.060 "
+								+ "Change$LeaderBoard$Change_In 1.940";
+						switch(config.getBroadcaster()) {
+						case Constants.TG20:
+							previewCommand = previewCommand + " Change$Footer 0.98 Change$Footer$Change_Out 0.5 Change$Footer$Change_In 0.98";
+							break;
+						}
+						break;
 					case "Control_Shift_F7":
 						
 						caption.this_fullFramesGfx.this_ALL_FF.populateTeamLineUpFooter(print_writer, 2, 
