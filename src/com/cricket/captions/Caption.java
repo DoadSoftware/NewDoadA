@@ -399,10 +399,10 @@ public class Caption
 				
 			case "Alt_F1": case "Alt_F2":// BatGriff
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.TRI_SERIES:  case Constants.MT20: 
+				case Constants.TRI_SERIES:  case Constants.MT20:
 					status = this_lowerThirdGfx.PopulateBatBallGriff(whatToProcess,whichSide, matchAllData);
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.ACC: 
+				case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
 					status = this_bugsAndMiniGfx.populateGriff(whatToProcess,whichSide, matchAllData);
 					break;	
 				}
