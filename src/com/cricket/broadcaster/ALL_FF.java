@@ -8740,12 +8740,12 @@ public class ALL_FF
 				
 				switch(config.getBroadcaster()) {
 				case Constants.TG20:
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$ImageBattingCard$" + containerName
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$ImageBattingCard" + containerName
 							+ rowId + "$Name$NameText$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.TICKERNAME, multilanguagedata, inning.getBattingCard().get(iRow-1).getPlayer().getTicker_name(), 
 							"", null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$ImageBattingCard$" + containerName
-							+ rowId + "$Name$NameText$English$txt_BatterName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$ImageBattingCard" + containerName
+							+ rowId + "$Name$NameText$English$txt_PlayerName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$AllGraphics$Side" + WhichSide + "$ImageBatting" + containerName 
@@ -8761,7 +8761,7 @@ public class ALL_FF
 						
 						switch(config.getBroadcaster()) {
 						case Constants.TG20:
-							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$ImageBattingCard$" + containerName
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$ImageBattingCard" + containerName
 									+ rowId + "$Stats$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 							foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY,"", multilanguagedata, "IN AT", 
 									"", null, 0, foreignLanguageDataList);
