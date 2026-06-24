@@ -634,7 +634,7 @@ public class BugsAndMiniGfx
 		} else {
 			
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.ACC:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.ACC: case Constants.TG20:
 				inning = matchAllData.getMatch().getInning().stream().
 				filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
 				break;

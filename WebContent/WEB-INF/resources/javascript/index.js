@@ -5069,8 +5069,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.id = 'selectPlayerName';
 					select.name = select.id;
 					num = 0;
+					
+					var ballsFaced = 30;
+					switch($('#selected_broadcaster').val().toUpperCase()){
+					case 'TG20':
+						ballsFaced = 50;
+						break;
+					}
+					
 					for(i=0;i<dataToProcess.length;i++){
-						if(dataToProcess[i].ballsFaced>=30){
+						if(dataToProcess[i].ballsFaced>=ballsFaced){
 							if(num<5){
 								option = document.createElement('option');
 					            option.value = (num+1)+ "_" + dataToProcess[i].playerId;
@@ -5126,6 +5134,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1;
+			
+			/*switch(whatToProcess){
+			case 'z': case 'x':
+				select = document.createElement('select');
+				select.id = 'selectsponsor';
+				select.name = select.id;
+				
+				option = document.createElement('option');
+				option.value = 'with';
+				option.text = 'with sponsor';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'without';
+				option.text = 'without sponsor';
+				select.appendChild(option);
+				
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),2);
+				cellCount = cellCount + 1;
+				break;
+			}*/
 			
 			break;	
 		case 'Control_Shift_F2': case 'Control_Shift_F5':

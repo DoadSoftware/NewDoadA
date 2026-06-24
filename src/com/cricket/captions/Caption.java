@@ -311,6 +311,10 @@ public class Caption
 					this_fullFramesGfx.this_ALL_FF.whichTeam = Integer.valueOf(whatToProcess.split(",")[2]);
 				}
 				
+//				if(whatToProcess.split(",")[0].equalsIgnoreCase("z") || whatToProcess.split(",")[0].equalsIgnoreCase("z")) {
+//					this_fullFramesGfx.this_ALL_FF.sponsor = whatToProcess.split(",")[4];
+//				}
+				
 				status = this_fullFramesGfx.populateLeaderBoard(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "Shift_P": case "Shift_Q":

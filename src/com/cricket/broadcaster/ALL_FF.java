@@ -46,7 +46,7 @@ public class ALL_FF
 	public int omo=0,rowId=0,Top_Score=50,whichInning,FirstPlayerId,numberOfRows = 0,rowId1 =0,plyr_count=0,whichTeam;
 	public double Mult=0,ScaleFac1=0,ScaleFac2=0;
 	public String containerName,how_out_txt="",Left_Batsman="",Right_Batsman="",WhichType,WhichProfile,
-			ImageType="",WhichStyle,containerName_2,varText = "",whichtype = "",containerName_1;
+			ImageType="",WhichStyle,containerName_2,varText = "",whichtype = "",containerName_1,sponsor;
 	
 	public Player player;
 	public Team team;
@@ -1773,6 +1773,18 @@ public class ALL_FF
 				
 				switch(config.getBroadcaster()) {
 				case Constants.TG20:
+//					switch(whatToProcess) {
+//					case "z":
+//						System.out.println("sponsor - " + sponsor);
+//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$OrangeCap$"
+//								+ "select_Sponsor*FUNCTION*Omo*vis_con SET " + (sponsor.toUpperCase().equalsIgnoreCase("WITH") ? "1" : "0") + "\0", print_writers);
+//						break;
+//					case "x":
+//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$Purplecap$"
+//								+ "select_Sponsor*FUNCTION*Omo*vis_con SET " + (sponsor.toUpperCase().equalsIgnoreCase("WITH") ? "1" : "0") + "\0", print_writers);
+//						break;
+//					}
+					
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TopTitleGrp$Text$"
 							+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getTournament(), 
@@ -1787,12 +1799,12 @@ public class ALL_FF
 					switch(whatToProcess) {
 					case "z":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$select_Cap"
-								+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+								+ "*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "ORANGE CAP", "", null, 0, foreignLanguageDataList);
 						break;
 					case "x":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$select_Cap"
-								+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+								+ "*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PURPLE CAP", "", null, 0, foreignLanguageDataList);
 						break;
 					case "c":
@@ -1818,7 +1830,7 @@ public class ALL_FF
 					case "Control_Shift_Z":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$select_Cap"
 								+ "*FUNCTION*Omo*vis_con SET 3\0", print_writers);
-						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "HIGHEST STRIKE RATE", "", null, 0, foreignLanguageDataList);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "SUPER STRIKER OF THE SEASON", "", null, 0, foreignLanguageDataList);
 						break;
 					case "Control_Shift_Y":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$select_Cap"
@@ -1851,7 +1863,7 @@ public class ALL_FF
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
 						break;
 					case "Control_Shift_Z":
-						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "MINIMUM 30 BALLS FACED", "", 
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "MINIMUM 50 BALLS FACED", "", 
 								null, 0, foreignLanguageDataList);
 						break;
 					case "Control_Shift_Y":
@@ -1924,9 +1936,20 @@ public class ALL_FF
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + "$img_Logos_BW"
-						+ "*TEXTURE*IMAGE SET " + logoPathBW + "EVENT" + "\0", print_writers);
-				
+				switch(whatToProcess) {
+				case "z":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + "$img_Logos_BW"
+							+ "*TEXTURE*IMAGE SET IMAGE*/Default/OrangeCap\0", print_writers);
+					break;
+				case "x":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + "$img_Logos_BW"
+							+ "*TEXTURE*IMAGE SET IMAGE*/Default/PurpleCap\0", print_writers);
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Big_Logo$Side" + WhichSide + "$img_Logos_BW"
+							+ "*TEXTURE*IMAGE SET " + "IMAGE*/Default/Assets/Logos_BW/" + "EVENT" + "\0", print_writers);
+					break;
+				}
 				break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$TitleGrp$Title$Side" + WhichSide
@@ -12497,8 +12520,14 @@ public class ALL_FF
 				}
 			}else if(whatToProcess.equalsIgnoreCase("Control_Shift_Z")){
 				rowId = 0;
+				int ballsFaced = 30;
+				switch(config.getBroadcaster()) {
+				case Constants.TG20:
+					ballsFaced = 50;
+					break;
+				}
 				for(int i = 0; i <= tournaments.size() - 1 ; i++) {
-					if(tournaments.get(i).getBallsFaced() >= 30) {
+					if(tournaments.get(i).getBallsFaced() >= ballsFaced) {
 						rowId++;
 						if(rowId>=6) break;
 						

@@ -5545,7 +5545,7 @@ public class Animation
 						break;
 					case "Control_p":
 						previewCommand = previewCommand + " Anim_FullFrames$In_Out$Logo 0 Anim_FullFrames$In_Out$Logo$In 0 Anim_FullFrames$In_Out$Main$Standings 3 "
-								+ "Anim_FullFrames$In_Out$Main$Standings$In 1.44 "
+								+ "Anim_FullFrames$In_Out$Main$Standings$In 1.740 "
 								+ "Anim_FullFrames$In_Out$Footer 3 Anim_FullFrames$In_Out$Footer$In 2.080";
 						
 						break;	
