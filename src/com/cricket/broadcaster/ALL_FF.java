@@ -2016,10 +2016,17 @@ public class ALL_FF
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide 
 							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0].trim(), 
-					    "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1].trim(), 
-					    "", null, 2, foreignLanguageDataList);
+					String matchName = matchAllData.getSetup().getMatchIdent();
+					if (matchName.toUpperCase().contains("MATCH")) {
+					    String[] parts = matchName.split(" ");
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+					    if (parts.length > 1) {
+					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+					    }
+					} else {
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					}
+					
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide + 
@@ -2118,10 +2125,16 @@ public class ALL_FF
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide
 							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 					
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0],
-						    "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1],
-						    "", null, 2,foreignLanguageDataList);
+					String matchName = matchAllData.getSetup().getMatchIdent();
+					if (matchName.toUpperCase().contains("MATCH")) {
+					    String[] parts = matchName.split(" ");
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+					    if (parts.length > 1) {
+					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+					    }
+					} else {
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					}
 					
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					
@@ -2187,12 +2200,19 @@ public class ALL_FF
 					
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide 
 							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0].trim(), 
-					    "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1].trim(), 
-					    "", null, 2, foreignLanguageDataList);
-					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					
+					String matchName = matchAllData.getSetup().getMatchIdent();
+					if (matchName.toUpperCase().contains("MATCH")) {
+					    String[] parts = matchName.split(" ");
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+					    if (parts.length > 1) {
+					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+					    }
+					} else {
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					}
+					
+					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide + 
 							"$English$txt_SubTitle*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 					break;
@@ -2261,12 +2281,19 @@ public class ALL_FF
 					
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide 
 							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0].trim(), 
-					    "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1].trim(), 
-					    "", null, 2, foreignLanguageDataList);
-					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					
+					String matchName = matchAllData.getSetup().getMatchIdent();
+					if (matchName.toUpperCase().contains("MATCH")) {
+					    String[] parts = matchName.split(" ");
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+					    if (parts.length > 1) {
+					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+					    }
+					} else {
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					}
+					
+					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide + 
 							"$English$txt_SubTitle*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 					
@@ -2331,12 +2358,18 @@ public class ALL_FF
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide 
 							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0].trim(), 
-					    "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1].trim(), 
-					    "", null, 2, foreignLanguageDataList);
-					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+					String matchName = matchAllData.getSetup().getMatchIdent();
+					if (matchName.toUpperCase().contains("MATCH")) {
+					    String[] parts = matchName.split(" ");
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+					    if (parts.length > 1) {
+					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+					    }
+					} else {
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					}
 					
+					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide + 
 							"$English$txt_SubTitle*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 					
@@ -2429,12 +2462,18 @@ public class ALL_FF
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide 
 							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0].trim(), 
-					    "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1].trim(), 
-					    "", null, 2, foreignLanguageDataList);
-					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+					String matchName = matchAllData.getSetup().getMatchIdent();
+					if (matchName.toUpperCase().contains("MATCH")) {
+					    String[] parts = matchName.split(" ");
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+					    if (parts.length > 1) {
+					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+					    }
+					} else {
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					}
 					
+					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUp_Image$Shift_For_TopTitle$SubTitleGrp$SubTitle$Side" + WhichSide + 
 							"$English$txt_SubTitle*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 					
@@ -9893,10 +9932,18 @@ public class ALL_FF
 				case Constants.TG20:
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Ident$MatchNumberGrp$SubTitle$select_Language*FUNCTION*Omo*vis_con SET ", 
 							config, Constants.TG20, print_writers, foreignLanguageOmo);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0], 
-							"", null, 1, foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1], 
-							"", null, 2, foreignLanguageDataList);
+					
+					String matchName = matchAllData.getSetup().getMatchIdent();
+					if (matchName.toUpperCase().contains("MATCH")) {
+					    String[] parts = matchName.split(" ");
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+					    if (parts.length > 1) {
+					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+					    }
+					} else {
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					}
+					
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Ident$MatchNumberGrp$SubTitle$English$txt_MatchNumber*GEOM*TEXT SET ",
 							config, Constants.TG20, print_writers, foreignLanguageData);
@@ -9963,10 +10010,16 @@ public class ALL_FF
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,String.valueOf(fixture.getMatchnumber()), 
 								"", null, 2, foreignLanguageDataList);
 					}else {
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getMatchfilename().split(" ")[0], 
-								"", null, 1, foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getMatchfilename().split(" ")[1], 
-								"", null, 2, foreignLanguageDataList);
+						String matchName = fixture.getMatchfilename();
+						if (matchName.toUpperCase().contains("MATCH")) {
+						    String[] parts = matchName.split(" ");
+						    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+						    if (parts.length > 1) {
+						        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+						    }
+						} else {
+						    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+						}
 					}
 					
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));

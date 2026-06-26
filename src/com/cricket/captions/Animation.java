@@ -5921,7 +5921,7 @@ public class Animation
 						previewCommand = previewCommand + "Change$Summary 1.74 Change$Summary$Change_Out 0.88 Change$Summary$Change_In 1.74 ";
 						break;
 					case "Control_p":
-						previewCommand = previewCommand + "Change$Standings 1.44 Change$Standings$Change_Out 0.76 Change$Standings$IChange_n 1.44 ";
+						previewCommand = previewCommand + "Change$Standings 1.74 Change$Standings$Change_Out 0.86 Change$Standings$Change_In 1.74 ";
 						break;	
 					case "F4":
 						previewCommand = previewCommand + "Change$PartnershipList 1.98 Change$PartnershipList$Change_Out 0.94 Change$PartnershipList$Change_In 1.98 ";
@@ -5957,7 +5957,7 @@ public class Animation
 						previewCommand = previewCommand + "Change$Summary 1.74 Change$Summary$Change_Out 0.88 Change$Summary$Change_In 1.74";
 						break;
 					case "Control_p":
-						previewCommand = previewCommand + "Change$Standings 1.44 Change$Standings$Change_Out 0.76 Change$Standings$IChange_n 1.44";
+						previewCommand = previewCommand + "Change$Standings 1.74 Change$Standings$Change_Out 0.86 Change$Standings$Change_In 1.74 ";
 						break;	
 					case "F4":
 						previewCommand = previewCommand + "Change$PartnershipList 1.98 Change$PartnershipList$Change_Out 0.94 Change$PartnershipList$Change_In 1.98";

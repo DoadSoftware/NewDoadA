@@ -3795,8 +3795,8 @@ public class LowerThirdGfx
 		
 		switch (config.getBroadcaster()) {
 		case Constants.TG20:
-			lowerThird = new LowerThird(fixture.getHome_Team().getTeamName1() + "-" + fixture.getHome_Team().getTeamName3(), 
-					fixture.getAway_Team().getTeamName1() + "-" + fixture.getAway_Team().getTeamName3(),
+			lowerThird = new LowerThird(fixture.getHome_Team().getTeamName1() + "," + fixture.getHome_Team().getTeamName3(), 
+					fixture.getAway_Team().getTeamName1() + "," + fixture.getAway_Team().getTeamName3(),
 					"",fixture.getHome_Team().getTeamBadge(), fixture.getAway_Team().getTeamBadge(), text,2,"Emirates","",null,null,
 					null,null,null);
 			break;
@@ -3927,12 +3927,12 @@ public class LowerThirdGfx
 			}
 		}
 		
-		if(CricketFunctions.populateDls(matchAllData, CricketUtil.FULL, Integer.valueOf(this_data_str.get(0))).trim().isEmpty()) {
+		if(CricketFunctions.populateDls(matchAllData, CricketUtil.SHORT, Integer.valueOf(this_data_str.get(0))).trim().isEmpty()) {
 			return "error";
 		}
-		System.out.println(CricketFunctions.populateDls(matchAllData, CricketUtil.FULL, Integer.valueOf(this_data_str.get(0))));
+		System.out.println(CricketFunctions.populateDls(matchAllData, CricketUtil.SHORT, Integer.valueOf(this_data_str.get(0))));
 		
-		this_data_str.add(CricketFunctions.populateDls(matchAllData, CricketUtil.FULL, Integer.valueOf(this_data_str.get(0))));
+		this_data_str.add(CricketFunctions.populateDls(matchAllData, CricketUtil.SHORT, Integer.valueOf(this_data_str.get(0))));
 		
 		if(this_data_str == null) {
 			return "error";
@@ -5876,15 +5876,15 @@ public class LowerThirdGfx
 									+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 	                		
 		    					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, 
-		    							lowerThird.getHeaderText().split("-")[0], "", null, 0, foreignLanguageDataList);
+		    							lowerThird.getHeaderText().split(",")[0], "", null, 0, foreignLanguageDataList);
 		    					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Lt_MatchID$Side0" + WhichSide + "$Team1$TeamNameGrp"
 		    							+ "$English$txt_TeamName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 		    					
 		    					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Lt_MatchID$Side0" + WhichSide + "$Team2$TeamNameGrp"
 									+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
-	                		
+		    					
 		    					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, 
-		    							lowerThird.getFirstName().split("-")[0], "", null, 0, foreignLanguageDataList);
+		    							lowerThird.getFirstName().split(",")[0].trim(), "", null, 0, foreignLanguageDataList);
 		    					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Lt_MatchID$Side0" + WhichSide + "$Team2$TeamNameGrp"
 		    							+ "$English$txt_TeamName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 							break;	
@@ -10078,7 +10078,7 @@ public class LowerThirdGfx
 								+ "BottomPart$Text$English$txt_SubTitle*GEOM*TEXT SET ",config, Constants.BCCI, print_writers, foreignLanguageData);
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Lt_Comparison$Side0" + whichSide + "$DataPart$" +
-	    							"BottomPart$Text$English$txt_SubTitle*GEOM*TEXT SET AFETR " + lowerThird.getBallsFacedText() + " OVERS\0", print_writers);
+	    							"BottomPart$Text$English$txt_SubTitle*GEOM*TEXT SET AFTER " + lowerThird.getBallsFacedText() + " OVERS\0", print_writers);
 	                	   break;
 	                   }
 					break;

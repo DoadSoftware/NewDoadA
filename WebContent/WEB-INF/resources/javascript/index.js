@@ -1912,6 +1912,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		            });
 		            
 		            addOption('SUPER_OVER', 'Super Over');
+					addOption('HYDERABAD', 'HYDERABAD');
 		        }
 		
 		        select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
@@ -5473,14 +5474,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			session_match.match.inning.forEach(function(inn){
 				if(inn.inningNumber == document.getElementById('which_inning').value){
-					inn.bowlingCard.forEach(function(boc){
-						if(boc.status == 'CURRENTBOWLER'){
-							option = document.createElement('option');
-							option.value = boc.player.playerId;
-							option.text = boc.player.full_name;
-							select.appendChild(option);
-						}
-					});
+					if(inn.bowlingCard != null){
+						inn.bowlingCard.forEach(function(boc){
+							if(boc.status == 'CURRENTBOWLER'){
+								option = document.createElement('option');
+								option.value = boc.player.playerId;
+								option.text = boc.player.full_name;
+								select.appendChild(option);
+							}
+						});
+					}
 					
 					if(inn.bowlingTeamId == session_match.setup.homeTeamId){
 						session_match.setup.homeSquad.forEach(function(hs){
