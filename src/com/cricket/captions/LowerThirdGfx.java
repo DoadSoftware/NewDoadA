@@ -9264,7 +9264,7 @@ public class LowerThirdGfx
 		    					if(lowerThird.getLeftText()[0].equalsIgnoreCase("Captain") || lowerThird.getLeftText()[0].equalsIgnoreCase("Captain Wicket-Keeper") ||
 		    							lowerThird.getLeftText()[0].equalsIgnoreCase("Wicket-Keeper")) {
 		    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper_Center$TopLine$img_Text1$Side" + whichSide 
-			    							+ "$txt_Designation*GEOM*TEXT SET " + lowerThird.getSubTitle() + " " + lowerThird.getLeftText()[0].toUpperCase() + "\0", print_writers);
+			    							+ "$txt_Designation*GEOM*TEXT SET " + lowerThird.getLeftText()[0].toUpperCase() + " " + lowerThird.getSubTitle() + "\0", print_writers);
 //		    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_With_Graphics$SublineGrp$Rows$Side" + whichSide +
 //		    								"$select_Subline$1$Left$txt_1*GEOM*TEXT SET " + lowerThird.getSubTitle() + " " + lowerThird.getLeftText()[0].toUpperCase() + "\0", print_writers);
 		    						

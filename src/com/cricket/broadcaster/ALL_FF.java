@@ -4007,19 +4007,19 @@ public class ALL_FF
 			
 			if(rowId == 12) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$BattingCard$BatterGrp$Rows*FUNCTION*Grid*row_offset SET 22\0", print_writers);
+						+ "$BattingCard$BatterGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 0.915\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$BattingCard$DismissalGrp$Rows*FUNCTION*Grid*row_offset SET 22\0", print_writers);
+						+ "$BattingCard$DismissalGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 0.915\0", print_writers);
 			}else if(rowId == 13) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$BattingCard$BatterGrp$Rows*FUNCTION*Grid*row_offset SET 20\0", print_writers);
+						+ "$BattingCard$BatterGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 0.845\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$BattingCard$DismissalGrp$Rows*FUNCTION*Grid*row_offset SET 20\0", print_writers);
+						+ "$BattingCard$DismissalGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 0.845\0", print_writers);
 			}else if(rowId == 11) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$BattingCard$BatterGrp$Rows*FUNCTION*Grid*row_offset SET 24\0", print_writers);
+						+ "$BattingCard$BatterGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 1.000\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$BattingCard$DismissalGrp$Rows*FUNCTION*Grid*row_offset SET 24\0", print_writers);
+						+ "$BattingCard$DismissalGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 1.000\0", print_writers);
 			}
 			this.numberOfRows = rowId;
 			break;
@@ -4386,6 +4386,17 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + "$BattingCardExtra"
 							+ "$BatterExtraGrp$" + rowId + containerName + "$txt_Balls*GEOM*TEXT SET " + bc.getBalls() + "\0", print_writers);
 				}
+			}
+			
+			if(rowId == 12) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCardExtra$BatterExtraGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 0.915\0", print_writers);
+			}else if(rowId == 13) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCardExtra$BatterExtraGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 0.845\0", print_writers);
+			}else if(rowId == 11) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+						+ "$BattingCardExtra$BatterExtraGrp$object_ScaleY*TRANSFORMATION*SCALING*Y SET 1.000\0", print_writers);
 			}
 			
 			switch (WhichType.toUpperCase()) {
@@ -13077,7 +13088,7 @@ public class ALL_FF
 			}else if(whatToProcess.equalsIgnoreCase("Control_Shift_Z")){
 				rowId = 0;
 				for(int i = 0; i <= tournaments.size() - 1 ; i++) {
-					if(tournaments.get(i).getBallsFaced() >= 30) {
+					if(tournaments.get(i).getBallsFaced() >= 50) {
 						rowId++;
 						if(rowId>=6) break;
 						

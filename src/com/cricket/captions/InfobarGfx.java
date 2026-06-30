@@ -10505,6 +10505,14 @@ public class InfobarGfx
 				    	break;
 				    }
 					
+					if(photoCategory.equalsIgnoreCase("WithoutPhoto")) {
+					    CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Image"
+					    		+ "*ACTIVE SET 0\0", print_writers);
+					}else if(photoCategory.equalsIgnoreCase("WithPhoto")) {
+						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Milestone$Image"
+						    		+ "*ACTIVE SET 1\0", print_writers);
+					}
+					
 					switch(config.getBroadcaster()) {
 					case Constants.TG20:
 						this_series = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, headToHead, cricketService, matchAllData, past_tournament_stats);

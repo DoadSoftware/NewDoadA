@@ -2793,6 +2793,22 @@ function addItemsToList(whatToProcess,dataToProcess)
 						row.insertCell(2).appendChild(ballselect);
 						setDropdownOptionToSelectOptionArray($(ballselect),2);
 						cellCount = 3;
+						
+						let photoselect  = document.createElement('select');
+						photoselect.id = 'selectPhotoData';
+						photoselect.name = photoselect.id;
+						[{ value: 'WithoutPhoto', text: 'Without Photo' },
+						 { value: 'WithPhoto', text: 'With Photo' }
+							].forEach(({ value, text }) => {
+								  option = document.createElement('option');
+								  option.value = value;
+								  option.text = text;
+								  photoselect.appendChild(option);
+							});
+						photoselect.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 3)");
+						row.insertCell(3).appendChild(photoselect);
+						setDropdownOptionToSelectOptionArray($(photoselect),3);
+						cellCount = 4;
 					}else if(this.value == 'BatsmanTimeLine'){
 						let xballselect  = document.createElement('select');
 						xballselect.id = 'selectFreeText';

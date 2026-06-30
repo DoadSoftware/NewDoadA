@@ -756,6 +756,7 @@ public class Caption
 				}
 				break;
 			case "Alt_8":
+				System.out.println(whatToProcess);
 				switch(config.getBroadcaster()) {
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
 					whichSide = (this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
@@ -807,6 +808,7 @@ public class Caption
 							}
 							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
 							this_infobarGfx.data_Type = whatToProcess.split(",")[4];
+							this_infobarGfx.photoCategory = whatToProcess.split(",")[5];
 						}
 						else if(whatToProcess.split(",")[2].equalsIgnoreCase("BallMileStone")) {
 							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
@@ -815,6 +817,7 @@ public class Caption
 							}
 							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
 							this_infobarGfx.data_Type = whatToProcess.split(",")[4];
+							this_infobarGfx.photoCategory = whatToProcess.split(",")[5];
 						}
 						this_infobarGfx.infobar.setSectionAnalytics(whatToProcess.split(",")[2]);
 					}else {
