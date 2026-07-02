@@ -1183,34 +1183,35 @@ public class IndexController
 			}
 			
 			return (List<T>) statistics;
-		case "z": case "x": case "c": case "v": case "Control_Shift_Z": case "Control_Shift_Y":
+		case "z": case "x": case "c": case "v": case "Control_Shift_Z": case "Control_Shift_Y": 
+		case "Alt_Shift_K": case "Alt_Shift_X": case "Alt_Shift_T": case "Alt_Shift_V": case "Alt_Shift_Z": case "Alt_Shift_Y":
 			List<Tournament> tournament_stats = new ArrayList<Tournament>();
 			
 			tournament_stats = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, headToHead.getH2hPlayer(), cricketService, 
 					session_match, past_tournament_stats);
 			
 			switch (whatToProcess) {
-			case "z":
+			case "z": case "Alt_Shift_K":
 				Collections.sort(tournament_stats,new CricketFunctions.BatsmenMostRunComparator());
 				break;
-			case "x":
+			case "x": case "Alt_Shift_X":
 				Collections.sort(tournament_stats,new CricketFunctions.BowlerWicketsComparator());
 				break;
-			case "c":
+			case "c": case "Alt_Shift_T":
 				Collections.sort(tournament_stats,new CricketFunctions.BatsmanFoursComparator());
 				break;
-			case "v":
+			case "v": case "Alt_Shift_V":
 				Collections.sort(tournament_stats,new CricketFunctions.BatsmanSixesComparator());
 				break;
-			case "Control_Shift_Z":
+			case "Control_Shift_Z": case "Alt_Shift_Z":
 				Collections.sort(tournament_stats,new CricketFunctions.BestBatsmanStrikeRateComparator());
 				break;
-			case "Control_Shift_Y":
+			case "Control_Shift_Y": case "Alt_Shift_Y":
 				Collections.sort(tournament_stats,new CricketFunctions.BestBowlerEconomyComparator());
 				break;	
 			}
 			return (List<T>) tournament_stats;
-		case "Control_z": case "Control_x":
+		case "Control_z": case "Control_x": case "Alt_Shift_C": case "Alt_Shift_B":
 			
 			List<Tournament> tournaments = new ArrayList<Tournament>();
 			
@@ -1221,7 +1222,7 @@ public class IndexController
 	        for(Tournament tourn : tournaments) {
 	        	
 				switch (whatToProcess) {
-				case "Control_z":
+				case "Control_z": case "Alt_Shift_C":
 					//top_ten_beststat.clear();
 		            for(BestStats bs : tourn.getBatsman_best_Stats()) {
 //		            	System.out.println("bs = " + bs.getPlayer().getFull_name() + "  runs = " + bs.getBestEquation());
@@ -1230,7 +1231,7 @@ public class IndexController
 		            }
 					Collections.sort(top_ten_beststat,new CricketFunctions.BatsmanBestStatsComparator());
 					break;
-				case "Control_x":
+				case "Control_x": case "Alt_Shift_B":
 		            for(BestStats bs : tourn.getBowler_best_Stats()) {
 		            	top_ten_beststat.add(CricketFunctions.getProcessedBowlerBestStats(bs));
 		            }

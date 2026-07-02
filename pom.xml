@@ -8,7 +8,7 @@
 
     <groupId>NewDoadA</groupId>
     <artifactId>NewDoadA</artifactId>
-    <version>1.56</version>
+    <version>1.60</version>
     <packaging>war</packaging>
 
     <name>NewDoadA</name>

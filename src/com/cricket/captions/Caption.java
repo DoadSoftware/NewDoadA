@@ -296,6 +296,10 @@ public class Caption
 				}
 				status = this_fullFramesGfx.populateFFPointsTable(whichSide,whatToProcess.split(",")[0], matchAllData, 0);
 				break;
+			case "Alt_Shift_K": case "Alt_Shift_X": case "Alt_Shift_T": case "Alt_Shift_V": case "Alt_Shift_Z": case "Alt_Shift_Y":
+			case "Alt_Shift_C": case "Alt_Shift_B":
+				status = this_bugsAndMiniGfx.populateLofLeaderBoard(whichSide, whatToProcess, matchAllData, 0);
+				break;
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 			case "Alt_Shift_W":
 				if(!whatToProcess.split(",")[0].equalsIgnoreCase("Alt_Shift_W")) {

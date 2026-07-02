@@ -955,7 +955,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Control_Shift_*': case 'Alt_F9': case 'Shift_F11': case 'z': case 'x': case 'c': case 'v': case 'Control_z': case 'Control_x':
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
-	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z':
+	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
+	case 'Alt_Shift_C': case 'Alt_Shift_B':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -5027,31 +5028,32 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1;
 			break;
-		case 'z': case 'x': case 'c': case 'v': case 'Control_z': case 'Control_x': case 'Control_Shift_Z':
-		case 'Control_Shift_Y':
+		case 'z': case 'x': case 'c': case 'v': case 'Control_z': case 'Control_x': case 'Control_Shift_Z': case 'Control_Shift_Y':
+		case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
+		case 'Alt_Shift_C': case 'Alt_Shift_B':
 			switch(whatToProcess) {
-			case 'z':
+			case 'z': case 'Alt_Shift_K':
 				header_text.innerHTML = 'LEADERBOARD - MOST RUNS';
 				break;
-			case 'x':
+			case 'x': case 'Alt_Shift_X':
 				header_text.innerHTML = 'LEADERBOARD - MOST WICKETS';
 				break;	
-			case 'c':
+			case 'c': case 'Alt_Shift_T':
 				header_text.innerHTML = 'LEADERBOARD - MOST FOURS';
 				break;	
-			case 'v':
+			case 'v': case 'Alt_Shift_V':
 				header_text.innerHTML = 'LEADERBOARD - MOST SIXES';
 				break;
-			case 'Control_z':
+			case 'Control_z': case 'Alt_Shift_C': 
 			    header_text.innerHTML = 'LEADERBOARD - HIGHEST SCORES';
 				break;		
-			case 'Control_x':
+			case 'Control_x': case 'Alt_Shift_B':
 			    header_text.innerHTML = 'LEADERBOARD - BEST FIGURES';
 				break;
-			case 'Control_Shift_Z':
+			case 'Control_Shift_Z': case 'Alt_Shift_Z': 
 				header_text.innerHTML = 'LEADERBOARD - BEST STRIKE RATE'
 				break;
-			case 'Control_Shift_Y':
+			case 'Control_Shift_Y': case 'Alt_Shift_Y':
 				header_text.innerHTML = 'LEADERBOARD - BEST ECONOMY'
 				break;	
 			}
@@ -5605,17 +5607,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 		}
 		
 		switch(whatToProcess){
-		case 'F12': case 'Alt_1': case 'Alt_2': case 'Alt_6': case 'Alt_7': case 'Alt_0':case 'Alt_8':case "Alt_3": case 'Alt_4': case 'Control_F5': case 'Control_F9':
-		case "Control_F12": case "Shift_F12":case "Alt_5": case 'Control_Shift_F1': case 'F8': case 'Alt_F8': case 'F10': case 'F6': case 'Shift_F6':
-		case 'F7': case 'Control_d': case 'F11': case 'Control_s': case 'Control_f': case 'u': case 'F5': case 'F9': case 'Shift_F9': case 'Shift_F5':
-		case 'Alt_F12': case 'Shift_E': case 'y': case 'k': case 'g': case 'h': case 'Control_y': case 'Shift_O': case 'Shift_F4': case 'Alt_p':
-		case 'Control_Shift_U': case 'Control_Shift_V': case 'Control_d': case 'Control_e': case 'Control_m': case 'Shift_F': case 'Control_Shift_J':
-		case 'Control_Shift_L': case 'Control_Shift_O': case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Shift_T':
-		case 'Control_Shift_*': case 'Alt_F9': case 'Shift_F11': case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': 
-		case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': 
-		case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
-		case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z':
-			option = document.createElement('input');
+		case 'F12': case 'Alt_1': case 'Alt_2': case 'Alt_6': case 'Alt_7': case 'Alt_0':case 'Alt_8':case "Alt_3": case 'Alt_4': case 'Control_F5': case 'Control_F9': case "Control_F12": 
+		case "Shift_F12":case "Alt_5": case 'Control_Shift_F1': case 'F8': case 'Alt_F8': case 'F10': case 'F6': case 'Shift_F6': case 'F7': case 'Control_d': case 'F11': case 'Control_s': 
+		case 'Control_f': case 'u': case 'F5': case 'F9': case 'Shift_F9': case 'Shift_F5': case 'Alt_F12': case 'Shift_E': case 'y': case 'k': case 'g': case 'h': case 'Control_y': 
+		case 'Shift_O': case 'Shift_F4': case 'Alt_p': case 'Control_Shift_U': case 'Control_Shift_V': case 'Control_d': case 'Control_e': case 'Control_m': case 'Shift_F': case 'Control_Shift_J': 
+		case 'Control_Shift_L': case 'Control_Shift_O': case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Shift_T': case 'Control_Shift_*': case 'Alt_F9': case 'Shift_F11': 
+		case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': 
+		case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': 
+		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
+		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B':
+			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';
 			option.value = 'Populate Data';
