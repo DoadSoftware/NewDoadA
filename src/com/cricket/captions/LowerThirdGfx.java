@@ -9286,15 +9286,13 @@ public class LowerThirdGfx
 	    						
 		    					if(lowerThird.getLeftText()[0].equalsIgnoreCase("Captain") || lowerThird.getLeftText()[0].equalsIgnoreCase("Captain Wicket-Keeper") ||
 		    							lowerThird.getLeftText()[0].equalsIgnoreCase("Wicket-Keeper")) {
-		    						
-		    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,lowerThird.getScoreText(),
-		    							    "", null, 1,foreignLanguageDataList);
+		    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getLeftText()[0].toUpperCase(),
+	    									"", null, 1,foreignLanguageDataList);
 		    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,",",
 		    							    "", null, 2,foreignLanguageDataList);
-		    						
-	    							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getLeftText()[0].toUpperCase(),
-	    									"", null, 3,foreignLanguageDataList);
-
+		    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,lowerThird.getScoreText(),
+		    							    "", null, 3,foreignLanguageDataList);
+	    							
 	    							foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 
 	    							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper_Center$TopLine$img_Text1$Side" + whichSide + "$English$txt_Designation*GEOM*TEXT SET ", 

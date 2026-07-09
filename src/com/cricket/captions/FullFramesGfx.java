@@ -614,8 +614,8 @@ public class FullFramesGfx
 			previous_match.setEventFile(new ObjectMapper().readValue(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.EVENT_DIRECTORY + 
 					fixture.getMatchfilename() + ".json"), EventFile.class));
 		}
-//		previous_match = CricketFunctions.populateMatchVariables(cricketService, CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, 
-//				CricketUtil.SETUP + "," + CricketUtil.MATCH, previous_match,config));	
+		previous_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, CricketUtil.SETUP 
+				+ "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, previous_match, config, CricketUtil.CRICKET_DIRECTORY), Players, Teams, Grounds);
 		
 		inning = previous_match.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == 2).findAny().orElse(null);
 		if(inning == null) {
@@ -1128,21 +1128,29 @@ public class FullFramesGfx
 		this_ALL_FF.tournaments = new ArrayList<Tournament>();
 		this_ALL_FF.top_batsman_beststat.clear();
 		this_ALL_FF.Teams = Teams;
-				
-		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
-			if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
-				this_ALL_FF.tournaments = past_tournament_stats;
-			}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
-				this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, this_ALL_FF.headToHead, cricketService, 
-						matchAllData, past_tournament_stats);
+		
+		switch (whatToProcess.split(",")[0]) {
+		case "Alt_k":
+			this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, null, null, matchAllData, null);
+			break;
+		default:
+			switch (config.getBroadcaster()) {
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
+				if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
+					this_ALL_FF.tournaments = past_tournament_stats;
+				}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
+					this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, this_ALL_FF.headToHead, cricketService, 
+							matchAllData, past_tournament_stats);
+				}
+				break;
+
+			default:
+				this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, null, null, matchAllData, tournaments);
+				break;
 			}
 			break;
-
-		default:
-			this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, null, null, matchAllData, tournaments);
-			break;
 		}
+		
 		if(this_ALL_FF.tournaments == null) {
 			return "populateLeaderBoard : Tournament Stats is Null";
 		}
@@ -1160,7 +1168,7 @@ public class FullFramesGfx
 		case "v":
 			Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BatsmanSixesComparator());
 			break;
-		case "Control_Shift_Z":
+		case "Control_Shift_Z": case "Alt_k":
 			Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BestBatsmanStrikeRateComparator());
 			break;
 		case "Control_Shift_Y":
@@ -1367,6 +1375,7 @@ public class FullFramesGfx
 		case "Alt_Shift_F1":
 			return this_ALL_FF.ScoreCardContributionBody(print_writers, WhichSide, config, matchAllData, inning);
 		case "z": case "x":	case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
+		case "Alt_k":
 			return this_ALL_FF.LeaderBoardBody(print_writers, WhichSide,whatToProcess, config, matchAllData, inning);
 		case "Shift_P": case "Shift_Q":
 			return this_ALL_FF.ThisSeriesBody(print_writers, WhichSide,whatToProcess, config, matchAllData, inning);	
@@ -1381,6 +1390,7 @@ public class FullFramesGfx
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
+		case "Alt_k":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
@@ -1396,7 +1406,7 @@ public class FullFramesGfx
 		case "F1": case "F2": case "F4": case "Control_F11": case "m": case "Control_d": case "Control_e": case "Control_m": case "Control_F7":
 		case "Shift_K": case "Control_F10": case "Shift_F10": case "Control_Shift_F7": case "Alt_F9": case "Alt_F11": case "Control_F1":
 		case "Shift_F11": case "Control_Alt_F1": case "Alt_Shift_F1": case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5":
-		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
+		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z": case "Alt_k":
 		case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
@@ -1488,7 +1498,7 @@ public class FullFramesGfx
 				break;
 			case "Alt_F9": case "Control_F11": case "Shift_F11": case "F4": case "Shift_F10": case "Control_F10":
 			case "Alt_F11": case "Control_p": case "Control_F1": case "z": case "x": case "c": case "v": case "Control_z": 
-			case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Alt_Shift_W":
+			case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Alt_Shift_W": case "Alt_k":
 				Position_Base_X_IN = "2.017";
 				Position_Base_X_Out = "0.0";
 				break;

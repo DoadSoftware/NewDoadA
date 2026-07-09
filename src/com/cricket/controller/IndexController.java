@@ -1183,6 +1183,14 @@ public class IndexController
 			}
 			
 			return (List<T>) statistics;
+		case "Alt_k":
+			List<Tournament> current_match_stats = new ArrayList<Tournament>();
+			current_match_stats = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, headToHead.getH2hPlayer(), cricketService, 
+					session_match, null);
+			Collections.sort(current_match_stats,new CricketFunctions.BestBatsmanStrikeRateComparator());
+			System.out.println("SIZE - " + current_match_stats.size());
+			//System.out.println(current_match_stats.toString());
+			return (List<T>) current_match_stats;
 		case "z": case "x": case "c": case "v": case "Control_Shift_Z": case "Control_Shift_Y": 
 		case "Alt_Shift_K": case "Alt_Shift_X": case "Alt_Shift_T": case "Alt_Shift_V": case "Alt_Shift_Z": case "Alt_Shift_Y":
 			List<Tournament> tournament_stats = new ArrayList<Tournament>();

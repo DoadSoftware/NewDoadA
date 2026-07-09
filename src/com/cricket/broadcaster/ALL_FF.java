@@ -685,7 +685,7 @@ public class ALL_FF
 				break;
 			case "Control_F7": case "Control_F11": case "Alt_F11": case "Shift_F11": case "Control_p": case "Control_Alt_F1":
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
-			case "Alt_Shift_W":
+			case "Alt_Shift_W": case "Alt_k":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
 						+ "Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET " + base1Path + "EVENT" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$SideColourBands$"
@@ -1770,7 +1770,7 @@ public class ALL_FF
 		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20:
 			switch(whatToProcess) {
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Alt_Shift_W":
-				
+			case "Alt_k":
 				switch(config.getBroadcaster()) {
 				case Constants.TG20:
 //					switch(whatToProcess) {
@@ -1836,7 +1836,12 @@ public class ALL_FF
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$select_Cap"
 								+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "BEST ECONOMY", "", null, 0, foreignLanguageDataList);
-						break;	
+						break;
+					case "Alt_k":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide +"$LeaderBoard$Cap$select_Cap"
+								+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "SUPER STRIKER OF THE MATCH", "", null, 0, foreignLanguageDataList);
+						break;
 					}
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$TitleGrp$LeaderboardTitle$Text$Side" + WhichSide + 
 							"$English$txt_Title*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
@@ -1869,7 +1874,11 @@ public class ALL_FF
 					case "Control_Shift_Y":
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "MINIMUM 5 OVERS BOWLED", "", 
 								null, 0, foreignLanguageDataList);
-						break;	
+						break;
+					case "Alt_k":
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "MINIMUM 10 BALLS FACED", "", 
+								null, 0, foreignLanguageDataList);
+						break;
 					}
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + 
 							"$LeaderBoard$SubTitle$English$txt_SubTitle*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
@@ -2953,6 +2962,7 @@ public class ALL_FF
 		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20:
 			switch(whatToProcess) {
 			case "Alt_z": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
+			case "Alt_k":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$Footer$Side" + WhichSide + 
 						"$select_FooterStyle*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
@@ -12315,13 +12325,16 @@ public class ALL_FF
 					containerName = "$Dehighlight";
 				}
 				
-				if(leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim().equalsIgnoreCase("")) {
+				if(leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim() != null && 
+						!leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim().isEmpty()) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + 
-							"$Standings$Row_" + rowId + containerName + "$txt_Position*GEOM*TEXT SET " + rowId + "\0", print_writers);
+							"$Standings$Row_" + rowId + containerName + "$txt_Position*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim() 
+							+ "\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Shift_For_TopTitle$AllGraphics$Side" + WhichSide + 
-							"$Standings$Row_" + rowId + containerName + "$txt_Position*GEOM*TEXT SET Q\0", print_writers);
+							"$Standings$Row_" + rowId + containerName + "$txt_Position*GEOM*TEXT SET " + rowId + "\0", print_writers);
 				}
+				
 				for(Team team : Teams) {
 					if(team.getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
 						switch (config.getBroadcaster()) {
@@ -13085,10 +13098,15 @@ public class ALL_FF
 						}
 					}
 				}
-			}else if(whatToProcess.equalsIgnoreCase("Control_Shift_Z")){
+			}else if(whatToProcess.equalsIgnoreCase("Control_Shift_Z") || whatToProcess.equalsIgnoreCase("Alt_k")){
 				rowId = 0;
+				int ballFaced = 50;
+				if(whatToProcess.equalsIgnoreCase("Alt_k")) {
+					ballFaced = 10;
+				}
+				
 				for(int i = 0; i <= tournaments.size() - 1 ; i++) {
-					if(tournaments.get(i).getBallsFaced() >= 50) {
+					if(tournaments.get(i).getBallsFaced() >= ballFaced) {
 						rowId++;
 						if(rowId>=6) break;
 						

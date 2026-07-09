@@ -298,16 +298,17 @@ public class Caption
 				break;
 			case "Alt_Shift_K": case "Alt_Shift_X": case "Alt_Shift_T": case "Alt_Shift_V": case "Alt_Shift_Z": case "Alt_Shift_Y":
 			case "Alt_Shift_C": case "Alt_Shift_B":
+				this_bugsAndMiniGfx.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
 				status = this_bugsAndMiniGfx.populateLofLeaderBoard(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
-			case "Alt_Shift_W":
+			case "Alt_Shift_W": case "Alt_k":
 				if(!whatToProcess.split(",")[0].equalsIgnoreCase("Alt_Shift_W")) {
 					this_fullFramesGfx.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
 					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
 				}
 				
-				if(whatToProcess.split(",")[0].equalsIgnoreCase("Alt_Shift_W")){
+				if(whatToProcess.split(",")[0].equalsIgnoreCase("Alt_Shift_W")){ 
 					this_fullFramesGfx.whichtype = whatToProcess.split(",")[3];
 					this_fullFramesGfx.whichTeam = Integer.valueOf(whatToProcess.split(",")[2]);
 					
