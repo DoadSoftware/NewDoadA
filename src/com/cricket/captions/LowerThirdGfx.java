@@ -1978,8 +1978,14 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
-			
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
+			case Constants.TG20:
+				lowerThird = new LowerThird(CricketFunctions.getbowlingstyle(player.getBowlingStyle()).toUpperCase(), tournament.getPlayer().getFirstname(), 
+						surName,"THIS SEASON", "", "", 2,"",teamName,new String[]{"MATCHES", "WICKETS", "3WI", "ECONOMY", "BEST"},
+						new String[]{String.valueOf(tournament.getMatches()),String.valueOf(tournament.getWickets()),
+						(tournament.getThreeWicketHaul() != 0 ? String.valueOf(tournament.getThreeWicketHaul()) : "-"),economy,best},null,null,
+						new String[] {"-165","-80","9","97","176"});
+				break;
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC:
 				lowerThird = new LowerThird(CricketFunctions.getbowlingstyle(player.getBowlingStyle()).toUpperCase(), tournament.getPlayer().getFirstname(), 
 						surName,"THIS SEASON", "", "", 2,"",teamName,new String[]{"MATCHES", "WICKETS", "AVERAGE", "ECONOMY", "BEST"},
 						new String[]{String.valueOf(tournament.getMatches()),String.valueOf(tournament.getWickets()),Data,economy,best},null,null,
