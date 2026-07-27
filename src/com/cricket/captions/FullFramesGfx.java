@@ -658,7 +658,7 @@ public class FullFramesGfx
 		System.out.println("this_ALL_FF.WhichProfile = " + this_ALL_FF.WhichProfile);
 		System.out.println("this_ALL_FF.FirstPlayerId = " + this_ALL_FF.FirstPlayerId);
 		switch(config.getBroadcaster()) {
-		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20:
+		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 			this_ALL_FF.ImageType = whatToProcess.split(",")[4];
 			break;
 		}
@@ -1104,7 +1104,7 @@ public class FullFramesGfx
 				break;
 			}else {
 				switch(config.getBroadcaster()) {
-				case Constants.TG20:
+				case Constants.TG20: case Constants.APLT20:
 					this_ALL_FF.varText = "TOP F TEAMS QUALIFY FOR SEMI-FINALS";
 					break;
 				default:
@@ -1135,7 +1135,7 @@ public class FullFramesGfx
 			break;
 		default:
 			switch (config.getBroadcaster()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
 				if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
 					this_ALL_FF.tournaments = past_tournament_stats;
 				}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
@@ -1143,7 +1143,6 @@ public class FullFramesGfx
 							matchAllData, past_tournament_stats);
 				}
 				break;
-
 			default:
 				this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, null, null, matchAllData, tournaments);
 				break;
@@ -1476,7 +1475,7 @@ public class FullFramesGfx
 	{
 		String Position_footer = "",Position_Base_X_IN ="",Position_Base_X_Out="";
 		switch (config.getBroadcaster()) {
-		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20:
+		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 			switch(whatToProcess.split(",")[0]) {
 			case "Shift_K": case "Alt_F11":
 				Position_footer = "1.103";
@@ -1492,9 +1491,20 @@ public class FullFramesGfx
 				Position_Base_X_Out = "1.00";
 				break;
 			case "Control_Shift_F4": case "Control_Shift_F5": case "Control_Shift_F1": case "Control_Shift_F2":
-			case "Shift_K": 
 				Position_Base_X_IN = "1.00";
 				Position_Base_X_Out = "0.00";
+				break;
+			case "Shift_K":
+				switch (config.getBroadcaster()) {
+				case Constants.APLT20:
+					Position_Base_X_IN = "2.017";
+					Position_Base_X_Out = "0.00";
+					break;
+				default:
+					Position_Base_X_IN = "1.00";
+					Position_Base_X_Out = "0.00";
+					break;
+				}
 				break;
 			case "Alt_F9": case "Control_F11": case "Shift_F11": case "F4": case "Shift_F10": case "Control_F10":
 			case "Alt_F11": case "Control_p": case "Control_F1": case "z": case "x": case "c": case "v": case "Control_z": 

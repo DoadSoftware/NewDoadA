@@ -93,6 +93,8 @@ public class Constants
 	public final static String MT20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\MT20\\\\Photos";
 	public final static String MT20_PHOTO_PATH = "\\\\c\\\\Images\\\\MT20\\\\Photos";
 	
+	public final static String APLT20 = "APLT20";
+	
 	public final static String TG20 = "TG20";
 	public final static String TG20_LOGO = "IMAGE*/Default/Assets/Logos/";
 	public final static String TG20_LOGO_BW = "IMAGE*/Default/Assets/Logos_BW/";

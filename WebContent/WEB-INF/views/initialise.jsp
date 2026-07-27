@@ -258,6 +258,7 @@
 			      <select id="select_broadcaster" name="select_broadcaster" class="browser-default custom-select custom-select-sm">
 			      		<option value="MT20">MT20</option>
 			      		<option value="TG20">TG20 League</option>
+			      		<option value="APLT20">ASSAM PREMIER LEAGUE</option>
 			      		<option value="AFG_SL_SERIES">AFG v SL SERIES</option>
 			      		<option value="BAN_AFG_SERIES">AFG v WI SERIES</option>
 			      		<option value="ACC">ACC</option>
