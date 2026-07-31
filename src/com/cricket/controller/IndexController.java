@@ -1188,9 +1188,32 @@ public class IndexController
 			current_match_stats = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, headToHead.getH2hPlayer(), cricketService, 
 					session_match, null);
 			Collections.sort(current_match_stats,new CricketFunctions.BestBatsmanStrikeRateComparator());
-			System.out.println("SIZE - " + current_match_stats.size());
-			//System.out.println(current_match_stats.toString());
 			return (List<T>) current_match_stats;
+			
+		case "Control_Shift_F8":
+			if(whatToProcess.contains(",")) {
+				List<Tournament> tournamentStats = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA",false, headToHead.getH2hPlayer(),
+				        cricketService,session_match, past_tournament_stats);
+				tournamentStats.removeIf(tournament -> tournament.getPlayer().getTeamId() != Integer.valueOf(whatToProcess.split(",")[1])); 
+				switch(whatToProcess.split(",")[2]) {
+					case "MOST RUNS":
+						Collections.sort(tournamentStats,new CricketFunctions.BatsmenMostRunComparator());
+						break;
+					case "MOST WICKETS":
+						Collections.sort(tournamentStats,new CricketFunctions.BowlerWicketsComparator());
+						break;
+					case "MOST FOURS":
+						Collections.sort(tournamentStats,new CricketFunctions.BatsmanFoursComparator());
+						break;
+					case "MOST SIXES":
+						Collections.sort(tournamentStats,new CricketFunctions.BatsmanSixesComparator());
+						break;
+					}
+		        return tournamentStats.size() > 5 ? (List<T>) tournamentStats.subList(0, 5) : (List<T>) tournamentStats;
+			}else {
+				return (List<T>) session_team;
+			}
+			
 		case "z": case "x": case "c": case "v": case "Control_Shift_Z": case "Control_Shift_Y": 
 		case "Alt_Shift_K": case "Alt_Shift_X": case "Alt_Shift_T": case "Alt_Shift_V": case "Alt_Shift_Z": case "Alt_Shift_Y":
 			List<Tournament> tournament_stats = new ArrayList<Tournament>();

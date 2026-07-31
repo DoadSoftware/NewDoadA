@@ -1133,6 +1133,9 @@ public class FullFramesGfx
 		case "Alt_k":
 			this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, null, null, matchAllData, null);
 			break;
+		case "Control_Shift_F8":
+			this_ALL_FF.tournaments = CricketFunctions.extractTournamentData("CURRENT_MATCH_DATA", false, null, null, matchAllData, tournaments);
+			break;
 		default:
 			switch (config.getBroadcaster()) {
 			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
@@ -1191,7 +1194,29 @@ public class FullFramesGfx
 				}
 			}
 			Collections.sort(this_ALL_FF.top_bowler_beststats,new CricketFunctions.BowlerBestStatsComparator());
-			break;	
+			break;
+		 case "Control_Shift_F8":
+			 System.out.println("this_ALL_FF.whichTeam" + this_ALL_FF.whichTeam);
+			 this_ALL_FF.tournaments.removeIf(tournament -> tournament.getPlayer().getTeamId() != this_ALL_FF.whichTeam);
+			 
+			if(this_ALL_FF.whichtype.equalsIgnoreCase("MOST RUNS")){
+				Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BatsmenMostRunComparator());
+			}else if(this_ALL_FF.whichtype.equalsIgnoreCase("MOST WICKETS")){
+				Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BowlerWicketsComparator());
+			}else if(this_ALL_FF.whichtype.equalsIgnoreCase("MOST FOURS")){
+				Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BatsmanFoursComparator());
+			}else if(this_ALL_FF.whichtype.equalsIgnoreCase("MOST SIXES")){
+				Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BatsmanSixesComparator());
+			}else if(this_ALL_FF.whichtype.equalsIgnoreCase("HIGHEST SR")){
+				Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BestBatsmanStrikeRateComparator());
+			}else if(this_ALL_FF.whichtype.equalsIgnoreCase("BEST ECONOMY")){
+				Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BestBowlerEconomyComparator());
+			}else if(this_ALL_FF.whichtype.equalsIgnoreCase("MOST DOTS")){
+				Collections.sort(this_ALL_FF.tournaments,new CricketFunctions.BowlerDotsComparator());
+			}
+			this_ALL_FF.tournaments = new ArrayList<>(this_ALL_FF.tournaments.size() > 5 
+				    ? this_ALL_FF.tournaments.subList(0, 5) : this_ALL_FF.tournaments);
+			break;
 		}
 		
 		status = PopulateFfHeader(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
@@ -1374,7 +1399,7 @@ public class FullFramesGfx
 		case "Alt_Shift_F1":
 			return this_ALL_FF.ScoreCardContributionBody(print_writers, WhichSide, config, matchAllData, inning);
 		case "z": case "x":	case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
-		case "Alt_k":
+		case "Alt_k": case "Control_Shift_F8":
 			return this_ALL_FF.LeaderBoardBody(print_writers, WhichSide,whatToProcess, config, matchAllData, inning);
 		case "Shift_P": case "Shift_Q":
 			return this_ALL_FF.ThisSeriesBody(print_writers, WhichSide,whatToProcess, config, matchAllData, inning);	
@@ -1389,7 +1414,7 @@ public class FullFramesGfx
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
-		case "Alt_k":
+		case "Alt_k": case "Control_Shift_F8":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
@@ -1405,8 +1430,8 @@ public class FullFramesGfx
 		case "F1": case "F2": case "F4": case "Control_F11": case "m": case "Control_d": case "Control_e": case "Control_m": case "Control_F7":
 		case "Shift_K": case "Control_F10": case "Shift_F10": case "Control_Shift_F7": case "Alt_F9": case "Alt_F11": case "Control_F1":
 		case "Shift_F11": case "Control_Alt_F1": case "Alt_Shift_F1": case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5":
-		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z": case "Alt_k":
-		case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
+		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z": case "Alt_k": case "z": case "x": case "c": case "v": 
+		case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Control_Shift_F8":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateFooter(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
@@ -1506,9 +1531,9 @@ public class FullFramesGfx
 					break;
 				}
 				break;
-			case "Alt_F9": case "Control_F11": case "Shift_F11": case "F4": case "Shift_F10": case "Control_F10":
-			case "Alt_F11": case "Control_p": case "Control_F1": case "z": case "x": case "c": case "v": case "Control_z": 
-			case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Alt_Shift_W": case "Alt_k":
+			case "Alt_F9": case "Control_F11": case "Shift_F11": case "F4": case "Shift_F10": case "Control_F10": case "Alt_F11": case "Control_p": 
+			case "Control_F1": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": 
+			case "Alt_Shift_W": case "Alt_k": case "Control_Shift_F8":
 				Position_Base_X_IN = "2.017";
 				Position_Base_X_Out = "0.0";
 				break;

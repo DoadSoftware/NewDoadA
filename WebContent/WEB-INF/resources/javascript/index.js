@@ -273,7 +273,7 @@ function processUserSelection(whichInput)
 	case 'change_on':
 		if($('#which_keypress').val() == 'Shift_T' && $('#selected_broadcaster').val().toUpperCase() == 'T20_MUMBAI'){
 			processCricketProcedures('PLAYING-XI-CHANGE-ON');
-		}else if($('#which_keypress').val() == 'Shift_I'){
+		}else if($('#which_keypress').val() == 'Shift_I' || $('#key_press_hidden_input').val() == 'Shift_I'){
 			processUserSelectionData('IMPACT-CHANGE-ON', 'Shift_I');	
 		}
 		break;
@@ -473,7 +473,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'g': case 'y': case 'Shift_O': case 'Shift_F4': case 'Control_Shift_U': case 'Control_Shift_V': case 'Shift_F': case 'Control_Shift_O': 
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
-			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D':
+			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Control_F2':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -956,7 +956,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
-	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k':
+	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8":
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -975,6 +975,249 @@ function addItemsToList(whatToProcess,dataToProcess)
 		row = tbody.insertRow(tbody.rows.length);
 		
 		switch(whatToProcess) {
+		case "Control_Shift_F8":
+			header_text.innerHTML = 'TOURNAMENT TEAM TOP 5';
+		    select = document.createElement('select');
+		    select.id = 'selectTeam';
+		    
+			dataToProcess.forEach(function(teams){
+				option = document.createElement('option');
+				option.value = teams.teamId;
+				option.text = teams.teamName1;
+				select.appendChild(option);
+			});
+			
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'APLT20': case'MT20':
+				$(select).on('change', function() {
+			        setDropdownOptionToSelectOptionArray(this, 2);
+			        processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," +$('#selectTeam').val() + "," + 
+			            ($('#selectStats').val() || $('#selectStats').find('option').first().val()) + "," +$('#selectPic').val());
+			    });
+			    row.insertCell(cellCount).appendChild(select);
+			    setDropdownOptionToSelectOptionArray($(select), 2);
+				break;
+			default:
+				$(select).on('change', function() {
+			        setDropdownOptionToSelectOptionArray(this, 2);
+			        processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," +$('#selectTeam').val() + "," + 
+			            ($('#selectStats').val() || $('#selectStats').find('option').first().val()));
+			    });
+			    row.insertCell(cellCount).appendChild(select);
+			    setDropdownOptionToSelectOptionArray($(select), 2);
+				break;
+			}
+		     
+		    cellCount++;
+		
+		    select = document.createElement('select');
+		    select.id = 'selectStats';
+		    select.name = select.id;
+		    ['MOST RUNS', 'MOST WICKETS', 'MOST FOURS', 'MOST SIXES'].forEach(stat => {
+		        option = document.createElement('option');
+		        option.value = stat;
+		        option.text = stat;
+		        select.appendChild(option);
+		    });
+		    select.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 1)");
+		     $('#selectStats').on('change', function() {
+		            setDropdownOptionToSelectOptionArray($(select), 1);
+		       });
+		    row.insertCell(cellCount).appendChild(select);
+		    cellCount++;
+		    document.getElementById('selectStats').dispatchEvent(new Event('change'));
+		    row.insertCell(cellCount).id = 'Player';
+		    cellCount++;
+		    
+		    switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'APLT20': case'MT20':
+				select = document.createElement('select');
+				select.id = 'selectPic';
+				select.name = select.id;
+	
+				option = document.createElement('option');
+				option.value = 'WITHOUT';
+				option.text = 'WITHOUT Photo';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'WITH';
+				option.text = 'WITH Photo';
+				select.appendChild(option);
+				
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 3)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),3);
+				removeSelectDuplicates(select.id);
+				cellCount = cellCount + 1;
+	
+				$('#selectStats').on('change', function() {
+	    			processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," + $('#selectTeam').val()+","+
+	    				($('#selectStats').val() || $(this).find('option').first().val()) + "," + $('#selectPic').val());
+			    });
+				break;
+			default:
+				$('#selectStats').on('change', function() {
+	    			processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," + $('#selectTeam').val()+","+
+	    				($('#selectStats').val() || $(this).find('option').first().val()));
+			    });
+				break;
+			}
+			
+		    $('#selectStats').trigger('change');
+		    break;
+		case 'Control_F2':
+			header_text.innerHTML = 'LINEUP';
+			select = document.createElement('select');
+			select.id = 'selectTeams';
+			select.name = select.id;
+			
+			option = document.createElement('option');
+			option.value = session_match.setup.homeTeamId;
+			option.text = session_match.setup.homeTeam.teamName1;
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = session_match.setup.awayTeamId;
+			option.text = session_match.setup.awayTeam.teamName1;
+			select.appendChild(option);
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			cellCount = cellCount + 1;
+			
+			break;
+		case 'Shift_I':
+		    header_text.innerHTML = 'IMPACT PLAYER';
+		
+		    // Team select
+		    select = document.createElement('select');
+		    select.id = 'selectTeams';
+		    select.name = select.id;
+		
+		    option = document.createElement('option');
+		    option.value = session_match.setup.homeTeam.teamId;
+		    option.text = session_match.setup.homeTeam.teamName4;
+		    select.appendChild(option);
+		
+		    option = document.createElement('option');
+		    option.value = session_match.setup.awayTeam.teamId;
+		    option.text = session_match.setup.awayTeam.teamName4;
+		    select.appendChild(option);
+		
+		    select.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 0)");
+		    row.insertCell(cellCount).appendChild(select);
+		    setDropdownOptionToSelectOptionArray($(select), 0);
+		    removeSelectDuplicates(select.id);
+		    cellCount++;
+		
+		    // OUT and IN dropdowns
+		    let selectionsOut = document.createElement('select');
+		    selectionsOut.id = 'selectTeamids_out';
+		    selectionsOut.name = selectionsOut.id;
+		    selectionsOut.style.width = 'auto';
+		    selectionsOut.style.height = 'auto';
+		
+		    let selectionsIn = document.createElement('select');
+		    selectionsIn.id = 'selectTeamids_in';
+		    selectionsIn.name = selectionsIn.id;
+		    selectionsIn.style.width = 'auto';
+		    selectionsIn.style.height = 'auto';
+		
+		    // SINGLE combined listener for both OUT and IN dropdowns
+		    select.addEventListener('change', function () {
+		        let teamId = parseInt(this.value, 10);
+		        let isHome = teamId === session_match.setup.homeTeamId;
+		
+		        // Clear both dropdowns
+		        selectionsOut.innerHTML = '';
+		        selectionsIn.innerHTML = '';
+		
+		        // OUT header
+		        let outOption = document.createElement('option');
+		        outOption.value = 'out';
+		        outOption.text = '-- SELECT OUT PLAYER --';
+		        selectionsOut.appendChild(outOption);
+		
+		        // IN header
+		        let inOption = document.createElement('option');
+		        inOption.value = 'in';
+		        inOption.text = '-- SELECT IN PLAYER --';
+		        selectionsIn.appendChild(inOption);
+		
+		        // Choose team
+		        let squad = isHome ? session_match.setup.homeSquad : session_match.setup.awaySquad;
+		        let substitutes = isHome ? session_match.setup.homeSubstitutes : session_match.setup.awaySubstitutes;
+		
+		        function addPlayerOption(selectElement, player, isOther = false) {
+				    let suffix = isOther ? ' (OTHER)' : '';
+				    let opt = document.createElement('option');
+				    opt.value = player.playerId;
+				    opt.text = player.full_name + suffix;
+				    selectElement.appendChild(opt);
+				}
+				
+				// First add substitutes to selectionsIn
+				substitutes.forEach(function (player) {
+				    addPlayerOption(selectionsIn, player, true);
+				});
+				
+				// Then add squad to selectionsIn
+				squad.forEach(function (player) {
+				    addPlayerOption(selectionsIn, player, false);
+				});
+				
+				// For selectionsOut, add squad first
+				squad.forEach(function (player) {
+				    addPlayerOption(selectionsOut, player, false);
+				});
+				
+				// Then add substitutes after squad
+				substitutes.forEach(function (player) {
+				    addPlayerOption(selectionsOut, player, true);
+				});
+		
+		        $(selectionsOut).trigger('change');
+		        $(selectionsIn).trigger('change');
+		    });
+		
+		    select.dispatchEvent(new Event('change'));
+		
+		    // OUT player dropdown
+		    selectionsOut.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 1)");
+		    row.insertCell(cellCount).appendChild(selectionsOut);
+		    setDropdownOptionToSelectOptionArray($(selectionsOut), 1);
+		    cellCount++;
+		
+		    // IN player dropdown
+		    selectionsIn.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 2)");
+		    row.insertCell(cellCount).appendChild(selectionsIn);
+		    setDropdownOptionToSelectOptionArray($(selectionsIn), 2);
+		    cellCount++;
+		    
+		    if($('#selected_broadcaster').val() == 'MT20'){
+				select = document.createElement('select');
+				select.id = 'selectPhotoImpact';
+				select.name = select.id;
+		
+				option = document.createElement('option');
+				option.value = 'WITHOUT_PHOTO';
+				option.text = 'WITHOUT PHOTO' ;
+				select.appendChild(option);
+								
+				option = document.createElement('option');
+				option.value = 'WITH_PHOTO';
+				option.text = 'WITH PHOTO' ;
+				select.appendChild(option);
+				
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 3)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),3);
+				removeSelectDuplicates(select.id);
+				cellCount = cellCount + 1;
+			}
+		    break;
 		case 'Alt_z':
 			header_text.innerHTML = 'SQUAD';
 			
@@ -3474,7 +3717,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			case 'F10' ://NameSuperDB
 			header_text.innerHTML = 'NAMESUPER DATABASE';
 			select = document.createElement('select');
-			select.style = 'width:130px';
+			select.style = 'width:500px';
 			select.id = 'selectNameSuper';
 			select.name = select.id;
 			
@@ -4255,7 +4498,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			break;
 		case 'k':
 			select = document.createElement('select');
-			select.style = 'width:400px';
+			select.style = 'width:500px';
 			select.id = 'selectBugdb';
 			select.name = select.id;
 			
@@ -5597,6 +5840,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 			break;					
 		}
 		
+		if(whatToProcess == 'Shift_I'){
+			option = document.createElement('input');
+			option.type = 'button';
+			option.name = 'change_on';
+			option.value = 'Change On';
+		    option.id = option.name;
+		    option.setAttribute('onclick','processUserSelection(this)');
+		    
+		    div = document.createElement('div');
+		    div.append(option);
+		    
+		    option = document.createElement('input');
+			option.type = 'hidden';
+			option.name = 'key_press_hidden_input';
+			option.id = option.name;
+			option.value = whatToProcess;
+	
+		    div.append(option);
+		    
+		    row.insertCell(cellCount).appendChild(div);
+	    	cellCount = cellCount + 1;
+		}
+		
 		if((whatToProcess == 'Control_Shift_U' || whatToProcess == 'Control_Shift_V')){
 			option = document.createElement('input');
 			option.type = 'button';
@@ -5670,7 +5936,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': 
 		case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': 
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
-		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k':
+		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8":
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

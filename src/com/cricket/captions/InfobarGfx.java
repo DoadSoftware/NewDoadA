@@ -1266,7 +1266,7 @@ public class InfobarGfx
 							getTargetOvers()), "", null, 4,foreignLanguageDataList);
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OVERS", "", null, 5,foreignLanguageDataList);
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (matchAllData.getSetup().getTargetType() != null && 
-							!matchAllData.getSetup().getTargetType().isEmpty() ? matchAllData.getSetup().getTargetType().toUpperCase():""), "", null, 6,foreignLanguageDataList);
+							!matchAllData.getSetup().getTargetType().isEmpty() ? "("+ matchAllData.getSetup().getTargetType().toUpperCase()+")":""), "", null, 6,foreignLanguageDataList);
 				}
 				
 				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
@@ -1301,7 +1301,7 @@ public class InfobarGfx
 				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "BALL" + CricketFunctions.Plural(CricketFunctions.
 						GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), "", null, 5,foreignLanguageDataList);
 				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (matchAllData.getSetup().getTargetType() != null && 
-						!matchAllData.getSetup().getTargetType().isEmpty() ? matchAllData.getSetup().getTargetType().toUpperCase():""), "", null, 6,foreignLanguageDataList);
+						!matchAllData.getSetup().getTargetType().isEmpty() ? "("+matchAllData.getSetup().getTargetType().toUpperCase()+")":""), "", null, 6,foreignLanguageDataList);
 				
 				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Side" + WhichSide + "$Ident_FullName$DataPart$BottomPart$"
@@ -8729,7 +8729,9 @@ public class InfobarGfx
 						
 						String equationEnglish = String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()) + " RUN" + CricketFunctions.Plural(CricketFunctions.
 								GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " OFF " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) 
-								+ " BALL" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+								+ " BALL" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase() 
+								+ (matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty() ? " (" 
+								+ matchAllData.getSetup().getTargetType().toUpperCase() + ")" : "");
 						
 						foreignLanguageData.clear();
 						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
@@ -11150,7 +11152,7 @@ public class InfobarGfx
 								+ "$English$txt_Title2*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 						
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (matchAllData.getSetup().getTargetType() != null 
-								&& !matchAllData.getSetup().getTargetType().isEmpty() ? matchAllData.getSetup().getTargetType().toUpperCase():""), "", null, 0, foreignLanguageDataList);
+								&& !matchAllData.getSetup().getTargetType().isEmpty() ? "(" + matchAllData.getSetup().getTargetType().toUpperCase() + ")" :""), "", null, 0, foreignLanguageDataList);
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Equation$Top_Line"
 								+ "$English$txt_DLS*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 						
@@ -11222,7 +11224,7 @@ public class InfobarGfx
 								+ "$English$txt_Title2*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 						
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (matchAllData.getSetup().getTargetType() != null 
-								&& !matchAllData.getSetup().getTargetType().isEmpty() ? matchAllData.getSetup().getTargetType().toUpperCase():""), "", null, 0, foreignLanguageDataList);
+								&& !matchAllData.getSetup().getTargetType().isEmpty() ? "(" + matchAllData.getSetup().getTargetType().toUpperCase() + ")":""), "", null, 0, foreignLanguageDataList);
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$EquationBig$Top_Line"
 								+ "$English$txt_DLS*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 						

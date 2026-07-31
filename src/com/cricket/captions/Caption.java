@@ -302,30 +302,32 @@ public class Caption
 				status = this_bugsAndMiniGfx.populateLofLeaderBoard(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
-			case "Alt_Shift_W": case "Alt_k":
-				if(!whatToProcess.split(",")[0].equalsIgnoreCase("Alt_Shift_W")) {
-					this_fullFramesGfx.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
-					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
-				}
-				
-				if(whatToProcess.split(",")[0].equalsIgnoreCase("Alt_Shift_W")){ 
+			case "Alt_Shift_W": case "Alt_k": case "Control_Shift_F8":
+				switch(whatToProcess.split(",")[0]) {
+				case "Alt_Shift_W":
 					this_fullFramesGfx.whichtype = whatToProcess.split(",")[3];
 					this_fullFramesGfx.whichTeam = Integer.valueOf(whatToProcess.split(",")[2]);
 					
 					this_fullFramesGfx.this_ALL_FF.whichtype = whatToProcess.split(",")[3];
 					this_fullFramesGfx.this_ALL_FF.whichTeam = Integer.valueOf(whatToProcess.split(",")[2]);
-				}
-				
-				switch(config.getBroadcaster()) {
-				case Constants.APLT20:
-					this_fullFramesGfx.this_ALL_FF.WhichProfile = whatToProcess.split(",")[4];
+					break;
+				case "Control_Shift_F8":
+					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
+					this_fullFramesGfx.this_ALL_FF.whichtype = whatToProcess.split(",")[3];
+					this_fullFramesGfx.this_ALL_FF.whichTeam = Integer.valueOf(whatToProcess.split(",")[4]);
+					this_fullFramesGfx.this_ALL_FF.WhichProfile = whatToProcess.split(",")[5];
+					break;
+				default:
+					this_fullFramesGfx.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
+					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
+					
+					switch(config.getBroadcaster()) {
+					case Constants.APLT20:
+						this_fullFramesGfx.this_ALL_FF.WhichProfile = whatToProcess.split(",")[4];
+						break;
+					}
 					break;
 				}
-				
-//				if(whatToProcess.split(",")[0].equalsIgnoreCase("z") || whatToProcess.split(",")[0].equalsIgnoreCase("z")) {
-//					this_fullFramesGfx.this_ALL_FF.sponsor = whatToProcess.split(",")[4];
-//				}
-				System.out.println(whatToProcess);
 				status = this_fullFramesGfx.populateLeaderBoard(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "Shift_P": case "Shift_Q":
@@ -363,6 +365,17 @@ public class Caption
 //				}
 				
 				status = this_infobarGfx.populateLofDimension(print_writers, matchAllData);
+				break;
+				
+			case "Control_F2":
+				status = this_lowerThirdGfx.populateL3rdBowlingLineUp(whatToProcess,whichSide,matchAllData);
+				break;	
+				
+			case "Shift_I":
+				if(this_lowerThirdGfx.chnageOn == false && whichSide == 1) {
+					this_lowerThirdGfx.impactPlayerData = whatToProcess;
+				}
+				status = this_lowerThirdGfx.populateImpact(whatToProcess, whichSide, matchAllData);
 				break;
 				
 			case "Control_F12":
