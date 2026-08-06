@@ -356,7 +356,7 @@ public class Caption
 			case "Alt_Shift_Q":
 				this_scene = new Scene();
 				this_scene.LoadScene("LOF_PLOTTER", print_writers, config);
-				this_infobarGfx.containerName = "m";
+				this_infobarGfx.containerName = "y";
 //				if(config.getBroadcaster().equalsIgnoreCase(Constants.MPL)||
 //						config.getBroadcaster().equalsIgnoreCase(Constants.NPL)||
 //						config.getBroadcaster().equalsIgnoreCase(Constants.LEGENDS) ||

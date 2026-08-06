@@ -2557,19 +2557,25 @@ public class BugsAndMiniGfx
 				
 				switch (config.getBroadcaster()) {
 				case Constants.TG20: case Constants.APLT20:
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$select_Language*FUNCTION*Omo*vis_con SET ", 
-							config, Constants.TG20, print_writers, foreignLanguageOmo);
-					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "TOURNAMENT FOURS", "", null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$English$txt_Header*GEOM*TEXT SET ", 
-							config, Constants.TG20, print_writers, foreignLanguageData);
-					
 					switch (config.getBroadcaster()) {
 					case Constants.TG20:
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$select_Language*FUNCTION*Omo*vis_con SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageOmo);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "TOURNAMENT FOURS", "", null, 0, foreignLanguageDataList);
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$English$txt_Header*GEOM*TEXT SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageData);
+						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$Sponsor$Base*TEXTURE*IMAGE SET "
 								+ Constants.TG20_SPONSOR + "SREENIDHI" + "\0", print_writers);
 						break;
 					case Constants.APLT20:
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text1$select_Language*FUNCTION*Omo*vis_con SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageOmo);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "TOURNAMENT FOURS", "", null, 0, foreignLanguageDataList);
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text1$English$txt_Header*GEOM*TEXT SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageData);
+						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						break;
 					}
@@ -2640,19 +2646,25 @@ public class BugsAndMiniGfx
 				
 				switch (config.getBroadcaster()) {
 				case Constants.TG20: case Constants.APLT20:
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$select_Language*FUNCTION*Omo*vis_con SET ", 
-							config, Constants.TG20, print_writers, foreignLanguageOmo);
-					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "TOURNAMENT SIXES", "", null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$English$txt_Header*GEOM*TEXT SET ", 
-							config, Constants.TG20, print_writers, foreignLanguageData);
-					
 					switch (config.getBroadcaster()) {
 					case Constants.TG20:
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$select_Language*FUNCTION*Omo*vis_con SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageOmo);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "TOURNAMENT SIXES", "", null, 0, foreignLanguageDataList);
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text2$English$txt_Header*GEOM*TEXT SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageData);
+						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$Sponsor$Base*TEXTURE*IMAGE SET "
 								+ Constants.TG20_SPONSOR + "GMR_MAIN" + "\0", print_writers);
 						break;
 					case Constants.APLT20:
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text1$select_Language*FUNCTION*Omo*vis_con SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageOmo);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "TOURNAMENT SIXES", "", null, 0, foreignLanguageDataList);
+						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text1$English$txt_Header*GEOM*TEXT SET ", 
+								config, Constants.TG20, print_writers, foreignLanguageData);
+						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Select$Tournament_Sixes$band$select_Sponsor*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						break;
 					}
@@ -5503,7 +5515,7 @@ public class BugsAndMiniGfx
 									"$Dehighlight$txt_Figures*GEOM*TEXT SET DNB\0", print_writers);
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$Row" + row_no + 
-									"$Dehighlight$txt_Figures*GEOM*TEXT SET " + h2h.getWickets() +"-"+h2h.getRunsConceded() + "\0", print_writers);
+									"$Dehighlight$txt_Figures*GEOM*TEXT SET " + ply.getWickets() + "-" + ply.getRunsConceded() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$Row" + row_no + 
 									"$Dehighlight$txt_Overs*GEOM*TEXT SET " + CricketFunctions.OverBalls(0, ply.getBallsBowled()) + "\0", print_writers);
 						}
@@ -5683,6 +5695,9 @@ public class BugsAndMiniGfx
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp$MiniPartRow"
 								+ rowId + "*ACTIVE SET 1\0", print_writers);
 						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$AllDataGrp$DataGrp$MiniPartRow" 
+								+ rowId + "$Dehighlight$PointsData*TEXTURE*IMAGE SET " + text2Path + "EVENT" + " \0", print_writers);
+						
 						if(matchAllData.getSetup().getHomeTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
 								|| matchAllData.getSetup().getAwayTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + 
@@ -5814,15 +5829,26 @@ public class BugsAndMiniGfx
 					+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 			switch(whatToProcess) {
 			case "Alt_Shift_K":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$OrangeCap$select_Sponsor*FUNCTION*Omo*vis_con SET "
-						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TG20) ? "1" : "0") + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$OrangeCap$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				switch(config.getBroadcaster()) {
+				case Constants.APLT20:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$OrangeCap$Sponsor$Base*ACTIVE SET 0\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$OrangeCap$Sponsor$img_Sopnsor*TEXTURE*IMAGE SET " 
+							+ Constants.MT20_SPONSOR + "Vimal" + "\0", print_writers);
+					break;
+				}
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$select_Cap*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "ORANGE CAP", "", null, 0, foreignLanguageDataList);
 				break;
 			case "Alt_Shift_X":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$Purplecap$select_Sponsor*FUNCTION*Omo*vis_con SET "
-						+ (config.getBroadcaster().equalsIgnoreCase(Constants.TG20) ? "1" : "0") + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$Purplecap$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				switch(config.getBroadcaster()) {
+				case Constants.APLT20:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$Purplecap$Sponsor$img_Sopnsor*TEXTURE*IMAGE SET " 
+							+ Constants.MT20_SPONSOR + "IndusInd_Bank" + "\0", print_writers);
+					break;
+				}
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_LeaderBoard$Main$Cap$select_Cap*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 				
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PURPLE CAP", "", null, 0, foreignLanguageDataList);

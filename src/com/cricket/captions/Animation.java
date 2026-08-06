@@ -6174,8 +6174,8 @@ public class Animation
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_I":
-						previewCommand = "anim_ImpactSub 1.200 anim_ImpactSub$InOut 1.200 anim_ImpactSub$InOut$Essentials 1.200 anim_ImpactSub$InOut$Essentials$In 1.200 anim_ImpactSub$InOut$Logo 2.200"
-								+ " anim_ImpactSub$InOut$Logo$In 1.100 anim_ImpactSub$InOut$Colour 1.100 anim_ImpactSub$InOut$Colour$In 1.100";
+						previewCommand = "anim_ImpactSub 1.200 anim_ImpactSub$InOut 1.200 anim_ImpactSub$InOut$Essentials 1.200 anim_ImpactSub$InOut$Essentials$In 1.200 "
+								+ "anim_ImpactSub$InOut$Logo 2.200 anim_ImpactSub$InOut$Logo$In 1.100 anim_ImpactSub$InOut$Colour 1.100 anim_ImpactSub$InOut$Colour$In 1.100";
 						break;
 					case "Control_F2":	
 						previewCommand = "Shrink$InOut 0.400 LT_BowlingOption$InOut 1.5 LT_BowlingOption$InOut$Essentials 1.5 "

@@ -2829,7 +2829,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
 					const options = [
 					  { value: 'BLANK', text: 'Blank' },
-					  //{ value: 'FreeText', text: 'FreeText' },
+					  { value: 'FreeText', text: 'FreeText' },
 					  { value: 'IDENT', text: 'Ident' },
 					  { value: 'EXTRAS', text: 'Extras' },
 					  { value: 'Commentators', text: 'Commentators' },
