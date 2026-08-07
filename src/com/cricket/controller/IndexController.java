@@ -132,6 +132,7 @@ public class IndexController
 	BugsAndMiniGfx this_bugs_mini = new BugsAndMiniGfx();
 	
 	List<DuckWorthLewis> session_dls = new ArrayList<DuckWorthLewis>();
+	List<DuckWorthLewis> session_vjd = new ArrayList<DuckWorthLewis>();
 	
 	@RequestMapping(value = {"/","/initialise"}, method={RequestMethod.GET,RequestMethod.POST}) 
 	public String initialisePage(ModelMap model, 
@@ -1334,6 +1335,7 @@ public class IndexController
 				this_caption.this_infobarGfx.Grounds = session_ground;
 				this_caption.this_infobarGfx.tournament_matches = cricket_matches;
 				this_caption.this_infobarGfx.dls  = session_dls;
+				this_caption.this_infobarGfx.vjd  = session_vjd;
 				this_caption.this_infobarGfx.Commentators = session_commentator;
 				this_caption.this_infobarGfx.Players = session_players;
 				this_caption.this_infobarGfx.teams = session_team;
@@ -1348,6 +1350,7 @@ public class IndexController
 				this_caption.this_lowerThirdGfx.tournaments = past_tournament_stats;
 				this_caption.this_lowerThirdGfx.tapeballs = past_tape;
 				this_caption.this_lowerThirdGfx.dls = session_dls;
+				this_caption.this_lowerThirdGfx.vjd  = session_vjd;
 				this_caption.this_lowerThirdGfx.Staff = session_staff;
 				this_caption.this_lowerThirdGfx.VariousText = session_variousText;
 				this_caption.this_lowerThirdGfx.Potts = session_pott;
@@ -1420,6 +1423,9 @@ public class IndexController
 				if(new File(CricketUtil.CRICKET_DIRECTORY + "ParScores BB.html").exists()) {
 					session_dls = CricketFunctions.populateDuckWorthLewis(session_match, CricketUtil.CRICKET_DIRECTORY);
 				}
+				if(new File(CricketUtil.CRICKET_DIRECTORY + "PARBALL").exists()) {
+					session_vjd = CricketFunctions.populateVJD(session_match, CricketUtil.CRICKET_DIRECTORY);
+				}
 				
 				switch (typeOfUpdate) {
 				case "NEW":
@@ -1427,7 +1433,7 @@ public class IndexController
 						session_bugs,session_infoBarStats,session_fixture, session_team, session_ground,session_variousText, session_commentator, session_staff, 
 						session_players, session_pott,session_playoff, session_teamChanges, session_performance_bug, new FullFramesGfx(),new LowerThirdGfx(), 
 						new InfobarGfx(), new BugsAndMiniGfx(), 1, "", "-", past_tournament_stats,past_tape,session_dls, headToHead.getH2hPlayer(), 
-						past_tournament_stats, cricketService,session_bugs_everest);
+						past_tournament_stats, cricketService,session_bugs_everest, session_vjd);
 					
 					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());

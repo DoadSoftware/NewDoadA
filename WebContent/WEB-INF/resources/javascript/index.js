@@ -473,7 +473,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'g': case 'y': case 'Shift_O': case 'Shift_F4': case 'Control_Shift_U': case 'Control_Shift_V': case 'Shift_F': case 'Control_Shift_O': 
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
-			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Control_F2':
+			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Control_F2': case 'Alt_f':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -956,7 +956,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
-	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8":
+	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8": case 'Alt_f':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -2138,6 +2138,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		        } else {
 		            addOption('TEAMNAME', 'TeamName');
 		            addOption('VENUE', 'Venue');
+					
 		            addOption('Ident', 'Ident');
 					addOption('CRR', 'Run Rate');
 		            
@@ -2151,6 +2152,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		                        addOption('TARGET', 'Target');
 		                        addOption('RRR', 'Required Rate');
 								addOption('DLS_PAR_SCORE', 'DLS Par Score');
+								addOption('VJD_PAR_SCORE', 'VJD Par Score');
 		                    }
 		                }
 		            });
@@ -3336,7 +3338,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1
 			break;	
-		case 'Alt_d':
+		case 'Alt_d': case 'Alt_f':
 			header_text.innerHTML = 'LT - DLS PAR SCORE';
 		
 			select = document.createElement('select');
@@ -5936,7 +5938,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': 
 		case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': 
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
-		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8":
+		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8": case 'Alt_f':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

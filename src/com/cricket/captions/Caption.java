@@ -59,7 +59,7 @@ public class Caption
 	public List<EverestBugs> everestBugs;
 	public List<InfobarStats> infobarStats;
 	public List<VariousText> VariousText;
-	public List<DuckWorthLewis> dls;
+	public List<DuckWorthLewis> dls, vjd;
 	public List<Commentator> Commentators;
 	public List<Staff> Staff;
 	public List<Player> Players;
@@ -95,7 +95,7 @@ public class Caption
 		List<POTT> pott,List<Playoff> Playoffs, List<String> teamChanges, List<PerformanceBug> performanceBugs, FullFramesGfx this_fullFramesGfx,
 		LowerThirdGfx this_lowerThirdGfx, InfobarGfx this_infobarGfx,BugsAndMiniGfx this_bugsAndMiniGfx, int whichSide, String whichGraphhicsOnScreen, 
 		String slashOrDash, List<Tournament> tournament,List<BestStats> tapeball,List<DuckWorthLewis> dls, List<HeadToHeadPlayer> headToHead, 
-		List<Tournament> past_tournament_stats, CricketService cricketService,List<EverestBugs> everestBugs) {
+		List<Tournament> past_tournament_stats, CricketService cricketService,List<EverestBugs> everestBugs, List<DuckWorthLewis> vjd) {
 	
 		super();
 		this.print_writers = print_writers;
@@ -124,6 +124,8 @@ public class Caption
 		this.performanceBugs = performanceBugs;
 		this.everestBugs = everestBugs;
 		this.dls = dls;
+		this.vjd = vjd;
+		
 		this.this_fullFramesGfx = new FullFramesGfx(print_writers, config, statistics, statsTypes, tournament_matches, 
 				fixTures, Teams, Grounds,tournament, VariousText, players, pott,Playoffs, teamChanges,headToHead, past_tournament_stats, cricketService);
 		this.this_lowerThirdGfx = new LowerThirdGfx(print_writers, config, statistics, statsTypes, tournament_matches, 
@@ -543,6 +545,9 @@ public class Caption
 				break;
 			case "Alt_d":// DLS Target
 				status = this_lowerThirdGfx.populateDlsTarget(whatToProcess,whichSide,matchAllData);
+				break;
+			case "Alt_f":// DLS Target
+				status = this_lowerThirdGfx.populateVjdTarget(whatToProcess,whichSide,matchAllData);
 				break;
 			case "Alt_Shift_F12":
 				status = this_lowerThirdGfx.populatePhaseWiseRunRate(whatToProcess,whichSide,matchAllData);
