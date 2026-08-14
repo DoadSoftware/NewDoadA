@@ -126,13 +126,13 @@ public class Caption
 		this.dls = dls;
 		this.vjd = vjd;
 		
-		this.this_fullFramesGfx = new FullFramesGfx(print_writers, config, statistics, statsTypes, tournament_matches, 
-				fixTures, Teams, Grounds,tournament, VariousText, players, pott,Playoffs, teamChanges,headToHead, past_tournament_stats, cricketService);
-		this.this_lowerThirdGfx = new LowerThirdGfx(print_writers, config, statistics, statsTypes, tournament_matches, 
-				nameSupers, Teams, Grounds, tournament,tapeball, dls, staff, players, pott, varioustText, headToHead, past_tournament_stats, cricketService,fixTures);
+		this.this_fullFramesGfx = new FullFramesGfx(print_writers, config, statistics, statsTypes, tournament_matches, fixTures, Teams, Grounds,tournament, 
+				VariousText, players, pott,Playoffs, teamChanges,headToHead, past_tournament_stats, cricketService);
+		this.this_lowerThirdGfx = new LowerThirdGfx(print_writers, config, statistics, statsTypes, tournament_matches, nameSupers, Teams, Grounds, tournament, 
+				tapeball, dls, staff, players, pott, varioustText, headToHead, past_tournament_stats, cricketService,fixTures, vjd);
 		this.whichSide = whichSide;
-		this.this_infobarGfx = new InfobarGfx(config, slashOrDash, print_writers, statistics, statsTypes, infobarStats, Grounds, Commentators, 
-				tournament_matches, dls, players, headToHead, past_tournament_stats, cricketService, Teams);
+		this.this_infobarGfx = new InfobarGfx(config, slashOrDash, print_writers, statistics, statsTypes, infobarStats, Grounds, Commentators, tournament_matches, 
+				dls, players, headToHead, past_tournament_stats, cricketService, Teams, vjd);
 		this.this_bugsAndMiniGfx = new BugsAndMiniGfx(print_writers, config, bugs, performanceBugs, Teams, VariousText, cricketService, headToHead, tournament_matches,
 				statistics, statsTypes, past_tournament_stats,everestBugs, players);
 		this.status = "";

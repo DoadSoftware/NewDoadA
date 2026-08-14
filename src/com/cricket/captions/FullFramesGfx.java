@@ -689,13 +689,8 @@ public class FullFramesGfx
 			}
 			
 			//this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
-			this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
-			
-			this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
-			
-			if(this_ALL_FF.stat.getPlayerID() == this_ALL_FF.FirstPlayerId) {
-				System.out.println(this_ALL_FF.stat.getMatches());
-			}
+//			this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);		
+//			this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
 			
 //			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
 //				switch (this_ALL_FF.WhichProfile.toUpperCase()) {

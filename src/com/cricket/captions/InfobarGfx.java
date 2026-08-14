@@ -137,7 +137,7 @@ public class InfobarGfx
 
 	public InfobarGfx(Configuration config, String slashOrDash, List<PrintWriter> print_writers, List<Statistics> statistics, List<StatsType> statsTypes, 
 			List<InfobarStats> infobarStats, List<Ground> Grounds, List<Commentator> commentators,List<MatchAllData> tournament_matches, List<DuckWorthLewis> dls, 
-			List<Player> players, List<HeadToHeadPlayer> headToHead, List<Tournament> past_tournament_stats, CricketService cricketService, List<Team> teams) {
+			List<Player> players, List<HeadToHeadPlayer> headToHead, List<Tournament> past_tournament_stats, CricketService cricketService, List<Team> teams, List<DuckWorthLewis> vjd) {
 		super();
 		this.config = config;
 		this.slashOrDash = slashOrDash;
@@ -154,6 +154,7 @@ public class InfobarGfx
 		this.past_tournament_stats = past_tournament_stats;
 		this.cricketService = cricketService;
 		this.teams = teams;
+		this.vjd = vjd;
 		foreignLanguageData.add(new ForeignLanguageData("", "", "", ""));
 		foreignLanguageOmo.add(new ForeignLanguageData("0", "2", "3", "1"));		
 	}

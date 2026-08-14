@@ -184,10 +184,9 @@ public class LowerThirdGfx
 		super();
 	}
 	
-	public LowerThirdGfx(List<PrintWriter> print_writers, Configuration config, List<Statistics> statistics, List<StatsType> statsTypes, 
-			List<MatchAllData> tournament_matches, List<NameSuper> nameSupers, List<Team> Teams, List<Ground> Grounds, 
-			List<Tournament> tournaments,List<BestStats> tapeballs,List<DuckWorthLewis> dls, List<Staff> staff, List<Player> players, List<POTT> pott,
-			List<VariousText> VariousText, List<HeadToHeadPlayer> headToHead, List<Tournament> past_tournament_stats, CricketService cricketService,List<Fixture> fixTures) {
+	public LowerThirdGfx(List<PrintWriter> print_writers, Configuration config, List<Statistics> statistics, List<StatsType> statsTypes, List<MatchAllData> tournament_matches, List<NameSuper> nameSupers, 
+			List<Team> Teams, List<Ground> Grounds, List<Tournament> tournaments,List<BestStats> tapeballs,List<DuckWorthLewis> dls, List<Staff> staff, List<Player> players, List<POTT> pott,
+			List<VariousText> VariousText, List<HeadToHeadPlayer> headToHead, List<Tournament> past_tournament_stats, CricketService cricketService,List<Fixture> fixTures, List<DuckWorthLewis> vjd) {
 		super();
 		this.print_writers = print_writers;
 		this.config = config;
@@ -208,6 +207,7 @@ public class LowerThirdGfx
 		this.past_tournament_stats = past_tournament_stats;
 		this.cricketService = cricketService;
 		this.fixTures = fixTures;
+		this.vjd = vjd;
 		foreignLanguageData.add(new ForeignLanguageData("", "", "", ""));
 		foreignLanguageOmo.add(new ForeignLanguageData("0", "2", "3", "1"));
 	}
@@ -1692,14 +1692,10 @@ public class LowerThirdGfx
 					
 					switch (WhichProfile.toUpperCase()) {
 					case "DT20":
-//						matchAllData.getSetup().setMatchType("DT20");
-						
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 						
 						break;
 					case "IT20":
-//						matchAllData.getSetup().setMatchType("IT20");
-						
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						
 						break;	
@@ -1713,8 +1709,8 @@ public class LowerThirdGfx
 						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
 					
-					stat.setStats_type(statsType);
-					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+//					stat.setStats_type(statsType);
+//					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 					
 //					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
 //						switch (WhichProfile.toUpperCase()) {
@@ -1742,14 +1738,10 @@ public class LowerThirdGfx
 						
 						break;
 					case "ODI":
-//						matchAllData.getSetup().setMatchType("ODI");
-						
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						
 						break;
 					case "LIST A":
-//						matchAllData.getSetup().setMatchType("ODI");
-						
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile.toUpperCase())).findAny().orElse(null);
 						
 						break;	
@@ -2383,7 +2375,7 @@ public class LowerThirdGfx
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					lowerThird = new LowerThird("", matchAllData.getSetup().getAwayTeam().getTeamName1(), "",whichSplit, String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), 
 							String.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())),
-							2,"",matchAllData.getSetup().getAwayTeam().getTeamName4(),splitNumber,splitData,new String[]{"THIRTIES","BALLS"},null,
+							2,"",matchAllData.getSetup().getAwayTeam().getTeamBadge(),splitNumber,splitData,new String[]{"THIRTIES","BALLS"},null,
 							new String[] {"-129","-90","-52","-12","26","66","103","140","170","191"});
 					break;
 				case Constants.BAN_AFG_SERIES: case Constants.ACC:
@@ -2399,7 +2391,7 @@ public class LowerThirdGfx
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					lowerThird = new LowerThird("", matchAllData.getSetup().getAwayTeam().getTeamName1(), "",whichSplit, String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), 
 							String.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())),
-							2,"",matchAllData.getSetup().getAwayTeam().getTeamName4(),splitNumber,splitData,new String[]{"FIFTIES","BALLS"},null,
+							2,"",matchAllData.getSetup().getAwayTeam().getTeamBadge(),splitNumber,splitData,new String[]{"FIFTIES","BALLS"},null,
 							new String[] {"-117","-72","-27","19","64","111","158","190","450","450"});
 					break;
 				case Constants.BAN_AFG_SERIES: case Constants.ACC:
@@ -2415,7 +2407,7 @@ public class LowerThirdGfx
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					lowerThird = new LowerThird("", matchAllData.getSetup().getAwayTeam().getTeamName1(), "",whichSplit, String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), 
 							String.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())),
-							2,"",matchAllData.getSetup().getAwayTeam().getTeamName4(),splitNumber,splitData,new String[]{"HUNDREDS","BALLS"},null,
+							2,"",matchAllData.getSetup().getAwayTeam().getTeamBadge(),splitNumber,splitData,new String[]{"HUNDREDS","BALLS"},null,
 							new String[] {"-117","-72","-27","19","64","111","158","190","450","450"});
 					break;
 				case Constants.BAN_AFG_SERIES: case Constants.ACC:
@@ -2442,7 +2434,7 @@ public class LowerThirdGfx
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					lowerThird = new LowerThird("", matchAllData.getSetup().getHomeTeam().getTeamName1(), "",whichSplit, String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), 
 							String.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())),
-							2,"",matchAllData.getSetup().getHomeTeam().getTeamName4(),splitNumber,splitData,new String[]{"THIRTIES","BALLS"},null,
+							2,"",matchAllData.getSetup().getHomeTeam().getTeamBadge(),splitNumber,splitData,new String[]{"THIRTIES","BALLS"},null,
 							new String[] {"-129","-90","-52","-12","26","66","103","140","170","191"});
 					break;
 				case Constants.BAN_AFG_SERIES: case Constants.ACC:
@@ -2458,7 +2450,7 @@ public class LowerThirdGfx
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					lowerThird = new LowerThird("", matchAllData.getSetup().getHomeTeam().getTeamName1(), "",whichSplit, String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), 
 							String.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())),
-							2,"",matchAllData.getSetup().getHomeTeam().getTeamName4(),splitNumber,splitData,new String[]{"FIFTIES","BALLS"},null,
+							2,"",matchAllData.getSetup().getHomeTeam().getTeamBadge(),splitNumber,splitData,new String[]{"FIFTIES","BALLS"},null,
 							new String[] {"-117","-72","-27","19","64","111","158","190","450","450"});
 					break;
 				case Constants.BAN_AFG_SERIES: case Constants.ACC:
@@ -2474,7 +2466,7 @@ public class LowerThirdGfx
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					lowerThird = new LowerThird("", matchAllData.getSetup().getHomeTeam().getTeamName1(), "",whichSplit, String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), 
 							String.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())),
-							2,"",matchAllData.getSetup().getHomeTeam().getTeamName4(),splitNumber,splitData,new String[]{"HUNDREDS","BALLS"},null,
+							2,"",matchAllData.getSetup().getHomeTeam().getTeamBadge(),splitNumber,splitData,new String[]{"HUNDREDS","BALLS"},null,
 							new String[] {"-117","-72","-27","19","64","111","158","190","450","450"});
 					break;
 				case Constants.BAN_AFG_SERIES: case Constants.ACC:
@@ -7659,8 +7651,8 @@ public class LowerThirdGfx
 		switch (config.getBroadcaster().toUpperCase()) {
         case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
             switch (whatToProcess) {
-            case "Alt_Shift_F3":
-            	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TopLine$Header_Out$Side" + whichSide + 
+            	case "Alt_Shift_F3":
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TopLine$Header_Out$Side" + whichSide + 
             			"$img_Base1*TEXTURE*IMAGE SET " + base1Path + "EVENT" +"\0", print_writers);
             		break;
             	case "Alt_F1": case "Alt_F2":
