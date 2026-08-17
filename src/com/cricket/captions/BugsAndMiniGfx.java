@@ -5738,8 +5738,16 @@ public class BugsAndMiniGfx
 								+ "$fig_Lost*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getLost() + "\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
 								+ "$fig_Points*GEOM*TEXT SET " + leagueTable.getLeagueTeams().get(i).getPoints() + "\0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
-								+ "$fig_NRR*GEOM*TEXT SET " + String.format("%.2f", leagueTable.getLeagueTeams().get(i).getNetRunRate()) + "\0", print_writers);
+						switch (config.getBroadcaster()) {
+						case Constants.APLT20:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
+									+ "$fig_NRR*GEOM*TEXT SET " + String.format("%.3f", leagueTable.getLeagueTeams().get(i).getNetRunRate()) + "\0", print_writers);
+							break;
+						default:
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$PointsTale$DataGrp$MiniPartRow" + rowId + containerName 
+									+ "$fig_NRR*GEOM*TEXT SET " + String.format("%.2f", leagueTable.getLeagueTeams().get(i).getNetRunRate()) + "\0", print_writers);
+							break;
+						}
 					}
 					break;
 				default:
