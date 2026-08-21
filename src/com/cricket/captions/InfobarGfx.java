@@ -1552,7 +1552,7 @@ public class InfobarGfx
 		return Constants.OK;
 	}
 	
-	public String populateInfobar(List<PrintWriter> print_writers,String whatToProcess, MatchAllData matchAllData) throws InterruptedException, IOException {
+	public String populateInfobar(List<PrintWriter> print_writers,String whatToProcess, MatchAllData matchAllData) throws Exception {
 		
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
 		if(inning == null) {
@@ -3233,7 +3233,7 @@ public class InfobarGfx
 		}
 	}
 
-	public String populateInfobarBowler(int whichSide, int whichSubSide, List<PrintWriter> print_writers, MatchAllData matchAllData) throws InterruptedException, IOException {
+	public String populateInfobarBowler(int whichSide, int whichSubSide, List<PrintWriter> print_writers, MatchAllData matchAllData) throws Exception {
 
 		bowlingCard = inning.getBowlingCard().stream().filter(boc -> boc.getStatus().toUpperCase().equalsIgnoreCase(CricketUtil.CURRENT+CricketUtil.BOWLER)
 			|| boc.getStatus().toUpperCase().equalsIgnoreCase(CricketUtil.LAST+CricketUtil.BOWLER)).findAny().orElse(null);
@@ -3709,7 +3709,7 @@ public class InfobarGfx
 			break;
 		}
 	}
-	public String populateVizInfobarRightBottom(List<PrintWriter> print_writers, MatchAllData matchAllData,int WhichSide,int WhichSubSide) throws InterruptedException, IOException {
+	public String populateVizInfobarRightBottom(List<PrintWriter> print_writers, MatchAllData matchAllData,int WhichSide,int WhichSubSide) throws Exception {
 		
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
 
@@ -6497,7 +6497,7 @@ public class InfobarGfx
 		}
 		return Constants.OK;
 	}
-	public String populateSection3(List<PrintWriter> print_writers, MatchAllData matchAllData,int WhichSide) throws InterruptedException, IOException {
+	public String populateSection3(List<PrintWriter> print_writers, MatchAllData matchAllData,int WhichSide) throws Exception {
 		
 		switch(config.getBroadcaster()) {
 		case Constants.AFG_SL_SERIES:
@@ -6736,7 +6736,7 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$ProjectedScore$Data2Grp$"
 							+ "txt_Data2*GEOM*TEXT SET " + this_data_str.get(3) + "\0", print_writers);
 					break;
-				case "COMPARE": case "EQUATION": case "PAR_SCORE":
+				case "COMPARE": case "EQUATION": case "PAR_SCORE": case "RRR":
 					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)
 							&& inn.getInningNumber() == 2).findAny().orElse(null);
 						
@@ -6745,6 +6745,13 @@ public class InfobarGfx
 					}
 					
 					switch(infobar.getSection3().toUpperCase()) {
+					case "RRR":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 12\0", print_writers);
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$BowlingEnd$txt_Head*GEOM*TEXT SET REQUIRED RUN RATE : " 
+								+ CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns(), 0, CricketFunctions.GetTargetData(matchAllData).getRemaningBall(), 
+										2, matchAllData) + "\0", print_writers);
+						break;
 					case "PAR_SCORE":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Select"
 								+ "*FUNCTION*Omo*vis_con SET 4\0", print_writers);
@@ -6798,8 +6805,7 @@ public class InfobarGfx
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Equation$Top$Data1Grp$txt_Head2"
 								+ "*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " \0", print_writers);
 						
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Equation$Bottom$"
-								+ "txt_Head*GEOM*TEXT SET " + " FROM" + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Equation$Bottom$txt_Head*GEOM*TEXT SET " + "FROM" + "\0", print_writers);
 						
 						switch (matchAllData.getSetup().getMatchType()) {
 						case CricketUtil.ODI:
@@ -6829,28 +6835,28 @@ public class InfobarGfx
 					}
 					break;
 				case "REVIEWS_REMAINING":
-//					Review reviewRemaining = CricketFunctions.getReviewRemaining(matchAllData);
-//					String[] parts = reviewRemaining.getReviewStatus().split(",");
+					Review reviewRemaining = CricketFunctions.getReviewRemaining(matchAllData);
+					String[] reviews = reviewRemaining.getReviewStatus().split(",");
 					
-					String text_to_return = "";
-					int lineIndex1 = 1;
-				    boolean found1 = false;
-					BufferedReader br = new BufferedReader(new FileReader(CricketUtil.CRICKET_DIRECTORY + "ICC_Reviews.txt"));
-				
-				    while( (text_to_return = br.readLine()) != null) {
-				        if(lineIndex1 == 1) {
-				        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
-									+ "txt_Data1*GEOM*TEXT SET " + text_to_return.split(" ")[0] + "\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
-									+ "txt_Data2*GEOM*TEXT SET " + text_to_return.split(" ")[1]  + "\0", print_writers);
-				            found1 = true;
-				            break;
-				        }
-				        lineIndex1++;
-				    }
-				    if(!found1) {
-				    	//System.out.println("Line Not There");
-				    }
+//					String text_to_return = "";
+//					int lineIndex1 = 1;
+//				    boolean found1 = false;
+//					BufferedReader br = new BufferedReader(new FileReader(CricketUtil.CRICKET_DIRECTORY + "ICC_Reviews.txt"));
+//				
+//				    while( (text_to_return = br.readLine()) != null) {
+//				        if(lineIndex1 == 1) {
+//				        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+//									+ "txt_Data1*GEOM*TEXT SET " + text_to_return.split(" ")[0] + "\0", print_writers);
+//							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+//									+ "txt_Data2*GEOM*TEXT SET " + text_to_return.split(" ")[1]  + "\0", print_writers);
+//				            found1 = true;
+//				            break;
+//				        }
+//				        lineIndex1++;
+//				    }
+//				    if(!found1) {
+//				    	//System.out.println("Line Not There");
+//				    }
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					
@@ -6862,6 +6868,10 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
 							+ "txt_Head3*GEOM*TEXT SET " + matchAllData.getSetup().getAwayTeam().getTeamName4() + "\0", print_writers);
 					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+							+ "txt_Data1*GEOM*TEXT SET " + Integer.parseInt(reviews[0]) + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+							+ "txt_Data2*GEOM*TEXT SET " + Integer.parseInt(reviews[1])  + "\0", print_writers);
 					break;
 				case CricketUtil.DOT:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Select"

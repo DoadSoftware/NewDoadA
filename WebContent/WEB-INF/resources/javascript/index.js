@@ -2567,6 +2567,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 							option.text = 'Par Score';
 							select.appendChild(option);
 							
+							option = document.createElement('option');
+							option.value = 'RRR';
+							option.text = 'Req. Run Rate';
+							select.appendChild(option);
 						}
 					});
 					break;	

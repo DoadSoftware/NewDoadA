@@ -597,19 +597,19 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Counter$InOut", "START");
 				TimeUnit.MILLISECONDS.sleep(1700);
 				this.whichGraphicOnScreen = whatToProcess;
-				if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[0].
-						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[0])) {
-					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Hundreds", "START");
-					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Tens", "START");
-					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
-				}
-				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
+				if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
 						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[1])) {
+					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Hundreds", "START");
 					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Tens", "START");
 					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
 				}
 				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[2].
 						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[2])) {
+					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Tens", "START");
+					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
+				}
+				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[3].
+						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[3])) {
 					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
 				}
 				break;	
@@ -3265,7 +3265,7 @@ public class Animation
 				break;
 				
 			case "Shift_T":
-				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
+//				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation("", print_writers, "Audio", "START");
@@ -3276,7 +3276,7 @@ public class Animation
 				break;
 				
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
+//				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation("", print_writers, "Audio", "START");
@@ -3286,7 +3286,7 @@ public class Animation
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Profile", "START");
 				break;
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
-				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
+//				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation("", print_writers, "Audio", "START");
@@ -3297,7 +3297,7 @@ public class Animation
 				break;
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4":
 			case "Control_p":
-				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
+//				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation("", print_writers, "Audio", "START");
@@ -5001,7 +5001,7 @@ public class Animation
 			
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.ACC:
-				processAnimation("", print_writers, "Wipe_BG_In_Out", "SHOW 0.0");
+//				processAnimation("", print_writers, "Wipe_BG_In_Out", "SHOW 0.0");
 				break;
 			}
 			
@@ -5994,7 +5994,7 @@ public class Animation
 					
 					switch (config.getBroadcaster().toUpperCase()) {
 					case Constants.ACC:
-						previewCommand = previewCommand + " Wipe_BG_In_Out$Change 1.000";
+//						previewCommand = previewCommand + " Wipe_BG_In_Out$Change 1.000";
 						break;
 					}
 					break;
