@@ -149,6 +149,7 @@ public class InfobarGfx
 		this.Commentators = commentators;
 		this.tournament_matches = tournament_matches;
 		this.dls = dls;
+		this.vjd = vjd;
 		this.Players = players;
 		this.headToHead = headToHead;
 		this.past_tournament_stats = past_tournament_stats;

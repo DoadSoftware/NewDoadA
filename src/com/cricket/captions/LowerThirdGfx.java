@@ -199,6 +199,7 @@ public class LowerThirdGfx
 		this.tournaments = tournaments;
 		this.tapeballs = tapeballs;
 		this.dls = dls;
+		this.vjd = vjd;
 		this.Staff = staff;
 		this.Players = players;
 		this.Potts = pott;
@@ -4142,7 +4143,7 @@ public class LowerThirdGfx
 		
 		this_data_str = new ArrayList<String>();
 		if(vjd == null) {
-			return "populateTeamSummary: dls is Null";
+			return "populateTeamSummary: vjd is Null";
 		}
 		
 		if(whatToProcess.split(",")[2].equalsIgnoreCase("currentOver")) {
