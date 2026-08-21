@@ -5503,7 +5503,7 @@ public class Animation
 					
 					switch (config.getBroadcaster().toUpperCase()) {
 					case Constants.ACC:
-						previewCommand = previewCommand + " Wipe_BG_In_Out$In_Out 1.800 Wipe_BG_In_Out$In_Out$In 1.600";
+						//previewCommand = previewCommand + " Wipe_BG_In_Out$In_Out 1.800 Wipe_BG_In_Out$In_Out$In 1.600";
 						break;
 					}
 					break;
