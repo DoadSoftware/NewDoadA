@@ -5726,13 +5726,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			option = document.createElement('option');
-			option.value = 'WITHOUT';
-			option.text = 'WithOut Image';
-			select.appendChild(option);
-			
-			option = document.createElement('option');
 			option.value = 'WITH';
 			option.text = 'With Image';
+			select.appendChild(option);
+						
+			option = document.createElement('option');
+			option.value = 'WITHOUT';
+			option.text = 'WithOut Image';
 			select.appendChild(option);
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
@@ -5823,13 +5823,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			option = document.createElement('option');
-			option.value = 'WITHOUT';
-			option.text = 'WithOut Image';
-			select.appendChild(option);
-			
-			option = document.createElement('option');
 			option.value = 'WITH';
 			option.text = 'With Image';
+			select.appendChild(option);
+						
+			option = document.createElement('option');
+			option.value = 'WITHOUT';
+			option.text = 'WithOut Image';
 			select.appendChild(option);
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");

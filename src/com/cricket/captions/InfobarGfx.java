@@ -6053,7 +6053,7 @@ public class InfobarGfx
 							+ "*GEOM*TEXT SET TOSS\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Toss$txt_Data1"
 							+ "*GEOM*TEXT SET " + (matchAllData.getSetup().getTossWinningTeam() == matchAllData.getSetup().getHomeTeamId() ? 
-							matchAllData.getSetup().getHomeTeam().getTeamName4() : matchAllData.getSetup().getAwayTeam().getTeamName4()) + "\0", print_writers);
+							matchAllData.getSetup().getHomeTeam().getTeamName1() : matchAllData.getSetup().getAwayTeam().getTeamName1()) + "\0", print_writers);
 					break;
 				case "BOUNDARY":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Select"
@@ -9245,6 +9245,69 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$ProjectedScore$Data3Grp$"
 							+ "txt_Data2*GEOM*TEXT SET " + this_data_str.get(5) + "\0", print_writers);
 					break;
+//				case "RECENT_FORM":
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Select_Type*FUNCTION*Omo*vis_con SET 10\0",print_writers);
+//					List<Fixture> fixtures = new ArrayList<Fixture>();
+//					for(Fixture fix : CricketFunctions.processAllFixtures(cricketService)) {
+//						if(fix.getWinnerteam() != null && !fix.getWinnerteam().isEmpty() && 
+//								(fix.getHometeamid() == team_id || fix.getAwayteamid() == team_id)) {
+//							fixtures.add(fix);
+//						}
+//					}
+//					rowId = 0;
+//					
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Bottom$Select_Amount*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Top$txt_Subtitle"
+//							+ "*GEOM*TEXT SET " + "RECENT FORM" + "\0", print_writers);
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Top$txt_Score"
+//							+ "*GEOM*TEXT SET \0", print_writers);
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Top$txt_Balls"
+//							+ "*GEOM*TEXT SET \0", print_writers);
+//					
+//					
+//					for(int i=fixtures.size()-1;i>=0;i--) {
+//						rowId = rowId + 1;
+//						if(rowId<=3) {
+//							String matchName = (fixtures.get(i).getMatchfilename().equalsIgnoreCase("ELIMINATOR")?"ELM":fixtures.get(i).getMatchfilename().equalsIgnoreCase("QUALIFIER 1")?"Q1":
+//								fixtures.get(i).getMatchfilename().equalsIgnoreCase("QUALIFIER 2")?"Q2":"M"+fixtures.get(i).getMatchnumber());
+//							
+//							if(fixtures.get(i).getHometeamid() == team_id) {
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$3_Stats$Stat_" + rowId
+//										+ "$txt_Desig*GEOM*TEXT SET " + matchName + " v "+ fixtures.get(i).getAway_Team().getTeamName4() + "\0", print_writers);
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Top$txt_SecondName"
+//										+ "*GEOM*TEXT SET " + fixtures.get(i).getHome_Team().getTeamName1() + "\0", print_writers);
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Top$txt_Firstname"
+//										+ "*GEOM*TEXT SET \0", print_writers);
+//							}else {
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$3_Stats$Stat_" + rowId
+//										+ "$txt_Desig*GEOM*TEXT SET " + matchName + " v "+ fixtures.get(i).getHome_Team().getTeamName4() + "\0", print_writers);
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Top$txt_SecondName"
+//										+ "*GEOM*TEXT SET " + fixtures.get(i).getAway_Team().getTeamName1() + "\0", print_writers);
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$Top$txt_Firstname"
+//										+ "*GEOM*TEXT SET \0", print_writers);
+//							}
+//							
+//							if(!fixtures.get(i).getWinnerteam().equalsIgnoreCase("NR")) {
+//								if(fixtures.get(i).getHometeamid() == team_id && fixtures.get(i).getHome_Team().getTeamName1().equalsIgnoreCase(fixtures.get(i).getWinnerteam())) {
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$3_Stats$Stat_" + rowId
+//											+ "$txt_Fig*GEOM*TEXT SET " + "WON" + "\0", print_writers);
+//								}else if(fixtures.get(i).getAwayteamid() == team_id && fixtures.get(i).getAway_Team().getTeamName1().equalsIgnoreCase(fixtures.get(i).getWinnerteam())) {
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$3_Stats$Stat_" + rowId
+//											+ "$txt_Fig*GEOM*TEXT SET " + "WON" + "\0", print_writers);
+//								}else {
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$3_Stats$Stat_" + rowId
+//											+ "$txt_Fig*GEOM*TEXT SET " + "LOST" + "\0", print_writers);
+//								}
+//							}else {
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Player_Stats_Wide$3_Stats$Stat_" + rowId
+//										+ "$txt_Fig*GEOM*TEXT SET " + fixtures.get(i).getWinnerteam() + "\0", print_writers);
+//							}
+//							
+//						}else {
+//							break;
+//						}
+//					}
+//					break;	
 				case "PHASE_WISE_SCORE": case "PHASE_WISE_RUNRATE":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select"
 							+ "*FUNCTION*Omo*vis_con SET 6\0", print_writers);

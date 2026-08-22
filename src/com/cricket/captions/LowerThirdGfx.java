@@ -1662,7 +1662,46 @@ public class LowerThirdGfx
 			
 			switch (config.getBroadcaster().toUpperCase()) {
 			
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
+			case Constants.ACC:
+				switch (WhichProfile.toUpperCase()) {
+				case "DT20": case "IT20": case "ACC_CAREER":
+					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
+					if(statsType == null) {
+						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
+					}
+					
+					stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+					if(stat == null) {
+						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
+					}
+					
+					switch (WhichProfile.toUpperCase()) {
+					case "DT20": case "ACC_CAREER":
+						if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
+							statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
+							stat.setStats_type(statsType);
+							stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+							stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+						}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+							statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+							stat.setStats_type(statsType);
+							stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+							stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+						}
+						break;
+					case "IT20":
+						if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+							statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+							stat.setStats_type(statsType);
+							stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+							stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+						}
+						break;	
+					}
+					break;
+				}
+				break;
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.TG20: case Constants.APLT20:
 				switch (WhichProfile.toUpperCase()) {
 				case "MAHARAJA_CAREER":
 			         statsType = statsTypes.stream()
@@ -1716,9 +1755,11 @@ public class LowerThirdGfx
 					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
 						switch (WhichProfile.toUpperCase()) {
 						case "DT20":
-							matchAllData.getSetup().setMatchType(CricketUtil.DT20);
+							statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+							matchAllData.getSetup().setMatchType(CricketUtil.IT20);
 							break;
 						}
+						System.out.println("stat = " + stat.getStats_type() + "  match = " + matchAllData.getSetup().getMatchType());
 						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 						if(WhichProfile.equalsIgnoreCase(CricketUtil.DT20)) {
 							matchAllData.getSetup().setMatchType(CricketUtil.IT20);
@@ -3986,8 +4027,8 @@ public class LowerThirdGfx
 			cal_bengal.add(Calendar.DATE, +1);
 			if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
 				
-				text = "TOMORROW - LOCAL TIME - " + fixture.getLocalTime() + " - " + fixture.getVenue();
-				matchday = "TOMORROW - LOCAL TIME - " + fixture.getLocalTime() + " - " + fixture.getVenue();
+				text = "TOMORROW - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
+				matchday = "TOMORROW - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
 			}else {
 				cal_bengal.add(Calendar.DATE, -1);
 				if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
@@ -4001,8 +4042,8 @@ public class LowerThirdGfx
 					date_data = newDate + dateSuffix[Integer.valueOf(newDate)] + " " + 
 							Month.of(Integer.valueOf(fixture.getDate().split("-")[1]));
 					
-					text = date_data + " - LOCAL TIME - " + fixture.getLocalTime() + " - " + fixture.getVenue();
-					matchday = date_data + " - LOCAL TIME - " + fixture.getLocalTime() + " - " + fixture.getVenue();
+					text = date_data + " - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
+					matchday = date_data + " - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
 				}
 			}
 			

@@ -2965,7 +2965,7 @@ public class ALL_FF
 				if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal.getTime()))) {
 					Footer_Data = "TOMORROW - " + (fixture.getLocalTime() != null ?fixture.getLocalTime() + " - ":"") + matchAllData.getSetup().getVenueName();
 					Day_Data = "TOMORROW";
-					Time_Data = (fixture.getLocalTime() != null ?fixture.getLocalTime() + " LOCAL TIME":"");
+					Time_Data = "AT " + (fixture.getLocalTime() != null ?fixture.getLocalTime() + " LOCAL TIME":"");
 				}else {
 					cal.add(Calendar.DATE, -1);
 					if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal.getTime()))) {
@@ -2981,7 +2981,7 @@ public class ALL_FF
 							+ " - " + (fixture.getLocalTime() != null ?fixture.getLocalTime() + " - ":"") + matchAllData.getSetup().getVenueName();
 						
 						Day_Data = CricketFunctions.ordinal(Integer.valueOf(newDate)) + " " + Month.of(Integer.valueOf(fixture.getDate().split("-")[1]));
-						Time_Data = (fixture.getLocalTime() != null ?fixture.getLocalTime() + " LOCAL TIME":"");
+						Time_Data = "AT " + (fixture.getLocalTime() != null ?fixture.getLocalTime() + " LOCAL TIME":"");
 					}
 				}
 				
@@ -14630,8 +14630,10 @@ public class ALL_FF
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Profile$Right$img_Text1$txt_StatValue*GEOM*TEXT SET \0", print_writers);
 //			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Profile$Bottom_Header$txt_TeamName*GEOM*TEXT SET " 
 //					+ player.getFull_name() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Profile$Right$img_Text$txt_PlayerName"
-					+ "*GEOM*TEXT SET " + player.getFull_name() + "\0", print_writers);
+//			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Profile$Right$img_Text$txt_PlayerName"
+//					+ "*GEOM*TEXT SET " + player.getFull_name() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Profile$BatHeaderGrp$Bottom_Header"
+					+ "$txt_TeamName*GEOM*TEXT SET " + player.getFull_name() + "\0", print_writers);
 			
 			switch(whatToProcess) {
 			case "Shift_P":

@@ -5001,7 +5001,7 @@ public class Animation
 			
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.ACC:
-//				processAnimation("", print_writers, "Wipe_BG_In_Out", "SHOW 0.0");
+				processAnimation("", print_writers, "Wipe_BG_In_Out", "SHOW 0.0");
 				break;
 			}
 			
