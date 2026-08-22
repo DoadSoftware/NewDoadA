@@ -28,6 +28,7 @@ import com.cricket.model.Configuration;
 import com.cricket.model.DaySession;
 import com.cricket.model.DuckWorthLewis;
 import com.cricket.model.FieldersData;
+import com.cricket.model.Fixture;
 import com.cricket.model.ForeignLanguageData;
 import com.cricket.model.Ground;
 import com.cricket.model.HeadToHeadPlayer;
@@ -243,7 +244,7 @@ public class InfobarGfx
 							}
 							
 							if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
-								populateSectionAnalytics(print_writers, matchAllData, 1);
+								populateSectionAnalytics(true, print_writers, matchAllData, 1);
 							}
 						}
 					}
@@ -282,7 +283,7 @@ public class InfobarGfx
 							populateSection5(print_writers, matchAllData, 1);
 						}
 						if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
-							populateSectionAnalytics(print_writers, matchAllData, 1);
+							populateSectionAnalytics(true, print_writers, matchAllData, 1);
 						}
 					}
 				}
@@ -307,7 +308,7 @@ public class InfobarGfx
 					populateSection5(print_writers, matchAllData, 1);
 				}
 				if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
-					populateSectionAnalytics(print_writers, matchAllData, 1);
+					populateSectionAnalytics(true, print_writers, matchAllData, 1);
 				}
 				
 				if(infobar.isInfobar_on_screen()) {
@@ -4399,7 +4400,7 @@ public class InfobarGfx
 	public String populateFullSection(List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws JsonMappingException, JsonProcessingException, InterruptedException {
 		switch(config.getBroadcaster()) {
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
-			populateSectionAnalytics(print_writers, matchAllData, WhichSide);
+			populateSectionAnalytics(false,print_writers, matchAllData, WhichSide);
 			break;
 		case Constants.BCCI:
 			switch(infobar.getSectionAnalytics().toUpperCase()) {
@@ -9096,7 +9097,7 @@ public class InfobarGfx
 		}
 		return Constants.OK;
 	}
-	public String populateSectionAnalytics(List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws JsonMappingException, JsonProcessingException, InterruptedException {
+	public String populateSectionAnalytics(boolean is_this_updating, List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws JsonMappingException, JsonProcessingException, InterruptedException {
 		switch(config.getBroadcaster()) {
 		case Constants.ACC:
 			if(infobar.getSectionAnalytics() != null && !infobar.getSectionAnalytics().isEmpty()) {
@@ -9236,14 +9237,14 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$ProjectedScore$Data3Grp$"
 							+ "txt_Data2*GEOM*TEXT SET " + this_data_str.get(5) + "\0", print_writers);
 					break;
-				case "PHASE_WISE_SCORE":
+				case "PHASE_WISE_SCORE": case "PHASE_WISE_RUNRATE":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select"
 							+ "*FUNCTION*Omo*vis_con SET 6\0", print_writers);
 					
 					int oneToTenRuns = 0,thirtyOneToFourtyRuns = 0,fourtyOneToFiftyRuns = 0,oneToTenWkt = 0,thirtyOneToFourtyWkt = 0,fourtyOneToFiftyWkt = 0;
 					
-					if(inning.getInningNumber()==1) {
-						List<OverByOverData> overByOverData = CricketFunctions.getOverByOverData(matchAllData, 1, "MANHATTAN", matchAllData.getEventFile().getEvents());
+					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.OD) || matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI)) {
+						List<OverByOverData> overByOverData = CricketFunctions.getOverByOverData(matchAllData, inning.getInningNumber(), "MANHATTAN", matchAllData.getEventFile().getEvents());
 						for(int j=1; j<=overByOverData.size()-1; j++) {
 							if(j>0 && j<=10) {
 								oneToTenRuns+= overByOverData.get(j).getOverTotalRuns();
@@ -9260,40 +9261,29 @@ public class InfobarGfx
 						}
 						phaseWiseScore = oneToTenRuns+","+oneToTenWkt+"_" + thirtyOneToFourtyRuns+","+thirtyOneToFourtyWkt
 								+"_" + fourtyOneToFiftyRuns+","+fourtyOneToFiftyWkt;
-						
-						
-//						phaseWiseScore = IndexController.MatchStats.getHomeFirstPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getHomeFirstPowerPlay().getTotalWickets()+"_"+
-//										 IndexController.MatchStats.getHomeSecondPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getHomeSecondPowerPlay().getTotalWickets()+"_"
-//										 +IndexController.MatchStats.getHomeThirdPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getHomeThirdPowerPlay().getTotalWickets();
-					}else if(inning.getInningNumber()==2) {
-						List<OverByOverData> overByOverData = CricketFunctions.getOverByOverData(matchAllData, 1, "MANHATTAN", matchAllData.getEventFile().getEvents());
-						for(int j=1; j<=overByOverData.size()-1; j++) {
-							if(j>0 && j<=10) {
-								oneToTenRuns+= overByOverData.get(j).getOverTotalRuns();
-								oneToTenWkt+=overByOverData.get(j).getOverTotalWickets();
-							}
-							if(j>10 && j<=40) {
-								thirtyOneToFourtyRuns+= overByOverData.get(j).getOverTotalRuns();
-								thirtyOneToFourtyWkt+=overByOverData.get(j).getOverTotalWickets();
-							}
-							if(j>40 && j<=50) {
-								fourtyOneToFiftyRuns+= overByOverData.get(j).getOverTotalRuns();
-								fourtyOneToFiftyWkt+=overByOverData.get(j).getOverTotalWickets();
-							}
+					}else {
+						if(inning.getInningNumber()==1) {
+							phaseWiseScore = IndexController.MatchStats.getHomeFirstPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getHomeFirstPowerPlay().getTotalWickets()+"_"+
+											 IndexController.MatchStats.getHomeSecondPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getHomeSecondPowerPlay().getTotalWickets()+"_"
+											 +IndexController.MatchStats.getHomeThirdPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getHomeThirdPowerPlay().getTotalWickets();
+						}else if(inning.getInningNumber()==2) {
+							phaseWiseScore = IndexController.MatchStats.getAwayFirstPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getAwayFirstPowerPlay().getTotalWickets()+"_"+
+									 IndexController.MatchStats.getAwaySecondPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getAwaySecondPowerPlay().getTotalWickets()+"_"
+									 +IndexController.MatchStats.getAwayThirdPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getAwayThirdPowerPlay().getTotalWickets();
 						}
-						phaseWiseScore = oneToTenRuns+","+oneToTenWkt+"_" + thirtyOneToFourtyRuns+","+thirtyOneToFourtyWkt
-								+"_" + fourtyOneToFiftyRuns+","+fourtyOneToFiftyWkt;
-						
-//						phaseWiseScore = IndexController.MatchStats.getAwayFirstPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getAwayFirstPowerPlay().getTotalWickets()+"_"+
-//								 IndexController.MatchStats.getAwaySecondPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getAwaySecondPowerPlay().getTotalWickets()+"_"
-//								 +IndexController.MatchStats.getAwayThirdPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getAwayThirdPowerPlay().getTotalWickets();
 					}
 					
 					String PP1 ="-",PP2="-",PP3="-";
-					
-					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$"
-							+ "txt_Head*GEOM*TEXT SET " + "PHASE-WISE SCORES" + "\0", print_writers);
+					switch(infobar.getSectionAnalytics().toUpperCase()) {
+					case "PHASE_WISE_SCORE":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$"
+								+ "txt_Head*GEOM*TEXT SET " + "PHASE-WISE SCORES" + "\0", print_writers);
+						break;
+					case "PHASE_WISE_RUNRATE":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$"
+								+ "txt_Head*GEOM*TEXT SET " + "PHASE-WISE RUN RATE" + "\0", print_writers);
+						break;
+					}
 					
 					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.OD) || 
 							matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI)) {
@@ -9328,6 +9318,28 @@ public class InfobarGfx
 							PP3 = phaseWiseScore.split("_")[2].split(",")[0]+"-"+phaseWiseScore.split("_")[2].split(",")[1];
 						}
 						
+						switch(infobar.getSectionAnalytics().toUpperCase()) {
+						case "PHASE_WISE_SCORE":
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$"
+									+ "txt_Data1*GEOM*TEXT SET " + PP1 + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + PP2 + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + PP3 + "\0", print_writers);
+							break;
+						case "PHASE_WISE_RUNRATE":
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$"
+									+ "txt_Data1*GEOM*TEXT SET " + (PP1.equalsIgnoreCase("-")?"-":CricketFunctions.generateRunRate(Integer.valueOf(PP1.split("-")[0]), 
+											CricketFunctions.getPowerplayOvers("1-10", inning.getTotalOvers()), 0, 2, matchAllData)) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + (PP2.equalsIgnoreCase("-")?"-":CricketFunctions.generateRunRate(Integer.valueOf(PP2.split("-")[0]), 
+											CricketFunctions.getPowerplayOvers("11-40", inning.getTotalOvers()), 0, 2, matchAllData)) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + (PP3.equalsIgnoreCase("-")?"-":CricketFunctions.generateRunRate(Integer.valueOf(PP3.split("-")[0]), 
+											CricketFunctions.getPowerplayOvers("41-50", inning.getTotalOvers()), 0, 2, matchAllData)) + "\0", print_writers);
+							break;
+						}
+						
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$"
 								+ "txt_Head2*GEOM*TEXT SET " + "OVERS 1-6" + "\0", print_writers);
@@ -9335,7 +9347,6 @@ public class InfobarGfx
 								+ "txt_Head3*GEOM*TEXT SET " + "OVERS 7-15" + "\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$"
 								+ "txt_Head3*GEOM*TEXT SET " + "OVERS 16-20" + "\0", print_writers);
-						
 						
 						if(Integer.valueOf(phaseWiseScore.split("_")[0].split(",")[0]) == 0 && Integer.valueOf(phaseWiseScore.split("_")[0].split(",")[1]) == 0) {
 							if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 0.0) {
@@ -9358,15 +9369,108 @@ public class InfobarGfx
 						}else {
 							PP3 = phaseWiseScore.split("_")[2].split(",")[0]+"-"+phaseWiseScore.split("_")[2].split(",")[1];
 						}
+						
+						switch(infobar.getSectionAnalytics().toUpperCase()) {
+						case "PHASE_WISE_SCORE":
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$"
+									+ "txt_Data1*GEOM*TEXT SET " + PP1 + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + PP2 + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + PP3 + "\0", print_writers);
+							break;
+						case "PHASE_WISE_RUNRATE":
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$"
+									+ "txt_Data1*GEOM*TEXT SET " + (PP1.equalsIgnoreCase("-")?"-":CricketFunctions.generateRunRate(Integer.valueOf(PP1.split("-")[0]), 
+											CricketFunctions.getPowerplayOvers("1-6", inning.getTotalOvers()), 0, 2, matchAllData)) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + (PP2.equalsIgnoreCase("-")?"-":CricketFunctions.generateRunRate(Integer.valueOf(PP2.split("-")[0]), 
+											CricketFunctions.getPowerplayOvers("7-15", inning.getTotalOvers()), 0, 2, matchAllData)) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$"
+									+ "txt_Data2*GEOM*TEXT SET " + (PP3.equalsIgnoreCase("-")?"-":CricketFunctions.generateRunRate(Integer.valueOf(PP3.split("-")[0]), 
+											CricketFunctions.getPowerplayOvers("16-20", inning.getTotalOvers()), 0, 2, matchAllData)) + "\0", print_writers);
+							break;
+						}
 					}
-					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$"
-							+ "txt_Data1*GEOM*TEXT SET " + PP1 + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$"
-							+ "txt_Data2*GEOM*TEXT SET " + PP2 + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$"
-							+ "txt_Data2*GEOM*TEXT SET " + PP3 + "\0", print_writers);
-					break;	
+					break;
+				case "INNINGSBUILDER":
+					inning = matchAllData.getMatch().getInning().stream().filter(inn ->inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+					BattingCard batter1 = inning.getBattingCard().stream().filter(bat->bat.getPlayer().getPlayerId()== FirstPlayerId).findAny().orElse(null);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Right$Side_" + WhichSide + "$Select_Type*FUNCTION*Omo*vis_con SET 10\0", print_writers);
+				
+					if(is_this_updating == false) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$txt_Head*GEOM*TEXT SET " 
+								+ "THIS MATCH - " + batter1.getPlayer().getTicker_name() + "  " + batter1.getRuns() + "(" + batter1.getBalls() + ")" + "\0", print_writers);
+
+						this_data_str = new ArrayList<String>();
+						this_data_str.add(String.join(",", new ArrayList<>(Arrays.asList(IndexController.MatchStats.getPlayerStats().stream()
+						        .filter(ply -> ply.getStatsType().equalsIgnoreCase(CricketUtil.BAT)&& FirstPlayerId == ply.getId())
+						        .findAny().orElse(null).getThisOverTxt().split(","))).stream().map(s -> s.replace("WIDE", "WD")
+						        .replace("NO_BALL", "NB").replace("LEG_BYE", "LB").replace("BYE", "B").replace("PENALTY", "PN")
+						        .replace("LOG_WICKET", "W").replace("WICKET", "W")).collect(Collectors.collectingAndThen(Collectors.toList(), 
+						        		list -> {Collections.reverse(list); return list;})).toArray(new String[0])));
+						
+						System.out.println(this_data_str);
+						
+						// Safe validation
+						if (this_data_str.isEmpty() || this_data_str.get(0) == null) {
+						    return "populateFullSection: This over data returned invalid";
+						}
+						
+						String[] ballsData = this_data_str.get(0).split(",");
+		
+						// Adjust total balls to multiple of 3
+						int totalBalls = ballsData.length;
+						totalBalls += (3 - totalBalls % 3) % 3;
+		
+						int partSize = totalBalls / 3;
+		
+						// Store runs
+						int[] rangeRuns = new int[3];
+		
+						// Create dynamic ranges
+						String[] ranges = {"1-" + partSize,
+						    (partSize + 1) + "-" + (partSize * 2),
+						    (partSize * 2 + 1) + "+"
+						};
+		
+						// Calculate runs per range
+						for (int i = 0; i < ballsData.length; i++) {
+						    String value = ballsData[i].trim();
+						    int runs = 0;
+						    if (value.contains("BOUNDARY")) {
+						        runs = Integer.parseInt(value.replace("BOUNDARY", ""));
+						    } else if (value.contains("NB+")) {
+						    	 runs = Integer.parseInt(value.replace("NB+", ""));
+						    }else if (value.matches("\\d+")) {
+						        runs = Integer.parseInt(value);
+						    }
+						    // W = 0
+						    int rangeIndex = Math.min(i / partSize, 2);
+						    rangeRuns[rangeIndex] += runs;
+						}
+		
+						// Print range with runs
+						for (int i = 0; i < 3; i++) {
+							if(i == 0) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$"
+										+ "txt_Head2*GEOM*TEXT SET " + "BALLS " + ranges[i] + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$txt_Data1"
+										+ "*GEOM*TEXT SET " + rangeRuns[i] + " RUN" + CricketFunctions.Plural(Integer.valueOf(rangeRuns[i])).toUpperCase() + "\0", print_writers);
+							}else if(i==1) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$"
+										+ "txt_Head3*GEOM*TEXT SET " + "BALLS " + ranges[i] + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$txt_Data2"
+										+ "*GEOM*TEXT SET " + rangeRuns[i] + " RUN" + CricketFunctions.Plural(Integer.valueOf(rangeRuns[i])).toUpperCase() + "\0", print_writers);
+							}else if(i==2) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$"
+										+ "txt_Head3*GEOM*TEXT SET " + "BALLS " + ranges[i] + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$txt_Data2"
+										+ "*GEOM*TEXT SET " + rangeRuns[i] + " RUN" + CricketFunctions.Plural(Integer.valueOf(rangeRuns[i])).toUpperCase() + "\0", print_writers);
+							}
+						}
+					}
+					break;
 				case "BATMILESTONE": case "BALLMILESTONE":
 					if(FirstPlayerId <= 0) {
 						return "InfoBarPlayerProfile: Player Id NOT found [" + FirstPlayerId + "]";

@@ -333,6 +333,8 @@ public class IndexController
 				model.addAttribute("which_inning", "1");
 			}
 			
+			//System.out.println(session_match.getMatch().toString());
+			
 			model.addAttribute("session_match", session_match);
 			model.addAttribute("expiryDate", expiryDate);
 			model.addAttribute("session_configuration", session_configuration);

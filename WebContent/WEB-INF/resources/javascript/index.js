@@ -2809,6 +2809,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'BatMileStone', text: 'Batter MileStone' },
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
 					  { value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
+					  { value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },
+					  { value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
 					  { value: 'DLS', text: 'DLS' },
 					  //{ value: 'IDENT', text: 'Ident' },
 					];
@@ -3095,6 +3097,26 @@ function addItemsToList(whatToProcess,dataToProcess)
 						row.insertCell(2).appendChild(ballselect);
 						setDropdownOptionToSelectOptionArray($(ballselect),2);
 						cellCount = 3;
+}					else if(this.value == 'INNINGSBUILDER'){
+						let xballselect  = document.createElement('select');
+						xballselect.id = 'selectFreeText';
+						xballselect.name = xballselect.id;
+						session_match.match.inning.forEach(function(inn){
+						if(inn.isCurrentInning == 'YES'){
+								inn.battingCard.forEach(function(bc){
+									if(bc.status == 'NOT OUT'){
+										option = document.createElement('option');
+										option.value = bc.playerId;
+										option.text = bc.player.full_name + " - " + bc.status;	
+										xballselect.appendChild(option);	
+									}
+								});
+							}
+						});
+						xballselect.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+						row.insertCell(1).appendChild(xballselect);
+						setDropdownOptionToSelectOptionArray($(xballselect),1);
+						cellCount = 2;
 					}else if(this.value == 'This_speed'){
 						let ballselect  = document.createElement('select');
 						ballselect.id = 'selectPhoto';

@@ -5082,6 +5082,12 @@ public class BugsAndMiniGfx
 					}else if(h2h.getMatchFileName().contains("QUALIFIER 2")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", QF 2","", null, 3,foreignLanguageDataList);
+					}else if(h2h.getMatchFileName().contains("SEMI-FINAL 1")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 1","", null, 3,foreignLanguageDataList);
+					}else if(h2h.getMatchFileName().contains("SEMI-FINAL 2")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 2","", null, 3,foreignLanguageDataList);
 					}else if(h2h.getMatchFileName().contains("FINAL")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", FINAL","", null, 3,foreignLanguageDataList);
@@ -5167,6 +5173,12 @@ public class BugsAndMiniGfx
 	    					}else if(matchAllData.getSetup().getMatchIdent().contains("QUALIFIER 2")) {
 	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 	    								", QF 2","", null, 3,foreignLanguageDataList);
+	    					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 1")) {
+	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+	    								", SF 1","", null, 3,foreignLanguageDataList);
+	    					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 2")) {
+	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+	    								", SF 2","", null, 3,foreignLanguageDataList);
 	    					}else if(matchAllData.getSetup().getMatchIdent().contains("FINAL")) {
 	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 	    								", FINAL","", null, 3,foreignLanguageDataList);
@@ -5220,6 +5232,12 @@ public class BugsAndMiniGfx
 	    					}else if(matchAllData.getSetup().getMatchIdent().contains("QUALIFIER 2")) {
 	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 	    								", QF 2","", null, 3,foreignLanguageDataList);
+	    					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 1")) {
+	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+	    								", SF 1","", null, 3,foreignLanguageDataList);
+	    					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 2")) {
+	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+	    								", SF 2","", null, 3,foreignLanguageDataList);
 	    					}else if(matchAllData.getSetup().getMatchIdent().contains("FINAL")) {
 	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 	    								", FINAL","", null, 3,foreignLanguageDataList);
@@ -5281,6 +5299,12 @@ public class BugsAndMiniGfx
 					}else if(matchAllData.getSetup().getMatchIdent().contains("QUALIFIER 2")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", QF 2","", null, 3,foreignLanguageDataList);
+					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 1")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 1","", null, 3,foreignLanguageDataList);
+					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 2")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 2","", null, 3,foreignLanguageDataList);
 					}else if(matchAllData.getSetup().getMatchIdent().contains("FINAL")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", FINAL","", null, 3,foreignLanguageDataList);
@@ -5527,6 +5551,12 @@ public class BugsAndMiniGfx
 					}else if(h2h.getMatchFileName().contains("QUALIFIER 2")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", QF 2","", null, 3,foreignLanguageDataList);
+					}else if(h2h.getMatchFileName().contains("SEMI-FINAL 1")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 1","", null, 3,foreignLanguageDataList);
+					}else if(h2h.getMatchFileName().contains("SEMI-FINAL 2")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 2","", null, 3,foreignLanguageDataList);
 					}else if(h2h.getMatchFileName().contains("FINAL")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", FINAL","", null, 3,foreignLanguageDataList);
@@ -5599,6 +5629,12 @@ public class BugsAndMiniGfx
 	    					}else if(matchAllData.getSetup().getMatchIdent().contains("QUALIFIER 2")) {
 	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 	    								", QF 2","", null, 3,foreignLanguageDataList);
+	    					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 1")) {
+	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+	    								", SF 1","", null, 3,foreignLanguageDataList);
+	    					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 2")) {
+	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+	    								", SF 2","", null, 3,foreignLanguageDataList);
 	    					}else if(matchAllData.getSetup().getMatchIdent().contains("FINAL")) {
 	    						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 	    								", FINAL","", null, 3,foreignLanguageDataList);
@@ -5652,6 +5688,12 @@ public class BugsAndMiniGfx
 					}else if(matchAllData.getSetup().getMatchIdent().contains("QUALIFIER 2")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", QF 2","", null, 3,foreignLanguageDataList);
+					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 1")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 1","", null, 3,foreignLanguageDataList);
+					}else if(matchAllData.getSetup().getMatchIdent().contains("SEMI-FINAL 2")) {
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								", SF 2","", null, 3,foreignLanguageDataList);
 					}else if(matchAllData.getSetup().getMatchIdent().contains("FINAL")) {
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
 								", FINAL","", null, 3,foreignLanguageDataList);

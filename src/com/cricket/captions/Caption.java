@@ -848,6 +848,13 @@ public class Caption
 							this_infobarGfx.data_Type = whatToProcess.split(",")[4];
 							this_infobarGfx.photoCategory = whatToProcess.split(",")[5];
 						}
+						else if(whatToProcess.split(",")[2].equalsIgnoreCase("INNINGSBUILDER")) {
+							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("INNINGSBUILDER")) {
+								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
+							}
+							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
+						}
 						this_infobarGfx.infobar.setSectionAnalytics(whatToProcess.split(",")[2]);
 					}else {
 						this_infobarGfx.bowlerOnScreen = true;
