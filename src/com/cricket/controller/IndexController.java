@@ -612,17 +612,24 @@ public class IndexController
 							}
 						}
 						
-						if(this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.LOWER_THIRD)||
-								this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.NAME_SUPERS + Constants.LOWER_THIRD)) {
-							if((this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
-									!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) || 
-									(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
-									!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty())) {
-								
-								this_caption.setStatus("Alt+8, Alt+3, Alt+4 is on screen.");	
-								return objectMapper.writeValueAsString(this_caption).toString();
+						switch (session_configuration.getBroadcaster()) {
+						case Constants.ACC:
+							break;
+						default:
+							if(this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.LOWER_THIRD)||
+									this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.NAME_SUPERS + Constants.LOWER_THIRD)) {
+								if((this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
+										!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) || 
+										(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
+										!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty())) {
+									
+									this_caption.setStatus("Alt+8, Alt+3, Alt+4 is on screen.");	
+									return objectMapper.writeValueAsString(this_caption).toString();
+								}
 							}
+							break;
 						}
+						
 						this_caption.whichSide = 1;
 					} else {
 						//Don't allow L3rds change-on while FFs are on screen

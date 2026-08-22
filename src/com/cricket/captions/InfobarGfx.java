@@ -9102,6 +9102,14 @@ public class InfobarGfx
 		case Constants.ACC:
 			if(infobar.getSectionAnalytics() != null && !infobar.getSectionAnalytics().isEmpty()) {
 				switch(infobar.getSectionAnalytics().toUpperCase()) {
+				case "IDENT":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + 
+							"$Freetext$txt_Head*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + " | " + matchAllData.getSetup().getHomeTeam().getTeamName1() + " v " + 
+							matchAllData.getSetup().getAwayTeam().getTeamName1() + "\0", print_writers);
+					
+					break;
 				case "FREETEXT":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					

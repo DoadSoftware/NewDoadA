@@ -562,7 +562,7 @@ public class Animation
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				processAnimation("", print_writers, "Wipe_BG_In_Out$In_Out", "START");
-				processAnimation("", print_writers, "Wipe_BG_In_Out$Loop", "START");
+				processAnimation("", print_writers, "Wipe_BG_In_Out$Loop", "STOP");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation("", print_writers, "Audio", "START");
@@ -577,7 +577,7 @@ public class Animation
 				
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				processAnimation("", print_writers, "Wipe_BG_In_Out$In_Out", "START");
-				processAnimation("", print_writers, "Wipe_BG_In_Out$Loop", "START");
+				processAnimation("", print_writers, "Wipe_BG_In_Out$Loop", "STOP");
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation("", print_writers, "Audio", "START");
 				}
@@ -620,7 +620,7 @@ public class Animation
 				TimeUnit.MILLISECONDS.sleep(500);
 				
 				processAnimation("", print_writers, "Wipe_BG_In_Out$In_Out", "START");
-				processAnimation("", print_writers, "Wipe_BG_In_Out$Loop", "START");
+				processAnimation("", print_writers, "Wipe_BG_In_Out$Loop", "STOP");
 				processAnimation("", print_writers, "Full_Frames$Essentials$In_Out", "START");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
