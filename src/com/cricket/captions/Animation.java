@@ -93,6 +93,7 @@ public class Animation
 		case Constants.ACC:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "Shift_F12": case "Alt_2": case "Alt_7": case "Alt_8": case "Alt_5": case "Alt_e":
+			case "Alt_3": case "Alt_4":	
 				return Constants.INFO_BAR;
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_Shift_R": case "Control_Shift_U": case "Control_Shift_V":
 			case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "Alt_p": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J": case "6":
@@ -112,7 +113,7 @@ public class Animation
 			case "m": case "Control_m": case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "Shift_F11":
 			case "Control_F7": case "F4": case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e":
 			case "Shift_P": case "Shift_Q": case "Shift_F10": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": 
-			case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p":
+			case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p": case "Control_Alt_F1":
 				return Constants.FULL_FRAMER;
 			}
 			break;	
@@ -615,7 +616,7 @@ public class Animation
 				break;	
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Shift_F11": case "Control_F7":
 			case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-			case "Shift_F10": case "Control_p":
+			case "Shift_F10": case "Control_p": case "Control_Alt_F1":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				
@@ -657,6 +658,9 @@ public class Animation
 					break;
 				case "F4":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out", "START");
+					break;
+				case "Control_Alt_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out", "START");
 					break;
 				case "F1": case "Control_Shift_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$BatCard$In_Out", "START");
@@ -2305,7 +2309,7 @@ public class Animation
 				break;	
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Shift_F11": case "Control_F7":
 			case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-			case "Shift_F10": case "Control_p":
+			case "Shift_F10": case "Control_p": case "Control_Alt_F1":
 				 
 				switch (whatToProcess.split(",")[0]) {
 				case "Control_F11": case "Shift_F11":
@@ -2338,6 +2342,9 @@ public class Animation
 				case "F4":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out", "CONTINUE");
 					break;
+				case "Control_Alt_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out", "CONTINUE");
+					break;	
 				case "F1": case "Control_Shift_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$BatCard$In_Out", "CONTINUE");
 					break;
@@ -3239,8 +3246,34 @@ public class Animation
 			case "Alt_7":
 				processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section3$Change", "START");
 				caption.this_infobarGfx.infobar.setSection3(caption.this_infobarGfx.infobar.getSection3());
+				break;
+			case "Alt_3": case "Alt_4":
+				if(caption.this_infobarGfx.infobar.getSection5() != null && !caption.this_infobarGfx.infobar.getSection5().isEmpty()) {
+					processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section5$In_Out", "CONTINUE");
+					caption.this_infobarGfx.infobar.setLast_section5("");
+					caption.this_infobarGfx.infobar.setSection5("");
+					TimeUnit.MILLISECONDS.sleep(300);
+				}
+				
+				System.out.println("caption.this_infobarGfx.infobar.getSectionLtAnalytics() = " + caption.this_infobarGfx.infobar.getSectionLtAnalytics() + "    "
+						+ "caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() = " + caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics());
+				
+				if (caption.this_infobarGfx.infobar.getSectionLtAnalytics() == null || caption.this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty()) {
+					processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section4$In_Out", "CONTINUE");
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Sponsor_BallSpeed$Sponsor$Sponsor" 
+							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				} else {
+					if(caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && !caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty()) {
+						processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section4$Change", "START");
+					}else {
+						processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section4$In_Out", "START");
+					}
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Sponsor_BallSpeed$Sponsor$Sponsor" 
+							+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+				}
+				caption.this_infobarGfx.infobar.setLast_sectionAnalytics(caption.this_infobarGfx.infobar.getSectionLtAnalytics());
 				break;	
-			case "Alt_8":
+			case "Alt_8": //case "Alt_3": case "Alt_4":
 				if(caption.this_infobarGfx.infobar.getSection5() != null && !caption.this_infobarGfx.infobar.getSection5().isEmpty()) {
 					processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section5$In_Out", "CONTINUE");
 					caption.this_infobarGfx.infobar.setLast_section5("");
@@ -3296,7 +3329,7 @@ public class Animation
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Top5", "START");
 				break;
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4":
-			case "Control_p":
+			case "Control_p": case "Control_Alt_F1":
 //				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
@@ -3305,6 +3338,10 @@ public class Animation
 				
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side2_In", "START");
 				switch(whichGraphicOnScreen.split(",")[0]) {
+				case "Control_Alt_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "START");
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "START");
+					break;
 				case "F1": case "Control_Shift_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$BatCard$Change_Out", "START");
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$BatCard$Change_In", "START");
@@ -3334,6 +3371,10 @@ public class Animation
 						break;
 					case "F4":
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Partnership_Table", "START");
+						break;
+					case "Control_Alt_F1":
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "START");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "START");
 						break;
 					case "F1": case "Control_Shift_F1":
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$BatCard$Change_Out", "START");
@@ -4271,8 +4312,13 @@ public class Animation
 			case "Alt_7":
 				TimeUnit.MILLISECONDS.sleep(400);
 				processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section3$Change", "SHOW 0.0");
+				break;
+			case "Alt_3": case "Alt_4":
+				if(caption.this_infobarGfx.infobar.getSectionLtAnalytics() != null && !caption.this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty()) {
+					processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section4$Change", "SHOW 0.0");
+				}
 				break;	
-			case "Alt_8":
+			case "Alt_8": //case "Alt_3": case "Alt_4":
 				if(caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 					processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Section4$Change", "SHOW 0.0");
 				}
@@ -4294,6 +4340,10 @@ public class Animation
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4":
 			case "Control_p":
 				switch(whichGraphicOnScreen.split(",")[0]) {
+				case "Control_Alt_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "SHOW 0.0");
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "SHOW 0.0");
+					break;
 				case "F1": case "Control_Shift_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$BatCard$Change_Out", "SHOW 0.0");
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$BatCard$Change_In", "SHOW 0.0");
@@ -4327,7 +4377,11 @@ public class Animation
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out", "SHOW 3.640");
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Partnership_Table", "SHOW 0.0");
 						break;
-						
+					case "Control_Alt_F1":
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out", "SHOW 3.900");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "SHOW 0.0");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "SHOW 0.0");
+						break;
 					case "F1": case "Control_Shift_F1":
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$BatCard$In_Out", "SHOW 3.900");
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$BatCard$Change_Out", "SHOW 0.0");
@@ -5403,7 +5457,7 @@ public class Animation
 					case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Shift_F11": case "Control_F7":
 					case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 					case "Shift_F10": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": 
-					case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p":
+					case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p": case "Control_Alt_F1":
 						
 						previewCommand = "Anim_Infobar$FFIn 0.520 Full_Frames$Essentials$In_Out$In 1.900 ";
 						
@@ -5445,6 +5499,9 @@ public class Animation
 							break;
 						case "F4":
 							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out$In 3.600";
+							break;
+						case "Control_Alt_F1":
+							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out$In 2.900";
 							break;
 						case "F1": case "Control_Shift_F1":
 							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$BatCard$In_Out$In 3.880";
@@ -5894,8 +5951,12 @@ public class Animation
 						previewCommand = "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$Profile 3.340 Full_Frames$Main_Graphics$Change$Profile$Change_Out 1.020 "
 								+ "Full_Frames$Main_Graphics$Change$Profile$Change_In 3.340";
 						break;
-					case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Control_p":
+					case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Control_p": case "Control_Alt_F1":
 						switch(whichGraphicOnScreen.split(",")[0]) {
+						case "Control_Alt_F1":
+							previewCommand = "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$SplitCard 2.900 Full_Frames$Main_Graphics$Change$SplitCard$Change_Out 0.600 "
+									+ "Full_Frames$Main_Graphics$Change$BatCard$Change_In 2.900";
+							break;
 						case "F1": case "Control_Shift_F1":
 							previewCommand = "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$BatCard 3.540 Full_Frames$Main_Graphics$Change$BatCard$Change_Out 1.020 "
 									+ "Full_Frames$Main_Graphics$Change$BatCard$Change_In 3.540";
@@ -5932,6 +5993,10 @@ public class Animation
 								previewCommand = previewCommand + " Full_Frames$Main_Graphics$Change$Partnership_Table 3.360 Full_Frames$Main_Graphics$Change$Partnership_Table$Change_Out 1.020 "
 										+ "Full_Frames$Main_Graphics$Change$Partnership_Table$Change_In 3.360";
 								break;
+							case "Control_Alt_F1":
+								previewCommand = previewCommand + " Full_Frames$Main_Graphics$Change$SplitCard 2.900 Full_Frames$Main_Graphics$Change$SplitCard$Change_Out 0.600 "
+										+ "Full_Frames$Main_Graphics$Change$SplitCard$Change_In 2.900";
+								break;	
 							case "F1": case "Control_Shift_F1":
 								if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("F1") && !whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Control_Shift_F1")) {
 									previewCommand = previewCommand + " Full_Frames$Main_Graphics$Change$BatCard 3.540 Full_Frames$Main_Graphics$Change$BatCard$Change_Out 1.020 "

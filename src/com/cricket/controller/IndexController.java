@@ -843,6 +843,14 @@ public class IndexController
 				this_animation.caption = this_caption;
 				processAnimations("ANIMATE-IN-GRAPHICS", session_configuration, "Alt_8,,BLANK", print_writers);
 			}
+			
+			if(this_caption.this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty()) {
+				this_caption.PopulateGraphics("Alt_8,,BLANK", session_match);
+				this_animation.caption = this_caption;
+				processAnimations("ANIMATE-IN-GRAPHICS", session_configuration, "Alt_8,,BLANK", print_writers);
+			}
+			
+			this_caption.this_infobarGfx.infobar.setSectionLtAnalytics("");
 			break;	
 		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 			if(this_caption.this_infobarGfx.infobar.getSection2() != null && !this_caption.this_infobarGfx.infobar.getSection2().isEmpty()) {

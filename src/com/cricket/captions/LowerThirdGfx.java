@@ -316,7 +316,7 @@ public class LowerThirdGfx
 	    }
 	}
 	
-	public String populateImpact(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateImpact(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			return status;
@@ -451,7 +451,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateBowlingStyle(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateBowlingStyle(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		
 		player = CricketFunctions.getPlayerFromMatchData(Integer.valueOf(whatToProcess.split(",")[2]), matchAllData);
@@ -510,7 +510,7 @@ public class LowerThirdGfx
 		
 	}
 	
-	public String populateBattingStyle(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateBattingStyle(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			return status;
@@ -579,7 +579,7 @@ public class LowerThirdGfx
 		
 	}
 	
-	public String populateQuickHowOut(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateQuickHowOut(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		String striktRate = "",howOut = "",duration ="";
 		
@@ -715,7 +715,7 @@ public class LowerThirdGfx
 		}
 	}
 	
-	public String populateHowOutWithOutFielder(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateHowOutWithOutFielder(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		String striktRate = "";
 		
@@ -792,7 +792,7 @@ public class LowerThirdGfx
 		}
 	}
 	
-	public String populateHowOut(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateHowOut(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		String striktRate = "",howOut = "";
 		
@@ -919,7 +919,7 @@ public class LowerThirdGfx
 		}
 	}
 	
-	public String populateLTNameSuper(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateLTNameSuper(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		if(config.getCategory().equalsIgnoreCase("MEN")) {
 			logoCategory = "M";
@@ -987,7 +987,7 @@ public class LowerThirdGfx
 		}
 	}
 
-	public String populateL3rdProjected(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateL3rdProjected(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			return status;
@@ -1582,7 +1582,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateLTNameSuperPlayer(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException {
+	public String populateLTNameSuperPlayer(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException {
 		player =  CricketFunctions.getPlayerFromMatchData(Integer.valueOf(whatToProcess.split(",")[2]), matchAllData);
 		team = Teams.stream().filter(tm -> tm.getTeamId() == player.getTeamId()).findAny().orElse(null);
 		
@@ -2336,7 +2336,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateFOW(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateFOW(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1]))
 				.findAny().orElse(null);
@@ -2382,7 +2382,7 @@ public class LowerThirdGfx
 			}
 		}
 	}
-	public String populate30_50Split(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populate30_50Split(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		
 		PlayerProgression(34, matchAllData, matchAllData.getEventFile().getEvents());
@@ -2536,7 +2536,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateL3PlayerProgression(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateL3PlayerProgression(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		String[] playerData = new String[5];
 		String[] splitNumber = new String[5];
@@ -2711,7 +2711,7 @@ public class LowerThirdGfx
 			}
 		}
 	}
-	public String populateL3rdExtras(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateL3rdExtras(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
@@ -2801,7 +2801,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateBatSummary(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateBatSummary(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		String outOrNot = "";
 		
@@ -2882,7 +2882,7 @@ public class LowerThirdGfx
 		}
 	}
 	
-	public String populateBallSummary(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateBallSummary(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		String over_text = "",plural = "";
 		
@@ -2980,7 +2980,7 @@ public class LowerThirdGfx
 		}
 	}
 	
-	public String populateTeamSummary(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateTeamSummary(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			return status;
@@ -3023,7 +3023,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateL3rdTarget(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateL3rdTarget(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1]))
 			.findAny().orElse(null);
@@ -3152,7 +3152,7 @@ public class LowerThirdGfx
 		}
 	}
 
-	public String populateL3rdEquation(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateL3rdEquation(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == 2 && inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES))
 				.findAny().orElse(null);
@@ -3284,7 +3284,7 @@ public class LowerThirdGfx
 		}
 	}
 	
-	public String populatePhaseWiseRunRate(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException {
+	public String populatePhaseWiseRunRate(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException {
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1])).findAny().orElse(null);
 		if(inning == null) {
 			return "populateL3PhaseWise Inning is null";
@@ -3370,7 +3370,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateL3PhaseWise(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException {
+	public String populateL3PhaseWise(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException {
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1])).findAny().orElse(null);
 		if(inning == null) {
 			return "populateL3PhaseWise Inning is null";
@@ -3500,7 +3500,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populatePhaseComp(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException {
+	public String populatePhaseComp(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException {
 		
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == 1).findAny().orElse(null);
 		inning2 = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == 2).findAny().orElse(null);
@@ -3635,7 +3635,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateL3rdComparison (String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateL3rdComparison (String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			return status;
@@ -3672,7 +3672,7 @@ public class LowerThirdGfx
 			}
 		}				
 	}
-	public String populateLTMatchId(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateLTMatchId(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		
 		String Footer = "";
@@ -3976,7 +3976,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateLTMatchPromo(String whatToProcess, int WhichSide, MatchAllData matchAllData) throws InterruptedException {
+	public String populateLTMatchPromo(String whatToProcess, int WhichSide, MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException {
 		
 		fixture = fixTures.stream().filter(fix -> fix.getMatchnumber() == 
 				Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
@@ -4071,11 +4071,12 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateNextToBat(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException {
+	public String populateNextToBat(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException {
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
 		if(inning == null) {
 			return "Select the current inning";
 		}
+		match = matchAllData;
 		battingCardList = inning.getBattingCard().stream().filter(bc ->bc.getStatus().equalsIgnoreCase(CricketUtil.STILL_TO_BAT)).collect(Collectors.toList());
 		team = inning.getBatting_team();
 		
@@ -4088,7 +4089,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateDlsTarget(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateDlsTarget(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		int balls = 0, overs = 0;
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
@@ -4243,7 +4244,7 @@ public class LowerThirdGfx
 			return status;
 		}
 	}
-	public String populateGeneric(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException
+	public String populateGeneric(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		String data = "";
 		
@@ -7757,7 +7758,7 @@ public class LowerThirdGfx
 		}
 	}
 	
-	public String L3rdBodyPart(int whichSide, String whatToProcess) {
+	public String L3rdBodyPart(int whichSide, String whatToProcess) throws JsonMappingException, JsonProcessingException, InterruptedException {
 		switch (whatToProcess) {
 		case "Alt_d":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + whichSide 
@@ -7965,15 +7966,52 @@ public class LowerThirdGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side"+ whichSide +"$Select$NextToBat$BottomGrp$Player"
 							+ rowId + "$PlayerData$Data0*GEOM*TEXT SET \0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side"+ whichSide +"$Select$NextToBat$BottomGrp$Player"
-							+ rowId + "$PlayerData$Data2*GEOM*TEXT SET " + "IN AT" + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side"+ whichSide +"$Select$NextToBat$BottomGrp$Player"
-							+ rowId + "$PlayerData$Data3*GEOM*TEXT SET " + inAtPositionCount + "\0", print_writers);
-					
 //					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side"+ whichSide +"$Select$NextToBat$BottomGrp$Player"
-//							+ rowId + "$PlayerData$Data2*GEOM*TEXT SET " + "S/R" + "\0", print_writers);
+//							+ rowId + "$PlayerData$Data2*GEOM*TEXT SET " + "IN AT" + "\0", print_writers);
 //					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side"+ whichSide +"$Select$NextToBat$BottomGrp$Player"
 //							+ rowId + "$PlayerData$Data3*GEOM*TEXT SET " + inAtPositionCount + "\0", print_writers);
+					
+					
+					if(match.getSetup().getMatchType().equalsIgnoreCase("DT20")){
+						
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
+						if(statsType == null) {
+							return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + "DT20" + "]";
+						}
+						
+						stat = statistics.stream().filter(st -> st.getPlayerID() == bc.getPlayerId() && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+						if(stat == null) {
+							return "PopulateNextToBat: Stats not found for Player Id [" + bc.getPlayerId() + "]";
+						}
+						
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
+						stat.setStats_type(statsType);
+						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, match, CricketUtil.FULL);
+						stat = CricketFunctions.updateStatisticsWithMatchData(stat, match, CricketUtil.FULL);
+					}else if(match.getSetup().getMatchType().equalsIgnoreCase("IT20")){
+						
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						if(statsType == null) {
+							return "PopulateNextToBat: Stats Type not found for profile [" + "IT20" + "]";
+						}
+						
+						stat = statistics.stream().filter(st -> st.getPlayerID() == bc.getPlayerId() && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+						if(stat == null) {
+							return "PopulateNextToBat: Stats not found for Player Id [" + bc.getPlayerId() + "]";
+						}
+						
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+						stat.setStats_type(statsType);
+						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, match, CricketUtil.FULL);
+						stat = CricketFunctions.updateStatisticsWithMatchData(stat, match, CricketUtil.FULL);
+					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side"+ whichSide +"$Select$NextToBat$BottomGrp$Player"
+							+ rowId + "$PlayerData$Data2*GEOM*TEXT SET " + "S/R" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side"+ whichSide +"$Select$NextToBat$BottomGrp$Player"
+							+ rowId + "$PlayerData$Data3*GEOM*TEXT SET " + (CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0) != null && 
+									!CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0).isEmpty() ? 
+											CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0) : "-") + "\0", print_writers);
 					break;
 				}
 			}
@@ -8987,7 +9025,7 @@ public class LowerThirdGfx
 		return Constants.OK;
 	}
 	
-	public String PopulateL3rdBody(int whichSide, String whatToProcess) {
+	public String PopulateL3rdBody(int whichSide, String whatToProcess) throws JsonMappingException, JsonProcessingException, InterruptedException {
 		if(whichSide == 1) {
 			containerName = "$Change_Out";
 		}else if(whichSide == 2) {

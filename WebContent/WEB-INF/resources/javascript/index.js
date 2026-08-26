@@ -1600,6 +1600,17 @@ function addItemsToList(whatToProcess,dataToProcess)
 							option.value = 'THIS_SERIES';
 							option.text = 'THIS SERIES';
 							select.appendChild(option);
+							
+							option = document.createElement('option');
+							option.value = 'ACC_BOUNDARY_CAREER';
+							option.text = 'ACC BOUNDARY CAREER';
+							select.appendChild(option);
+							
+							option = document.createElement('option');
+							option.value = 'ACC_BOUNDARY';
+							option.text = 'THIS SEASON BOUNDARY';
+							select.appendChild(option);
+							
 							break;
 					}
 					
@@ -2866,7 +2877,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
 					  { value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },
 					  { value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
-					  //{ value: 'IDENT', text: 'Ident' },
+					  { value: 'BATSMANBOUNDARY', text: 'BATSMAN BOUNDARY' },
 					];
 					
 					session_match.match.inning.forEach(function(inn){
@@ -3152,7 +3163,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						row.insertCell(2).appendChild(ballselect);
 						setDropdownOptionToSelectOptionArray($(ballselect),2);
 						cellCount = 3;
-}					else if(this.value == 'INNINGSBUILDER'){
+}					else if(this.value == 'INNINGSBUILDER' || this.value == 'BATSMANBOUNDARY'){
 						let xballselect  = document.createElement('select');
 						xballselect.id = 'selectFreeText';
 						xballselect.name = xballselect.id;
