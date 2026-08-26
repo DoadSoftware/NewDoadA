@@ -2874,10 +2874,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'Sponsor', text: 'Sponsor' },
 					  { value: 'BatMileStone', text: 'Batter MileStone' },
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
+					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
+					  { value: 'BowlerTimeLine', text: 'Bowler TimeLine' },
 					  { value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
 					  { value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },
 					  { value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
 					  { value: 'BATSMANBOUNDARY', text: 'BATSMAN BOUNDARY' },
+					  { value: 'RECENT_FORM', text: 'RECENT FORM' },
 					];
 					
 					session_match.match.inning.forEach(function(inn){
@@ -2963,7 +2966,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 				cellCount = cellCount + 1
 				
 				select.addEventListener('change', function () {
-					['selectFreeText', 'selectFreeText1', 'Player1', 'Player2', 'Player3', 'selectPhoto', 'FreeText', 'SponsorValue'].forEach(id => {
+					['selectFreeText', 'selectFreeText1', 'Player1', 'Player2', 'Player3', 'selectPhoto', 'FreeText', 
+						'SponsorValue', 'selectTeams'].forEach(id => {
 					    const el = document.getElementById(id);
 					    if (el) {
 					        id === 'selectFreeText' ? el.parentElement.remove() : el.remove();
@@ -3056,6 +3060,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 							setDropdownOptionToSelectOptionArray($(xballselect),1);
 							cellCount = 2;
 						}
+					}else if(this.value === 'RECENT_FORM'){
+						// === 2. Team Dropdown ===
+						let teamSelect = document.createElement('select');
+						teamSelect.id = 'selectTeams';
+						teamSelect.name = teamSelect.id;
+				
+						let homeOption = document.createElement('option');
+						homeOption.value = session_match.setup.homeTeam.teamId;
+						homeOption.text = session_match.setup.homeTeam.teamName1;
+						teamSelect.appendChild(homeOption);
+				
+						let awayOption = document.createElement('option');
+						awayOption.value = session_match.setup.awayTeam.teamId;
+						awayOption.text = session_match.setup.awayTeam.teamName1;
+						teamSelect.appendChild(awayOption);
+				
+						row.insertCell(1).appendChild(teamSelect);
+						cellCount++;
+						// === Set onchange logic for each dropdown if needed ===1
+						teamSelect.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 1)");1
+				
+						setDropdownOptionToSelectOptionArray($(teamSelect), 1);
 					} else if(this.value == 'BatMileStone' || this.value == 'BallMileStone'){
 						let xballselect  = document.createElement('select');
 						xballselect.id = 'selectFreeText';
@@ -3198,6 +3224,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 						ballselect.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 						row.insertCell(1).appendChild(ballselect);
 						setDropdownOptionToSelectOptionArray($(ballselect),1);
+						cellCount = 2;
+					}
+					else if(this.value == 'BowlerTimeLine'){
+						let xballselect  = document.createElement('select');
+						xballselect.id = 'selectFreeText';
+						xballselect.name = xballselect.id;
+						
+						session_match.match.inning.forEach(function(inn){
+							if(inn.isCurrentInning == 'YES'){
+								if(inn.bowlingCard != null){
+									inn.bowlingCard.forEach(function(boc){
+										option = document.createElement('option');
+										option.value = boc.playerId;
+										option.text = boc.player.full_name;	
+										xballselect.appendChild(option);
+									});
+								}
+							}
+						});
+						xballselect.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+						row.insertCell(1).appendChild(xballselect);
+						setDropdownOptionToSelectOptionArray($(xballselect),1);
 						cellCount = 2;
 					}
 				});
@@ -5195,46 +5243,52 @@ function addItemsToList(whatToProcess,dataToProcess)
 			option.text = 'Current Partnership';
 			select.appendChild(option);
 			
-			option = document.createElement('option');
-			option.value = 'last_wicket';
-			option.text = 'Last Wicket';
-			select.appendChild(option);
-			
-			option = document.createElement('option');
-			option.value = 'Boundaries';
-			option.text = 'Boundaries';
-			select.appendChild(option);
-			
-			option = document.createElement('option');
-			option.value = 'CRR';
-			option.text = 'Current Run rate';
-			select.appendChild(option);
-			
-			session_match.match.inning.forEach(function(inn){
-				if(inn.isCurrentInning == 'YES'){
-					if(inn.inningNumber == 2){
-						option = document.createElement('option');
-						option.value = 'RRR';
-						option.text = 'Required Run Rate';
-						select.appendChild(option);
-						
-						option = document.createElement('option');
-						option.value = 'CRR_RRR';
-						option.text = 'Current and Required Run Rate';
-						select.appendChild(option);
-						
-						/*option = document.createElement('option');
-						option.value = 'Runs_Balls';
-						option.text = 'Runs And Balls';
-						select.appendChild(option);*/
-						
-						option = document.createElement('option');
-						option.value = 'Comparison';
-						option.text = 'Comparison';
-						select.appendChild(option);
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'ACC': 
+				break;
+			default:
+				option = document.createElement('option');
+				option.value = 'last_wicket';
+				option.text = 'Last Wicket';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'Boundaries';
+				option.text = 'Boundaries';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'CRR';
+				option.text = 'Current Run rate';
+				select.appendChild(option);
+				
+				session_match.match.inning.forEach(function(inn){
+					if(inn.isCurrentInning == 'YES'){
+						if(inn.inningNumber == 2){
+							option = document.createElement('option');
+							option.value = 'RRR';
+							option.text = 'Required Run Rate';
+							select.appendChild(option);
+							
+							option = document.createElement('option');
+							option.value = 'CRR_RRR';
+							option.text = 'Current and Required Run Rate';
+							select.appendChild(option);
+							
+							/*option = document.createElement('option');
+							option.value = 'Runs_Balls';
+							option.text = 'Runs And Balls';
+							select.appendChild(option);*/
+							
+							option = document.createElement('option');
+							option.value = 'Comparison';
+							option.text = 'Comparison';
+							select.appendChild(option);
+						}
 					}
-				}
-			});
+				});
+				break;
+			}
 			
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
 			row.insertCell(cellCount).appendChild(select);

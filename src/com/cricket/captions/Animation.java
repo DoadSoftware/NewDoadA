@@ -108,7 +108,7 @@ public class Animation
 			case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": 
 			case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": 
 			case "Control_F3": case "d": case "Control_Shift_B": case "Alt_Shift_F3": case "l": case "Alt_Shift_Q": case "Alt_Shift_F4":
-			case "Alt_d": case "Alt_f": case "e":
+			case "Alt_d": case "Alt_f": case "e": case "Control_F2": case "Control_Shift_Q":
 				return Constants.LOWER_THIRD;
 			case "m": case "Control_m": case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "Shift_F11":
 			case "Control_F7": case "F4": case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e":
@@ -521,10 +521,30 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
+			case "Control_F2":
+				if(this.infobar.isInfobar_on_screen() == true) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_BowlingOptions$LT_Position*"
+							+ "TRANSFORMATION*POSITION*Y SET 5.0 \0",print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_BowlingOptions$LT_Position*"
+							+ "TRANSFORMATION*POSITION*Y SET 0.0 \0",print_writers);
+				}
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+						TimeUnit.MILLISECONDS.sleep(1000);
+						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+					}
+				}
+				TimeUnit.MILLISECONDS.sleep(200);
+				
+				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions$In_Out", "START");
+				break;
+				
 			case "F5": case "F6": case "F9": case "F8": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
-			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e":
+			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
 				
 				if(this.infobar.isInfobar_on_screen() == true) {
 					switch (whatToProcess.split(",")[0]) {
@@ -2248,11 +2268,24 @@ public class Animation
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "Counter", "SHOW 0.0");
-				break;	
+				break;
+			case "Control_F2":
+				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions$In_Out", "CONTINUE");
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+						TimeUnit.MILLISECONDS.sleep(1000);
+						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+					}
+				}
+				TimeUnit.MILLISECONDS.sleep(800);
+				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions", "SHOW 0.0");
+				break;
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
-			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e":
+			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
 				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$Out", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$Out", "START");
@@ -3416,7 +3449,7 @@ public class Animation
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
-			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e":
+			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
 				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$Change", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$Change", "START");
@@ -4441,7 +4474,7 @@ public class Animation
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
-			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e":
+			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
 //				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out", "SHOW 1.7");
 //				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out", "SHOW 0.72");
 //				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out", "SHOW 0.72");
@@ -5081,6 +5114,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "Bugs", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "SixDistance", "SHOW 0.0");
+				
+				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions", "SHOW 0.0");
 				
 //				processAnimation(Constants.FRONT, print_writers, "StarLoop", "SHOW 0.0");
 				this.infobar.setInfobar_on_screen(false);
@@ -6214,10 +6249,13 @@ public class Animation
 					case "Alt_Shift_Q":
 						previewCommand = "Plotter 1.000 Plotter$In 1.000 Plotter$Out 1.000";
 						break;
+					case "Control_F2":
+						previewCommand = "LT_BowlingOptions$In_Out$In 0.786";
+						break;
 					case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
-					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e":
+					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
 //						previewCommand = "LT$Logo$In_Out 1.7 LT$Logo$In_Out$In 1.7 LT$Base$In_Out 0.72 LT$Base$In_Out$In 0.72 "
 //								+ "LT$Data$In_Out 0.72 LT$Data$In_Out$In 0.72";
 						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
@@ -6299,7 +6337,7 @@ public class Animation
 					case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
-					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_Shift_F12": case "Alt_f": case "e":
+					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_Shift_F12": case "Alt_f": case "e": case "Control_Shift_Q":
 //						previewCommand = "LT$Logo$Change 2.120 LT$Logo$Change$Change_Out 0.420 LT$Logo$Change$Change_In 2.120 LT$Base$Change 1.200 LT$Base$Change$Change_Out 0.460 LT$Base$Change$Change_In 1.200 "
 //								+ "LT$Data$Change 1.180 LT$Data$Change$Change_Out 0.460 LT$Data$Change$Change_In 1.180";
 						previewCommand = "LT$Data$In_Out$In 0.0 LT$Logo$Change 2.120 LT$Logo$Change$Change_Out 0.420 LT$Logo$Change$Change_In 2.120 LT$Base$Change 1.200 LT$Base$Change$Change_Out 0.460 LT$Base$Change$Change_In 1.200 "

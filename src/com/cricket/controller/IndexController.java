@@ -1567,6 +1567,7 @@ public class IndexController
 					this_caption.this_infobarGfx.Commentators = session_commentator;
 					this_caption.this_infobarGfx.Players = session_players;
 					this_caption.this_infobarGfx.teams = session_team;
+					this_caption.this_infobarGfx.fixtures = session_fixture;
 					
 					//LowerThird
 					this_caption.this_lowerThirdGfx.statistics = session_statistics;

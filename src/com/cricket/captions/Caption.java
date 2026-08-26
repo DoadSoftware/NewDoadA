@@ -132,7 +132,7 @@ public class Caption
 				nameSupers, Teams, Grounds, tournament,tapeball, dls, staff, players, pott, varioustText, headToHead, past_tournament_stats, cricketService,fixTures,vjd);
 		this.whichSide = whichSide;
 		this.this_infobarGfx = new InfobarGfx(config, slashOrDash, print_writers, statistics, statsTypes, infobarStats, Grounds, Commentators, 
-				tournament_matches, dls, players, headToHead, past_tournament_stats, cricketService, Teams,vjd);
+				tournament_matches, dls, players, headToHead, past_tournament_stats, cricketService, Teams, vjd, fixTures);
 		this.this_bugsAndMiniGfx = new BugsAndMiniGfx(print_writers, config, bugs, performanceBugs, Teams, VariousText, cricketService, headToHead, tournament_matches,
 				statistics, statsTypes, past_tournament_stats,everestBugs, players);
 		this.status = "";
@@ -829,7 +829,7 @@ public class Caption
 							}
 							this_infobarGfx.sponsor_id = Integer.valueOf(whatToProcess.split(",")[3]);	
 						}
-						else if(whatToProcess.split(",")[2].equalsIgnoreCase("BatsmanTimeLine")) {
+						else if(whatToProcess.split(",")[2].equalsIgnoreCase("BatsmanTimeLine") || whatToProcess.split(",")[2].equalsIgnoreCase("BowlerTimeLine")) {
 							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BatsmanTimeLine")) {
 								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
@@ -862,6 +862,12 @@ public class Caption
 						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("BATSMANBOUNDARY")) {
 							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BATSMANBOUNDARY")) {
+								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
+							}
+							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
+						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("RECENT_FORM")) {
+							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("RECENT_FORM")) {
 								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
 							}
 							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
