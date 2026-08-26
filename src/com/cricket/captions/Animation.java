@@ -113,7 +113,7 @@ public class Animation
 			case "m": case "Control_m": case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "Shift_F11":
 			case "Control_F7": case "F4": case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e":
 			case "Shift_P": case "Shift_Q": case "Shift_F10": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": 
-			case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p": case "Control_Alt_F1":
+			case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p": case "Control_Alt_F1": case "Control_F1": case "Alt_F9":
 				return Constants.FULL_FRAMER;
 			}
 			break;	
@@ -636,7 +636,7 @@ public class Animation
 				break;	
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Shift_F11": case "Control_F7":
 			case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-			case "Shift_F10": case "Control_p": case "Control_Alt_F1":
+			case "Shift_F10": case "Control_p": case "Control_Alt_F1": case "Control_F1": case "Alt_F9":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				
@@ -679,6 +679,12 @@ public class Animation
 				case "F4":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out", "START");
 					break;
+				case "Alt_F9":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Single_TeamLineUp$In_Out", "START");
+					break;
+				case "Control_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out", "START");
+					break;	
 				case "Control_Alt_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out", "START");
 					break;
@@ -2342,7 +2348,7 @@ public class Animation
 				break;	
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Shift_F11": case "Control_F7":
 			case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-			case "Shift_F10": case "Control_p": case "Control_Alt_F1":
+			case "Shift_F10": case "Control_p": case "Control_Alt_F1": case "Control_F1": case "Alt_F9":
 				 
 				switch (whatToProcess.split(",")[0]) {
 				case "Control_F11": case "Shift_F11":
@@ -2374,6 +2380,12 @@ public class Animation
 					break;
 				case "F4":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out", "CONTINUE");
+					break;
+				case "Alt_F9":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Single_TeamLineUp$In_Out", "CONTINUE");
+					break;	
+				case "Control_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out", "CONTINUE");
 					break;
 				case "Control_Alt_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out", "CONTINUE");
@@ -3362,7 +3374,7 @@ public class Animation
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Top5", "START");
 				break;
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4":
-			case "Control_p": case "Control_Alt_F1":
+			case "Control_p": case "Control_Alt_F1": case "Control_F1": case "Alt_F9":
 //				processAnimation("", print_writers, "Wipe_BG_In_Out$Change", "START");
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
@@ -3371,6 +3383,14 @@ public class Animation
 				
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side2_In", "START");
 				switch(whichGraphicOnScreen.split(",")[0]) {
+				case "Alt_F9":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_Out", "START");
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_In", "START");
+					break;
+				case "Control_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_Out", "START");
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_In", "START");
+					break;
 				case "Control_Alt_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "START");
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "START");
@@ -3405,6 +3425,14 @@ public class Animation
 					case "F4":
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Partnership_Table", "START");
 						break;
+					case "Alt_F9":
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_Out", "START");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_In", "START");
+						break;	
+					case "Control_F1":
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_Out", "START");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_In", "START");
+						break;	
 					case "Control_Alt_F1":
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "START");
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "START");
@@ -4371,8 +4399,16 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;	
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4":
-			case "Control_p":
+			case "Control_p": case "Control_Alt_F1": case "Control_F1": case "Alt_F9":
 				switch(whichGraphicOnScreen.split(",")[0]) {
+				case "Alt_F9":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_Out", "SHOW 0.0");
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_In", "SHOW 0.0");
+					break;
+				case "Control_F1":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_Out", "SHOW 0.0");
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_In", "SHOW 0.0");
+					break;
 				case "Control_Alt_F1":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "SHOW 0.0");
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "SHOW 0.0");
@@ -4398,6 +4434,11 @@ public class Animation
 				
 				if(!whichGraphicOnScreen.equalsIgnoreCase(whatToProcess.split(",")[0])) {
 					switch(whatToProcess.split(",")[0]) {
+					case "Alt_F9":
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Single_TeamLineUp$In_Out", "SHOW 3.560");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_Out", "SHOW 0.0");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Single_TeamLineUp$Change_In", "SHOW 0.0");
+						break;
 					case "Control_F11":
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Summary$In_Out", "SHOW 2.900");
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Summary", "SHOW 0.0");
@@ -4410,10 +4451,15 @@ public class Animation
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out", "SHOW 3.640");
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Partnership_Table", "SHOW 0.0");
 						break;
+					case "Control_F1":
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out", "SHOW 3.560");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_Out", "SHOW 0.0");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_In", "SHOW 0.0");
+						break;	
 					case "Control_Alt_F1":
-						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out", "SHOW 3.900");
-						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_Out", "SHOW 0.0");
-						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$SplitCard$Change_In", "SHOW 0.0");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out", "SHOW 3.500");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_Out", "SHOW 0.0");
+						processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_In", "SHOW 0.0");
 						break;
 					case "F1": case "Control_Shift_F1":
 						processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$BatCard$In_Out", "SHOW 3.900");
@@ -5491,8 +5537,8 @@ public class Animation
 						break;
 					case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Shift_F11": case "Control_F7":
 					case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-					case "Shift_F10": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": 
-					case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p": case "Control_Alt_F1":
+					case "Shift_F10": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Alt_F9":
+					case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p": case "Control_Alt_F1": case "Control_F1":
 						
 						previewCommand = "Anim_Infobar$FFIn 0.520 Full_Frames$Essentials$In_Out$In 1.900 ";
 						
@@ -5535,6 +5581,12 @@ public class Animation
 						case "F4":
 							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$Partnership_Table$In_Out$In 3.600";
 							break;
+						case "Alt_F9":
+							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$Single_TeamLineUp$In_Out$In 3.200";
+							break;
+						case "Control_F1":
+							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out$In 3.200";
+							break;	
 						case "Control_Alt_F1":
 							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out$In 2.900";
 							break;
@@ -5987,7 +6039,12 @@ public class Animation
 								+ "Full_Frames$Main_Graphics$Change$Profile$Change_In 3.340";
 						break;
 					case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Control_p": case "Control_Alt_F1":
+					case "Control_F1":	
 						switch(whichGraphicOnScreen.split(",")[0]) {
+						case "Control_F1":
+							previewCommand = "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$ImageBattingCard 0.680 Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_Out 0.680 "
+									+ "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_In 2.900";
+							break;
 						case "Control_Alt_F1":
 							previewCommand = "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$SplitCard 2.900 Full_Frames$Main_Graphics$Change$SplitCard$Change_Out 0.600 "
 									+ "Full_Frames$Main_Graphics$Change$BatCard$Change_In 2.900";
@@ -6028,6 +6085,10 @@ public class Animation
 								previewCommand = previewCommand + " Full_Frames$Main_Graphics$Change$Partnership_Table 3.360 Full_Frames$Main_Graphics$Change$Partnership_Table$Change_Out 1.020 "
 										+ "Full_Frames$Main_Graphics$Change$Partnership_Table$Change_In 3.360";
 								break;
+							case "Control_F1":
+								previewCommand = previewCommand + " Full_Frames$Main_Graphics$Change$ImageBattingCard 0.680 Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_Out 0.680 "
+										+ "Full_Frames$Main_Graphics$Change$ImageBattingCard$Change_In 2.900";
+								break;	
 							case "Control_Alt_F1":
 								previewCommand = previewCommand + " Full_Frames$Main_Graphics$Change$SplitCard 2.900 Full_Frames$Main_Graphics$Change$SplitCard$Change_Out 0.600 "
 										+ "Full_Frames$Main_Graphics$Change$SplitCard$Change_In 2.900";

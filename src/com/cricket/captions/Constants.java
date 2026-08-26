@@ -41,6 +41,7 @@ public class Constants
 	public final static String ACC_FLAG = "IMAGE*/Default/Flags/";
 	public final static String ACC_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\ACC\\\\Photos\\\\";
 	public final static String ACC_PHOTO_PATH = "\\c\\Images\\ACC\\Photos\\";
+	public final static String ACC_ICONS = "IMAGE*/Default/Essentials/Icons/";
 	
 	public final static String AFG_SL_SERIES = "AFG_SL_SERIES";
 	public final static String AFG_SL_SERIES_LOGO = "IMAGE*/Default/Assets/Logos/";

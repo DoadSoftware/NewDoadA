@@ -5347,10 +5347,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectType';
 			select.name = select.id;
 			
-			option = document.createElement('option');
+			/*option = document.createElement('option');
 			option.value = 'runs';
 			option.text = 'Runs';
-			select.appendChild(option);
+			select.appendChild(option);*/
 			
 			option = document.createElement('option');
 			option.value = 's/r';
