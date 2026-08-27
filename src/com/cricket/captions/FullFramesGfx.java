@@ -290,8 +290,10 @@ public class FullFramesGfx
 		
 		if(matchAllData.getMatch().getInning().get(WhichInning-1).getBattingTeamId() == matchAllData.getSetup().getHomeTeamId()) {
 			this_ALL_FF.PlayingXI = matchAllData.getSetup().getHomeSquad();
+			this_ALL_FF.otherSquad = matchAllData.getSetup().getHomeOtherSquad();
 		}else {
 			this_ALL_FF.PlayingXI = matchAllData.getSetup().getAwaySquad();
+			this_ALL_FF.otherSquad = matchAllData.getSetup().getAwayOtherSquad();
 		}
 		
 		status = PopulateFfHeader(WhichSide, whatToProcess, matchAllData, WhichInning);
