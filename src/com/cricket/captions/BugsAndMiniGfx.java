@@ -964,6 +964,9 @@ public class BugsAndMiniGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$base$img_base1*TEXTURE*IMAGE SET " 
 							+ Constants.BAN_AFG_SERIES_BASE1 + "EVENT" +"\0", print_writers);
 					break;
+				case Constants.ACC:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$select_Sponsor*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+					break;
 				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$band$txt_Header*GEOM*TEXT SET TOURNAMENT FOURS\0", print_writers);
@@ -1009,6 +1012,9 @@ public class BugsAndMiniGfx
 							+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" +"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$base$img_base1*TEXTURE*IMAGE SET " 
 							+ Constants.BAN_AFG_SERIES_BASE1 + "EVENT" +"\0", print_writers);
+					break;
+				case Constants.ACC:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					break;
 				}
 				
