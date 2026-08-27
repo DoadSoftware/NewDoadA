@@ -539,6 +539,7 @@ public class Animation
 				TimeUnit.MILLISECONDS.sleep(200);
 				
 				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
 			case "F5": case "F6": case "F9": case "F8": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
@@ -2289,6 +2290,7 @@ public class Animation
 				}
 				TimeUnit.MILLISECONDS.sleep(800);
 				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
 				break;
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
