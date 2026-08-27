@@ -546,6 +546,8 @@ public class Animation
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
 			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
 				
+				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
+				TimeUnit.MILLISECONDS.sleep(300);
 				if(this.infobar.isInfobar_on_screen() == true) {
 					switch (whatToProcess.split(",")[0]) {
 					case "F8": case "F10": case "Alt_F8": case "Control_F5": case "Control_F9":
@@ -2295,7 +2297,7 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$Out", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$Out", "START");
-				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
+//				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
 				
 				if(infobar.getInfobar_status() != null) {
 					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
@@ -2307,9 +2309,9 @@ public class Animation
 				
 				TimeUnit.MILLISECONDS.sleep(800);
 				
-				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$In", "SHOW 0.0");
-				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$In", "SHOW 0.0");
-				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$In", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 

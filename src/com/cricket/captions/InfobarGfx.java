@@ -12264,7 +12264,7 @@ public class InfobarGfx
 								"$PhaseWiseScore$txt_Head*GEOM*TEXT SET " + player.getTicker_name() + (WhichProfile.equalsIgnoreCase("DT20") ? " | T20s" : 
 									WhichProfile.equalsIgnoreCase("IT20") ? " | T20Is" : WhichProfile.equalsIgnoreCase("ODI") ? " | ODIs" : WhichProfile.equalsIgnoreCase("Test") ? " | Tests" : 
 										WhichProfile.equalsIgnoreCase("THIS_SERIES") ? " | THIS SERIES" : WhichProfile.equalsIgnoreCase("ACC_BOUNDARY") ? " | THIS TOURNAMENT" : 
-											WhichProfile.equalsIgnoreCase("ACC_BOUNDARY_CAREER") ? " | ACC CAREER" : "") + "\0", print_writers);
+											WhichProfile.equalsIgnoreCase("ACC_BOUNDARY_CAREER") ? " | T20I CAREER" : "") + "\0", print_writers);
 						break;
 					}
 					
