@@ -473,7 +473,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'g': case 'y': case 'Shift_O': case 'Shift_F4': case 'Control_Shift_U': case 'Control_Shift_V': case 'Shift_F': case 'Control_Shift_O': 
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
-			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Control_F2': case 'Alt_f':
+			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Alt_f':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -481,7 +481,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Control_k': case 'Control_Shift_M': case 'Control_F3': case 'Control_4': case '6': case 'Control_a': case '5': case ';': case 'Control_F7': 
 			case 'Control_Shift_F10': case 'Shift_F1': case 'Shift_F2': case 'Control_6': case 'Control_Shift_B': case 'Control_Shift_R': case 'Control_Shift_F3': 
 			case 'Control_F10':  case 'Shift_F10': case 'Alt_F11': case 'Shift_D': case 'Control_F1': case 'Control_Alt_F1': case 'Alt_Shift_F1': case 'Alt_Shift_Q':
-			case 'Control_5': case 'Control_7': case '7': case 'Alt_Shift_Q': case 'Alt_Shift_F12': 
+			case 'Control_5': case 'Control_7': case '7': case 'Alt_Shift_Q': case 'Alt_Shift_F12': case 'Control_F2':
 				dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 				processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 				break;
@@ -956,7 +956,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
-	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8": case 'Alt_f':
+	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1066,28 +1066,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 		    $('#selectStats').trigger('change');
 		    break;
-		case 'Control_F2':
-			header_text.innerHTML = 'LINEUP';
-			select = document.createElement('select');
-			select.id = 'selectTeams';
-			select.name = select.id;
-			
-			option = document.createElement('option');
-			option.value = session_match.setup.homeTeamId;
-			option.text = session_match.setup.homeTeam.teamName1;
-			select.appendChild(option);
-			
-			option = document.createElement('option');
-			option.value = session_match.setup.awayTeamId;
-			option.text = session_match.setup.awayTeam.teamName1;
-			select.appendChild(option);
-			
-			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
-			row.insertCell(cellCount).appendChild(select);
-			setDropdownOptionToSelectOptionArray($(select),0);
-			cellCount = cellCount + 1;
-			
-			break;
 		case 'Shift_I':
 		    header_text.innerHTML = 'IMPACT PLAYER';
 		
@@ -6119,7 +6097,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': 
 		case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': 
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
-		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case 'Control_F2': case "Control_Shift_F8": case 'Alt_f':
+		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

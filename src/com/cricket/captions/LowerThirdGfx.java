@@ -358,25 +358,23 @@ public class LowerThirdGfx
 		
 		return PopulateL3rdBody(WhichSide, whatToProcess.split(",")[0]);
 	}
-	public String populateL3rdBowlingLineUp(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, StreamReadException, DatabindException, IOException
+	public String populateL3rdBowlingLineUp(String whatToProcess,int WhichSide,MatchAllData matchAllData, int WhichInning) throws InterruptedException, StreamReadException, DatabindException, IOException
 	{
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			return status;
 		} 
-	
-		for(Inning inn : matchAllData.getMatch().getInning()) {
-			if(inn.getBowlingTeamId() == Integer.valueOf(whatToProcess.split(",")[2])) {
-				bowlingCardList = inn.getBowlingCard();
-			}
+		
+		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == WhichInning).findAny().orElse(null);
+		
+		if(inning == null) {
+			return "populateMatchSummary: current inning is NULL";
 		}
 		
-		PlayersList = (matchAllData.getSetup().getHomeTeamId() == Integer.valueOf(whatToProcess.split(",")[2])? matchAllData.getSetup().getHomeSquad()
-				:matchAllData.getSetup().getAwaySquad());
-		team = (matchAllData.getSetup().getHomeTeamId() == Integer.valueOf(whatToProcess.split(",")[2])? matchAllData.getSetup().getHomeTeam()
-				:matchAllData.getSetup().getAwayTeam());
-		
-		lowerThird = new LowerThird("", "", "","", "","", 2, "","",
-				null,null,null,null,null);
+		bowlingCardList = inning.getBowlingCard();
+		PlayersList = (matchAllData.getSetup().getHomeTeamId() == inning.getBowlingTeamId() ? matchAllData.getSetup().getHomeSquad() : matchAllData.getSetup().getAwaySquad());
+		team = (matchAllData.getSetup().getHomeTeamId() == inning.getBowlingTeamId() ? matchAllData.getSetup().getHomeTeam() :matchAllData.getSetup().getAwayTeam());
+	
+		lowerThird = new LowerThird("", "", "","", "","", 2, "","",null,null,null,null,null);
 		
 		HideAndShowL3rdSubStrapContainers(WhichSide);
 		setPositionOfLT(whatToProcess,WhichSide,config,lowerThird.getNumberOfSubLines());
@@ -7821,6 +7819,8 @@ public class LowerThirdGfx
         	}
         	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_BowlingOptions$Data$LineUp_ALL"
     				+ "*FUNCTION*Grid*num_col SET " + omoSize + "\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_BowlingOptions$Data$Player1$select_DataStyle"
+        			+ "*FUNCTION*Omo*vis_con SET 1 \0",print_writers);
         	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_BowlingOptions$Logo$LogoIn$img_Badges"
         			+ "*TEXTURE*IMAGE SET " + Constants.ACC_FLAG + team.getTeamBadge() + "\0", print_writers);
         	

@@ -370,7 +370,7 @@ public class Caption
 				break;
 				
 			case "Control_F2":
-				status = this_lowerThirdGfx.populateL3rdBowlingLineUp(whatToProcess,whichSide,matchAllData);
+				status = this_lowerThirdGfx.populateL3rdBowlingLineUp(whatToProcess,whichSide,matchAllData,Integer.valueOf(whatToProcess.split(",")[1]));
 				break;	
 				
 			case "Shift_I":
