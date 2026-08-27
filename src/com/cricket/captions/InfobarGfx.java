@@ -12036,7 +12036,7 @@ public class InfobarGfx
 							tournament = this_series.stream().filter(tourn -> tourn.getPlayerId() == PP_Id).findAny().orElse(null);
 							break;
 						case "ACC_BOUNDARY_CAREER":
-							statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ACC_CAREER")).findAny().orElse(null);
+							statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 							if(statsType == null) {
 								return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 							}

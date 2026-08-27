@@ -7833,7 +7833,7 @@ public class LowerThirdGfx
         			bowlingCard = bowlingCardList.stream().filter(boc -> boc.getPlayerId() == bc.getPlayerId()).findAny().orElse(null);
         			if(bowlingCard != null) {
         				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_BowlingOptions$Data$Player" + count + "$Details$txt_Role"
-            					+ "*GEOM*TEXT SET " + bowlingCard.getRuns() + " (" + CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()) 
+            					+ "*GEOM*TEXT SET " + bowlingCard.getWickets() + "-" + bowlingCard.getRuns() + " (" + CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()) 
             					+ ")" + "\0", print_writers);
         			}else {
         				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_BowlingOptions$Data$Player" + count + "$Details$txt_Role"
@@ -8157,6 +8157,10 @@ public class LowerThirdGfx
 			int row_id = 0;
   			if(lowerThird.getHeaderText().equalsIgnoreCase("ROLES")) {
   				
+  				CricketFunctions.DoadWriteCommandToAllViz(
+						"-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + whichSide + "$Select$LineUp$BottomGrp$LineUp_ALL"
+								+ "*FUNCTION*Grid*num_col SET " + PlayersList.size() + "\0",print_writers);
+  				
   				Collections.sort(inning.getBattingCard());
   				for (Player bc : PlayersList) {
   					row_id = row_id + 1;
@@ -8266,6 +8270,10 @@ public class LowerThirdGfx
   						break;
   					}
   				}
+  				
+  				CricketFunctions.DoadWriteCommandToAllViz(
+						"-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + whichSide + "$Select$LineUp$BottomGrp$LineUp_ALL"
+								+ "*FUNCTION*Grid*num_col SET " + battingCardList.size() + "\0",print_writers);
   				
   				Collections.sort(battingCardList);
   				for (BattingCard bc : battingCardList) {
