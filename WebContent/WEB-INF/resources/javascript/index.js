@@ -2985,7 +2985,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						row.insertCell(1).appendChild(label1).appendChild(ftheader1);
 					    setTextBoxOptionToSelectOptionArray(1);
 					    
-					    let label2 = document.createElement('label');
+					    /*let label2 = document.createElement('label');
 					    label2.setAttribute('for', 'selectFreeText1'); 
 					    label2.innerHTML = 'Line 2';	
 					    					    	    			
@@ -2996,8 +2996,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 						
 						ftheader2.setAttribute('onchange',"setTextBoxOptionToSelectOptionArray1(2)");
 						row.insertCell(2).appendChild(label2).appendChild(ftheader2);
-					    setTextBoxOptionToSelectOptionArray1(2);
-				   		cellCount = 3;
+					    setTextBoxOptionToSelectOptionArray1(2);*/
+				   		cellCount = 2;
 					}
 					else if(this.value == 'Commentators'){
 						row.insertCell(1).id = 'Player1';

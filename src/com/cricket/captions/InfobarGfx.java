@@ -9116,13 +9116,16 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					
 					if(freeText.split(",").length == 5) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + 
-								"$Freetext$txt_Head*GEOM*TEXT SET " + freeText.split(",")[3] + " " + freeText.split(",")[4] + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 8\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$2_Line_Freetext$txt_Head*GEOM*TEXT SET " 
+								+ freeText.split(",")[3] + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$2_Line_Freetext$txt_Info*GEOM*TEXT SET " 
+								+ freeText.split(",")[4] + "\0", print_writers);
 					}else if(freeText.split(",").length == 4) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + 
 								"$Freetext$txt_Head*GEOM*TEXT SET " + freeText.split(",")[3] + "\0", print_writers);
 					}
-					
 					break;
 				case "FREETEXTDB":
 					InfobarStats infoStat = infobarStats.get(infobarStatsId-1);
@@ -9130,12 +9133,14 @@ public class InfobarGfx
 						return "populateSectionAnalytics: infoStat null";
 					}
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
-					
 					if(infoStat.getText2() != null) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + 
-								"$Freetext$txt_Head*GEOM*TEXT SET " + infoStat.getText1() + " " + infoStat.getText2() + "\0", print_writers);
-					}else if(freeText.split(",").length == 4) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 8\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$2_Line_Freetext$txt_Head*GEOM*TEXT SET " 
+								+ infoStat.getText1() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$2_Line_Freetext$txt_Info*GEOM*TEXT SET " 
+								+ infoStat.getText2() + "\0", print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + 
 								"$Freetext$txt_Head*GEOM*TEXT SET " + infoStat.getText1() + "\0", print_writers);
 					}
