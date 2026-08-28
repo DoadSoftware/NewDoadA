@@ -547,8 +547,8 @@ public class Animation
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
 			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
 				
-				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out", "SHOW 0.0");
-				TimeUnit.MILLISECONDS.sleep(300);
+//				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out", "SHOW 0.0");
+//				TimeUnit.MILLISECONDS.sleep(300);
 				if(this.infobar.isInfobar_on_screen() == true) {
 					switch (whatToProcess.split(",")[0]) {
 					case "F8": case "F10": case "Alt_F8": case "Control_F5": case "Control_F9":
@@ -5589,7 +5589,9 @@ public class Animation
 							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$Single_TeamLineUp$In_Out$In 3.200";
 							break;
 						case "Control_F1":
-							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out$In 3.200";
+							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$ImageBattingCard 3.560 "
+									+ "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out 3.560 Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out$In 3.200 "
+									+ "Full_Frames$Main_Graphics$In_Out$ImageBattingCard$In_Out$In$Team 3.200";
 							break;	
 						case "Control_Alt_F1":
 							previewCommand = previewCommand + "Full_Frames$Main_Graphics$In_Out$SplitCard$In_Out$In 2.900";
