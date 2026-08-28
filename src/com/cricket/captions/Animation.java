@@ -6317,7 +6317,7 @@ public class Animation
 						previewCommand = "Plotter 1.000 Plotter$In 1.000 Plotter$Out 1.000";
 						break;
 					case "Control_F2":
-						previewCommand = "LT_BowlingOptions$In_Out$In 0.786";
+						previewCommand = "Anim_Infobar$FFIn 0.520 LT_BowlingOptions$In_Out 0.800 LT_BowlingOptions$In_Out$In 0.786";
 						break;
 					case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":

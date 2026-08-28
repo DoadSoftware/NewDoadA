@@ -6545,18 +6545,18 @@ public class ALL_FF
 				String impactType = "";
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$PartnershipCard$PartGrp$PartRow" + rowId 
-						+ containerName + "$ConSubGrp1*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+						+ containerName + "$ConSubGrp1$select_ConSub*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), ps.getFirstBatterNo());
 				if (!impactType.isEmpty()) {
 					
 					switch(impactType) {
 					case "IMP_IN": case "CON_IN":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$PartnershipCard$PartGrp$PartRow" + rowId 
-								+ containerName + "$ConSubGrp1*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+								+ containerName + "$ConSubGrp1$select_ConSub*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 						break;
 					case "IMP_OUT": case "CON_OUT":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$PartnershipCard$PartGrp$PartRow" + rowId 
-								+ containerName + "$ConSubGrp1*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+								+ containerName + "$ConSubGrp1$select_ConSub*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						break;
 					}
 				}
@@ -6565,18 +6565,18 @@ public class ALL_FF
 						+ containerName + "$txt_BatterName1*GEOM*TEXT SET " + ps.getFirstPlayer().getTicker_name() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$PartnershipCard$PartGrp$PartRow" + rowId 
-						+ containerName + "$ConSubGrp2*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+						+ containerName + "$ConSubGrp2$select_ConSub*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), ps.getSecondBatterNo());
 				if (!impactType.isEmpty()) {
 					
 					switch(impactType) {
 					case "IMP_IN": case "CON_IN":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$PartnershipCard$PartGrp$PartRow" + rowId 
-								+ containerName + "$ConSubGrp2*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+								+ containerName + "$ConSubGrp2$select_ConSub*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 						break;
 					case "IMP_OUT": case "CON_OUT":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$PartnershipCard$PartGrp$PartRow" + rowId 
-								+ containerName + "$ConSubGrp2*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+								+ containerName + "$ConSubGrp2$select_ConSub*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						break;
 					}
 				}
