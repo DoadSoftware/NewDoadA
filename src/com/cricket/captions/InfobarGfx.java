@@ -7658,9 +7658,27 @@ public class InfobarGfx
 							+ "txt_Head3*GEOM*TEXT SET " + matchAllData.getSetup().getAwayTeam().getTeamName4() + "\0", print_writers);
 					
 					break;
+				case "COMPARE":
+					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)
+							&& inn.getInningNumber() == 2).findAny().orElse(null);
+						
+					if(inning == null) {
+						return "populateVizInfobarRightSection: 2nd Inning returned is NULL";
+					}
 					
-				case CricketUtil.DOT: case CricketUtil.FOUR: case CricketUtil.SIX: 
-				case CricketUtil.BOUNDARY: case "LASTXBALLS": case "EXTRAS": case "LAST_WICKET": case "BALLS_SINCE_LAST_BOUNDARY":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section5$Side" + WhichSide + "$Select"
+							+ "*FUNCTION*Omo*vis_con SET 9\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section5$Side" + WhichSide + "$AtThisStage$txt_Head*GEOM*TEXT SET " 
+							+ "AFTER " + CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + " OVERS" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section5$Side" + WhichSide + "$AtThisStage$txt_Head2*GEOM*TEXT SET " 
+							+ inning.getBowling_team().getTeamName1() + " WERE" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section5$Side" + WhichSide + "$AtThisStage$txt_Data1*GEOM*TEXT SET " 
+							+ CricketFunctions.compareInningData(matchAllData, "-", 1, matchAllData.getEventFile().getEvents()) + "\0", print_writers);
+					break;
+					
+				case CricketUtil.DOT: case CricketUtil.FOUR: case CricketUtil.SIX: case CricketUtil.BOUNDARY: case "LASTXBALLS": case "EXTRAS": case "LAST_WICKET": 
+				case "BALLS_SINCE_LAST_BOUNDARY":
 					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
 					if(inning == null) {
 						return "populateVizInfobarMiddleSection: Inning returned is NULL";
@@ -12684,7 +12702,7 @@ public class InfobarGfx
 			statsData.add(player.getFull_name());
 			
 			switch ((whatToProcess.contains(",") ? whatToProcess.split(",")[0] : whatToProcess)) {
-			case "Alt_3":
+			case "Alt_3": case "Alt_4":
 				switch (whatToProcess.split(",")[3]) {
 				case "ACC_BOUNDARY_CAREER":
 					statsData.add("MATCHES," + stat.getMatches());
@@ -12733,6 +12751,7 @@ public class InfobarGfx
 				}
 				break;
 			}
+			
 			return (List<T>) statsData;
 		}
 		return null;

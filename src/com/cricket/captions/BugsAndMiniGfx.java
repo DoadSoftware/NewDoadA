@@ -1259,7 +1259,7 @@ public class BugsAndMiniGfx
 				break;
 			case "Control_Shift_U":
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + battingCard.getPlayer().getFull_name() + "\0",print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + battingCard.getPlayer().getTicker_name() + "\0",print_writers);
 				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES:
@@ -1318,7 +1318,7 @@ public class BugsAndMiniGfx
 				break;
 			case "Control_Shift_V":
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + bowlingCard.getPlayer().getFull_name() + "\0",print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + bowlingCard.getPlayer().getTicker_name() + "\0",print_writers);
 				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES:
@@ -3755,7 +3755,7 @@ public class BugsAndMiniGfx
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_Shift_U_change_on":
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + battingCard.getPlayer().getFull_name() + "\0",print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + battingCard.getPlayer().getTicker_name() + "\0",print_writers);
 				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES:
@@ -3800,7 +3800,7 @@ public class BugsAndMiniGfx
 				break;
 			case "Control_Shift_V_change_on":
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + bowlingCard.getPlayer().getFull_name() + "\0",print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POP_UP$band$img_Text2$txt_Header*GEOM*TEXT SET " + bowlingCard.getPlayer().getTicker_name() + "\0",print_writers);
 				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES:

@@ -254,7 +254,7 @@ function processUserSelection(whichInput)
 		$("#select_graphic_options_div").empty();
 		document.getElementById('select_graphic_options_div').style.display = 'none';
 		$("#captions_div").show();
-		//document.getElementById("stats-container").innerHTML = "";
+		document.getElementById("stats-container").innerHTML = "";
 		break;
 	case 'checkPlayerData':
 		if($(key_press_hidden_input)) {
@@ -699,7 +699,7 @@ function displayStats(data) {
             return `<strong>${label}</strong> - ${value}`;
         })
         .join(" &nbsp; ");
-
+		
     statsLine.innerHTML = statsText;
     container.appendChild(statsLine);
 }
@@ -2669,6 +2669,15 @@ function addItemsToList(whatToProcess,dataToProcess)
 						];
 						
 						switch($('#selected_broadcaster').val().toUpperCase()){
+						case 'ACC':
+							session_match.match.inning.forEach(function(inn){
+								if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+									dropdown.push(
+									    { value: 'COMPARE', text: 'At This Stage' }
+									);
+								}
+							});
+							break;
 						case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'MT20': case 'TG20': case 'APLT20':
 							dropdown.push(
 							  { value: 'OVER', text: 'This Over' },
