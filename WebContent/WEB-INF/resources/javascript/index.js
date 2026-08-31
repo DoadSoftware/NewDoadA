@@ -956,7 +956,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
-	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f':
+	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1424,12 +1424,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 					break;
 					}
 				break;
-			case "Alt_3": case 'Control_d':
+			case "Alt_3": case 'Control_d': case 'Control_3':
 			switch(whatToProcess){
 				case "Alt_3":
 					header_text.innerHTML = 'INFOBAR - BATTER CAREER';
 					break;
-				case 'Control_d':
+				case 'Control_d': case 'Control_3':
 					header_text.innerHTML = 'FF - BATTER CAREER';
 					break;
 			}
@@ -1603,7 +1603,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch(whatToProcess){
 				case 'Control_d':
 					switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': 
 						select = document.createElement('select');
 						select.id = 'selectImage';
 						select.name = select.id;
@@ -1625,6 +1625,30 @@ function addItemsToList(whatToProcess,dataToProcess)
 						break;
 					}
 					break;
+				case 'Control_3':
+					switch($('#selected_broadcaster').val().toUpperCase()){
+					case 'ACC':
+						select = document.createElement('select');
+						select.id = 'selectImage';
+						select.name = select.id;
+						
+						option = document.createElement('option');
+						option.value = 'WITH';
+						option.text = 'With Image';
+						select.appendChild(option);
+												
+						option = document.createElement('option');
+						option.value = 'WITHOUT';
+						option.text = 'WithOut Image';
+						select.appendChild(option);
+						
+						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+						row.insertCell(cellCount).appendChild(select);
+						setDropdownOptionToSelectOptionArray($(select),2);
+						cellCount = cellCount + 1
+						break;
+					}
+					break;	
 				}
 				break;	
 			}
@@ -1660,7 +1684,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		
 			select.dispatchEvent(new Event('change'));*/	
 			break;
-		case 'Alt_4': case 'Control_e':
+		case 'Alt_4': case 'Control_e': case 'Control_8':
 			header_text.innerHTML = 'INFOBAR - BOWLER CAREER';
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
@@ -1771,7 +1795,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					
 					switch(whatToProcess){
-					case "Control_e":
+					case "Control_e": case 'Control_5':
 						option = document.createElement('option');
 						option.value = 'DT20';
 						option.text = 'T20';
@@ -1844,6 +1868,30 @@ function addItemsToList(whatToProcess,dataToProcess)
 						break;
 					}
 					break;
+					case 'Control_8':
+					switch($('#selected_broadcaster').val().toUpperCase()){
+					case 'ACC':
+						select = document.createElement('select');
+						select.id = 'selectImage';
+						select.name = select.id;
+						
+						option = document.createElement('option');
+						option.value = 'WITH';
+						option.text = 'With Image';
+						select.appendChild(option);
+												
+						option = document.createElement('option');
+						option.value = 'WITHOUT';
+						option.text = 'WithOut Image';
+						select.appendChild(option);
+							
+						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+						row.insertCell(cellCount).appendChild(select);
+						setDropdownOptionToSelectOptionArray($(select),2);
+						cellCount = cellCount + 1
+						break;
+					}
+					break;	
 				}
 				break;
 			}			
@@ -6106,7 +6154,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'z': case 'x': case 'c': case 'v': case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_z': case 'Control_x': 
 		case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': 
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
-		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f':
+		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

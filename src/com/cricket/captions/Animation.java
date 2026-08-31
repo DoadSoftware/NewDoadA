@@ -108,7 +108,7 @@ public class Animation
 			case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": 
 			case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": 
 			case "Control_F3": case "d": case "Control_Shift_B": case "Alt_Shift_F3": case "l": case "Alt_Shift_Q": case "Alt_Shift_F4":
-			case "Alt_d": case "Alt_f": case "e": case "Control_F2": case "Control_Shift_Q":
+			case "Alt_d": case "Alt_f": case "e": case "Control_F2": case "Control_Shift_Q": case "Control_3": case "Control_8":
 				return Constants.LOWER_THIRD;
 			case "m": case "Control_m": case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "Shift_F11":
 			case "Control_F7": case "F4": case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e":
@@ -541,7 +541,10 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-				
+			case "Control_3": case "Control_8":
+				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 			case "F5": case "F6": case "F9": case "F8": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -2292,6 +2295,14 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
+			case "Control_3": case "Control_8":
+				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$In_Out", "CONTINUE");
+				
+				TimeUnit.MILLISECONDS.sleep(800);
+				
+				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$In_Out", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;	
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -3478,6 +3489,10 @@ public class Animation
 					}
 				}
 				break;
+			case "Control_3": case "Control_8":
+				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$Change", "START");
+				break;
+				
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -4521,6 +4536,12 @@ public class Animation
 				caption.this_fullFramesGfx.whichGFX = whatToProcess.split(",")[0];
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+			case "Control_3": case "Control_8":
+				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$In_Out", "SHOW 1.200");
+				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$Change", "SHOW 0.0");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
+				
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -5153,6 +5174,8 @@ public class Animation
 				
 //				processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$IdentOut", "SHOW 0.0");
 //				processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$In$BaseIn", "SHOW 0.0");
+				
+				processAnimation(Constants.FRONT, print_writers, "Lof_Profile", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$In", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$In", "SHOW 0.0");
@@ -6319,6 +6342,11 @@ public class Animation
 					case "Control_F2":
 						previewCommand = "Anim_Infobar$FFIn 0.520 LT_BowlingOptions$In_Out 0.800 LT_BowlingOptions$In_Out$In 0.786";
 						break;
+					case "Control_3": case "Control_8":
+						previewCommand = "Lof_Profile$In_Out$Essentials 1.200 Lof_Profile$In_Out$Essentials$In 1.000 "
+								+ "Lof_Profile$In_Out$Image 1.200 Lof_Profile$In_Out$Image$In 1.000 "
+								+ "Lof_Profile$In_Out$Data 1.200 Lof_Profile$In_Out$Data$In 1.200";
+						break;
 					case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -6401,6 +6429,9 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES: case Constants.ACC:
 					switch(whatToProcess.split(",")[0]) {
+					case "Control_3": case "Control_8":
+						previewCommand = "Lof_Profile$Change$Image 1.500 Lof_Profile$Change$Data 1.500";
+						break;
 					case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
