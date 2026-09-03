@@ -548,11 +548,22 @@ public class Animation
 			case "/":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Lineup_New$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 32.0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 5.0 \0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Lineup_New$LT_Position*"
 							+ "TRANSFORMATION*POSITION*Y SET 5.0 \0",print_writers);
 				}
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+						TimeUnit.MILLISECONDS.sleep(1000);
+						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+					}
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(200);
+				
 				processAnimation(Constants.FRONT, print_writers, "LT_Lineup_New$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -2328,6 +2339,14 @@ public class Animation
 				break;
 			case "/":
 				processAnimation(Constants.FRONT, print_writers, "LT_Lineup_New$In_Out", "CONTINUE");
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						TimeUnit.MILLISECONDS.sleep(1000);
+						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
+						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
+					}
+				}
 				
 				TimeUnit.MILLISECONDS.sleep(800);
 				

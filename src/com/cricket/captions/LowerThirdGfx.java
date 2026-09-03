@@ -5034,8 +5034,8 @@ public class LowerThirdGfx
 							+ "$select_Image*FUNCTION*Omo*vis_con SET 1\0",print_writers);
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_Profile$Image$Side_" + WhichSide
-						+ "$With_Image$img_Badges*TEXTURE*IMAGE SET " + Constants.ACC_FLAG
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LOF_Profile$Data$Side_" + WhichSide
+						+ "$img_Badges*TEXTURE*IMAGE SET " + Constants.ACC_FLAG
 						+ lowerThird.getWhichTeamFlag() + "\0",print_writers);
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {

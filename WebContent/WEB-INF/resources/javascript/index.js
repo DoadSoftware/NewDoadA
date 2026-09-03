@@ -1429,9 +1429,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case "Alt_3":
 					header_text.innerHTML = 'INFOBAR - BATTER CAREER';
 					break;
-				case 'Control_d': case 'Control_3':
+				case 'Control_d':
 					header_text.innerHTML = 'FF - BATTER CAREER';
 					break;
+				case 'Control_3':
+					header_text.innerHTML = 'LOF - BATTER CAREER';
+					break;	
 			}
 			switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES':  case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
@@ -1685,7 +1688,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.dispatchEvent(new Event('change'));*/	
 			break;
 		case 'Alt_4': case 'Control_e': case 'Control_8':
-			header_text.innerHTML = 'INFOBAR - BOWLER CAREER';
+			switch(whatToProcess){
+			case 'Alt_4':
+				header_text.innerHTML = 'INFOBAR - BOWLER CAREER';
+				break;
+			case 'Control_e':
+				header_text.innerHTML = 'FF - BOWLER CAREER';
+				break;
+			case 'Control_8':
+				header_text.innerHTML = 'LOF - BOWLER CAREER';
+				break;		
+			}
+			
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
 				select = document.createElement('select');
