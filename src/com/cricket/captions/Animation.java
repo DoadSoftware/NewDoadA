@@ -108,7 +108,7 @@ public class Animation
 			case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": 
 			case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": 
 			case "Control_F3": case "d": case "Control_Shift_B": case "Alt_Shift_F3": case "l": case "Alt_Shift_Q": case "Alt_Shift_F4":
-			case "Alt_d": case "Alt_f": case "e": case "Control_F2": case "Control_Shift_Q": case "Control_3": case "Control_8":
+			case "Alt_d": case "Alt_f": case "e": case "Control_F2": case "Control_Shift_Q": case "Control_3": case "Control_8": case "/":
 				return Constants.LOWER_THIRD;
 			case "m": case "Control_m": case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "Shift_F11":
 			case "Control_F7": case "F4": case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e":
@@ -545,6 +545,17 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+			case "/":
+				if(this.infobar.isInfobar_on_screen() == true) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Lineup_New$LT_Position*"
+							+ "TRANSFORMATION*POSITION*Y SET 32.0 \0",print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Lineup_New$LT_Position*"
+							+ "TRANSFORMATION*POSITION*Y SET 5.0 \0",print_writers);
+				}
+				processAnimation(Constants.FRONT, print_writers, "LT_Lineup_New$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 			case "F5": case "F6": case "F9": case "F8": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -578,9 +589,21 @@ public class Animation
 				
 				TimeUnit.MILLISECONDS.sleep(200);
 				
+				System.out.println("whatToProcess = " + whatToProcess);
+				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$In", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$In", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$In", "START");
+				
+				switch (whatToProcess.split(",")[0]) {
+				case "F7": case "F11":
+					String[] parts = whatToProcess.split(",", -1);
+
+					if (parts.length > 4 && "WITH_SPONSOR".equalsIgnoreCase(parts[4])) {
+						processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out$In", "START");
+					}
+					break;
+				}
 
 				this.whichGraphicOnScreen = whatToProcess;
 				break;	
@@ -2302,7 +2325,15 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "Lof_Profile$In_Out", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
-				break;	
+				break;
+			case "/":
+				processAnimation(Constants.FRONT, print_writers, "LT_Lineup_New$In_Out", "CONTINUE");
+				
+				TimeUnit.MILLISECONDS.sleep(800);
+				
+				processAnimation(Constants.FRONT, print_writers, "LT_Lineup_New$In_Out", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -2311,6 +2342,15 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$Out", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$Out", "START");
 //				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
+				switch (whatToProcess.split(",")[0]) {
+				case "F7": case "F11":
+					String[] parts = whatToProcess.split(",", -1);
+
+					if (parts.length > 4 && "WITH_SPONSOR".equalsIgnoreCase(parts[4])) {
+						processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out$Out", "START");
+					}
+					break;
+				}
 				
 				if(infobar.getInfobar_status() != null) {
 					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
@@ -2325,6 +2365,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 
@@ -3502,6 +3544,18 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$Change", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$Change", "START");
 				
+				switch (whatToProcess.split(",")[0]) {
+				case "F7": case "F11":
+					String[] parts = whatToProcess.split(",", -1);
+
+					if (parts.length > 4 && "WITH_SPONSOR".equalsIgnoreCase(parts[4])) {
+						processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$Change", "START");
+					}else {
+						processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$Change$Change_Out", "START");
+					}
+					break;
+				}
+				
 				break;
 			case "Control_Shift_U": case "Control_Shift_V":
 				processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "START");
@@ -4550,10 +4604,22 @@ public class Animation
 //				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out", "SHOW 0.72");
 //				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out", "SHOW 0.72");
 				
+				switch (whatToProcess.split(",")[0]) {
+				case "F7": case "F11":
+					String[] parts = whatToProcess.split(",", -1);
+
+					if (parts.length > 4 && "WITH_SPONSOR".equalsIgnoreCase(parts[4])) {
+						processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out", "SHOW 1.220");
+					}else {
+						processAnimation(Constants.FRONT, print_writers, "LT$Sponsor", "SHOW 0.0");
+					}
+					break;
+				}
 				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$Change", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$Change", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$Change", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "Control_Shift_U": case "Control_Shift_V":
@@ -5176,6 +5242,7 @@ public class Animation
 //				processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$In$BaseIn", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "Lof_Profile", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT_Lineup_New", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$In", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$In", "SHOW 0.0");
@@ -6347,6 +6414,9 @@ public class Animation
 								+ "Lof_Profile$In_Out$Image 1.200 Lof_Profile$In_Out$Image$In 1.000 "
 								+ "Lof_Profile$In_Out$Data 1.200 Lof_Profile$In_Out$Data$In 1.200";
 						break;
+					case "/":
+						previewCommand = "LT_Lineup_New$In_Out 0.760 LT_Lineup_New$In_Out$In 0.786";
+						break;	
 					case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
@@ -6357,15 +6427,24 @@ public class Animation
 							if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR) && 
 									!infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR)) {
 								previewCommand = "Anim_Infobar$FFIn 0.520 LT$Logo$In_Out$In 1.7 LT$Base$In_Out$In 0.72 "
-										+ "LT$Data$In_Out$In 0.72";
+										+ "LT$Data$In_Out$In 0.72 ";
 							}else {
 								previewCommand = "LT$Logo$In_Out$In 1.7 LT$Base$In_Out$In 0.72 "
-										+ "LT$Data$In_Out$In 0.72";
+										+ "LT$Data$In_Out$In 0.72 ";
 							}
 						}else {
 							previewCommand = "LT$Logo$In_Out$In 1.7 LT$Base$In_Out$In 0.72 "
-									+ "LT$Data$In_Out$In 0.72";
+									+ "LT$Data$In_Out$In 0.72 ";
 						}
+						
+						String[] parts = whatToProcess.split(",", -1);
+
+						if (parts.length > 4 && "WITH_SPONSOR".equalsIgnoreCase(parts[4])) {
+							previewCommand = previewCommand + "LT$Sponsor$In_Out$In 1.220";
+						}else {
+							previewCommand = previewCommand + "LT$Sponsor$In_Out$In 0.0";
+						}
+						
 						break;
 					}
 					break;
@@ -6439,7 +6518,15 @@ public class Animation
 //						previewCommand = "LT$Logo$Change 2.120 LT$Logo$Change$Change_Out 0.420 LT$Logo$Change$Change_In 2.120 LT$Base$Change 1.200 LT$Base$Change$Change_Out 0.460 LT$Base$Change$Change_In 1.200 "
 //								+ "LT$Data$Change 1.180 LT$Data$Change$Change_Out 0.460 LT$Data$Change$Change_In 1.180";
 						previewCommand = "LT$Data$In_Out$In 0.0 LT$Logo$Change 2.120 LT$Logo$Change$Change_Out 0.420 LT$Logo$Change$Change_In 2.120 LT$Base$Change 1.200 LT$Base$Change$Change_Out 0.460 LT$Base$Change$Change_In 1.200 "
-								+ "LT$Data$Change 1.180 LT$Data$Change$Change_Out 0.460 LT$Data$Change$Change_In 1.180";
+								+ "LT$Data$Change 1.180 LT$Data$Change$Change_Out 0.460 LT$Data$Change$Change_In 1.180 ";
+						
+						String[] parts = whatToProcess.split(",", -1);
+
+						if (parts.length > 4 && "WITH_SPONSOR".equalsIgnoreCase(parts[4])) {
+							previewCommand = previewCommand + "LT$Sponsor$Change$Change_Out 0.220 LT$Sponsor$Change$Change_In 1.220";
+						}else {
+							previewCommand = previewCommand + "LT$Sponsor$In_Out$In 0.0 LT$Sponsor$Change$Change_Out 0.0 LT$Sponsor$Change$Change_In 0.0";
+						}
 						break;
 					}
 					break;

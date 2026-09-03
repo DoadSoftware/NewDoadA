@@ -533,6 +533,9 @@ public class Caption
 			case "Control_Shift_F10":
 				status = this_lowerThirdGfx.InfobarManhattan(print_writers,matchAllData,Integer.valueOf(whatToProcess.split(",")[1]));
 				break;
+			case "/":
+				status = this_lowerThirdGfx.populateL3rdLineUpNew(whatToProcess,whichSide,matchAllData);
+				break;
 			case "Control_Shift_O":
 				status = this_lowerThirdGfx.populateL3rdLineUp(whatToProcess,whichSide,matchAllData);
 				break;

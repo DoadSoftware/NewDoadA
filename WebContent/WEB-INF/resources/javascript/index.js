@@ -473,7 +473,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'g': case 'y': case 'Shift_O': case 'Shift_F4': case 'Control_Shift_U': case 'Control_Shift_V': case 'Shift_F': case 'Control_Shift_O': 
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
-			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Alt_f':
+			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Alt_f': case '/':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -956,7 +956,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_Shift_F4': case 'Control_Shift_F5': case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_Shift_Y': case 'Control_Shift_Z':
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
-	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
+	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -3906,6 +3906,25 @@ function addItemsToList(whatToProcess,dataToProcess)
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1
+			
+			select = document.createElement('select');
+			select.id = 'selectSponsor';
+			select.name = select.id;
+			
+			option = document.createElement('option');
+			option.value = 'WITH_SPONSOR';
+			option.text = 'With Sponsor';
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = 'WITHOUT_SPONSOR';
+			option.text = 'Without Sponsor';
+			select.appendChild(option);
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),2);
+			cellCount = cellCount + 1;
 			break;
 				
 			case 'F10' ://NameSuperDB
@@ -4141,6 +4160,25 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1
 			
+			
+			select = document.createElement('select');
+			select.id = 'selectSponsor';
+			select.name = select.id;
+			
+			option = document.createElement('option');
+			option.value = 'WITH_SPONSOR';
+			option.text = 'With Sponsor';
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = 'WITHOUT_SPONSOR';
+			option.text = 'Without Sponsor';
+			select.appendChild(option);
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),2);
+			cellCount = cellCount + 1;
 			break;
 		case 'Control_s':
 			header_text.innerHTML = 'LT THIS SERIES BAT';
@@ -5226,6 +5264,27 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			cellCount = cellCount + 1;
 			break;
+		case '/':
+			header_text.innerHTML = 'LINEUP';
+			select = document.createElement('select');
+			select.id = 'selectTeams';
+			select.name = select.id;
+			
+			option = document.createElement('option');
+			option.value = session_match.setup.homeTeamId;
+			option.text = session_match.setup.homeTeam.teamName1;
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = session_match.setup.awayTeamId;
+			option.text = session_match.setup.awayTeam.teamName1;
+			select.appendChild(option);
+			
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			cellCount = cellCount + 1;
+			break;	
 		case 'Control_Shift_O':
 			header_text.innerHTML = 'LINEUP';
 			select = document.createElement('select');
@@ -6155,6 +6214,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': 
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
+		case '/':	
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';
