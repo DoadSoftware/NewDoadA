@@ -1549,7 +1549,7 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
 						+ "$TopHeaderGrp$txt_SubHead2*GEOM*TEXT SET \0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-						+ "$TopHeaderGrp$txt_TeamName*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
+						+ "$TopHeaderGrp$txt_TeamName*GEOM*TEXT SET DP WORLD WOMEN'S T20 ASIA CUP 2026\0", print_writers);
 				
 				switch(whatToProcess) {
 				case "z":
@@ -14312,7 +14312,7 @@ public class ALL_FF
 							}else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide 
 										+"$TopScorer$Rows$Row" + rowId + containerName + "$txt_Stat1*GEOM*TEXT SET "+
-										(top_bowler_beststats.get(j).getBestEquation() / 1000) + "-" + "0"+"\0", print_writers);
+										(top_bowler_beststats.get(i).getBestEquation() / 1000) + "-" + "0"+"\0", print_writers);
 							}
 						}
 					}

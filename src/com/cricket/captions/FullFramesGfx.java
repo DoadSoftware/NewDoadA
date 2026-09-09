@@ -915,42 +915,84 @@ public class FullFramesGfx
 
 	public String PopulateDoubleTeams(int WhichSide, String whatToProcess,MatchAllData matchAllData) throws Exception
 	{
+//		String MatchFileNameHome = null, MatchFileNameAway = null;
+//		this_ALL_FF.PlayerId = new ArrayList<Integer>();
+//		this_ALL_FF.PlayerIdIn = new ArrayList<Integer>();
+//		
+//		if (headToHead.size() > 1) {
+//		    int homeId = matchAllData.getSetup().getHomeTeamId();
+//		    int awayId = matchAllData.getSetup().getAwayTeamId();
+//
+//		    for (int i = headToHead.size() - 1; i >= 0; i--) {
+//		    	HeadToHeadPlayer m = headToHead.get(i);
+//		        int teamId = m.getTeam().getTeamId();
+//		        String file = m.getMatchFileName();
+//
+//		        if (teamId == homeId) {
+//		            if (MatchFileNameHome == null) MatchFileNameHome = file;
+//		            if (!file.equalsIgnoreCase(MatchFileNameHome)) break;
+//		        } else if (teamId == awayId) {
+//		            if (MatchFileNameAway == null) MatchFileNameAway = file;
+//		            if (!file.equalsIgnoreCase(MatchFileNameAway)) break;
+//		        }
+//		    }
+//		    
+//		    if (MatchFileNameHome == null) {
+//		    	MatchFileNameHome = matchAllData.getMatch().getMatchFileName();
+//	        }
+//		    if (MatchFileNameAway == null) {
+//		    	MatchFileNameAway = matchAllData.getMatch().getMatchFileName();
+//	        }
+//		}else {
+//			MatchFileNameHome = matchAllData.getMatch().getMatchFileName(); 
+//			MatchFileNameAway = matchAllData.getMatch().getMatchFileName(); 
+//		}
 		String MatchFileNameHome = null, MatchFileNameAway = null;
 		this_ALL_FF.PlayerId = new ArrayList<Integer>();
 		this_ALL_FF.PlayerIdIn = new ArrayList<Integer>();
-		
+
 		if (headToHead.size() > 1) {
 		    int homeId = matchAllData.getSetup().getHomeTeamId();
 		    int awayId = matchAllData.getSetup().getAwayTeamId();
 
-		    for (int i = headToHead.size() - 1; i >= 0; i--) {
-		    	HeadToHeadPlayer m = headToHead.get(i);
+		    boolean homeLocked = false, awayLocked = false;
+
+		    for (int i = headToHead.size() - 1; i >= 0 && !(homeLocked && awayLocked); i--) {
+		        HeadToHeadPlayer m = headToHead.get(i);
 		        int teamId = m.getTeam().getTeamId();
 		        String file = m.getMatchFileName();
 
-		        if (teamId == homeId) {
-		            if (MatchFileNameHome == null) MatchFileNameHome = file;
-		            if (!file.equalsIgnoreCase(MatchFileNameHome)) break;
-		        } else if (teamId == awayId) {
-		            if (MatchFileNameAway == null) MatchFileNameAway = file;
-		            if (!file.equalsIgnoreCase(MatchFileNameAway)) break;
+		        if (teamId == homeId && !homeLocked) {
+		            if (MatchFileNameHome == null) {
+		                MatchFileNameHome = file;
+		            } else if (!file.equalsIgnoreCase(MatchFileNameHome)) {
+		                homeLocked = true;
+		            }
+		        } else if (teamId == awayId && !awayLocked) {
+		            if (MatchFileNameAway == null) {
+		                MatchFileNameAway = file;
+		            } else if (!file.equalsIgnoreCase(MatchFileNameAway)) {
+		                awayLocked = true;
+		            }
 		        }
 		    }
-		    
-		    if (MatchFileNameHome == null) {
-		    	MatchFileNameHome = matchAllData.getMatch().getMatchFileName();
-	        }
-		    if (MatchFileNameAway == null) {
-		    	MatchFileNameAway = matchAllData.getMatch().getMatchFileName();
-	        }
-		}else {
-			MatchFileNameHome = matchAllData.getMatch().getMatchFileName(); 
-			MatchFileNameAway = matchAllData.getMatch().getMatchFileName(); 
-		}
 
+		    if (MatchFileNameHome == null) {
+		        MatchFileNameHome = matchAllData.getMatch().getMatchFileName();
+		    }
+		    if (MatchFileNameAway == null) {
+		        MatchFileNameAway = matchAllData.getMatch().getMatchFileName();
+		    }
+		}else {
+		    MatchFileNameHome = matchAllData.getMatch().getMatchFileName();
+		    MatchFileNameAway = matchAllData.getMatch().getMatchFileName();
+		}
+System.out.println("MatchFileNameHome = " + MatchFileNameHome);
+System.out.println("MatchFileNameAway = " + MatchFileNameAway);
 		processDoubleTeamsInAndOutPlayer(MatchFileNameHome, matchAllData.getSetup().getHomeSquad(), this_ALL_FF);
 		processDoubleTeamsInAndOutPlayer(MatchFileNameAway, matchAllData.getSetup().getAwaySquad(), this_ALL_FF);
-		
+		System.out.println("IN - " + this_ALL_FF.PlayerIdIn.toString());
+		System.out.println("OUT - " + this_ALL_FF.PlayerId.toString());
 		status = PopulateFfHeader(WhichSide, whatToProcess, matchAllData, 0);
 		if(status == Constants.OK) {
 			setBasePosition(print_writers, WhichSide, whatToProcess, config);
@@ -1700,6 +1742,9 @@ public class FullFramesGfx
 	            this_ALL_FF.PlayerId.add(headToHead.getPlayerId());
 	        }
 	    }
+	    
+	    System.out.println("INNN - " + this_ALL_FF.PlayerIdIn.toString());
+		System.out.println("OUTTT - " + this_ALL_FF.PlayerId.toString());
 	}
 }
 	

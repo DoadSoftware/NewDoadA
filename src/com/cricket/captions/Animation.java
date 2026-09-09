@@ -6142,7 +6142,8 @@ public class Animation
 					switch(whatToProcess.split(",")[0]) {
 					case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 						previewCommand = previewCommand + "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$Top5 2.900 "
-								+ "Full_Frames$Main_Graphics$Change$Top5$Change_Out 1.000  Full_Frames$Main_Graphics$Change$Top5$Change_In 2.900";
+								+ "Full_Frames$Main_Graphics$Change$Top5$Change_Out 1.000  Full_Frames$Main_Graphics$Change$Top5$Change_In 2.900 "
+								+ "Full_Frames$Main_Graphics$Change$Top5$Change_In$Image 1.660 Full_Frames$Main_Graphics$Change$Top5$Change_In$Header 1.200";
 						break;
 					case "Shift_T":
 						previewCommand = "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$PlayingXI_Image 4.180 Full_Frames$Main_Graphics$Change$PlayingXI_Image$Change_Out 1.040 "
