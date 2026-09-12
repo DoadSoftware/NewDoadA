@@ -1549,40 +1549,40 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
 						+ "$TopHeaderGrp$txt_SubHead2*GEOM*TEXT SET \0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-						+ "$TopHeaderGrp$txt_TeamName*GEOM*TEXT SET DP WORLD WOMEN'S T20 ASIA CUP 2026\0", print_writers);
+						+ "$TopHeaderGrp$txt_TeamName*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
 				
 				switch(whatToProcess) {
 				case "z":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST RUNS\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST RUNS | 2026\0", print_writers);
 					break;
 				case "x":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST WICKETS\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST WICKETS | 2026\0", print_writers);
 					break;
 				case "c":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST FOURS\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST FOURS | 2026\0", print_writers);
 					break;
 				case "v":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST SIXES\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET MOST SIXES | 2026\0", print_writers);
 					break;
 				case "Control_z":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET HIGHEST INDIVIDUAL SCORES\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET HIGHEST INDIVIDUAL SCORES | 2026\0", print_writers);
 					break;
 				case "Control_x":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET BEST FIGURES\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET BEST FIGURES | 2026\0", print_writers);
 					break;
 				case "Control_Shift_Z":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET HIGHEST STRIKE RATE\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET HIGHEST STRIKE RATE | 2026\0", print_writers);
 					break;
 				case "Control_Shift_Y":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$TopScorer"
-							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET BEST ECONOMY\0", print_writers);
+							+ "$TopHeaderGrp$txt_SubHead1*GEOM*TEXT SET BEST ECONOMY | 2026\0", print_writers);
 					break;	
 				}
 				break;	
