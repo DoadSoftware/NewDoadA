@@ -50,6 +50,8 @@ public class Constants
 	public final static String AFG_SL_SERIES_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\AFG_SL_SERIES\\\\Photos\\\\";
 	public final static String AFG_SL_SERIES_PHOTO_PATH = "\\c\\Images\\AFG_SL_SERIES\\Photos\\";
 	
+	public final static String WCL = "WCL";
+	
 	public final static String BAN_AFG_SERIES = "BAN_AFG_SERIES";
 	public final static String BAN_AFG_SERIES_LOGO = "IMAGE*/Default/Essentials/Badges/";
 	public final static String BAN_AFG_SERIES_BASE1 = "IMAGE*/Default/Essentials/Base1/";

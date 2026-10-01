@@ -315,7 +315,7 @@ public class IndexController
 			GetVariousDBData("NEW", session_configuration);
 			
 			switch (select_broadcaster) {
-			case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES:
+			case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
 			case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 				if(session_configuration.getPrimaryVariousOptions().contains(Constants.FULL_FRAMER)) {
 					this_scene.LoadScene("FULL-FRAMERS", print_writers, session_configuration);
@@ -444,7 +444,7 @@ public class IndexController
 			}
 			
 			switch (session_configuration.getBroadcaster()) {
-			case Constants.BCCI: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
+			case Constants.BCCI: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 				if(show_speed == true) {
 					if (speedFile.exists()) {
 						long currentTimestamp = speedFile.lastModified();
@@ -594,7 +594,7 @@ public class IndexController
 					break;
 				default:
 					switch (session_configuration.getBroadcaster()) {
-					case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES:
+					case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
 					case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 						if(!session_configuration.getPrimaryVariousOptions().contains(Constants.FULL_FRAMER)
 							&& this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.FULL_FRAMER)) {
@@ -818,7 +818,7 @@ public class IndexController
 	}
 	public void infobarAnimateOutAllSection(Configuration session_configuration, MatchAllData session_match, List<PrintWriter> print_writers) throws Exception {
 		switch(session_configuration.getBroadcaster()) {
-		case Constants.BAN_AFG_SERIES:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty()) {
 				this_caption.PopulateGraphics("Alt_5,,BLANK", session_match);
 				this_animation.caption = this_caption;
@@ -934,7 +934,7 @@ public class IndexController
 					case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 						TimeUnit.MILLISECONDS.sleep(300);
 						break;
-					case Constants.BAN_AFG_SERIES:  case Constants.ACC: case Constants.AFG_SL_SERIES:
+					case Constants.BAN_AFG_SERIES: case Constants.WCL:  case Constants.ACC: case Constants.AFG_SL_SERIES:
 						TimeUnit.MILLISECONDS.sleep(700);
 						break;
 					}
@@ -949,7 +949,7 @@ public class IndexController
 					case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 						TimeUnit.MILLISECONDS.sleep(300);
 						break;
-					case Constants.BAN_AFG_SERIES:  case Constants.ACC:
+					case Constants.BAN_AFG_SERIES: case Constants.WCL:  case Constants.ACC:
 						TimeUnit.MILLISECONDS.sleep(700);
 						break;
 					}
@@ -1016,7 +1016,7 @@ public class IndexController
 						case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 							TimeUnit.MILLISECONDS.sleep(400);
 							break;
-						case Constants.BAN_AFG_SERIES:  case Constants.ACC: case Constants.AFG_SL_SERIES:
+						case Constants.BAN_AFG_SERIES: case Constants.WCL:  case Constants.ACC: case Constants.AFG_SL_SERIES:
 							TimeUnit.MILLISECONDS.sleep(1500);
 							break;
 						}
@@ -1299,7 +1299,7 @@ public class IndexController
 		InterruptedException, URISyntaxException, jakarta.xml.bind.JAXBException
 	{
 		switch (config.getBroadcaster()) {
-		case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.AFG_SL_SERIES:
+		case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
 		case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 			switch (typeOfUpdate) {
 			case "START_DB":

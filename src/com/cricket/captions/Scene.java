@@ -36,7 +36,7 @@ public class Scene
 				break;	
 			}
 			break;
-		case Constants.BAN_AFG_SERIES: case Constants.ACC:
+		case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.WCL:
 			switch (whatToProcess) {
 			case "FULL-FRAMERS":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER SET_OBJECT SCENE*/Default/FullFrames\0", print_writers);

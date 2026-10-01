@@ -66,7 +66,7 @@ public class Animation
 				return Constants.FULL_FRAMER;
 			}
 			break;
-		case Constants.BAN_AFG_SERIES:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "Shift_F12": case "Alt_2": case "Alt_5": case "Alt_8": case "Alt_e":
 				return Constants.INFO_BAR;
@@ -766,7 +766,7 @@ public class Animation
 				break;
 			}
 			break;
-		case Constants.BAN_AFG_SERIES:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			switch (whatToProcess.split(",")[0]) {
 			case "ArrowUp":
 				if(this.infobar.isInfobar_on_screen() == true && this.infobar.isInfobar_pushed()) {
@@ -2264,7 +2264,7 @@ public class Animation
 				break;
 			}
 			break;
-		case Constants.BAN_AFG_SERIES: case Constants.ACC:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "F12":
 				switch (whatToProcess.split(",")[0]) {
@@ -2360,7 +2360,7 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$Out", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$Out", "START");
-//				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
+				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
 				switch (whatToProcess.split(",")[0]) {
 				case "F7": case "F11":
 					String[] parts = whatToProcess.split(",", -1);
@@ -3591,7 +3591,7 @@ public class Animation
 				break;	
 			}
 			break;
-		case Constants.BAN_AFG_SERIES:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			switch (whatToProcess.split(",")[0]) {
 			case "Shift_F12":
 				processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$IdentInfo_Change", "START");
@@ -4664,7 +4664,7 @@ public class Animation
 				break;	
 			}
 			break;
-		case Constants.BAN_AFG_SERIES:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			switch (whatToProcess.split(",")[0]) {
 			case "Shift_F12":
 				processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$IdentInfo_Change", "SHOW 0.0");
@@ -5236,7 +5236,7 @@ public class Animation
 			}
 			this.whichGraphicOnScreen = "";
 			break;
-		case Constants.BAN_AFG_SERIES: case Constants.ACC:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 			processAnimation("", print_writers, "MatchID", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "Plotter", "SHOW 0.0");
 			processAnimation("", print_writers, "Full_Frames", "SHOW 0.0");
@@ -5643,7 +5643,7 @@ public class Animation
 						break;
 					}
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.ACC:
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 					switch(whatToProcess.split(",")[0]) {
 					case "m": case "Control_m":
 						previewCommand = "MatchID$Start_End$In 3.600 MatchID$ALL$In 2.660";
@@ -6138,7 +6138,7 @@ public class Animation
 						break;
 					}
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.ACC:
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 					switch(whatToProcess.split(",")[0]) {
 					case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 						previewCommand = previewCommand + "Full_Frames$Main_Graphics$Change$Side2_In 1.100 Full_Frames$Main_Graphics$Change$Top5 2.900 "
@@ -6385,7 +6385,7 @@ public class Animation
 			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_FullFrames " + "C:/Temp/Preview.tga " + previewCommand + "\0", print_writer);
 				break;
-			case Constants.BAN_AFG_SERIES: case Constants.ACC:
+			case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/FullFrames " + "C:/Temp/Preview.tga " + previewCommand + "\0", print_writer);
 				break;
 			default:
@@ -6421,7 +6421,7 @@ public class Animation
 				}
 				
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.BAN_AFG_SERIES: case Constants.ACC:
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 					switch(whatToProcess.split(",")[0]) {
 					case "Alt_Shift_Q":
 						previewCommand = "Plotter 1.000 Plotter$In 1.000 Plotter$Out 1.000";
@@ -6526,7 +6526,7 @@ public class Animation
 				}
 			}else if(whichside == 2) {
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.BAN_AFG_SERIES: case Constants.ACC:
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 					switch(whatToProcess.split(",")[0]) {
 					case "Control_3": case "Control_8":
 						previewCommand = "Lof_Profile$Change$Image 1.500 Lof_Profile$Change$Data 1.500";
@@ -6592,7 +6592,7 @@ public class Animation
 		if(config.getPreview().equalsIgnoreCase("WITH_PREVIEW")) {
 			if(whichside == 1) {
 				switch(config.getBroadcaster().toUpperCase()){
-				case Constants.BAN_AFG_SERIES: case Constants.ACC:
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_Shift_R":
 					case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "Alt_p": case "Control_Shift_F3":  
@@ -6698,7 +6698,7 @@ public class Animation
 				}
 			}else {
 				switch(config.getBroadcaster().toUpperCase()){
-				case Constants.BAN_AFG_SERIES: case Constants.ACC: 
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: 
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_Shift_R":
 					case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "Alt_p": case "Control_Shift_F3":  
@@ -6739,7 +6739,7 @@ public class Animation
 	public void processMiniPreview(String whatToProcess, List<PrintWriter> print_writer, int whichside, Configuration config, String whichGraphicOnScreen) throws InterruptedException {
 		if(config.getPreview().equalsIgnoreCase("WITH_PREVIEW")) {
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.BAN_AFG_SERIES: case Constants.ACC:
+			case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
 				if(whichside == 1) {
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7":

@@ -1252,7 +1252,7 @@ System.out.println("MatchFileNameAway = " + MatchFileNameAway);
 			break;
 		default:
 			switch (config.getBroadcaster()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
 				if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
 					this_ALL_FF.tournaments = past_tournament_stats;
 				}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
@@ -1582,7 +1582,7 @@ System.out.println("MatchFileNameAway = " + MatchFileNameAway);
 				break;	
 			}
 			break;
-		case Constants.BAN_AFG_SERIES:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			offset = "";
 			switch(this_ALL_FF.numberOfRows) {
 			case 11:
