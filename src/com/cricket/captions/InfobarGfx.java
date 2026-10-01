@@ -7916,7 +7916,7 @@ public class InfobarGfx
 							+ "img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2 + "EVENT" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$TournamentFours$"
-							+ "txt_Head*GEOM*TEXT SET " + "FOURS THIS SERIES" + "\0", print_writers);
+							+ "txt_Head*GEOM*TEXT SET " + "TOURNAMENT FOURS" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$TournamentFours$Data1Grp"
 							+ "$txt_Data1*GEOM*TEXT SET " + fours + "\0", print_writers);
 					break;
@@ -7937,7 +7937,7 @@ public class InfobarGfx
 							+ "img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2 + "EVENT" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$TournamentSixes$"
-							+ "txt_Head*GEOM*TEXT SET " + "SIXES THIS SERIES" + "\0", print_writers);
+							+ "txt_Head*GEOM*TEXT SET " + "TOURNAMENT SIXES" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$TournamentSixes$Data1Grp"
 							+ "$txt_Data1*GEOM*TEXT SET " + sixes + "\0", print_writers);
 					break;
@@ -10338,7 +10338,7 @@ public class InfobarGfx
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						break;
 					case CricketUtil.DT20:
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("T20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 						break;
 					}
 					
@@ -10358,7 +10358,7 @@ public class InfobarGfx
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						break;
 					case CricketUtil.DT20:
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("T20")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 						break;
 					}
 					
