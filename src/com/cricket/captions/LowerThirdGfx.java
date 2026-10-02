@@ -4356,7 +4356,7 @@ public class LowerThirdGfx
 			if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
 				
 				text = "TOMORROW - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
-				matchday = "TOMORROW - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
+				matchday = "TOMORROW - " + fixture.getLocalTime() + " LOCAL TIME";
 			}else {
 				cal_bengal.add(Calendar.DATE, -1);
 				if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
@@ -4371,7 +4371,7 @@ public class LowerThirdGfx
 							Month.of(Integer.valueOf(fixture.getDate().split("-")[1]));
 					
 					text = date_data + " - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
-					matchday = date_data + " - " + fixture.getLocalTime() + " LOCAL TIME - " + fixture.getVenue();
+					matchday = date_data + " - " + fixture.getLocalTime() + " LOCAL TIME";
 				}
 			}
 			
@@ -8534,6 +8534,21 @@ public class LowerThirdGfx
 	    					}
 						break;
 					case Constants.BAN_AFG_SERIES: case Constants.WCL:
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$ALL_LT_LOGOGRP$Side" + whichSide + "$OneTeam$LogoIn$"
+								+ "img_Base1*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_BASE1 + team.getTeamBadge() + " \0",print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$ALL_LT_LOGOGRP$Side" + whichSide + "$OneTeam$LogoIn$"
+								+ "img_Base2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_BASE2 + team.getTeamBadge() + " \0",print_writers);
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$ALL_LT_LOGOGRP$Side" + whichSide + "$OneTeam$LogoIn$"
+								+ "LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_BASE2 + team.getTeamBadge() + " \0",print_writers);
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$ALL_LT_LOGOGRP$Side" + whichSide + "$OneTeam$LogoIn$"
+								+ "LLC_LogoGrp$noname$img_Badges*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_LOGO + team.getTeamBadge() + " \0",print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$ALL_LT_LOGOGRP$Side" + whichSide + "$OneTeam$LogoIn$"
+								+ "LLC_LogoGrp$img_Badges*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_LOGO + team.getTeamBadge() + " \0",print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$ALL_LT_LOGOGRP$Side" + whichSide + "$OneTeam$LogoIn$"
+								+ "LLC_LogoGrp$img_Badges02*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_LOGO + team.getTeamBadge() + " \0",print_writers);
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$BaseAll$Side" + whichSide + "$Select$NextToBaat$"
 								+ "img_Base2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_BASE2 + team.getTeamBadge() + " \0",print_writers);

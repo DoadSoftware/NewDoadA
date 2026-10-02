@@ -1578,6 +1578,38 @@ public class InfobarGfx
 			break;
 		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			
+			System.out.println("wtp ===========" + whatToProcess);
+			if(whatToProcess.split(",")[3].equalsIgnoreCase("With_Photo")) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman1_Grp$Side1$BatsmanAll1$img_Player" 
+						+ "*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman1_Grp$Side2$BatsmanAll1$img_Player" 
+						+ "*ACTIVE SET 1\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman2_Grp$Side1$BatsmanAll2$img_Player" 
+						+ "*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman2_Grp$Side2$BatsmanAll2$img_Player" 
+						+ "*ACTIVE SET 1\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BowlerGrp$Side1$img_Player" 
+						+ "*ACTIVE SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BowlerGrp$Side2$img_Player" 
+						+ "*ACTIVE SET 1\0", print_writers);
+			}else {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman1_Grp$Side1$BatsmanAll1$img_Player" 
+						+ "*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman1_Grp$Side2$BatsmanAll1$img_Player" 
+						+ "*ACTIVE SET 0\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman2_Grp$Side1$BatsmanAll2$img_Player" 
+						+ "*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BatsmanGrp$Batsman2_Grp$Side2$BatsmanAll2$img_Player" 
+						+ "*ACTIVE SET 0\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BowlerGrp$Side1$img_Player" 
+						+ "*ACTIVE SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BowlerGrp$Side2$img_Player" 
+						+ "*ACTIVE SET 0\0", print_writers);
+			}
 			infobar.setLast_batsmen(new ArrayList<BattingCard>());
 			lastBatsmanOnStrike = 0;
 
@@ -6268,7 +6300,7 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Toss$txt_Header"
 							+ "*GEOM*TEXT SET FROM\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Toss$txt_Data1"
-							+ "*GEOM*TEXT SET SHARJHA\0", print_writers);
+							+ "*GEOM*TEXT SET SHARJAH\0", print_writers);
 					break;	
 				case "SUPER_OVER":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Select"

@@ -2027,7 +2027,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.value = 'TOURNAMENT';
 					option.text = 'TLogo';
 					select.appendChild(option);
-					break;
+					break;	
 				}
 				session_match.match.inning.forEach(function(inn){
 					if(inn.isCurrentInning == 'YES'){
@@ -2064,7 +2064,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				row.insertCell(cellCount).appendChild(select);
 				setDropdownOptionToSelectOptionArray($(select),0);
 				cellCount = cellCount + 1;
-				
+								
 				switch($('#selected_broadcaster').val().toUpperCase()){	
 				case 'ACC':
 					select = document.createElement('select');
@@ -2101,6 +2101,26 @@ function addItemsToList(whatToProcess,dataToProcess)
 					setDropdownOptionToSelectOptionArray($(select),1);
 					cellCount = cellCount + 1;
 					break;
+				case 'WCL':
+					select = document.createElement('select');
+					select.id = 'selectPlyrPhoto';
+					select.name = select.id;
+										
+					option = document.createElement('option');
+					option.value = 'Without_Photo';
+					option.text = 'Without Photo';
+					select.appendChild(option);
+										
+					option = document.createElement('option');
+					option.value = 'With_Photo';
+					option.text = 'With Photo';
+					select.appendChild(option);
+					
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),1);
+					cellCount = cellCount + 1;
+					break;		
 				}
 				
 				break;

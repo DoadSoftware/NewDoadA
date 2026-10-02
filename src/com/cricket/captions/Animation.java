@@ -988,6 +988,12 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$In", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$In", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$In", "START");
+				
+				switch (whatToProcess.split(",")[0]) {
+				case "F6": case "Shift_F6": case "Control_F6":
+					processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out$In", "START");
+					break;
+				}
 
 				this.whichGraphicOnScreen = whatToProcess;
 				break;	
@@ -995,6 +1001,8 @@ public class Animation
 			case "m": case "Control_m":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
+				processAnimation("", print_writers, "Loop", "START");
+				
 				processAnimation("", print_writers, "MatchID$Start_End", "START");
 				processAnimation("", print_writers, "MatchID$ALL", "START");
 				this.whichGraphicOnScreen = whatToProcess;
@@ -1006,6 +1014,8 @@ public class Animation
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation(Constants.BACK, print_writers, "Audio", "START");
 				}
+				
+				processAnimation("", print_writers, "Loop", "START");
 				
 				processAnimation("", print_writers, "Full_Frames$Essentials$In_Out", "START");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$In_Out", "START");
@@ -1037,6 +1047,8 @@ public class Animation
 			case "Shift_F10":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
+				
+				processAnimation("", print_writers, "Loop", "START");
 				
 				processAnimation("", print_writers, "Full_Frames$Essentials$In_Out", "START");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$In_Out", "START");
@@ -2361,6 +2373,13 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$Out", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out$Out", "START");
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
+				
+				switch (whatToProcess.split(",")[0]) {
+				case "F6": case "Shift_F6": case "Control_F6":
+					processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out$Out", "START");
+					break;
+				}
+				
 				switch (whatToProcess.split(",")[0]) {
 				case "F7": case "F11":
 					String[] parts = whatToProcess.split(",", -1);
@@ -3642,23 +3661,29 @@ public class Animation
 				break;
 				
 			case "Shift_T":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "START");
+				
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side2_In", "START");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$PlayingXI_Image", "START");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "START");
 				break;
 				
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "START");
+				
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side2_In", "START");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Profile", "START");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "START");
 				break;
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "START");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side2_In", "START");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Top5", "START");
 				
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "START");
 				break;
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "START");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "START");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side2_In", "START");
 				switch(whichGraphicOnScreen.split(",")[0]) {
@@ -4684,22 +4709,26 @@ public class Animation
 				break;
 				
 			case "Shift_T":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "SHOW 0.0");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$PlayingXI_Image", "SHOW 0.0");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "SHOW 0.0");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Profile", "SHOW 0.0");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "SHOW 0.0");
 				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Top5", "SHOW 0.0");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;	
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4":
+				processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "SHOW 0.0");
 				processAnimation("", print_writers, "Full_Frames$Sponsor$Change", "SHOW 0.0");
 				switch(whichGraphicOnScreen.split(",")[0]) {
 				case "F1": case "Control_Shift_F1":
@@ -5240,6 +5269,7 @@ public class Animation
 			processAnimation("", print_writers, "MatchID", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "Plotter", "SHOW 0.0");
 			processAnimation("", print_writers, "Full_Frames", "SHOW 0.0");
+			processAnimation("", print_writers, "Full_Frames$Main_Graphics$Change$Side_Colours", "SHOW 0.0");
 			processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Top5$In_Out$Out", "SHOW 3.800");
 			
 			switch (config.getBroadcaster().toUpperCase()) {

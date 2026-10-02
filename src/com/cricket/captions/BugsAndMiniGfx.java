@@ -889,6 +889,9 @@ public class BugsAndMiniGfx
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$band$txt_Header*GEOM*TEXT SET FOURS - THIS MATCH\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
+							"EaseMyTrip" + "\0", print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Unit*GEOM*TEXT SET " + this_data_str.get(0).split(",")[3] + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Ten*GEOM*TEXT SET " + this_data_str.get(0).split(",")[2] + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Hundread*GEOM*TEXT SET " + this_data_str.get(0).split(",")[1] + "\0", print_writers);
@@ -922,7 +925,9 @@ public class BugsAndMiniGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Sponsor$Sponsor$Rectangle*ACTIVE SET 0\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$band$txt_Header*GEOM*TEXT SET SIXES - THIS MATCH\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
+						"BNW" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Unit*GEOM*TEXT SET "+this_data_str.get(0).split(",")[3] + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Ten*GEOM*TEXT SET "+this_data_str.get(0).split(",")[2] + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Hundread*GEOM*TEXT SET "+this_data_str.get(0).split(",")[1] + "\0", print_writers);
@@ -957,7 +962,9 @@ public class BugsAndMiniGfx
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Sponsor$Sponsor$Rectangle*ACTIVE SET 1\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
+						"EaseMyTrip" + "\0", print_writers);
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES: case Constants.WCL:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$band$img_Base2*TEXTURE*IMAGE SET " 
@@ -1006,7 +1013,11 @@ public class BugsAndMiniGfx
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Sponsor$Sponsor$Rectangle*ACTIVE SET 1\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
+						"BNW" + "\0", print_writers);
+				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES: case Constants.WCL:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$band$img_Base2*TEXTURE*IMAGE SET " 

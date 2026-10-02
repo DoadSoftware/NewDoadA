@@ -66,6 +66,7 @@ public class Constants
 	public final static String BAN_AFG_SERIES_PHOTO_PATH = "\\c\\Images\\BAN_AFG_SERIES\\Photos\\";
 	public final static String BAN_AFG_SERIES_MANHATTAN1 = "IMAGE*/Default/Essentials/Manhattan1/";
 	public final static String BAN_AFG_SERIES_MANHATTAN2 = "IMAGE*/Default/Essentials/Manhattan2/";
+	public final static String BAN_AFG_SERIES_SPONSOR = "IMAGE*/Default/Essentials/Spnsor/";
 	
 	public final static String TRI_SERIES = "TRI_SERIES";
 	public final static String TRI_SERIES_LOGO = "IMAGE*/Default/Assets/Logos/";
