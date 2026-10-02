@@ -1016,19 +1016,19 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Counter$InOut", "START");
 				TimeUnit.MILLISECONDS.sleep(1700);
 				this.whichGraphicOnScreen = whatToProcess;
-				if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[0].
-						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[0])) {
-					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Hundreds", "START");
-					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Tens", "START");
-					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
-				}
-				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
+				if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
 						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[1])) {
+					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Hundreds", "START");
 					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Tens", "START");
 					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
 				}
 				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[2].
 						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[2])) {
+					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Tens", "START");
+					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
+				}
+				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[3].
+						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[3])) {
 					processAnimation(Constants.FRONT, print_writers, "Counter$Change_Sixes$Units", "START");
 				}
 				break;	
