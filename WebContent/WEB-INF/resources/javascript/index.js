@@ -2286,7 +2286,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 				option = document.createElement('option');
 				option.value = 'LIVE_FROM';
-				option.text = 'LIVE FROM';
+				option.text = 'LIVE FROM DUBAI';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'LIVE_FROM_SHARJHA';
+				option.text = 'LIVE FROM SHARJAH';
 				select.appendChild(option);
 				
 				option = document.createElement('option');

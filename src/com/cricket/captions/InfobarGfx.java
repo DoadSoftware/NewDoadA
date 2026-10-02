@@ -6262,6 +6262,14 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Toss$txt_Data1"
 							+ "*GEOM*TEXT SET DUBAI\0", print_writers);
 					break;
+				case "LIVE_FROM_SHARJHA":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Select"
+							+ "*FUNCTION*Omo*vis_con SET 0\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Toss$txt_Header"
+							+ "*GEOM*TEXT SET FROM\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Toss$txt_Data1"
+							+ "*GEOM*TEXT SET SHARJHA\0", print_writers);
+					break;	
 				case "SUPER_OVER":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section2$Side" + WhichSide + "$Select"
 							+ "*FUNCTION*Omo*vis_con SET 0\0",print_writers);
@@ -8102,28 +8110,33 @@ public class InfobarGfx
 					}
 					break;
 				case "REVIEWS_REMAINING":
-//					Review reviewRemaining = CricketFunctions.getReviewRemaining(matchAllData);
-//					String[] parts = reviewRemaining.getReviewStatus().split(",");
+					Review reviewRemaining = CricketFunctions.getReviewRemaining(matchAllData);
+					String[] partss = reviewRemaining.getReviewStatus().split(",");
 					
-					String text_to_return = "";
-					int lineIndex1 = 1;
-				    boolean found1 = false;
-					BufferedReader br = new BufferedReader(new FileReader(CricketUtil.CRICKET_DIRECTORY + "ICC_Reviews.txt"));
-				
-				    while( (text_to_return = br.readLine()) != null) {
-				        if(lineIndex1 == 1) {
-				        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
-									+ "txt_Data1*GEOM*TEXT SET " + text_to_return.split(" ")[0] + "\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
-									+ "txt_Data2*GEOM*TEXT SET " + text_to_return.split(" ")[1]  + "\0", print_writers);
-				            found1 = true;
-				            break;
-				        }
-				        lineIndex1++;
-				    }
-				    if(!found1) {
-				    	//System.out.println("Line Not There");
-				    }
+//					String text_to_return = "";
+//					int lineIndex1 = 1;
+//				    boolean found1 = false;
+//					BufferedReader br = new BufferedReader(new FileReader(CricketUtil.CRICKET_DIRECTORY + "ICC_Reviews.txt"));
+//				
+//				    while( (text_to_return = br.readLine()) != null) {
+//				        if(lineIndex1 == 1) {
+//				        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+//									+ "txt_Data1*GEOM*TEXT SET " + text_to_return.split(" ")[0] + "\0", print_writers);
+//							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+//									+ "txt_Data2*GEOM*TEXT SET " + text_to_return.split(" ")[1]  + "\0", print_writers);
+//				            found1 = true;
+//				            break;
+//				        }
+//				        lineIndex1++;
+//				    }
+//				    if(!found1) {
+//				    	//System.out.println("Line Not There");
+//				    }
+					
+				    CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+							+ "txt_Data1*GEOM*TEXT SET " + Integer.parseInt(partss[0]) + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+							+ "txt_Data2*GEOM*TEXT SET " + Integer.parseInt(partss[1])  + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					
@@ -10252,7 +10265,8 @@ public class InfobarGfx
 //							"$Freetext$txt_Head*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + " | LIVE FROM SHARJAH v " + inning.getBowling_team().getTeamName1() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section4$Side" + WhichSide + 
-							"$Freetext$txt_Head*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + " | LIVE FROM DUBAI\0", print_writers);
+							"$Freetext$txt_Head*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + " | LIVE FROM " + (matchAllData.getSetup().getGroundId() == 1 ? matchAllData.getSetup().getGround().
+									getCity() : matchAllData.getSetup().getGround().getCity()) + "\0", print_writers);
 					break;
 				case "FREETEXTDB":
 					InfobarStats infoStat = infobarStats.get(infobarStatsId-1);
@@ -10365,7 +10379,7 @@ public class InfobarGfx
 					stat.setStats_type(statsType);
 					
 					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
-					stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+//					stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 					
 //					switch (matchAllData.getSetup().getMatchType()) {
 //					case CricketUtil.ODI:

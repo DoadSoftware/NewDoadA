@@ -220,6 +220,12 @@ public class ALL_FF
 			}
 			break;
 		case Constants.BAN_AFG_SERIES: case Constants.WCL:
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$All$BlackBase$Side" + WhichSide + "$Left$img_Base2"
+					+ "*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_BASE2 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$All$BlackBase$Side" + WhichSide + "$Right$img_Base2"
+					+ "*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_BASE2 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+			
 			switch(whatToProcess) {
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Profile$TeamBageGrp$Select_BadgeType"
@@ -1696,6 +1702,7 @@ public class ALL_FF
 			logosAndBaseColor(print_writers, WhichSide, whatToProcess, matchAllData, inning, config);
 			break;
 		case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
+			
 			switch(whatToProcess) {
 			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 			case "Alt_Shift_W":
@@ -3228,7 +3235,7 @@ public class ALL_FF
 							+ matchAllData.getSetup().getTournament() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$Text$HeaderGrp$VS*GEOM*TEXT SET V\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$Text$HeaderGrp$000SubHeader*GEOM*TEXT SET " 
-							+ toOrdinalWords(fixture.getMatchnumber()).toUpperCase() + " T20I" + "\0", print_writers);
+							+ (fixture.getMatchnumber() > 9 ? fixture.getMatchfilename() : "MATCH " + fixture.getMatchnumber()) + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$Text$HeaderGrp$BottmeText*GEOM*TEXT SET " + Footer_Data + "\0", print_writers);
 					break;
@@ -11505,6 +11512,9 @@ public class ALL_FF
 			case "m":
 				switch (config.getBroadcaster()) {
 				case Constants.BAN_AFG_SERIES: case Constants.WCL:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$TLogo*TEXTURE*IMAGE SET " + 
+							Constants.BAN_AFG_SERIES_LOGO + "EVENT_WHITE" + "\0", print_writers);
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$BattingCard$TeamName$Home$img_Base2*TEXTURE*IMAGE SET " + 
 							Constants.BAN_AFG_SERIES_BASE2 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$BattingCard$TeamBageGrp$img_Badges*TEXTURE*IMAGE SET " + 
@@ -11599,6 +11609,9 @@ public class ALL_FF
 				
 				switch (config.getBroadcaster()) {
 				case Constants.BAN_AFG_SERIES: case Constants.WCL:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$TLogo*TEXTURE*IMAGE SET " + 
+							Constants.BAN_AFG_SERIES_LOGO + "EVENT_WHITE" + "\0", print_writers);
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$BattingCard$TeamName$Home$img_Base2*TEXTURE*IMAGE SET " + 
 							Constants.BAN_AFG_SERIES_BASE2 + fixture.getHome_Team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$MatchID$BattingCard$TeamBageGrp$img_Badges*TEXTURE*IMAGE SET " + 

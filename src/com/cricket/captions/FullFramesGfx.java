@@ -738,21 +738,21 @@ public class FullFramesGfx
 				this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);		
 				this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
 				
-				if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
-					switch (this_ALL_FF.WhichProfile.toUpperCase()) {
-					case "DT20":
-						matchAllData.getSetup().setMatchType(CricketUtil.DT20);
-						break;
-					}
-					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
-					
-					if(this_ALL_FF.WhichProfile.equalsIgnoreCase(CricketUtil.DT20)) {
-						matchAllData.getSetup().setMatchType(CricketUtil.IT20);
-					}
-				}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
-					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
-					
-				}
+//				if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+//					switch (this_ALL_FF.WhichProfile.toUpperCase()) {
+//					case "DT20":
+//						matchAllData.getSetup().setMatchType(CricketUtil.DT20);
+//						break;
+//					}
+//					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+//					
+//					if(this_ALL_FF.WhichProfile.equalsIgnoreCase(CricketUtil.DT20)) {
+//						matchAllData.getSetup().setMatchType(CricketUtil.IT20);
+//					}
+//				}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
+//					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+//					
+//				}
 			}else if(this_ALL_FF.WhichProfile.equalsIgnoreCase("DT20")) {
 				this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(this_ALL_FF.WhichProfile)).findAny().orElse(null);
 				if(this_ALL_FF.statsType == null) {
@@ -768,21 +768,21 @@ public class FullFramesGfx
 				this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);		
 				this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
 				
-				if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
-					switch (this_ALL_FF.WhichProfile.toUpperCase()) {
-					case "DT20":
-						matchAllData.getSetup().setMatchType(CricketUtil.DT20);
-						break;
-					}
-					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
-					
-					if(this_ALL_FF.WhichProfile.equalsIgnoreCase(CricketUtil.DT20)) {
-						matchAllData.getSetup().setMatchType(CricketUtil.IT20);
-					}
-				}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
-					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
-					
-				}
+//				if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+//					switch (this_ALL_FF.WhichProfile.toUpperCase()) {
+//					case "DT20":
+//						matchAllData.getSetup().setMatchType(CricketUtil.DT20);
+//						break;
+//					}
+//					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+//					
+//					if(this_ALL_FF.WhichProfile.equalsIgnoreCase(CricketUtil.DT20)) {
+//						matchAllData.getSetup().setMatchType(CricketUtil.IT20);
+//					}
+//				}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
+//					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+//					
+//				}
 			}else if(this_ALL_FF.WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
 				this_ALL_FF.statsType = statsTypes.stream()
 			            .filter(st -> st.getStatsShortName().equalsIgnoreCase("MAHARAJA_CAREER"))
