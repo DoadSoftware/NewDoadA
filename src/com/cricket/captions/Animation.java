@@ -957,7 +957,7 @@ public class Animation
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12":
 			case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B":
-			case "Control_Shift_O": case "Control_h": case "Control_F3": case "d":
+			case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "e":
 				
 				if(this.infobar.isInfobar_on_screen() == true) {
 					switch (whatToProcess.split(",")[0]) {
@@ -990,7 +990,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$In", "START");
 				
 				switch (whatToProcess.split(",")[0]) {
-				case "F6": case "Shift_F6": case "Control_F6":
+				case "F6": case "Shift_F6": case "Control_F6": case "Shift_F3":
 					processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out$In", "START");
 					break;
 				}
@@ -2375,7 +2375,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out$Out", "START");
 				
 				switch (whatToProcess.split(",")[0]) {
-				case "F6": case "Shift_F6": case "Control_F6":
+				case "F6": case "Shift_F6": case "Control_F6": case "Shift_F3":
 					processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out$Out", "START");
 					break;
 				}

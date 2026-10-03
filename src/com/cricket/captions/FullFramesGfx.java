@@ -987,8 +987,8 @@ public class FullFramesGfx
 		    MatchFileNameHome = matchAllData.getMatch().getMatchFileName();
 		    MatchFileNameAway = matchAllData.getMatch().getMatchFileName();
 		}
-System.out.println("MatchFileNameHome = " + MatchFileNameHome);
-System.out.println("MatchFileNameAway = " + MatchFileNameAway);
+		System.out.println("MatchFileNameHome = " + MatchFileNameHome);
+		System.out.println("MatchFileNameAway = " + MatchFileNameAway);
 		processDoubleTeamsInAndOutPlayer(MatchFileNameHome, matchAllData.getSetup().getHomeSquad(), this_ALL_FF);
 		processDoubleTeamsInAndOutPlayer(MatchFileNameAway, matchAllData.getSetup().getAwaySquad(), this_ALL_FF);
 		System.out.println("IN - " + this_ALL_FF.PlayerIdIn.toString());

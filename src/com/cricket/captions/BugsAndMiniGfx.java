@@ -1113,6 +1113,9 @@ public class BugsAndMiniGfx
 					break;
 				}
 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll"
+						+ "*ACTIVE SET 1\0",print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info01"
 						+ "*GEOM*TEXT SET " + "" + "\0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info02"
@@ -1129,6 +1132,9 @@ public class BugsAndMiniGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll"
+						+ "*ACTIVE SET 1\0",print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info01"
 						+ "*GEOM*TEXT SET " + "" + "\0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info02"
@@ -1483,6 +1489,9 @@ public class BugsAndMiniGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll"
+						+ "*ACTIVE SET 1\0",print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info01"
 						+ "*GEOM*TEXT SET " + "" + "\0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info02"
@@ -1894,6 +1903,9 @@ public class BugsAndMiniGfx
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*TRANSFORMATION*POSITION*Y SET 47.0\0",print_writers);
 				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll"
+						+ "*ACTIVE SET 1\0",print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 0\0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
 
@@ -1927,7 +1939,10 @@ public class BugsAndMiniGfx
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*TRANSFORMATION*POSITION*Y SET 54.0\0",print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 0\0",print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR + "BNW" + "\0",print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 3 \0",print_writers);
 
 				switch (config.getBroadcaster().toUpperCase()) {
