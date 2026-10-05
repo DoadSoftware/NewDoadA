@@ -618,14 +618,15 @@ public class IndexController
 						default:
 							if(this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.LOWER_THIRD)||
 									this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess).contains(Constants.NAME_SUPERS + Constants.LOWER_THIRD)) {
-								if((this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
-										!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) || 
-										(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
-										!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty())) {
-									
-									this_caption.setStatus("Alt+8, Alt+3, Alt+4 is on screen.");	
-									return objectMapper.writeValueAsString(this_caption).toString();
-								}
+//								if((this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
+//										!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) || 
+//										(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
+//										!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty())) {
+//									
+//									this_caption.setStatus("Alt+8, Alt+3, Alt+4 is on screen.");	
+//									return objectMapper.writeValueAsString(this_caption).toString();
+//								}
+								//return objectMapper.writeValueAsString(this_caption).toString();
 							}
 							break;
 						}
@@ -678,18 +679,19 @@ public class IndexController
 								case Constants.LOWER_THIRD: case Constants.NAME_SUPERS + Constants.LOWER_THIRD: 
 								case Constants.BOUNDARIES + Constants.LOWER_THIRD:
 									
-									if(this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
-										!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) {
-										
-										this_caption.setStatus("Alt_8 is on screen");
-										return objectMapper.writeValueAsString(this_caption).toString();
-										
-									}else if(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
-											!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty()) {
-										
-										this_caption.setStatus("Alt_3 or Alt_4 is on screen");
-										return objectMapper.writeValueAsString(this_caption).toString();
-									}
+//									if(this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && 
+//										!this_caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) {
+//										
+//										this_caption.setStatus("Alt_8 is on screen");
+//										return objectMapper.writeValueAsString(this_caption).toString();
+//										
+//									}else if(this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics() != null && 
+//											!this_caption.this_infobarGfx.infobar.getLast_sectionLtAnalytics().isEmpty()) {
+//										
+//										this_caption.setStatus("Alt_3 or Alt_4 is on screen");
+//										return objectMapper.writeValueAsString(this_caption).toString();
+//									}
+									
 								
 									switch (this_animation.getTypeOfGraphicsOnScreen(session_configuration, valueToProcess)) {
 									case Constants.FULL_FRAMER:

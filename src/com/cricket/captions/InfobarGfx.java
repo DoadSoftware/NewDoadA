@@ -1610,6 +1610,8 @@ public class InfobarGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$All$BowlerGrp$Side2$img_Player" 
 						+ "*ACTIVE SET 0\0", print_writers);
 			}
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*Anim_Infobar$BowlDelhighlightOut START\0", print_writers);
+			
 			infobar.setLast_batsmen(new ArrayList<BattingCard>());
 			lastBatsmanOnStrike = 0;
 

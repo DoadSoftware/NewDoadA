@@ -226,9 +226,6 @@ public class Caption
 				case Constants.ACC:
 					this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[2];
 					break;
-				case Constants.WCL:
-					this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[2];
-					break;	
 				}
 				
 				status = this_fullFramesGfx.populateMatchSummary(whichSide, whatToProcess.split(",")[0], matchAllData, Integer.valueOf(whatToProcess.split(",")[1]));

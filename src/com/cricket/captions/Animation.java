@@ -85,7 +85,7 @@ public class Animation
 			case "m": case "Control_m": case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "Shift_F11":
 			case "Control_F7": case "F4": case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e":
 			case "Shift_P": case "Shift_Q": case "Shift_F10": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": 
-			case "Control_Shift_Z": case "Control_Shift_Y":
+			case "Control_Shift_Z": case "Control_Shift_Y": case "Control_p":
 				return Constants.FULL_FRAMER;
 
 			}
@@ -1044,7 +1044,7 @@ public class Animation
 				break;	
 			case "F1": case "Control_Shift_F1": case "F2": case "Control_Shift_F2": case "Control_F11": case "F4": case "Shift_F11": case "Control_F7":
 			case "Shift_K": case "Shift_T": case "Shift_D": case "Control_F10": case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-			case "Shift_F10":
+			case "Shift_F10": case "Control_p":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				
@@ -1054,6 +1054,9 @@ public class Animation
 				processAnimation("", print_writers, "Full_Frames$Sponsor$In_Out", "START");
 				
 				switch (whatToProcess.split(",")[0]) {
+				case "Control_p":
+					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Standings$In_Out", "START");
+					break;
 				case "Control_F11": case "Shift_F11":
 					processAnimation("", print_writers, "Full_Frames$Main_Graphics$In_Out$Summary$In_Out", "START");
 					break;

@@ -5961,6 +5961,10 @@ public class LowerThirdGfx
 		    					+ Constants.BAN_AFG_SERIES_BASE2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + WhichSide
+		    					+ "$Select$BattingSummary$BottomGrp$ScoreGrp$img_Text*TEXTURE*IMAGE SET "
+		    					+ Constants.BAN_AFG_SERIES_TEXT2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + WhichSide
 								+ "$Select$BattingSummary$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
 								+ Constants.BAN_AFG_SERIES_TEXT2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
 	    	    		break;
