@@ -25,6 +25,16 @@ public class Constants
 	public final static String RIGHT = "RIGHT";
 	public final static String CENTER = "CENTER";
 	public final static String BLANK = "Blank";
+	
+	public final static String CENTRE_512 = "\\CENTRE_512\\\\";
+	public final static String LEFT_1024 = "\\\\LEFT_1024\\\\";
+	public final static String LEFT_2048 = "\\\\LEFT_2048\\\\";
+	public final static String RIGHT_1024 = "\\\\RIGHT_1024\\\\";
+	public final static String RIGHT_2048 = "\\RIGHT_2048\\\\";
+	public final static String STRAIGHT_1024 = "\\\\STRAIGHT_1024\\\\";
+	public final static String SMALL_512 = "\\\\SMALL_512\\\\";
+	public final static String BIG_1024 = "\\\\BIG_1024\\\\";
+	public final static String BLANK_IMG = "\\\\Blank";
 
 	public final static String LOCALHOST = "localhost";
 	public final static String BCCI = "BCCI";
@@ -36,6 +46,20 @@ public class Constants
 	
 	public final static String BCCI_BASE1 = "IMAGE*/Default/Assets/Base1/";
 	public final static String BCCI_TEXT1 = "IMAGE*/Default/Assets/Text1/";
+	
+	public final static String AFG_SERIES = "AFG_SERIES";
+	public final static String AFG_SERIES_BADGES = "IMAGE*/Default/Assets/Badges/";
+	public final static String AFG_SERIES_LOGOS_BW = "IMAGE*/Default/Assets/Logos_BW/";
+	public final static String AFG_SERIES_BASE_Ident = "IMAGE*/Default/Essentials/Base/";
+	public final static String AFG_SERIES_BASE1 = "IMAGE*/Default/Assets/Base1/";
+	public final static String AFG_SERIES_TEXT1 = "IMAGE*/Default/Assets/Text1/";
+	public final static String AFG_SERIES_BASE2 = "IMAGE*/Default/Assets/Base2/";
+	public final static String AFG_SERIES_TEXT2 = "IMAGE*/Default/Assets/Text2/";
+	public final static String AFG_SERIES_WEATHERICON = "IMAGE*/Default/Assets/WeatherIcons/";
+	public final static String AFG_SERIES_ICONS = "IMAGE*/Default/Assets/Icons/";
+	public final static String AFG_SERIES_SPONSOR = "IMAGE*/Default/Assets/Sponsors/";
+	public final static String AFG_SERIES_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\AFG_SERIES\\\\Photos\\\\";
+	public final static String AFG_SERIES_PHOTO_PATH = "\\c\\Images\\AFG_SERIES\\Photos\\";
 	
 	public final static String ACC = "ACC";
 	public final static String ACC_FLAG = "IMAGE*/Default/Flags/";

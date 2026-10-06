@@ -18,6 +18,24 @@ public class Scene
         CricketFunctions.DoadWriteCommandToAllViz("-1 IMAGE INFO\0", print_writers);
 		
 		switch (config.getBroadcaster().toUpperCase()) {
+		case Constants.AFG_SERIES:
+			switch (whatToProcess) {
+			case "FULL-FRAMERS":
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER SET_OBJECT SCENE*/Default/gfx_FullFrames\0", print_writers);
+		        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*SCENE_DATA INITIALIZE \0", print_writers);
+		        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*STAGE SHOW 0.0 \0", print_writers);
+				break;
+			case "OVERLAYS":
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER SET_OBJECT SCENE*/Default/Overlays\0", print_writers);
+		        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*SCENE_DATA INITIALIZE \0", print_writers);
+		        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE SHOW 0.0 \0", print_writers);
+				break;
+			case "PLOTTER":
+				break;
+			case "LOF_PLOTTER":
+				break;	
+			}
+			break;
 		case Constants.AFG_SL_SERIES:
 			switch (whatToProcess) {
 			case "FULL-FRAMERS":

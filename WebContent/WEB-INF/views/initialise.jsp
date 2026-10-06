@@ -256,6 +256,7 @@
 			    <label for="select_broadcaster" class="col-sm-4 col-form-label text-left">Select Broadcaster </label>
 			    <div class="col-sm-6 col-md-6">
 			      <select id="select_broadcaster" name="select_broadcaster" class="browser-default custom-select custom-select-sm">
+			      		<option value="AFG_SERIES">AFG SERIES</option>
 			      		<option value="MT20">MT20</option>
 			      		<option value="WCL">WCL</option>
 			      		<option value="TG20">TG20 League</option>

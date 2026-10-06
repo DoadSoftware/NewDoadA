@@ -1364,7 +1364,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				header_text.innerHTML =  'INFOBAR IDENT';
 				
 				switch($('#selected_broadcaster').val().toUpperCase()) {
-				case 'BAN_AFG_SERIES': case 'WCL': case 'ACC':
+				case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SERIES':
 					select = document.createElement('select');
 					select.id = select.name = 'selectIdentInfo';
 				
@@ -1438,6 +1438,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			}
 			switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL':  case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'AFG_SERIES':
 				select = document.createElement('select');
 				select.id = 'selectPlayerName';
 				select.name = select.id;
@@ -1515,7 +1516,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 						break;
 					}
 					break;
-					
+				case 'AFG_SERIES':
+					option = document.createElement('option');
+					option.value = 'TEST';
+					option.text = 'TEST MATCHES';
+					select.appendChild(option);
+					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20':
 				    
 					option = document.createElement('option');
@@ -2016,6 +2022,35 @@ function addItemsToList(whatToProcess,dataToProcess)
 		
 		case 'F12':
 			switch($('#selected_broadcaster').val().toUpperCase()) {
+			case 'AFG_SERIES':
+				select = document.createElement('select');
+				select.id = 'selectMiddle';
+				select.name = select.id;
+				
+				option = document.createElement('option');
+				option.value = 'BATSMAN';
+				option.text = 'BATSMAN';
+				select.appendChild(option);
+				
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),0);
+				cellCount = cellCount + 1;
+				
+				select = document.createElement('select');
+				select.id = 'selectRight';
+				select.name = select.id;
+				
+				option = document.createElement('option');
+				option.value = 'BOWLER';
+				option.text = 'BOWLER';
+				select.appendChild(option);
+				
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),1);
+				cellCount = cellCount + 1;
+				break;
 			case 'BAN_AFG_SERIES': case 'WCL': case 'ACC':
 				select = document.createElement('select');
 				select.id = 'selectMiddle';
@@ -2225,6 +2260,75 @@ function addItemsToList(whatToProcess,dataToProcess)
 		
 		case 'Alt_1':
 			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'AFG_SERIES':
+				header_text.innerHTML = 'INFOBAR - MIDDLE BOTTOM';
+						    
+		        select = document.createElement('select');
+		        select.id = 'selectLeftBottom';
+		        select.name = select.id;
+		
+		        const addOptionData = (value, text) => {
+		            let option = document.createElement('option');
+		            option.value = value;
+		            option.text = text;
+		            select.appendChild(option);
+		        };
+				
+				addOptionData('BATSMAN', 'Batsman');
+	            addOptionData('CRR', 'Run Rate');
+				addOptionData('CURR_PARTNERSHIP', 'Partnership');
+		
+		        if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
+		            //addOptionData('DAY_SESSION', 'Day Session');
+		            //addOptionData('LOCAL-TIME', 'Local Time');
+		            //addOptionData('LUNCH_TEXT', 'Lunch Text');
+		            //addOptionData('TEA_TEXT', 'Tea Text');
+		
+		            session_match.match.inning.forEach(function(inn){
+		                if(inn.isCurrentInning === 'YES'){
+		                    if(inn.inningNumber === 1){
+		                        addOptionData('TOSS', 'Toss');
+		                    } else if(inn.inningNumber === 2){
+		                        //addOptionData('FIRST_INNING_SCORE', '1st Inning Score');
+		                    } else if(inn.inningNumber === 4){
+		                        //addOptionData('TARGET', 'Target');
+		                        //addOptionData('RRR', 'Required Rate');
+		                    }
+		                }
+		            });
+		
+		        } else {
+		            addOptionData('TEAMNAME', 'TeamName');
+		            addOptionData('VENUE', 'Venue');
+					
+		            addOptionData('Ident', 'Ident');
+					addOptionData('CRR', 'Run Rate');
+		            
+		            session_match.match.inning.forEach(function(inn){
+		                if(inn.isCurrentInning === 'YES'){
+		                    if(inn.inningNumber === 1){
+		                        addOptionData('TOSS', 'Toss');
+		                    } else {
+		                        //addOption('FIRST_INNING_SCORE', '1st Inning Score');
+		                        //addOption('EQUATION', 'Equation');
+		                        addOptionData('TARGET', 'Target');
+		                        addOptionData('RRR', 'Required Rate');
+								addOptionData('DLS_PAR_SCORE', 'DLS Par Score');
+								addOptionData('VJD_PAR_SCORE', 'VJD Par Score');
+		                    }
+		                }
+		            });
+		            
+		            addOptionData('SUPER_OVER', 'Super Over');
+					//addOption('HYDERABAD', 'HYDERABAD');
+					addOptionData('GUWAHATI', 'GUWAHATI');
+		        }
+		
+		        select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+		        row.insertCell(cellCount).appendChild(select);
+		        setDropdownOptionToSelectOptionArray($(select),0);
+		        cellCount++;
+		        break;
 		    case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
 		    	header_text.innerHTML = ($('#selected_broadcaster').val().toUpperCase() === 'BCCI') ? 
 		    		'LEFT SECTION INFOBAR' : 'INFOBAR - MIDDLE BOTTOM';
@@ -2597,6 +2701,37 @@ function addItemsToList(whatToProcess,dataToProcess)
 			header_text.innerHTML = 'INFOBAR - RIGHT BOTTOM';
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){	
+			case 'AFG_SERIES':
+				select = document.createElement('select');
+				select.id = 'selectRightBottom';
+				select.name = select.id;
+				
+				option = document.createElement('option');
+				option.value = 'OVER';
+				option.text = 'This Over';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'BOWLER_REPLACE';
+				option.text = 'Bowler Replace';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'BOWLING_END';
+				option.text = 'Bowling End';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'BOWLER_ECONOMY';
+				option.text = 'Bowler Economy';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'EXTRAS';
+				option.text = 'Extras';
+				select.appendChild(option);
+				
+				break;
 			case 'BCCI': case 'TRI_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
 				select = document.createElement('select');
 				select.id = 'selectRightBottom';
@@ -2618,7 +2753,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.appendChild(option);
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES':
 					option = document.createElement('option');
 					option.value = 'EXTRAS';
 					option.text = 'Extras';
@@ -2742,9 +2877,27 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectRightSection';
 			select.name = select.id;
 			switch($('#selected_broadcaster').val().toUpperCase()){
-			case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'MT20': case 'TG20': case 'APLT20':
+			case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES':
 				switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'BAN_AFG_SERIES': case 'WCL': case 'ACC':
+					case 'AFG_SERIES':
+						const dropdownoption = [
+						  { value: 'BOWLER', text: 'Bowler' },
+						  { value: 'BOUNDARY', text: 'Boundaries' },
+						  { value: 'LastXBalls', text: 'Last X Balls' },
+						  { value: 'EXTRAS', text: 'Extras' },
+						  { value: 'LAST_WICKET', text: 'Last Wicket' },
+						  { value: 'REVIEWS_REMAINING', text: 'Review'},
+						  { value: 'BALLS_SINCE_LAST_BOUNDARY', text: 'Balls Since Last Boundaries'}
+						];
+						
+						dropdownoption.forEach(({ value, text }) => {
+						  const option = document.createElement('option');
+						  option.value = value;
+						  option.text = text;
+						  select.appendChild(option);
+						});
+						break;
+					case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SERIES':
 						const dropdown = [
 						  { value: 'BLANK', text: 'Blank' },
 						  { value: 'BOUNDARY', text: 'Boundaries' },
@@ -2907,8 +3060,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){	
-			case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'MT20': case 'TG20': case 'APLT20':
+			case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES':
 				switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'AFG_SERIES':
+					const dropdownoption = [
+					  { value: 'BLANK', text: 'Blank' },
+					  //{ value: 'IDENT', text: 'Ident' },
+					  //{ value: 'Commentators', text: 'Commentators' },
+  					  //{ value: 'FreeTextDb', text: 'FreeText DB' },
+  					  { value: 'TIMELINE', text: 'TimeLine' },
+					  { value: 'BatMileStone', text: 'Batter MileStone' },
+					  { value: 'BallMileStone', text: 'Bowler MileStone' },
+					  //{ value: 'FreeText', text: 'FreeText' },
+					  //{ value: 'Sponsor', text: 'Sponsor' },
+					];
+					
+					dropdownoption.forEach(({ value, text }) => {
+					  const option = document.createElement('option');
+					  option.value = value;
+					  option.text = text;
+					  select.appendChild(option);
+					});
+					break;
 				case 'BAN_AFG_SERIES': case 'WCL': 
 					const dropdown = [
 					  { value: 'BLANK', text: 'Blank' },

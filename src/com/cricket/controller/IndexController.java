@@ -316,7 +316,7 @@ public class IndexController
 			
 			switch (select_broadcaster) {
 			case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
-			case Constants.MT20: case Constants.TG20: case Constants.APLT20:
+			case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
 				if(session_configuration.getPrimaryVariousOptions().contains(Constants.FULL_FRAMER)) {
 					this_scene.LoadScene("FULL-FRAMERS", print_writers, session_configuration);
 				}
@@ -820,6 +820,27 @@ public class IndexController
 	}
 	public void infobarAnimateOutAllSection(Configuration session_configuration, MatchAllData session_match, List<PrintWriter> print_writers) throws Exception {
 		switch(session_configuration.getBroadcaster()) {
+		case Constants.AFG_SERIES:
+			if(this_caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
+				this_caption.PopulateGraphics("Alt_8,,BLANK", session_match);
+				this_animation.caption = this_caption;
+				processAnimations("ANIMATE-IN-GRAPHICS", session_configuration, "Alt_8,,BLANK", print_writers);
+			}
+			if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty() 
+				&& !this_caption.this_infobarGfx.infobar.getSection5().equalsIgnoreCase("BOWLER")) {
+				this_caption.whichSide = 2;
+				this_caption.PopulateGraphics("Alt_5,,BOWLER", session_match);
+				this_animation.caption = this_caption;
+				processAnimations("ANIMATE-IN-GRAPHICS", session_configuration, "Alt_5,,BOWLER", print_writers);
+			}
+			if(this_caption.this_infobarGfx.infobar.getSection1() != null && !this_caption.this_infobarGfx.infobar.getSection1().isEmpty() 
+				&& !this_caption.this_infobarGfx.infobar.getSection1().equalsIgnoreCase("BATSMAN")) {
+				this_caption.whichSide = 2;
+				this_caption.PopulateGraphics("Alt_1,,BATSMAN", session_match);
+				this_animation.caption = this_caption;
+				processAnimations("ANIMATE-IN-GRAPHICS", session_configuration, "Alt_1,,BATSMAN", print_writers);
+			}
+			break;
 		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty()) {
 				this_caption.PopulateGraphics("Alt_5,,BLANK", session_match);
@@ -933,6 +954,18 @@ public class IndexController
 				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_2")) {
 					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 					switch (session_configuration.getBroadcaster()) {
+					case Constants.AFG_SERIES:
+						TimeUnit.MILLISECONDS.sleep(700);
+						break;
+					}
+					
+					this_caption.whichSide = 1;
+					this_caption.PopulateGraphics(valueToProcess, session_match);
+					TimeUnit.MILLISECONDS.sleep(100);
+					this_animation.CutBack(valueToProcess, print_writers, session_configuration);
+				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_2")) {
+					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
+					switch (session_configuration.getBroadcaster()) {
 					case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 						TimeUnit.MILLISECONDS.sleep(300);
 						break;
@@ -951,7 +984,7 @@ public class IndexController
 					case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 						TimeUnit.MILLISECONDS.sleep(300);
 						break;
-					case Constants.BAN_AFG_SERIES: case Constants.WCL:  case Constants.ACC:
+					case Constants.BAN_AFG_SERIES: case Constants.WCL:  case Constants.ACC: case Constants.AFG_SERIES:
 						TimeUnit.MILLISECONDS.sleep(700);
 						break;
 					}
@@ -1302,7 +1335,7 @@ public class IndexController
 	{
 		switch (config.getBroadcaster()) {
 		case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
-		case Constants.MT20: case Constants.TG20: case Constants.APLT20:
+		case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
 			switch (typeOfUpdate) {
 			case "START_DB":
 				session_performance_bug = cricketService.getPerformanceBugs();

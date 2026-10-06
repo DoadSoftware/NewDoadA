@@ -385,7 +385,7 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					this_infobarGfx.infobar.setInfobar_ident_section(whatToProcess.split(",")[3]);
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: 
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES:
 					this_infobarGfx.infobar.setInfobar_ident_section(whatToProcess.split(",")[2]);
 					break;
 				}
@@ -397,7 +397,7 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					status = this_infobarGfx.infoIdentSection(print_writers, whatToProcess, matchAllData, 1,whichSide);
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: 
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES:
 					status = this_infobarGfx.infoIdentSection(print_writers, whatToProcess, matchAllData, whichSide,1);
 					break;
 				}
@@ -639,6 +639,9 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					status = this_infobarGfx.populateSection1(print_writers, matchAllData, whichSide);
 					break;
+				case Constants.AFG_SERIES:
+					status = this_infobarGfx.populateSection1(print_writers, matchAllData, whichSide);
+					break;
 				case Constants.BCCI:
 					status = this_infobarGfx.populateVizInfobarLeftBottom(print_writers, matchAllData, whichSide);
 					break;
@@ -735,6 +738,15 @@ public class Caption
 				break;
 			case "Alt_5":
 				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.AFG_SERIES:
+					this_infobarGfx.infobar.setSection5(whatToProcess.split(",")[2]);
+					if(whatToProcess.split(",")[2].equalsIgnoreCase("LastXBalls")) {
+						this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
+					}else if(whatToProcess.split(",")[2].equalsIgnoreCase("CURR_PARTNERSHIP")) {
+						this_infobarGfx.photoCategory = whatToProcess.split(",")[3];
+					}
+					status = this_infobarGfx.populateSection5(print_writers, matchAllData, whichSide);
+					break;
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
 					whichSide = (this_infobarGfx.infobar.getSection5() != null && !this_infobarGfx.infobar.getSection5().isEmpty() 
 		            && !this_infobarGfx.infobar.getSection5().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 1;
@@ -778,6 +790,14 @@ public class Caption
 				break;
 			case "Alt_7":
 				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.AFG_SERIES:
+					this_infobarGfx.infobar.setSection3(whatToProcess.split(",")[2]);
+					if(whatToProcess.split(",")[2].equalsIgnoreCase("LastXBalls")) {
+						this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
+					}
+					
+					status = this_infobarGfx.populateSection3(print_writers, matchAllData, 1, whichSide);
+					break;
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.ACC: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					this_infobarGfx.infobar.setSection3(whatToProcess.split(",")[2]);
 					
@@ -785,7 +805,7 @@ public class Caption
 						this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
 					}
 					
-					status = this_infobarGfx.populateSection3(print_writers, matchAllData, whichSide);
+					status = this_infobarGfx.populateSection3(print_writers, matchAllData, whichSide, 1);
 					break;
 				case Constants.BCCI:
 					this_infobarGfx.infobar.setSection4(whatToProcess.split(",")[2]);
@@ -796,7 +816,7 @@ public class Caption
 			case "Alt_8":
 				System.out.println(whatToProcess + "   this_infobarGfx.infobar.getSectionLtAnalytics() = " + this_infobarGfx.infobar.getSectionLtAnalytics());
 				switch(config.getBroadcaster()) {
-				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
 					whichSide = ((this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 		            && !this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 
 		            	(this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty() 
