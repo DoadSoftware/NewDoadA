@@ -258,18 +258,18 @@ public class Animation
 				break;
 				
 			case "Alt_p": case "y": case "g": case "Control_k": case "Shift_F4": case "k": case "Control_y": case "h": case "Shift_O": 
-			case "Shift_F": case "Control_Shift_F3": case "Control_Shift_R":
+			case "Shift_F": case "Control_Shift_F3": case "Control_Shift_R": case "Shift_C":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(300);
 				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-			case "Shift_C":
-				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
-				TimeUnit.MILLISECONDS.sleep(500);
-				processAnimation(Constants.FRONT, print_writers, "SixDistance", "START");
-				this.whichGraphicOnScreen = whatToProcess;
-				break;
+//			case "Shift_C":
+//				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+//				TimeUnit.MILLISECONDS.sleep(500);
+//				processAnimation(Constants.FRONT, print_writers, "SixDistance", "START");
+//				this.whichGraphicOnScreen = whatToProcess;
+//				break;
 				
 			case "m": case "Control_m":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
@@ -2350,18 +2350,18 @@ public class Animation
 				
 			//Bug
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":
-			case "Control_Shift_R": case "Control_Shift_F3": case "Alt_p":
+			case "Control_Shift_R": case "Control_Shift_F3": case "Alt_p": case "Shift_C":
 				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
-			case "Shift_C":
-				processAnimation(Constants.FRONT, print_writers, "SixDistance", "CONTINUE");
-				TimeUnit.MILLISECONDS.sleep(700);
-				processAnimation(Constants.FRONT, print_writers, "SixDistance", "SHOW 0.0");
-				this.whichGraphicOnScreen = "";
-				break;
+//			case "Shift_C":
+//				processAnimation(Constants.FRONT, print_writers, "SixDistance", "CONTINUE");
+//				TimeUnit.MILLISECONDS.sleep(700);
+//				processAnimation(Constants.FRONT, print_writers, "SixDistance", "SHOW 0.0");
+//				this.whichGraphicOnScreen = "";
+//				break;
 				
 			//FF
 			case "m": case "Control_m":

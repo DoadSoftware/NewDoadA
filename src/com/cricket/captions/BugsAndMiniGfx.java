@@ -1053,23 +1053,45 @@ public class BugsAndMiniGfx
 				
 				break;
 			case "Shift_C":
-				
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.BAN_AFG_SERIES: case Constants.WCL:
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$img_Base2*TEXTURE*IMAGE SET " 
-							+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$img_Text2*TEXTURE*IMAGE SET " 
-							+ Constants.BAN_AFG_SERIES_TEXT2 + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
+				case Constants.AFG_SERIES:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$BugLogo$img_Badges*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_BADGES + inning.getBatting_team().getTeamBadge() + "\0",print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll"
+							+ "*ACTIVE SET 1\0",print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info01"
+							+ "*GEOM*TEXT SET " + "" + "\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$Info02"
+							+ "*GEOM*TEXT SET " + " " + "\0",print_writers);
+
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$group$Info03"
+							+ "*GEOM*TEXT SET " + "SIX DISTANCE " + whatToProcess.split(",")[2] + "\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll$PlayerNameGrp$group$Info04"
+							+ "*GEOM*TEXT SET " + "" + "\0",print_writers);
+					break;
+				default:
+					switch (config.getBroadcaster().toUpperCase()) {
+					case Constants.BAN_AFG_SERIES: case Constants.WCL:
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$img_Base2*TEXTURE*IMAGE SET " 
+								+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$img_Text2*TEXTURE*IMAGE SET " 
+								+ Constants.BAN_AFG_SERIES_TEXT2 + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
+						break;
+					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 0\0",print_writers);
+
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$TextAll$img_Text2$txt_Header*GEOM*TEXT SET SIX DISTANCE\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$TextAll$img_Text2$txt_Distance*ANIMATION*KEY*$S*VALUE SET " 
+							+ whatToProcess.split(",")[2] + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$TextAll$img_Text2$Meters*GEOM*TEXT SET METERS\0", print_writers);
+					
 					break;
 				}
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 0\0",print_writers);
-
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$TextAll$img_Text2$txt_Header*GEOM*TEXT SET SIX DISTANCE\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$TextAll$img_Text2$txt_Distance*ANIMATION*KEY*$S*VALUE SET " 
-						+ whatToProcess.split(",")[2] + "\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Six_Distance$TextAll$img_Text2$Meters*GEOM*TEXT SET METERS\0", print_writers);
 				
 				break;
 				
@@ -5374,7 +5396,7 @@ public class BugsAndMiniGfx
 					}
 					
 //					if(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() == 0 || matchAllData.getMatch().getInning().get(1).getTotalWickets() >= 10 || 
-//							CricketFunctions.GetTargetData(matchAllData).getRemaningBall()  == 0) {
+//							CricketFunctions.GetTargetData(matchAllData).getRemaningBall() == 0) {
 //						omo_numr = 0;
 //						cont_names = "$Dehighlight";
 //					}else {

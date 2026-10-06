@@ -2706,6 +2706,48 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.id = 'selectRightBottom';
 				select.name = select.id;
 				
+				if(session_match.setup.matchType == 'TEST' ||session_match.setup.matchType == 'FC'){
+					option = document.createElement('option');
+					option.value = 'DAY_SESSION';
+					option.text = 'Day & Session';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'LOCAL-TIME';
+					option.text = 'Local Time';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'BOTH_TEAMS_SCORE';
+					option.text = 'Team score';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'CURRENT_SESSION';
+					option.text = 'Current Session Run Rate';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'FOLLOW_ON';
+					option.text = 'Follow On';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'REMAINING_OVERS';
+					option.text = 'Remaining Overs';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'NEW_BALL_DUE';
+					option.text = 'New Ball Due';
+					select.appendChild(option);
+				}else {
+					option = document.createElement('option');
+					option.value = 'FIRST_INNING_SCORE';
+					option.text = 'First Inning Score';
+					select.appendChild(option);
+				}
+				
 				option = document.createElement('option');
 				option.value = 'OVER';
 				option.text = 'This Over';
@@ -2729,6 +2771,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 				option = document.createElement('option');
 				option.value = 'EXTRAS';
 				option.text = 'Extras';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'VENUE';
+				option.text = 'Venue Name';
 				select.appendChild(option);
 				
 				break;
@@ -3065,7 +3112,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'AFG_SERIES':
 					const dropdownoption = [
 					  { value: 'BLANK', text: 'Blank' },
-					  //{ value: 'IDENT', text: 'Ident' },
+					  { value: 'IDENT', text: 'Ident' },
 					  //{ value: 'Commentators', text: 'Commentators' },
   					  //{ value: 'FreeTextDb', text: 'FreeText DB' },
   					  { value: 'TIMELINE', text: 'TimeLine' },
