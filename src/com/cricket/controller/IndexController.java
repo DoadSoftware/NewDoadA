@@ -445,6 +445,7 @@ public class IndexController
 			
 			switch (session_configuration.getBroadcaster()) {
 			case Constants.BCCI: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
+			case Constants.AFG_SERIES:
 				if(show_speed == true) {
 					if (speedFile.exists()) {
 						long currentTimestamp = speedFile.lastModified();
@@ -951,7 +952,7 @@ public class IndexController
 					this_animation.AnimateIn(valueToProcess, print_writers, session_configuration);
 				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_e")){
 					GetGraphicOption(valueToProcess,session_configuration);
-				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_2")) {
+				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_1")) {
 					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 					switch (session_configuration.getBroadcaster()) {
 					case Constants.AFG_SERIES:

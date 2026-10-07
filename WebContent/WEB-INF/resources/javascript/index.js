@@ -420,6 +420,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'F1':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'AFG_SERIES':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
@@ -435,7 +436,8 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 				break;
 			case 'Control_F11':
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': 
+				case 'AFG_SERIES':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
@@ -2279,18 +2281,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 				addOptionData('CURR_PARTNERSHIP', 'Partnership');
 		
 		        if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
-		            //addOptionData('DAY_SESSION', 'Day Session');
-		            //addOptionData('LOCAL-TIME', 'Local Time');
-		            //addOptionData('LUNCH_TEXT', 'Lunch Text');
-		            //addOptionData('TEA_TEXT', 'Tea Text');
-		
 		            session_match.match.inning.forEach(function(inn){
 		                if(inn.isCurrentInning === 'YES'){
 		                    if(inn.inningNumber === 1){
 		                        addOptionData('TOSS', 'Toss');
 		                    } else if(inn.inningNumber === 2){
-		                        //addOptionData('FIRST_INNING_SCORE', '1st Inning Score');
-		                    } else if(inn.inningNumber === 4){
+		                        addOptionData('EQUATION', 'Equation');
+		                    } else if(inn.inningNumber === 3){
+							    addOptionData('EQUATION', 'Equation');
+							}else if(inn.inningNumber === 4){
+								addOptionData('EQUATION', 'Equation');
 		                        //addOptionData('TARGET', 'Target');
 		                        //addOptionData('RRR', 'Required Rate');
 		                    }
@@ -3120,6 +3120,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
 					  //{ value: 'FreeText', text: 'FreeText' },
 					  //{ value: 'Sponsor', text: 'Sponsor' },
+					  //{ value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
+					  { value: 'BATSMANBOUNDARY', text: 'BATSMAN BOUNDARY' },
+					  { value: 'BOWLERDOTS', text: 'BOWLER DOTS' },
 					];
 					
 					dropdownoption.forEach(({ value, text }) => {
