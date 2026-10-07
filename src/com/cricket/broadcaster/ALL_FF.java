@@ -14579,6 +14579,8 @@ public class ALL_FF
 			for(int i=0; i<=leagueTable.getLeagueTeams().size()-1;i++) {
 				rowId ++;
 				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$StandingGrp*FUNCTION*Grid*num_row SET " + (rowId + 1) + "\0", print_writers);
+				
 				if(matchAllData.getSetup().getHomeTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
 						|| matchAllData.getSetup().getAwayTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$Row" + 

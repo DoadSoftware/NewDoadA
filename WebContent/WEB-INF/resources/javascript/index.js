@@ -4137,6 +4137,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.text = 'TEST MATCHES';
 					select.appendChild(option);
 					break;
+				case 'AFG_SERIES':
+
+					option = document.createElement('option');
+					option.value = 'TEST';
+					option.text = 'TEST MATCHES';
+					select.appendChild(option);
+					break;	
 				case 'ACC':
 						
 					option = document.createElement('option');
@@ -4356,6 +4363,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'AFG_SERIES':
+
+					option = document.createElement('option');
+					option.value = 'TEST';
+					option.text = 'TEST MATCHES';
+					select.appendChild(option);
+					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20':
 					
 					option = document.createElement('option');
@@ -4601,7 +4615,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectSplit';
 			select.name = select.id;
 			
-			if (session_match.setup.matchType === 'ODI' || session_match.setup.matchType === 'OD'){
+			if (session_match.setup.matchType === 'ODI' || session_match.setup.matchType === 'OD' || 
+								session_match.setup.matchType === 'TEST'){
 				option = document.createElement('option');
 				option.value = '50';
 				option.text = '50-Split';

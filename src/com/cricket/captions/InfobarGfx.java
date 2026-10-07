@@ -749,10 +749,12 @@ public class InfobarGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$img_Text*TEXTURE*IMAGE SET " 
 						+ Constants.BAN_AFG_SERIES_TEXT + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BatsmanGrp$OnStrikeGrp$img_Base1*TEXTURE*IMAGE SET " 
-						+ Constants.BAN_AFG_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BatsmanGrp$img_Text*TEXTURE*IMAGE SET " 
 						+ Constants.BAN_AFG_SERIES_TEXT + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BatsmanGrp$img_Base2*TEXTURE*IMAGE SET " 
+						+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BowlingBadge$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET " 
 						+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
