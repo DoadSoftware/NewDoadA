@@ -3711,16 +3711,14 @@ public class Animation
 			 case "Control_Shift_R": case "Control_Shift_F3":
 				processAnimation(Constants.FRONT, print_writers, "Bugs$Change", "START");
 				break;
-			 case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8":
-				case "Control_F6": case "Control_F5": case "Control_F9":
-				case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12":
-				case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":	
-				case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B":
-				case "Control_Shift_O": case "Control_h": case "Control_F3": case "d":	
-					
-					processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$Change", "START");
-					
-					break;
+				
+			 case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9":
+			 case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": 
+			 case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": 
+			 case "Control_h": case "Control_F3": case "d":
+				processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$Change", "START");
+				break;
+				
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change", "START");
 				break;
