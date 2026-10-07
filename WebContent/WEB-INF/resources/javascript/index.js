@@ -1710,6 +1710,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+			case 'AFG_SERIES':
 				select = document.createElement('select');
 				select.id = 'selectPlayerName';
 				select.name = select.id;
@@ -1775,7 +1776,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.value = 'DT20';
 					option.text = 'T20';
 					select.appendChild(option);
-				switch(whatToProcess){
+					switch(whatToProcess){
 					case "Alt_4":
 						option = document.createElement('option');
 						option.value = 'THIS_SERIES';
@@ -1783,6 +1784,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 						select.appendChild(option);
 						break;
 					}
+					break;
+				case 'AFG_SERIES':
+					option = document.createElement('option');
+					option.value = 'TEST';
+					option.text = 'TEST MATCHES';
+					select.appendChild(option);
 					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20':
 					

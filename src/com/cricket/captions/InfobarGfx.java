@@ -181,6 +181,15 @@ public class InfobarGfx
 							CricketUtil.FULL, "|", config.getBroadcaster(), false).isMatchFinished() == true) {
 
 							populateInfoBarResult(print_writers, matchAllData);
+							
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Batsman_Side$Base$In_Out", "CONTINUE");
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Batsman_Side$Rest_data$In_Out", "CONTINUE");
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Base$In_Out", "CONTINUE");
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Rest_Data_ALL$In_Out", "CONTINUE");
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Bowler$In_Out", "CONTINUE");
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Bowler_Bottom$In_Out", "CONTINUE");
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Powerplay$In_Out", "CONTINUE");
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Ident$In_Out", "CONTINUE");
 
 							this.infobar.setResult_on_screen(true);
 						}else {
@@ -756,12 +765,10 @@ public class InfobarGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$img_Text*TEXTURE*IMAGE SET " 
 						+ Constants.BAN_AFG_SERIES_TEXT + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BatsmanGrp$OnStrikeGrp$img_Base1*TEXTURE*IMAGE SET " 
-						+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ Constants.BAN_AFG_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BatsmanGrp$img_Text*TEXTURE*IMAGE SET " 
 						+ Constants.BAN_AFG_SERIES_TEXT + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BatsmanGrp$img_Base2*TEXTURE*IMAGE SET " 
-						+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$BowlingBadge$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET " 
 						+ Constants.BAN_AFG_SERIES_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
@@ -1479,6 +1486,24 @@ public class InfobarGfx
 	
 	public String populateInfoBarResult(List<PrintWriter> print_writers, MatchAllData matchAllData) {
 		switch (config.getBroadcaster()) {
+		case Constants.AFG_SERIES:
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$LeftTeamLogo_Ident$img_Logo*TEXTURE*IMAGE SET " 
+					+ Constants.AFG_SERIES_BADGES + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$RightTeamLogo_Ident$img_Logo*TEXTURE*IMAGE SET " 
+					+ Constants.AFG_SERIES_BADGES + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$LeftTeamLogo_Ident$img_Base*TEXTURE*IMAGE SET " 
+					+ Constants.AFG_SERIES_BASE_Ident + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$RightTeamLogo_Ident$Img_Base*TEXTURE*IMAGE SET " 
+					+ Constants.AFG_SERIES_BASE_Ident + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$txt_TopData*GEOM*TEXT SET " 
+					+ matchAllData.getSetup().getHomeTeam().getTeamName1() + " vs " + matchAllData.getSetup().getAwayTeam().getTeamName1() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$Bottom_Info_Grp$Side1$txt_Info"
+					+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
+							config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAW") + "\0", print_writers);
+			break;
 		case Constants.AFG_SL_SERIES:
 			//Logo
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$Team1$LogoGrp$Logo$img_Logo*TEXTURE*IMAGE SET " 
@@ -5897,10 +5922,10 @@ public class InfobarGfx
 										false).getTargetOrResult().toUpperCase() + "\0", print_writers);
 					}else if(inning.getInningNumber() == 4) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Header"
-								+ "*GEOM*TEXT SET \0", print_writers);
+								+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName4() + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + "\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Data1"
-								+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
-										false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+								+ "*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() 
+								+ " TO WIN" + "\0", print_writers);
 					}
 					break;
 				case "CURR_PARTNERSHIP": case "CRR":
