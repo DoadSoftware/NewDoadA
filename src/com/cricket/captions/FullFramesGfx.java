@@ -683,7 +683,7 @@ public class FullFramesGfx
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.AFG_SERIES:
 			switch (this_ALL_FF.WhichProfile.toUpperCase()) {
-			case "TEST":
+			case "TEST": case "DT20": case "IT20": case "ODI": case "LIST A": case "FC":
 				this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(this_ALL_FF.WhichProfile)).findAny().orElse(null);
 				if(this_ALL_FF.statsType == null) {
 					return "populatePlayerProfile: Stats Type not found for profile [" + this_ALL_FF.WhichProfile + "]";
@@ -695,8 +695,14 @@ public class FullFramesGfx
 					return "populatePlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
 				}
 				
-				//this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
-				//this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+				switch (this_ALL_FF.WhichProfile.toUpperCase()) {
+				case "TEST":
+					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
+					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
+					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+					break;
+				}
 				break;
 			}
 			break;

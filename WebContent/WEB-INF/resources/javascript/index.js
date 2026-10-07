@@ -1372,10 +1372,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 					session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
 						const opts = (inn.inningNumber == 1)
-							? [{ value: 'TOSS', text: 'Toss' }, { value: 'VENUE', text: 'Venue' }, { value: 'SUPEROVER', text: 'Super Over'}]
-							: [{ value: 'TARGET', text: 'Target'},{ value: 'VENUE', text: 'Venue' },
-							{ value: 'EQUATION', text: 'Equation'},{ value: 'SUPEROVER', text: 'Super Over'},
-							{ value: 'RESULT', text: 'Result'}];
+							? [{ value: 'VENUE', text: 'Venue' },{ value: 'TOSS', text: 'Toss' }, { value: 'SUPEROVER', text: 'Super Over'}]
+							: [{ value: 'VENUE', text: 'Venue' }, { value: 'TARGET', text: 'Target'}, { value: 'EQUATION', text: 'Equation'},
+								{ value: 'SUPEROVER', text: 'Super Over'},{ value: 'RESULT', text: 'Result'}];
 						
 						opts.forEach(({ value, text }) => {
 							const option = new Option(text, value);
@@ -1522,6 +1521,31 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option = document.createElement('option');
 					option.value = 'TEST';
 					option.text = 'TEST MATCHES';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'FC';
+					option.text = 'First Class';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'T20-I';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'LIST A';
+					option.text = 'LIST A';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'ODI';
+					option.text = 'ODI';
 					select.appendChild(option);
 					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20':
@@ -1789,6 +1813,31 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option = document.createElement('option');
 					option.value = 'TEST';
 					option.text = 'TEST MATCHES';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'FC';
+					option.text = 'First Class';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'T20-I';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'LIST A';
+					option.text = 'LIST A';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'ODI';
+					option.text = 'ODI';
 					select.appendChild(option);
 					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20':
@@ -2286,6 +2335,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				addOptionData('BATSMAN', 'Batsman');
 	            addOptionData('CRR', 'Run Rate');
 				addOptionData('CURR_PARTNERSHIP', 'Partnership');
+				addOptionData('IDENT', 'Ident');
 		
 		        if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
 		            session_match.match.inning.forEach(function(inn){
@@ -2293,9 +2343,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 		                    if(inn.inningNumber === 1){
 		                        addOptionData('TOSS', 'Toss');
 		                    } else if(inn.inningNumber === 2){
-		                        addOptionData('EQUATION', 'Equation');
+		                        addOptionData('EQUATION', 'Equation (Trail/Lead)');
 		                    } else if(inn.inningNumber === 3){
-							    addOptionData('EQUATION', 'Equation');
+							    addOptionData('EQUATION', 'Equation (Trail/Lead)');
 							}else if(inn.inningNumber === 4){
 								addOptionData('EQUATION', 'Equation');
 		                        //addOptionData('TARGET', 'Target');
@@ -2725,9 +2775,70 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					
 					option = document.createElement('option');
-					option.value = 'BOTH_TEAMS_SCORE';
-					option.text = 'Team score';
+					option.value = 'IDENT';
+					option.text = 'Ident';
 					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'BOTH_TEAMS_SCORE';
+					option.text = 'Teams Score';
+					select.appendChild(option);
+					
+					session_match.match.inning.forEach(function(inn){
+					    if(inn.isCurrentInning === 'YES'){
+					        if(inn.inningNumber === 1){
+								option = document.createElement('option');
+								option.value = 'TOSS';
+								option.text = 'Toss';
+								select.appendChild(option);
+					        } else if(inn.inningNumber === 2){
+								option = document.createElement('option');
+								option.value = 'EQUATION';
+								option.text = 'Equation (Trail/Lead)';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
+								option.value = 'FIRST_INNING_SCORE';
+								option.text = 'First Inning Score';
+								select.appendChild(option);
+					        } else if(inn.inningNumber === 3){
+								option = document.createElement('option');
+								option.value = 'EQUATION';
+								option.text = 'Equation (Trail/Lead)';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
+								option.value = 'FIRST_INNING_SCORE';
+								option.text = 'First Inning Score';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
+								option.value = 'SECOND_INNING_SCORE';
+								option.text = 'Second Inning Score';
+								select.appendChild(option);
+							}else if(inn.inningNumber === 4){
+								option = document.createElement('option');
+								option.value = 'EQUATION';
+								option.text = 'Equation ';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
+								option.value = 'FIRST_INNING_SCORE';
+								option.text = 'First Inning Score';
+								select.appendChild(option);
+
+								option = document.createElement('option');
+								option.value = 'SECOND_INNING_SCORE';
+								option.text = 'Second Inning Score';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
+								option.value = 'THIRD_INNING_SCORE';
+								option.text = 'Third Inning Score';
+								select.appendChild(option);
+					        }
+					    }
+					});
 					
 					option = document.createElement('option');
 					option.value = 'CURRENT_SESSION';
@@ -3128,11 +3239,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
 					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
 					  { value: 'BowlerTimeLine', text: 'Bowler TimeLine' },
+					  { value: 'Team_Summary', text: 'Team 0s,1s,2s (This Match)' },
+					  { value: 'Team_Summary_Inning', text: 'Team 0s,1s,2s (This Innings)' },
 					  //{ value: 'Sponsor', text: 'Sponsor' },
 					  //{ value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
 					  { value: 'BATSMANBOUNDARY', text: 'BATSMAN BOUNDARY' },
 					  { value: 'BOWLERDOTS', text: 'BOWLER DOTS' },
 					];
+					
+					session_match.match.inning.forEach(function(inn){
+						if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+							dropdownoption.push(
+							    { value: 'EQUATION', text: 'Equation (Trail/Lead)'}
+							);
+						}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 3){
+							dropdownoption.push(
+							    { value: 'EQUATION', text: 'Equation (Trail/Lead)'}
+							);
+						}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 4){
+							dropdownoption.push(
+							    { value: 'EQUATION', text: 'Equation'}
+							);
+						}
+					});
 					
 					dropdownoption.forEach(({ value, text }) => {
 					  const option = document.createElement('option');
@@ -3273,7 +3402,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 				select.addEventListener('change', function () {
 					['selectFreeText', 'selectFreeText1', 'Player1', 'Player2', 'Player3', 'selectPhoto', 'FreeText', 
-						'SponsorValue', 'selectTeams'].forEach(id => {
+						'SponsorValue', 'selectTeams', 'selectPhotoData'].forEach(id => {
 					    const el = document.getElementById(id);
 					    if (el) {
 					        id === 'selectFreeText' ? el.parentElement.remove() : el.remove();
@@ -3366,7 +3495,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 							setDropdownOptionToSelectOptionArray($(xballselect),1);
 							cellCount = 2;
 						}
-					}else if(this.value === 'RECENT_FORM'){
+					}else if(this.value === 'RECENT_FORM' || this.value === 'Team_Summary'){
 						// === 2. Team Dropdown ===
 						let teamSelect = document.createElement('select');
 						teamSelect.id = 'selectTeams';
@@ -3495,7 +3624,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						row.insertCell(2).appendChild(ballselect);
 						setDropdownOptionToSelectOptionArray($(ballselect),2);
 						cellCount = 3;
-}					else if(this.value == 'INNINGSBUILDER' || this.value == 'BATSMANBOUNDARY'){
+					}else if(this.value == 'INNINGSBUILDER' || this.value == 'BATSMANBOUNDARY'){
 						let xballselect  = document.createElement('select');
 						xballselect.id = 'selectFreeText';
 						xballselect.name = xballselect.id;

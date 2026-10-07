@@ -687,54 +687,97 @@ public class Caption
 				}
 				break;
 			case "Alt_3": case "Alt_4":
-				System.out.println("whatToProcess = " + whatToProcess);
-				if(this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty()) {
-					switch(whatToProcess.split(",")[0]) {
-					case "Alt_3":
-						if (!this_infobarGfx.infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP") ||
-						    this_infobarGfx.PP_Id != Integer.valueOf(whatToProcess.split(",")[2]) ||
-						    !this_infobarGfx.WhichProfile.equalsIgnoreCase(whatToProcess.split(",")[3])) {
-						    
-						    whichSide = 2;
-						} else {
-						    whichSide = 1;
-						}
-						this_infobarGfx.infobar.setSectionLtAnalytics("BAT_PP");
-						break;
-					case "Alt_4":
-						if (!this_infobarGfx.infobar.getSectionLtAnalytics().equalsIgnoreCase("BALL_PP") ||
-						    this_infobarGfx.PP_Id != Integer.valueOf(whatToProcess.split(",")[2]) ||
-						    !this_infobarGfx.WhichProfile.equalsIgnoreCase(whatToProcess.split(",")[3])) {
-						    
-						    whichSide = 2;
-						} else {
-						    whichSide = 1;
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.AFG_SERIES:
+					if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
+						switch(whatToProcess.split(",")[0]) {
+						case "Alt_3":
+							if (!this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP")) {
+							    whichSide = 2;
+							} else {
+							    whichSide = 1;
+							}
+							this_infobarGfx.infobar.setSectionAnalytics("BAT_PP");
+							break;
+						case "Alt_4":
+							if (!this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BALL_PP")) {
+							    whichSide = 2;
+							} else {
+							    whichSide = 1;
+							}
+							
+							this_infobarGfx.infobar.setSectionAnalytics("BALL_PP");
+							break;
 						}
 						
-						this_infobarGfx.infobar.setSectionLtAnalytics("BALL_PP");
-						break;
+						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+					}else {
+						whichSide = 1;
+						switch(whatToProcess.split(",")[0]) {
+						case "Alt_3":
+							this_infobarGfx.infobar.setSectionAnalytics("BAT_PP");
+							break;
+						case "Alt_4":
+							this_infobarGfx.infobar.setSectionAnalytics("BALL_PP");
+							break;
+						}
+						
+						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+					}
+					status = this_infobarGfx.populateFullSection(print_writers, matchAllData, whichSide);
+					break;
+				default:
+					if(this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty()) {
+						switch(whatToProcess.split(",")[0]) {
+						case "Alt_3":
+							if (!this_infobarGfx.infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP") ||
+							    this_infobarGfx.PP_Id != Integer.valueOf(whatToProcess.split(",")[2]) ||
+							    !this_infobarGfx.WhichProfile.equalsIgnoreCase(whatToProcess.split(",")[3])) {
+							    
+							    whichSide = 2;
+							} else {
+							    whichSide = 1;
+							}
+							this_infobarGfx.infobar.setSectionLtAnalytics("BAT_PP");
+							break;
+						case "Alt_4":
+							if (!this_infobarGfx.infobar.getSectionLtAnalytics().equalsIgnoreCase("BALL_PP") ||
+							    this_infobarGfx.PP_Id != Integer.valueOf(whatToProcess.split(",")[2]) ||
+							    !this_infobarGfx.WhichProfile.equalsIgnoreCase(whatToProcess.split(",")[3])) {
+							    
+							    whichSide = 2;
+							} else {
+							    whichSide = 1;
+							}
+							
+							this_infobarGfx.infobar.setSectionLtAnalytics("BALL_PP");
+							break;
+						}
+						
+						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+						
+					}else {
+						whichSide = 1;
+						
+						switch(whatToProcess.split(",")[0]) {
+						case "Alt_3":
+							this_infobarGfx.infobar.setSectionLtAnalytics("BAT_PP");
+							break;
+						case "Alt_4":
+							this_infobarGfx.infobar.setSectionLtAnalytics("BALL_PP");
+							break;
+						}
+						
+						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
 					}
 					
-					this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
-					this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
-					
-				}else {
-					whichSide = 1;
-					
-					switch(whatToProcess.split(",")[0]) {
-					case "Alt_3":
-						this_infobarGfx.infobar.setSectionLtAnalytics("BAT_PP");
-						break;
-					case "Alt_4":
-						this_infobarGfx.infobar.setSectionLtAnalytics("BALL_PP");
-						break;
-					}
-					
-					this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
-					this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+					status = this_infobarGfx.populateSectionLtAnalytics(print_writers, matchAllData, whichSide);
+					break;
 				}
-				
-				status = this_infobarGfx.populateSectionLtAnalytics(print_writers, matchAllData, whichSide);
 				break;
 			case "Alt_5":
 				switch (config.getBroadcaster().toUpperCase()) {
@@ -814,9 +857,10 @@ public class Caption
 				}
 				break;
 			case "Alt_8":
-				System.out.println(whatToProcess + "   this_infobarGfx.infobar.getSectionLtAnalytics() = " + this_infobarGfx.infobar.getSectionLtAnalytics());
 				switch(config.getBroadcaster()) {
-				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: 
+				case Constants.APLT20: case Constants.AFG_SERIES:
+					
 					whichSide = ((this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 		            && !this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 
 		            	(this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty() 
@@ -894,6 +938,12 @@ public class Caption
 						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("RECENT_FORM")) {
 							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("RECENT_FORM")) {
+								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
+							}
+							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
+						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("Team_Summary")) {
+							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("Team_Summary")) {
 								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
 							}
 							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);

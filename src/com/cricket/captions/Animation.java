@@ -58,7 +58,7 @@ public class Animation
 		case Constants.AFG_SERIES:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "Shift_F12":
-			case "Alt_1": case "Alt_5": case "Alt_7": case "Alt_8":
+			case "Alt_1": case "Alt_3": case "Alt_4": case "Alt_5": case "Alt_7": case "Alt_8":
 				return Constants.INFO_BAR;
 			case "m": case "Control_d": case "Control_e": case "F1": case "F2": case "Control_F11": case "Control_F7":
 				return Constants.FULL_FRAMER;
@@ -3683,7 +3683,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Bowler_Bottom$Change", "START");
 				caption.this_infobarGfx.infobar.setLast_section3(caption.this_infobarGfx.infobar.getSection3());
 				break;
-			case "Alt_8":
+			case "Alt_3": case "Alt_4": case "Alt_8":
 				if (caption.this_infobarGfx.infobar.getSectionAnalytics() == null || caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Base$In_Out", "CONTINUE");
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Data$In_Out", "CONTINUE");
@@ -4866,7 +4866,7 @@ public class Animation
 			case "Alt_7":
 				processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Bowler_Bottom$Change", "SHOW 0.0");
 				break;
-			case "Alt_8":
+			case "Alt_3": case "Alt_4": case "Alt_8":
 				if(caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$Data$Change", "SHOW 0.0");
 				}
