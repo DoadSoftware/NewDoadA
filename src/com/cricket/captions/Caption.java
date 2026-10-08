@@ -969,6 +969,12 @@ public class Caption
 								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
 							}
 							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
+						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("BOWLERDOTS")) {
+							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BOWLERDOTS")) {
+								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
+							}
+							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
 						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("Batsman_Summary")) {
 							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("Batsman_Summary")) {

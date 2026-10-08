@@ -3702,7 +3702,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						setDropdownOptionToSelectOptionArray($(ballselect),1);
 						cellCount = 2;
 					}
-					else if(this.value == 'BowlerTimeLine'){
+					else if(this.value == 'BowlerTimeLine' || this.value === 'BOWLERDOTS'){
 						let xballselect  = document.createElement('select');
 						xballselect.id = 'selectFreeText';
 						xballselect.name = xballselect.id;

@@ -32,6 +32,7 @@ public class Constants
 	public final static String RIGHT_1024 = "\\\\RIGHT_1024\\\\";
 	public final static String RIGHT_2048 = "\\RIGHT_2048\\\\";
 	public final static String STRAIGHT_1024 = "\\\\STRAIGHT_1024\\\\";
+	public final static String STRAIGHT_2048 = "\\\\STRAIGHT_2048\\\\";
 	public final static String SMALL_512 = "\\\\SMALL_512\\\\";
 	public final static String BIG_1024 = "\\\\BIG_1024\\\\";
 	public final static String BLANK_IMG = "\\\\Blank";

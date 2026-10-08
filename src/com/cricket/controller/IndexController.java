@@ -771,6 +771,16 @@ public class IndexController
 				processAnimations(whatToProcess, session_configuration, valueToProcess, print_writers);
 			}else if(whatToProcess.contains("ANIMATE-OUT-SECOND_PLAYING")) {
 				switch (session_configuration.getBroadcaster()) {
+				case Constants.AFG_SERIES:
+					if(this_animation.whichGraphicOnScreen.contains("Control_Shift_F7")) {
+						this_animation.lineUpCount++;
+						if(this_animation.lineUpCount > 2) {
+							this_animation.processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$Main$Change_In", "CONTINUE");
+						} else {
+							this_animation.processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$In_Out", "CONTINUE");
+						}
+					}
+					break;
 				case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					if(this_animation.whichGraphicOnScreen.contains("Control_Shift_F7")) {
 						this_animation.lineUpCount++;

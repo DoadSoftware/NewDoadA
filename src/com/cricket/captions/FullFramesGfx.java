@@ -696,7 +696,7 @@ public class FullFramesGfx
 				}
 				
 				switch (this_ALL_FF.WhichProfile.toUpperCase()) {
-				case "TEST":
+				case "TEST": case "FC":
 					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
 					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
