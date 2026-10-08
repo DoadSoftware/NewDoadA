@@ -6540,8 +6540,22 @@ public class LowerThirdGfx
 						+ "$Select$BowlerBowlingDetails$TopGrp$HeaderGrp$txt_Header1*GEOM*TEXT SET "
 						+ lowerThird.getFirstName() + " " + lowerThird.getSurName() + "\0",print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-						+ "$Select$BowlerBowlingDetails$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET \0",print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+//						+ "$Select$BowlerBowlingDetails$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET \0",print_writers);
+				
+				if(inning.getInningNumber() == 1) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$BowlerBowlingDetails$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 1st INNS\0",print_writers);
+				}else if(inning.getInningNumber() == 2) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$BowlerBowlingDetails$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 1st INNS\0",print_writers);
+				}else if(inning.getInningNumber() == 3) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$BowlerBowlingDetails$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 2nd INNS\0",print_writers);
+				}else if(inning.getInningNumber() == 4) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$BowlerBowlingDetails$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 2nd INNS\0",print_writers);
+				}
 				
     			break;
     		case "F5":
@@ -6584,9 +6598,22 @@ public class LowerThirdGfx
 						+ "$Select$PlayerStats$TopGrp$HeaderGrp$txt_Header1*GEOM*TEXT SET "
 						+ lowerThird.getFirstName() + " " + lowerThird.getSurName() + "\0",print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-						+ "$Select$PlayerStats$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET \0",print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+//						+ "$Select$PlayerStats$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET \0",print_writers);
 				
+				if(inning.getInningNumber() == 1) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$PlayerStats$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 1st INNS\0",print_writers);
+				}else if(inning.getInningNumber() == 2) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$PlayerStats$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 1st INNS\0",print_writers);
+				}else if(inning.getInningNumber() == 3) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$PlayerStats$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 2nd INNS\0",print_writers);
+				}else if(inning.getInningNumber() == 4) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
+							+ "$Select$PlayerStats$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET 2nd INNS\0",print_writers);
+				}
 
 				if (lowerThird.getSubTitle().equalsIgnoreCase(CricketUtil.NOT_OUT)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
