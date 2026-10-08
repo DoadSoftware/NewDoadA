@@ -3786,31 +3786,59 @@ function addItemsToList(whatToProcess,dataToProcess)
 				cellCount = cellCount + 1;
 				
 				switch(whatToProcess) {
-				case 'Control_F9': case 'Control_Shift_F9':
+				case 'Control_F9':
+					if($('#selected_broadcaster').val().toUpperCase() != 'AFG_SERIES'){
+						select = document.createElement('select');
+						select.id = 'selectBowlingEnd';
+						select.name = select.id;
+
+						option = document.createElement('option');
+						option.value = 'WITHOUTEND';
+						option.text = 'WITHOUT END';
+						select.appendChild(option);
+
+						option = document.createElement('option');
+						option.value = session_match.setup.ground.first_bowling_end;
+						option.text = session_match.setup.ground.first_bowling_end;
+						select.appendChild(option);
+
+						option = document.createElement('option');
+						option.value = session_match.setup.ground.second_bowling_end;
+						option.text = session_match.setup.ground.second_bowling_end;
+						select.appendChild(option);
+
+						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+						row.insertCell(cellCount).appendChild(select);
+						setDropdownOptionToSelectOptionArray($(select),1);
+						cellCount = cellCount + 1
+					}
+					
+					break;	
+				case 'Control_Shift_F9':
 					select = document.createElement('select');
 					select.id = 'selectBowlingEnd';
 					select.name = select.id;
-					
+
 					option = document.createElement('option');
 					option.value = 'WITHOUTEND';
 					option.text = 'WITHOUT END';
 					select.appendChild(option);
-					
+
 					option = document.createElement('option');
 					option.value = session_match.setup.ground.first_bowling_end;
 					option.text = session_match.setup.ground.first_bowling_end;
 					select.appendChild(option);
-					
+
 					option = document.createElement('option');
 					option.value = session_match.setup.ground.second_bowling_end;
 					option.text = session_match.setup.ground.second_bowling_end;
 					select.appendChild(option);
-					
+
 					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 					row.insertCell(cellCount).appendChild(select);
 					setDropdownOptionToSelectOptionArray($(select),1);
 					cellCount = cellCount + 1
-					break;			
+					break;		
 				}
 				
 				break;
@@ -6763,28 +6791,30 @@ function addItemsToList(whatToProcess,dataToProcess)
 		}
 		
 		if(whatToProcess == 'Control_F5' || whatToProcess == 'Control_F9'){
-			option = document.createElement('input');
-			option.type = 'button';
-			option.name = 'change_on_to_stats';
-			option.value = 'Change On To Stats';
-		    option.id = option.name;
-		    option.setAttribute('onclick','processUserSelection(this)');
-		    
-		    div = document.createElement('div');
-		    div.append(option);
-		    row.insertCell(cellCount).appendChild(div);
-	    	cellCount = cellCount + 1;
-	    	
-	    	option = document.createElement('input');
-			option.type = 'hidden';
-			option.name = 'key_press_hidden_input';
-			option.id = option.name;
-			option.value = whatToProcess;
-	
-		    div.append(option);
-		    
-		    row.insertCell(cellCount).appendChild(div);
-		    cellCount = cellCount + 1;
+			if($('#selected_broadcaster').val().toUpperCase() != 'AFG_SERIES'){
+				option = document.createElement('input');
+				option.type = 'button';
+				option.name = 'change_on_to_stats';
+				option.value = 'Change On To Stats';
+			    option.id = option.name;
+			    option.setAttribute('onclick','processUserSelection(this)');
+			    
+			    div = document.createElement('div');
+			    div.append(option);
+			    row.insertCell(cellCount).appendChild(div);
+		    	cellCount = cellCount + 1;
+		    	
+		    	option = document.createElement('input');
+				option.type = 'hidden';
+				option.name = 'key_press_hidden_input';
+				option.id = option.name;
+				option.value = whatToProcess;
+
+			    div.append(option);
+			    
+			    row.insertCell(cellCount).appendChild(div);
+			    cellCount = cellCount + 1;
+			}
 		}
 		
 		if(whatToProcess == 'Alt_3' || whatToProcess == 'Alt_4'){
