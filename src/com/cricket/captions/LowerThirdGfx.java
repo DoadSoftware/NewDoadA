@@ -5890,6 +5890,14 @@ public class LowerThirdGfx
     			break;
     		case "F7": case "F11": case "Control_s": case "Control_f":
     			
+    			switch (whatToProcess) {
+    			case "F11":
+    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide 
+    						+ "$PlayerProfile$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+    				break;
+    			}
+    			
+    			
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 7 \0",print_writers);
@@ -6304,6 +6312,9 @@ public class LowerThirdGfx
 				switch (whatToProcess) {
 	    		case "Shift_F6":
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$"
+	    					+ "DataAll$Side" + WhichSide + "$BatsmanOut$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+	    			
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$"
 	    					+ "DataAll$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0\0",print_writers);
     				
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
@@ -6318,6 +6329,9 @@ public class LowerThirdGfx
 							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
 	    			break;
 	    		default:
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$"
+	    					+ "DataAll$Side" + WhichSide + "$BatsmanOut02$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+	    			
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$"
 	    					+ "DataAll$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 9\0",print_writers);
     				
@@ -6531,6 +6545,8 @@ public class LowerThirdGfx
 						+ "$TopGrp$txt_Data1*GEOM*TEXT SET " + lowerThird.getSubTitle() + "\0", print_writers);
 				break;	
     		case "F9":
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$"
+    					+ "DataAll$Side" + WhichSide + "$BowlerBowlingDetails$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
     			
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);

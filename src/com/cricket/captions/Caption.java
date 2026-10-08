@@ -927,11 +927,17 @@ public class Caption
 							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
 						}
 						else if(whatToProcess.split(",")[2].equalsIgnoreCase("Sponsor")) {
-							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
-									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("Sponsor")) {
-								whichSide = (this_infobarGfx.sponsor_id > 0 && this_infobarGfx.sponsor_id != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
-							}
-							this_infobarGfx.sponsor_id = Integer.valueOf(whatToProcess.split(",")[3]);	
+							switch(config.getBroadcaster()) {
+							case Constants.AFG_SERIES:
+								break;
+							default:
+								if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+										&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("Sponsor")) {
+									whichSide = (this_infobarGfx.sponsor_id > 0 && this_infobarGfx.sponsor_id != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
+								}
+								this_infobarGfx.sponsor_id = Integer.valueOf(whatToProcess.split(",")[3]);
+								break;
+							}	
 						}
 						else if(whatToProcess.split(",")[2].equalsIgnoreCase("BatsmanTimeLine") || whatToProcess.split(",")[2].equalsIgnoreCase("BowlerTimeLine")) {
 							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 

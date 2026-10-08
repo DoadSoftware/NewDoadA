@@ -3283,7 +3283,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'Team_Summary_Inning', text: 'Team 0s,1s,2s (This Innings)' },
 					  { value: 'Batsman_Summary', text: 'Batsman 0s,1s,2s (This Match)' },
 					  { value: 'Batsman_Summary_Inning', text: 'Batsman 0s,1s,2s (This Innings)' },
-					  //{ value: 'Sponsor', text: 'Sponsor' },
+					  { value: 'Sponsor', text: 'Sponsor' },
 					  //{ value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
 					  { value: 'BATSMANBOUNDARY', text: 'Batsman Boundary' },
 					  { value: 'BOWLERDOTS', text: 'Bowler Dots' },
@@ -3516,10 +3516,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 						processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," +
 	    				(this.value || $(this).find('option').first().val()));
 					}else if(this.value == 'Sponsor'){
-						row.insertCell(1).id = 'SponsorValue';
-			 			cellCount = 2;
-						processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," +
-	    				(this.value || $(this).find('option').first().val()));
+						switch($('#selected_broadcaster').val().toUpperCase()){
+						case 'AFG_SERIES':
+							break;
+						default:
+							row.insertCell(1).id = 'SponsorValue';
+							cellCount = 2;
+							processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," +
+							(this.value || $(this).find('option').first().val()));
+							break;
+						}
 					}else if(this.value == 'AllSession_Summary'){
 						if (session_match.match.daysSessions && session_match.match.daysSessions.length > 0) {
 							const lastDaySession = session_match.match.daysSessions[session_match.match.daysSessions.length - 1].dayNumber;
@@ -5388,6 +5394,35 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),0);
 			removeSelectDuplicates(select.id);
 			cellCount = cellCount + 1;
+						
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'AFG_SERIES':
+				select = document.createElement('select');
+				select.id = 'selectSponsor';
+				select.name = select.id;
+
+				option = document.createElement('option');
+				option.value = 'without';
+				option.text = 'Without Sponsor';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'Ziyafat';
+				option.text = 'Ziyafat Restaurent';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'Etisalat';
+				option.text = 'Etisalat';
+				select.appendChild(option);
+
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),1);
+				cellCount = cellCount + 1
+				break;	
+			}
+			
 			break;
 		case 'k':
 			select = document.createElement('select');
