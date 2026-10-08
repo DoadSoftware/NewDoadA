@@ -65,7 +65,7 @@ public class Animation
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": case "Control_h": case "Control_F3": 
-			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i":
+			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i": case "Shift_A":  case "Shift_R":
 				return Constants.LOWER_THIRD;	
 			case "Shift_F1": case "Shift_F2":
 				return Constants.MINIS;	
@@ -340,10 +340,10 @@ public class Animation
 			case "Control_Shift_L": case "Control_Shift_M": case "d": case "e":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Match_ID$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Match_ID$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -363,10 +363,10 @@ public class Animation
 			case "Control_Shift_O":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -386,10 +386,10 @@ public class Animation
 			case "Control_Shift_B":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -406,29 +406,29 @@ public class Animation
 
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-			case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w":
+			case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w": case "Shift_A":  case "Shift_R":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$One$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Two$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Three$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Four$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Five$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$One$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Two$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Three$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Four$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$Five$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -448,10 +448,10 @@ public class Animation
 			case "Control_F5": case "Control_F9": case "F8": case "F10": case "Alt_F8":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$anim_NameSuperDouble$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$anim_NameSuperDouble$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -475,10 +475,10 @@ public class Animation
 				
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45 \0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -2703,7 +2703,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "animNextToBat", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
-			case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w":
+			case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w": case "Shift_A":  case "Shift_R":
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_Summary$In_Out", "CONTINUE");
 				
 				if(infobar.getInfobar_status() != null) {
@@ -3953,7 +3953,7 @@ public class Animation
 			 case "Control_Shift_B":
 					processAnimation(Constants.FRONT, print_writers, "animNextToBat$Change", "START");
 					break;
-			 case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w":
+			 case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w": case "Shift_A":  case "Shift_R":
 				 processAnimation(Constants.FRONT, print_writers, "anim_LT_Summary$Change", "START");
 					break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
@@ -5158,7 +5158,7 @@ public class Animation
 					processAnimation(Constants.FRONT, print_writers, "anim_Lineup$Change", "SHOW 0.0");
 					this.whichGraphicOnScreen = whatToProcess;
 					break;
-			 case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w":
+			 case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w": case "Shift_A":  case "Shift_R":
 				 processAnimation(Constants.FRONT, print_writers, "anim_LT_Summary$Change", "SHOW 0.0");
 					this.whichGraphicOnScreen = whatToProcess;
 					break;
@@ -7675,94 +7675,29 @@ public class Animation
 						previewCommand = "LT_Lineup_New$In_Out 0.760 LT_Lineup_New$In_Out$In 0.786";
 						break;
 					case "Control_Shift_L": case "Control_Shift_M": case "e": case "d":
-						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
-							if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR) && 
-									!infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR)) {
-								previewCommand = "Anim_Infobar$FFIn 0.520 anim_Lowerthird$In_Out$Logo 1.320 anim_Match_ID$In_Out$Logo$In_Out 1.320 "
-										+ "anim_Match_ID$In_Out$Logo$In_Out$In 1.060 anim_Match_ID$In_Out$Base 1.320 anim_Match_ID$In_Out$Base$In_Out 1.320 "
-										+ "anim_Match_ID$In_Out$Base$In_Out$In 0.660 anim_Match_ID$In_Out$Data 1.320 anim_Match_ID$In_Out$Data$In_Out 1.320";
-							}else {
-								previewCommand = "anim_Lowerthird$In_Out$Logo 1.320 anim_Match_ID$In_Out$Logo$In_Out 1.320 "
-										+ "anim_Match_ID$In_Out$Logo$In_Out$In 1.060 anim_Match_ID$In_Out$Base 1.320 anim_Match_ID$In_Out$Base$In_Out 1.320 "
-										+ "anim_Match_ID$In_Out$Base$In_Out$In 0.660 anim_Match_ID$In_Out$Data 1.320 anim_Match_ID$In_Out$Data$In_Out 1.320";
-							}
-						}else {
-							previewCommand = "anim_Lowerthird$In_Out$Logo 1.320 anim_Match_ID$In_Out$Logo$In_Out 1.320 "
-									+ "anim_Match_ID$In_Out$Logo$In_Out$In 1.060 anim_Match_ID$In_Out$Base 1.320 anim_Match_ID$In_Out$Base$In_Out 1.320 "
-									+ "anim_Match_ID$In_Out$Base$In_Out$In 0.660 anim_Match_ID$In_Out$Data 1.320 anim_Match_ID$In_Out$Data$In_Out 1.320";
-						}
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Lowerthird$In_Out$Logo 1.320 anim_Match_ID$In_Out$Logo$In_Out 1.320 "
+								+ "anim_Match_ID$In_Out$Logo$In_Out$In 1.060 anim_Match_ID$In_Out$Base 1.320 anim_Match_ID$In_Out$Base$In_Out 1.320 "
+								+ "anim_Match_ID$In_Out$Base$In_Out$In 0.660 anim_Match_ID$In_Out$Data 1.320 anim_Match_ID$In_Out$Data$In_Out 1.320";
 						break;
 					case "Control_Shift_O":
-						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
-							if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR) && 
-									!infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR)) {
-								previewCommand = "Anim_Infobar$FFIn 0.520 anim_Lineup$In_Out$Logo 1.320 anim_Lineup$In_Out$Logo$In_Out 1.320 "
-										+ "anim_Lineup$In_Out$Logo$In_Out$In 1.060 anim_Lineup$In_Out$Base 1.320 anim_Lineup$In_Out$Base$In_Out 1.320 "
-										+ "anim_Lineup$In_Out$Base$In_Out$In 0.660 anim_Lineup$In_Out$Data 1.320 anim_Lineup$In_Out$Data$In_Out 1.320";
-							}else {
-								previewCommand = "anim_Lineup$In_Out$Logo 1.320 anim_Lineup$In_Out$Logo$In_Out 1.320 "
-										+ "anim_Lineup$In_Out$Logo$In_Out$In 1.060 anim_Lineup$In_Out$Base 1.320 anim_Lineup$In_Out$Base$In_Out 1.320 "
-										+ "anim_Lineup$In_Out$Base$In_Out$In 0.660 anim_Lineup$In_Out$Data 1.320 anim_Lineup$In_Out$Data$In_Out 1.320";
-							}
-						}else {
-							previewCommand = "anim_Lineup$In_Out$Logo 1.320 anim_Lineup$In_Out$Logo$In_Out 1.320 "
-									+ "anim_Lineup$In_Out$Logo$In_Out$In 1.060 anim_Lineup$In_Out$Base 1.320 anim_Lineup$In_Out$Base$In_Out 1.320 "
-									+ "anim_Lineup$In_Out$Base$In_Out$In 0.660 anim_Lineup$In_Out$Data 1.320 anim_Lineup$In_Out$Data$In_Out 1.320";
-						}
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Lineup$In_Out$Logo 1.320 anim_Lineup$In_Out$Logo$In_Out 1.320 "
+								+ "anim_Lineup$In_Out$Logo$In_Out$In 1.060 anim_Lineup$In_Out$Base 1.320 anim_Lineup$In_Out$Base$In_Out 1.320 "
+								+ "anim_Lineup$In_Out$Base$In_Out$In 0.660 anim_Lineup$In_Out$Data 1.320 anim_Lineup$In_Out$Data$In_Out 1.320";
 						break;
 					case "Control_Shift_B":
-						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
-							if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR) && 
-									!infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR)) {
-								previewCommand = "Anim_Infobar$FFIn 0.520 animNextToBat$In_Out$Logo 1.320 animNextToBat$In_Out$Logo$In_Out 1.320 "
-										+ "animNextToBat$In_Out$Logo$In_Out$In 1.060 animNextToBat$In_Out$Base 1.320 animNextToBat$In_Out$Base$In_Out 1.320 "
-										+ "animNextToBat$In_Out$Base$In_Out$In 0.660 animNextToBat$In_Out$Data 1.320 animNextToBat$In_Out$Data$In_Out 1.320";
-							}else {
-								previewCommand = "animNextToBat$In_Out$Logo 1.320 animNextToBat$In_Out$Logo$In_Out 1.320 "
-										+ "animNextToBat$In_Out$Logo$In_Out$In 1.060 animNextToBat$In_Out$Base 1.320 animNextToBat$In_Out$Base$In_Out 1.320 "
-										+ "animNextToBat$In_Out$Base$In_Out$In 0.660 animNextToBat$In_Out$Data 1.320 animNextToBat$In_Out$Data$In_Out 1.320";
-							}
-						}else {
-							previewCommand = "animNextToBat$In_Out$Logo 1.320 animNextToBat$In_Out$Logo$In_Out 1.320 "
-									+ "animNextToBat$In_Out$Logo$In_Out$In 1.060 animNextToBat$In_Out$Base 1.320 animNextToBat$In_Out$Base$In_Out 1.320 "
-									+ "animNextToBat$In_Out$Base$In_Out$In 0.660 animNextToBat$In_Out$Data 1.320 animNextToBat$In_Out$Data$In_Out 1.320";
-						}
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 animNextToBat$In_Out$Logo 1.320 animNextToBat$In_Out$Logo$In_Out 1.320 "
+								+ "animNextToBat$In_Out$Logo$In_Out$In 1.060 animNextToBat$In_Out$Base 1.320 animNextToBat$In_Out$Base$In_Out 1.320 "
+								+ "animNextToBat$In_Out$Base$In_Out$In 0.660 animNextToBat$In_Out$Data 1.320 animNextToBat$In_Out$Data$In_Out 1.320";
 						break;
-					case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w":
-						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
-							if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR) && 
-									!infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR)) {
-								previewCommand = "Anim_Infobar$FFIn 0.520 anim_LT_Summary$In_Out$Logo 1.320 anim_LT_Summary$In_Out$Logo$In_Out 1.320 "
-										+ "anim_LT_Summary$In_Out$Logo$In_Out$In 1.060 anim_LT_Summary$In_Out$Base 1.320 anim_LT_Summary$In_Out$Base$In_Out 1.320 "
-										+ "anim_LT_Summary$In_Out$Base$In_Out$In 0.660 anim_LT_Summary$In_Out$Data 1.320 anim_LT_Summary$In_Out$Data$In_Out 1.320";
-							}else {
-								previewCommand = "anim_LT_Summary$In_Out$Logo 1.320 anim_LT_Summary$In_Out$Logo$In_Out 1.320 "
-										+ "anim_LT_Summary$In_Out$Logo$In_Out$In 1.060 anim_LT_Summary$In_Out$Base 1.320 anianim_LT_SummarymNextToBat$In_Out$Base$In_Out 1.320 "
-										+ "anim_LT_Summary$In_Out$Base$In_Out$In 0.660 anim_LT_Summary$In_Out$Data 1.320 anim_LT_Summary$In_Out$Data$In_Out 1.320";
-							}
-						}else {
-							previewCommand = "anim_LT_Summary$In_Out$Logo 1.320 anim_LT_Summary$In_Out$Logo$In_Out 1.320 "
-									+ "anim_LT_Summary$In_Out$Logo$In_Out$In 1.060 anim_LT_Summary$In_Out$Base 1.320 anianim_LT_SummarymNextToBat$In_Out$Base$In_Out 1.320 "
-									+ "anim_LT_Summary$In_Out$Base$In_Out$In 0.660 anim_LT_Summary$In_Out$Data 1.320 anim_LT_Summary$In_Out$Data$In_Out 1.320";
-						}
+					case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w": case "Shift_A":  case "Shift_R":
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_LT_Summary$In_Out$Logo 1.320 anim_LT_Summary$In_Out$Logo$In_Out 1.320 "
+								+ "anim_LT_Summary$In_Out$Logo$In_Out$In 1.060 anim_LT_Summary$In_Out$Base 1.320 anim_LT_Summary$In_Out$Base$In_Out 1.320 "
+								+ "anim_LT_Summary$In_Out$Base$In_Out$In 0.660 anim_LT_Summary$In_Out$Data 1.320 anim_LT_Summary$In_Out$Data$In_Out 1.320";
 						break;
 					case "Control_F5": case "Control_F9": case "F8": case "F10": case "Alt_F8":
-						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
-							if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR) && 
-									!infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR)) {
-								previewCommand = "Anim_Infobar$FFIn 0.520 anim_NameSuperDouble$In_Out$Logo 1.320 anim_NameSuperDouble$In_Out$Logo$In_Out 1.320 "
-										+ "anim_NameSuperDouble$In_Out$Logo$In_Out$In 1.060 anim_NameSuperDouble$In_Out$Base 1.320 anim_NameSuperDouble$In_Out$Base$In_Out 1.320 "
-										+ "anim_NameSuperDouble$In_Out$Base$In_Out$In 0.660 anim_NameSuperDouble$In_Out$Data 1.320 anim_NameSuperDouble$In_Out$Data$In_Out 1.320";
-							}else {
-								previewCommand = "anim_NameSuperDouble$In_Out$Logo 1.320 anim_NameSuperDouble$In_Out$Logo$In_Out 1.320 "
-										+ "anim_NameSuperDouble$In_Out$Logo$In_Out$In 1.060 anim_NameSuperDouble$In_Out$Base 1.320 anim_NameSuperDouble$In_Out$Base$In_Out 1.320 "
-										+ "anim_NameSuperDouble$In_Out$Base$In_Out$In 0.660 anim_NameSuperDouble$In_Out$Data 1.320 anim_NameSuperDouble$In_Out$Data$In_Out 1.320";
-							}
-						}else {
-							previewCommand = "anim_NameSuperDouble$In_Out$Logo 1.320 anim_NameSuperDouble$In_Out$Logo$In_Out 1.320 "
-									+ "anim_NameSuperDouble$In_Out$Logo$In_Out$In 1.060 anim_NameSuperDouble$In_Out$Base 1.320 anim_NameSuperDouble$In_Out$Base$In_Out 1.320 "
-									+ "anim_NameSuperDouble$In_Out$Base$In_Out$In 0.660 anim_NameSuperDouble$In_Out$Data 1.320 anim_NameSuperDouble$In_Out$Data$In_Out 1.320";
-						}
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_NameSuperDouble$In_Out$Logo 1.320 anim_NameSuperDouble$In_Out$Logo$In_Out 1.320 "
+								+ "anim_NameSuperDouble$In_Out$Logo$In_Out$In 1.060 anim_NameSuperDouble$In_Out$Base 1.320 anim_NameSuperDouble$In_Out$Base$In_Out 1.320 "
+								+ "anim_NameSuperDouble$In_Out$Base$In_Out$In 0.660 anim_NameSuperDouble$In_Out$Data 1.320 anim_NameSuperDouble$In_Out$Data$In_Out 1.320";
 						break;
 					case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "u": case "Control_a":
@@ -7770,22 +7705,9 @@ public class Animation
 					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f":  case "Control_Shift_Q":
 //						previewCommand = "LT$Logo$In_Out 1.7 LT$Logo$In_Out$In 1.7 LT$Base$In_Out 0.72 LT$Base$In_Out$In 0.72 "
 //								+ "LT$Data$In_Out 0.72 LT$Data$In_Out$In 0.72";
-						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
-							if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR) && 
-									!infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR)) {
-								previewCommand = "Anim_Infobar$FFIn 0.520 anim_Lowerthird$In_Out$Logo 1.320 anim_Lowerthird$In_Out$Logo$In_Out 1.320 "
-										+ "anim_Lowerthird$In_Out$Logo$In_Out$In 1.200 anim_Lowerthird$In_Out$Base 1.320 anim_Lowerthird$In_Out$Base$In_Out 1.320 "
-										+ "anim_Lowerthird$In_Out$Base$In_Out$In 0.660 anim_Lowerthird$In_Out$Data 1.320 anim_Lowerthird$In_Out$Data$In_Out 1.320";
-							}else {
-								previewCommand = "anim_Lowerthird$In_Out$Logo 1.320 anim_Lowerthird$In_Out$Logo$In_Out 1.320 "
-										+ "anim_Lowerthird$In_Out$Logo$In_Out$In 1.200 anim_Lowerthird$In_Out$Base 1.320 anim_Lowerthird$In_Out$Base$In_Out 1.320 "
-										+ "anim_Lowerthird$In_Out$Base$In_Out$In 0.660 anim_Lowerthird$In_Out$Data 1.320 anim_Lowerthird$In_Out$Data$In_Out 1.320";
-							}
-						}else {
-							previewCommand = "anim_Lowerthird$In_Out$Logo 1.320 anim_Lowerthird$In_Out$Logo$In_Out 1.320 "
-									+ "anim_Lowerthird$In_Out$Logo$In_Out$In 1.200 anim_Lowerthird$In_Out$Base 1.320 anim_Lowerthird$In_Out$Base$In_Out 1.320 "
-									+ "anim_Lowerthird$In_Out$Base$In_Out$In 0.660 anim_Lowerthird$In_Out$Data 1.320 anim_Lowerthird$In_Out$Data$In_Out 1.320";
-						}
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Lowerthird$In_Out$Logo 1.320 anim_Lowerthird$In_Out$Logo$In_Out 1.320 "
+								+ "anim_Lowerthird$In_Out$Logo$In_Out$In 1.200 anim_Lowerthird$In_Out$Base 1.320 anim_Lowerthird$In_Out$Base$In_Out 1.320 "
+								+ "anim_Lowerthird$In_Out$Base$In_Out$In 0.660 anim_Lowerthird$In_Out$Data 1.320 anim_Lowerthird$In_Out$Data$In_Out 1.320";
 						break;
 					}
 					break;	
@@ -7813,7 +7735,7 @@ public class Animation
 								+ "animNextToBat$Change$Data$Change$Change_Out 0.340 animNextToBat$Change$Data$Change_In 1.020";
 						
 						break;
-					case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w":
+					case "Control_j": case "Alt_i": case "Shift_U": case "Alt_w": case "Shift_A":  case "Shift_R":
 						previewCommand = "anim_LT_Summary$Change$Logo$Change_Out 0.420 anim_LT_Summary$Change$Logo$Change_In 1.620 "
 								+ "anim_LT_Summary$Change$Base$Change_Out 0.460 anim_LT_Summary$Change$Base$Change_In 1.120 "
 								+ "anim_LT_Summary$Change$Data$Change$Change_Out 0.340 anim_LT_Summary$Change$Data$Change_In 1.020";
