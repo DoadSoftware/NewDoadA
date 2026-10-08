@@ -430,6 +430,7 @@ public class InfobarGfx
 			break;
 		case Constants.AFG_SERIES:
 			this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Speed", "START");
+			this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Sponsor_Right", "START");
 			break;
 		default:
 			this_animation.processAnimation(Constants.FRONT, print_writers, "Speed", "START");
@@ -10277,7 +10278,7 @@ public class InfobarGfx
 			case "SPONSOR":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Select_Center_Big_data*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Freetext_Image$Sponsor*TEXTURE*IMAGE SET " 
-						+ Constants.AFG_SERIES_SPONSOR + "TPT360_RED" + "\0", print_writers);
+						+ Constants.AFG_SERIES_SPONSOR + "TPT_360" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide 
 						+ "$Freetext_Image$txt_Head*GEOM*TEXT SET " + "IT'S TPT360 PRODUCTION FOR ACB" + "\0", print_writers);
 				break;

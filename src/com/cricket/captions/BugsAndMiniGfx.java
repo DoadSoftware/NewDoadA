@@ -1076,10 +1076,8 @@ public class BugsAndMiniGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$BugLogo$img_Badges*TEXTURE*IMAGE SET "
 							+ Constants.AFG_SERIES_BADGES + inning.getBatting_team().getTeamBadge() + "\0",print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*TRANSFORMATION*POSITION*Y SET 70.0\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor$Cola*TEXTURE*IMAGE SET " 
-							+ Constants.AFG_SERIES_SPONSOR + "NANGARH" + " \0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*TRANSFORMATION*POSITION*Y SET 58\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 2\0",print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$DataGrpAll"
 							+ "*ACTIVE SET 1\0",print_writers);
@@ -2110,7 +2108,7 @@ public class BugsAndMiniGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*TRANSFORMATION*POSITION*Y SET 70.0\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor$Cola*TEXTURE*IMAGE SET " 
-							+ Constants.AFG_SERIES_SPONSOR + "Khalis" + " \0",print_writers);
+							+ Constants.AFG_SERIES_SPONSOR + "KHALIS" + " \0",print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Single$All$BugLogo$img_Badges"
 							+ "*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_BADGES + inning.getBowling_team().getTeamBadge() + "\0",print_writers);

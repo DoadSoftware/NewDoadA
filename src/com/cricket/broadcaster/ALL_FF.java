@@ -1675,7 +1675,7 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Header2"
 							+ "*GEOM*TEXT SET " + "PARTNERSHIP" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Info"
-							+ "*GEOM*TEXT SET \0", print_writers);
+							+ "*GEOM*TEXT SET " + (inning.getInningNumber() == 1 ? "1st INNINGS" : inning.getInningNumber() == 2 ? "1st INNINGS" : "2nd INNINGS") + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Sponsor$Side" + WhichSide + "$select_Sponsor"
 							+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
@@ -1684,7 +1684,8 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$select_DataType"
 							+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style1$txt_TeamName"
-							+ "*GEOM*TEXT SET " + teamData.getTeamName1() + "\0", print_writers);
+							+ "*GEOM*TEXT SET " + teamData.getTeamName4() + (inning.getInningNumber() == 1 ? " - 1st INNS" : inning.getInningNumber() == 2 
+							? " - 1st INNS" : " - 2nd INNS") + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style1$txt_TotalScore"
 							+ "*GEOM*TEXT SET " + CricketFunctions.getTeamScore(inning, "-", false) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style1$txt_Extras"
@@ -1722,8 +1723,7 @@ public class ALL_FF
 				
 				//Sub-Header
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$SubHeader$Side" + WhichSide + "$txt_SubHeader"
-						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + " - " + (inning.getInningNumber() == 1 ? "1st INNINGS" : 
-							inning.getInningNumber() == 2 ? "1st INNINGS" : "2nd INNINGS") + "\0", print_writers);
+						+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
 				break;
 			case "m":
 				//Wipe Strat

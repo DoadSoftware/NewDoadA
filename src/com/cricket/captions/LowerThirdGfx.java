@@ -5894,6 +5894,12 @@ public class LowerThirdGfx
     			case "F11":
     				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide 
     						+ "$PlayerProfile$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide 
+    						+ "$PlayerProfile$Sponsor$Etisalat*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_SPONSOR2 + "SuperCola" + " \0",print_writers);
+    				break;
+    			default:
+    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide 
+    						+ "$PlayerProfile$Sponsor*FUNCTION*Omo*vis_con SET 0\0",print_writers);
     				break;
     			}
     			
