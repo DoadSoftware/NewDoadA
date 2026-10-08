@@ -6612,19 +6612,19 @@ public class Animation
 				case Constants.AFG_SERIES:
 					switch(whatToProcess.split(",")[0]) {
 					case "m": case "Control_m":
-						previewCommand = "anim_Ident$In_Out$In 1.700";
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Ident$In_Out$In 1.700";
 						break;
 					case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-						previewCommand = "anim_Profile$In_Out$Essentials$In 1.600 anim_Profile$In_Out$Logo$In 1.700 anim_Profile$In_Out$Main$In 1.600 "
-								+ "anim_Profile$In_Out$Wiipe$In 1.347";
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Profile$In_Out$Essentials$In 1.600 anim_Profile$In_Out$Logo$In 1.700 "
+								+ "anim_Profile$In_Out$Main$In 1.600 anim_Profile$In_Out$Wiipe$In 1.347";
 						break;
 					case "Control_Shift_F7":
-						previewCommand = "anim_LineUpImage$In_Out$Essentials$In 1.600 anim_LineUpImage$In_Out$Logo$In 1.700 anim_LineUpImage$In_Out$Header$In 1.600 "
-								+ "anim_LineUpImage$In_Out$SubHeader$In 1.300 anim_LineUpImage$In_Out$Main$In 1.700";
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_LineUpImage$In_Out$Essentials$In 1.600 anim_LineUpImage$In_Out$Logo$In 1.700 "
+								+ "anim_LineUpImage$In_Out$Header$In 1.600 anim_LineUpImage$In_Out$SubHeader$In 1.300 anim_LineUpImage$In_Out$Main$In 1.700";
 						break;
 					case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
-						previewCommand = "anim_FullFrames$In_Out$Essentials$In 1.600 anim_FullFrames$In_Out$Logo$In 1.700 anim_FullFrames$In_Out$Header$In 1.600 "
-								+ "anim_FullFrames$In_Out$SubHeader$In 1.300 anim_FullFrames$In_Out$Wiipe$In 1.341 ";
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_FullFrames$In_Out$Essentials$In 1.600 anim_FullFrames$In_Out$Logo$In 1.700 "
+								+ "anim_FullFrames$In_Out$Header$In 1.600 anim_FullFrames$In_Out$SubHeader$In 1.300 anim_FullFrames$In_Out$Wiipe$In 1.341 ";
 						switch (whatToProcess.split(",")[0]) {
 						case "F1":
 							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$BattingCard$In 1.680";
