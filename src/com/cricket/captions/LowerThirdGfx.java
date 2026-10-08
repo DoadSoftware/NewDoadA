@@ -6918,181 +6918,73 @@ public class LowerThirdGfx
     				
     				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
     						+ "$img_Badges*TEXTURE*IMAGE SET "
-    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichTeamFlag() + "\0",print_writers);
+    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichSponsor() + "\0",print_writers);
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
     						+ "$img_Badges02*TEXTURE*IMAGE SET "
-    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichTeamFlag() + "\0",print_writers);
+    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichSponsor() + "\0",print_writers);
     				
-	    			if(lowerThird.getWhichTeamFlag().equalsIgnoreCase("TLogo_BW")) {
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
-	    						+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET "
-	    						+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base2*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE1 + "EVENT" + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide
-		    					+ "$Select$SingleSuper$img_Base2*TEXTURE*IMAGE SET "
-		    					+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-								+ "$Select$NameSuperSingle$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_TEXT2 + "EVENT" + "\0",print_writers);
-	    			}else {
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-	    						+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET "
-	    						+ Constants.BAN_AFG_SERIES_BASE2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base2*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE1 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide
-		    					+ "$Select$SingleSuper$img_Base2*TEXTURE*IMAGE SET "
-		    					+ Constants.BAN_AFG_SERIES_BASE2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-								+ "$Select$NameSuperSingle$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_TEXT2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    			}
-    				
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-	    					+ "$TopGrp$HeaderGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2 + lowerThird.getWhichTeamFlag()
-	    					+ " \0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-	    					+ "$BottomGrp$RestDataGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2
-	    					+ lowerThird.getWhichTeamFlag() + " \0",print_writers);
-				}else if(!lowerThird.getWhichSponsor().isEmpty() && lowerThird.getWhichTeamFlag().isEmpty()) {
-					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-    						+ "$img_Badges*TEXTURE*IMAGE SET "
-    						+ Constants.AFG_SERIES_BADGES + "EVENT" + "\0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-    						+ "$img_Badges02*TEXTURE*IMAGE SET "
-    						+ Constants.AFG_SERIES_BADGES + "EVENT" + "\0",print_writers);
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-    						+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET "
-    						+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-							+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base2*TEXTURE*IMAGE SET "
-							+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-							+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base1*TEXTURE*IMAGE SET "
-							+ Constants.BAN_AFG_SERIES_BASE1 + "EVENT" + "\0",print_writers);
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide
-	    					+ "$Select$SingleSuper$img_Base2*TEXTURE*IMAGE SET "
-	    					+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-	    					+ "$TopGrp$HeaderGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2 + "EVENT"
-	    					+ " \0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-	    					+ "$BottomGrp$RestDataGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2
-	    					+ "EVENT" + " \0",print_writers);
-	    			
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
+	    					+ "$img_Base*TEXTURE*IMAGE SET "
+	    					+ Constants.AFG_SERIES_BASE_Ident + lowerThird.getWhichSponsor() + "\0",print_writers);
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
 							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-							+ Constants.BAN_AFG_SERIES_TEXT2 + "EVENT" + "\0",print_writers);
-				}else if(lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-    						+ "$img_Badges*TEXTURE*IMAGE SET "
-    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-    						+ "$img_Badges02*TEXTURE*IMAGE SET "
-    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-    				
-	    			if(lowerThird.getWhichTeamFlag().equalsIgnoreCase("TLogo_BW")) {
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-	    						+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET "
-	    						+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base2*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE1 + "EVENT" + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide
-		    					+ "$Select$SingleSuper$img_Base2*TEXTURE*IMAGE SET "
-		    					+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-								+ "$Select$NameSuperSingle$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_TEXT2 + "EVENT" + "\0",print_writers);
-	    			}else {
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-	    						+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET "
-	    						+ Constants.BAN_AFG_SERIES_BASE2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base2*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-								+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_BASE1 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide
-		    					+ "$Select$SingleSuper$img_Base2*TEXTURE*IMAGE SET "
-		    					+ Constants.BAN_AFG_SERIES_BASE2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    				
-	    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-								+ "$Select$NameSuperSingle$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-								+ Constants.BAN_AFG_SERIES_TEXT2 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
-	    			}
-
-    				
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-	    					+ "$TopGrp$HeaderGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2 + lowerThird.getWhichTeamFlag()
-	    					+ " \0",print_writers);
+							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-	    					+ "$BottomGrp$RestDataGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2
-	    					+ lowerThird.getWhichTeamFlag() + " \0",print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
+							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
+	    			
+				}else if(!lowerThird.getWhichSponsor().isEmpty() && lowerThird.getWhichTeamFlag().isEmpty()) {
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
+    						+ "$img_Badges*TEXTURE*IMAGE SET "
+    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichSponsor() + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
+    						+ "$img_Badges02*TEXTURE*IMAGE SET "
+    						+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichSponsor() + "\0",print_writers);
+    				
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
+	    					+ "$img_Base*TEXTURE*IMAGE SET "
+	    					+ Constants.AFG_SERIES_BASE_Ident + lowerThird.getWhichSponsor() + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
+				}else if(lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
     						+ "$img_Badges*TEXTURE*IMAGE SET "
     						+ Constants.AFG_SERIES_BADGES + "EVENT" + "\0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
     						+ "$img_Badges02*TEXTURE*IMAGE SET "
     						+ Constants.AFG_SERIES_BADGES + "EVENT" + "\0",print_writers);
     				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-    						+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$LLC_LogoGrp$img_Base2*TEXTURE*IMAGE SET "
-    						+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
+	    					+ "$img_Base*TEXTURE*IMAGE SET "
+	    					+ Constants.AFG_SERIES_BASE_Ident + "EVENT" + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
+    						+ "$img_Badges*TEXTURE*IMAGE SET "
+    						+ Constants.AFG_SERIES_BADGES + "EVENT" + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
+    						+ "$img_Badges02*TEXTURE*IMAGE SET "
+    						+ Constants.AFG_SERIES_BADGES + "EVENT" + "\0",print_writers);
     				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-							+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base2*TEXTURE*IMAGE SET "
-							+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
-							+ "$Select$OneTeam_Small$LTLogoGRP$LogoIn$Outline$img_Base1*TEXTURE*IMAGE SET "
-							+ Constants.BAN_AFG_SERIES_BASE1 + "EVENT" + "\0",print_writers);
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$BaseAll$Side" + WhichSide
-	    					+ "$Select$SingleSuper$img_Base2*TEXTURE*IMAGE SET "
-	    					+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" + "\0",print_writers);
-    				
-    				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-	    					+ "$Select$NameSuperSingle$TopGrp$HeaderGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2 + "EVENT"
-	    					+ " \0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-	    					+ "$Select$NameSuperSingle$BottomGrp$RestDataGrp$img_Text2*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_TEXT2
-	    					+ "EVENT" + " \0",print_writers);
-	    			
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-							+ "$Select$NameSuperSingle$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-							+ Constants.BAN_AFG_SERIES_TEXT2 + "EVENT" + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
+	    					+ "$img_Base*TEXTURE*IMAGE SET "
+	    					+ Constants.AFG_SERIES_BASE_Ident + "EVENT" + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
+	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
 				}
     			
 
