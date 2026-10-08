@@ -7897,9 +7897,9 @@ public class Animation
 								+ "Plotter 1.000 Plotter$In 1.000 \0", print_writer);
 						break;
 					case "r":
-						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/gfx_Overlays C:/Temp/Preview.tga anim_Scorebug$Scorebug_Push 1.000 "
-						 		+ "Anim_Review_Bug$In_Out 1.320 Anim_Review_Bug$In_Out$Base 1.320 Anim_Review_Bug$In_Out$Base$In_Out 1.320 Anim_Review_Bug$In_Out$Base$In_Out$In 0.660 "
-						 		+ "Anim_Review_Bug$In_Out$Data 1.320 Anim_Review_Bug$In_Out$Data$In_Out 1.320\0", print_writer);
+						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/Overlays C:/Temp/Preview.tga anim_Scorebug$Scorebug_Push 1.000 "
+						 		+ "Anim_Review_Bug 1.320 Anim_Review_Bug$In_Out 1.320 Anim_Review_Bug$In_Out$Base 1.320 Anim_Review_Bug$In_Out$Base$In_Out 1.320 "
+						 		+ "Anim_Review_Bug$In_Out$Base$In_Out$In 0.660 Anim_Review_Bug$In_Out$Data 1.320 Anim_Review_Bug$In_Out$Data$In_Out 1.320\0", print_writer);
 						break;
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_Shift_R": case "h": case "Shift_F4": case "Shift_F":case "Alt_b": 
 					case "Control_Shift_F3": case "Control_Shift_J": case "Control_y": case "Alt_Shift_J": case "Control_Shift_*": case "Alt_p": case "Shift_C":
@@ -8049,7 +8049,7 @@ public class Animation
 				case Constants.AFG_SERIES:
 					switch(whatToProcess.split(",")[0]) {
 					case "r":
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/gfx_Overlays C:/Temp/Preview.tga "
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" + "/Default/Overlays C:/Temp/Preview.tga "
 								+ "Anim_Review_Bug$Change 1.080 Anim_Review_Bug$Change$Change_Out 0.340 Anim_Review_Bug$Change$Change_In 1.080\0", print_writer);
 						break;
 					
