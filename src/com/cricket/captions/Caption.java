@@ -491,6 +491,33 @@ public class Caption
 			case "F9": //BOWL THIS MATCH
 				status = this_lowerThirdGfx.populateBowlThisMatch(whatToProcess, whichSide, matchAllData);
 				break;
+			case "Shift_A": //BAT THIS MATCH BOTH INNING
+				status = this_lowerThirdGfx.populateBatThisMatchBoth(whatToProcess, whichSide, matchAllData);
+				break;
+			case "Shift_R": //BALL THIS MATCH BOTH INNING
+				status = this_lowerThirdGfx.populateBallThisMatchBoth(whatToProcess, whichSide, matchAllData);
+				break;
+			case "Shift_U": //THIS SESSION
+				status = this_lowerThirdGfx.populateThisSession(whatToProcess, whichSide, matchAllData);
+				break;
+			case "Alt_w": //SESSION
+				status = this_lowerThirdGfx.populateSession(whatToProcess, whichSide, matchAllData);
+				break;
+			case "Control_j": //SESSION WISE
+				status = this_lowerThirdGfx.populateAllSession(whatToProcess, whichSide, matchAllData);
+				break;
+			case "Alt_i": //SESSION WISE
+				status = this_lowerThirdGfx.populateSummaryDaybyDay(whatToProcess, whichSide, matchAllData);
+				break;
+			case "b": //MATCH STATISTICS
+				status = this_lowerThirdGfx.populateMatchStatistics(whatToProcess, whichSide, matchAllData);
+				break;
+			case "Alt_j": //TODAY'S MATCH
+				status = this_lowerThirdGfx.populateTodaysMatch(whatToProcess, whichSide, matchAllData);
+				break;
+			case "Alt_h": // OVERRATE
+				status = this_lowerThirdGfx.populateOverRate(whatToProcess, whichSide, matchAllData);
+				break;	
 			case "Shift_F3": //Fall of Wicket
 				status = this_lowerThirdGfx.populateFOW(whatToProcess, whichSide, matchAllData);
 				break;
