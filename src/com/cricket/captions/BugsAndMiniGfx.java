@@ -5418,7 +5418,7 @@ public class BugsAndMiniGfx
 							+ Constants.ACC_FLAG + inning.getBowling_team().getTeamBadge() + "\0",print_writers);
 					break;
 				case Constants.AFG_SERIES:
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Header$img_Logo"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Header$img_Logo"
 							+ "*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_BADGES + inning.getBowling_team().getTeamBadge() + "\0",print_writers);
 				}
 
