@@ -61,6 +61,7 @@ public class Animation
 			case "Alt_1": case "Alt_3": case "Alt_4": case "Alt_5": case "Alt_7": case "Alt_8":
 				return Constants.INFO_BAR;
 			case "m": case "Control_d": case "Control_e": case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
+			case "Control_Shift_F7":
 				return Constants.FULL_FRAMER;
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
@@ -2796,9 +2797,6 @@ public class Animation
 				break;
 				
 			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
-				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
-				TimeUnit.MILLISECONDS.sleep(500);
-				
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Header", "CONTINUE");
@@ -2826,6 +2824,8 @@ public class Animation
 					break;
 				}
 				
+				TimeUnit.MILLISECONDS.sleep(800);
+				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
 				this.whichGraphicOnScreen = "";
 				break;
 			}
@@ -3960,7 +3960,12 @@ public class Animation
 				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change", "START");
 				break;
 			case "Control_Shift_F7":
-				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$Wipe", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(700);
+				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$Logo", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$Header", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$SubHeader", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$Main", "CONTINUE");
 				break;
 				
 			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
@@ -6214,6 +6219,7 @@ public class Animation
 				caption.this_infobarGfx.infobar.setLast_section5("");
 			}
 			this.whichGraphicOnScreen = "";
+			lineUpCount = 0;
 			break;
 		case Constants.AFG_SL_SERIES:
 			processAnimation("", print_writers, "Loop", "SHOW 0.0");

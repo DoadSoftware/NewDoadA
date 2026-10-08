@@ -469,10 +469,17 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 					break;	
 				}
 				break;
-					
+			case 'Alt_F12':
+				if(session_match.setup.matchType === 'TEST'){
+					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
+					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
+				}else{
+					addItemsToList(dataToProcess,null); 
+				}
+				break;	
 			case 'F12': case 'Alt_1': case 'Alt_2': case 'Alt_6': case "Alt_5": case 'Alt_7': case 'Alt_8': case 'Control_F12': case 'Shift_F12': 
 			case 'F7': case 'F11': case 'Control_s': case 'Control_f': case 'Control_Shift_F1': case 'F8': case 'Alt_F8': case 'F6': case 'Shift_F6': 
-			case 'Control_F5': case 'Control_F9': case 'u': case 'F5': case 'F9': case 'Shift_F9': case 'Shift_F5': case 'Alt_F12': case 'Shift_E': 
+			case 'Control_F5': case 'Control_F9': case 'u': case 'F5': case 'F9': case 'Shift_F9': case 'Shift_F5': case 'Shift_E': 
 			case 'g': case 'y': case 'Shift_O': case 'Shift_F4': case 'Control_Shift_U': case 'Control_Shift_V': case 'Shift_F': case 'Control_Shift_O': 
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
