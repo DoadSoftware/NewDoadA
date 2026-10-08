@@ -429,6 +429,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'F4': case 'Shift_K':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'AFG_SERIES':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
@@ -448,7 +449,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 				break;
 			case 'h':
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'ACC':
+				case 'ACC': case 'AFG_SERIES':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
@@ -2348,8 +2349,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 		                        addOptionData('EQUATION', 'Equation (Trail/Lead)');
 		                    } else if(inn.inningNumber === 3){
 							    addOptionData('EQUATION', 'Equation (Trail/Lead)');
+								addOptionData('EQUATION_BALL', 'Equation Ball');
 							}else if(inn.inningNumber === 4){
-								addOptionData('EQUATION', 'Equation');
+								addOptionData('EQUATION', 'Equation Bat');
+								addOptionData('EQUATION_BALL', 'Equation Ball');
 		                        //addOptionData('TARGET', 'Target');
 		                        //addOptionData('RRR', 'Required Rate');
 		                    }
@@ -2786,6 +2789,21 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.text = 'Teams Score';
 					select.appendChild(option);
 					
+					option = document.createElement('option');
+					option.value = 'LUNCH';
+					option.text = 'Lunch Text';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'TEA';
+					option.text = 'Tea Text';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'STUMPS';
+					option.text = 'Stumps Text';
+					select.appendChild(option);
+					
 					session_match.match.inning.forEach(function(inn){
 					    if(inn.isCurrentInning === 'YES'){
 					        if(inn.inningNumber === 1){
@@ -2810,6 +2828,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 								select.appendChild(option);
 								
 								option = document.createElement('option');
+								option.value = 'EQUATION_BALL';
+								option.text = 'Equation Ball';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
 								option.value = 'FIRST_INNING_SCORE';
 								option.text = 'First Inning Score';
 								select.appendChild(option);
@@ -2821,7 +2844,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 							}else if(inn.inningNumber === 4){
 								option = document.createElement('option');
 								option.value = 'EQUATION';
-								option.text = 'Equation ';
+								option.text = 'Equation Bat';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
+								option.value = 'EQUATION_BALL';
+								option.text = 'Equation Ball';
 								select.appendChild(option);
 								
 								option = document.createElement('option');
@@ -3241,12 +3269,20 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
 					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
 					  { value: 'BowlerTimeLine', text: 'Bowler TimeLine' },
+					  { value: 'Session_Summary', text: 'This Session (Current)'},
+					  { value: 'AllSession_Summary', text: 'Day All Session'},
+					  { value: 'AllDay_Summary', text: 'Today Match'},
 					  { value: 'Team_Summary', text: 'Team 0s,1s,2s (This Match)' },
 					  { value: 'Team_Summary_Inning', text: 'Team 0s,1s,2s (This Innings)' },
+					  { value: 'Batsman_Summary', text: 'Batsman 0s,1s,2s (This Match)' },
+					  { value: 'Batsman_Summary_Inning', text: 'Batsman 0s,1s,2s (This Innings)' },
 					  //{ value: 'Sponsor', text: 'Sponsor' },
 					  //{ value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
-					  { value: 'BATSMANBOUNDARY', text: 'BATSMAN BOUNDARY' },
-					  { value: 'BOWLERDOTS', text: 'BOWLER DOTS' },
+					  { value: 'BATSMANBOUNDARY', text: 'Batsman Boundary' },
+					  { value: 'BOWLERDOTS', text: 'Bowler Dots' },
+  					  { value: 'LUNCH', text: 'Lunch Text' },
+					  { value: 'TEA', text: 'Tea Text' },
+					  { value: 'STUMPS', text: 'Stump Text' },
 					];
 					
 					session_match.match.inning.forEach(function(inn){
@@ -3256,11 +3292,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 							);
 						}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 3){
 							dropdownoption.push(
-							    { value: 'EQUATION', text: 'Equation (Trail/Lead)'}
+							    { value: 'EQUATION', text: 'Equation (Trail/Lead)'},
+								{ value: 'EQUATION_BALL', text: 'Equation Ball'}
 							);
 						}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 4){
 							dropdownoption.push(
-							    { value: 'EQUATION', text: 'Equation'}
+							    { value: 'EQUATION', text: 'Equation'},
+								{ value: 'EQUATION_BALL', text: 'Equation Ball'}
 							);
 						}
 					});
@@ -3626,7 +3664,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 						row.insertCell(2).appendChild(ballselect);
 						setDropdownOptionToSelectOptionArray($(ballselect),2);
 						cellCount = 3;
-					}else if(this.value == 'INNINGSBUILDER' || this.value == 'BATSMANBOUNDARY'){
+					}else if(this.value == 'INNINGSBUILDER' || this.value == 'BATSMANBOUNDARY' || 
+						this.value === 'Batsman_Summary' || this.value === 'Batsman_Summary_Inning'){
 						let xballselect  = document.createElement('select');
 						xballselect.id = 'selectFreeText';
 						xballselect.name = xballselect.id;
