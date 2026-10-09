@@ -6931,13 +6931,13 @@ public class LowerThirdGfx
     				
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
 	    					+ "$img_Base*TEXTURE*IMAGE SET "
-	    					+ Constants.AFG_SERIES_BASE_Ident + lowerThird.getWhichSponsor() + "\0",print_writers);
+	    					+ Constants.AFG_SERIES_BASE1 + lowerThird.getWhichSponsor() + "\0",print_writers);
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
 							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
 							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
+//	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+//							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+//							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
 	    			
 				}else if(!lowerThird.getWhichSponsor().isEmpty() && lowerThird.getWhichTeamFlag().isEmpty()) {
 					
@@ -6950,13 +6950,13 @@ public class LowerThirdGfx
     				
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
 	    					+ "$img_Base*TEXTURE*IMAGE SET "
-	    					+ Constants.AFG_SERIES_BASE_Ident + lowerThird.getWhichSponsor() + "\0",print_writers);
+	    					+ Constants.AFG_SERIES_BASE1 + lowerThird.getWhichSponsor() + "\0",print_writers);
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
 							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
 							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
+//	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+//							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+//							+ Constants.AFG_SERIES_TEXT1 + lowerThird.getWhichSponsor() + "\0",print_writers);
 				}else if(lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
     						+ "$img_Badges*TEXTURE*IMAGE SET "
@@ -6967,13 +6967,13 @@ public class LowerThirdGfx
     				
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
 	    					+ "$img_Base*TEXTURE*IMAGE SET "
-	    					+ Constants.AFG_SERIES_BASE_Ident + "EVENT" + "\0",print_writers);
+	    					+ Constants.AFG_SERIES_BASE1 + "EVENT" + "\0",print_writers);
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
 							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
 							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
+//	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+//							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+//							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$ALL_LT_LOGOGRP$Side" + WhichSide
     						+ "$img_Badges*TEXTURE*IMAGE SET "
@@ -6984,13 +6984,13 @@ public class LowerThirdGfx
     				
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$BaseAll$Side" + WhichSide
 	    					+ "$img_Base*TEXTURE*IMAGE SET "
-	    					+ Constants.AFG_SERIES_BASE_Ident + "EVENT" + "\0",print_writers);
+	    					+ Constants.AFG_SERIES_BASE1 + "EVENT" + "\0",print_writers);
 	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
 							+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
 							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
-	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
-							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
-							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
+//	    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
+//							+ "$BottomGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "
+//							+ Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
 				}
     			
 
@@ -7027,7 +7027,7 @@ public class LowerThirdGfx
 				
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$BaseAll$Side" + WhichSide
 						+ "$img_Base*TEXTURE*IMAGE SET "
-						+ Constants.AFG_SERIES_BASE_Ident + lowerThird.getWhichTeamFlag() + "\0",print_writers);
+						+ Constants.AFG_SERIES_BASE1 + lowerThird.getWhichTeamFlag() + "\0",print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuperDouble$All$DataAll$Side" + WhichSide
 						+ "$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET "

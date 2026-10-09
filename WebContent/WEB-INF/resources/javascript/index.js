@@ -5473,6 +5473,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),0);
 			removeSelectDuplicates(select.id);
 			cellCount = cellCount + 1;
+			
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'AFG_SERIES':
+				select = document.createElement('select');
+				select.id = 'selectSponso';
+				select.name = select.id;
+
+				option = document.createElement('option');
+				option.value = 'WITHOUT_SPONSOR';
+				option.text = 'Without Sponsor';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'WITH_SPONSOR';
+				option.text = 'With Sponsor';
+				select.appendChild(option);
+
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),1);
+				cellCount = cellCount + 1;
+				break;
+			}
 			break;
 		case 'h':
 			header_text.innerHTML = 'HIGHLIGHT BUG';
