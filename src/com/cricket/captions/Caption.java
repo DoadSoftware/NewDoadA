@@ -513,11 +513,13 @@ public class Caption
 				status = this_lowerThirdGfx.populateMatchStatistics(whatToProcess, whichSide, matchAllData);
 				break;
 			case "Alt_j": //TODAY'S MATCH
-				status = this_lowerThirdGfx.populateTodaysMatch(whatToProcess, whichSide, matchAllData);
+				status = this_lowerThirdGfx.populateBatTestThisMatch(whatToProcess, whichSide, matchAllData);
+//				status = this_lowerThirdGfx.populateTodaysMatch(whatToProcess, whichSide, matchAllData);
 				break;
 			case "Alt_h": // OVERRATE
-				status = this_lowerThirdGfx.populateOverRate(whatToProcess, whichSide, matchAllData);
-				break;	
+				//status = this_lowerThirdGfx.populateOverRate(whatToProcess, whichSide, matchAllData);
+				status = this_lowerThirdGfx.populateBowlerSpell(whatToProcess, whichSide, matchAllData);
+				break;
 			case "Shift_F3": //Fall of Wicket
 				status = this_lowerThirdGfx.populateFOW(whatToProcess, whichSide, matchAllData);
 				break;
