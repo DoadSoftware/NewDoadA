@@ -58,7 +58,7 @@ public class Animation
 		case Constants.AFG_SERIES:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "Shift_F12":
-			case "Alt_1": case "Alt_3": case "Alt_4": case "Alt_5": case "Alt_7": case "Alt_8":
+			case "Alt_1": case "Alt_3": case "Alt_4": case "Alt_5": case "Alt_7": case "Alt_8": case "Control_2": case "Control_1":
 				return Constants.INFO_BAR;
 			case "m": case "Control_d": case "Control_e": case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
 			case "Control_Shift_F7":
@@ -66,7 +66,8 @@ public class Animation
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": case "Control_h": case "Control_F3": 
-			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i": case "Shift_A":  case "Shift_R": case "Alt_j":  case "Alt_h":
+			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i": case "Shift_A":  case "Shift_R": case "Alt_j":  case "Alt_h": case "l":
+			case "Alt_Shift_O":
 				return Constants.LOWER_THIRD;	
 			case "Shift_F1": case "Shift_F2":
 				return Constants.MINIS;	
@@ -507,10 +508,9 @@ public class Animation
 
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-			case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": 
-			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12":
-			case "u": case "Control_a":	case "F7": case "F11": case "Control_s": case "Control_f": 
-			case "Control_h": case "Control_F3": case "Alt_w": case "Alt_j":
+			case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "u": 
+			case "Control_a":	case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": case "Control_F3": case "Alt_w": case "Alt_j":
+			case "l": case "Alt_Shift_O":
 				
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$LT_Position*"
@@ -2797,19 +2797,11 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_NameSuperDouble", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
-			case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Alt_w": case "Alt_j":
-			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "u": case "Control_a":
-			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": case "Control_F3":
-			case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f":  case "Control_Shift_Q":
+			case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Alt_w": case "Alt_j": case "Shift_F3": case "Shift_F5": 
+			case "Shift_F9": case "Alt_F12": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": 
+			case "Control_F3": case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f":  case "Control_Shift_Q": case "Alt_Shift_O":
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$In_Out", "CONTINUE");
-				
-				switch (whatToProcess.split(",")[0]) {
-				case "F6": case "Shift_F6": case "F7": case "F11":
-					processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$Sponsor$In_Out$Out", "START");
-					break;
-				}
-				
 				
 				if(infobar.getInfobar_status() != null) {
 					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
@@ -3976,7 +3968,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Bowler_Bottom$Change", "START");
 				caption.this_infobarGfx.infobar.setLast_section3(caption.this_infobarGfx.infobar.getSection3());
 				break;
-			case "Alt_3": case "Alt_4": case "Alt_8":
+			case "Alt_3": case "Alt_4": case "Alt_8": case "Control_2": case "Control_1":
 				if (caption.this_infobarGfx.infobar.getSectionAnalytics() == null || caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Base$In_Out", "CONTINUE");
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Data$In_Out", "CONTINUE");
@@ -4010,10 +4002,9 @@ public class Animation
 			 case "Control_F5": case "Control_F9": case "F8": case "F10": case "Alt_F8":
 				 processAnimation(Constants.FRONT, print_writers, "anim_NameSuperDouble$Change", "START");
 					break;
-			 case "F5": case "F6": case "F9": case "Control_F6": case "Alt_w": case "Alt_j":
-			 case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": 
-			 case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f":
-			 case "Control_h": case "Control_F3": case "d":
+			 case "F5": case "F6": case "F9": case "Control_F6": case "Alt_w": case "Alt_j": case "Shift_F6": case "Shift_F3": case "Shift_F5": 
+			 case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a": case "F7": case "F11": 
+			 case "Control_s": case "Control_f": case "Control_h": case "Control_F3": case "d": case "l": case "Alt_Shift_O":
 				processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$Change", "START");
 				break;
 			 case "Control_Shift_O":
@@ -5200,7 +5191,7 @@ public class Animation
 			case "Alt_7":
 				processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Bowler_Bottom$Change", "SHOW 0.0");
 				break;
-			case "Alt_3": case "Alt_4": case "Alt_8":
+			case "Alt_3": case "Alt_4": case "Alt_8": case "Control_2": case "Control_1":
 				if(caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$Data$Change", "SHOW 0.0");
 				}
@@ -5247,11 +5238,9 @@ public class Animation
 				 processAnimation(Constants.FRONT, print_writers, "anim_NameSuperDouble$Change", "SHOW 0.0");
 					this.whichGraphicOnScreen = whatToProcess;
 					break;
-		 	case "F5": case "F6": case "F9": case "Control_F6": case "Alt_w": case "Alt_j":
-			case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12":
-			case "u": case "Control_a":
-			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B":
-			case "Control_h": case "Control_F3": case "d":
+		 	case "F5": case "F6": case "F9": case "Control_F6": case "Alt_w": case "Alt_j": case "Shift_F6": case "Shift_F3": case "Shift_F5": 
+		 	case "Shift_F9": case "Alt_F12": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B":
+			case "Control_h": case "Control_F3": case "d": case "l": case "Alt_Shift_O":
 				processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -7796,10 +7785,9 @@ public class Animation
 								+ "anim_NameSuperDouble$In_Out$Logo$In_Out$In 1.060 anim_NameSuperDouble$In_Out$Base 1.320 anim_NameSuperDouble$In_Out$Base$In_Out 1.320 "
 								+ "anim_NameSuperDouble$In_Out$Base$In_Out$In 0.660 anim_NameSuperDouble$In_Out$Data 1.320 anim_NameSuperDouble$In_Out$Data$In_Out 1.320";
 						break;
-					case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Alt_w": case "Alt_j":
-					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "u": case "Control_a":
-					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": case "Control_F3":
-					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f":  case "Control_Shift_Q":
+					case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Alt_w": case "Alt_j": case "Shift_F3": case "Shift_F5": case "Shift_F9": 
+					case "Alt_F12": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": case "Control_F3":
+					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f":  case "Control_Shift_Q": case "Alt_Shift_O":
 //						previewCommand = "LT$Logo$In_Out 1.7 LT$Logo$In_Out$In 1.7 LT$Base$In_Out 0.72 LT$Base$In_Out$In 0.72 "
 //								+ "LT$Data$In_Out 0.72 LT$Data$In_Out$In 0.72";
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Lowerthird$In_Out$Logo 1.320 anim_Lowerthird$In_Out$Logo$In_Out 1.320 "
@@ -7842,10 +7830,10 @@ public class Animation
 								+ "anim_NameSuperDouble$Change$Base$Change_Out 0.460 anim_NameSuperDouble$Change$Base$Change_In 1.120 "
 								+ "anim_NameSuperDouble$Change$Data$Change$Change_Out 0.340 anim_NameSuperDouble$Change$Data$Change_In 1.020";
 						break;
-					case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Alt_w": case "Alt_j":
-					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
-					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": case "Control_F3": case "d":
-					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_Shift_F12": case "Alt_f": case "e": case "Control_Shift_Q":
+					case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Alt_w": case "Alt_j": case "Shift_F3": case "Shift_F5": case "Shift_F9": 
+					case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": 
+					case "Control_h": case "Control_F3": case "d": case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_Shift_F12": case "Alt_f": 
+					case "e": case "Control_Shift_Q": case "Alt_Shift_O":
 //						previewCommand = "LT$Logo$Change 2.120 LT$Logo$Change$Change_Out 0.420 LT$Logo$Change$Change_In 2.120 LT$Base$Change 1.200 LT$Base$Change$Change_Out 0.460 LT$Base$Change$Change_In 1.200 "
 //								+ "LT$Data$Change 1.180 LT$Data$Change$Change_Out 0.460 LT$Data$Change$Change_In 1.180";
 						previewCommand = "anim_Lowerthird$Change$Logo$Change_Out 0.420 anim_Lowerthird$Change$Logo$Change_In 1.620 "

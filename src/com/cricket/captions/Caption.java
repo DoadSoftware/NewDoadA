@@ -297,6 +297,9 @@ public class Caption
 				}
 				status = this_fullFramesGfx.populateFFPointsTable(whichSide,whatToProcess.split(",")[0], matchAllData, 0);
 				break;
+			case "Alt_Shift_O":
+				status = this_lowerThirdGfx.populateBowlerSpeed(whatToProcess,whichSide,matchAllData);
+				break;
 			case "Alt_Shift_K": case "Alt_Shift_X": case "Alt_Shift_T": case "Alt_Shift_V": case "Alt_Shift_Z": case "Alt_Shift_Y":
 			case "Alt_Shift_C": case "Alt_Shift_B":
 				this_bugsAndMiniGfx.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
@@ -714,32 +717,42 @@ public class Caption
 					break;
 				}
 				break;
-			case "Alt_3": case "Alt_4":
+			case "Alt_3": case "Alt_4": case "Control_2": case "Control_1":
+				System.out.println("whatToProcess - " + whatToProcess);
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.AFG_SERIES:
 					if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
-						switch(whatToProcess.split(",")[0]) {
-						case "Alt_3":
-							if (!this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP")) {
-							    whichSide = 2;
-							} else {
-							    whichSide = 1;
-							}
-							this_infobarGfx.infobar.setSectionAnalytics("BAT_PP");
-							break;
-						case "Alt_4":
-							if (!this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BALL_PP")) {
-							    whichSide = 2;
-							} else {
-							    whichSide = 1;
-							}
-							
-							this_infobarGfx.infobar.setSectionAnalytics("BALL_PP");
-							break;
+						String section = "";
+						switch (whatToProcess.split(",")[0]) {
+						case "Control_1":
+							section = "BOWLER_SPEED";
+					        break;
+					    case "Control_2":
+					        section = "BAT_BALL_PP";
+					        break;
+					    case "Alt_3":
+					        section = "BAT_PP";
+					        break;
+					    case "Alt_4":
+					        section = "BALL_PP";
+					        break;
+						}
+
+						if (!section.isEmpty()) {
+						    whichSide = this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase(section) ? 1 : 2;
+						    this_infobarGfx.infobar.setSectionAnalytics(section);
 						}
 						
-						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
-						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+						switch (whatToProcess.split(",")[0]) {
+						case "Control_1":
+							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
+							this_infobarGfx.innNumber = Integer.valueOf(whatToProcess.split(",")[1]);
+					        break;
+					    case "Control_2": case "Alt_3":  case "Alt_4":
+					    	this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+							this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+					        break;
+						}
 					}else {
 						whichSide = 1;
 						switch(whatToProcess.split(",")[0]) {
@@ -749,10 +762,24 @@ public class Caption
 						case "Alt_4":
 							this_infobarGfx.infobar.setSectionAnalytics("BALL_PP");
 							break;
+						case "Control_2":
+							this_infobarGfx.infobar.setSectionAnalytics("BAT_BALL_PP");
+							break;
+						case "Control_1":
+							this_infobarGfx.infobar.setSectionAnalytics("BOWLER_SPEED");
+					        break;
 						}
 						
-						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
-						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+						switch (whatToProcess.split(",")[0]) {
+						case "Control_1":
+							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
+							this_infobarGfx.innNumber = Integer.valueOf(whatToProcess.split(",")[1]);
+					        break;
+					    case "Control_2": case "Alt_3":  case "Alt_4":
+					    	this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+							this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+					        break;
+						}
 					}
 					status = this_infobarGfx.populateFullSection(print_writers, matchAllData, whichSide);
 					break;

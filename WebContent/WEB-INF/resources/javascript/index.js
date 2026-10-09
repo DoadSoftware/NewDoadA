@@ -484,7 +484,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
 			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Alt_f': case '/':
-			case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h':
+			case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -968,7 +968,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
-	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h':
+	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1435,7 +1435,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					break;
 					}
 				break;
-			case "Alt_3": case 'Control_d': case 'Control_3':
+			case "Alt_3": case 'Control_d': case 'Control_3': case 'Control_2':
 			switch(whatToProcess){
 				case "Alt_3":
 					header_text.innerHTML = 'INFOBAR - BATTER CAREER';
@@ -1445,7 +1445,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 					break;
 				case 'Control_3':
 					header_text.innerHTML = 'LOF - BATTER CAREER';
-					break;	
+					break;
+				case 'Control_2':
+					header_text.innerHTML = 'ALL ROUNDER - CAREER';
+					break;				
 			}
 			switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL':  case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
@@ -4538,16 +4541,51 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectProfile';
 			select.name = select.id;
 			
-			option = document.createElement('option');
-			option.value = 'THIS_MATCH';
-			option.text = 'THIS MATCH';
-			select.appendChild(option);
-			
-			option = document.createElement('option');
-			option.value = 'TOURNAMENT';
-			option.text = 'THIS TOURNAMENT';
-			select.appendChild(option);
-			
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'AFG_SERIES':
+				option = document.createElement('option');
+				option.value = 'TEST';
+				option.text = 'TEST MATCHES';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'FC';
+				option.text = 'First Class';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'DT20';
+				option.text = 'T20';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'IT20';
+				option.text = 'T20-I';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'LIST A';
+				option.text = 'LIST A';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'ODI';
+				option.text = 'ODI';
+				select.appendChild(option);
+				break;
+			default:
+				option = document.createElement('option');
+				option.value = 'THIS_MATCH';
+				option.text = 'THIS MATCH';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'TOURNAMENT';
+				option.text = 'THIS TOURNAMENT';
+				select.appendChild(option);
+				break;
+			}
+
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
@@ -5453,6 +5491,42 @@ function addItemsToList(whatToProcess,dataToProcess)
 			cellCount = cellCount + 1;
 			$('#selectBugdb').select2();
 			break;
+			
+		case 'Alt_Shift_O': case 'Control_1':
+			header_text.innerHTML = 'Bowler Speed ';
+			select = document.createElement('select');
+			select.id = 'selectPlayer';
+			select.name = select.id;
+
+			session_match.match.inning.forEach(function(inn){
+				if(inn.inningNumber == document.getElementById('which_inning').value){
+					if(inn.bowlingCard != null){
+						inn.bowlingCard.forEach(function(boc){
+							if(boc.status == 'CURRENTBOWLER'){
+								option = document.createElement('option');
+								option.value = boc.player.playerId;
+								option.text = boc.player.full_name;
+								select.appendChild(option);
+							}
+						});
+
+						inn.bowlingCard.forEach(function(boc,boc_index,bc_arr){
+							option = document.createElement('option');
+							option.value = boc.playerId;
+							option.text = boc.player.full_name;	
+							select.appendChild(option);
+						});
+					}
+				}
+			});
+
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			removeSelectDuplicates(select.id);
+			cellCount = cellCount + 1;
+			break;
+			
 		case 'g': case 'Alt_h':
 			select = document.createElement('select');
 			select.id = 'selectBatamanThisMatch';
@@ -6898,7 +6972,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			}
 		}
 		
-		if(whatToProcess == 'Alt_3' || whatToProcess == 'Alt_4'){
+		if(whatToProcess == 'Alt_3' || whatToProcess == 'Alt_4' || whatToProcess == 'Control_2'){
 			option = document.createElement('input');
 			option.type = 'button';
 			option.name = 'checkPlayerData';
@@ -6933,7 +7007,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'Control_Shift_Z': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Control_F11': case 'Control_Shift_Y': case 'Shift_C': case 'Control_p': case 'Alt_F7': 
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
-		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h':
+		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

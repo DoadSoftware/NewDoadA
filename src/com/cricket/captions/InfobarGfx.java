@@ -81,7 +81,7 @@ public class InfobarGfx
 	public int previous_runs = 0, previous_wickets = 0, previous_overs=0, previous_balls=0, next_ball = 0,
 		bowlerPreviousRuns=0,bowlerPreviousWickets=0,bowlerPreviousOvers=0,bowlerPreviousBalls=0,bowlerNextBall=0;
 	
-	public int FirstPlayerId=0,lastXballs,sponsor_omo,infobarStatsId=0,rowId=0,challengedRuns,BallsBowledInInnings,omo=0,PP_Id=0,sponsor_id=0;
+	public int FirstPlayerId=0,lastXballs,sponsor_omo,infobarStatsId=0,rowId=0,challengedRuns,BallsBowledInInnings,omo=0,PP_Id=0,sponsor_id=0,innNumber=0;
 
 	public Inning inning = new Inning();
 	public Team team = new Team();
@@ -10532,6 +10532,48 @@ public class InfobarGfx
 						 		+ "txt_Data1*GEOM*TEXT SET " + CricketFunctions.generateRunRate(Runs,0, balls, 2,matchAllData) + "\0", print_writers);
 				}
 				break;
+			case "BOWLER_SPEED":
+				if(is_this_updating == false) {
+					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == innNumber).findAny().orElse(null);
+					if(inning == null) {
+						return "BowlerSpeed: Inning is Not Found";
+					}
+					BowlingCard bocspd = inning.getBowlingCard().stream().filter(bat->bat.getPlayer().getPlayerId()== FirstPlayerId).findAny().orElse(null);
+					if(bocspd == null) {
+						return "BowlerSpeed: Bowler is Not Found";
+					}
+					
+					if(bocspd.getSpeeds()== null) {
+						return "Speed is null";
+					}
+					
+					String speed = CricketFunctions.AnalyzeSpeeds(bocspd.getSpeeds());
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Select_Center_Big_data"
+							+ "*FUNCTION*Omo*vis_con SET 6\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$txt_Head*GEOM*TEXT SET " 
+							+ bocspd.getPlayer().getTicker_name() + " | SPEED" + "\0", print_writers);
+										
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$txt_Head2"
+							+ "*GEOM*TEXT SET FASTEST\0",print_writers);							    
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$txt_Data1"
+							+ "*GEOM*TEXT SET " + speed.split(",")[0] + "\0",print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$txt_Head3"
+							+ "*GEOM*TEXT SET AVERAGE\0",print_writers);							    
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$txt_Data2"
+							+ "*GEOM*TEXT SET " + speed.split(",")[1] + "\0",print_writers);
+					
+				    CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$txt_Head3"
+				    		+ "*GEOM*TEXT SET SLOWEST\0",print_writers);							    
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$txt_Data2"
+							+ "*GEOM*TEXT SET " + speed.split(",")[2] + "\0",print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data3Grp"
+							+ "*ACTIVE SET 1\0",print_writers);
+				}
+				
+				break;
 			case "BATSMANBOUNDARY": case "BOWLERDOTS":
 				inning = matchAllData.getMatch().getInning().stream().filter(inn ->inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Select_Center_Big_data"
@@ -11218,7 +11260,7 @@ public class InfobarGfx
 					i = i + 1;
 				}
 				break;
-			case "BAT_PP": case "BALL_PP":
+			case "BAT_PP": case "BALL_PP": case "BAT_BALL_PP":
 				int k =0;
 				String best = "-";
 				if(PP_Id <= 0 || WhichProfile == null) {
@@ -11383,25 +11425,31 @@ public class InfobarGfx
 				switch (WhichProfile.toUpperCase()) {
 				case "TEST": case "ODI": case "LIST A": case "FC":
 					TitleData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {"MATCHES", "RUNS", "50s / 100s", "AVERAGE", "BEST"}
-				    		: new String[] {"MATCHES", "WICKETS", "3WI / 5WI", "AVERAGE", "BEST"};
+				    		: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "BAT AVG", "WICKETS", "BALL AVG"} 
+							: new String[] {"MATCHES", "WICKETS", "3WI / 5WI", "AVERAGE", "BEST"};
 
 					StatData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP")
 							? new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),stat.getFifties() + " / " + stat.getHundreds(),
 							CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-"), (stat.getBestScore().equalsIgnoreCase("0") 
-							? "-" : stat.getBestScore())}: new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),
-							stat.getPlus3() + " / " + stat.getPlus5(),CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 2, "-"), // Example
+							? "-" : stat.getBestScore())}: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {String.valueOf(stat.getMatches()),
+							String.valueOf(stat.getRuns()), CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-"), 
+							String.valueOf(stat.getWickets()), CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 2, "-")} 
+							: new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),stat.getPlus3() + " / " + stat.getPlus5(),
+							CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 2, "-"), // Example
 							(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
 				case "DT20": case "IT20":
-					TitleData = infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP")
-				    	? new String[] {"MATCHES", "RUNS", "50s / 100s", "STRIKE RATE", "BEST"}
-				    	: new String[] {"MATCHES", "WICKETS", "3WI / 5WI", "ECONOMY", "BEST"};
+					TitleData = infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {"MATCHES", "RUNS", "50s / 100s", "STRIKE RATE", "BEST"}
+				    	: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "STRIKE RATE", "WICKETS", "ECONOMY"} 
+						: new String[] {"MATCHES", "WICKETS", "3WI / 5WI", "ECONOMY", "BEST"};
 
-					StatData = infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP")
-					    ? new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),
+					StatData = infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),
 					        stat.getFifties() + " / " + stat.getHundreds(),CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0),
-					        (stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())}: new String[] {String.valueOf(stat.getMatches()),
-					        String.valueOf(stat.getWickets()),stat.getPlus3() + " / " + stat.getPlus5(),
+					        (stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())}: 
+					        infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {String.valueOf(stat.getMatches()),
+							String.valueOf(stat.getRuns()), CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0), String.valueOf(stat.getWickets()), 
+							CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash)}	
+					        :new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),stat.getPlus3() + " / " + stat.getPlus5(),
 					        CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash), // Example
 					        (stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
@@ -14837,7 +14885,7 @@ public class InfobarGfx
 		List<String> statsData = new ArrayList<String>();
 		
 		switch ((whatToProcess.contains(",") ? whatToProcess.split(",")[0] : whatToProcess)) {
-		case "Alt_3": case "Alt_4":
+		case "Alt_3": case "Alt_4": case "Control_2":
 			
 			player = CricketFunctions.getPlayerFromMatchData(Integer.valueOf(whatToProcess.split(",")[2]), matchAllData);
 			if(player == null) {
@@ -14862,7 +14910,7 @@ public class InfobarGfx
 				switch (config.getBroadcaster()) {
 				case Constants.AFG_SERIES:
 					switch (whatToProcess.split(",")[3].toUpperCase()) {
-					case "TEST":
+					case "TEST": case "FC":
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
@@ -15020,7 +15068,7 @@ public class InfobarGfx
 			statsData.add(player.getFull_name());
 			
 			switch ((whatToProcess.contains(",") ? whatToProcess.split(",")[0] : whatToProcess)) {
-			case "Alt_3": case "Alt_4":
+			case "Alt_3": case "Alt_4": case "Control_2":
 				switch (whatToProcess.split(",")[3]) {
 				case "TEST": case "ODI": case "LIST A": case "FC":
 					statsData.add("MATCHES," + stat.getMatches());
@@ -15036,6 +15084,12 @@ public class InfobarGfx
 						statsData.add("AVERAGE," + CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 2, "-"));
 						statsData.add("3WI / 5WI," + stat.getPlus3() + " / " + stat.getPlus5());
 						statsData.add("BEST," + best);
+						break;
+					case "Control_2":
+						statsData.add("RUNS," + stat.getRuns());
+						statsData.add("BAT AVG," + CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-"));
+						statsData.add("WICKETS," + stat.getWickets());
+						statsData.add("BALL AVG," + CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 2, "-"));
 						break;
 					}
 					break;
