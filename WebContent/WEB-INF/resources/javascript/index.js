@@ -2896,6 +2896,17 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.value = 'NEW_BALL_DUE';
 					option.text = 'New Ball Due';
 					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'NEW_BALL_AVAILABLE';
+					option.text = 'New Ball Available';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'NEW_BALL_TAKEN';
+					option.text = 'New Ball Taken';
+					select.appendChild(option);
+					
 				}else {
 					option = document.createElement('option');
 					option.value = 'FIRST_INNING_SCORE';

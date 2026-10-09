@@ -352,6 +352,7 @@ public class IndexController
 		@RequestParam(value = "valueToProcess", required = false, defaultValue = "") String valueToProcess) 
 			throws Exception 
 	{
+		
 		switch (whatToProcess.toUpperCase()) {
 		
 		case "GET_ARCHIVE_MATCH_FILES":
@@ -428,6 +429,8 @@ public class IndexController
 				return objectMapper.writeValueAsString(null).toString();
 			}
 			
+			refreshLocalTime(print_writers, 1, 1, this_caption.this_infobarGfx.infobar);
+			
 			if(last_match_time_stamp != new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.MATCHES_DIRECTORY 
 				+ session_match.getMatch().getMatchFileName()).lastModified()) {
 				session_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ,
@@ -462,7 +465,11 @@ public class IndexController
 					    		if(this_caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 								}else if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty() 
 									&& !this_caption.this_infobarGfx.infobar.getSection5().equalsIgnoreCase("BOWLER") || this_animation.infobar.isInfobar_pushed()
-									|| this_animation.infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED + Constants.SHRUNK_INFOBAR)) {
+									|| this_caption.this_infobarGfx.infobar.getInfobar_status().equalsIgnoreCase("IDENT") 
+									|| (this_animation.infobar.getInfobar_status() != null && 
+									this_animation.infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED + Constants.SHRUNK_INFOBAR))
+									|| (this_animation.infobar.getInfobar_status() != null && 
+									this_animation.infobar.getInfobar_status().equalsIgnoreCase(Constants.SHRUNK_INFOBAR))) {
 								}
 								else {
 									this_caption.this_infobarGfx.speed(CricketFunctions.processPrintWriter(session_configuration).get(0), session_match);
@@ -1667,5 +1674,12 @@ public class IndexController
 			}
 			break;
 		}
+	}
+	public void refreshLocalTime(List<PrintWriter> print_writers, int WhichSide, int WhichSubSide, Infobar infobar) {
+	    if (infobar.getSection3() != null && infobar.getSection3().equalsIgnoreCase("LOCAL-TIME")) {
+	        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide 
+	        		+ "$Bowler_Top_Bottom$Bottom_Data$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET LOCAL TIME: " 
+	        		+ CricketFunctions.LocalTime().toUpperCase() + "\0", print_writers);
+	    }
 	}
 }

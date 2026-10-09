@@ -183,7 +183,6 @@ public class Caption
 					}
 					break;
 				}
-				
 				break;
 			case "Control_Alt_F1":
 				status = this_fullFramesGfx.PopulateScoreBowlingCardFF(whichSide, whatToProcess.split(",")[0], matchAllData, 

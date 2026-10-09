@@ -2398,9 +2398,9 @@ public class InfobarGfx
 				//Small
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$Score_Grp$txt_HomeTeamName*GEOM*TEXT SET " 
 						+ inning.getBatting_team().getTeamName1() + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$Center$LeftTeamLogo_Small$Img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$LeftTeamLogo_Small$img_Base*TEXTURE*IMAGE SET " 
 						+ Constants.AFG_SERIES_BASE_Ident + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$RightTeamLogo_Small$img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$RightTeamLogo_Small$Img_Base*TEXTURE*IMAGE SET " 
 						+ Constants.AFG_SERIES_BASE_Ident + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			}
 			
@@ -7236,6 +7236,12 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + text + "\0", print_writers);
 					break;
+				case "NEW_BALL_AVAILABLE": case "NEW_BALL_TAKEN":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
+							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data$Side" 
+							+ WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + infobar.getSection3().toUpperCase().replace("_", " ") + "\0", print_writers);
+					break;
 				case "NEW_BALL_DUE":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
@@ -7261,8 +7267,10 @@ public class InfobarGfx
 					int ballsPerCycle = newBallCycleOvers * 6;
 					int remainBallsForNewBall = ballsPerCycle - ballsBowledInInnings;
 					
+					String overtype = (CricketFunctions.OverBalls(0, remainBallsForNewBall).equalsIgnoreCase("1")?" OVER":" OVERS");
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data$Side" 
-							+ WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "NEW BALL DUE IN " + CricketFunctions.OverBalls(0, remainBallsForNewBall) + " OVERS" + "\0", print_writers);
+							+ WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "NEW BALL DUE IN " + CricketFunctions.OverBalls(0, remainBallsForNewBall) + overtype + "\0", print_writers);
 					break;
 				case "REMAINING_OVERS":
 					int daysnumber=0;
@@ -7342,24 +7350,22 @@ public class InfobarGfx
 							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "FROM " + ground.getShortname() + "\0", print_writers);
 					break;
 				case "LOCAL-TIME":
-					Date dt = new Date();
-			        SimpleDateFormat dateFormat;
-			        dateFormat = new SimpleDateFormat("hh:mm a");
-				      
 			        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
 			        CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
-							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET LOCAL TIME: " + dateFormat.format(dt).toUpperCase() + "\0", print_writers);	
+							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET LOCAL TIME: " + CricketFunctions.LocalTime().toUpperCase() + "\0", print_writers);	
 					break;
 				case "DAY_SESSION":
 					isThisOverLimitExceed = true;
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
+					
 					if(matchAllData.getMatch().getDaysSessions().get(matchAllData.getMatch().getDaysSessions().size()-1).getIsCurrentSession().equalsIgnoreCase(CricketUtil.YES)) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 								+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET DAY " + matchAllData.getMatch().getDaysSessions().get(matchAllData.getMatch().
-									getDaysSessions().size()-1).getDayNumber() + " - SESSION " + matchAllData.getMatch().getDaysSessions().get(matchAllData.getMatch().
-											getDaysSessions().size()-1).getSessionNumber() + "\0", print_writers);
+									getDaysSessions().size()-1).getDayNumber() + (matchAllData.getMatch().getDaysSessions().get(matchAllData.getMatch().getDaysSessions().size()-1).
+									getSessionNumber() == 1 ? " - MORNING SESSION" : matchAllData.getMatch().getDaysSessions().get(matchAllData.getMatch().getDaysSessions().size()-1).
+									getSessionNumber() == 2 ? " - AFTERNOON SESSION" : " - EVENING SESSION") + "\0", print_writers);
 					}
 					break;
 				case CricketUtil.OVER:
@@ -10504,7 +10510,8 @@ public class InfobarGfx
 					 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Inning_Summary$txt_Name"
 					 			+ "*GEOM*TEXT SET " + "DAY " + day + "\0", print_writers);
 					 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Inning_Summary$txt_Name02"
-							 	+ "*GEOM*TEXT SET " + "SESSION " + last.getSessionNumber() + "\0", print_writers);
+							 	+ "*GEOM*TEXT SET " + (last.getSessionNumber() == 1 ? "MORNING SESSION" : last.getSessionNumber() == 2 ? "AFTERNOON SESSION" : 
+							 		"EVENING SESSION")   + "\0", print_writers);
 					 
 					 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Inning_Summary$Data1Grp$"
 					 			+ "txt_Head*GEOM*TEXT SET " + "OVERS" + "\0", print_writers);
