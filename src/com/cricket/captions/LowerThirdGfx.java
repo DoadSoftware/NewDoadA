@@ -12202,7 +12202,7 @@ public class LowerThirdGfx
 		case "Shift_F6":
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$LT_ALL$Sponsor$Side" + whichSide
-					+ "$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					+ "$Sponsor*FUNCTION*Omo*vis_con SET 3\0",print_writers);
 			
 //			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + whichSide
 //					+ "$Select$BatsmanOut02$BottomGrp$RestDataGrp$Visible*FUNCTION*Omo*vis_con SET 1 \0",print_writers);
@@ -12265,7 +12265,7 @@ public class LowerThirdGfx
 		case "F6": case "Control_F6":
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$LT_ALL$Sponsor$Side" + whichSide
-					+ "$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					+ "$Sponsor*FUNCTION*Omo*vis_con SET 3\0",print_writers);
 			
 //			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + whichSide
 //					+ "$Select$BatsmanOut$BottomGrp$ScoreGrp$txt_Data1*GEOM*TEXT SET "
@@ -12417,7 +12417,7 @@ public class LowerThirdGfx
 		case "Shift_F3":
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$LT_ALL$Sponsor$Side" + whichSide
-					+ "$Sponsor*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					+ "$Sponsor*FUNCTION*Omo*vis_con SET 3\0",print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT$All$DataAll$Side" + whichSide
 					+ "$Select$FOW$BottomGrp$RestDataGrp$RestData$Data*FUNCTION*Omo*vis_con SET "
