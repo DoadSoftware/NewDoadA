@@ -461,8 +461,10 @@ public class IndexController
 					    	case Constants.AFG_SERIES:
 					    		if(this_caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 								}else if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty() 
-									&& !this_caption.this_infobarGfx.infobar.getSection5().equalsIgnoreCase("BOWLER")) {
-								}else {
+									&& !this_caption.this_infobarGfx.infobar.getSection5().equalsIgnoreCase("BOWLER") || this_animation.infobar.isInfobar_pushed()
+									|| this_animation.infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED + Constants.SHRUNK_INFOBAR)) {
+								}
+								else {
 									this_caption.this_infobarGfx.speed(CricketFunctions.processPrintWriter(session_configuration).get(0), session_match);
 								}
 					    		break;

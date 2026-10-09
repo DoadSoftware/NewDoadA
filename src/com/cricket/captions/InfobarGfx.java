@@ -182,6 +182,12 @@ public class InfobarGfx
 
 							populateInfoBarResult(print_writers, matchAllData);
 							
+							if(infobar.getSectionAnalytics() != null && !infobar.getSectionAnalytics().isEmpty()) {
+								this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Base$In_Out", "CONTINUE");
+								this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Data$In_Out", "CONTINUE");
+								TimeUnit.MILLISECONDS.sleep(200);
+							}
+							
 							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center$In_Out", "CONTINUE");
 							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Batsman_Side$Base$In_Out", "CONTINUE");
 							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Batsman_Side$Rest_data$In_Out", "CONTINUE");
@@ -191,6 +197,20 @@ public class InfobarGfx
 							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Bowler_Side$Bowler_Bottom$In_Out", "CONTINUE");
 							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Powerplay$In_Out", "CONTINUE");
 							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Ident$In_Out", "CONTINUE");
+							
+							infobar.setSection1("");
+							infobar.setSection2("");
+							infobar.setSection3("");
+							infobar.setSection4("");
+							infobar.setSection5("");
+							infobar.setSectionAnalytics("");
+							
+							infobar.setLast_sectionAnalytics("");
+							infobar.setLast_section1("");
+							infobar.setLast_section2("");
+							infobar.setLast_section3("");
+							infobar.setLast_section4("");
+							infobar.setLast_section5("");
 
 							this.infobar.setResult_on_screen(true);
 						}else {

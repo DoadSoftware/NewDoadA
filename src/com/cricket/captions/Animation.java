@@ -570,7 +570,7 @@ public class Animation
 				processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
+			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				
@@ -589,6 +589,9 @@ public class Animation
 				switch (whatToProcess.split(",")[0]) {
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "START");
+					break;
+				case "Control_Shift_F1":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$SplitCard", "START");
 					break;
 				case "F2":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BowlingCard", "START");
@@ -2609,13 +2612,19 @@ public class Animation
 		case Constants.AFG_SERIES:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "F12":
-				processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Center_Base$In_Out", "CONTINUE");
-				
 				switch (whatToProcess.split(",")[0]) {
 				case "Control_F12":
+					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Center_Base$In_Out", "CONTINUE");
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Ident$In_Out", "CONTINUE");
 					break;
 				case "F12":
+					if(caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
+						processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Base$In_Out", "CONTINUE");
+						processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center_Shift_Data$In_Out$Data$In_Out", "CONTINUE");
+						TimeUnit.MILLISECONDS.sleep(200);
+					}
+					
+					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Center_Base$In_Out", "CONTINUE");
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Center$In_Out", "CONTINUE");
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Batsman_Side$Base$In_Out", "CONTINUE");
 					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Main$Batsman_Side$Rest_data$In_Out", "CONTINUE");
@@ -2851,7 +2860,8 @@ public class Animation
 				lineUpCount = 0;
 				break;
 				
-			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
+			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
+				
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Header", "CONTINUE");
@@ -2862,6 +2872,9 @@ public class Animation
 				switch (whatToProcess.split(",")[0]) {
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "CONTINUE");
+					break;
+				case "Control_Shift_F1":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$SplitCard", "CONTINUE");
 					break;
 				case "F2":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BowlingCard", "CONTINUE");
@@ -4024,7 +4037,7 @@ public class Animation
 				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$Main", "CONTINUE");
 				break;
 				
-			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
+			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
 				processAnimation(Constants.BACK, print_writers, "Change$Wipe", "START");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.BACK, print_writers, "Change$Logo", "START");
@@ -4035,6 +4048,9 @@ public class Animation
 				switch(whichGraphicOnScreen.split(",")[0]) {
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "Change$BattingCard", "START");
+					break;
+				case "Control_Shift_F1":
+					processAnimation(Constants.BACK, print_writers, "Change$SplitCard", "START");
 					break;
 				case "F2":
 					processAnimation(Constants.BACK, print_writers, "Change$BowlingCard", "START");
@@ -4057,6 +4073,9 @@ public class Animation
 					switch(whatToProcess.split(",")[0]) {
 					case "F1":
 						processAnimation(Constants.BACK, print_writers, "Change$BattingCard", "START");
+						break;
+					case "Control_Shift_F1":
+						processAnimation(Constants.BACK, print_writers, "Change$SplitCard", "START");
 						break;
 					case "F2":
 						processAnimation(Constants.BACK, print_writers, "Change$BowlingCard", "START");
@@ -5241,7 +5260,7 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
-			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
+			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
 				
 				processAnimation(Constants.BACK, print_writers, "Change$Wipe", "SHOW 0.0");
 				processAnimation(Constants.BACK, print_writers, "Change$Logo", "SHOW 0.0");
@@ -5252,6 +5271,9 @@ public class Animation
 				switch(whichGraphicOnScreen.split(",")[0]) {
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "Change$BattingCard", "SHOW 0.0");
+					break;
+				case "Control_Shift_F1":
+					processAnimation(Constants.BACK, print_writers, "Change$SplitCard", "SHOW 0.0");
 					break;
 				case "F2":
 					processAnimation(Constants.BACK, print_writers, "Change$BowlingCard", "SHOW 0.0");
@@ -5275,6 +5297,10 @@ public class Animation
 					case "F1":
 						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "SHOW 1.700");
 						processAnimation(Constants.BACK, print_writers, "Change$BattingCard", "SHOW 0.0");
+						break;
+					case "Control_Shift_F1":
+						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$SplitCard", "SHOW 1.700");
+						processAnimation(Constants.BACK, print_writers, "Change$SplitCard", "SHOW 0.0");
 						break;
 					case "F2":
 						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BowlingCard", "SHOW 1.700");
@@ -6683,13 +6709,16 @@ public class Animation
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_LineUpImage$In_Out$Essentials$In 1.600 anim_LineUpImage$In_Out$Logo$In 1.700 "
 								+ "anim_LineUpImage$In_Out$Header$In 1.600 anim_LineUpImage$In_Out$SubHeader$In 1.300 anim_LineUpImage$In_Out$Main$In 1.700";
 						break;
-					case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
+					case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_FullFrames$In_Out$Essentials$In 1.600 anim_FullFrames$In_Out$Logo$In 1.700 "
 								+ "anim_FullFrames$In_Out$Header$In 1.600 anim_FullFrames$In_Out$SubHeader$In 1.300 anim_FullFrames$In_Out$Sponsor$In 1.500 "
 								+ "anim_FullFrames$In_Out$Wiipe$In 1.341 ";
 						switch (whatToProcess.split(",")[0]) {
 						case "F1":
 							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$BattingCard$In 1.680";
+							break;
+						case "Control_Shift_F1":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$SplitCard$In 1.680";
 							break;
 						case "F2":
 							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$BowlingCard$In 1.680";
@@ -7141,13 +7170,16 @@ public class Animation
 								+ "Change_LineUpImage$SubHeader 1.200 Change_LineUpImage$Main 0.860 Change_LineUpImage$Main$Change_Out 0.380 Change_LineUpImage$Main$Change_In 0.860";
 						break;
 						
-					case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
+					case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
 						previewCommand = "Change 1.341 Change$Logo 1.200 Change$Logo$Change_Out 0.500 Change$Logo$Change_In 1.200 Change$Header 1.200 Change$Header$Change_Out 0.500 "
 								+ "Change$Header$Change_In 1.200 Change$SubHeader 0.800 Change$Sponsor 1.000";
 						
 						switch(whichGraphicOnScreen.split(",")[0]) {
 						case "F1":
 							previewCommand = previewCommand + " Change$BattingCard 1.280 Change$BattingCard$Change_Out 0.540 Change$BattingCard$Change_In 1.280";
+							break;
+						case "Control_Shift_F1":
+							previewCommand = previewCommand + " Change$SplitCard 1.280 Change$SplitCard$Change_Out 0.540 Change$SplitCard$Change_In 1.280";
 							break;
 						case "F2":
 							previewCommand = previewCommand + " Change$BowlingCard 1.280 Change$BowlingCard$Change_Out 0.540 Change$BowlingCard$Change_In 1.280";
@@ -7170,6 +7202,9 @@ public class Animation
 							switch(whatToProcess.split(",")[0]) {
 							case "F1":
 								previewCommand = previewCommand + " Change$BattingCard 1.280 Change$BattingCard$Change_Out 0.540 Change$BattingCard$Change_In 1.280";
+								break;
+							case "Control_Shift_F1":
+								previewCommand = previewCommand + " Change$SplitCard 1.280 Change$SplitCard$Change_Out 0.540 Change$SplitCard$Change_In 1.280";
 								break;
 							case "F2":
 								previewCommand = previewCommand + " Change$BowlingCard 1.280 Change$BowlingCard$Change_Out 0.540 Change$BowlingCard$Change_In 1.280";

@@ -6235,16 +6235,21 @@ function addItemsToList(whatToProcess,dataToProcess)
 			option.text = 'Performer';
 			select.appendChild(option);
 			
-			switch(whatToProcess) {
-				case 'Control_Shift_F1':
-					option = document.createElement('option');
-					option.value = 'partnership';
-					option.text = 'Partnership';
-					select.appendChild(option);
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'AFG_SERIES':
+				break;
+			default:
+				switch(whatToProcess) {
+					case 'Control_Shift_F1':
+						option = document.createElement('option');
+						option.value = 'partnership';
+						option.text = 'Partnership';
+						select.appendChild(option);
+					break;
+				}
 				break;
 			}
 			
-
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);

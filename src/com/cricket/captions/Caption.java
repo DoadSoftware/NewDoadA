@@ -160,7 +160,7 @@ public class Caption
 				break;
 			case "Control_Shift_F1":
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.AFG_SL_SERIES:
+				case Constants.AFG_SL_SERIES: case Constants.AFG_SERIES:
 					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
 					this_fullFramesGfx.this_ALL_FF.WhichType = whatToProcess.split(",")[3];
 					this_fullFramesGfx.this_ALL_FF.Players = Players;

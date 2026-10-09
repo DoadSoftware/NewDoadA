@@ -1450,7 +1450,7 @@ public class FullFramesGfx
 			case Constants.BCCI:
 				return this_FC_FF.BatPerformerBody(print_writers, WhichSide, config, matchAllData, inning, cricketService, multilanguagedata, 
 						foreignLanguageDataList, cricketService.getDictionary());
-			case Constants.AFG_SL_SERIES:
+			case Constants.AFG_SL_SERIES: case Constants.AFG_SERIES:
 				return this_ALL_FF.ScorecardBatPerformerBody(print_writers, WhichSide, config, matchAllData, inning);
 			default:	
 				return this_ALL_FF.BatPerformerBody(print_writers, WhichSide, config, matchAllData, inning, cricketService);	
