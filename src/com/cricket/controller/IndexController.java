@@ -456,7 +456,21 @@ public class IndexController
 
 					    // Use a tolerance for comparison
 					    if (Math.abs(speed_match_time_stamp - currentTimestamp) > 100) {
-					        this_caption.this_infobarGfx.speed(CricketFunctions.processPrintWriter(session_configuration).get(0), session_match);
+					    	
+					    	switch (session_configuration.getBroadcaster()) {
+					    	case Constants.AFG_SERIES:
+					    		if(this_caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
+								}else if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty() 
+									&& !this_caption.this_infobarGfx.infobar.getSection5().equalsIgnoreCase("BOWLER")) {
+								}else {
+									this_caption.this_infobarGfx.speed(CricketFunctions.processPrintWriter(session_configuration).get(0), session_match);
+								}
+					    		break;
+					    	default:
+					    		this_caption.this_infobarGfx.speed(CricketFunctions.processPrintWriter(session_configuration).get(0), session_match);
+					    		break;
+					    	}
+					    	
 					        speed_match_time_stamp = currentTimestamp; // Update to the new timestamp
 					    }
 					} else {
