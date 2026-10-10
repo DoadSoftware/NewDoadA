@@ -13924,7 +13924,7 @@ public class LowerThirdGfx
 			
 			for(int i=0; i< lowerThird.getTitlesText().length; i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Summary$" + whichcont + "$DataAll$Side" + whichSide 
-						+ "$BottomGrp$Data$1$txt_Data" + (i+1) + "A*GEOM*TEXT SET " + getOrdinal((i+1)) + " spell\0", print_writers);
+						+ "$BottomGrp$Data$1$txt_Data" + (i+1) + "A*GEOM*TEXT SET " + getOrdinal((i+1)) + " SPELL\0", print_writers);
 			}
 			break;	
 		 case "Shift_U":
