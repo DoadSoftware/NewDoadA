@@ -4544,6 +4544,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'AFG_SERIES':
 				option = document.createElement('option');
+				option.value = 'THIS_MATCH';
+				option.text = 'THIS MATCH';
+				select.appendChild(option);	
+			
+				option = document.createElement('option');
 				option.value = 'TEST';
 				option.text = 'TEST MATCHES';
 				select.appendChild(option);
