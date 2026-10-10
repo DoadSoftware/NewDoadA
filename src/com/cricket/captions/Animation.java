@@ -67,7 +67,7 @@ public class Animation
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": case "Control_h": case "Control_F3": 
 			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i": case "Shift_A":  case "Shift_R": case "Alt_j":  case "Alt_h": case "l":
-			case "Alt_Shift_O":
+			case "Alt_Shift_O": case "Control_F2":
 				return Constants.LOWER_THIRD;	
 			case "Shift_F1": case "Shift_F2":
 				return Constants.MINIS;	
@@ -482,6 +482,29 @@ public class Animation
 				TimeUnit.MILLISECONDS.sleep(200);
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_Summary$In_Out", "START");
+
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
+			case "Control_F2":
+				if(this.infobar.isInfobar_on_screen() == true) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option$LT_Position*"
+							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option$LT_Position*"
+							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
+				}
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+						TimeUnit.MILLISECONDS.sleep(1000);
+						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+					}
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(200);
+				
+				processAnimation(Constants.FRONT, print_writers, "anim_Bowling_Option$In_Out", "START");
 
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -2781,6 +2804,22 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_Summary", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
+			case "Control_F2":
+				processAnimation(Constants.FRONT, print_writers, "anim_Bowling_Option$In_Out", "CONTINUE");
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						TimeUnit.MILLISECONDS.sleep(1000);
+						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
+						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
+					}
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(800);
+				
+				processAnimation(Constants.FRONT, print_writers, "anim_Bowling_Option", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
 			case "Control_F5": case "Control_F9": case "F8": case "F10": case "Alt_F8":
 				processAnimation(Constants.FRONT, print_writers, "anim_NameSuperDouble$In_Out", "CONTINUE");
 				
@@ -4016,6 +4055,9 @@ public class Animation
 			 case "Control_j": case "Alt_i": case "Alt_w": case "Shift_A":  case "Shift_R": case "Alt_h":
 				 processAnimation(Constants.FRONT, print_writers, "anim_LT_Summary$Change", "START");
 					break;
+			 case "Control_F2":	
+				 processAnimation(Constants.FRONT, print_writers, "anim_Bowling_Option$Change", "START");
+					break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change", "START");
 				break;
@@ -5233,6 +5275,9 @@ public class Animation
 			 case "Control_j": case "Alt_i": case "Alt_w": case "Shift_A":  case "Shift_R": case "Alt_h":
 				 processAnimation(Constants.FRONT, print_writers, "anim_LT_Summary$Change", "SHOW 0.0");
 					this.whichGraphicOnScreen = whatToProcess;
+					break;
+			 case "Control_F2":	
+				 processAnimation(Constants.FRONT, print_writers, "anim_Bowling_Option$Change", "SHOW 0.0");
 					break;
 			 case "Control_F5": case "Control_F9": case "F8": case "F10": case "Alt_F8":
 				 processAnimation(Constants.FRONT, print_writers, "anim_NameSuperDouble$Change", "SHOW 0.0");
@@ -7749,9 +7794,6 @@ public class Animation
 					case "Alt_Shift_Q":
 						previewCommand = "Plotter 1.000 Plotter$In 1.000 Plotter$Out 1.000";
 						break;
-					case "Control_F2":
-						previewCommand = "Anim_Infobar$FFIn 0.520 LT_BowlingOptions$In_Out 0.800 LT_BowlingOptions$In_Out$In 0.786";
-						break;
 					case "Control_3": case "Control_8":
 						previewCommand = "Lof_Profile$In_Out$Essentials 1.200 Lof_Profile$In_Out$Essentials$In 1.000 "
 								+ "Lof_Profile$In_Out$Image 1.200 Lof_Profile$In_Out$Image$In 1.000 "
@@ -7779,6 +7821,11 @@ public class Animation
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_LT_Summary$In_Out$Logo 1.320 anim_LT_Summary$In_Out$Logo$In_Out 1.320 "
 								+ "anim_LT_Summary$In_Out$Logo$In_Out$In 1.060 anim_LT_Summary$In_Out$Base 1.320 anim_LT_Summary$In_Out$Base$In_Out 1.320 "
 								+ "anim_LT_Summary$In_Out$Base$In_Out$In 0.660 anim_LT_Summary$In_Out$Data 1.320 anim_LT_Summary$In_Out$Data$In_Out 1.320";
+						break;
+					case "Control_F2":
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Bowling_Option$In_Out$Logo 1.320 anim_Bowling_Option$In_Out$Logo$In_Out 1.320 "
+								+ "anim_Bowling_Option$In_Out$Logo$In_Out$In 1.060 anim_Bowling_Option$In_Out$Base 1.320 anim_Bowling_Option$In_Out$Base$In_Out 1.320 "
+								+ "anim_Bowling_Option$In_Out$Base$In_Out$In 0.660 anim_Bowling_Option$In_Out$Data 1.320 anim_Bowling_Option$In_Out$Data$In_Out 1.320";
 						break;
 					case "Control_F5": case "Control_F9": case "F8": case "F10": case "Alt_F8":
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_NameSuperDouble$In_Out$Logo 1.320 anim_NameSuperDouble$In_Out$Logo$In_Out 1.320 "
