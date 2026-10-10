@@ -2875,7 +2875,7 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 				
-			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q": case "Alt_Shift_I":
 				processAnimation(Constants.BACK, print_writers, "anim_Profile$In_Out", "CONTINUE");
 				
 				TimeUnit.MILLISECONDS.sleep(800);
@@ -4066,7 +4066,10 @@ public class Animation
 				 processAnimation(Constants.FRONT, print_writers, "anim_Bowling_Option$Change", "START");
 					break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change", "START");
+				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change$Wipe", "START");
+				TimeUnit.MILLISECONDS.sleep(700);
+				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change$Logo", "START");
+				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change$Profile", "START");
 				break;
 			case "Control_Shift_F7":
 				processAnimation(Constants.BACK, print_writers, "Change_LineUpImage$Wipe", "CONTINUE");
@@ -5304,7 +5307,9 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
-				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change$Wipe", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change$Logo", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_Profile$Change$Profile", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
@@ -6760,6 +6765,10 @@ public class Animation
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Profile$In_Out$Essentials$In 1.600 anim_Profile$In_Out$Logo$In 1.700 "
 								+ "anim_Profile$In_Out$Main$Profile$In 1.600 anim_Profile$In_Out$Wiipe$In 1.347";
 						break;
+					case "Alt_Shift_I":
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Profile$In_Out$Essentials$In 1.600 anim_Profile$In_Out$Logo$In 1.700 "
+								+ "anim_Profile$In_Out$Main$Profile$In 1.600 anim_Profile$In_Out$Main$PlayerPerformance$In 1.600 anim_Profile$In_Out$Wiipe$In 1.347";
+						break;
 					case "Control_Shift_F7":
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_LineUpImage$In_Out$Essentials$In 1.600 anim_LineUpImage$In_Out$Logo$In 1.700 "
 								+ "anim_LineUpImage$In_Out$Header$In 1.600 anim_LineUpImage$In_Out$SubHeader$In 1.300 anim_LineUpImage$In_Out$Main$In 1.700";
@@ -7220,7 +7229,7 @@ public class Animation
 					switch(whatToProcess.split(",")[0]) {
 					case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 						previewCommand = "anim_Profile$Change 1.347 anim_Profile$Change$Logo 1.200 anim_Profile$Change$Logo$Change_Out 0.500 anim_Profile$Change$Logo$Change_In 1.200 "
-								+ "anim_Profile$Change$Main 1.200 anim_Profile$Change$Main$Change_Out 0.540 anim_Profile$Change$Main$Change_In 1.200";
+								+ "anim_Profile$Change$Profile 1.200 anim_Profile$Change$Profile$Change_Out 0.540 anim_Profile$Change$Profile$Change_In 1.200";
 						break;
 					case "Control_Shift_F7":
 						previewCommand = "Change_LineUpImage 1.980 Change_LineUpImage$Logo 1.200 Change_LineUpImage$Logo$Change_Out 0.500 Change_LineUpImage$Logo$Change_In 1.200 "

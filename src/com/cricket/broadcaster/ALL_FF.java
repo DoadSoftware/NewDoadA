@@ -13723,8 +13723,10 @@ public class ALL_FF
 							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$StatsAll$Stat" + (i+1) + "$Highlight$txt_StatHead"
 							+ "*GEOM*TEXT SET " + TitleData[i] + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$StatsAll$Stat" + (i+1) + "$Highlight$txt_StatValue"
-							+ "*GEOM*TEXT SET " + StatData[i] + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$StatsAll$Stat" + (i+1) + "$Highlight$StatValueMain"
+							+ "$txt_StatValue*GEOM*TEXT SET " + StatData[i] + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$StatsAll$Stat" + (i+1) + "$Highlight$StatValueOutline"
+							+ "$txt_StatValue*GEOM*TEXT SET " + StatData[i] + "\0", print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$StatsAll$Stat" + (i+1) + "$select_Highlight"
 							+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
