@@ -26,6 +26,7 @@ import com.cricket.model.Player;
 import com.cricket.model.Playoff;
 import com.cricket.model.Statistics;
 import com.cricket.model.StatsType;
+import com.cricket.model.SubsStatsType;
 import com.cricket.model.Team;
 import com.cricket.model.Tournament;
 import com.cricket.model.VariousText;
@@ -95,7 +96,7 @@ public class Caption
 		List<POTT> pott,List<Playoff> Playoffs, List<String> teamChanges, List<PerformanceBug> performanceBugs, FullFramesGfx this_fullFramesGfx,
 		LowerThirdGfx this_lowerThirdGfx, InfobarGfx this_infobarGfx,BugsAndMiniGfx this_bugsAndMiniGfx, int whichSide, String whichGraphhicsOnScreen, 
 		String slashOrDash, List<Tournament> tournament,List<BestStats> tapeball,List<DuckWorthLewis> dls, List<HeadToHeadPlayer> headToHead, 
-		List<Tournament> past_tournament_stats, CricketService cricketService,List<EverestBugs> everestBugs, List<DuckWorthLewis> vjd) {
+		List<Tournament> past_tournament_stats, CricketService cricketService,List<EverestBugs> everestBugs, List<DuckWorthLewis> vjd, List<SubsStatsType> subsStatsType) {
 	
 		super();
 		this.print_writers = print_writers;
@@ -126,7 +127,7 @@ public class Caption
 		this.dls = dls;
 		this.vjd = vjd;
 		
-		this.this_fullFramesGfx = new FullFramesGfx(print_writers, config, statistics, statsTypes, tournament_matches, 
+		this.this_fullFramesGfx = new FullFramesGfx(print_writers, config, statistics, statsTypes, subsStatsType, tournament_matches, 
 				fixTures, Teams, Grounds,tournament, VariousText, players, pott,Playoffs, teamChanges,headToHead, past_tournament_stats, cricketService);
 		this.this_lowerThirdGfx = new LowerThirdGfx(print_writers, config, statistics, statsTypes, tournament_matches, 
 				nameSupers, Teams, Grounds, tournament,tapeball, dls, staff, players, pott, varioustText, headToHead, past_tournament_stats, cricketService,fixTures,vjd);
@@ -231,6 +232,9 @@ public class Caption
 				break;
 			case "m":
 				status = this_fullFramesGfx.populateFFMatchId(whichSide,whatToProcess.split(",")[0], matchAllData);
+				break;
+			case "Alt_Shift_I":
+				status = this_fullFramesGfx.populatePlayerProfilePerformance(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "Control_d": case "Control_e":
 				status = this_fullFramesGfx.populatePlayerProfile(whichSide, whatToProcess, matchAllData, 0);
@@ -545,6 +549,9 @@ public class Caption
 				break;
 			case "Alt_Shift_F3":
 				status = this_lowerThirdGfx.populatePhaseComp(whatToProcess,whichSide, matchAllData);
+				break;
+			case "Alt_Shift_!":
+				status = this_fullFramesGfx.PopulateFallOfWicketsFF(whichSide, whatToProcess.split(",")[0], matchAllData, Integer.valueOf(whatToProcess.split(",")[1]));
 				break;
 			case "Control_F3"://Comparison
 				status = this_lowerThirdGfx.populateL3rdComparison(whatToProcess,whichSide,matchAllData);

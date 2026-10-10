@@ -492,7 +492,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Control_k': case 'Control_Shift_M': case 'Control_F3': case 'Control_4': case '6': case 'Control_a': case '5': case ';': case 'Control_F7': 
 			case 'Control_Shift_F10': case 'Shift_F1': case 'Shift_F2': case 'Control_6': case 'Control_Shift_B': case 'Control_Shift_R': case 'Control_Shift_F3': 
 			case 'Control_F10':  case 'Shift_F10': case 'Alt_F11': case 'Shift_D': case 'Control_F1': case 'Control_Alt_F1': case 'Alt_Shift_F1': case 'Alt_Shift_Q':
-			case 'Control_5': case 'Control_7': case '7': case 'Alt_Shift_Q': case 'Alt_Shift_F12': case 'Control_F2': case 'Shift_U': case 'Alt_i':
+			case 'Control_5': case 'Control_7': case '7': case 'Alt_Shift_Q': case 'Alt_Shift_F12': case 'Control_F2': case 'Shift_U': case 'Alt_i': case 'Alt_Shift_!':
 				dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 				processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 				break;
@@ -968,7 +968,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': case 'Shift_C': case 'Control_F11': case 'Control_p': case 'Alt_F7': case 'l': case 'Alt_Shift_F4':
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
-	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
+	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I":
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1435,7 +1435,100 @@ function addItemsToList(whatToProcess,dataToProcess)
 					break;
 					}
 				break;
-			case "Alt_3": case 'Control_d': case 'Control_3': case 'Control_2':
+			case "Alt_Shift_I":
+				header_text.innerHTML = 'BATTER PERFORMANCE';
+				switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'AFG_SERIES':
+					select = document.createElement('select');
+					select.id = 'selectPlayerName';
+					select.name = select.id;
+					
+					session_match.match.inning.forEach(function(inn){
+						if(inn.isCurrentInning == 'YES'){
+							inn.battingCard.forEach(function(bc){
+								if(bc.status == 'NOT OUT'){
+									if(bc.onStrike == 'YES'){
+										option = document.createElement('option');
+										option.value = bc.player.playerId;
+										option.text = bc.player.full_name;
+										select.appendChild(option);
+									}else{
+										option = document.createElement('option');
+										option.value = bc.player.playerId;
+										option.text = bc.player.full_name;
+										select.appendChild(option);
+									}
+								}
+							});
+							
+							if(inn.battingTeamId == session_match.setup.homeTeamId){
+								session_match.setup.homeSquad.forEach(function(hs){
+									option = document.createElement('option');
+									option.value = hs.playerId;
+									option.text = hs.full_name;
+									select.appendChild(option);
+								});
+								session_match.setup.homeOtherSquad.forEach(function(hos){
+									option = document.createElement('option');
+									option.value = hos.playerId;
+									option.text = hos.full_name  + ' (OTHER)';
+									select.appendChild(option);
+								});
+							}else {
+								session_match.setup.awaySquad.forEach(function(as){
+									option = document.createElement('option');
+									option.value = as.playerId;
+									option.text = as.full_name;
+									select.appendChild(option);
+								});
+								session_match.setup.awayOtherSquad.forEach(function(aos){
+									option = document.createElement('option');
+									option.value = aos.playerId;
+									option.text = aos.full_name  + ' (OTHER)';
+									select.appendChild(option);
+								});
+							}
+						}
+					});
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+					row.insertCell(cellCount).appendChild(select);
+					removeSelectDuplicates(select.id);
+					setDropdownOptionToSelectOptionArray($(select),0);
+					cellCount = cellCount + 1;
+					
+					select = document.createElement('select');
+					select.id = 'selectProfile';
+					select.name = select.id;
+					
+					option = document.createElement('option');
+					option.value = 'TEST';
+					option.text = 'TEST MATCHES';
+					select.appendChild(option);
+					
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),1);
+					cellCount = cellCount + 1
+					
+					select = document.createElement('select');
+					select.id = 'selectImage';
+					select.name = select.id;
+
+					option = document.createElement('option');
+					option.value = 'YEARS';
+					option.text = 'By Years';
+					select.appendChild(option);
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),2);
+					cellCount = cellCount + 1
+					break;	
+				}
+				break;	
+				
+			case "Alt_3": case 'Control_d': case 'Control_3': case 'Control_2': 
 			switch(whatToProcess){
 				case "Alt_3":
 					header_text.innerHTML = 'INFOBAR - BATTER CAREER';
@@ -1448,7 +1541,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 					break;
 				case 'Control_2':
 					header_text.innerHTML = 'ALL ROUNDER - CAREER';
-					break;				
+					break;
+				case "Alt_Shift_I":
+					header_text.innerHTML = 'BATTER PERFORMANCE';
+					break;
 			}
 			switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL':  case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
@@ -1649,6 +1745,25 @@ function addItemsToList(whatToProcess,dataToProcess)
 				cellCount = cellCount + 1
 				
 				switch(whatToProcess){
+				case "Alt_Shift_I":
+					switch($('#selected_broadcaster').val().toUpperCase()){
+					case 'AFG_SERIES': 
+						select = document.createElement('select');
+						select.id = 'selectImage';
+						select.name = select.id;
+						
+						option = document.createElement('option');
+						option.value = 'YEARS';
+						option.text = 'By Years';
+						select.appendChild(option);
+						
+						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+						row.insertCell(cellCount).appendChild(select);
+						setDropdownOptionToSelectOptionArray($(select),2);
+						cellCount = cellCount + 1
+						break;
+					}
+					break;
 				case 'Control_d':
 					switch($('#selected_broadcaster').val().toUpperCase()){
 					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': 
@@ -4544,8 +4659,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'AFG_SERIES':
 				option = document.createElement('option');
-				option.value = 'THIS_MATCH';
-				option.text = 'THIS MATCH';
+				option.value = 'FIRST_INNINGS';
+				option.text = '1st Innings';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'SECOND_INNINGS';
+				option.text = '2nd Innings';
 				select.appendChild(option);	
 			
 				option = document.createElement('option');
@@ -7044,6 +7164,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
+		case "Alt_Shift_I":
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

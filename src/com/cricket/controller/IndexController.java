@@ -1445,6 +1445,7 @@ public class IndexController
 				//FullFrames
 				this_caption.this_fullFramesGfx.statistics = session_statistics;
 				this_caption.this_fullFramesGfx.statsTypes = cricketService.getAllStatsType();
+				this_caption.this_fullFramesGfx.subsStatsType = cricketService.getAllSubsStatsTypes();
 				this_caption.this_fullFramesGfx.tournament_matches = cricket_matches;
 				this_caption.this_fullFramesGfx.fixTures = session_fixture;
 				this_caption.this_fullFramesGfx.Teams = session_team;
@@ -1519,7 +1520,7 @@ public class IndexController
 						session_bugs,session_infoBarStats,session_fixture, session_team, session_ground,session_variousText, session_commentator, session_staff, 
 						session_players, session_pott,session_playoff, session_teamChanges, session_performance_bug, new FullFramesGfx(),new LowerThirdGfx(), 
 						new InfobarGfx(), new BugsAndMiniGfx(), 1, "", "-", past_tournament_stats,past_tape,session_dls, headToHead.getH2hPlayer(), 
-						past_tournament_stats, cricketService,session_bugs_everest, session_vjd);
+						past_tournament_stats, cricketService,session_bugs_everest, session_vjd, cricketService.getAllSubsStatsTypes());
 					
 					this_caption.this_infobarGfx.previous_sixes = String.valueOf(CricketFunctions.extracttournamentFoursAndSixesData("PAST_MATCHES_DATA", 
 							headToHead.getH2hPlayer(), session_match, null).getTournament_sixes());
@@ -1656,6 +1657,7 @@ public class IndexController
 					//FullFrames
 					this_caption.this_fullFramesGfx.statistics = session_statistics;
 					this_caption.this_fullFramesGfx.statsTypes = cricketService.getAllStatsType();
+					this_caption.this_fullFramesGfx.subsStatsType = cricketService.getAllSubsStatsTypes();
 					this_caption.this_fullFramesGfx.tournament_matches = cricket_matches;
 					this_caption.this_fullFramesGfx.fixTures = session_fixture;
 					this_caption.this_fullFramesGfx.Teams = session_team;

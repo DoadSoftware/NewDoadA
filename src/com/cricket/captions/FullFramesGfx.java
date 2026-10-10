@@ -33,6 +33,7 @@ import com.cricket.model.Playoff;
 import com.cricket.model.Setup;
 import com.cricket.model.Statistics;
 import com.cricket.model.StatsType;
+import com.cricket.model.SubsStatsType;
 import com.cricket.model.Team;
 import com.cricket.model.Tournament;
 import com.cricket.model.VariousText;
@@ -60,6 +61,7 @@ public class FullFramesGfx
 	public Configuration config;
 	public List<Statistics> statistics;
 	public List<StatsType> statsTypes;
+	public List<SubsStatsType> subsStatsType;
 	public List<Tournament> tournaments;
 	public List<MatchAllData> tournament_matches;
 	public List<Fixture> fixTures;
@@ -130,7 +132,7 @@ public class FullFramesGfx
 		this.whichGFX = whichGFX;
 	}
 
-	public FullFramesGfx(List<PrintWriter> print_writers, Configuration config, List<Statistics> statistics, List<StatsType> statsTypes, 
+	public FullFramesGfx(List<PrintWriter> print_writers, Configuration config, List<Statistics> statistics, List<StatsType> statsTypes,List<SubsStatsType> subsStatsType, 
 			List<MatchAllData> tournament_matches,List<Fixture> fixTures, List<Team> Teams, List<Ground> Grounds,List<Tournament> tournaments, 
 			List<VariousText> VariousText, List<Player> players, List<POTT> pott,List<Playoff> Playoffs, List<String> teamChanges, List<HeadToHeadPlayer> headToHead, 
 			List<Tournament> past_tournament_stats, CricketService cricketService) {
@@ -139,6 +141,7 @@ public class FullFramesGfx
 		this.config = config;
 		this.statistics = statistics;
 		this.statsTypes = statsTypes;
+		this.subsStatsType = subsStatsType;
 		this.tournament_matches = tournament_matches;
 		this.fixTures = fixTures;
 		this.Teams = Teams;
@@ -301,6 +304,28 @@ public class FullFramesGfx
 			setBasePosition(print_writers, WhichSide, whatToProcess, config);
 			status = PopulateFfBody(WhichSide, whatToProcess, matchAllData, WhichInning);
 			if(status == Constants.OK) {
+				return PopulateFfFooter(WhichSide, whatToProcess, matchAllData, WhichInning);
+			} else {
+				return status;
+			}
+		} else {
+			return status;
+		}
+	}
+	public String PopulateFallOfWicketsFF(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception
+	{
+		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == WhichInning)
+			.findAny().orElse(null);
+		if(inning == null) {
+			return "PopulateFallOfWicketsFF: current inning is NULL";
+		}
+		
+		status = PopulateFfHeader(WhichSide, whatToProcess, matchAllData, WhichInning);
+		if(status == Constants.OK) {
+			setBasePosition(print_writers, WhichSide, whatToProcess, config);
+			status = PopulateFfBody(WhichSide, whatToProcess, matchAllData, WhichInning);
+			if(status == Constants.OK) {
+				setFullFrameFooterPosition(WhichSide, 1, whatToProcess);
 				return PopulateFfFooter(WhichSide, whatToProcess, matchAllData, WhichInning);
 			} else {
 				return status;
@@ -646,6 +671,90 @@ public class FullFramesGfx
 			if(status == Constants.OK) {
 				this.numberOfRows = 11;
 				return PopulateFfFooter(WhichSide, whatToProcess, matchAllData, 0);
+			} else {
+				return status;
+			}
+		} else {
+			return status;
+		}
+	}
+	public String populatePlayerProfilePerformance(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception 
+	{
+		this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
+		this_ALL_FF.WhichProfile = whatToProcess.split(",")[3];
+		
+		this_ALL_FF.playerAllStatistics.clear();
+		
+		if(this_ALL_FF.FirstPlayerId <= 0 || this_ALL_FF.WhichProfile == null) {
+			return "populatePlayerProfile: Player Id NOT found [" + FirstPlayerId + "]";
+		}
+		
+		this_ALL_FF.player = CricketFunctions.getPlayerFromMatchData(this_ALL_FF.FirstPlayerId, matchAllData);
+		if(this_ALL_FF.player == null) {
+			return "populatePlayerProfile: Player id [" + whatToProcess.split(",")[2] + "] from database is returning NULL";
+		}
+		
+		this_ALL_FF.team = Teams.stream().filter(tm -> tm.getTeamId() == this_ALL_FF.player.getTeamId()).findAny().orElse(null);
+		if(this_ALL_FF.team == null) {
+			return "populatePlayerProfile: Team id [" + this_ALL_FF.player.getTeamId() + "] from database is returning NULL";
+		}
+		
+		
+		switch (config.getBroadcaster().toUpperCase()) {
+		case Constants.AFG_SERIES:
+			switch (this_ALL_FF.WhichProfile.toUpperCase()) {
+			case "TEST":
+				this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(this_ALL_FF.WhichProfile)).findAny().orElse(null);
+				if(this_ALL_FF.statsType == null) {
+					return "populatePlayerProfile: Stats Type not found for profile [" + this_ALL_FF.WhichProfile + "]";
+				}
+				
+				this_ALL_FF.subsStatsType = subsStatsType.stream().filter(st -> st.getSubsStatsShortName().equalsIgnoreCase("Year2026")).findAny().orElse(null);
+				if(this_ALL_FF.subsStatsType == null) {
+					return "populatePlayerProfile: Subs Stats Type not found for profile";
+				}
+				
+				this_ALL_FF.stat = statistics.stream().filter(st -> st.getPlayerID() == this_ALL_FF.FirstPlayerId && this_ALL_FF.statsType.getStatsId() == st.getStatsTypeId() 
+						&& (st.getSubsStatsType() != null && this_ALL_FF.subsStatsType.getSubsStatsShortName().equalsIgnoreCase("Year2026"))).findAny().orElse(null);
+				if(this_ALL_FF.stat == null) {
+					return "populatePlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
+				}
+				switch (this_ALL_FF.WhichProfile.toUpperCase()) {
+				case "TEST":
+					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
+					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
+					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+					break;
+				}
+				
+				this_ALL_FF.subsStatsType = subsStatsType.stream().filter(st -> st.getSubsStatsShortName().equalsIgnoreCase("Year2026")).findAny().orElse(null);
+				this_ALL_FF.stat.setSubs_stats_type(this_ALL_FF.subsStatsType);
+				this_ALL_FF.playerAllStatistics.add(this_ALL_FF.stat);
+				
+				for (Statistics stats : statistics) {
+				    if (stats.getPlayerID() == this_ALL_FF.FirstPlayerId && stats.getStatsTypeId() == this_ALL_FF.statsType.getStatsId()
+				            && stats.getSubsStatsType() != null && stats.getSubsStatsType() != this_ALL_FF.subsStatsType.getSubsStatsId()) {
+				    	
+				    	this_ALL_FF.subsStatsType = subsStatsType.stream().filter(st -> st.getSubsStatsId() == stats.getSubsStatsType()).findAny().orElse(null);
+				    	stats.setSubs_stats_type(this_ALL_FF.subsStatsType);
+				    	this_ALL_FF.playerAllStatistics.add(stats);
+				    }
+				}
+				
+				for(Statistics st : this_ALL_FF.playerAllStatistics) {
+					System.out.println(st.toString());
+				}
+				break;
+			}
+			break;
+		}
+		status = PopulateFfHeader(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
+		if(status == Constants.OK) {
+			status = PopulateFfBody(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
+			if(status == Constants.OK) {
+				this.numberOfRows = 11;
+				return PopulateFfFooter(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
 			} else {
 				return status;
 			}
@@ -1506,8 +1615,12 @@ public class FullFramesGfx
 			default:
 				return this_ALL_FF.MatchIdentAndPromoBody(print_writers, whatToProcess,WhichSide, matchAllData, config); 
 			}
+		case "Alt_Shift_!":
+			return this_ALL_FF.FallOfWicketsBody(print_writers, WhichSide, config, matchAllData, inning);	
 		case "Control_Shift_D":
-			return this_ALL_FF.DoubleMatchIdentAndPromoBody(print_writers, whatToProcess,WhichSide, matchAllData, config); 
+			return this_ALL_FF.DoubleMatchIdentAndPromoBody(print_writers, whatToProcess,WhichSide, matchAllData, config);
+		case "Alt_Shift_I":
+			return this_ALL_FF.PlayerProfilePerformanceBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Control_d": case "Control_e":
 			return this_ALL_FF.PlayerProfileBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Control_F7":
@@ -1552,7 +1665,7 @@ public class FullFramesGfx
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
-		case "Alt_k": case "Control_Shift_F8":
+		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 

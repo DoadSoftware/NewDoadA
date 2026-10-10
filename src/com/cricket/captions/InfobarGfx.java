@@ -10552,7 +10552,7 @@ public class InfobarGfx
 							+ "*FUNCTION*Omo*vis_con SET 6\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$txt_Head*GEOM*TEXT SET " 
-							+ bocspd.getPlayer().getTicker_name() + " | SPEED" + "\0", print_writers);
+							+ bocspd.getPlayer().getTicker_name() + " | SPEEDS - THIS INNS" + "\0", print_writers);
 										
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data1Grp$txt_Head2"
 							+ "*GEOM*TEXT SET FASTEST\0",print_writers);							    
@@ -10560,14 +10560,14 @@ public class InfobarGfx
 							+ "*GEOM*TEXT SET " + speed.split(",")[0] + "\0",print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$txt_Head3"
-							+ "*GEOM*TEXT SET AVERAGE\0",print_writers);							    
+							+ "*GEOM*TEXT SET SLOWEST\0",print_writers);							    
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data2Grp$txt_Data2"
-							+ "*GEOM*TEXT SET " + speed.split(",")[1] + "\0",print_writers);
+							+ "*GEOM*TEXT SET " + speed.split(",")[2] + "\0",print_writers);
 					
 				    CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$txt_Head3"
-				    		+ "*GEOM*TEXT SET SLOWEST\0",print_writers);							    
+				    		+ "*GEOM*TEXT SET AVERAGE\0",print_writers);							    
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data3Grp$txt_Data2"
-							+ "*GEOM*TEXT SET " + speed.split(",")[2] + "\0",print_writers);
+							+ "*GEOM*TEXT SET " + speed.split(",")[1] + "\0",print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data3Grp"
 							+ "*ACTIVE SET 1\0",print_writers);
@@ -11290,7 +11290,7 @@ public class InfobarGfx
 					
 					switch (WhichProfile.toUpperCase()) {
 					case "TEST": case "FC":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
