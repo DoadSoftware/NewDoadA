@@ -5526,8 +5526,39 @@ function addItemsToList(whatToProcess,dataToProcess)
 			removeSelectDuplicates(select.id);
 			cellCount = cellCount + 1;
 			break;
-			
-		case 'g': case 'Alt_h':
+		case 'Alt_h':
+			select = document.createElement('select');
+			select.id = 'selectSpll';
+			select.name = select.id;
+
+			session_match.match.inning.forEach(function(inn){
+				if(inn.inningNumber == document.getElementById('which_inning').value){
+					inn.bowlingCard.forEach(function(boc){
+						if(boc.status == 'CURRENTBOWLER'){
+							option = document.createElement('option');
+							option.value = boc.player.playerId;
+							option.text = boc.player.full_name;
+							select.appendChild(option);
+						}
+					});
+					
+					inn.bowlingCard.forEach(function(boc,boc_index,bc_arr){
+						option = document.createElement('option');
+						option.value = boc.playerId;
+						option.text = boc.player.full_name;	
+						select.appendChild(option);
+					});
+				}
+			});
+
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			//removeSelectDuplicates(select.id);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			removeSelectDuplicates(select.id);
+			cellCount = cellCount + 1;
+			break;
+		case 'g':
 			select = document.createElement('select');
 			select.id = 'selectBatamanThisMatch';
 			select.name = select.id;

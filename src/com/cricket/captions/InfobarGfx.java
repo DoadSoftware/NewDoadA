@@ -11425,7 +11425,7 @@ public class InfobarGfx
 				switch (WhichProfile.toUpperCase()) {
 				case "TEST": case "ODI": case "LIST A": case "FC":
 					TitleData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {"MATCHES", "RUNS", "50s / 100s", "AVERAGE", "BEST"}
-				    		: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "BAT AVG", "WICKETS", "BALL AVG"} 
+				    		: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "BAT AVG.", "WICKETS", "BOWL AVG."} 
 							: new String[] {"MATCHES", "WICKETS", "3WI / 5WI", "AVERAGE", "BEST"};
 
 					StatData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP")
