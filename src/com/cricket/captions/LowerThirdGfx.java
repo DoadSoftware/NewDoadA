@@ -5450,7 +5450,34 @@ public class LowerThirdGfx
 			return status;
 		} 
 		
-		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getBattingTeamId() == Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
+		switch (config.getBroadcaster().toUpperCase()) {
+		case Constants.AFG_SERIES:
+			inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1])).findAny().orElse(null);
+			WhichProfile = whatToProcess.split(",")[2].trim().toUpperCase();
+			if(WhichProfile.equalsIgnoreCase("ROLES")) {
+				PlayersList = (matchAllData.getSetup().getHomeTeamId() == inning.getBattingTeamId()? matchAllData.getSetup().getHomeSquad()
+						:matchAllData.getSetup().getAwaySquad());
+				team = (matchAllData.getSetup().getHomeTeamId() == inning.getBattingTeamId()? matchAllData.getSetup().getHomeTeam()
+						:matchAllData.getSetup().getAwayTeam());
+			}else {
+				battingCardList = inning.getBattingCard();
+				team = inning.getBatting_team();
+			}
+			break;
+		default:
+			inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getBattingTeamId() == Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
+			WhichProfile = whatToProcess.split(",")[3].trim().toUpperCase();
+			if(WhichProfile.equalsIgnoreCase("ROLES")) {
+				PlayersList = (matchAllData.getSetup().getHomeTeamId() == Integer.valueOf(whatToProcess.split(",")[2])? matchAllData.getSetup().getHomeSquad()
+						:matchAllData.getSetup().getAwaySquad());
+				team = (matchAllData.getSetup().getHomeTeamId() == Integer.valueOf(whatToProcess.split(",")[2])? matchAllData.getSetup().getHomeTeam()
+						:matchAllData.getSetup().getAwayTeam());
+			}else {
+				battingCardList = inning.getBattingCard();
+				team = inning.getBatting_team();
+			}
+			break;
+		}
 		if(inning == null) {
 			return status;
 		}
@@ -5458,24 +5485,13 @@ public class LowerThirdGfx
 		String WhichInni = "";
 		
 		if(inning.getInningNumber() == 1) {
-			WhichInni = "FIRST INNING";
+			WhichInni = "FIRST INNINGS";
 		}else if(inning.getInningNumber() == 2) {
-			WhichInni = "FIRST INNING";
+			WhichInni = "FIRST INNINGS";
 		}else if(inning.getInningNumber() == 3) {
-			WhichInni = "SECOND INNING";
+			WhichInni = "SECOND INNINGS";
 		}else if(inning.getInningNumber() == 4) {
-			WhichInni = "SECOND INNING";
-		}
-		
-		WhichProfile = whatToProcess.split(",")[3].trim().toUpperCase();
-		if(WhichProfile.equalsIgnoreCase("ROLES")) {
-			PlayersList = (matchAllData.getSetup().getHomeTeamId() == Integer.valueOf(whatToProcess.split(",")[2])? matchAllData.getSetup().getHomeSquad()
-					:matchAllData.getSetup().getAwaySquad());
-			team = (matchAllData.getSetup().getHomeTeamId() == Integer.valueOf(whatToProcess.split(",")[2])? matchAllData.getSetup().getHomeTeam()
-					:matchAllData.getSetup().getAwayTeam());
-		}else {
-			battingCardList = inning.getBattingCard();
-			team = inning.getBatting_team();
+			WhichInni = "SECOND INNINGS";
 		}
 		
 		switch (config.getBroadcaster().toUpperCase()) {
@@ -5531,7 +5547,7 @@ public class LowerThirdGfx
 		
 		
 		match = matchAllData;
-		lowerThird = new LowerThird(whatToProcess.split(",")[3], inning.getBatting_team().getTeamName4(), WhichInni,"", "","", 2, "",inning.getBatting_team().getTeamBadge(),
+		lowerThird = new LowerThird(WhichProfile, inning.getBatting_team().getTeamName4(), WhichInni,"", "","", 2, "",inning.getBatting_team().getTeamBadge(),
 				null,null,null,null,null);
 		
 		status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
@@ -5726,7 +5742,16 @@ public class LowerThirdGfx
 		}
 	}
 	public String populateNextToBat(String whatToProcess, int whichSide, MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException {
-		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+		
+		switch (config.getBroadcaster().toUpperCase()) {
+		case Constants.AFG_SERIES:
+			inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1])).findAny().orElse(null);
+			break;
+		default:
+			inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+			break;
+		}
+//		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
 		if(inning == null) {
 			return "Select the current inning";
 		}
@@ -12642,12 +12667,12 @@ public class LowerThirdGfx
         			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option" + selectOption
 	    					+ "$DataAll$PLAYER$Player" + count + "$Details$txt_Name*GEOM*TEXT SET " + bc.getTicker_name() + "\0", print_writers);
         			
-        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$Select_Role_Runs" + 
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$DataAll$PLAYER$Player" + count + "$Select_Role_Runs" + 
 							"*FUNCTION*Omo*vis_con SET 0\0", print_writers);
         			
         			for(BowlingCard boc : bowlingCardList) {
         				if(boc.getPlayerId() == bc.getPlayerId()) {
-        					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$Select_Role_Runs" + 
+        					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$DataAll$PLAYER$Player" + count + "$Select_Role_Runs" + 
         							"*FUNCTION*Omo*vis_con SET 1\0", print_writers);
         					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option" + selectOption
         	    					+ "$DataAll$PLAYER$Player" + count + "$Details$Role_Runs$txt_Runs*GEOM*TEXT SET " + boc.getWickets() 
@@ -12921,6 +12946,8 @@ public class LowerThirdGfx
 					inAtPositionCount++;
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$All$DataAll$Side"+ whichSide +"$Select$Player" 
 							+ rowId + "$Select_Role_Runs*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$All$DataAll$Side"+ whichSide +"$Select$Player" 
+							+ rowId + "$SelectCaptain*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					
 					if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$All$DataAll$Side" + whichSide + "$Select$"

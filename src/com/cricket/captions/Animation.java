@@ -403,10 +403,10 @@ public class Animation
 			case "Control_Shift_O":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 95\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 35\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -426,10 +426,10 @@ public class Animation
 			case "Control_Shift_B":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 32\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET -35\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {
@@ -488,10 +488,10 @@ public class Animation
 			case "Control_F2":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET 0\0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 95\0",print_writers);
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option$LT_Position*"
-							+ "TRANSFORMATION*POSITION*Y SET -45\0",print_writers);
+							+ "TRANSFORMATION*POSITION*Y SET 35\0",print_writers);
 				}
 				
 				if(infobar.getInfobar_status() != null) {

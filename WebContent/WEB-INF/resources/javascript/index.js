@@ -6229,43 +6229,69 @@ function addItemsToList(whatToProcess,dataToProcess)
 			break;	
 		case 'Control_Shift_O':
 			header_text.innerHTML = 'LINEUP';
-			select = document.createElement('select');
-			select.id = 'selectTeams';
-			select.name = select.id;
 			
-			option = document.createElement('option');
-			option.value = session_match.setup.homeTeamId;
-			option.text = session_match.setup.homeTeam.teamName1;
-			select.appendChild(option);
-			
-			option = document.createElement('option');
-			option.value = session_match.setup.awayTeamId;
-			option.text = session_match.setup.awayTeam.teamName1;
-			select.appendChild(option);
-			
-			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
-			row.insertCell(cellCount).appendChild(select);
-			setDropdownOptionToSelectOptionArray($(select),0);
-			cellCount = cellCount + 1;
-			
-			select = document.createElement('select');
-			select.id = 'selectlineUp';
-			select.name = select.id;
-			
-			option = document.createElement('option');
-            option.value = 'BATTING_CARD';
-            option.text = 'BATTING CARD';
-            select.appendChild(option);
-            
-            option = document.createElement('option');
-            option.value = 'ROLES';
-            option.text = 'ROLES';
-            select.appendChild(option);
-			
-			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
-			row.insertCell(cellCount).appendChild(select);
-			setDropdownOptionToSelectOptionArray($(select),1);
-			cellCount = cellCount + 1;
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'AFG_SERIES':
+				
+				select = document.createElement('select');
+				select.id = 'selectlineUp';
+				select.name = select.id;
+
+				option = document.createElement('option');
+				option.value = 'BATTING_CARD';
+				option.text = 'BATTING CARD';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'ROLES';
+				option.text = 'ROLES';
+				select.appendChild(option);
+
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),0);
+				cellCount = cellCount + 1;
+				break;
+			default:
+				select = document.createElement('select');
+				select.id = 'selectTeams';
+				select.name = select.id;
+
+				option = document.createElement('option');
+				option.value = session_match.setup.homeTeamId;
+				option.text = session_match.setup.homeTeam.teamName1;
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = session_match.setup.awayTeamId;
+				option.text = session_match.setup.awayTeam.teamName1;
+				select.appendChild(option);
+
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),0);
+				cellCount = cellCount + 1;
+
+				select = document.createElement('select');
+				select.id = 'selectlineUp';
+				select.name = select.id;
+
+				option = document.createElement('option');
+				option.value = 'BATTING_CARD';
+				option.text = 'BATTING CARD';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'ROLES';
+				option.text = 'ROLES';
+				select.appendChild(option);
+
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),1);
+				cellCount = cellCount + 1;
+				break;	
+			}
 			break;
 		case 'Control_Shift_Q':
 			header_text.innerHTML = 'Generic';
