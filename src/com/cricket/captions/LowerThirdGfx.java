@@ -3341,21 +3341,22 @@ public class LowerThirdGfx
 //		Duration duration = Duration.between(startTime, endTime);
 
 		
-			LocalDateTime startTime = LocalDateTime.parse(battingCard.getStartTime(), formatter);
-
-			LocalDateTime endTime;
-
-			if (battingCard.getEndTime() != null && !battingCard.getEndTime().isEmpty()) {
-			    endTime = LocalDateTime.parse(battingCard.getEndTime(), formatter);
-			} else {
-			    endTime = LocalDateTime.now();
-			}
-
-			Duration duration = Duration.between(startTime, endTime);
-			
-		long totalMinutes = duration.toMinutes();
-
-		striktRate = String.valueOf(totalMinutes);
+//		LocalDateTime startTime = LocalDateTime.parse(battingCard.getStartTime(), formatter);
+//
+//		LocalDateTime endTime;
+//
+//		if (battingCard.getEndTime() != null && !battingCard.getEndTime().isEmpty()) {
+//		    endTime = LocalDateTime.parse(battingCard.getEndTime(), formatter);
+//		} else {
+//		    endTime = LocalDateTime.now();
+//		}
+//
+//		Duration duration = Duration.between(startTime, endTime);
+//			
+//		long totalMinutes = duration.toMinutes();
+//
+//		striktRate = String.valueOf(totalMinutes);
+		int durationInMinutes = battingCard.getDuration() / 60;
 		
 //		if(battingCard.getStrikeRate() !=null) {
 //			if(battingCard.getStrikeRate().trim().isEmpty()) {
@@ -3396,7 +3397,8 @@ public class LowerThirdGfx
 		case Constants.AFG_SERIES:
 			lowerThird = new LowerThird("", battingCard.getPlayer().getFirstname(), surName,outOrNot, String.valueOf(battingCard.getRuns()),
 					String.valueOf(battingCard.getBalls()), 2, "",inning.getBatting_team().getTeamBadge(),new String[] {"DOTS","FOURS","SIXES","MINS"},new String[] {
-					Count[0],String.valueOf(battingCard.getFours()),String.valueOf(battingCard.getSixes()),striktRate},null,new String[] {"WITHOUT"},new String[] {"-170","-73","41","160"});
+					Count[0],String.valueOf(battingCard.getFours()),String.valueOf(battingCard.getSixes()),String.valueOf(durationInMinutes)},null,new String[] {"WITHOUT"},
+					new String[] {"-170","-73","41","160"});
 			break;
 		}
 		
@@ -3953,10 +3955,8 @@ public class LowerThirdGfx
 						this_data_str.add("-");
 						this_data_str.add("-");
 					}else {
-						this_data_str.add(battingCard.getRuns() + (battingCard.getStatus().equalsIgnoreCase(CricketUtil.NOT_OUT)
-								? "*" : "") + " (" + battingCard.getBalls() + ")");
-						this_data_str.add(CricketFunctions.generateStrikeRate(battingCard.getRuns(), 
-								battingCard.getBalls(), 1));
+						this_data_str.add(String.valueOf(battingCard.getRuns()));
+						this_data_str.add(String.valueOf(battingCard.getBalls()));
 					}
 					
 					if(bowlingCard == null) {
@@ -3964,8 +3964,8 @@ public class LowerThirdGfx
 						this_data_str.add("-");
 						this_data_str.add("-");
 					}else {
+						this_data_str.add(String.valueOf(bowlingCard.getWickets()) + "-" + bowlingCard.getRuns());
 						this_data_str.add(CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()));
-						this_data_str.add(String.valueOf(bowlingCard.getWickets()));
 						
 						if(bowlingCard.getEconomyRate() == null) {
 							this_data_str.add("-");
@@ -4108,8 +4108,8 @@ public class LowerThirdGfx
 				}else if(WhichProfile.equalsIgnoreCase("FIRST_INNINGS") || WhichProfile.equalsIgnoreCase("SECOND_INNINGS")) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide+ "$Select$PlayerProfile$TopGrp$" 
 							+ "txt_SubHead*GEOM*TEXT SET " + (WhichProfile.equalsIgnoreCase("FIRST_INNINGS") ? "1st INNS" : "2nd INNS") + "\0",print_writers);
-					lowerThird = new LowerThird("", battingCard.getPlayer().getFull_name(), "",short_name, "", "", 2,"",team.getTeamBadge(), new String[]{"SCORES", 
-							"S/R", "FIGURES", "OVERS", "ECONOMY"}, new String[]{this_data_str.get(0), this_data_str.get(1) , this_data_str.get(2), this_data_str.get(3),
+					lowerThird = new LowerThird("", battingCard.getPlayer().getFull_name(), "",short_name, "", "", 2,"",team.getTeamBadge(), new String[]{"RUNS", 
+							"BALLS", "FIGURES", "OVERS", "ECONOMY"}, new String[]{this_data_str.get(0), this_data_str.get(1) , this_data_str.get(2), this_data_str.get(3),
 									this_data_str.get(4)},null,new String[] {"WITHOUT"},new String[] {"-165","-90","-8","72","157"});
 				}
 				break;
