@@ -5338,10 +5338,20 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$SplitCardRow" 
 						+ bc.getBatterPosition() + "$Out$Highlight$Balls*GEOM*TEXT SET " + bc.getBalls() + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$Performer$txt_StatHead"
-						+ "*GEOM*TEXT SET " + "STRIKE RATE" + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$Performer$txt_StatValue"
-						+ "*GEOM*TEXT SET " + CricketFunctions.generateStrikeRate(bc.getRuns(), bc.getBalls(), 0) + "\0", print_writers);
+				switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
+				case "TEST":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$Performer$txt_StatHead"
+							+ "*GEOM*TEXT SET " + "FOURS/SIXES" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$Performer$txt_StatValue"
+							+ "*GEOM*TEXT SET " + bc.getFours() + "/" + bc.getSixes() + "\0", print_writers);
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$Performer$txt_StatHead"
+							+ "*GEOM*TEXT SET " + "STRIKE RATE" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$Performer$txt_StatValue"
+							+ "*GEOM*TEXT SET " + CricketFunctions.generateStrikeRate(bc.getRuns(), bc.getBalls(), 0) + "\0", print_writers);
+					break;
+				}
 				
 				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$SplitCard$Performer$PlayerImage"
@@ -13510,6 +13520,11 @@ public class ALL_FF
 						+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}
 			
+			for(int i=2;i<=11;i++) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$"
+						+ "PerformanceRow" + i + "*ACTIVE SET 0\0", print_writers);
+			}
+			
 			rowId = 1;
 			double lngth=0;
 			
@@ -13519,6 +13534,8 @@ public class ALL_FF
 						+ "txt_Info*GEOM*TEXT SET " + "BATTING PERFORMANCE BY YEARS" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$"
 						+ "PerformanceRow1$select_BatDataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$"
+						+ "PerformanceRow1*ACTIVE SET 1\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$"
 						+ "PerformanceRow1$Title$txt_Position*GEOM*TEXT SET " + "YEARS" + "\0", print_writers);
@@ -13529,19 +13546,25 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$"
 						+ "PerformanceRow1$Title$txt_StatValue3*GEOM*TEXT SET " + "AVG." + "\0", print_writers);
 				
-				int totalRuns = playerAllStatistics.stream().mapToInt(Statistics::getRuns).sum();
-				
+				//int totalRuns = playerAllStatistics.stream().mapToInt(Statistics::getRuns).sum();
+				int maxRuns=0;
+				for (int j = 0; j < playerAllStatistics.size(); j++) {
+					int runs = Integer.valueOf(playerAllStatistics.get(j).getRuns());
+			        if (runs > maxRuns) {
+			            maxRuns = runs;
+			        }
+				}
+
 				for(Statistics stats : playerAllStatistics) {
 					rowId ++;
 					
-					lngth = (180 * ((double)stats.getRuns() / totalRuns));
-					
-					System.out.println("lngth - " + lngth);
-					System.out.println("RUNS - " + stats.getRuns());
-					System.out.println("totalRuns - " + totalRuns);
+					lngth = (180 * ((double)stats.getRuns() / maxRuns));
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$SpecialDataAll"
 							+ "*FUNCTION*Grid*num_row SET " + rowId + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$"
+							+ "PerformanceRow" + rowId + "*ACTIVE SET 1\0", print_writers);
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Main$StatsGrp$Side" + WhichSide + "$PlayerPerformance$"
 							+ "PerformanceRow" + rowId + "$select_BatDataType*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 					

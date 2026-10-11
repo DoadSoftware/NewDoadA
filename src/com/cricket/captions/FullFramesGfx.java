@@ -741,10 +741,6 @@ public class FullFramesGfx
 				    	this_ALL_FF.playerAllStatistics.add(stats);
 				    }
 				}
-				
-				for(Statistics st : this_ALL_FF.playerAllStatistics) {
-					System.out.println(st.toString());
-				}
 				break;
 			}
 			break;

@@ -7128,7 +7128,7 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$Equation$Top$txt_Data1*GEOM*TEXT SET " + CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber()) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
-							+ "$Side" + WhichSubSide + "$Equation$Top$txt_Head2*GEOM*TEXT SET " + "WICKETS" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, 
+							+ "$Side" + WhichSubSide + "$Equation$Top$txt_Head2*GEOM*TEXT SET " + "WICKET" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, 
 									inning.getInningNumber())).toUpperCase() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
@@ -10710,7 +10710,6 @@ public class InfobarGfx
 				
 				stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 				stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
-				
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Select_Center_Big_data"
 						+ "*FUNCTION*Omo*vis_con SET 4\0", print_writers);
