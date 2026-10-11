@@ -12641,21 +12641,33 @@ public class LowerThirdGfx
         			count++;
         			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option" + selectOption
 	    					+ "$DataAll$PLAYER$Player" + count + "$Details$txt_Name*GEOM*TEXT SET " + bc.getTicker_name() + "\0", print_writers);
-        		 
+        			
         			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$Select_Role_Runs" + 
 							"*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+        			
+        			for(BowlingCard boc : bowlingCardList) {
+        				if(boc.getPlayerId() == bc.getPlayerId()) {
+        					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$Select_Role_Runs" + 
+        							"*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+        					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option" + selectOption
+        	    					+ "$DataAll$PLAYER$Player" + count + "$Details$Role_Runs$txt_Runs*GEOM*TEXT SET " + boc.getWickets() 
+        	    					+ "-" + boc.getRuns() + " (" + CricketFunctions.OverBalls(boc.getOvers(), boc.getBalls()) + ")"+ "\0", print_writers);
+        					break;
+        				}
+        			}
+        		 
         			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + 
 							"$DataAll$PLAYER$Player" + count + "$SelectCaptain*FUNCTION*Omo*vis_con SET 0\0", print_writers);
         			
         			if(bc.getRole().equalsIgnoreCase(CricketUtil.BOWLER)) {
 						if(bc.getBowlingStyle() == null) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$DataAll$PLAYER$Player" + count + "$Select_Role_Runs$img_Role" + 
-									"*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_ICONS + "Bowler" + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$DataAll$PLAYER$Player" + count 
+									+ "$Select_Role_Runs$img_Role*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_ICONS + "Bowler" + "\0", print_writers);
 						}else {
 							switch (bc.getBowlingStyle().toUpperCase()) {
 							case "RFM": case "RF": case "RMF": case "RM": case "RSM": case "LF": case "LFM": case "LMF": case "LM":
-								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$DataAll$PLAYER$Player" + count + "$Select_Role_Runs$img_Role" + 
-										"*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_ICONS + "FastBowler" + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Bowling_Option"+ selectOption + "$DataAll$PLAYER$Player" + count 
+										+ "$Select_Role_Runs$img_Role*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_ICONS + "FastBowler" + "\0", print_writers);
 								break;
 
 							case "LSL": case "WSL": case "LCH": case "RLG": case "WSR": case "LSO":
