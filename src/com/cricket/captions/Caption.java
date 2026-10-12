@@ -899,6 +899,8 @@ public class Caption
 					this_infobarGfx.infobar.setSection3(whatToProcess.split(",")[2]);
 					if(whatToProcess.split(",")[2].equalsIgnoreCase("LastXBalls")) {
 						this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
+					}else if(whatToProcess.split(",")[2].equalsIgnoreCase("REMAINING_OVERS_TEXT")) {
+						this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
 					}
 					
 					status = this_infobarGfx.populateSection3(print_writers, matchAllData, 1, whichSide);

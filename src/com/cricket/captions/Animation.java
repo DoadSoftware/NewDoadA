@@ -67,14 +67,14 @@ public class Animation
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": case "Control_h": case "Control_F3": 
 			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i": case "Shift_A":  case "Shift_R": case "Alt_j":  case "Alt_h": case "l":
-			case "Alt_Shift_O": case "Control_F2":
+			case "Alt_Shift_O": case "Control_F2": case "Control_m":
 				return Constants.LOWER_THIRD;	
 			case "Shift_F1": case "Shift_F2":
 				return Constants.MINIS;	
 			case "Alt_p": case "r": case "y": case "g": case "Control_k": case "Shift_F4": case "k": case "Control_y": case "h": case "Shift_O": 
 			case "Shift_F": case "Shift_C": case "Control_Shift_F3": case "Control_Shift_R":
 			case "Control_Shift_U": case "Control_Shift_V": case "Control_Shift_U_change_on": case "Control_Shift_V_change_on":
-			case "7": case "Alt_Shift_Q": case "5": case ";":
+			case "7": case "Alt_Shift_Q": case "5": case ";": case "6": case "Control_4":
 				return Constants.BUGS;
 			}
 			break;
@@ -207,7 +207,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Wipes_Center", "START");
 				break;
 				
-			case "5": case ";":
+			case "6": case "Control_4": case "5": case ";":
 				processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$InOut", "START");
 				TimeUnit.MILLISECONDS.sleep(1700);
 				this.whichGraphicOnScreen = whatToProcess;
@@ -2686,7 +2686,7 @@ public class Animation
 				caption.this_infobarGfx.infobar.setLast_section5("");
 				break;
 				
-			case "5": case ";":
+			case "6": case "Control_4": case "5": case ";":
 				processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$InOut", "CONTINUE");
 				this.whichGraphicOnScreen = "";
 				TimeUnit.MILLISECONDS.sleep(1000);

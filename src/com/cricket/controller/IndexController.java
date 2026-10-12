@@ -465,7 +465,8 @@ public class IndexController
 					    		if(this_caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 								}else if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty() 
 									&& !this_caption.this_infobarGfx.infobar.getSection5().equalsIgnoreCase("BOWLER") || this_animation.infobar.isInfobar_pushed()
-									|| this_caption.this_infobarGfx.infobar.getInfobar_status().equalsIgnoreCase("IDENT") 
+									|| this_caption.this_infobarGfx.infobar.getInfobar_status().equalsIgnoreCase("IDENT")
+									|| this_animation.infobar.isInfobar_on_screen() == false
 									|| (this_animation.infobar.getInfobar_status() != null && 
 									this_animation.infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED + Constants.SHRUNK_INFOBAR))
 									|| (this_animation.infobar.getInfobar_status() != null && 

@@ -3011,6 +3011,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					
 					option = document.createElement('option');
+					option.value = 'REMAINING_OVERS_TEXT';
+					option.text = 'Remaining Overs FreeText';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
 					option.value = 'NEW_BALL_DUE';
 					option.text = 'New Ball Due';
 					select.appendChild(option);
@@ -3198,6 +3203,24 @@ function addItemsToList(whatToProcess,dataToProcess)
 				    cell.appendChild(xballselect); 	
 				    setTextBoxOptionToSelectOptionArray(1);
 			   		cellCount = 2;
+				}else if(this.value == 'REMAINING_OVERS_TEXT'){
+					let label = document.createElement('label');
+				    label.setAttribute('for', 'selectFreeText'); 
+				    label.innerHTML = 'OVERS : ';	
+				    					    	    			
+					let xballselect = document.createElement('input');
+					xballselect.type = "text";
+					xballselect.id = 'selectFreeText';
+					xballselect.value = '';
+					
+					xballselect.setAttribute('onchange',"setTextBoxOptionToSelectOptionArray(1)");
+					let cell = row.insertCell(1);
+					cell.style.cssText = "display: flex; align-items: center; text-align: center; vertical-align: middle; gap: 5px;";
+				    cell.appendChild(label); 
+				    cell.appendChild(document.createTextNode(' '));
+				    cell.appendChild(xballselect); 	
+				    setTextBoxOptionToSelectOptionArray(1);
+					cellCount = 2;
 				}
 			});
 			select.dispatchEvent(new Event('change'));

@@ -7272,6 +7272,12 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data$Side" 
 							+ WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "NEW BALL DUE IN " + CricketFunctions.OverBalls(0, remainBallsForNewBall) + overtype + "\0", print_writers);
 					break;
+				case "REMAINING_OVERS_TEXT":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
+							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
+							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "OVERS REMAINING TODAY: " + lastXballs + "\0", print_writers);
+					break;
 				case "REMAINING_OVERS":
 					int daysnumber=0;
 					int over_bowled=0,remain_overs=0;
