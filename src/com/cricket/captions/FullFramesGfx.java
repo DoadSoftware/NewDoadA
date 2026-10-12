@@ -1581,8 +1581,6 @@ public class FullFramesGfx
 			case Constants.BCCI:
 				return this_FC_FF.BowlingCardBody(print_writers, WhichSide, config, matchAllData, inning, multilanguagedata, 
 						foreignLanguageDataList, cricketService.getDictionary());
-			case Constants.AFG_SERIES:
-				return this_ALL_FF.BowlingCardBallPerformerBody(print_writers, WhichSide, config, matchAllData, inning);
 			default:
 				return this_ALL_FF.BowlingCardBody(print_writers, WhichSide, config, matchAllData, inning);
 			}

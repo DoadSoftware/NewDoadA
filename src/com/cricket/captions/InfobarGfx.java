@@ -71,7 +71,7 @@ public class InfobarGfx
 	
 	boolean isThisOverLimitExceed = false, isbatsmannotout = false,isimpactBowlIn = false,isimpactBatIn = false,
 			bowlerTickerName=false,BatterTickerName=false,bowlerOnScreen=false, batterOnScreen=false;
-	String Ident_Line1 = "",Ident_Line2 = "",currentOnStrike="",previousOnStrike="";
+	String Ident_Line1 = "",Ident_Line2 = "",currentOnStrike="",previousOnStrike="",RemainOvers="";
 	private boolean isNullOrEmpty(String s) {
 	    return s == null || s.isEmpty();
 	}
@@ -7279,7 +7279,7 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
-							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "OVERS REMAINING TODAY: " + lastXballs + "\0", print_writers);
+							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "OVERS REMAINING TODAY: " + RemainOvers + "\0", print_writers);
 					break;
 				case "REMAINING_OVERS":
 					int daysnumber=0;
