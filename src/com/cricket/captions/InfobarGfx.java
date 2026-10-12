@@ -1157,7 +1157,10 @@ public class InfobarGfx
 				}
 				break;
 			case "RESULT":
-				Ident_Line1 = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "|", Constants.BCCI, false).getTargetOrResult().toUpperCase();
+				inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+				
+				Ident_Line1 = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
+						config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAWN");
 				Ident_Line2 = "";
 				break;
 			}
@@ -1545,7 +1548,7 @@ public class InfobarGfx
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$Bottom_Info_Grp$Side1$txt_Info"
 					+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
-							config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAW") + "\0", print_writers);
+							config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAWN") + "\0", print_writers);
 			break;
 		case Constants.AFG_SL_SERIES:
 			//Logo
