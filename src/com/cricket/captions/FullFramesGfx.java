@@ -807,6 +807,18 @@ public class FullFramesGfx
 					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
 					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
 					break;
+				case "ODI": case "LIST A":
+					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
+					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
+					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+					break;
+				case "IT20":
+					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
+					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+					break;
 				}
 				break;
 			}

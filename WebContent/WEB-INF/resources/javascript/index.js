@@ -2478,37 +2478,24 @@ function addItemsToList(whatToProcess,dataToProcess)
 							}else if(inn.inningNumber === 4){
 								addOptionData('EQUATION', 'Equation Bat');
 								addOptionData('EQUATION_BALL', 'Equation Ball');
-		                        //addOptionData('TARGET', 'Target');
-		                        //addOptionData('RRR', 'Required Rate');
 		                    }
 		                }
 		            });
 		
 		        } else {
-		            addOptionData('TEAMNAME', 'TeamName');
-		            addOptionData('VENUE', 'Venue');
-					
-		            addOptionData('Ident', 'Ident');
-					addOptionData('CRR', 'Run Rate');
-		            
 		            session_match.match.inning.forEach(function(inn){
 		                if(inn.isCurrentInning === 'YES'){
 		                    if(inn.inningNumber === 1){
 		                        addOptionData('TOSS', 'Toss');
-		                    } else {
-		                        //addOption('FIRST_INNING_SCORE', '1st Inning Score');
-		                        //addOption('EQUATION', 'Equation');
+		                    } else {		                  
+		                        addOption('EQUATION', 'Equation');
 		                        addOptionData('TARGET', 'Target');
 		                        addOptionData('RRR', 'Required Rate');
 								addOptionData('DLS_PAR_SCORE', 'DLS Par Score');
-								addOptionData('VJD_PAR_SCORE', 'VJD Par Score');
 		                    }
 		                }
 		            });
-		            
 		            addOptionData('SUPER_OVER', 'Super Over');
-					//addOption('HYDERABAD', 'HYDERABAD');
-					addOptionData('GUWAHATI', 'GUWAHATI');
 		        }
 		
 		        select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
@@ -3031,10 +3018,37 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					
 				}else {
+					
+					option = document.createElement('option');
+					option.value = 'IDENT';
+					option.text = 'Ident';
+					select.appendChild(option);
+					
 					option = document.createElement('option');
 					option.value = 'FIRST_INNING_SCORE';
 					option.text = 'First Inning Score';
 					select.appendChild(option);
+					
+					session_match.match.inning.forEach(function(inn){
+					    if(inn.isCurrentInning === 'YES'){
+					        if(inn.inningNumber === 1){
+								option = document.createElement('option');
+								option.value = 'TOSS';
+								option.text = 'Toss';
+								select.appendChild(option);
+					        } else if(inn.inningNumber === 2){
+								option = document.createElement('option');
+								option.value = 'EQUATION';
+								option.text = 'Equation';
+								select.appendChild(option);
+								
+								option = document.createElement('option');
+								option.value = 'FIRST_INNING_SCORE';
+								option.text = 'First Inning Score';
+								select.appendChild(option);
+					        } 
+					    }
+					});
 				}
 				
 				option = document.createElement('option');
@@ -3241,8 +3255,23 @@ function addItemsToList(whatToProcess,dataToProcess)
 						  { value: 'EXTRAS', text: 'Extras' },
 						  { value: 'LAST_WICKET', text: 'Last Wicket' },
 						  { value: 'REVIEWS_REMAINING', text: 'Review'},
-						  { value: 'BALLS_SINCE_LAST_BOUNDARY', text: 'Balls Since Last Boundaries'}
+						  { value: 'BALLS_SINCE_LAST_BOUNDARY', text: 'Balls Since Last Boundaries'},
+						  { value: '0', text: 'Dot Balls' },
+						  { value: '4', text: 'Fours This Inning' },
+						  { value: '6', text: 'Sixes This Inning' }
 						];
+						
+						if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
+				           
+				        }else{
+							session_match.match.inning.forEach(function(inn){
+								if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+									dropdown.push(
+									    { value: 'COMPARE', text: 'At This Stage' }
+									);
+								}
+							});
+						}
 						
 						dropdownoption.forEach(({ value, text }) => {
 						  const option = document.createElement('option');
@@ -3417,36 +3446,50 @@ function addItemsToList(whatToProcess,dataToProcess)
 			case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'AFG_SERIES':
+					const testMatchOptions = [
+					    { value: 'Session_Summary', text: 'This Session (Current)' },
+					    { value: 'AllSession_Summary', text: 'Day All Session' },
+					    { value: 'AllDay_Summary', text: 'Today Match' },
+					    { value: 'Team_Summary', text: 'Team 0s,1s,2s (This Match)' },
+					    { value: 'Team_Summary_Inning', text: 'Team 0s,1s,2s (This Innings)' },
+					    { value: 'Batsman_Summary', text: 'Batsman 0s,1s,2s (This Match)' },
+					    { value: 'Batsman_Summary_Inning', text: 'Batsman 0s,1s,2s (This Innings)' },
+						{ value: 'LUNCH', text: 'Lunch Text' },
+						{ value: 'TEA', text: 'Tea Text' },
+						{ value: 'STUMPS', text: 'Stump Text' },
+					];
+					
+					const matchOptions = [
+						{ value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
+						{ value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },
+					];
+
 					const dropdownoption = [
-					  { value: 'BLANK', text: 'Blank' },
-					  { value: 'IDENT', text: 'Ident' },
-					  { value: 'Commentators', text: 'Commentators' },
-  					  { value: 'FreeTextDb', text: 'FreeText DB' },
-					  { value: 'FreeText', text: 'FreeText' },
-  					  { value: 'TIMELINE', text: 'TimeLine' },
-					  { value: 'BatMileStone', text: 'Batter MileStone' },
-					  { value: 'BallMileStone', text: 'Bowler MileStone' },
-					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
-					  { value: 'BowlerTimeLine', text: 'Bowler TimeLine' },
-					  { value: 'Session_Summary', text: 'This Session (Current)'},
-					  { value: 'AllSession_Summary', text: 'Day All Session'},
-					  { value: 'AllDay_Summary', text: 'Today Match'},
-					  { value: 'Team_Summary', text: 'Team 0s,1s,2s (This Match)' },
-					  { value: 'Team_Summary_Inning', text: 'Team 0s,1s,2s (This Innings)' },
-					  { value: 'Batsman_Summary', text: 'Batsman 0s,1s,2s (This Match)' },
-					  { value: 'Batsman_Summary_Inning', text: 'Batsman 0s,1s,2s (This Innings)' },
-					  { value: 'Sponsor', text: 'Sponsor' },
-					  //{ value: 'INNINGSBUILDER', text: 'Player Innings Builder' },
-					  { value: 'BATSMANBOUNDARY', text: 'Batsman Boundary' },
-					  { value: 'BOWLERDOTS', text: 'Bowler Dots' },
-  					  { value: 'LUNCH', text: 'Lunch Text' },
-					  { value: 'TEA', text: 'Tea Text' },
-					  { value: 'STUMPS', text: 'Stump Text' },
+					    { value: 'BLANK', text: 'Blank' },
+					    { value: 'IDENT', text: 'Ident' },
+					    { value: 'Commentators', text: 'Commentators' },
+					    { value: 'FreeTextDb', text: 'FreeText DB' },
+					    { value: 'FreeText', text: 'FreeText' },
+					    { value: 'TIMELINE', text: 'TimeLine' },
+					    { value: 'BatMileStone', text: 'Batter MileStone' },
+					    { value: 'BallMileStone', text: 'Bowler MileStone' },
+					    { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
+					    { value: 'BowlerTimeLine', text: 'Bowler TimeLine' },
+					    { value: 'Sponsor', text: 'Sponsor' },
+					    { value: 'BATSMANBOUNDARY', text: 'Batsman Boundary' },
+					    { value: 'BOWLERDOTS', text: 'Bowler Dots' },
+					    
+					    ...(session_match.setup.matchType === 'TEST' ? testMatchOptions : matchOptions)
 					];
 					
 					session_match.match.inning.forEach(function(inn){
-						if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+						if(inn.isCurrentInning == 'YES' && inn.inningNumber == 1){
 							dropdownoption.push(
+							    { value: 'PROJECTED', text: 'Projected Score'}
+							);
+						}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+							dropdownoption.push(
+								{ value: 'DLS', text: 'DLS' },
 							    { value: 'EQUATION', text: 'Equation (Trail/Lead)'}
 							);
 						}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 3){

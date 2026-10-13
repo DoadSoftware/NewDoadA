@@ -2013,54 +2013,8 @@ public class LowerThirdGfx
 				break;
 			case Constants.AFG_SERIES:
 				switch (WhichProfile.toUpperCase()) {
-				case "DT20": case "IT20":
-					
-					switch (WhichProfile.toUpperCase()) {
-					case "DT20":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
-						
-						break;
-					case "IT20":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
-						
-						break;	
-					}
-					if(statsType == null) {
-						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
-					}
-					
-					stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
-					if(stat == null) {
-						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
-					}
-					
-					//stat.setStats_type(statsType);
-					
-					//stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
-					
-					break;
-				case "TEST": case "ODI": case "LIST A": case "FC":
-					switch (WhichProfile.toUpperCase()) {
-					case "TEST":
-						matchAllData.getSetup().setMatchType("TEST");
-						
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
-						
-						break;
-					case "ODI":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
-						
-						break;
-					case "LIST A":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile.toUpperCase())).findAny().orElse(null);
-						
-						break;	
-					case "FC":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile.toUpperCase())).findAny().orElse(null);
-						
-						break;		
-					}
-					
+				case "TEST": case "DT20": case "IT20": case "ODI": case "LIST A": case "FC":
+					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile.toUpperCase())).findAny().orElse(null);
 					if(statsType == null) {
 						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
@@ -2074,6 +2028,18 @@ public class LowerThirdGfx
 					case "TEST": case "FC":
 						//Comment this when we do not add current match data
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
+						stat.setStats_type(statsType);
+						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+						break;
+					case "ODI": case "LIST A":
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
+						stat.setStats_type(statsType);
+						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+						break;
+					case "IT20":
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
