@@ -1551,7 +1551,7 @@ public class ALL_FF
 		switch (config.getBroadcaster()) {
 		case Constants.AFG_SERIES:
 			switch(whatToProcess) {
-			case "Control_F11": case "Control_F7":
+			case "Control_F11": case "Shift_F11": case "Control_F7":
 				//Wipe End
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe$OuttWipe$TopGroup$img_Badges*TEXTURE*IMAGE SET " 
 						+ Constants.AFG_SERIES_BADGES + "EVENT_WHITE" + "\0", print_writers);
@@ -1582,6 +1582,25 @@ public class ALL_FF
 						+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
 				switch(whatToProcess) {
+				case "Shift_F11":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$FirstName$txt_Info1*GEOM*TEXT SET MATCH\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$Teamname$txt_TeamName*GEOM*TEXT SET SUMMARY\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$InfoGrp$txt_Role*GEOM*TEXT SET ONE-OFF TEST\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Header1"
+							+ "*GEOM*TEXT SET " + "" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Header2"
+							+ "*GEOM*TEXT SET " + "SUMMARY" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Info"
+							+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", Constants.BCCI, 
+									false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAWN") + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Sponsor$Side" + WhichSide + "$select_Sponsor"
+							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Sponsor$Side" + WhichSide + "$Sponsor_Grp$img_Sponsor"
+							+ "*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_SPONSOR + "ETISALAT" + "\0", print_writers);
+					break;
 				case "Control_F11":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$FirstName$txt_Info1*GEOM*TEXT SET MATCH\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$Teamname$txt_TeamName*GEOM*TEXT SET SUMMARY\0", print_writers);
@@ -1607,7 +1626,6 @@ public class ALL_FF
 							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Sponsor$Side" + WhichSide + "$Sponsor_Grp$img_Sponsor"
 							+ "*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_SPONSOR + "ETISALAT" + "\0", print_writers);
-					
 					break;
 				case "Control_F7":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$FirstName$txt_Info1*GEOM*TEXT SET " 
@@ -8369,7 +8387,7 @@ public class ALL_FF
 		}
 		return Constants.OK;
 	}
-	public String SummaryBody(List<PrintWriter> print_writers, int WhichSide, Configuration config, MatchAllData matchAllData,Inning inning, int WhichInning) {
+	public String SummaryBody(List<PrintWriter> print_writers, int WhichSide, Configuration config, MatchAllData matchAllData, Inning inning, int WhichInning) {
 		
 		String filePath = "C:\\Sports\\Cricket\\ReduceOver.txt",line1 = "", line2 = "", line3 = "";
 		

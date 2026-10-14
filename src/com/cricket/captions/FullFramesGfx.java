@@ -644,17 +644,18 @@ public class FullFramesGfx
 		previous_match = CricketFunctions.populateMatchVariables(CricketFunctions.readOrSaveMatchFile(CricketUtil.READ, CricketUtil.SETUP 
 				+ "," + CricketUtil.MATCH + "," + CricketUtil.EVENT, previous_match, config, CricketUtil.CRICKET_DIRECTORY), Players, Teams, Grounds);
 		
-		inning = previous_match.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == 2).findAny().orElse(null);
+		inning = previous_match.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+		
 		if(inning == null) {
 			return "populatePreviousMatchSummary: current inning is NULL";
 		}
 		
-		status = PopulateFfHeader(WhichSide, whatToProcess.split(",")[0], previous_match, 2);
+		status = PopulateFfHeader(WhichSide, whatToProcess.split(",")[0], previous_match, inning.getInningNumber());
 		if(status == Constants.OK) {
 			setBasePosition(print_writers, WhichSide, whatToProcess, config);
-			status = PopulateFfBody(WhichSide, whatToProcess.split(",")[0], previous_match, 2);
+			status = PopulateFfBody(WhichSide, whatToProcess.split(",")[0], previous_match, inning.getInningNumber());
 			if(status == Constants.OK) {
-				return PopulateFfFooter(WhichSide, whatToProcess.split(",")[0], previous_match, 2);
+				return PopulateFfFooter(WhichSide, whatToProcess.split(",")[0], previous_match, inning.getInningNumber());
 			} else {
 				return status;
 			}
