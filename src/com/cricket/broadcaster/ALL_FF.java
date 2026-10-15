@@ -1585,7 +1585,8 @@ public class ALL_FF
 				case "Shift_F11":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$FirstName$txt_Info1*GEOM*TEXT SET MATCH\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$Teamname$txt_TeamName*GEOM*TEXT SET SUMMARY\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$InfoGrp$txt_Role*GEOM*TEXT SET ONE-OFF TEST\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$InfoGrp$txt_Role*GEOM*TEXT SET " 
+							+ matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Header1"
 							+ "*GEOM*TEXT SET " + "" + "\0", print_writers);
@@ -1604,7 +1605,8 @@ public class ALL_FF
 				case "Control_F11":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$FirstName$txt_Info1*GEOM*TEXT SET MATCH\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$Teamname$txt_TeamName*GEOM*TEXT SET SUMMARY\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$InfoGrp$txt_Role*GEOM*TEXT SET ONE-OFF TEST\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$InfoGrp$txt_Role*GEOM*TEXT SET " 
+							+ matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Header1"
 							+ "*GEOM*TEXT SET " + "" + "\0", print_writers);
@@ -1633,7 +1635,7 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$Teamname$txt_TeamName*GEOM*TEXT SET " 
 							+ matchAllData.getSetup().getHomeTeam().getTeamName4() + " v " + matchAllData.getSetup().getAwayTeam().getTeamName4() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllWipe" + containerName + "$NameGrp$InfoGrp$txt_Role*GEOM*TEXT SET " 
-							+ matchAllData.getSetup().getTournament() + "\0", print_writers);
+							+ "TEAMS" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$Style2$txt_Header1"
 							+ "*GEOM*TEXT SET " + "" + "\0", print_writers);
@@ -1788,6 +1790,27 @@ public class ALL_FF
 								+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						break;
 					}
+					
+					if(!matchAllData.getSetup().getMatchType().equalsIgnoreCase("TEST")) {
+						if(inning.getInningNumber() == 1) {
+							if(matchAllData.getSetup().getReducedOvers() != null) {
+								if(Integer.valueOf(matchAllData.getSetup().getReducedOvers()) > 0) {
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$OversGrp$select_Declare"
+											+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$OversGrp$txt_DL_Overs"
+											+ "*GEOM*TEXT SET " + "(" + matchAllData.getSetup().getReducedOvers() + ")" + "\0", print_writers);
+								}
+							}
+						}else {
+							if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$OversGrp$select_Declare"
+										+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Header$TextGrp$Side" + WhichSide + "$OversGrp$txt_DL_Overs"
+										+ "*GEOM*TEXT SET " + "(" + matchAllData.getSetup().getTargetOvers() + ") " + ((matchAllData.getSetup().getTargetType() != null && 
+										!matchAllData.getSetup().getTargetType().isEmpty()) ? matchAllData.getSetup().getTargetType().toUpperCase() : "") + "\0", print_writers);
+							}
+						}
+					}
 					break;
 				}
 				
@@ -1806,7 +1829,8 @@ public class ALL_FF
 						+ matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 				break;
 			case "Control_m":
-				String matchIdent = (fixture.getMatchnumber() < 10 ? "MATCH " + fixture.getMatchnumber() : fixture.getMatchfilename());
+				String matchIdent = (fixture.getMatchfilename().equalsIgnoreCase("MATCH 01") ? "FIRST ODI" : fixture.getMatchfilename().equalsIgnoreCase("MATCH 02") ? "SECOND ODI" : 
+					fixture.getMatchfilename().equalsIgnoreCase("MATCH 03") ? "THIRD ODI" : "FINAL");
 				
 				//Wipe Strat
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$AllWipe$StartWipe$NameGrp$LastName$txt_ID*GEOM*TEXT SET " 
@@ -8479,21 +8503,19 @@ public class ALL_FF
 							getTeamBadge() + "\0", print_writers);
 				
 				String OverData = "";
-				if(i==1) {
-					if(line1.equalsIgnoreCase("YES")) {
-						OverData = "(" + line2 + ")";
-					}else if(line1.equalsIgnoreCase("NO")) {
-						if(matchAllData.getSetup().getReducedOvers() != null) {
+				if(inning.getInningNumber() == 1) {
+					if(matchAllData.getSetup().getReducedOvers() != null) {
+						if(Integer.valueOf(matchAllData.getSetup().getReducedOvers()) > 0) {
 							OverData = (Integer.valueOf(matchAllData.getSetup().getReducedOvers()) > 0 ? " (" + 
 									matchAllData.getSetup().getReducedOvers() + ")":"");
 						}
 					}
-				}else if(i==2) {
-					if(line1.equalsIgnoreCase("YES")) {
-						OverData = "(" + line3 + ")";
-					}else if(line1.equalsIgnoreCase("NO")) {
+				}else {
+					if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
 						OverData = (matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().trim().isEmpty() 
 								? " (" + matchAllData.getSetup().getTargetOvers() + ")":"");
+						OverData = OverData + ((matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty()) 
+								? " " + matchAllData.getSetup().getTargetType().toUpperCase() : "");
 					}
 				}
 				
@@ -13812,15 +13834,15 @@ public class ALL_FF
 						+ Constants.AFG_SERIES_ICONS + which_role + "\0", print_writers);
 				
 				switch (WhichProfile.toUpperCase()) {
-				case "TEST": case "LIST A": case "FC": case "ODI": case "OD":
-					TitleData = new String[] {"MATCHES", "WICKETS", "AVERAGE", "3WI / 5WI", "BEST"};
+				case "TEST": case "FC":
+					TitleData = new String[] {"MATCHES", "WICKETS", "AVERAGE", "5WI", "BEST"};
 					StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 
-							2, "-"),stat.getPlus3() + " / " + stat.getPlus5(),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
+							2, "-"),String.valueOf(stat.getPlus5()),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
 				default:
-					TitleData = new String[] {"MATCHES", "WICKETS", "ECONOMY", "3WI / 5WI", "BEST"};
+					TitleData = new String[] {"MATCHES", "WICKETS", "ECONOMY", "5WI", "BEST"};
 					StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, "-"),
-							stat.getPlus3() + " / " + stat.getPlus5(),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
+							String.valueOf(stat.getPlus5()),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
 				}
 				

@@ -1627,35 +1627,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 					}
 					break;
 				case 'AFG_SERIES':
-					option = document.createElement('option');
-					option.value = 'TEST';
-					option.text = 'TEST MATCHES';
-					select.appendChild(option);
-					
-					option = document.createElement('option');
-					option.value = 'FC';
-					option.text = 'First Class';
-					select.appendChild(option);
-					
-					option = document.createElement('option');
-					option.value = 'DT20';
-					option.text = 'T20';
-					select.appendChild(option);
-					
-					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
-					select.appendChild(option);
+					const matchType = session_match.setup.matchType;
 
-					option = document.createElement('option');
-					option.value = 'LIST A';
-					option.text = 'LIST A';
-					select.appendChild(option);
-					
-					option = document.createElement('option');
-					option.value = 'ODI';
-					option.text = 'ODI';
-					select.appendChild(option);
+					const dropdownOptions = {
+					    ODI: ['ODI', 'LIST A', 'IT20', 'DT20', 'TEST', 'FC'],
+					    IT20: ['IT20', 'DT20', 'ODI', 'LIST A', 'TEST', 'FC'],
+					    TEST: ['TEST', 'FC', 'ODI', 'LIST A', 'IT20', 'DT20']
+					};
+
+					const optionText = {
+					    TEST: 'TEST MATCHES',
+					    FC: 'First Class',
+					    ODI: 'ODI',
+					    'LIST A': 'LIST A',
+					    IT20: 'T20-I',
+					    DT20: 'T20'
+					};
+
+					(dropdownOptions[matchType] || dropdownOptions.ODI).forEach(value => {
+					    const option = document.createElement('option');
+					    option.value = value;
+					    option.text = optionText[value];
+					    select.appendChild(option);
+					});
 					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20':
 				    
@@ -1938,35 +1932,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 					}
 					break;
 				case 'AFG_SERIES':
-					option = document.createElement('option');
-					option.value = 'TEST';
-					option.text = 'TEST MATCHES';
-					select.appendChild(option);
+					const matchType = session_match.setup.matchType;
 
-					option = document.createElement('option');
-					option.value = 'FC';
-					option.text = 'First Class';
-					select.appendChild(option);
+					const dropdownOptions = {
+					    ODI: ['ODI', 'LIST A', 'IT20', 'DT20', 'TEST', 'FC'],
+					    IT20: ['IT20', 'DT20', 'ODI', 'LIST A', 'TEST', 'FC'],
+					    TEST: ['TEST', 'FC', 'ODI', 'LIST A', 'IT20', 'DT20']
+					};
 
-					option = document.createElement('option');
-					option.value = 'DT20';
-					option.text = 'T20';
-					select.appendChild(option);
+					const optionText = {
+					    TEST: 'TEST MATCHES',
+					    FC: 'First Class',
+					    ODI: 'ODI',
+					    'LIST A': 'LIST A',
+					    IT20: 'T20-I',
+					    DT20: 'T20'
+					};
 
-					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'LIST A';
-					option.text = 'LIST A';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'ODI';
-					option.text = 'ODI';
-					select.appendChild(option);
+					(dropdownOptions[matchType] || dropdownOptions.ODI).forEach(value => {
+					    const option = document.createElement('option');
+					    option.value = value;
+					    option.text = optionText[value];
+					    select.appendChild(option);
+					});
 					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20':
 					
@@ -2488,7 +2476,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		                    if(inn.inningNumber === 1){
 		                        addOptionData('TOSS', 'Toss');
 		                    } else {		                  
-		                        addOption('EQUATION', 'Equation');
+		                        addOptionData('EQUATION', 'Equation');
 		                        addOptionData('TARGET', 'Target');
 		                        addOptionData('RRR', 'Required Rate');
 								addOptionData('DLS_PAR_SCORE', 'DLS Par Score');
@@ -3024,11 +3012,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.text = 'Ident';
 					select.appendChild(option);
 					
-					option = document.createElement('option');
-					option.value = 'FIRST_INNING_SCORE';
-					option.text = 'First Inning Score';
-					select.appendChild(option);
-					
 					session_match.match.inning.forEach(function(inn){
 					    if(inn.isCurrentInning === 'YES'){
 					        if(inn.inningNumber === 1){
@@ -3037,6 +3020,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 								option.text = 'Toss';
 								select.appendChild(option);
 					        } else if(inn.inningNumber === 2){
+								option = document.createElement('option');
+								option.value = 'TARGET';
+								option.text = 'Target';
+								select.appendChild(option);
+								
 								option = document.createElement('option');
 								option.value = 'EQUATION';
 								option.text = 'Equation';
@@ -3266,7 +3254,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				        }else{
 							session_match.match.inning.forEach(function(inn){
 								if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
-									dropdown.push(
+									dropdownoption.push(
 									    { value: 'COMPARE', text: 'At This Stage' }
 									);
 								}
@@ -3462,6 +3450,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 					const matchOptions = [
 						{ value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
 						{ value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },
+						{ value: 'Team_Summary_Inning', text: 'Team 0s,1s,2s' },
+						{ value: 'Batsman_Summary_Inning', text: 'Batsman 0s,1s,2s' },
 					];
 
 					const dropdownoption = [
@@ -4556,36 +4546,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					break;
 				case 'AFG_SERIES':
+					const matchType = session_match.setup.matchType;
 
-					option = document.createElement('option');
-					option.value = 'TEST';
-					option.text = 'TEST MATCHES';
-					select.appendChild(option);
+					const dropdownOptions = {
+					    ODI: ['ODI', 'LIST A', 'IT20', 'DT20', 'TEST', 'FC'],
+					    IT20: ['IT20', 'DT20', 'ODI', 'LIST A', 'TEST', 'FC'],
+					    TEST: ['TEST', 'FC', 'ODI', 'LIST A', 'IT20', 'DT20']
+					};
 
-					option = document.createElement('option');
-					option.value = 'FC';
-					option.text = 'First Class';
-					select.appendChild(option);
+					const optionText = {
+					    TEST: 'TEST MATCHES',
+					    FC: 'First Class',
+					    ODI: 'ODI',
+					    'LIST A': 'LIST A',
+					    IT20: 'T20-I',
+					    DT20: 'T20'
+					};
 
-					option = document.createElement('option');
-					option.value = 'DT20';
-					option.text = 'T20';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'LIST A';
-					option.text = 'LIST A';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'ODI';
-					option.text = 'ODI';
-					select.appendChild(option);
+					(dropdownOptions[matchType] || dropdownOptions.ODI).forEach(value => {
+					    const option = document.createElement('option');
+					    option.value = value;
+					    option.text = optionText[value];
+					    select.appendChild(option);
+					});
 					break;	
 				case 'ACC':
 						
@@ -4724,45 +4707,32 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'AFG_SERIES':
-				option = document.createElement('option');
-				option.value = 'FIRST_INNINGS';
-				option.text = '1st Innings';
-				select.appendChild(option);
-				
-				option = document.createElement('option');
-				option.value = 'SECOND_INNINGS';
-				option.text = '2nd Innings';
-				select.appendChild(option);	
-			
-				option = document.createElement('option');
-				option.value = 'TEST';
-				option.text = 'TEST MATCHES';
-				select.appendChild(option);
+				const matchType = session_match.setup.matchType;
 
-				option = document.createElement('option');
-				option.value = 'FC';
-				option.text = 'First Class';
-				select.appendChild(option);
+				const dropdownOptions = {
+				    ODI: ['THIS_MATCH', 'ODI', 'LIST A', 'IT20', 'DT20', 'TEST', 'FC'],
+				    IT20: ['THIS_MATCH', 'IT20', 'DT20', 'ODI', 'LIST A', 'TEST', 'FC'],
+				    TEST: ['FIRST_INNINGS', 'SECOND_INNINGS', 'TEST', 'FC', 'ODI', 'LIST A', 'IT20', 'DT20']
+				};
 
-				option = document.createElement('option');
-				option.value = 'DT20';
-				option.text = 'T20';
-				select.appendChild(option);
+				const optionText = {
+					THIS_MATCH: 'This Match',
+				    FIRST_INNINGS: '1st Innings',
+				    SECOND_INNINGS: '2nd Innings',
+				    TEST: 'TEST MATCHES',
+				    FC: 'First Class',
+				    ODI: 'ODI',
+				    'LIST A': 'LIST A',
+				    IT20: 'T20-I',
+				    DT20: 'T20'
+				};
 
-				option = document.createElement('option');
-				option.value = 'IT20';
-				option.text = 'T20-I';
-				select.appendChild(option);
-
-				option = document.createElement('option');
-				option.value = 'LIST A';
-				option.text = 'LIST A';
-				select.appendChild(option);
-
-				option = document.createElement('option');
-				option.value = 'ODI';
-				option.text = 'ODI';
-				select.appendChild(option);
+				(dropdownOptions[matchType] || dropdownOptions.ODI).forEach(value => {
+				    const option = document.createElement('option');
+				    option.value = value;
+				    option.text = optionText[value];
+				    select.appendChild(option);
+				});
 				break;
 			default:
 				option = document.createElement('option');
@@ -4852,36 +4822,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'AFG_SERIES':
+					const matchType = session_match.setup.matchType;
 
-					option = document.createElement('option');
-					option.value = 'TEST';
-					option.text = 'TEST MATCHES';
-					select.appendChild(option);
+					const dropdownOptions = {
+					    ODI: ['ODI', 'LIST A', 'IT20', 'DT20', 'TEST', 'FC'],
+					    IT20: ['IT20', 'DT20', 'ODI', 'LIST A', 'TEST', 'FC'],
+					    TEST: ['TEST', 'FC', 'ODI', 'LIST A', 'IT20', 'DT20']
+					};
 
-					option = document.createElement('option');
-					option.value = 'FC';
-					option.text = 'First Class';
-					select.appendChild(option);
+					const optionText = {
+					    TEST: 'TEST MATCHES',
+					    FC: 'First Class',
+					    ODI: 'ODI',
+					    'LIST A': 'LIST A',
+					    IT20: 'T20-I',
+					    DT20: 'T20'
+					};
 
-					option = document.createElement('option');
-					option.value = 'DT20';
-					option.text = 'T20';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'LIST A';
-					option.text = 'LIST A';
-					select.appendChild(option);
-
-					option = document.createElement('option');
-					option.value = 'ODI';
-					option.text = 'ODI';
-					select.appendChild(option);
+					(dropdownOptions[matchType] || dropdownOptions.ODI).forEach(value => {
+					    const option = document.createElement('option');
+					    option.value = value;
+					    option.text = optionText[value];
+					    select.appendChild(option);
+					});
 					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20':
 					
@@ -6298,25 +6261,64 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'AFG_SERIES':
-				
-				select = document.createElement('select');
-				select.id = 'selectlineUp';
-				select.name = select.id;
+				if(session_match.setup.matchType === 'TEST'){
+					select = document.createElement('select');
+					select.id = 'selectlineUp';
+					select.name = select.id;
 
-				option = document.createElement('option');
-				option.value = 'BATTING_CARD';
-				option.text = 'BATTING CARD';
-				select.appendChild(option);
+					option = document.createElement('option');
+					option.value = 'BATTING_CARD';
+					option.text = 'BATTING CARD';
+					select.appendChild(option);
 
-				option = document.createElement('option');
-				option.value = 'ROLES';
-				option.text = 'ROLES';
-				select.appendChild(option);
+					option = document.createElement('option');
+					option.value = 'ROLES';
+					option.text = 'ROLES';
+					select.appendChild(option);
 
-				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
-				row.insertCell(cellCount).appendChild(select);
-				setDropdownOptionToSelectOptionArray($(select),0);
-				cellCount = cellCount + 1;
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),0);
+					cellCount = cellCount + 1;
+				}else{
+					select = document.createElement('select');
+					select.id = 'selectTeams';
+					select.name = select.id;
+
+					option = document.createElement('option');
+					option.value = session_match.setup.homeTeamId;
+					option.text = session_match.setup.homeTeam.teamName1;
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = session_match.setup.awayTeamId;
+					option.text = session_match.setup.awayTeam.teamName1;
+					select.appendChild(option);
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),0);
+					cellCount = cellCount + 1;
+
+					select = document.createElement('select');
+					select.id = 'selectlineUp';
+					select.name = select.id;
+
+					option = document.createElement('option');
+					option.value = 'BATTING_CARD';
+					option.text = 'BATTING CARD';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'ROLES';
+					option.text = 'ROLES';
+					select.appendChild(option);
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),1);
+					cellCount = cellCount + 1;
+				}
 				break;
 			default:
 				select = document.createElement('select');
