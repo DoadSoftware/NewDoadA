@@ -1160,9 +1160,16 @@ public class InfobarGfx
 				break;
 			case "RESULT":
 				inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
-				
-				Ident_Line1 = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
-						config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAWN");
+				switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
+				case "TEST":
+					Ident_Line1 = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
+							config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAWN");
+					break;
+				default:
+					Ident_Line1 = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
+							config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
+					break;
+				}
 				Ident_Line2 = "";
 				break;
 			}
@@ -1547,10 +1554,18 @@ public class InfobarGfx
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$txt_TopData*GEOM*TEXT SET " 
 					+ matchAllData.getSetup().getHomeTeam().getTeamName1() + " vs " + matchAllData.getSetup().getAwayTeam().getTeamName1() + "\0", print_writers);
-			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$Bottom_Info_Grp$Side1$txt_Info"
-					+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
-							config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAWN") + "\0", print_writers);
+			switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
+			case "TEST":
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$Bottom_Info_Grp$Side1$txt_Info"
+						+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
+								config.getBroadcaster(), false).getTargetOrResult().toUpperCase().replace("MATCH TIED", "MATCH DRAWN") + "\0", print_writers);
+				break;
+			default:
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$Bottom_Info_Grp$Side1$txt_Info"
+						+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "|", 
+								config.getBroadcaster(), false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+				break;
+			}
 			break;
 		case Constants.AFG_SL_SERIES:
 			//Logo
@@ -2208,7 +2223,7 @@ public class InfobarGfx
 					if (!CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData).isEmpty()) {
 						System.out.println(CricketFunctions.processPowerPlay(CricketUtil.FULL, matchAllData));
 						if (infobar.isPowerplay_on_screen() == true) {
-							switch (matchAllData.getSetup().getMatchType()) {
+							switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 							case CricketUtil.ODI: case CricketUtil.OD:
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp$PP$txt_Powerplay*GEOM*TEXT SET " 
 										+ CricketFunctions.processPowerPlay(CricketUtil.FULL, matchAllData) + "\0", print_writers);
@@ -2216,7 +2231,7 @@ public class InfobarGfx
 							}
 						} else {
 							if (infobar.isPowerplay_on_screen() == false) {
-								switch (matchAllData.getSetup().getMatchType()) {
+								switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 								case CricketUtil.ODI: case CricketUtil.OD:
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp$PP$txt_Powerplay*GEOM*TEXT SET " 
 											+ CricketFunctions.processPowerPlay(CricketUtil.FULL, matchAllData) + "\0", print_writers);
@@ -2241,7 +2256,7 @@ public class InfobarGfx
 					}else {
 						if (infobar.isPowerplay_on_screen() == true) {
 							//CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*anim_Scorebug$Main$Powerplay$In_Out CONTINUE\0", print_writers);
-							switch (matchAllData.getSetup().getMatchType()) {
+							switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 							case CricketUtil.ODI: case CricketUtil.OD:
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp$PP$txt_Powerplay*GEOM*TEXT SET " 
 										+ CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
@@ -2253,7 +2268,7 @@ public class InfobarGfx
 							}
 							infobar.setPowerplay_on_screen(false);
 						}else {
-							switch (matchAllData.getSetup().getMatchType()) {
+							switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 							case CricketUtil.ODI: case CricketUtil.OD:
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp$PP$txt_Powerplay*GEOM*TEXT SET " 
 										+ CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
@@ -2283,7 +2298,7 @@ public class InfobarGfx
 					if (infobar.isPowerplay_on_screen() == true) {
 					} else {
 						if (infobar.isPowerplay_on_screen() == false) {
-							switch (matchAllData.getSetup().getMatchType()) {
+							switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 							case CricketUtil.ODI: case CricketUtil.OD:
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$ScoreSection$OversAll$PowerPlay$txt_PowerPlay"
 										+ "*GEOM*TEXT SET " + CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
@@ -2373,7 +2388,7 @@ public class InfobarGfx
 					if (infobar.isPowerplay_on_screen() == true) {
 					} else {
 						if (infobar.isPowerplay_on_screen() == false) {
-							switch (matchAllData.getSetup().getMatchType()) {
+							switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 							case CricketUtil.ODI: case CricketUtil.OD:
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$ScoreGrp$BowlTeam_Over_PPGrp$txt_PowerPlay"
 										+ "*GEOM*TEXT SET " + CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData) + "\0", print_writers);
@@ -2477,9 +2492,9 @@ public class InfobarGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$Score_Grp$txt_HomeTeamName*GEOM*TEXT SET " 
 						+ inning.getBatting_team().getTeamName1() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$LeftTeamLogo_Small$img_Base*TEXTURE*IMAGE SET " 
-						+ Constants.AFG_SERIES_BASE_Ident + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						+ Constants.AFG_SERIES_BASE1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$RightTeamLogo_Small$Img_Base*TEXTURE*IMAGE SET " 
-						+ Constants.AFG_SERIES_BASE_Ident + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+						+ Constants.AFG_SERIES_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$txt_Score*GEOM*TEXT SET " 
@@ -6171,7 +6186,7 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Select_Batsman_Side"
 							+ "*FUNCTION*Omo*vis_con SET 7\0",print_writers);
 					if(inning.getInningNumber() == 2) {
-						switch(matchAllData.getSetup().getMatchType()) {
+						switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
 						case "TEST":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Header"
 									+ "*GEOM*TEXT SET \0", print_writers);
@@ -6180,11 +6195,19 @@ public class InfobarGfx
 											false).getTargetOrResult().toUpperCase() + "\0", print_writers);
 							break;
 						default:
+							String BallData = "";
+							if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() > 100) {
+								BallData = CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" 
+										+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+							}else {
+								BallData = CricketFunctions.OverBalls(0, CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) + " OVERS";
+							}
+							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Header"
 									+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName4() + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Data1"
 									+ "*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() 
-									+ " TO WIN" + "\0", print_writers);
+									+ " OFF " + BallData + "\0", print_writers);
 							break;
 						}
 					}else if(inning.getInningNumber() == 3) {
@@ -7343,7 +7366,7 @@ public class InfobarGfx
 										getRemaningRuns()).toUpperCase() + "\0", print_writers);
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
-								+ "$Side" + WhichSubSide + "$Equation$Bottom$txt_Head*GEOM*TEXT SET " + "TO WIN THE SUPER OVER" + "\0", print_writers);
+								+ "$Side" + WhichSubSide + "$Equation$Bottom$txt_Head*GEOM*TEXT SET " + "TO WIN" + "\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 								+ "$Side" + WhichSubSide + "$Equation$Bottom$Data1Grp*ACTIVE SET 0\0", print_writers);
 					}else {
@@ -7529,7 +7552,7 @@ public class InfobarGfx
 				case "FIRST_INNING_SCORE":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
-					switch(matchAllData.getSetup().getMatchType()) {
+					switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case "TEST":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 								+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamName1() 
@@ -7538,7 +7561,7 @@ public class InfobarGfx
 					default:
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 								+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamName1() 
-								+ " - " + CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "-", false) + "\0", print_writers);
+								+ ": " + CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "-", false) + "\0", print_writers);
 						break;
 					}
 					break;
@@ -8038,7 +8061,7 @@ public class InfobarGfx
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Equation$Bottom$txt_Head*GEOM*TEXT SET " + "FROM" + "\0", print_writers);
 						
-						switch (matchAllData.getSetup().getMatchType()) {
+						switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 						case CricketUtil.ODI:
 							
 							if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() >= 100) {
@@ -9504,7 +9527,7 @@ public class InfobarGfx
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Infobar$Section3$Side" + WhichSide + "$Equation$Bottom$"
 								+ "txt_Head*GEOM*TEXT SET " + "FROM" + "\0", print_writers);
 						
-						switch (matchAllData.getSetup().getMatchType()) {
+						switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 						case CricketUtil.ODI:
 							
 							if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() >= 100) {
@@ -10696,7 +10719,7 @@ public class InfobarGfx
 						+ "txt_Head2*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() 
 						+ "\0", print_writers);
 				
-				switch (matchAllData.getSetup().getMatchType()) {
+				switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 				case CricketUtil.ODI: case CricketUtil.OD:
 					
 					if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() >= 100) {
@@ -10746,7 +10769,7 @@ public class InfobarGfx
 				break;
 			case "EQUATION":
 				if(inning.getInningNumber() == 2 || inning.getInningNumber() == 3) {
-					switch(matchAllData.getSetup().getMatchType()) {
+					switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case "TEST":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Select_Center_Big_data"
 								+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
@@ -10766,7 +10789,7 @@ public class InfobarGfx
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Equation$Top$txt_Head2"
 								+ "*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + "\0", print_writers);
 						
-						switch (matchAllData.getSetup().getMatchType()) {
+						switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 						case CricketUtil.ODI: case CricketUtil.OD:
 							if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() >= 100) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Equation$Bottom$"
@@ -11254,7 +11277,7 @@ public class InfobarGfx
 			    	break;
 			    }
 				
-				switch (matchAllData.getSetup().getMatchType()) {
+				switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 				case CricketUtil.TEST:
 					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 					break;
@@ -11277,7 +11300,7 @@ public class InfobarGfx
 					return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 				}
 				
-				switch (matchAllData.getSetup().getMatchType()) {
+				switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 				case CricketUtil.TEST:
 					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 					break;
@@ -11436,7 +11459,7 @@ public class InfobarGfx
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Player_Stats$txt_Name"
 						+ "*GEOM*TEXT SET " + bc_Sum_inn.getPlayer().getTicker_name() + "\0", print_writers);
-				switch (matchAllData.getSetup().getMatchType()) {
+				switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 				case "TEST":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Player_Stats$txt_Name02"
 							+ "*GEOM*TEXT SET " + "THIS INNINGS" + "\0", print_writers);
@@ -11532,8 +11555,8 @@ public class InfobarGfx
 						"-", matchAllData.getEventFile().getEvents()).split("-");
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Player_Stats$txt_Name"
-						+ "*GEOM*TEXT SET " + team.getTeamName1() + "\0", print_writers);
-				switch (matchAllData.getSetup().getMatchType()) {
+						+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName1() + "\0", print_writers);
+				switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 				case "TEST":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Player_Stats$txt_Name02"
 							+ "*GEOM*TEXT SET " + "THIS INNINGS" + "\0", print_writers);
@@ -12646,7 +12669,7 @@ public class InfobarGfx
 				    	break;
 				    }
 					
-					switch (matchAllData.getSetup().getMatchType()) {
+					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case CricketUtil.ODI:
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
@@ -12669,7 +12692,7 @@ public class InfobarGfx
 						return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
 					
-					switch (matchAllData.getSetup().getMatchType()) {
+					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case CricketUtil.ODI:
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
@@ -12689,7 +12712,7 @@ public class InfobarGfx
 					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 					stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 					
-//					switch (matchAllData.getSetup().getMatchType()) {
+//					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 //					case CricketUtil.ODI:
 //						
 //						break;
@@ -12919,7 +12942,7 @@ public class InfobarGfx
 							+ "txt_Head2*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() 
 							+ "\0", print_writers);
 					
-					switch (matchAllData.getSetup().getMatchType()) {
+					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case CricketUtil.ODI: case CricketUtil.OD:
 						
 						if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() >= 100) {
@@ -13297,7 +13320,7 @@ public class InfobarGfx
 				    	break;
 				    }
 					
-					switch (matchAllData.getSetup().getMatchType()) {
+					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case CricketUtil.ODI:
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
@@ -13317,7 +13340,7 @@ public class InfobarGfx
 						return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 					}
 					
-					switch (matchAllData.getSetup().getMatchType()) {
+					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case CricketUtil.ODI:
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						break;
@@ -13334,7 +13357,7 @@ public class InfobarGfx
 					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 //					stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 					
-//					switch (matchAllData.getSetup().getMatchType()) {
+//					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 //					case CricketUtil.ODI:
 //						
 //						break;
@@ -13556,7 +13579,7 @@ public class InfobarGfx
 							+ "txt_Head2*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() 
 							+ "\0", print_writers);
 					
-					switch (matchAllData.getSetup().getMatchType()) {
+					switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 					case CricketUtil.ODI:
 						
 						if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() >= 100) {
