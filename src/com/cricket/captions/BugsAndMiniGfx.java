@@ -19,6 +19,7 @@ import java.util.Set;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
+import com.cricket.containers.LowerThird;
 import com.cricket.controller.IndexController;
 import com.cricket.model.BatBallGriff;
 import com.cricket.model.BattingCard;
@@ -34,6 +35,7 @@ import com.cricket.model.Inning;
 import com.cricket.model.LeagueTable;
 import com.cricket.model.MatchAllData;
 import com.cricket.model.MultiLanguageDatabase;
+import com.cricket.model.OverByOverData;
 import com.cricket.model.Partnership;
 import com.cricket.model.PerformanceBug;
 import com.cricket.model.Player;
@@ -1816,40 +1818,34 @@ public class BugsAndMiniGfx
 //					}
 					break;
 				case Constants.AFG_SERIES: //case Constants.ACC:
-					String pp = "";
+					if(inning.getInningNumber()==1) {
+						phaseWiseScore = IndexController.MatchStats.getHomeFirstPowerPlay().getTotalRuns()+"-"+IndexController.MatchStats.getHomeFirstPowerPlay().getTotalWickets()+","+
+										 IndexController.MatchStats.getHomeSecondPowerPlay().getTotalRuns()+"-"+IndexController.MatchStats.getHomeSecondPowerPlay().getTotalWickets()+","
+										 +IndexController.MatchStats.getHomeThirdPowerPlay().getTotalRuns()+"-"+IndexController.MatchStats.getHomeThirdPowerPlay().getTotalWickets();
+					}else if(inning.getInningNumber()==2) {
+						phaseWiseScore = IndexController.MatchStats.getAwayFirstPowerPlay().getTotalRuns()+"-"+IndexController.MatchStats.getAwayFirstPowerPlay().getTotalWickets()+","+
+								 IndexController.MatchStats.getAwaySecondPowerPlay().getTotalRuns()+"-"+IndexController.MatchStats.getAwaySecondPowerPlay().getTotalWickets()+","
+								 +IndexController.MatchStats.getAwayThirdPowerPlay().getTotalRuns()+"-"+IndexController.MatchStats.getAwayThirdPowerPlay().getTotalWickets();
+					}
+					
 					
 					if(whatToProcess.split(",")[2].equalsIgnoreCase("p1")) {
-						pp = CricketFunctions.getFirstPowerPlayScore(matchAllData,inning.getInningNumber(), matchAllData.getEventFile().getEvents());
-						
-//						result1 = customRound(Double.parseDouble(inning.getFirstPowerplayStartOver()));
-//						result2 = customRound(Double.parseDouble(inning.getFirstPowerplayEndOver()));
-			            
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Double$All$DataGrpAll$PlayerNameGrp$Info03"
 								+ "*GEOM*TEXT SET " + "POWERPLAY 1" + "\0",print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Double$All$DataGrpAll$PlayerNameGrp$group$"
-								+ "Info04*GEOM*TEXT SET " + pp.split(",")[0] + "\0",print_writers);
+								+ "Info04*GEOM*TEXT SET " + phaseWiseScore.split(",")[0] + "\0",print_writers);
 						
 					}else if(whatToProcess.split(",")[2].equalsIgnoreCase("p2")) {
-						pp=CricketFunctions.getSecPowerPlayScore(matchAllData, inning.getInningNumber(), matchAllData.getEventFile().getEvents());
-						
-//						result1 = customRound(Double.parseDouble(inning.getSecondPowerplayStartOver()));
-//						result2 = customRound(Double.parseDouble(inning.getSecondPowerplayEndOver()));
-						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Double$All$DataGrpAll$PlayerNameGrp$Info03"
 								+ "*GEOM*TEXT SET " + "POWERPLAY 2" + "\0",print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Double$All$DataGrpAll$PlayerNameGrp$group$"
-								+ "Info04*GEOM*TEXT SET " + pp.split(",")[0] + "\0",print_writers);
+								+ "Info04*GEOM*TEXT SET " + phaseWiseScore.split(",")[1] + "\0",print_writers);
 						
 					}else if(whatToProcess.split(",")[2].equalsIgnoreCase("p3")) {
-						pp=CricketFunctions.getThirdPowerPlayScore(matchAllData, inning.getInningNumber(), matchAllData.getEventFile().getEvents());
-						
-//						result1 = customRound(Double.parseDouble(inning.getThirdPowerplayStartOver()));
-//						result2 = customRound(Double.parseDouble(inning.getThirdPowerplayEndOver()));
-						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Double$All$DataGrpAll$PlayerNameGrp$Info03"
 								+ "*GEOM*TEXT SET " + "POWERPLAY 3" + "\0",print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Select$Double$All$DataGrpAll$PlayerNameGrp$group$"
-								+ "Info04*GEOM*TEXT SET " + pp.split(",")[0] + "\0",print_writers);	
+								+ "Info04*GEOM*TEXT SET " + phaseWiseScore.split(",")[2] + "\0",print_writers);	
 					}
 					break;
 				default:

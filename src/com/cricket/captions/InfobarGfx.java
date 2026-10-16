@@ -8881,7 +8881,7 @@ public class InfobarGfx
 							+ "*FUNCTION*Omo*vis_con SET 11\0",print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
-							+ "txt_Head*GEOM*TEXT SET " + "PROJECTED SCORE" + "\0", print_writers);
+							+ "txt_Head*GEOM*TEXT SET " + "PROJECTED SCORES" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
 							+ "DataAll$Data1Grp$txt_Head2*GEOM*TEXT SET " + "@" +this_data_str.get(0) + "\0", print_writers);
@@ -8909,19 +8909,19 @@ public class InfobarGfx
 					}
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Select_BowlerSide"
-							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+							+ "*FUNCTION*Omo*vis_con SET 2\0",print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$LastXBalls$"
 							+ "txt_Head*GEOM*TEXT SET " + "RUN RATES" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$LastXBalls$Data1Grp$"
 							+ "txt_Head2*GEOM*TEXT SET " + "CURRENT" + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$LastXBalls$Data2Grp$"
 							+ "txt_Head3*GEOM*TEXT SET " + "REQUIRED" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$LastXBalls$Data1Grp$"
 							+ "txt_Data1*GEOM*TEXT SET " + CricketFunctions.generateRunRate(inning.getTotalRuns(),inning.getTotalOvers(), inning.getTotalBalls(), 2,matchAllData) + "\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$LastXBalls$Data2Grp$"
 							+ "txt_Data2*GEOM*TEXT SET " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns(), 0, 
 									CricketFunctions.GetTargetData(matchAllData).getRemaningBall(), 2, matchAllData) + "\0", print_writers);
 					break;
