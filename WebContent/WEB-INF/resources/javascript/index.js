@@ -449,11 +449,11 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 				break;
 			case 'h':
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'ACC': case 'AFG_SERIES':
+				case 'ACC':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
-				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20': case 'TG20': case 'APLT20':
+				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES':
 					addItemsToList(dataToProcess,null);
 					break;	
 				}

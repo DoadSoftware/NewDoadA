@@ -8550,8 +8550,8 @@ public class ALL_FF
 						if(matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().isEmpty()) {
 							OverData = (matchAllData.getSetup().getTargetOvers() != null && !matchAllData.getSetup().getTargetOvers().trim().isEmpty() 
 									? " (" + matchAllData.getSetup().getTargetOvers() + ")":"");
-							OverData = OverData + ((matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty()) 
-									? " " + matchAllData.getSetup().getTargetType().toUpperCase() : "");
+//							OverData = OverData + ((matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty()) 
+//									? " " + matchAllData.getSetup().getTargetType().toUpperCase() : "");
 						}
 					}
 				}

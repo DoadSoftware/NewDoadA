@@ -1548,9 +1548,9 @@ public class InfobarGfx
 					+ Constants.AFG_SERIES_BADGES + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$LeftTeamLogo_Ident$img_Base*TEXTURE*IMAGE SET " 
-					+ Constants.AFG_SERIES_BASE_Ident + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+					+ Constants.AFG_SERIES_BASE1 + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$RightTeamLogo_Ident$Img_Base*TEXTURE*IMAGE SET " 
-					+ Constants.AFG_SERIES_BASE_Ident + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+					+ Constants.AFG_SERIES_BASE1 + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Ident_Data$txt_TopData*GEOM*TEXT SET " 
 					+ matchAllData.getSetup().getHomeTeam().getTeamName1() + " vs " + matchAllData.getSetup().getAwayTeam().getTeamName1() + "\0", print_writers);
@@ -12076,7 +12076,7 @@ public class InfobarGfx
 					break;
 				case "ODI": case "LIST A":
 					TitleData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {"MATCHES", "RUNS", "50s / 100s", "AVERAGE", "BEST"}
-				    		: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "BAT AVG.", "WICKETS", "BOWL AVG."} 
+				    		: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "BAT AVG.", "WICKETS", "ECONOMY"} 
 							: new String[] {"MATCHES", "WICKETS", "5WI", "ECONOMY", "BEST"};
 
 					StatData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP")
@@ -12084,7 +12084,7 @@ public class InfobarGfx
 							CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-"), (stat.getBestScore().equalsIgnoreCase("0") 
 							? "-" : stat.getBestScore())}: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {String.valueOf(stat.getMatches()),
 							String.valueOf(stat.getRuns()), CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-"), 
-							String.valueOf(stat.getWickets()), CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 2, "-")} 
+							String.valueOf(stat.getWickets()), CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, "-")} 
 							: new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),String.valueOf(stat.getPlus5()),
 							CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash), // Example
 							(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
