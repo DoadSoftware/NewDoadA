@@ -62,6 +62,7 @@ public class Animation
 				return Constants.INFO_BAR;
 			case "m": case "Control_d": case "Control_e": case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
 			case "Control_Shift_F7": case "Control_Shift_F1": case "Alt_Shift_!": case "Alt_Shift_I": case "Shift_F11": case "Control_m":
+			case "Control_F10": case "Shift_F10": case "Shift_D": case "Control_F1": case "Control_Alt_F1":
 				return Constants.FULL_FRAMER;
 			case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
@@ -186,7 +187,7 @@ public class Animation
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.AFG_SERIES:
 			switch (whatToProcess.split(",")[0]) {
-			case "s": case "f": case "w": case "0": case "8":
+			case "s": case "f": case "w": case "0": case "8": case "i": case "9": case ".":
 				switch(whatToProcess.split(",")[0]) {
 				case "s": 
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Wipes$Select_Wipes*FUNCTION*Omo*vis_con SET 1\0", print_writers);
@@ -201,6 +202,16 @@ public class Animation
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Wipes$Select_Wipes*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 					break;
 				case "8":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Wipes$Select_Wipes*FUNCTION*Omo*vis_con SET 4\0", print_writers);
+					break;
+				case "i": 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Wipes$Select_Wipes*FUNCTION*Omo*vis_con SET 6\0", print_writers);
+					break;
+				case "9": 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Wipes$Select_Wipes*FUNCTION*Omo*vis_con SET 5\0", print_writers);
+					break;
+				case ".":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Wipes$Select_Wipes*FUNCTION*Omo*vis_con SET 7\0", print_writers);
 					break;
 				}
 				
@@ -622,6 +633,17 @@ public class Animation
 
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+				
+			case "Shift_D":
+				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+				TimeUnit.MILLISECONDS.sleep(500);
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				
+				processAnimation(Constants.BACK, print_writers, "anim_Target$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 			case "m": case "Control_m":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
@@ -653,7 +675,7 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
-			case "Alt_Shift_!": case "Shift_F11":
+			case "Alt_Shift_!": case "Shift_F11": case "Control_F10": case "Shift_F10": case "Control_F1": case "Control_Alt_F1":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				
@@ -693,6 +715,18 @@ public class Animation
 					break;
 				case "Alt_Shift_!":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$FOW_Details", "START");
+					break;
+				case "Control_F10":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Manhattan", "START");
+					break;
+				case "Shift_F10":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Worm", "START");
+					break;
+				case "Control_F1":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Batting_Card_Image", "START");
+					break;
+				case "Control_Alt_F1":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Bat_Ball_Both", "START");
 					break;
 				}
 				
@@ -2973,6 +3007,14 @@ public class Animation
 //				break;
 				
 			//FF
+			case "Shift_D":
+				processAnimation(Constants.BACK, print_writers, "anim_Target$In_Out", "CONTINUE");
+				
+				TimeUnit.MILLISECONDS.sleep(800);
+				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
+				this.whichGraphicOnScreen = "";
+				break;
+				
 			case "m": case "Control_m":
 				processAnimation(Constants.BACK, print_writers, "anim_Ident$In_Out", "CONTINUE");
 				
@@ -3002,7 +3044,7 @@ public class Animation
 				break;
 				
 			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
-			case "Alt_Shift_!":	case "Shift_F11":
+			case "Alt_Shift_!":	case "Shift_F11": case "Control_F10": case "Shift_F10": case "Control_F1": case "Control_Alt_F1":
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "CONTINUE");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Header", "CONTINUE");
@@ -3034,6 +3076,18 @@ public class Animation
 					break;
 				case "Alt_Shift_!":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$FOW_Details", "CONTINUE");
+					break;
+				case "Control_F10":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Manhattan", "CONTINUE");
+					break;
+				case "Shift_F10":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Worm", "CONTINUE");
+					break;
+				case "Control_F1":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Batting_Card_Image", "CONTINUE");
+					break;
+				case "Control_Alt_F1":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Bat_Ball_Both", "CONTINUE");
 					break;
 				}
 				
@@ -6414,6 +6468,8 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "anim_LineUpImage", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "Change_LineUpImage", "SHOW 0.0");
 			
+			processAnimation(Constants.BACK, print_writers, "anim_Target", "SHOW 0.0");
+			
 			processAnimation("", print_writers, "Plotter", "SHOW 0.0");
 			
 			if(whatToProcess.contains("CLEAR-ALL")) {
@@ -6871,6 +6927,9 @@ public class Animation
 					case "m": case "Control_m":
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Ident$In_Out$In 1.700";
 						break;
+					case "Shift_D":
+						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Target$In_Out$In 1.700";
+						break;
 					case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Profile$In_Out$Essentials$In 1.600 anim_Profile$In_Out$Logo$In 1.700 "
 								+ "anim_Profile$In_Out$Main$Profile$In 1.600 anim_Profile$In_Out$Wiipe$In 1.347";
@@ -6884,7 +6943,7 @@ public class Animation
 								+ "anim_LineUpImage$In_Out$Header$In 1.600 anim_LineUpImage$In_Out$SubHeader$In 1.300 anim_LineUpImage$In_Out$Main$In 2.820";
 						break;
 					case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1": case "Alt_Shift_!":
-					case "Shift_F11":
+					case "Shift_F11": case "Control_F10": case "Shift_F10": case "Control_F1": case "Control_Alt_F1":
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_FullFrames$In_Out$Essentials$In 1.600 anim_FullFrames$In_Out$Logo$In 1.700 "
 								+ "anim_FullFrames$In_Out$Header$In 1.600 anim_FullFrames$In_Out$SubHeader$In 1.300 anim_FullFrames$In_Out$Sponsor$In 1.500 "
 								+ "anim_FullFrames$In_Out$Wiipe$In 1.341 ";
@@ -6912,6 +6971,18 @@ public class Animation
 							break;
 						case "Alt_Shift_!":
 							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$FOW_Details$In 1.680";
+							break;
+						case "Control_F10":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$Manhattan$In 1.700";
+							break;
+						case "Shift_F10":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$Worm$In 1.700";
+							break;
+						case "Control_F1":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$Batting_Card_Image$In 1.680";
+							break;
+						case "Control_Alt_F1":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$Bat_Ball_Both$In 1.680";
 							break;
 						}
 						break;

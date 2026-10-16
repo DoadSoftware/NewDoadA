@@ -3253,8 +3253,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 				           
 				        }else{
 							session_match.match.inning.forEach(function(inn){
-								if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+								if(inn.isCurrentInning == 'YES' && inn.inningNumber == 1){
 									dropdownoption.push(
+										{ value: 'PROJECTED_SCORE', text: 'Projected Score' }
+									);
+								}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+									dropdownoption.push(
+										{ value: 'CRR_RRR', text: 'Curr & Req Run Rate' },
 									    { value: 'COMPARE', text: 'At This Stage' }
 									);
 								}
@@ -5791,7 +5796,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			break;
 		case 'Control_y':
 			switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'BAN_AFG_SERIES': case 'WCL': //case 'ACC':
+				case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SERIES': //case 'ACC':
 					header_text.innerHTML = 'POWERPLAY';
 	
 					select = document.createElement('select');
@@ -5842,6 +5847,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 					
 					cellCount = cellCount + 1;
 					break;	
+				}
+				switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'AFG_SERIES':
+					select = document.createElement('select');
+					select.id = 'selectHighlightBug';
+					select.name = select.id;
+
+					option = document.createElement('option');
+					option.value = 'WITHOUT_SPONSOR';
+					option.text = 'Without Sponsor';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'WITH_SPONSOR';
+					option.text = 'With Sponsor';
+					select.appendChild(option);
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),1);
+					cellCount = cellCount + 1;
+					break;
 				}
 			break;
 		case 'Control_Shift_*' :

@@ -8864,6 +8864,67 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$AtThisStage$txt_Data1"
 							+ "*GEOM*TEXT SET " + CricketFunctions.compareInningData(matchAllData, "-", 1, matchAllData.getEventFile().getEvents()) + "\0", print_writers);
 					break;
+				case "PROJECTED_SCORE":
+					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == 1 &&
+								inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+			
+					if(inning == null) {
+						return "populateVizInfobarRightSection: 1st Inning returned is NULL";
+					}
+					this_data_str = CricketFunctions.projectedScore(matchAllData);
+					
+					if(this_data_str.size() <= 0) {
+						return "populateVizInfobarRightSection: Projected score invalid";
+					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Select_BowlerSide"
+							+ "*FUNCTION*Omo*vis_con SET 11\0",print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
+							+ "txt_Head*GEOM*TEXT SET " + "PROJECTED SCORE" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
+							+ "DataAll$Data1Grp$txt_Head2*GEOM*TEXT SET " + "@" +this_data_str.get(0) + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
+							+ "DataAll$Data1Grp$txt_Data1*GEOM*TEXT SET " + this_data_str.get(1) + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
+							+ "DataAll$Data2Grp$txt_Head2*GEOM*TEXT SET " + "@" + this_data_str.get(2) +" RPO" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
+							+ "DataAll$Data2Grp$txt_Data1*GEOM*TEXT SET " + this_data_str.get(3) + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
+							+ "DataAll$Data3Grp$txt_Head2*GEOM*TEXT SET " + "@" + this_data_str.get(4) +" RPO" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$ProjectedScore$"
+							+ "DataAll$Data3Grp$txt_Data1*GEOM*TEXT SET " + this_data_str.get(5) + "\0", print_writers);
+
+					break;
+					
+				case "CRR_RRR":
+					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)
+							&& inn.getInningNumber() == 2).findAny().orElse(null);
+						
+					if(inning == null) {
+						return "populateVizInfobarRightSection: 2nd Inning returned is NULL";
+					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Select_BowlerSide"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$"
+							+ "txt_Head*GEOM*TEXT SET " + "RUN RATES" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+							+ "txt_Head2*GEOM*TEXT SET " + "CURRENT" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+							+ "txt_Head3*GEOM*TEXT SET " + "REQUIRED" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data1Grp$"
+							+ "txt_Data1*GEOM*TEXT SET " + CricketFunctions.generateRunRate(inning.getTotalRuns(),inning.getTotalOvers(), inning.getTotalBalls(), 2,matchAllData) + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$InningBoundaries$Data2Grp$"
+							+ "txt_Data2*GEOM*TEXT SET " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns(), 0, 
+									CricketFunctions.GetTargetData(matchAllData).getRemaningBall(), 2, matchAllData) + "\0", print_writers);
+					break;
 					
 				case CricketUtil.BOUNDARY: case "LASTXBALLS": case "EXTRAS": case "LAST_WICKET": case "BALLS_SINCE_LAST_BOUNDARY": case CricketUtil.DOT: case CricketUtil.FOUR: case CricketUtil.SIX:
 					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
