@@ -62,6 +62,8 @@ public class Constants
 	public final static String AFG_SERIES_SPONSOR2 = "IMAGE*/CRICKET/Essentials/Spnsor/";
 	public final static String AFG_SERIES_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\AFG_SERIES\\\\Photos\\\\";
 	public final static String AFG_SERIES_PHOTO_PATH = "\\c\\Images\\AFG_SERIES\\Photos\\";
+	public final static String AFG_SERIES_MANHATTAN1 = "IMAGE*/Default/Essentials/Manhattan1/";
+	public final static String AFG_SERIES_MANHATTAN2 = "IMAGE*/Default/Essentials/Manhattan2/";
 	
 	public final static String ACC = "ACC";
 	public final static String ACC_FLAG = "IMAGE*/Default/Flags/";
