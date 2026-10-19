@@ -69,7 +69,7 @@ public class Animation
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": case "Control_h": case "Control_F3": 
 			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i": case "Shift_A":  case "Shift_R": case "Alt_j":  case "Alt_h": case "l":
-			case "Alt_Shift_O": case "Control_F2": case "Alt_Shift_F3": case "Control_Shift_Q":
+			case "Alt_Shift_O": case "Control_F2": case "Alt_Shift_F3": case "Control_Shift_Q": case "Alt_Shift_L":
 				return Constants.LOWER_THIRD;	
 			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7":
 				return Constants.MINIS;	
@@ -603,8 +603,8 @@ public class Animation
 				break;
 				
 			case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "u": 
-			case "Control_a":	case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": case "Alt_j":
-			case "l": case "Alt_Shift_O": case "Shift_U":
+			case "Control_a":	case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": case "Alt_j": case "l": case "Alt_Shift_O": 
+			case "Shift_U": case "Alt_Shift_L":
 				
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$LT_Position*"
@@ -2990,7 +2990,7 @@ public class Animation
 				
 			case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Shift_U": case "Alt_j": case "Shift_F3": case "Shift_F5": 
 			case "Shift_F9": case "Alt_F12": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h": 
-			case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "Alt_Shift_O":
+			case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "Alt_Shift_O": case "Alt_Shift_L":
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$In_Out", "CONTINUE");
 				
@@ -4225,7 +4225,7 @@ public class Animation
 					break;
 			 case "F5": case "F6": case "F9": case "Control_F6": case "Shift_U": case "Alt_j": case "Shift_F6": case "Shift_F3": case "Shift_F5": 
 			 case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a": case "F7": case "F11": 
-			 case "Control_s": case "Control_f": case "Control_h": case "Control_F3": case "d": case "l": case "Alt_Shift_O":
+			 case "Control_s": case "Control_f": case "Control_h": case "Control_F3": case "d": case "l": case "Alt_Shift_O": case "Alt_Shift_L":
 				processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$Change", "START");
 				break;
 			 case "Control_Shift_O":
@@ -5487,7 +5487,7 @@ public class Animation
 					break;
 		 	case "F5": case "F6": case "F9": case "Control_F6": case "Shift_U": case "Alt_j": case "Shift_F6": case "Shift_F3": case "Shift_F5": 
 		 	case "Shift_F9": case "Alt_F12": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B":
-			case "Control_h": case "Control_F3": case "d": case "l": case "Alt_Shift_O":
+			case "Control_h": case "Control_F3": case "d": case "l": case "Alt_Shift_O": case "Alt_Shift_L":
 				processAnimation(Constants.FRONT, print_writers, "anim_Lowerthird$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -7982,7 +7982,7 @@ public class Animation
 					case "F5": case "F6": case "F8": case "F9": case "F10": case "Alt_F8": case "Control_F6": case "Control_F5": case "Control_F9": case "Shift_F6": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 					case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_O": case "Control_h": case "Control_F3": case "d": case "Control_Shift_B":
-					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q":
+					case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "e": case "Control_Shift_Q": 
 //						previewCommand = "LT$Logo$In_Out 1.7 LT$Logo$In_Out$In 1.7 LT$Base$In_Out 0.72 LT$Base$In_Out$In 0.72 "
 //								+ "LT$Data$In_Out 0.72 LT$Data$In_Out$In 0.72";
 						if(infobar.getInfobar_status() != null && !infobar.getInfobar_status().isEmpty()) {
@@ -8126,7 +8126,7 @@ public class Animation
 						
 					case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Shift_U": case "Alt_j": case "Shift_F3": case "Shift_F5": case "Shift_F9": 
 					case "Alt_F12": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": case "Control_h":
-					case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "Alt_Shift_O":
+					case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_f": case "Alt_Shift_O": case "Alt_Shift_L":
 //						previewCommand = "LT$Logo$In_Out 1.7 LT$Logo$In_Out$In 1.7 LT$Base$In_Out 0.72 LT$Base$In_Out$In 0.72 "
 //								+ "LT$Data$In_Out 0.72 LT$Data$In_Out$In 0.72";
 						previewCommand = "anim_Scorebug$Scorebug_Push 1.000 anim_Lowerthird$In_Out$Logo 1.320 anim_Lowerthird$In_Out$Logo$In_Out 1.320 "
@@ -8172,7 +8172,7 @@ public class Animation
 					case "F5": case "F6": case "F9": case "Control_F6": case "Shift_F6": case "Shift_U": case "Alt_j": case "Shift_F3": case "Shift_F5": case "Shift_F9": 
 					case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a": case "F7": case "F11": case "Control_s": case "Control_f": 
 					case "Control_h": case "Control_F3": case "d": case "Alt_Shift_F3": case "l": case "Alt_Shift_F4": case "Alt_d": case "Alt_Shift_F12": case "Alt_f": 
-					case "e": case "Control_Shift_Q": case "Alt_Shift_O":
+					case "e": case "Control_Shift_Q": case "Alt_Shift_O": case "Alt_Shift_L":
 //						previewCommand = "LT$Logo$Change 2.120 LT$Logo$Change$Change_Out 0.420 LT$Logo$Change$Change_In 2.120 LT$Base$Change 1.200 LT$Base$Change$Change_Out 0.460 LT$Base$Change$Change_In 1.200 "
 //								+ "LT$Data$Change 1.180 LT$Data$Change$Change_Out 0.460 LT$Data$Change$Change_In 1.180";
 						previewCommand = "anim_Lowerthird$Change$Logo$Change_Out 0.420 anim_Lowerthird$Change$Logo$Change_In 1.620 "

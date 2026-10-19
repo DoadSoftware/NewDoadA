@@ -16168,6 +16168,8 @@ public class ALL_FF
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$Main$Text$txt_TeamName*GEOM*TEXT SET " 
 					+ inning.getBatting_team().getTeamName1() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$Main$Text$txt_Needs*GEOM*TEXT SET " 
+					+ "NEED" + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Target$Main$Text$txt_Score*GEOM*TEXT SET " 
 					+ CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + "\0", print_writers);
 			

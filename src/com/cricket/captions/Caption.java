@@ -568,6 +568,9 @@ public class Caption
 			case "Alt_F12"://Teams 012
 				status = this_lowerThirdGfx.populateTeamSummary(whatToProcess,whichSide,matchAllData);
 				break;
+			case "Alt_Shift_L":
+				status = this_lowerThirdGfx.populatePartnershipSummary(whatToProcess,whichSide,matchAllData);
+				break;
 			case "Control_Shift_F10":
 				status = this_lowerThirdGfx.InfobarManhattan(print_writers,matchAllData,Integer.valueOf(whatToProcess.split(",")[1]));
 				break;

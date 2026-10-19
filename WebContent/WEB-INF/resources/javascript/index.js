@@ -484,7 +484,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
 			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Alt_f': case '/':
-			case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O':
+			case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Alt_Shift_L':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -969,6 +969,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
+	case 'Alt_Shift_L':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -6041,6 +6042,40 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1;
 			break;
+		case 'Alt_Shift_L':
+			header_text.innerHTML = 'CURR/MULTI PARTNERSHIP 0s,1s,2s';
+
+			select = document.createElement('select');
+			select.id = 'selectPartnership';
+			select.name = select.id;
+
+			session_match.match.inning.forEach(function(inn) {
+			    if (inn.inningNumber == document.getElementById('which_inning').value) {
+
+			        option = document.createElement('option');
+			        option.value = inn.partnerships.length;
+			        option.text = 'Curr Partnership';
+			        select.appendChild(option);
+
+			        for (var i = 1; i < inn.partnerships.length; i++) {
+			            var suffix = (i % 100 >= 11 && i % 100 <= 13) ? 'th'
+			                       : (i % 10 === 1) ? 'st'
+			                       : (i % 10 === 2) ? 'nd'
+			                       : (i % 10 === 3) ? 'rd' : 'th';
+
+			            option = document.createElement('option');
+			            option.value = i;
+			            option.text = i + suffix + ' Wicket Partnership';
+			            select.appendChild(option);
+			        }
+			    }
+			});
+
+			select.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select), 0);
+			cellCount = cellCount + 1;
+			break;
 		case 'Shift_F4':
 			header_text.innerHTML = 'BUG MULTI PARTNERSHIP';
 			select = document.createElement('select');
@@ -7395,7 +7430,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
-		case "Alt_Shift_I": case 'Alt_Shift_U':
+		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';
