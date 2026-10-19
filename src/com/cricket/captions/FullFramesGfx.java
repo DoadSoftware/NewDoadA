@@ -684,8 +684,9 @@ public class FullFramesGfx
 		this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
 		this_ALL_FF.WhichProfile = whatToProcess.split(",")[3];
 		
+		this_ALL_FF.playerAllStatistics = new ArrayList<Statistics>();
 		this_ALL_FF.playerAllStatistics.clear();
-		
+						
 		if(this_ALL_FF.FirstPlayerId <= 0 || this_ALL_FF.WhichProfile == null) {
 			return "populatePlayerProfile: Player Id NOT found [" + FirstPlayerId + "]";
 		}
@@ -700,11 +701,10 @@ public class FullFramesGfx
 			return "populatePlayerProfile: Team id [" + this_ALL_FF.player.getTeamId() + "] from database is returning NULL";
 		}
 		
-		
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.AFG_SERIES:
 			switch (this_ALL_FF.WhichProfile.toUpperCase()) {
-			case "TEST":
+			case "TEST": case "ODI": case "IT20":
 				this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(this_ALL_FF.WhichProfile)).findAny().orElse(null);
 				if(this_ALL_FF.statsType == null) {
 					return "populatePlayerProfile: Stats Type not found for profile [" + this_ALL_FF.WhichProfile + "]";
@@ -721,12 +721,25 @@ public class FullFramesGfx
 					return "populatePlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
 				}
 				switch (this_ALL_FF.WhichProfile.toUpperCase()) {
-				case "TEST":
+				case "TEST": 
 					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
 					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
 					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
 					break;
+				case "ODI": 
+					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
+					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
+					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+					break;
+				case "IT20": 
+					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
+					this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+					break;
+				
 				}
 				
 				this_ALL_FF.subsStatsType = subsStatsType.stream().filter(st -> st.getSubsStatsShortName().equalsIgnoreCase("Year2026")).findAny().orElse(null);
@@ -738,8 +751,10 @@ public class FullFramesGfx
 				            && stats.getSubsStatsType() != null && stats.getSubsStatsType() != this_ALL_FF.subsStatsType.getSubsStatsId()) {
 				    	
 				    	this_ALL_FF.subsStatsType = subsStatsType.stream().filter(st -> st.getSubsStatsId() == stats.getSubsStatsType()).findAny().orElse(null);
-				    	stats.setSubs_stats_type(this_ALL_FF.subsStatsType);
-				    	this_ALL_FF.playerAllStatistics.add(stats);
+				    	if(this_ALL_FF.subsStatsType.getSubsStatsShortName().contains("Year")) {
+				    		stats.setSubs_stats_type(this_ALL_FF.subsStatsType);
+					    	this_ALL_FF.playerAllStatistics.add(stats);
+				    	}
 				    }
 				}
 				break;
@@ -763,8 +778,13 @@ public class FullFramesGfx
 	{
 		this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
 		this_ALL_FF.WhichProfile = whatToProcess.split(",")[3];
+		this_ALL_FF.WhichStyle = whatToProcess.split(",")[4];
+		
+		System.out.println("whatToProcess - " + whatToProcess);
+		
 		System.out.println("this_ALL_FF.WhichProfile = " + this_ALL_FF.WhichProfile);
 		System.out.println("this_ALL_FF.FirstPlayerId = " + this_ALL_FF.FirstPlayerId);
+		
 		switch(config.getBroadcaster()) {
 		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 			this_ALL_FF.ImageType = whatToProcess.split(",")[4];
@@ -793,12 +813,6 @@ public class FullFramesGfx
 				this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(this_ALL_FF.WhichProfile)).findAny().orElse(null);
 				if(this_ALL_FF.statsType == null) {
 					return "populatePlayerProfile: Stats Type not found for profile [" + this_ALL_FF.WhichProfile + "]";
-				}
-				
-				this_ALL_FF.stat = statistics.stream().filter(st -> st.getPlayerID() == this_ALL_FF.FirstPlayerId && 
-						this_ALL_FF.statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
-				if(this_ALL_FF.stat == null) {
-					return "populatePlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
 				}
 				
 				switch (this_ALL_FF.WhichProfile.toUpperCase()) {
@@ -1363,6 +1377,9 @@ public class FullFramesGfx
 				case Constants.TG20: case Constants.APLT20:
 					this_ALL_FF.varText = "TOP F TEAMS QUALIFY FOR SEMI-FINALS";
 					break;
+				case Constants.AFG_SERIES:
+					this_ALL_FF.varText = "TOP TWO TEAMS WILL PLAY THE FINALS ON 23rd OF OCTOBER";
+					break;
 				default:
 					this_ALL_FF.varText = "TOP TWO TEAMS QUALIFY FOR SEMI-FINALS";
 					break;
@@ -1394,7 +1411,8 @@ public class FullFramesGfx
 			break;
 		default:
 			switch (config.getBroadcaster()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:	
+			case Constants.AFG_SERIES:
 				if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
 					this_ALL_FF.tournaments = past_tournament_stats;
 				}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
@@ -1628,7 +1646,7 @@ public class FullFramesGfx
 			return this_ALL_FF.FallOfWicketsBody(print_writers, WhichSide, config, matchAllData, inning);	
 		case "Control_Shift_D":
 			return this_ALL_FF.DoubleMatchIdentAndPromoBody(print_writers, whatToProcess,WhichSide, matchAllData, config);
-		case "Alt_Shift_I":
+		case "Alt_Shift_I": case "Alt_Shift_U":
 			return this_ALL_FF.PlayerProfilePerformanceBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Control_d": case "Control_e":
 			return this_ALL_FF.PlayerProfileBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
@@ -1674,7 +1692,7 @@ public class FullFramesGfx
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
-		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I":
+		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I": case "Alt_Shift_U": 
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 

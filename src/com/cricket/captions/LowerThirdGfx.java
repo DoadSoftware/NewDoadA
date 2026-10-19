@@ -51,6 +51,7 @@ import com.cricket.model.Speed;
 import com.cricket.model.Staff;
 import com.cricket.model.Statistics;
 import com.cricket.model.StatsType;
+import com.cricket.model.SubsStatsType;
 import com.cricket.model.Team;
 import com.cricket.model.Tournament;
 import com.cricket.model.VariousText;
@@ -69,7 +70,7 @@ public class LowerThirdGfx
 {
 	public int FirstPlayerId;
 	public int SecondPlayerId;
-	public String WhichProfile, status = "",logo_data = "",matchname = "",whichcont = "";
+	public String WhichProfile, status = "",logo_data = "",matchname = "",whichcont = "",WhichStyle;
 	public String match_name="",newDate = "",date_data = "",text = "",matchday = "",tex = "",LtStatsType="";
 	public String logoPath, base1Path, base2Path,text1Path,text2Path;
 	public boolean chnageOn=false;
@@ -82,6 +83,7 @@ public class LowerThirdGfx
 	public Configuration config;
 	public List<Statistics> statistics;
 	public List<StatsType> statsTypes;
+	public List<SubsStatsType> subsStatsTypes;
 	public List<Tournament> tournaments;
 	public List<BestStats> tapeballs;
 	public List<MatchAllData> tournament_matches;
@@ -110,6 +112,7 @@ public class LowerThirdGfx
 	public Player player;
 	public Statistics stat;
 	public StatsType statsType;
+	public SubsStatsType subsStatsType;
 	public Tournament tournament;
 	public BestStats tapeball;
 	public LowerThird lowerThird;
@@ -117,7 +120,7 @@ public class LowerThirdGfx
 	public NameSuper namesuper;
 	public Fixture fixture;
 	public Ground ground;
-	public Team team;
+	public Team team,otherTeam;
 	public L3Griff l3griff;
 	public VariousText variousText;
 	public MatchAllData matchAllDatas;
@@ -192,7 +195,8 @@ public class LowerThirdGfx
 	
 	public LowerThirdGfx(List<PrintWriter> print_writers, Configuration config, List<Statistics> statistics, List<StatsType> statsTypes, List<MatchAllData> tournament_matches, List<NameSuper> nameSupers, 
 			List<Team> Teams, List<Ground> Grounds, List<Tournament> tournaments,List<BestStats> tapeballs,List<DuckWorthLewis> dls, List<Staff> staff, List<Player> players, List<POTT> pott,
-			List<VariousText> VariousText, List<HeadToHeadPlayer> headToHead, List<Tournament> past_tournament_stats, CricketService cricketService,List<Fixture> fixTures, List<DuckWorthLewis> vjd) {
+			List<VariousText> VariousText, List<HeadToHeadPlayer> headToHead, List<Tournament> past_tournament_stats, CricketService cricketService,List<Fixture> fixTures, List<DuckWorthLewis> vjd,
+			List<SubsStatsType> subsStatsTypes) {
 		super();
 		this.print_writers = print_writers;
 		this.config = config;
@@ -215,6 +219,7 @@ public class LowerThirdGfx
 		this.cricketService = cricketService;
 		this.fixTures = fixTures;
 		this.vjd = vjd;
+		this.subsStatsTypes = subsStatsTypes;
 		foreignLanguageData.add(new ForeignLanguageData("", "", "", ""));
 		foreignLanguageOmo.add(new ForeignLanguageData("0", "2", "3", "1"));
 	}
@@ -1947,9 +1952,12 @@ public class LowerThirdGfx
 			if(!whatToProcess.contains(",") && whatToProcess.split(",").length >= 4) {
 				return "PopulateL3rdPlayerProfile: error occured in what to process";
 			}
+			
+			System.out.println(whatToProcess);
 
 			FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
 			WhichProfile = whatToProcess.split(",")[3];
+			WhichStyle = whatToProcess.split(",")[5];
 			
 			if(FirstPlayerId <= 0 || WhichProfile == null) {
 				return "PopulateL3rdPlayerProfile: Player Id NOT found [" + FirstPlayerId + "]";
@@ -2020,9 +2028,29 @@ public class LowerThirdGfx
 						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
 					
-					stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
-					if(stat == null) {
-						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
+					if(!WhichStyle.equalsIgnoreCase("Blank")) {
+						otherTeam = matchAllData.getSetup().getHomeTeamId() == team.getTeamId() ? matchAllData.getSetup().getAwayTeam()
+						        : matchAllData.getSetup().getHomeTeam();
+
+						subsStatsType = subsStatsTypes.stream().filter(st -> st.getSubsStatsShortName() != null && 
+								st.getSubsStatsShortName().trim().equalsIgnoreCase(otherTeam.getTeamName1())).findFirst().orElse(null);
+						if(subsStatsType == null) {
+							return "populatePlayerProfile: Subs Stats Type not found for profile";
+						}
+						
+						stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId() && st.getSubsStatsType() != null
+						                && subsStatsTypes.stream().anyMatch(sub -> sub.getSubsStatsId() == st.getSubsStatsType()
+						                && sub.getSubsStatsShortName() != null && sub.getSubsStatsShortName().trim().equalsIgnoreCase(otherTeam.getTeamName1())))
+						        .findFirst().orElse(null);
+						
+						if(stat == null) {
+							return "populatePlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
+						}
+					}else {
+						stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+						if(stat == null) {
+							return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
+						}
 					}
 					
 					switch (WhichProfile.toUpperCase()) {
@@ -2315,25 +2343,31 @@ public class LowerThirdGfx
 				}
 				
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.AFG_SERIES: case Constants.ACC: 
-				case Constants.TG20: case Constants.APLT20:
-					if(WhichProfile.equalsIgnoreCase("DT20")) {
-						short_name =  "T20 CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("IT20")) {
-						short_name =  "T20I CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("ODI")) {
-						short_name =  "ODI CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("TEST")) {
-						short_name =  "TEST CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("LIST A")) {
-						short_name =  "LIST A CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("FC")) {
-						short_name =  "FIRST-CLASS CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
-						short_name =  "MAHARAJA T20 CAREER";
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: 
+				case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
+					
+					if(!WhichStyle.equalsIgnoreCase("Blank")) {
+						short_name = "v " + otherTeam.getTeamName1() + " IN " + (WhichProfile.equalsIgnoreCase("IT20") ? "T20I":"ODI");
 					}else {
-						short_name = "T20 CAREER";
+						if(WhichProfile.equalsIgnoreCase("DT20")) {
+							short_name =  "T20 CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("IT20")) {
+							short_name =  "T20I CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("ODI")) {
+							short_name =  "ODI CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("TEST")) {
+							short_name =  "TEST CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("LIST A")) {
+							short_name =  "LIST A CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("FC")) {
+							short_name =  "FIRST-CLASS CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
+							short_name =  "MAHARAJA T20 CAREER";
+						}else {
+							short_name = "T20 CAREER";
+						}
 					}
+
 					switch (config.getBroadcaster().toUpperCase()) {
 					
 					case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
@@ -2419,22 +2453,27 @@ public class LowerThirdGfx
 				switch (config.getBroadcaster().toUpperCase()) {
 				
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
-					if(WhichProfile.equalsIgnoreCase("DT20")) {
-						short_name =  "T20 CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("IT20")) {
-						short_name =  "T20I CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("ODI")) {
-						short_name =  "ODI CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("TEST")) {
-						short_name =  "TEST CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("LIST A")) {
-						short_name =  "LIST A CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("FC")) {
-						short_name =  "FIRST-CLASS CAREER";
-					}else if(WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
-						short_name =  "MAHARAJA T20 CAREER";
+					
+					if(!WhichStyle.equalsIgnoreCase("Blank")) {
+						short_name = "v " + otherTeam.getTeamName1() + " IN " + (WhichProfile.equalsIgnoreCase("IT20") ? "T20I":"ODI");
 					}else {
-						short_name = "T20I CAREER";
+						if(WhichProfile.equalsIgnoreCase("DT20")) {
+							short_name =  "T20 CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("IT20")) {
+							short_name =  "T20I CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("ODI")) {
+							short_name =  "ODI CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("TEST")) {
+							short_name =  "TEST CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("LIST A")) {
+							short_name =  "LIST A CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("FC")) {
+							short_name =  "FIRST-CLASS CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
+							short_name =  "MAHARAJA T20 CAREER";
+						}else {
+							short_name = "T20 CAREER";
+						}
 					}
 					
 				    if(WhichProfile.equalsIgnoreCase("TEST") || WhichProfile.equalsIgnoreCase("FC")) {
@@ -13443,105 +13482,6 @@ public class LowerThirdGfx
 			
 			if(lowerThird.getWhichSponsor().equalsIgnoreCase(CricketUtil.ODI) || 
 					lowerThird.getWhichSponsor().equalsIgnoreCase(CricketUtil.OD)) {
-//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//						+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data*FUNCTION*Omo*vis_con SET "
-//						+ "2" + " \0",print_writers);
-				
-//				for(int i=0; i<lowerThird.getTitlesText().length; i++) {
-//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//							+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$" + (i + 1) + "$txt_Data1A*GEOM*TEXT SET "
-//							+ lowerThird.getTitlesText()[i] + "\0",print_writers);
-//				}
-//				
-//				//1st Phase
-//				if(Integer.valueOf(lowerThird.getStatsText()[0].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[0].split("-")[1]) == 0) {
-//					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 0.0) {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-//								+ "0-0" + "\0",print_writers);
-//					}else {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-//								+ "-" + "\0",print_writers);
-//					}
-//				}else {
-//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//							+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-//							+ lowerThird.getStatsText()[0].split("-")[0] + "-" + 
-//							lowerThird.getStatsText()[0].split("-")[1] + "\0",print_writers);
-//				}
-//				
-//				//2nd phase
-//				if(Integer.valueOf(lowerThird.getStatsText()[1].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[1].split("-")[1]) == 0) {
-//					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 6.0) {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-//								+ "0-0" + "\0",print_writers);
-//					}else {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-//								+ "-" + "\0",print_writers);
-//					}
-//				}else {
-//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//							+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-//							+ lowerThird.getStatsText()[1].split("-")[0] + "-" + 
-//							lowerThird.getStatsText()[1].split("-")[1] + "\0",print_writers);
-//				}
-//				
-//				//3rd Phase
-//				if(Integer.valueOf(lowerThird.getStatsText()[2].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[2].split("-")[1]) == 0) {
-//					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 15.0) {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-//								+ "0-0" + "\0",print_writers);
-//					}else {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-//								+ "-" + "\0",print_writers);
-//					}
-//				}else {
-//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//							+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-//							+ lowerThird.getStatsText()[2].split("-")[0] + "-" + 
-//							lowerThird.getStatsText()[2].split("-")[1] + "\0",print_writers);
-//				}
-//				
-//				//4th Phase
-//				if(Integer.valueOf(lowerThird.getStatsText()[3].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[3].split("-")[1]) == 0) {
-//					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 15.0) {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$4$txt_Data2A*GEOM*TEXT SET "
-//								+ "0-0" + "\0",print_writers);
-//					}else {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$4$txt_Data2A*GEOM*TEXT SET "
-//								+ "-" + "\0",print_writers);
-//					}
-//				}else {
-//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//							+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$4$txt_Data2A*GEOM*TEXT SET "
-//							+ lowerThird.getStatsText()[3].split("-")[0] + "-" + 
-//							lowerThird.getStatsText()[3].split("-")[1] + "\0",print_writers);
-//				}
-//				
-//				//5th Phase
-//				if(Integer.valueOf(lowerThird.getStatsText()[4].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[4].split("-")[1]) == 0) {
-//					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 15.0) {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$5$txt_Data2A*GEOM*TEXT SET "
-//								+ "0-0" + "\0",print_writers);
-//					}else {
-//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//								+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$5$txt_Data2A*GEOM*TEXT SET "
-//								+ "-" + "\0",print_writers);
-//					}
-//				}else {
-//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-//							+ "$Select$PlayerProfile$BottomGrp$RestDataGrp$RestData$Data$5$txt_Data2A*GEOM*TEXT SET "
-//							+ lowerThird.getStatsText()[4].split("-")[0] + "-" + 
-//							lowerThird.getStatsText()[4].split("-")[1] + "\0",print_writers);
-//				}
 				
 				for(int i=0; i<lowerThird.getTitlesText().length; i++) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
@@ -13553,54 +13493,45 @@ public class LowerThirdGfx
 				if(Integer.valueOf(lowerThird.getStatsText()[0].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[0].split("-")[1]) == 0) {
 					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 0.0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-								+ "0-0" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET " + "0-0" + "\0",print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-								+ "-" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET " + "-" + "\0",print_writers);
 					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
 							+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-							+ lowerThird.getStatsText()[0].split("-")[0] + "-" + 
-							lowerThird.getStatsText()[0].split("-")[1] + "\0",print_writers);
+							+ lowerThird.getStatsText()[0].split("-")[0] + "-" + lowerThird.getStatsText()[0].split("-")[1] + "\0",print_writers);
 				}
 				
 				//2nd phase
 				if(Integer.valueOf(lowerThird.getStatsText()[1].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[1].split("-")[1]) == 0) {
-					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 6.0) {
+					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 10.0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-								+ "0-0" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET " + "0-0" + "\0",print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-								+ "-" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET " + "-" + "\0",print_writers);
 					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
 							+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-							+ lowerThird.getStatsText()[1].split("-")[0] + "-" + 
-							lowerThird.getStatsText()[1].split("-")[1] + "\0",print_writers);
+							+ lowerThird.getStatsText()[1].split("-")[0] + "-" + lowerThird.getStatsText()[1].split("-")[1] + "\0",print_writers);
 				}
 				
 				//3rd Phase
 				if(Integer.valueOf(lowerThird.getStatsText()[2].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[2].split("-")[1]) == 0) {
-					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 15.0) {
+					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 40.0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-								+ "0-0" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET " + "0-0" + "\0",print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-								+ "-" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET " + "-" + "\0",print_writers);
 					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
 							+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-							+ lowerThird.getStatsText()[2].split("-")[0] + "-" + 
-							lowerThird.getStatsText()[2].split("-")[1] + "\0",print_writers);
+							+ lowerThird.getStatsText()[2].split("-")[0] + "-" + lowerThird.getStatsText()[2].split("-")[1] + "\0",print_writers);
 				}
 				
 			}else {
@@ -13618,54 +13549,45 @@ public class LowerThirdGfx
 				if(Integer.valueOf(lowerThird.getStatsText()[0].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[0].split("-")[1]) == 0) {
 					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 0.0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-								+ "0-0" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET " + "0-0" + "\0",print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-								+ "-" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET " + "-" + "\0",print_writers);
 					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
 							+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$1$txt_Data2A*GEOM*TEXT SET "
-							+ lowerThird.getStatsText()[0].split("-")[0] + "-" + 
-							lowerThird.getStatsText()[0].split("-")[1] + "\0",print_writers);
+							+ lowerThird.getStatsText()[0].split("-")[0] + "-" + lowerThird.getStatsText()[0].split("-")[1] + "\0",print_writers);
 				}
 				
 				//2nd phase
 				if(Integer.valueOf(lowerThird.getStatsText()[1].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[1].split("-")[1]) == 0) {
 					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 6.0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-								+ "0-0" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET " + "0-0" + "\0",print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-								+ "-" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET " + "-" + "\0",print_writers);
 					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
 							+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$2$txt_Data2A*GEOM*TEXT SET "
-							+ lowerThird.getStatsText()[1].split("-")[0] + "-" + 
-							lowerThird.getStatsText()[1].split("-")[1] + "\0",print_writers);
+							+ lowerThird.getStatsText()[1].split("-")[0] + "-" + lowerThird.getStatsText()[1].split("-")[1] + "\0",print_writers);
 				}
 				
 				//3rd Phase
 				if(Integer.valueOf(lowerThird.getStatsText()[2].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[2].split("-")[1]) == 0) {
 					if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 15.0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-								+ "0-0" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET " + "0-0" + "\0",print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
-								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-								+ "-" + "\0",print_writers);
+								+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET " + "-" + "\0",print_writers);
 					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + whichSide
 							+ "$Select$ProjectedScore$BottomGrp$RestDataGrp$RestData$Data$3$txt_Data2A*GEOM*TEXT SET "
-							+ lowerThird.getStatsText()[2].split("-")[0] + "-" + 
-							lowerThird.getStatsText()[2].split("-")[1] + "\0",print_writers);
+							+ lowerThird.getStatsText()[2].split("-")[0] + "-" + lowerThird.getStatsText()[2].split("-")[1] + "\0",print_writers);
 				}
 			}
 			break;

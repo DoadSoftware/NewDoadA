@@ -1430,6 +1430,7 @@ public class IndexController
 				//LowerThird
 				this_caption.this_lowerThirdGfx.statistics = session_statistics;
 				this_caption.this_lowerThirdGfx.statsTypes = cricketService.getAllStatsType();
+				this_caption.this_lowerThirdGfx.subsStatsTypes = cricketService.getAllSubsStatsTypes();
 				this_caption.this_lowerThirdGfx.tournament_matches = cricket_matches;
 				this_caption.this_lowerThirdGfx.nameSupers = session_name_super;
 				this_caption.this_lowerThirdGfx.Teams = session_team;
@@ -1643,6 +1644,7 @@ public class IndexController
 					//LowerThird
 					this_caption.this_lowerThirdGfx.statistics = session_statistics;
 					this_caption.this_lowerThirdGfx.statsTypes = cricketService.getAllStatsType();
+					this_caption.this_lowerThirdGfx.subsStatsTypes = cricketService.getAllSubsStatsTypes();
 					this_caption.this_lowerThirdGfx.tournament_matches = cricket_matches;
 					this_caption.this_lowerThirdGfx.nameSupers = session_name_super;
 					this_caption.this_lowerThirdGfx.Teams = session_team;

@@ -2502,6 +2502,8 @@ public class InfobarGfx
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$txt_Overs*GEOM*TEXT SET " 
 					+ CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$txt_OversHead*ACTIVE SET 1\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$txt_OversHead*GEOM*TEXT SET " 
 					+ (inning.getTotalOvers() == 1 && inning.getTotalBalls() == 0 ? "OVER" : "OVERS") + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$txt_DLS*ACTIVE SET 1\0", print_writers);
@@ -2513,6 +2515,8 @@ public class InfobarGfx
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$Score_Grp$txt_Overs*GEOM*TEXT SET " 
 					+ CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$Score_Grp$txt_OversHead*ACTIVE SET 1\0", print_writers);
+			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$Score_Grp$txt_OversHead*GEOM*TEXT SET " 
 					+ (inning.getTotalOvers() == 1 && inning.getTotalBalls() == 0 ? "OVER" : "OVERS") + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Scorebug_Small$Score_Grp$txt_DLS*ACTIVE SET 1\0", print_writers);

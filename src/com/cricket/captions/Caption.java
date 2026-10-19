@@ -129,8 +129,8 @@ public class Caption
 		
 		this.this_fullFramesGfx = new FullFramesGfx(print_writers, config, statistics, statsTypes, subsStatsType, tournament_matches, 
 				fixTures, Teams, Grounds,tournament, VariousText, players, pott,Playoffs, teamChanges,headToHead, past_tournament_stats, cricketService);
-		this.this_lowerThirdGfx = new LowerThirdGfx(print_writers, config, statistics, statsTypes, tournament_matches, 
-				nameSupers, Teams, Grounds, tournament,tapeball, dls, staff, players, pott, varioustText, headToHead, past_tournament_stats, cricketService,fixTures,vjd);
+		this.this_lowerThirdGfx = new LowerThirdGfx(print_writers, config, statistics, statsTypes, tournament_matches, nameSupers, Teams, Grounds, tournament,
+				tapeball, dls, staff, players, pott, varioustText, headToHead, past_tournament_stats, cricketService, fixTures, vjd, subsStatsType);
 		this.whichSide = whichSide;
 		this.this_infobarGfx = new InfobarGfx(config, slashOrDash, print_writers, statistics, statsTypes, infobarStats, Grounds, Commentators, 
 				tournament_matches, dls, players, headToHead, past_tournament_stats, cricketService, Teams, vjd, fixTures);
@@ -233,7 +233,7 @@ public class Caption
 			case "m":
 				status = this_fullFramesGfx.populateFFMatchId(whichSide,whatToProcess.split(",")[0], matchAllData);
 				break;
-			case "Alt_Shift_I":
+			case "Alt_Shift_I": case "Alt_Shift_U":
 				status = this_fullFramesGfx.populatePlayerProfilePerformance(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "Control_d": case "Control_e":
