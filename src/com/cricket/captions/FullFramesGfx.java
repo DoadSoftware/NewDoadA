@@ -191,14 +191,17 @@ public class FullFramesGfx
 
 	public String populateSingleTeamsCareer(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception
 	{	
-		this_ALL_FF.WhichProfile = "IT20";
+
+		this_ALL_FF.WhichProfile = matchAllData.getSetup().getMatchType().toUpperCase();
 		this_ALL_FF.WhichStyle = whatToProcess.split(",")[3];
 		this_ALL_FF.WhichType = whatToProcess.split(",")[4];
 		
 		if(Integer.valueOf(whatToProcess.split(",")[2]) == matchAllData.getSetup().getHomeTeamId()) {
 			this_ALL_FF.PlayingXI = matchAllData.getSetup().getHomeSquad();
+			this_ALL_FF.team = matchAllData.getSetup().getHomeTeam();
 		}else {
 			this_ALL_FF.PlayingXI = matchAllData.getSetup().getAwaySquad();
+			this_ALL_FF.team = matchAllData.getSetup().getAwayTeam();
 		}
 		
 		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getBattingTeamId() == Integer.valueOf(whatToProcess.split(",")[2]))
@@ -778,9 +781,6 @@ public class FullFramesGfx
 	{
 		this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
 		this_ALL_FF.WhichProfile = whatToProcess.split(",")[3];
-		this_ALL_FF.WhichStyle = whatToProcess.split(",")[4];
-		
-		System.out.println("whatToProcess - " + whatToProcess);
 		
 		System.out.println("this_ALL_FF.WhichProfile = " + this_ALL_FF.WhichProfile);
 		System.out.println("this_ALL_FF.FirstPlayerId = " + this_ALL_FF.FirstPlayerId);
@@ -813,6 +813,12 @@ public class FullFramesGfx
 				this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(this_ALL_FF.WhichProfile)).findAny().orElse(null);
 				if(this_ALL_FF.statsType == null) {
 					return "populatePlayerProfile: Stats Type not found for profile [" + this_ALL_FF.WhichProfile + "]";
+				}
+				
+				this_ALL_FF.stat = statistics.stream().filter(st -> st.getPlayerID() == this_ALL_FF.FirstPlayerId && 
+						this_ALL_FF.statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+				if(this_ALL_FF.stat == null) {
+					return "populatePlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
 				}
 				
 				switch (this_ALL_FF.WhichProfile.toUpperCase()) {

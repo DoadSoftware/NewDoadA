@@ -2086,26 +2086,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch(whatToProcess){
 				case 'Control_e':
 					switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'AFG_SERIES':
-						select = document.createElement('select');
-						select.id = 'selectImage';
-						select.name = select.id;
-
-						option = document.createElement('option');
-						option.value = 'Blank';
-						option.text = '';
-						select.appendChild(option);
-
-						option = document.createElement('option');
-						option.value = 'TEAMS';
-						option.text = 'By Teams';
-						select.appendChild(option);
-
-						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
-						row.insertCell(cellCount).appendChild(select);
-						setDropdownOptionToSelectOptionArray($(select),2);
-						cellCount = cellCount + 1
-						break;
 					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
 						select = document.createElement('select');
 						select.id = 'selectImage';
@@ -6490,6 +6470,34 @@ function addItemsToList(whatToProcess,dataToProcess)
 					row.insertCell(cellCount).appendChild(select);
 					setDropdownOptionToSelectOptionArray($(select),1);
 					cellCount = cellCount + 1;
+					
+					select = document.createElement('select');
+					select.id = 'selectData';
+					select.name = select.id;
+
+					const matchType = session_match.setup.matchType;
+
+					const dropdownOptions = {
+					    ODI: ['AVERAGE', 'STRIKE_RATE'],
+					    IT20: ['STRIKE_RATE', 'AVERAGE', 'ODI', 'LIST A', 'TEST', 'FC']
+					};
+
+					const optionText = {
+					    AVERAGE: 'AVERAGE',
+					    STRIKE_RATE: 'STRIKE RATE',
+					};
+
+					(dropdownOptions[matchType] || dropdownOptions.ODI).forEach(value => {
+					    const option = document.createElement('option');
+					    option.value = value;
+					    option.text = optionText[value];
+					    select.appendChild(option);
+					});
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),2);
+					cellCount = cellCount + 1;
 				}
 				break;
 			default:
@@ -6649,14 +6657,19 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectType';
 			select.name = select.id;
 			
-			/*option = document.createElement('option');
+			option = document.createElement('option');
 			option.value = 'runs';
 			option.text = 'Runs';
-			select.appendChild(option);*/
+			select.appendChild(option);
 			
 			option = document.createElement('option');
 			option.value = 's/r';
 			option.text = 'Strike Rate';
+			select.appendChild(option);
+			
+			option = document.createElement('option');
+			option.value = 'AVERAGE';
+			option.text = 'Average Bat';
 			select.appendChild(option);
 			
 			option = document.createElement('option');

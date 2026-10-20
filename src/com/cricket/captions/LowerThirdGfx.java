@@ -3676,9 +3676,8 @@ public class LowerThirdGfx
 			
 			if(inning.getFallsOfWickets() == null || inning.getFallsOfWickets().size() <= 0) {
 				lowerThird = new LowerThird("FALL OF WICKETS", inning.getBatting_team().getTeamName3(), "",CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()), 
-						String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), "",
-					2,"",inning.getBatting_team().getTeamBadge(),new String[]{" "},new String[]{" "},new String[]{"WICKETS","SCORE"},null,
-					new String[] {"-136","-105","-69","-32","4","42","78","115","149","184"});
+						String.valueOf(inning.getTotalRuns() + "-" + inning.getTotalWickets()), "", 2,"",inning.getBatting_team().getTeamBadge(),new String[]{" "},
+						new String[]{" "},new String[]{"WICKETS","SCORE"},null, new String[] {"-136","-105","-69","-32","4","42","78","115","149","184"});
 			}
 			else if(inning.getFallsOfWickets() != null || inning.getFallsOfWickets().size() > 0) {
 				for(int fow_id=0;fow_id<inning.getFallsOfWickets().size();fow_id++) {
@@ -3689,11 +3688,11 @@ public class LowerThirdGfx
 			
 			switch (config.getBroadcaster().toUpperCase()) {
 			
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.AFG_SERIES: case Constants.ACC: 
+			case Constants.TG20: case Constants.APLT20:
 				lowerThird = new LowerThird("FALL OF WICKETS", inning.getBatting_team().getTeamName1(), "",CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()), 
-						String.valueOf(inning.getTotalRuns()), String.valueOf(inning.getTotalWickets()),
-						2,"",inning.getBatting_team().getTeamBadge(),fowNumber,fowData,new String[]{"WICKETS","SCORE"},null,
-						new String[] {"-136","-105","-69","-32","4","42","78","115","149","184"});
+						String.valueOf(inning.getTotalRuns()), String.valueOf(inning.getTotalWickets()),2,"",inning.getBatting_team().getTeamBadge(),fowNumber,fowData,
+						new String[]{"WICKETS","SCORE"},null,new String[] {"-136","-105","-69","-32","4","42","78","115","149","184"});
 				break;
 			}
 			
@@ -5573,6 +5572,7 @@ public class LowerThirdGfx
 			default:
 				inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getBattingTeamId() == Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
 				WhichProfile = whatToProcess.split(",")[3].trim().toUpperCase();
+				WhichStyle = whatToProcess.split(",")[4].trim().toUpperCase();
 				break;
 			}
 			
@@ -12908,8 +12908,11 @@ public class LowerThirdGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Phase_Comparison$All$DataAll$Side"+ whichSide +"$Phase_Wise$BottomGrp$Data$1"
 							+ "$txt_Data" + (i + 1) + "A*GEOM*TEXT SET " + lowerThird.getTitlesText()[i] + " \0", print_writers);
 					
+					double overVlaue = 0.0;
+					overVlaue = (i==1 ? 10.0 : i==2 ? 40.0 : 0.0);
+					
 					if(Integer.valueOf(lowerThird.getStatsText()[i].split(",")[0].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[i].split(",")[0].split("-")[1]) == 0) {
-						if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 0.0) {
+						if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > overVlaue) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Phase_Comparison$All$DataAll$Side"+ whichSide +"$Phase_Wise$BottomGrp$Data$2" 
 									 + "$txt_Data" + (i + 1) + "A*GEOM*TEXT SET " + "0-0" + " \0", print_writers);
 						}else {
@@ -12922,7 +12925,7 @@ public class LowerThirdGfx
 					}
 					
 					if(Integer.valueOf(lowerThird.getStatsText()[i].split(",")[1].split("-")[0]) == 0 && Integer.valueOf(lowerThird.getStatsText()[i].split(",")[1].split("-")[1]) == 0) {
-						if(Float.valueOf(CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls())) > 0.0) {
+						if(Float.valueOf(CricketFunctions.OverBalls(inning2.getTotalOvers(), inning2.getTotalBalls())) > overVlaue) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Phase_Comparison$All$DataAll$Side"+ whichSide +"$Phase_Wise$BottomGrp$Data$3" 
 									 + "$txt_Data" + (i + 1) + "A*GEOM*TEXT SET " + "0-0" + " \0", print_writers);
 						}else {
@@ -13225,7 +13228,7 @@ public class LowerThirdGfx
   	  									break;
   	  								case "ODI": case "LIST A":
   	  									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$All$DataAll$Side" + whichSide + "$Select$Player" + row_id + 
-  	  											"$Dataall_Player$txt_Runs*GEOM*TEXT SET AVG: -\0",print_writers);
+  	  											"$Dataall_Player$txt_Runs*GEOM*TEXT SET " + (WhichStyle.equalsIgnoreCase("STRIKE_RATE") ? "S/R: -" : "AVG: -") + "\0",print_writers);
   	  									break;
   	  								case "IT20":
   										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$All$DataAll$Side" + whichSide + "$Select$Player" + row_id + 
@@ -13245,14 +13248,15 @@ public class LowerThirdGfx
   	  											"$Dataall_Player$txt_Runs*GEOM*TEXT SET AVG: " + CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-") + " \0",print_writers);
 	  									break;
 	  								case "ODI": case "LIST A":
-	  									System.out.println("HELLO");
 	  									statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 	  									stat.setStats_type(statsType);
 	  									stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllDatas, CricketUtil.FULL);
 	  									stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllDatas, CricketUtil.FULL);
 	  									
 	  									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$All$DataAll$Side" + whichSide + "$Select$Player" + row_id + 
-  	  											"$Dataall_Player$txt_Runs*GEOM*TEXT SET AVG: " + CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-") + " \0",print_writers);
+  	  											"$Dataall_Player$txt_Runs*GEOM*TEXT SET " + (WhichStyle.equalsIgnoreCase("STRIKE_RATE") ? 
+  	  											"S/R: " + CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0) :
+  	  											"AVG: " + CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-")) + "\0",print_writers);
 	  									break;
 	  								case "IT20":
 	  									statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
