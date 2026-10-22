@@ -1588,6 +1588,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.value = 'YEARS';
 					option.text = 'By Years';
 					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'POSITION';
+					option.text = 'By Position';
+					select.appendChild(option);
 
 					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
 					row.insertCell(cellCount).appendChild(select);
@@ -6657,10 +6662,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectType';
 			select.name = select.id;
 			
-			option = document.createElement('option');
+			/*option = document.createElement('option');
 			option.value = 'runs';
 			option.text = 'Runs';
-			select.appendChild(option);
+			select.appendChild(option);*/
 			
 			option = document.createElement('option');
 			option.value = 's/r';

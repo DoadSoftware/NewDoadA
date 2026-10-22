@@ -4854,10 +4854,21 @@ public class BugsAndMiniGfx
 								"$RowAnimation$Select" + con_name + "$txt_PlayerName*GEOM*TEXT SET " + getOrdinalMatch(gf.getMatchNumber()).toUpperCase() + " T20I" + "\0",print_writers);
 						
 						break;
-					case Constants.AFG_SERIES: 
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Data$DataGrp$Row" + row_id + 
-								"$RowAnimation$Select" + con_name + "$txt_PlayerName*GEOM*TEXT SET v " + gf.getOpponentTeam().getTeamName4() + ", "
-								+ getOrdinalMatch(gf.getMatchNumber()).toUpperCase() + " ODI" + "\0",print_writers);
+					case Constants.AFG_SERIES:
+						if(gf.getMatchIdent().contains("FINAL")) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Data$DataGrp$Row" + row_id + 
+									"$RowAnimation$Select" + con_name + "$txt_PlayerName*GEOM*TEXT SET v " + gf.getOpponentTeam().getTeamName4() + ", FINAL" + "\0",print_writers);
+						}else {
+							if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI)) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Data$DataGrp$Row" + row_id + 
+										"$RowAnimation$Select" + con_name + "$txt_PlayerName*GEOM*TEXT SET v " + gf.getOpponentTeam().getTeamName4() + ", "
+										+ getOrdinalMatch(gf.getMatchNumber()).toUpperCase() + " ODI" + "\0",print_writers);
+							}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Data$DataGrp$Row" + row_id + 
+										"$RowAnimation$Select" + con_name + "$txt_PlayerName*GEOM*TEXT SET v " + gf.getOpponentTeam().getTeamName4() + ", "
+										+ getOrdinalMatch(gf.getMatchNumber()).toUpperCase() + " IT20" + "\0",print_writers);
+							}
+						}
 						break;
 					default:
 						
@@ -5014,10 +5025,21 @@ public class BugsAndMiniGfx
 			                		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET " + getOrdinalMatch(h2h.getMatchFileName().replace(".json", "")).toUpperCase() + " T20I" 
 			                		+ "\0", print_writers);
 			                break;
-			            case Constants.AFG_SERIES: 
-			            	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
-		                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + h2h.getOpponentTeam().getTeamName4() + ", " 
-			            			+ getOrdinalMatch(h2h.getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+			            case Constants.AFG_SERIES:
+			            	if(h2h.getMatchFileName().replace(".json", "").contains("FINAL")) {
+			            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+			                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + h2h.getOpponentTeam().getTeamName4() + ", FINAL" + "\0", print_writers);
+							}else {
+								if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI)) {
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+				                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + h2h.getOpponentTeam().getTeamName4() + ", " 
+					            			+ getOrdinalMatch(h2h.getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+								}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+				                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + h2h.getOpponentTeam().getTeamName4() + ", " 
+					            			+ getOrdinalMatch(h2h.getMatchFileName().replace(".json", "")).toUpperCase() + " T20I" + "\0", print_writers);
+								}
+							}
 							break;
 			            default:
 			            	 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
@@ -5113,10 +5135,21 @@ public class BugsAndMiniGfx
 			                		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET " + getOrdinalMatch(matchReference.getMatchFileName().replace(".json", "")).toUpperCase() 
 			                		+ " T20I" + "\0", print_writers);
 			                break;
-			            case Constants.AFG_SERIES: 
-			            	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
-		                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + matchReference.getOpponentTeam().getTeamName4() + ", " 
-			            			+ getOrdinalMatch(matchReference.getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+			            case Constants.AFG_SERIES:
+			            	if(matchReference.getMatchFileName().replace(".json", "").contains("FINAL")) {
+			            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+			                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + matchReference.getOpponentTeam().getTeamName4() + ", FINAL" + "\0", print_writers);
+							}else {
+								if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI)) {
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+				                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + matchReference.getOpponentTeam().getTeamName4() + ", " 
+					            			+ getOrdinalMatch(matchReference.getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+								}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+				                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + matchReference.getOpponentTeam().getTeamName4() + ", " 
+					            			+ getOrdinalMatch(matchReference.getMatchFileName().replace(".json", "")).toUpperCase() + " T20I" + "\0", print_writers);
+								}
+							}
 							break;
 			            default:
 			            	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
@@ -5186,10 +5219,21 @@ public class BugsAndMiniGfx
 			                    		+ "$RowAnimation$Select$Highlight$txt_PlayerName*GEOM*TEXT SET " + getOrdinalMatch(matchAllData.getMatch().getMatchFileName().replace(".json", "")).toUpperCase() 
 			                    		+ " T20I" + "\0", print_writers);
 			                    break;
-			                case Constants.AFG_SERIES: 
-			                	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
-		                        		+ "$RowAnimation$Select$Highlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", " 
-			                			+ getOrdinalMatch(matchAllData.getMatch().getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+			                case Constants.AFG_SERIES:
+			                	if(matchAllData.getMatch().getMatchFileName().replace(".json", "").contains("FINAL")) {
+				            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+				                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", FINAL" + "\0", print_writers);
+								}else {
+									if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI)) {
+										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+					                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", " 
+						            			+ getOrdinalMatch(matchAllData.getMatch().getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+									}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+					                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", " 
+						            			+ getOrdinalMatch(matchAllData.getMatch().getMatchFileName().replace(".json", "")).toUpperCase() + " T20I" + "\0", print_writers);
+									}
+								}
 								break;
 			                default:
 			                	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
@@ -5261,9 +5305,20 @@ public class BugsAndMiniGfx
 			            		+ " T20I" + "\0",print_writers);
 			            break;
 			        case Constants.AFG_SERIES: 
-			        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
-                        		+ "$RowAnimation$Select$Highlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", " 
-	                			+ getOrdinalMatch(matchAllData.getMatch().getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+			        	if(matchAllData.getMatch().getMatchFileName().replace(".json", "").contains("FINAL")) {
+		            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+		                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", FINAL" + "\0", print_writers);
+						}else {
+							if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI)) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+			                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", " 
+				            			+ getOrdinalMatch(matchAllData.getMatch().getMatchFileName().replace(".json", "")).toUpperCase() + " ODI" + "\0", print_writers);
+							}else if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.IT20)) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" + row_no 
+			                    		+ "$RowAnimation$Select$Dehighlight$txt_PlayerName*GEOM*TEXT SET v " + inning.getBowling_team().getTeamName4() + ", " 
+				            			+ getOrdinalMatch(matchAllData.getMatch().getMatchFileName().replace(".json", "")).toUpperCase() + " T20I" + "\0", print_writers);
+							}
+						}
 						break;
 			        default:
 			        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Data$DataGrp$Row" 

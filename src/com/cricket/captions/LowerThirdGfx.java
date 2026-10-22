@@ -2039,9 +2039,8 @@ public class LowerThirdGfx
 						}
 						
 						stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId() && st.getSubsStatsType() != null
-						                && subsStatsTypes.stream().anyMatch(sub -> sub.getSubsStatsId() == st.getSubsStatsType()
-						                && sub.getSubsStatsShortName() != null && sub.getSubsStatsShortName().trim().equalsIgnoreCase(otherTeam.getTeamName1())))
-						        .findFirst().orElse(null);
+						                && subsStatsTypes.stream().anyMatch(sub -> sub.getSubsStatsId() == st.getSubsStatsType() && sub.getSubsStatsShortName() != null 
+						                && sub.getSubsStatsShortName().trim().equalsIgnoreCase(otherTeam.getTeamName1()))).findFirst().orElse(null);
 						
 						if(stat == null) {
 							return "populatePlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
@@ -2058,26 +2057,23 @@ public class LowerThirdGfx
 						//Comment this when we do not add current match data
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
 						stat.setStats_type(statsType);
-						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
-						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 						break;
 					case "ODI": case "LIST A":
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ODI")).findAny().orElse(null);
 						stat.setStats_type(statsType);
-						if(!WhichStyle.equalsIgnoreCase("Blank")) {
-							stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL, otherTeam.getTeamName1());
-						}else {
-							stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
-						}
-						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 						break;
 					case "IT20":
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						stat.setStats_type(statsType);
-						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
-						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 						break;
 					}
+					
+					if(!WhichStyle.equalsIgnoreCase("Blank")) {
+						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL, otherTeam.getTeamName1());
+					}else {
+						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+					}
+					stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 					break;	
 				}
 				break;		
@@ -2404,7 +2400,7 @@ public class LowerThirdGfx
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide+ "$Select$PlayerProfile$TopGrp$" 
 									+ "txt_SubHead*GEOM*TEXT SET " + short_name + "\0",print_writers);
 							lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),
-									CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),
+									CricketUtil.FULL, true, false).toUpperCase(), player.getTicker_name(), "",short_name, "", "", 2,"",team.getTeamBadge(),
 									new String[]{"MATCHES", "RUNS", "50s / 100s", "BEST", "STRIKE RATE"},
 									new String[]{String.valueOf(stat.getMatches()), runs , fifty + " / " + hundred, best,strikeRate},null,new String[] {"WITHOUT"},
 									new String[] {"-165","-90","-8","72","157"});
@@ -2412,7 +2408,7 @@ public class LowerThirdGfx
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide+ "$Select$PlayerProfile$TopGrp$" 
 									+ "txt_SubHead*GEOM*TEXT SET " + short_name + "\0",print_writers);
 							lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),
-									CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),
+									CricketUtil.FULL, true, false).toUpperCase(), player.getTicker_name(), "",short_name, "", "", 2,"",team.getTeamBadge(),
 									new String[]{"MATCHES", "RUNS", "50s / 100s", "BEST", "AVERAGE"},
 									new String[]{String.valueOf(stat.getMatches()), runs , fifty + " / " + hundred, best,batAverage},null,new String[] {"WITHOUT"},
 									new String[] {"-165","-90","-8","72","157"});
@@ -2420,7 +2416,7 @@ public class LowerThirdGfx
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide+ "$Select$PlayerProfile$TopGrp$" 
 									+ "txt_SubHead*GEOM*TEXT SET " + short_name + "\0",print_writers);
 							lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),
-									CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),
+									CricketUtil.FULL, true, false).toUpperCase(), player.getTicker_name(), "",short_name, "", "", 2,"",team.getTeamBadge(),
 									new String[]{"MATCHES", "RUNS", "50s / 100s", "BEST", "AVERAGE"},
 									new String[]{String.valueOf(stat.getMatches()), runs , fifty + " / " + hundred, best,batAverage},null,new String[] {"WITHOUT"},
 									new String[] {"-165","-90","-8","72","157"});
@@ -13254,8 +13250,8 @@ public class LowerThirdGfx
 	  									stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllDatas, CricketUtil.FULL);
 	  									
 	  									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lineup$All$DataAll$Side" + whichSide + "$Select$Player" + row_id + 
-  	  											"$Dataall_Player$txt_Runs*GEOM*TEXT SET " + (WhichStyle.equalsIgnoreCase("STRIKE_RATE") ? 
-  	  											"S/R: " + CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0) :
+  	  											"$Dataall_Player$txt_Runs*GEOM*TEXT SET " + (WhichStyle.equalsIgnoreCase("STRIKE_RATE") ? "S/R: " + 
+  	  											(stat.getRuns() > 0 ? CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0) : "-") :
   	  											"AVG: " + CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-")) + "\0",print_writers);
 	  									break;
 	  								case "IT20":
