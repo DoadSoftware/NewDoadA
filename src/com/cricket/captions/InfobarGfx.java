@@ -2219,7 +2219,6 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp$PP$txt_Powerplay*GEOM*TEXT SET " 
 							+ "SUPER OVER" + "\0", print_writers);
 				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp*ACTIVE SET 1\0", print_writers);
 					if (!CricketFunctions.processPowerPlay(CricketUtil.MINI, matchAllData).isEmpty()) {
 						System.out.println(CricketFunctions.processPowerPlay(CricketUtil.FULL, matchAllData));
 						if (infobar.isPowerplay_on_screen() == true) {
@@ -2237,6 +2236,7 @@ public class InfobarGfx
 											+ CricketFunctions.processPowerPlay(CricketUtil.FULL, matchAllData) + "\0", print_writers);
 									break;
 								default:
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp*ACTIVE SET 1\0", print_writers);
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp$PP$txt_Powerplay*GEOM*TEXT SET " 
 											+ "POWERPLAY" + "\0", print_writers);
 									break;
@@ -2246,6 +2246,7 @@ public class InfobarGfx
 									if (infobar.isPowerplay_on_screen() == true) {
 									} else {
 										if (infobar.isPowerplay_on_screen() == false) {
+											CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp*ACTIVE SET 1\0", print_writers);
 											//CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*anim_Scorebug$Main$Powerplay$In_Out START\0", print_writers);
 											infobar.setPowerplay_on_screen(true);
 										}
@@ -2255,6 +2256,7 @@ public class InfobarGfx
 						}
 					}else {
 						if (infobar.isPowerplay_on_screen() == true) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$Score_Grp$Powerplay_Grp*ACTIVE SET 0\0", print_writers);
 							//CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*STAGE*DIRECTOR*anim_Scorebug$Main$Powerplay$In_Out CONTINUE\0", print_writers);
 							switch (matchAllData.getSetup().getMatchType().toUpperCase()) {
 							case CricketUtil.ODI: case CricketUtil.OD:
@@ -6200,11 +6202,19 @@ public class InfobarGfx
 							break;
 						default:
 							String BallData = "";
-							if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() > 100) {
+							switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
+							case CricketUtil.ODI:
+								if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() > 100) {
+									BallData = CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" 
+											+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+								}else {
+									BallData = CricketFunctions.OverBalls(0, CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) + " OVERS";
+								}
+								break;
+							default:
 								BallData = CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" 
 										+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
-							}else {
-								BallData = CricketFunctions.OverBalls(0, CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) + " OVERS";
+								break;
 							}
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Header"
@@ -7300,7 +7310,7 @@ public class InfobarGfx
 					isThisOverLimitExceed = true;
 					int Replaced_Player_id = CricketFunctions.SecondLastBowlerId(matchAllData,bowlingCard.getPlayerId());
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom"
-							+ "$Bottom_Data$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
+							+ "$Bottom_Data$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
 
 					if(Replaced_Player_id > 0) {
 						player = Players.stream().filter(plyr -> plyr.getPlayerId() == Replaced_Player_id).findAny().orElse(null);
@@ -11088,6 +11098,9 @@ public class InfobarGfx
 										CricketFunctions.getPowerplayOvers("16-20", inning.getTotalOvers()), 0, 2, matchAllData)) + "\0", print_writers);
 						break;
 					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$PhaseWiseScore$Data3Grp"
+							+ "*ACTIVE SET 1\0",print_writers);
 				}
 				break;
 			case "SESSION_SUMMARY":
@@ -11990,7 +12003,7 @@ public class InfobarGfx
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 						break;
-					case "IT20":
+					case "IT20": case "DT20":
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
@@ -12155,17 +12168,16 @@ public class InfobarGfx
 							(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
 				case "DT20": case "IT20":
-					TitleData = infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {"MATCHES", "RUNS", "50s / 100s", "STRIKE RATE", "BEST"}
+					TitleData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {"MATCHES", "RUNS", "50s / 100s", "STRIKE RATE", "BEST"}
 				    	: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "STRIKE RATE", "WICKETS", "ECONOMY"} 
-						: new String[] {"MATCHES", "WICKETS", "5WI", "ECONOMY", "BEST"};
+						: new String[] {"MATCHES", "WICKETS", "3WI", "ECONOMY", "BEST"};
 
-					StatData = infobar.getSectionLtAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),
+					StatData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),
 					        stat.getFifties() + " / " + stat.getHundreds(),CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0),
-					        (stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())}: 
-					        infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {String.valueOf(stat.getMatches()),
-							String.valueOf(stat.getRuns()), CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0), String.valueOf(stat.getWickets()), 
-							CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash)}	
-					        :new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),String.valueOf(stat.getPlus5()),
+					        (stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())}: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? 
+					        new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()), CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0), 
+					        String.valueOf(stat.getWickets()), CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash)}	
+					        :new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),String.valueOf(stat.getPlus3()),
 					        CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash), // Example
 					        (stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
@@ -15626,6 +15638,12 @@ public class InfobarGfx
 					switch (whatToProcess.split(",")[3].toUpperCase()) {
 					case "TEST": case "FC":
 						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
+						stat.setStats_type(statsType);
+						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+						break;
+					case "IT20": case "DT20":
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);

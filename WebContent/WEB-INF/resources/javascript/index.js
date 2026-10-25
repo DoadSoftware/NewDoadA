@@ -1561,13 +1561,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.name = select.id;
 					
 					option = document.createElement('option');
-					option.value = 'ODI';
-					option.text = 'ODI MATCHES';
+					option.value = 'IT20';
+					option.text = 'T20-I MATCHES';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
-					option.value = 'IT20';
-					option.text = 'T20-I MATCHES';
+					option.value = 'ODI';
+					option.text = 'ODI MATCHES';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
@@ -5892,7 +5892,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			break;
 		case 'Control_y':
 			switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SERIES': //case 'ACC':
+				case 'BAN_AFG_SERIES': case 'WCL': //case 'AFG_SERIES': case 'ACC':
 					header_text.innerHTML = 'POWERPLAY';
 	
 					select = document.createElement('select');
@@ -6484,7 +6484,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 
 					const dropdownOptions = {
 					    ODI: ['AVERAGE', 'STRIKE_RATE'],
-					    IT20: ['STRIKE_RATE', 'AVERAGE', 'ODI', 'LIST A', 'TEST', 'FC']
+					    IT20: ['STRIKE_RATE', 'AVERAGE']
 					};
 
 					const optionText = {

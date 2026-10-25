@@ -69,7 +69,7 @@ public class Animation
 			case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_Shift_L": case "Control_Shift_M": case "u": case "Control_a":
 			case "F7": case "F11": case "Control_s": case "Control_f": case "Control_Shift_B": case "Control_Shift_O": case "Control_h": case "Control_F3": 
 			case "d": case "Shift_U": case "Alt_w": case "Control_j": case "Alt_i": case "Shift_A":  case "Shift_R": case "Alt_j":  case "Alt_h": case "l":
-			case "Alt_Shift_O": case "Control_F2": case "Alt_Shift_F3": case "Control_Shift_Q": case "Alt_Shift_L":
+			case "Alt_Shift_O": case "Control_F2": case "Alt_Shift_F3": case "Control_Shift_Q": case "Alt_Shift_L": case "e":
 				return Constants.LOWER_THIRD;	
 			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7":
 				return Constants.MINIS;	
