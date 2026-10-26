@@ -1766,7 +1766,7 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$SubHeader$Side" + WhichSide + "$txt_SubHeader"
 							+ "*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
 					break;
-				case "Shift_F11":
+				case "Shift_F11": case "Control_F11":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$SubHeader$Side" + WhichSide + "$txt_SubHeader"
 							+ "*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
 					break;
@@ -11425,6 +11425,19 @@ public class ALL_FF
 				}
 			}
 			
+			for(int l = 1; l <= 10; l++) {           // For Y-Axis Value
+				switch (matchAllData.getSetup().getMatchType()) {
+				case CricketUtil.ODI: case CricketUtil.OD:
+					txtIndex1 = 5*l;
+					break;
+				default:
+					txtIndex1 = 2*l;
+					break;
+				}
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrames$AllActive$Main$Side" + WhichSide + "$Worm$RunWorm$WormDataAll$Graph$Overs_Axis"
+						+ "$Data$Arrange$txt_" + (l+1) + "*GEOM*TEXT SET " + txtIndex1 + "\0", print_writers);
+			}
+			
 			for(int inn_count = 1; inn_count <= inning.getInningNumber(); inn_count++) {
 				List<String> overByOverRuns = new ArrayList<String>();
 				List<String> overByOverwicket = new ArrayList<String>();
@@ -15043,15 +15056,10 @@ public class ALL_FF
 					StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),CricketFunctions.getBowlerAverage(stat.getRunsConceded(), stat.getWickets(), 
 							2, "-"),String.valueOf(stat.getPlus5()),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
-				case "ODI":
+				case "ODI": case "IT20": case "DT20":
 					TitleData = new String[] {"MATCHES", "WICKETS", "ECONOMY", "3WI/5WI", "BEST"};
 					StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, "-"),
 							stat.getPlus3() + "/" + stat.getPlus5(),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
-					break;
-				case "IT20": case "DT20":
-					TitleData = new String[] {"MATCHES", "WICKETS", "ECONOMY", "3WI", "BEST"};
-					StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, "-"),
-							String.valueOf(stat.getPlus3()),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
 				default:
 					TitleData = new String[] {"MATCHES", "WICKETS", "ECONOMY", "5WI", "BEST"};

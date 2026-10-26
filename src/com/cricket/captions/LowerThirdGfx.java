@@ -2501,8 +2501,8 @@ public class LowerThirdGfx
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide+ "$Select$PlayerProfile$TopGrp$" 
 								+ "txt_SubHead*GEOM*TEXT SET " + short_name + "\0",print_writers);
 				    	lowerThird = new LowerThird(CricketFunctions.getbowlingstyle(player.getBowlingStyle()).toUpperCase(), 
-								player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),new String[]{"MATCHES", "WICKETS", "3WI", "BEST", "ECONOMY"},
-								new String[]{String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()), String.valueOf(stat.getPlus3()), 
+								player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),new String[]{"MATCHES", "WICKETS", "3WI/5WI", "BEST", "ECONOMY"},
+								new String[]{String.valueOf(stat.getMatches()), String.valueOf(stat.getWickets()), stat.getPlus3() + "/" + stat.getPlus5(), 
 								stat.getBestFigures(),economy},null,null,new String[] {"-165","-77","11","83","163"});
 					}else {
 				    	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide+ "$Select$PlayerProfile$TopGrp$" 
@@ -6719,10 +6719,7 @@ public class LowerThirdGfx
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
 						+ "$Select$ProjectedScore$TopGrp$HeaderGrp$txt_Header1*GEOM*TEXT SET " + lowerThird.getFirstName() + "\0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-						+ "$Select$ProjectedScore$TopGrp$HeaderGrp$txt_Header2*GEOM*TEXT SET "+ "" + "\0",print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide+ 
-						"$Select$ProjectedScore$BottomGrp$RestDataGrp$" + "txt_Data1*GEOM*TEXT SET "+ "PHASE-WISE SCORES" + "\0",print_writers);
+						+ "$Select$ProjectedScore$TopGrp$HeaderGrp$txt_SubHead*GEOM*TEXT SET "+ "PHASE-WISE SCORES" + "\0",print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$ALL_LT_LOGOGRP$Side" + WhichSide
     					+ "$img_Badges*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_BADGES + lowerThird.getWhichTeamFlag() + "\0",print_writers);
@@ -6734,15 +6731,6 @@ public class LowerThirdGfx
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$DataAll$Side" + WhichSide
 						+ "$Select$ProjectedScore$TopGrp$HeaderGrp$img_Text1*TEXTURE*IMAGE SET " + Constants.AFG_SERIES_TEXT1 + "EVENT" + "\0",print_writers);
-    			
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-    					+ "$Select$ProjectedScore$BottomGrp$ScoreGrp$txt_Data1*GEOM*TEXT SET "
-    					+ lowerThird.getScoreText() + " \0",print_writers);
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-    					+ "$Select$ProjectedScore$BottomGrp$ScoreGrp$txt_Data2*GEOM*TEXT SET "
-    					+ lowerThird.getBallsFacedText() + " \0",print_writers);
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide
-						+ "$Select$ProjectedScore$TopGrp$HeaderGrp$txt_SubHead*GEOM*TEXT SET " + lowerThird.getSubTitle() + "\0",print_writers);
     			
 //    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Lowerthird$All$DataAll$Side" + WhichSide + "$Select$PhaseScore$BottomGrp$ScoreGrp$txt_Data1*GEOM*TEXT SET "
 //						+ lowerThird.getScoreText() + "\0",print_writers);
@@ -14099,7 +14087,7 @@ public class LowerThirdGfx
 						+ "$Select$BowlerBowlingDetails$BottomGrp$RestDataGrp$RestData$Data$" + (iStat + 1) + "$txt_Data2A*GEOM*TEXT SET "
 						+ lowerThird.getStatsText()[iStat] + "\0",print_writers);
 			}
-			TimeUnit.MILLISECONDS.sleep(1500);
+//			TimeUnit.MILLISECONDS.sleep(1500);
 			break;
 		case "F5": case "Alt_j":
 			
@@ -14112,7 +14100,7 @@ public class LowerThirdGfx
 						+ lowerThird.getStatsText()[iStat]  + "\0",print_writers);
 			}
 			
-			TimeUnit.MILLISECONDS.sleep(1500);
+//			TimeUnit.MILLISECONDS.sleep(1500);
 			break;
 		case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Alt_Shift_L":
 			

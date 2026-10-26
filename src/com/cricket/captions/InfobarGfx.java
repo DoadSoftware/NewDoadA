@@ -12170,14 +12170,14 @@ public class InfobarGfx
 				case "DT20": case "IT20":
 					TitleData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {"MATCHES", "RUNS", "50s / 100s", "STRIKE RATE", "BEST"}
 				    	: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? new String[] {"MATCHES", "RUNS", "STRIKE RATE", "WICKETS", "ECONOMY"} 
-						: new String[] {"MATCHES", "WICKETS", "3WI", "ECONOMY", "BEST"};
+						: new String[] {"MATCHES", "WICKETS", "3WI/5WI", "ECONOMY", "BEST"};
 
 					StatData = infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ? new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),
 					        stat.getFifties() + " / " + stat.getHundreds(),CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0),
 					        (stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())}: infobar.getSectionAnalytics().equalsIgnoreCase("BAT_BALL_PP") ? 
 					        new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()), CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0), 
 					        String.valueOf(stat.getWickets()), CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash)}	
-					        :new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),String.valueOf(stat.getPlus3()),
+					        :new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),stat.getPlus3()+"/"+stat.getPlus5(),
 					        CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, slashOrDash), // Example
 					        (stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
 					break;
@@ -15828,7 +15828,7 @@ public class InfobarGfx
 							statsData.add("ECONOMY," + CricketFunctions.getEconomy(tourment.getRunsConceded(), tourment.getBallsBowled(), 2, "-"));
 							break;
 						}
-						statsData.add("5WI," + stat.getPlus5());
+						statsData.add("3WI / 5WI," + stat.getPlus3() + " / " + stat.getPlus5());
 						statsData.add("BEST," + best);
 						break;
 					case "Control_2":
