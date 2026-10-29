@@ -216,7 +216,9 @@ public class Animation
 					break;
 				}
 				
-				processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Wipes_Center", "START");
+				if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
+					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Wipes_Center", "START");
+				}
 				break;
 				
 			case "6": case "Control_4": case "5": case ";":
