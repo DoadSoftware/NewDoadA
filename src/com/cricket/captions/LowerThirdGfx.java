@@ -4862,14 +4862,47 @@ public class LowerThirdGfx
 			break;
 		case Constants.AFG_SERIES:
 			if(inning.getInningNumber() == 2) {
-				summary = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
-						false).getTargetOrResult().toUpperCase();
+				switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
+				case "TEST":
+					summary = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", "", 
+							false).getTargetOrResult().toUpperCase();
+					break;
+				default:
+					String BallData = "";
+					switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
+					case CricketUtil.ODI:
+						if(CricketFunctions.GetTargetData(matchAllData).getRemaningBall() > 100) {
+							BallData = CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" 
+									+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+						}else {
+							BallData = CricketFunctions.OverBalls(0, CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) + " OVERS";
+						}
+						break;
+					default:
+						BallData = CricketFunctions.GetTargetData(matchAllData).getRemaningBall() + " BALL" 
+								+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+						break;
+					}
+					
+					summary = inning.getBatting_team().getTeamName1() + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() 
+							+ " RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " OFF " + BallData;
+					break;
+				}
 			}else if(inning.getInningNumber() == 3) {
-				summary = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
-						false).getTargetOrResult().toUpperCase();
+				if(whatToProcess.split(",")[2].equalsIgnoreCase("BAT")) {
+					summary = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", "", false).getTargetOrResult().toUpperCase();
+				}else {
+					summary = inning.getBowling_team().getTeamName1() + " NEED " + CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber())
+					+ " WICKET" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber())).toUpperCase() + " TO WIN";
+				}
 			}else if(inning.getInningNumber() == 4) {
-				summary = " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + " RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() 
-						+ " TO WIN";
+				if(whatToProcess.split(",")[2].equalsIgnoreCase("BAT")) {
+					summary = inning.getBatting_team().getTeamName1() + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() 
+							+ " RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN";
+				}else {
+					summary = inning.getBowling_team().getTeamName1() + " NEED " + CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber())
+							+ " WICKET" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber())).toUpperCase() + " TO WIN";
+				}
 			}
 			break;
 		default:
@@ -5778,7 +5811,7 @@ public class LowerThirdGfx
 			match_name = fixture.getTeamgroup();
 			break;
 		case Constants.AFG_SERIES:
-			match_name = (fixture.getMatchfilename().equalsIgnoreCase("MATCH 01") ? "FIRST T20I" : fixture.getMatchfilename().equalsIgnoreCase("MATCH 02") ? "SECOND T20I" : 
+			match_name = (fixture.getMatchfilename().equalsIgnoreCase("MATCH 01") ? "FIRST TEST" : fixture.getMatchfilename().equalsIgnoreCase("MATCH 02") ? "SECOND TEST" : 
 				fixture.getMatchfilename().equalsIgnoreCase("MATCH 03") ? "THIRD T20I" : "FINAL");
 			
 			break;
@@ -6565,6 +6598,9 @@ public class LowerThirdGfx
     							+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichSponsor() + "\0",print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Match_ID$BaseAll$Side" + WhichSide + "$Team2$img_Base*TEXTURE*IMAGE SET "
     							+ Constants.AFG_SERIES_BADGES + lowerThird.getWhichSponsor() + "\0",print_writers);
+    			
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Match_ID$All$BaseAll$Side1$Team1*ACTIVE SET 0\0",print_writers);
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Match_ID$All$BaseAll$Side1$Team2*ACTIVE SET 0\0",print_writers);
     			
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Match_ID$All$DataAll$Side" + WhichSide + "$img_Team1$txt_Header1*GEOM*TEXT SET "
 								+ lowerThird.getSubTitle() + "\0",print_writers);

@@ -488,13 +488,24 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 				addItemsToList(dataToProcess,null); 
 				break;	
 
-			case "F1": case "F2": case "F4": case "m": case 'Control_F6': case 'Shift_F3': case 'd': case 'e': case 'Control_h': case 'Alt_Shift_F3': 
+			case "F1": case "F2": case "F4": case "m": case 'Control_F6': case 'Shift_F3': case 'd': case 'Control_h': case 'Alt_Shift_F3': 
 			case 'Control_k': case 'Control_Shift_M': case 'Control_F3': case 'Control_4': case '6': case 'Control_a': case '5': case ';': case 'Control_F7': 
 			case 'Control_Shift_F10': case 'Shift_F1': case 'Shift_F2': case 'Control_6': case 'Control_Shift_B': case 'Control_Shift_R': case 'Control_Shift_F3': 
 			case 'Control_F10':  case 'Shift_F10': case 'Alt_F11': case 'Shift_D': case 'Control_F1': case 'Control_Alt_F1': case 'Alt_Shift_F1': case 'Alt_Shift_Q':
 			case 'Control_5': case 'Control_7': case '7': case 'Alt_Shift_Q': case 'Alt_Shift_F12': case 'Control_F2': case 'Shift_U': case 'Alt_i': case 'Alt_Shift_!':
 				dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 				processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
+				break;
+			case 'e':
+				switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'AFG_SERIES':
+					addItemsToList(dataToProcess,null);
+					break;
+				default:
+					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
+					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
+					break;
+				}
 				break;
 			case 'Control_y':
 				switch($('#selected_broadcaster').val().toUpperCase()){
@@ -969,7 +980,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
-	case 'Alt_Shift_L':
+	case 'Alt_Shift_L': case 'e':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1561,6 +1572,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.name = select.id;
 					
 					option = document.createElement('option');
+					option.value = 'TEST';
+					option.text = 'TEST MATCHES';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
 					option.value = 'IT20';
 					option.text = 'T20-I MATCHES';
 					select.appendChild(option);
@@ -1568,11 +1584,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option = document.createElement('option');
 					option.value = 'ODI';
 					option.text = 'ODI MATCHES';
-					select.appendChild(option);
-					
-					option = document.createElement('option');
-					option.value = 'TEST';
-					option.text = 'TEST MATCHES';
 					select.appendChild(option);
 					
 					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
@@ -5890,6 +5901,32 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),0);
 			cellCount = cellCount + 1;
 			break;
+		case 'e':
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'AFG_SERIES':
+				header_text.innerHTML = 'EQUATION';
+				
+				select = document.createElement('select');
+				select.id = 'selectPowerplay';
+				select.name = select.id;
+
+				option = document.createElement('option');
+				option.value = 'BAT';
+				option.text = 'Bat Equation';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'BALL';
+				option.text = 'Ball Equation';
+				select.appendChild(option);
+
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),0);
+				cellCount = cellCount + 1
+				break;
+			}
+			break;
 		case 'Control_y':
 			switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BAN_AFG_SERIES': case 'WCL': //case 'AFG_SERIES': case 'ACC':
@@ -7448,7 +7485,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
-		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L':
+		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';
