@@ -3367,7 +3367,7 @@ public class Animation
 				
 				TimeUnit.MILLISECONDS.sleep(800);
 				
-				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "LT$Logo$In_Out$In", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Base$In_Out", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Data$In_Out", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "LT$Sponsor$In_Out", "SHOW 0.0");

@@ -1776,6 +1776,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 					
 					break;
 				case 'ACC':		
+				
+					option = document.createElement('option');
+					option.value = 'YOUTHODI';
+					option.text = 'YOUTH';
+					select.appendChild(option);
+				
 					option = document.createElement('option');
 					option.value = 'IT20';
 					option.text = 'T20-I';
@@ -2066,6 +2072,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 					}
 					break;
 				case 'ACC':
+					
+					option = document.createElement('option');
+					option.value = 'YOUTHODI';
+					option.text = 'YOUTH';
+					select.appendChild(option);
 												
 					option = document.createElement('option');
 					option.value = 'IT20';
@@ -2634,7 +2645,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 				option = document.createElement('option');
 				option.value = 'LIVE_FROM';
-				option.text = 'LIVE FROM DUBAI';
+				option.text = 'LIVE FROM OMAN';
 				select.appendChild(option);
 				
 				option = document.createElement('option');
@@ -4638,6 +4649,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 					});
 					break;	
 				case 'ACC':
+					
+					option = document.createElement('option');
+					option.value = 'YOUTHODI';
+					option.text = 'YOUTH';
+					select.appendChild(option);
 						
 					option = document.createElement('option');
 					option.value = 'IT20';
@@ -4969,6 +4985,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					break;
 				case 'ACC':
+					
+					option = document.createElement('option');
+					option.value = 'YOUTHODI';
+					option.text = 'YOUTH';
+					select.appendChild(option);
 					
 					option = document.createElement('option');
 					option.value = 'IT20';

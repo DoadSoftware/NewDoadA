@@ -1000,7 +1000,7 @@ public class BugsAndMiniGfx
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$band$txt_Header*GEOM*TEXT SET FOURS THIS SERIES\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$band$txt_Header*GEOM*TEXT SET FOURS THIS TOURNAMENT\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Unit*GEOM*TEXT SET "+this_data_str.get(0).split(",")[3] + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Ten*GEOM*TEXT SET "+this_data_str.get(0).split(",")[2] + "\0", print_writers);
@@ -1056,7 +1056,7 @@ public class BugsAndMiniGfx
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$band$txt_Header*GEOM*TEXT SET SIXES THIS SERIES\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$band$txt_Header*GEOM*TEXT SET SIXES THIS TOURNAMENT\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Unit*GEOM*TEXT SET "+this_data_str.get(0).split(",")[3] + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$Data$Side_1$txt_Ten*GEOM*TEXT SET "+this_data_str.get(0).split(",")[2] + "\0", print_writers);
@@ -4564,6 +4564,8 @@ public class BugsAndMiniGfx
 				case Constants.ACC:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side1$Select$Bating$AllDataGrp$CardAll$Header$img_Logo*TEXTURE*IMAGE SET "
 							+ Constants.ACC_FLAG + inning.getBatting_team().getTeamBadge() + "\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side1$Select$Bating$AllDataGrp$CardAll$Header$TeamNameGrp$"
+							+ "txt_LastName*GEOM*TEXT SET " + inning.getBatting_team().getTeamName1() + "\0",print_writers);
 					break;
 				case Constants.AFG_SERIES:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Header$img_Logo"
@@ -5370,6 +5372,8 @@ public class BugsAndMiniGfx
 				case Constants.ACC:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side1$Select$Bowling$AllDataGrp$CardAll$Header$img_Logo*TEXTURE*IMAGE SET "
 							+ Constants.ACC_FLAG + inning.getBowling_team().getTeamBadge() + "\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side1$Select$Bowling$AllDataGrp$CardAll$Header$TeamNameGrp$"
+							+ "txt_LastName*GEOM*TEXT SET " + inning.getBowling_team().getTeamName1() + "\0",print_writers);
 					break;
 				case Constants.AFG_SERIES:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bowling$AllDataGrp$CardAll$Header$img_Logo"

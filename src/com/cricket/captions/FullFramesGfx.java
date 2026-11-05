@@ -889,8 +889,10 @@ public class FullFramesGfx
 			}
 			break;
 		case Constants.ACC:
+			System.out.println("this_ALL_FF.WhichProfile.toUpperCase()----------------------"+this_ALL_FF.WhichProfile.toUpperCase());
 			switch (this_ALL_FF.WhichProfile.toUpperCase()) {
-			case "DT20": case "IT20": case "ACC_CAREER":
+			case "DT20": case "IT20": case "ACC_CAREER": case "YOUTHODI":
+				System.out.println("this_ALL_FF.WhichProfile.toUpperCase()----------------------"+this_ALL_FF.FirstPlayerId);
 				this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(this_ALL_FF.WhichProfile)).findAny().orElse(null);
 				if(this_ALL_FF.statsType == null) {
 					return "populatePlayerProfile: Stats Type not found for profile [" + this_ALL_FF.WhichProfile + "]";
@@ -903,6 +905,12 @@ public class FullFramesGfx
 				}
 				
 				switch (this_ALL_FF.WhichProfile.toUpperCase()) {
+				case "YOUTHODI":
+					this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("YOUTHODI")).findAny().orElse(null);
+					this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);		
+					//this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+					//this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+					break;
 				case "DT20": case "ACC_CAREER":
 					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.DT20)) {
 						this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
