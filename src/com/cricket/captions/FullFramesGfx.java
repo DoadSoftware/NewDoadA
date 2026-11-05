@@ -762,10 +762,11 @@ public class FullFramesGfx
 					}
 					
 					this_ALL_FF.stat = statistics.stream().filter(st -> st.getPlayerID() == this_ALL_FF.FirstPlayerId && this_ALL_FF.statsType.getStatsId() == st.getStatsTypeId() 
-							&& (st.getSubsStatsType() != null && this_ALL_FF.subsStatsType.getSubsStatsShortName().equalsIgnoreCase("Year2026"))).findAny().orElse(null);
+							&& (st.getSubsStatsType() != null && this_ALL_FF.subsStatsType.getSubsStatsId() == st.getSubsStatsType())).findAny().orElse(null);
 					if(this_ALL_FF.stat == null) {
 						return "populatePlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
 					}
+					
 					switch (this_ALL_FF.WhichProfile.toUpperCase()) {
 					case "TEST": 
 						this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("TEST")).findAny().orElse(null);
@@ -796,7 +797,9 @@ public class FullFramesGfx
 					            && stats.getSubsStatsType() != null && stats.getSubsStatsType() != this_ALL_FF.subsStatsType.getSubsStatsId()) {
 					    	
 					    	this_ALL_FF.subsStatsType = subsStatsType.stream().filter(st -> st.getSubsStatsId() == stats.getSubsStatsType()).findAny().orElse(null);
-					    	if(this_ALL_FF.subsStatsType.getSubsStatsShortName().contains("Year")) {
+					    	
+					    	if(this_ALL_FF.subsStatsType.getSubsStatsShortName().contains("Year") && 
+					    			!this_ALL_FF.subsStatsType.getSubsStatsShortName().equalsIgnoreCase("Year2026")) {
 					    		stats.setSubs_stats_type(this_ALL_FF.subsStatsType);
 						    	this_ALL_FF.playerAllStatistics.add(stats);
 					    	}
@@ -860,7 +863,7 @@ public class FullFramesGfx
 				}
 				
 				this_ALL_FF.stat = statistics.stream().filter(st -> st.getPlayerID() == this_ALL_FF.FirstPlayerId && 
-						this_ALL_FF.statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+						this_ALL_FF.statsType.getStatsId() == st.getStatsTypeId() && st.getSubsStatsType() == null).findAny().orElse(null);
 				if(this_ALL_FF.stat == null) {
 					return "populatePlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
 				}

@@ -484,7 +484,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Control_Shift_Q': case 'Control_Shift_F7': case 'Control_Shift_F2': case 'Alt_F9': case 'Shift_Control_F1': case 'Shift_Control_F2':
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
 			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Alt_f': case '/':
-			case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Alt_Shift_L':
+			case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Alt_Shift_L': case 'Alt_b':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -980,7 +980,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
-	case 'Alt_Shift_L': case 'e':
+	case 'Alt_Shift_L': case 'e': case 'Alt_b':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -6385,6 +6385,52 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),2);
 			cellCount = cellCount + 1;
 			break;
+		case "Alt_b": 
+			header_text.innerHTML = 'BOWLER WICKET SEQUENCE';
+			select = document.createElement('select');
+			select.id = 'selectWicketSequence';
+			select.name = select.id;
+			session_match.match.inning.forEach(function(inn) {
+			    if (inn.inningNumber == document.getElementById('which_inning').value) {
+					if(inn.bowlingCard != null){
+						inn.bowlingCard.forEach(function(bc) {
+			                option = document.createElement('option');
+			                option.value = bc.playerId;
+			                option.text = bc.player.full_name;    
+			                select.appendChild(option);
+			            });
+					}
+			    }
+			});		
+			select.setAttribute('onchange',"setDropdownOptionForWicketBowlerSequence(this, 0)");
+			row.insertCell(0).appendChild(select);
+			setDropdownOptionForWicketBowlerSequence(0);
+			cellCount = cellCount + 1;	
+				    
+			select = document.createElement('select');
+			select.id = 'selectWicketplayer';
+			select.name = select.id;
+
+			$('#selectWicketSequence').on('change', function() { 
+				$('#selectWicketplayer').empty()
+			    session_match.match.inning.forEach(function(inn) {
+			        if (inn.inningNumber == document.getElementById('which_inning').value) {
+			             inn.battingCard.forEach(function(bc) {
+						if (bc.howOutPartTwo && $('#selectWicketSequence option:selected').text().toUpperCase().includes(bc.howOutPartTwo.split(' ')[1])) {
+							option = document.createElement('option');
+			                option.value = bc.playerId;
+			                option.text = bc.player.full_name;    
+			                select.appendChild(option);
+						}   
+			          });
+			        }
+			    });
+			    select.setAttribute('onchange',"setDropdownOptionForWicketBowlerSequence(this, 1)");
+				row.insertCell(1).appendChild(select);
+				setDropdownOptionForWicketBowlerSequence(1);
+			}).trigger('change');
+			cellCount = 2;
+			break;
 		case 'Shift_F':
 			header_text.innerHTML = 'WICKET SEQUENCE';
 			select = document.createElement('select');
@@ -7506,7 +7552,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
-		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e':
+		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

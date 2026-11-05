@@ -74,7 +74,7 @@ public class Animation
 			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7":
 				return Constants.MINIS;	
 			case "Alt_p": case "r": case "y": case "g": case "Control_k": case "Shift_F4": case "k": case "Control_y": case "h": case "Shift_O": 
-			case "Shift_F": case "Shift_C": case "Control_Shift_F3": case "Control_Shift_R":
+			case "Shift_F": case "Shift_C": case "Control_Shift_F3": case "Control_Shift_R": case "Alt_b":
 			case "Control_Shift_U": case "Control_Shift_V": case "Control_Shift_U_change_on": case "Control_Shift_V_change_on":
 			case "7": case "Alt_Shift_Q": case "5": case ";": case "6": case "Control_4":
 				return Constants.BUGS;
@@ -379,7 +379,7 @@ public class Animation
 				break;
 		
 			case "y": case "g": case "Control_k": case "Shift_F4": case "k": case "Control_y": case "h": case "Shift_O": 
-			case "Shift_F": case "Control_Shift_F3": case "Control_Shift_R": case "Shift_C": case "Alt_p":
+			case "Shift_F": case "Control_Shift_F3": case "Control_Shift_R": case "Shift_C": case "Alt_p": case "Alt_b":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(300);
 				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "START");
@@ -2843,7 +2843,7 @@ public class Animation
 				break;
 				
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":
-			case "Control_Shift_R": case "Control_Shift_F3": case "Shift_C": case "Alt_p":
+			case "Control_Shift_R": case "Control_Shift_F3": case "Shift_C": case "Alt_p": case "Alt_b":
 				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "SHOW 0.0");
@@ -4225,7 +4225,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "START");
 				break;
 			 case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":
-			 case "Control_Shift_R": case "Control_Shift_F3":
+			 case "Control_Shift_R": case "Control_Shift_F3": case "Alt_b":
 				processAnimation(Constants.FRONT, print_writers, "Bugs$Change", "START");
 				break;
 			 case "Control_F5": case "Control_F9": case "F8": case "F10": case "Alt_F8":
@@ -5470,7 +5470,7 @@ public class Animation
 				this.whichGraphicOnScreen = "Control_Shift_V";
 				break;
 			 case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":
-			 case "Control_Shift_R": case "Control_Shift_F3":
+			 case "Control_Shift_R": case "Control_Shift_F3": case "Alt_b":
 				processAnimation(Constants.FRONT, print_writers, "Bugs$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -8428,7 +8428,7 @@ public class Animation
 					
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_Shift_R": case "h": case "Shift_F4": case "Shift_F":
 					case "Alt_b": case "Alt_p": case "Control_Shift_F3": case "Shift_C": case "Control_Shift_J": case "6": case "Control_y": case "Control_4": 
-					case "Alt_Shift_J": case "5": case ";": case "Control_Shift_*":
+					case "Alt_Shift_J": case "5": case ";": case "Control_Shift_*": 
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/Overlays C:/Temp/Preview.tga "
 								+ "Bugs$Change 1.354 Bugs$Change$Change_Out 0.740 Bugs$Change$Change_In 1.354\0", print_writer);
 						break;

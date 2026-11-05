@@ -603,7 +603,10 @@ public class Caption
 				break;	
 			case "Shift_F": //wicket sequencing
 				status = this_bugsAndMiniGfx.populateWicketSequencing(whatToProcess, matchAllData, whichSide);
-				break;	
+				break;
+			case "Alt_b":	
+				status = this_bugsAndMiniGfx.populateBowlerWicketSequencing(whatToProcess, matchAllData, whichSide);
+				break;
 			case "y": // Bug Batsman Score
 				status = this_bugsAndMiniGfx.populateBatScore(whatToProcess, matchAllData, whichSide);
 				break;

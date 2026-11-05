@@ -337,6 +337,30 @@ public class BugsAndMiniGfx
 		}
 		return status;
 	}
+	public String populateBowlerWicketSequencing(String whatToProcess,MatchAllData matchAllData,int WhichSide) throws IOException, InterruptedException
+	{
+		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
+			status = "populateWicketSequencing match is null Or Inning is null";
+		} else {
+			inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1])).findAny().orElse(null);
+			if(inning == null) {
+				return "populateWicketSequencing Inning is null";
+			}
+			player = CricketFunctions.getPlayerFromMatchData(Integer.valueOf(whatToProcess.split(",")[2]), matchAllData);			
+			
+			battingCard = inning.getBattingCard().stream().filter(bc->bc.getPlayerId() == Integer.valueOf(whatToProcess.split(",")[4])).findAny().orElse(null);
+			
+			team = Teams.stream().filter(tm -> tm.getTeamId() == player.getTeamId()).findAny().orElse(null);
+			if(team == null) {
+				return "populateWicketSequencing: Team id [" + battingCard.getPlayer().getTeamId() + "] from database is returning NULL";
+			}
+		}
+		if(PopulateBugBody(WhichSide, whatToProcess,matchAllData) == Constants.OK) {
+			status = Constants.OK;
+		}
+		return status;
+	}
+	
 	public String populatePerformanceBug(String whatToProcess, int whichSide, MatchAllData matchAllData) {
 		performanceBug = performanceBugs.stream().filter(p -> p.getBugId() == Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
 		System.out.println(performanceBug.toString());
@@ -1600,7 +1624,7 @@ public class BugsAndMiniGfx
 				}
 				
 				break;
-			case "Shift_F":
+			case "Shift_F": case "Alt_b":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*TRANSFORMATION*POSITION*Y SET 54.0\0",print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$Sponsor$Sponsor*FUNCTION*Omo*vis_con SET 0\0",print_writers);

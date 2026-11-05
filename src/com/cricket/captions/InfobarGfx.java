@@ -6209,10 +6209,11 @@ public class InfobarGfx
 						switch(matchAllData.getSetup().getMatchType().toUpperCase()) {
 						case "TEST":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Header"
-									+ "*GEOM*TEXT SET \0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Data1"
 									+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
-											false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+											false).getTargetOrResult().toUpperCase().split("BY")[0].trim() + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Data1"
+									+ "*GEOM*TEXT SET " + "BY" + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
+											false).getTargetOrResult().toUpperCase().split("BY")[1] + "\0", print_writers);
 							break;
 						default:
 							String BallData = "";
@@ -6240,10 +6241,11 @@ public class InfobarGfx
 						}
 					}else if(inning.getInningNumber() == 3) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Header"
-								+ "*GEOM*TEXT SET \0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Data1"
 								+ "*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
-										false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+										false).getTargetOrResult().toUpperCase().split("BY")[0].trim() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Data1"
+								+ "*GEOM*TEXT SET " + "BY" + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
+										false).getTargetOrResult().toUpperCase().split("BY")[1] + "\0", print_writers);
 					}else if(inning.getInningNumber() == 4) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BatsmanSide$Side" + WhichSide + "$Equation$txt_Header"
 								+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName4() + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + "\0", print_writers);
@@ -11387,7 +11389,8 @@ public class InfobarGfx
 				if(statsType == null) {
 					return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 				}
-				stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+				stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId() 
+						&& st.getSubsStatsType() == null).findAny().orElse(null);
 				if(stat == null) {
 					return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
 				}
@@ -11999,7 +12002,8 @@ public class InfobarGfx
 						return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
 					}
 					
-					stat = statistics.stream().filter(st -> st.getPlayerID() == PP_Id && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+					stat = statistics.stream().filter(st -> st.getPlayerID() == PP_Id && statsType.getStatsId() == st.getStatsTypeId() 
+							&& st.getSubsStatsType() == null).findAny().orElse(null);
 					if(stat == null) {
 						return "InfoBarPlayerProfile: Stats not found for Player Id [" + PP_Id + "]";
 					}
@@ -15640,7 +15644,8 @@ public class InfobarGfx
 					statsData.add("InfoBarPlayerProfile: Stats Type not found for profile [" + whatToProcess.split(",")[3] + "]");
 					return (List<T>) statsData;
 				}
-				stat = statistics.stream().filter(st -> st.getPlayerID() == player.getPlayerId() && statsType.getStatsId() == st.getStatsTypeId()).findAny().orElse(null);
+				stat = statistics.stream().filter(st -> st.getPlayerID() == player.getPlayerId() && statsType.getStatsId() == st.getStatsTypeId() 
+						&& st.getSubsStatsType() == null).findAny().orElse(null);
 				if(stat == null) {
 					statsData.add("InfoBarPlayerProfile: Stats not found for Player Id [" + player.getPlayerId() + "]");
 					return (List<T>) statsData;
