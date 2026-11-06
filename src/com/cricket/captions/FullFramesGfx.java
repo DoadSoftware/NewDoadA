@@ -1300,23 +1300,27 @@ public class FullFramesGfx
 		System.out.println("OUT - " + this_ALL_FF.PlayerId.toString());
 		//-----------------------
 		
-		this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(matchAllData.getSetup().getMatchType())).findAny().orElse(null);
-		if(this_ALL_FF.statsType == null) {
-			return "populateSingleTeams: Stats Type not found for profile [" + matchAllData.getSetup().getMatchType() + "]";
-		}
-		
-		this_ALL_FF.statisticsList = new ArrayList<Statistics>();
-		for(Statistics stat : statistics) {
-			if(stat.getStatsTypeId() == this_ALL_FF.statsType.getStatsId()) {
-				stat.setStats_type(this_ALL_FF.statsType);
-				stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
-				stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
-				this_ALL_FF.statisticsList.add(stat);
+		switch (config.getBroadcaster()) {
+		case Constants.AFG_SL_SERIES:
+			this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(matchAllData.getSetup().getMatchType())).findAny().orElse(null);
+			if(this_ALL_FF.statsType == null) {
+				return "populateSingleTeams: Stats Type not found for profile [" + matchAllData.getSetup().getMatchType() + "]";
 			}
-		}
-		
-		if(this_ALL_FF.statisticsList == null && this_ALL_FF.statisticsList.isEmpty()) {
-			return "populateSingleTeams: Stats List is null";
+			
+			this_ALL_FF.statisticsList = new ArrayList<Statistics>();
+			for(Statistics stat : statistics) {
+				if(stat.getStatsTypeId() == this_ALL_FF.statsType.getStatsId()) {
+					stat.setStats_type(this_ALL_FF.statsType);
+					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+					stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.statisticsList.add(stat);
+				}
+			}
+			
+			if(this_ALL_FF.statisticsList == null && this_ALL_FF.statisticsList.isEmpty()) {
+				return "populateSingleTeams: Stats List is null";
+			}
+			break;
 		}
 		
 		status = PopulateFfHeader(WhichSide, whatToProcess, matchAllData, WhichInning);

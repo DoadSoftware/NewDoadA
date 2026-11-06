@@ -125,7 +125,7 @@ public class Animation
 			case "Control_y": case "Control_4": case "Alt_Shift_J": case "Control_Shift_U_change_on": case "Control_Shift_V_change_on": case "5": case ";":
 			case "Control_Shift_*": case "Control_5": case "Control_7":
 				return Constants.BUGS;
-			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7":
+			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7": case "Control_Alt_F3":
 				return Constants.MINIS;	
 			case "Alt_g":
 				return "WATERMARK";	
@@ -1101,7 +1101,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "PopUp$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-			case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2":
+			case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2": case "Control_Alt_F3":
 				TimeUnit.MILLISECONDS.sleep(500);
 				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
@@ -3500,7 +3500,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "SixDistance", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
-			case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2":
+			case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2": case "Control_Alt_F3":
 				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "SHOW 0.0");
@@ -8482,7 +8482,7 @@ public class Animation
 			case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES:
 				if(whichside == 1) {
 					switch(whatToProcess.split(",")[0]) {
-					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7":
+					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7": case "Control_Alt_F3":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" 
 								+ "/Default/Overlays C:/Temp/Preview.tga Mini$In_Out 1.180 Mini$In_Out$In 1.180 Mini$In_Out$In$BatDataIn 1.180\0", print_writer);
 						

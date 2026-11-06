@@ -663,7 +663,10 @@ public class Caption
 				break;
 			case "Control_Shift_R":
 				status = this_bugsAndMiniGfx.populateBugResult(whatToProcess,matchAllData,whichSide);
-				break;	
+				break;
+			case "Control_Alt_F3":
+				status = this_bugsAndMiniGfx.populateMiniPhaseWise(whichSide, whatToProcess,matchAllData);
+				break;
 			case "Shift_F1":
 				status = this_bugsAndMiniGfx.populateMiniScorecard(whichSide, whatToProcess,matchAllData);
 				break;

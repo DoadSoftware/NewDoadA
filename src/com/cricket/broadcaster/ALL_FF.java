@@ -2746,15 +2746,19 @@ public class ALL_FF
 						+ "$txt_TeamName*GEOM*TEXT SET " + inning.getBatting_team().getTeamName1() + "\0", print_writers);
 				break;
 			case "Control_p":
-//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BatHeaderGrp$SubHead"
-//						+ "$txt_SubHead2*GEOM*TEXT SET " + WhichProfile + "\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BatHeaderGrp$SubHead"
-						+ "$txt_SubHead2*GEOM*TEXT SET \0", print_writers);
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ACC:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BatHeaderGrp$SubHead"
+							+ "$txt_SubHead2*GEOM*TEXT SET " + WhichProfile + "\0", print_writers);
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BatHeaderGrp$SubHead"
+							+ "$txt_SubHead2*GEOM*TEXT SET \0", print_writers);
+					break;
+				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BatHeaderGrp$Header"
 						+ "$txt_SubHead1*GEOM*TEXT SET " + matchAllData.getSetup().getTournament() + "\0", print_writers);
-				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BatHeaderGrp$Bottom_Header"
 						+ "$txt_TeamName*GEOM*TEXT SET " + "STANDINGS" + "\0", print_writers);
 				break;
@@ -4006,10 +4010,16 @@ public class ALL_FF
 				break;
 				
 			case "Control_p":
-//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BattingDataAll$BottomInfoAll$img_Text$"
-//						+ "txt_Score*GEOM*TEXT SET " + varText + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$StandingDataAll$BottomInfoAll$txt_Footer"
-						+ "*GEOM*TEXT SET " + varText + "\0", print_writers);
+				switch (config.getBroadcaster()) {
+				case Constants.ACC:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$BattingDataAll$BottomInfoAll$img_Text$"
+							+ "txt_Score*GEOM*TEXT SET " + varText + "\0", print_writers);
+					break;
+				default:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*TREE*$FullFrame_All$Main_GFX$Side" + WhichSide + "$Standings$StandingDataAll$BottomInfoAll$txt_Footer"
+							+ "*GEOM*TEXT SET " + varText + "\0", print_writers);
+					break;
+				}
 				break;
 				
 			case "Control_F10":

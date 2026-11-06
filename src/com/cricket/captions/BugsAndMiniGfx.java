@@ -93,6 +93,8 @@ public class BugsAndMiniGfx
 	public List<Tournament> this_series = new ArrayList<Tournament>();
 	public List<BestStats> top_batsman_beststats = new ArrayList<BestStats>();
 	public List<BestStats> top_bowler_beststats = new ArrayList<BestStats>();
+	public List<OverByOverData> manhattan = new ArrayList<OverByOverData>();
+	public ArrayList<String> overWiseData = new ArrayList<>();
 	
 	//public FallOfWicket fallOfWickets;
 	public BattingCard battingCard;
@@ -209,6 +211,39 @@ public class BugsAndMiniGfx
 	    }
 	}
 	
+	public String populateMiniPhaseWise(int WhichSide, String whatToProcess, MatchAllData matchAllData) throws StreamReadException, DatabindException, NumberFormatException, FileNotFoundException, IOException {
+		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
+			status = "populateMiniScorecard match is null Or Inning is null";
+		} else {
+			inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1]))
+					.findAny().orElse(null);
+			if(inning == null) {
+				return "populateMiniScorecard Inning is null";
+			}
+			
+			manhattan = CricketFunctions.getOverByOverData(matchAllData, inning.getInningNumber(),"MANHATTAN" ,matchAllData.getEventFile().getEvents());
+			overWiseData = new ArrayList<String>();
+			
+			for (int i = 1; i <= matchAllData.getSetup().getMaxOvers(); i += 10) {
+			    
+				int totalRuns = 0,totalWickets=0;
+			    int endOver = Math.min(i + 9, matchAllData.getSetup().getMaxOvers());
+			    
+			    for (int j = i; j < i + 10 && j <= matchAllData.getSetup().getMaxOvers(); j++) {
+			        if (j < manhattan.size()) {
+			            totalRuns += Integer.valueOf(manhattan.get(j).getOverTotalRuns());
+			            totalWickets += Integer.valueOf(manhattan.get(j).getOverTotalWickets());
+			        }
+			    }
+			    
+			    overWiseData.add(i + "-" + endOver + "_" + totalRuns + "-" + totalWickets);
+			}
+		}
+		if(populateMiniBody(WhichSide, whatToProcess.split(",")[0],matchAllData, Integer.valueOf(whatToProcess.split(",")[1])) == Constants.OK) {
+			status = Constants.OK;
+		}
+		return status;
+	}
 	public String populateMiniScorecard(int WhichSide, String whatToProcess, MatchAllData matchAllData) throws StreamReadException, DatabindException, NumberFormatException, FileNotFoundException, IOException {
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			status = "populateMiniScorecard match is null Or Inning is null";
@@ -997,20 +1032,20 @@ public class BugsAndMiniGfx
 				
 				switch (whatToProcess.split(",")[0]) {
 				case "Control_4":
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$spon01*ACTIVE SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$spon01*ACTIVE SET 0\0", print_writers);
 					break;
 				case "Control_5":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$spon01*ACTIVE SET 1\0", print_writers);
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Sponsor$Sponsor$Rectangle*ACTIVE SET 1\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
-						"EaseMyTrip" + "\0", print_writers);
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES: case Constants.WCL:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Sponsor$Sponsor$Rectangle*ACTIVE SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
+							"EaseMyTrip" + "\0", print_writers);
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$band$img_Base2*TEXTURE*IMAGE SET " 
 							+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" +"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$base$img_base1*TEXTURE*IMAGE SET " 
@@ -1051,22 +1086,20 @@ public class BugsAndMiniGfx
 				
 				switch (whatToProcess.split(",")[0]) {
 				case "6":
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$spon01*ACTIVE SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$spon01*ACTIVE SET 0\0", print_writers);
 					break;
 				case "Control_7":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$spon01*ACTIVE SET 1\0", print_writers);
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Sponsor$Sponsor$Rectangle*ACTIVE SET 1\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
-				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
-						"BNW" + "\0", print_writers);
-				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.BAN_AFG_SERIES: case Constants.WCL:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Sponsor$Sponsor$Rectangle*ACTIVE SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$Select_Sponsor$Cola*TEXTURE*IMAGE SET " + Constants.BAN_AFG_SERIES_SPONSOR +
+							"BNW" + "\0", print_writers);
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$band$img_Base2*TEXTURE*IMAGE SET " 
 							+ Constants.BAN_AFG_SERIES_BASE2 + "EVENT" +"\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Tournament_Sixes$POP_ALL$base$img_base1*TEXTURE*IMAGE SET " 
@@ -4505,6 +4538,36 @@ public class BugsAndMiniGfx
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES:
 			switch (whatToProcess) {
+			case "Control_Alt_F3":
+				rowId = 0;
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 3 \0",print_writers);
+				
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ACC:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side1$Select$PhaseScores$AllDataGrp$CardAll$Header$img_Logo*TEXTURE*IMAGE SET "
+							+ Constants.ACC_FLAG + inning.getBatting_team().getTeamBadge() + "\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side1$Select$PhaseScores$AllDataGrp$CardAll$Header$TeamNameGrp$"
+							+ "txt_LastName*GEOM*TEXT SET " + inning.getBatting_team().getTeamName1() + "\0",print_writers);
+					break;
+				}
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$PhaseScores$AllDataGrp$CardAll$Data$DataGrp"
+						+ "*FUNCTION*Grid*num_row SET " + overWiseData.size() + " \0",print_writers);
+				
+				for (String overData : overWiseData) {
+					rowId = rowId + 1;
+					cont_name = "$Dehighlight";
+					
+					System.out.println(overData);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$PhaseScores$AllDataGrp$CardAll$Data$DataGrp$Row"
+								+ rowId + "$RowAnimation$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$PhaseScores$AllDataGrp$CardAll$Data$DataGrp$Row"
+								+ rowId + "$RowAnimation$Select" + cont_name + "$txt_PlayerName*GEOM*TEXT SET " + "OVERS " + overData.split("_")[0] + "\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$PhaseScores$AllDataGrp$CardAll$Data$DataGrp$Row"
+								+ rowId + "$RowAnimation$Select" + cont_name + "$txt_Data1*GEOM*TEXT SET " + (overData.split("_")[1].equalsIgnoreCase("0-0")
+										? "-" : overData.split("_")[1]) + "\0",print_writers);
+				}
+				break;
 			case "Alt_F7":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 				
