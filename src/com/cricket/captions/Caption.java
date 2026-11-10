@@ -341,7 +341,6 @@ public class Caption
 				status = this_fullFramesGfx.populateThisSeries(whichSide, whatToProcess, matchAllData, 0);
 				break;	
 				
-				
 			case "Alt_F7":// Points Table
 				if(config.getBroadcaster().equalsIgnoreCase(Constants.ACC)) {
 					this_bugsAndMiniGfx.WhichGroup = whatToProcess.split(",")[2];

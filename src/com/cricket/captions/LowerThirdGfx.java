@@ -3538,7 +3538,7 @@ public class LowerThirdGfx
 		
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.AFG_SERIES: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
 			lowerThird = new LowerThird("", battingCard.getPlayer().getFirstname(), surName,outOrNot, String.valueOf(battingCard.getRuns()),
-					String.valueOf(battingCard.getBalls()), 2, "",inning.getBatting_team().getTeamBadge(),new String[] {"DOTS","FOURS","SIXES","STRIKE RATE"},new String[] {
+					String.valueOf(battingCard.getBalls()), 2, "",inning.getBatting_team().getTeamBadge(),new String[] {"DOTS","FOURS","SIXES","S/R"},new String[] {
 					Count[0],String.valueOf(battingCard.getFours()),String.valueOf(battingCard.getSixes()),striktRate},null,new String[] {"WITHOUT"},new String[] {"-170","-73","41","160"});
 			break;
 		}
@@ -3637,7 +3637,6 @@ public class LowerThirdGfx
 	}
 	public String populateBowlerSpell(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
-		String economy = "";
 		stat = null;
 		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
 			return status;
@@ -3649,12 +3648,8 @@ public class LowerThirdGfx
 			player = Players.stream().filter(pl -> pl.getPlayerId() == Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
 		}
 		
-//		if(bowlingCard.getEconomyRate()==null || bowlingCard.getEconomyRate().equalsIgnoreCase("0.00")) {
-//			economy = "-";
-//		}else {
-//			economy = String.valueOf(bowlingCard.getEconomyRate());
-//		}
-//		
+		System.out.println("whatToProcess - " + whatToProcess);
+		
 		if(player.getSurname() == null) {
 			surName = "";
 		}else {
@@ -3663,23 +3658,22 @@ public class LowerThirdGfx
 		
 		List<String> fowDataList = new ArrayList<>();
 		List<String> fowNumberList = new ArrayList<>();
-
+		
+		List<List<Integer>> maidenSpells = CricketFunctions.calculateMaidenBySpells(matchAllData.getEventFile().getEvents(), 
+				inning.getInningNumber(), player.getPlayerId());
+	
+		int totalMaidens = 0;
+		
 		if (inning.getSpells() != null && !inning.getSpells().isEmpty()) {
-
-		    int playerId = Integer.parseInt(whatToProcess.split(",")[2]);
-
 		    for (int i = 0; i < inning.getSpells().size(); i++) {
+		        if (inning.getSpells().get(i).getPlayerId() == player.getPlayerId()) {
+		        	totalMaidens = maidenSpells.get(inning.getSpells().get(i).getSpellNumber() - 1).size();
+		        	
+		            fowDataList.add(CricketFunctions.OverBalls(0, inning.getSpells().get(i).getBalls()) + "," + 
+		            		totalMaidens + "," + String.valueOf(inning.getSpells().get(i).getRuns()) 
+		            		+ "," + String.valueOf(inning.getSpells().get(i).getWickets()));
 
-		        if (inning.getSpells().get(i).getPlayerId() == playerId) {
-
-		            fowDataList.add(String.valueOf(
-		                CricketFunctions.OverBalls(0, inning.getSpells().get(i).getBalls()) + "," + String.valueOf(
-				                inning.getSpells().get(i).getMaidens()) + "," + String.valueOf(
-						                inning.getSpells().get(i).getRuns()) + "," + String.valueOf(
-								                inning.getSpells().get(i).getWickets())));
-
-		            fowNumberList.add(String.valueOf(
-		                inning.getSpells().get(i).getSpellNumber()));
+		            fowNumberList.add(String.valueOf(inning.getSpells().get(i).getSpellNumber()));
 		        }
 		    }
 		}
@@ -7027,7 +7021,7 @@ public class LowerThirdGfx
     				 whichcont = "Three";
     			 }else if(lowerThird.getStatsText().length == 4) {
     				 whichcont = "Four";
-    			 }else if(lowerThird.getStatsText().length == 5) {
+    			 }else if(lowerThird.getStatsText().length >= 5) {
     				 whichcont = "Five";
     			 }
     			 

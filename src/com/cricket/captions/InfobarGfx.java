@@ -7568,11 +7568,13 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$Select*FUNCTION*Omo*vis_con SET 10\0", print_writers);
 					
-					rem_runs = ((matchAllData.getMatch().getInning().get(0).getTotalRuns() - matchAllData.getSetup().getFollowOnThreshold()) + 1 );
-					rem_runs = rem_runs - matchAllData.getMatch().getInning().get(1).getTotalRuns();
+					rem_runs = CricketFunctions.getRemainingRunsToAvoidFollowOn(matchAllData);
+					
+					System.out.println(rem_runs);
+					
 					if(rem_runs > 0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
-								+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + matchAllData.getMatch().getInning().get(1).getBowling_team().getTeamName4() 
+								+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + matchAllData.getMatch().getInning().get(1).getBatting_team().getTeamName4() 
 								+ " NEED " + rem_runs + " RUN" + CricketFunctions.Plural(rem_runs).toUpperCase() + " TO AVOID FOLLOW ON" + "\0", print_writers);
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
