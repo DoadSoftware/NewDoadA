@@ -316,7 +316,7 @@ public class IndexController
 			
 			switch (select_broadcaster) {
 			case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
-			case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
+			case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20:
 				if(session_configuration.getPrimaryVariousOptions().contains(Constants.FULL_FRAMER)) {
 					this_scene.LoadScene("FULL-FRAMERS", print_writers, session_configuration);
 				}
@@ -325,6 +325,12 @@ public class IndexController
 				this_caption.this_fullFramesGfx.this_ALL_FF.getColor(session_configuration);
 				break;
 			}
+			
+//			switch (select_broadcaster) {
+//			case Constants.TEST_T20:
+//				this_caption.this_infobarGfx.
+//				break;
+//			}
 			
 			if(session_match.getMatch().getInning() != null) {
 				model.addAttribute("which_inning", session_match.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning()
@@ -448,7 +454,7 @@ public class IndexController
 			
 			switch (session_configuration.getBroadcaster()) {
 			case Constants.BCCI: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
-			case Constants.AFG_SERIES:
+			case Constants.AFG_SERIES: case Constants.TEST_T20:
 				if(show_speed == true) {
 					if (speedFile.exists()) {
 						long currentTimestamp = speedFile.lastModified();
@@ -461,7 +467,7 @@ public class IndexController
 					    if (Math.abs(speed_match_time_stamp - currentTimestamp) > 100) {
 					    	
 					    	switch (session_configuration.getBroadcaster()) {
-					    	case Constants.AFG_SERIES:
+					    	case Constants.AFG_SERIES: case Constants.TEST_T20:
 					    		if(this_caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 								}else if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty() 
 									&& !this_caption.this_infobarGfx.infobar.getSection5().equalsIgnoreCase("BOWLER") || this_animation.infobar.isInfobar_pushed()
@@ -795,7 +801,7 @@ public class IndexController
 				processAnimations(whatToProcess, session_configuration, valueToProcess, print_writers);
 			}else if(whatToProcess.contains("ANIMATE-OUT-SECOND_PLAYING")) {
 				switch (session_configuration.getBroadcaster()) {
-				case Constants.AFG_SERIES:
+				case Constants.AFG_SERIES: case Constants.TEST_T20:
 					if(this_animation.whichGraphicOnScreen.contains("Control_Shift_F7")) {
 						this_animation.lineUpCount++;
 						if(this_animation.lineUpCount > 2) {
@@ -855,7 +861,7 @@ public class IndexController
 	}
 	public void infobarAnimateOutAllSection(Configuration session_configuration, MatchAllData session_match, List<PrintWriter> print_writers) throws Exception {
 		switch(session_configuration.getBroadcaster()) {
-		case Constants.AFG_SERIES:
+		case Constants.AFG_SERIES: case Constants.TEST_T20:
 			if(this_caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !this_caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 				this_caption.PopulateGraphics("Alt_8,,BLANK", session_match);
 				this_animation.caption = this_caption;
@@ -989,7 +995,7 @@ public class IndexController
 				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_1")) {
 					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 					switch (session_configuration.getBroadcaster()) {
-					case Constants.AFG_SERIES:
+					case Constants.AFG_SERIES: case Constants.TEST_T20:
 						TimeUnit.MILLISECONDS.sleep(700);
 						break;
 					}
@@ -1019,7 +1025,7 @@ public class IndexController
 					case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 						TimeUnit.MILLISECONDS.sleep(300);
 						break;
-					case Constants.BAN_AFG_SERIES: case Constants.WCL:  case Constants.ACC: case Constants.AFG_SERIES:
+					case Constants.BAN_AFG_SERIES: case Constants.WCL:  case Constants.ACC: case Constants.AFG_SERIES: case Constants.TEST_T20:
 						TimeUnit.MILLISECONDS.sleep(700);
 						break;
 					}
@@ -1370,7 +1376,7 @@ public class IndexController
 	{
 		switch (config.getBroadcaster()) {
 		case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
-		case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
+		case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20:
 			switch (typeOfUpdate) {
 			case "START_DB":
 				session_performance_bug = cricketService.getPerformanceBugs();

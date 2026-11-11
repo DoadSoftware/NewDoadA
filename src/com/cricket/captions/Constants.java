@@ -142,5 +142,23 @@ public class Constants
 	public final static String TG20_PHOTO_PATH = "\\c\\Images\\TG20\\Photos\\";
 	
 	
-	
+	public final static String TEST_T20 = "TEST_T20";
+	public final static String TEST_T20_FLAGS = "IMAGE*/Default/Assets/Flags/";
+	public final static String TEST_T20_BADGES = "IMAGE*/Default/Assets/Logos/";
+	public final static String TEST_T20_LOGOS_BW = "IMAGE*/Default/Assets/Logos_BW/";
+	public final static String TEST_T20_BASE_Ident = "IMAGE*/Default/Essentials/Base/";
+	public final static String TEST_T20_RIGHTBASE = "IMAGE*/Default/Assets/RightBase/";
+	public final static String TEST_T20_SCOREBASE = "IMAGE*/Default/Assets/ScoreBase/";
+	public final static String TEST_T20_BASE1 = "IMAGE*/Default/Assets/Base1/";
+	public final static String TEST_T20_TEXT1 = "IMAGE*/Default/Assets/Text1/";
+	public final static String TEST_T20_BASE2 = "IMAGE*/Default/Assets/Base2/";
+	public final static String TEST_T20_TEXT2 = "IMAGE*/Default/Assets/Text2/";
+	public final static String TEST_T20_WEATHERICON = "IMAGE*/Default/Assets/WeatherIcons/";
+	public final static String TEST_T20_ICONS = "IMAGE*/Default/Assets/Icons/";
+	public final static String TEST_T20_SPONSOR = "IMAGE*/Default/Assets/Sponsors/";
+	public final static String TEST_T20_SPONSOR2 = "IMAGE*/CRICKET/Essentials/Spnsor/";
+	public final static String TEST_T20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\TEST_T20\\\\Photos\\\\";
+	public final static String TEST_T20_PHOTO_PATH = "\\c\\Images\\TEST_T20\\Photos\\";
+	public final static String TEST_T20_MANHATTAN1 = "IMAGE*/Default/Essentials/Manhattan1/";
+	public final static String TEST_T20_MANHATTAN2 = "IMAGE*/Default/Essentials/Manhattan2/";
 }

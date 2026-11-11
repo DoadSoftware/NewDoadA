@@ -34,6 +34,8 @@ public class Infobar {
 	private String infobar_status,infobar_photo,infobat_center_data;
 	private String BatsmanAndBowlOrSponsor;
 	
+	private String whichDay;
+	
 	private String section1;
 	private String Last_section1;
 	
@@ -388,6 +390,12 @@ public class Infobar {
 	}
 	public void setIdentContainer(String identContainer) {
 		this.identContainer = identContainer;
+	}
+	public String getWhichDay() {
+		return whichDay;
+	}
+	public void setWhichDay(String whichDay) {
+		this.whichDay = whichDay;
 	}
 	
 }

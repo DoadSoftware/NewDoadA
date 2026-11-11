@@ -389,7 +389,7 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					this_infobarGfx.infobar.setInfobar_ident_section(whatToProcess.split(",")[3]);
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES:
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES: case Constants.TEST_T20:
 					this_infobarGfx.infobar.setInfobar_ident_section(whatToProcess.split(",")[2]);
 					break;
 				}
@@ -401,7 +401,7 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					status = this_infobarGfx.infoIdentSection(print_writers, whatToProcess, matchAllData, 1,whichSide);
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES:
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES: case Constants.TEST_T20:
 					status = this_infobarGfx.infoIdentSection(print_writers, whatToProcess, matchAllData, whichSide,1);
 					break;
 				}
@@ -903,6 +903,16 @@ public class Caption
 				break;
 			case "Alt_7":
 				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					this_infobarGfx.infobar.setSection3(whatToProcess.split(",")[2]);
+					if(whatToProcess.split(",")[2].equalsIgnoreCase("LastXBalls")) {
+						this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
+					}else if(whatToProcess.split(",")[2].equalsIgnoreCase("REMAINING_OVERS_TEXT")) {
+						this_infobarGfx.RemainOvers = whatToProcess.split(",")[3];
+					}
+					
+					status = this_infobarGfx.populateSection3(print_writers, matchAllData, 1, whichSide);
+					break;
 				case Constants.AFG_SERIES:
 					this_infobarGfx.infobar.setSection3(whatToProcess.split(",")[2]);
 					if(whatToProcess.split(",")[2].equalsIgnoreCase("LastXBalls")) {
@@ -931,7 +941,7 @@ public class Caption
 			case "Alt_8":
 				switch(config.getBroadcaster()) {
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: 
-				case Constants.APLT20: case Constants.AFG_SERIES:
+				case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20:
 					
 					whichSide = ((this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 		            && !this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 
