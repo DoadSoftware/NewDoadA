@@ -15115,7 +15115,7 @@ public class ALL_FF
 				case "TEST": case "LIST A": case "FC": case "ODI": case "OD":
 					TitleData = new String[] {"MATCHES", "RUNS", "50s / 100s", "AVERAGE", "BEST"};
 					StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),stat.getFifties() + " / " + stat.getHundreds(),
-							CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 1, "-"),(stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())};
+							CricketFunctions.getAverage(stat.getInnings(), stat.getNotOut(), stat.getRuns(), 2, "-"),(stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())};
 					break;
 				default:
 					TitleData = new String[] {"MATCHES", "RUNS", "STRIKE RATE", "50s / 100s", "BEST"};

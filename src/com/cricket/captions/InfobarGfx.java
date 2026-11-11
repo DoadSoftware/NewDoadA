@@ -7557,7 +7557,9 @@ public class InfobarGfx
 					}
 					
 					if(inning.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)) {
-						remain_overs = (Integer.valueOf(matchAllData.getMatch().getMatchFinishTime().getMax_overs()) * 6) - over_bowled;
+						String maxOvers = matchAllData.getMatch().getMatchFinishTime().getMax_overs();
+						remain_overs = (Integer.parseInt(maxOvers.split("\\.")[0]) * 6) + 
+								(maxOvers.contains(".") ? Integer.parseInt(maxOvers.split("\\.")[1]) : 0) - over_bowled;
 					}
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
 							+ "$Side" + WhichSubSide + "$FreeText$txt_Head*GEOM*TEXT SET " + "OVERS REMAINING TODAY: " + CricketFunctions.OverBalls(0, remain_overs) + "\0", print_writers);
