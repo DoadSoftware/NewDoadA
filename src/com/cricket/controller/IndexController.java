@@ -89,6 +89,7 @@ public class IndexController
 	public static MatchAllData session_match;
 	public static String expiry_date = "2026-12-31";
 	public static String current_date;
+	public static String whichBase;
 	public static long last_match_time_stamp = 0;
 	public static Scene this_scene;
 	public static Caption this_caption;
@@ -314,6 +315,8 @@ public class IndexController
 			session_match.getMatch().setMatchStats(MatchStats);
 			GetVariousDBData("NEW", session_configuration);
 			
+			whichBase = "Day";
+			
 			switch (select_broadcaster) {
 			case Constants.BCCI: case Constants.TRI_SERIES: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SL_SERIES:
 			case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20:
@@ -323,6 +326,7 @@ public class IndexController
 				this_scene.LoadScene("OVERLAYS", print_writers, session_configuration);
 				this_animation.ResetAnimation("CLEAR-ALL", print_writers, session_configuration);
 				this_caption.this_fullFramesGfx.this_ALL_FF.getColor(session_configuration);
+				this_caption.this_lowerThirdGfx.PopulateL3rdBaseAndTextColor(whichBase);
 				break;
 			}
 			
@@ -393,6 +397,16 @@ public class IndexController
 			CricketFunctions.exportMatchData(session_match, CricketUtil.CRICKET_DIRECTORY);
 
 			return objectMapper.writeValueAsString(session_match).toString();
+		case "CHANGE-BASE-COLOR":
+			if(whichBase.equalsIgnoreCase("Day")) {
+				whichBase = "Night";
+			}else {
+				whichBase = "Day";
+			}
+			
+			this_caption.this_lowerThirdGfx.PopulateL3rdBaseAndTextColor(whichBase);
+
+			return objectMapper.writeValueAsString(whichBase).toString();
 		case "GET-CONFIG-DATA":
 			System.out.println("valueToProcess - " + valueToProcess);
 			session_configuration = (Configuration)JAXBContext.newInstance(Configuration.class).createUnmarshaller().unmarshal(

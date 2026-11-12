@@ -339,6 +339,10 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 		case '=':
 			processCricketProcedures('ANIMATE-OUT-SECOND_PLAYING');
 			break;
+		case 'Tab':
+			processCricketProcedures('CHANGE-BASE-COLOR');
+			break;
+			
 		case '1': case '2': case '3': case '4':
 			if(session_match.setup.maxOvers > 0 && session_match.setup.matchType !='TEST' ){
 				switch (dataToProcess) {
@@ -588,6 +592,9 @@ function processCricketProcedures(whatToProcess,dataToProcess)
 			switch(whatToProcess) {
 			case 'HEAD_TO_HEAD_FILE':
 				alert(data.match.matchFileName + ' H2H FILE IS CREATED');
+				break;
+			case 'CHANGE-BASE-COLOR':
+				alert(data + ' is selected');
 				break;
 			case 'GET-CONFIG-DATA':
 				initialiseForm('UPDATE-CONFIG',data);
