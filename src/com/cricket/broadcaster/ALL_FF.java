@@ -15047,7 +15047,7 @@ public class ALL_FF
 			case "m":
 				HomeTeam = matchAllData.getSetup().getHomeTeam();
 				AwayTeam = matchAllData.getSetup().getAwayTeam();
-				Footer = matchAllData.getSetup().getMatchIdent() + " | FROM " + matchAllData.getSetup().getVenueName();
+				Footer = "FROM " + matchAllData.getSetup().getVenueName();
 				break;
 			case "Control_m":
 				HomeTeam = fixture.getHome_Team();
@@ -15073,19 +15073,39 @@ public class ALL_FF
 				}
 				break;
 			}
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$Base1_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + HomeTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$Base1_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + AwayTeam.getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$Base2_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$Base2_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$Base1_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + HomeTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$Base1_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + AwayTeam.getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$Base2_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$Base2_In$img_Base1*TEXTURE*IMAGE SET " + 
+					Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
+			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_1$Logo_In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-					Constants.TEST_T20_LOGOS_BW + HomeTeam.getTeamBadge() + "\0", print_writers);
+					Constants.TEST_T20_BADGES + HomeTeam.getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$In$Team_2$Logo_In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-					Constants.TEST_T20_LOGOS_BW + AwayTeam.getTeamBadge() + "\0", print_writers);
+					Constants.TEST_T20_BADGES + AwayTeam.getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_1$Logo_In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-					Constants.TEST_T20_LOGOS_BW + HomeTeam.getTeamBadge() + "\0", print_writers);
+					Constants.TEST_T20_BADGES + HomeTeam.getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$WipeFinal$Out$Team_2$Logo_In$img_Logos_BW*TEXTURE*IMAGE SET " + 
-					Constants.TEST_T20_LOGOS_BW + AwayTeam.getTeamBadge() + "\0", print_writers);
+					Constants.TEST_T20_BADGES + AwayTeam.getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$img_LogoShadow*TEXTURE*IMAGE SET " + 
-					Constants.TEST_T20_LOGOS_BW + HomeTeam.getTeamBadge() + "\0", print_writers);
+					Constants.TEST_T20_BADGES + HomeTeam.getTeamBadge() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_2$img_LogoShadow*TEXTURE*IMAGE SET " + 
-					Constants.TEST_T20_LOGOS_BW + AwayTeam.getTeamBadge() + "\0", print_writers);
+					Constants.TEST_T20_BADGES + AwayTeam.getTeamBadge() + "\0", print_writers);
 			
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Ident$Main$TeamLogo$Team_1$Loop$img_Logo*TEXTURE*IMAGE SET " + 

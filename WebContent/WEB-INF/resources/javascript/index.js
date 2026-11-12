@@ -2622,7 +2622,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 				});
 				
 		        addOptionData1('SUPER_OVER', 'Super Over');
-
+				addOptionData1('FOLLOW_ON', 'Follow On');
+				
 		        select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
 		        row.insertCell(cellCount).appendChild(select);
 		        setDropdownOptionToSelectOptionArray($(select),0);

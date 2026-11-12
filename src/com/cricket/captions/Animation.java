@@ -418,12 +418,12 @@ public class Animation
 				
 			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7":
 				TimeUnit.MILLISECONDS.sleep(500);
-				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "START");
+				processAnimation(Constants.FRONT, print_writers, "Anim_Mini$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "Control_Shift_U": case "Control_Shift_V":
 				TimeUnit.MILLISECONDS.sleep(500);
-				processAnimation(Constants.FRONT, print_writers, "PopUp$In_Out", "START");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$InOut", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "r":
@@ -3414,17 +3414,17 @@ public class Animation
 			
 			//Mini
 			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2": case "Alt_F7":
-				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "CONTINUE");
+				processAnimation(Constants.FRONT, print_writers, "Anim_Mini$In_Out", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
-				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Anim_Mini$In_Out", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 				
 			//Pop-Up	
 			case "Control_Shift_U": case "Control_Shift_V":
-				processAnimation(Constants.FRONT, print_writers, "PopUp$In_Out", "CONTINUE");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$InOut", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
-				processAnimation(Constants.FRONT, print_writers, "PopUp$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$InOut", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 				
@@ -5189,10 +5189,10 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Anim_Review_Bug$Change", "START");
 				break;
 			case "Shift_F1": case "Shift_F2":
-				processAnimation(Constants.FRONT, print_writers, "Mini$Change", "START");
+				processAnimation(Constants.FRONT, print_writers, "Anim_MiniChange", "START");
 				break;
 			case "Control_Shift_U": case "Control_Shift_V":
-				processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "START");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$Change", "START");
 				break;
 			 case "Control_Shift_U_change_on": case "Control_Shift_V_change_on":
 				processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "START");
@@ -6586,19 +6586,19 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "Shift_F1": case "Shift_F2":
-				processAnimation(Constants.FRONT, print_writers, "Mini$Change", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Anim_MiniChange", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "Control_Shift_U": case "Control_Shift_V":
-				processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			 case "Control_Shift_U_change_on":
-				 processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "SHOW 0.0");
+				 processAnimation(Constants.FRONT, print_writers, "PopUps$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = "Control_Shift_U";
 				break;
 			 case "Control_Shift_V_change_on":
-				 processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "SHOW 0.0");
+				 processAnimation(Constants.FRONT, print_writers, "PopUps$Change", "SHOW 0.0");
 				this.whichGraphicOnScreen = "Control_Shift_V";
 				break;
 			 case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":
@@ -7820,7 +7820,7 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_Sponsor", "SHOW 0.0");
 				
-//				processAnimation(Constants.FRONT, print_writers, "Anim_Mini", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Anim_Mini", "SHOW 0.0");
 //				processAnimation(Constants.FRONT, print_writers, "Anim_MiniChange", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "PopUps", "SHOW 0.0");
@@ -9833,6 +9833,29 @@ public class Animation
 	public void processMiniPreview(String whatToProcess, List<PrintWriter> print_writer, int whichside, Configuration config, String whichGraphicOnScreen) throws InterruptedException {
 		if(config.getPreview().equalsIgnoreCase("WITH_PREVIEW")) {
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.TEST_T20:
+				if(whichside == 1) {
+					switch(whatToProcess.split(",")[0]) {
+					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7": case "Control_Alt_F3":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" 
+								+ "/Default/Overlays C:/Temp/Preview.tga Anim_Mini$In_Out 1.260 Anim_Mini$In_Out$In 1.240\0", print_writer);
+						
+						TimeUnit.MILLISECONDS.sleep(500);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" 
+								+ "/Default/Overlays C:/Temp/Preview.tga Anim_Mini$In_Out 1.260 Anim_Mini$In_Out$In 1.240\0", print_writer);
+						
+						break;
+					}
+				}else {
+					switch(whatToProcess.split(",")[0]) {
+					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" 
+								+ "/Default/Overlays C:/Temp/Preview.tga Anim_MiniChange$Change_Out 0.600 Anim_MiniChange$Change_In 1.800\0", print_writer);
+						
+						break;
+					}
+				}
+				break;
 			case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES:
 				if(whichside == 1) {
 					switch(whatToProcess.split(",")[0]) {
