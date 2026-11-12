@@ -331,13 +331,13 @@ public class Animation
 				
 			case "ArrowUp":
 				if(this.infobar.isInfobar_on_screen() == true && this.infobar.isInfobar_pushed()) {
-					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Scorebug_Push", "CONTINUE");
+					processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Push", "CONTINUE REVERSE");
 					this.infobar.setInfobar_pushed(false);
 				}
 				break;
 			case "ArrowDown":
 				if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
-					processAnimation(Constants.FRONT, print_writers, "anim_Scorebug$Scorebug_Push", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Push", "START");
 					this.infobar.setInfobar_pushed(true);
 					TimeUnit.MILLISECONDS.sleep(600);
 				}				
@@ -591,13 +591,7 @@ public class Animation
 //							+ "TRANSFORMATION*POSITION*Y SET -44.0\0",print_writers);
 //				}
 				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
-						TimeUnit.MILLISECONDS.sleep(1000);
-						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
-					}
-				}
+				AnimateIn("ArrowDown" + ",", print_writers, config); // Shrink infobar
 				processAnimation(Constants.FRONT, print_writers, "anim_Namesuper$InOut", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -671,13 +665,7 @@ public class Animation
 //					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y*"
 //							+ "TRANSFORMATION*POSITION*Y SET 0.0 \0",print_writers);
 //				}
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
-						TimeUnit.MILLISECONDS.sleep(1000);
-						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
-					}
-				}
+				AnimateIn("ArrowDown" + ",", print_writers, config); // Shrink infobar
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -694,13 +682,7 @@ public class Animation
 //							+ "TRANSFORMATION*POSITION*Y SET 0.0 \0",print_writers);
 //				}
 				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
-						TimeUnit.MILLISECONDS.sleep(1000);
-						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
-					}
-				}
+				AnimateIn("ArrowDown" + ",", print_writers, config); // Shrink infobar
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "START");
 				this.whichGraphicOnScreen = whatToProcess;
@@ -3553,13 +3535,7 @@ public class Animation
 			case "Alt_F8": case "F8": case "F10":
 				processAnimation(Constants.FRONT, print_writers, "anim_Namesuper$InOut", "CONTINUE");
 				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						TimeUnit.MILLISECONDS.sleep(1000);
-						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
-						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
-					}
-				}
+				AnimateIn("ArrowUp" + ",", print_writers, config); // Shrink infobar
 				
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "anim_Namesuper", "SHOW 0.0");
@@ -3616,14 +3592,8 @@ public class Animation
 			
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "CONTINUE");
 				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						TimeUnit.MILLISECONDS.sleep(1000);
-						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
-						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
-					}
-				}
 				TimeUnit.MILLISECONDS.sleep(1000);
+				AnimateIn("ArrowUp" + ",", print_writers, config);
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
@@ -3631,14 +3601,8 @@ public class Animation
 			case "u": case "Shift_F3":	case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
 			case "Control_Shift_X": case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "CONTINUE");
+				AnimateIn("ArrowUp" + ",", print_writers, config); // Shrink infobar
 				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						TimeUnit.MILLISECONDS.sleep(1000);
-						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
-						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
-					}
-				}
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
@@ -9348,18 +9312,18 @@ public class Animation
 				case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Alt_F8": case "F8": case "F10":
-						previewCommand = "Shrink$InOut 0.400 anim_Namesuper$InOut 1.200 anim_Namesuper$InOut$Essentials$In 0.900 "
+						previewCommand = "anim_Infobar$Push 1.000 anim_Namesuper$InOut 1.200 anim_Namesuper$InOut$Essentials$In 0.900 "
 								+ "anim_Namesuper$InOut$Logo$In 1.000 anim_Namesuper$InOut$Colour$In 1.200";
 						break;
 					case "Control_F5": case "Control_F9": case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3": case "Alt_d": case "Alt_f":
-						previewCommand = "Shrink$InOut 0.400 anim_Lower_Third$InOut 1.500 anim_Lower_Third$InOut$Essentials$In 1.300 "
+						previewCommand = "anim_Infobar$Push 1.000 anim_Lower_Third$InOut 1.500 anim_Lower_Third$InOut$Essentials$In 1.300 "
 								+ "anim_Lower_Third$InOut$Logo$In 1.500";
 						break;
 
 					case "F7": case "F11": case "Control_s": case "Control_f": case "F5": case "F6": case "Control_F6": case "Shift_F6": case "u": 
 					case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a": case "Control_Shift_Q": 
 					case "Control_Shift_X": case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12":
-						previewCommand = "Shrink$InOut 0.400 anim_Lower_Third$InOut 1.500 anim_Lower_Third$InOut$Essentials$In 1.300 "
+						previewCommand = "anim_Infobar$Push 1.000 anim_Lower_Third$InOut 1.500 anim_Lower_Third$InOut$Essentials$In 1.300 "
 								+ "anim_Lower_Third$InOut$Logo$In 1.500";
 						break;
 					}
