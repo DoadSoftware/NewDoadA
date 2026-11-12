@@ -2584,7 +2584,51 @@ function addItemsToList(whatToProcess,dataToProcess)
 		
 		case 'Alt_1':
 			switch($('#selected_broadcaster').val().toUpperCase()){
-			case 'AFG_SERIES': case 'TEST_T20':
+			case 'TEST_T20':
+				header_text.innerHTML = 'INFOBAR - LEFT BOTTOM';
+						    
+		        select = document.createElement('select');
+		        select.id = 'selectLeftBottom';
+		        select.name = select.id;
+
+		        const addOptionData1 = (value, text) => {
+		            let option = document.createElement('option');
+		            option.value = value;
+		            option.text = text;
+		            select.appendChild(option);
+		        };
+				
+		        addOptionData1('CRR', 'Run Rate');
+				addOptionData1('CURR_PARTNERSHIP', 'Partnership');
+				addOptionData1('IDENT', 'Ident');
+
+				session_match.match.inning.forEach(function(inn){
+				    if(inn.isCurrentInning === 'YES'){
+				        if(inn.inningNumber === 1){
+				            addOptionData1('TOSS', 'Toss');
+				        } else if(inn.inningNumber === 2){
+							addOptionData1('INNING1_SCORE', 'Inning 1 Score');
+				            addOptionData1('EQUATION', 'Equation (Trail/Lead)');
+				        } else if(inn.inningNumber === 3){
+							addOptionData1('HIS_HER_SCORE', 'His Her Score');
+						    addOptionData1('EQUATION', 'Equation (Trail/Lead)');
+							addOptionData1('EQUATION_BALL', 'Equation Ball');
+						}else if(inn.inningNumber === 4){
+							addOptionData1('HIS_HER_SCORE', 'His Her Score');
+							addOptionData1('EQUATION', 'Equation Bat');
+							addOptionData1('EQUATION_BALL', 'Equation Ball');
+				        }
+				    }
+				});
+				
+		        addOptionData1('SUPER_OVER', 'Super Over');
+
+		        select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+		        row.insertCell(cellCount).appendChild(select);
+		        setDropdownOptionToSelectOptionArray($(select),0);
+		        cellCount++;
+		        break;	
+			case 'AFG_SERIES':
 				header_text.innerHTML = 'INFOBAR - MIDDLE BOTTOM';
 						    
 		        select = document.createElement('select');
@@ -3722,6 +3766,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 						{ value: 'STUMPS', text: 'Stump Text' },
 					];*/
 
+					const testT20MatchOptions = [
+						];
 					const matchOptions1 = [
 						{ value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
 						{ value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },

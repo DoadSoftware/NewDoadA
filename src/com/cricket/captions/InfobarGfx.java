@@ -1057,33 +1057,33 @@ public class InfobarGfx
 			
 			switch(whatToProcess.split(",")[3].toUpperCase()) {
 			case "DAY":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team1$TeamNameGrp$img_Base1*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team1$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team2$TeamNameGrp$img_Base1*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team2$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$BaseAll$img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$img_Base2*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 				break;
 			case "NIGHT":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team1$TeamNameGrp$img_Base1*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team1$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team2$TeamNameGrp$img_Base1*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team2$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$BaseAll$img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$img_Base2*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
@@ -1331,11 +1331,11 @@ public class InfobarGfx
 			
 			switch(whatToProcess.split(",")[3].toUpperCase()) {
 			case "DAY":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				break;
 			case "NIGHT":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Base*TEXTURE*IMAGE SET " 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$TopPartPart$Text$Side" + WhichSide + "$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				break;
 			}
@@ -2022,6 +2022,7 @@ public class InfobarGfx
 				this.infobar.setSection1(whatToProcess.split(",")[2]);
 				this.infobar.setSection5(whatToProcess.split(",")[3]);
 				this.infobar.setSection3("IDENT");
+				this.infobar.setSection2("TOSS");
 				
 				populatePowerPlay(print_writers, matchAllData);
 				populateSection1(print_writers, matchAllData, 1);
@@ -2727,14 +2728,14 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BaseAll$img_Base2*TEXTURE*IMAGE SET " 
 							+ Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$TeamName$img_Base1*TEXTURE*IMAGE SET " 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$TeamName$Img_Text1*TEXTURE*IMAGE SET " 
 							+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$Select_Ball"
 							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$img_Base2"
 							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info2_Gpr$img_Base1"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info2_Gpr$Img_Text1"
 							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$ScoreBase$img_ScoreBase"
@@ -2744,16 +2745,34 @@ public class InfobarGfx
 							+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$OversAll$PowerPlay$img_Text1*TEXTURE*IMAGE SET " + 
-							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$img_Text1*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_TEXT1 + "Night" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$img_Text1*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_TEXT1 + "Night" + "\0", print_writers);
 					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$FreeText$Img_Text1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_TEXT1 + "Night" + "\0", print_writers);
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$img_RightBase*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_RIGHTBASE + "Day" + "\0", print_writers);
 					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$DisruptiveData$img_Text1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$DisruptiveData$txt_Text*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					break;
 				case "NIGHT":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
@@ -2761,14 +2780,14 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$BaseAll$img_Base2*TEXTURE*IMAGE SET " 
 							+ Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$TeamName$img_Base1*TEXTURE*IMAGE SET " 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$TeamName$Img_Text1*TEXTURE*IMAGE SET " 
 							+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$Select_Ball"
 							+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$img_Base2"
 							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info2_Gpr$img_Base1"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info2_Gpr$Img_Text1"
 							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$ScoreBase$img_ScoreBase"
@@ -2779,13 +2798,33 @@ public class InfobarGfx
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$OversAll$PowerPlay$img_Text1*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$img_Text1*TEXTURE*IMAGE SET " + 
-							Constants.TEST_T20_TEXT1 + "Night" + "\0", print_writers);
+							Constants.TEST_T20_TEXT1 + "Day" + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$img_Text1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_TEXT1 + "Day" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$FreeText$Img_Text1*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_TEXT1 + "Night" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$img_RightBase*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_RIGHTBASE + "Night" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$DisruptiveData$img_Text1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$DisruptiveData$txt_Text*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 					break;
 				}
 				
@@ -3825,26 +3864,30 @@ public class InfobarGfx
 		switch(config.getBroadcaster()) {
 		case Constants.TEST_T20:
 			//High
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$BatsmanInfo" 
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$BatsmanInfo" 
 					+ "$txt_Name*GEOM*TEXT SET " + battingCardList.get(WhichBatsman-1).getPlayer().getTicker_name() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$BatsmanInfo" 
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$BatsmanInfo" 
 					+ "$txt_Runs*GEOM*TEXT SET " + battingCardList.get(WhichBatsman-1).getRuns() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$BatsmanInfo" 
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$BatsmanInfo" 
 					+ "$txt_Balls*GEOM*TEXT SET " + battingCardList.get(WhichBatsman-1).getBalls() + "\0", print_writers);
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$BatsmanInfo$BottomInfo" 
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$BatsmanInfo$BottomInfo" 
 					+ "$img_Flag*TEXTURE*IMAGE SET " + Constants.TEST_T20_FLAGS + battingCardList.get(WhichBatsman-1).getPlayer().getNationality() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$BatsmanInfo$BottomInfo" 
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$BatsmanInfo$BottomInfo" 
 					+ "$txt_Info*GEOM*TEXT SET \0", print_writers);
 			
 			switch(this.infobar.getWhichDay().toUpperCase()) {
 			case "DAY":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$BatsmanInfo" 
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side1$BatsmanInfo" 
+						+ "$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side2$BatsmanInfo" 
+						+ "$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				break;
 			case "NIGHT":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$BatsmanInfo" 
-						+ "$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side1$BatsmanInfo" 
+						+ "$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side2$BatsmanInfo" 
+						+ "$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				break;	
 			}
 			
@@ -3853,20 +3896,20 @@ public class InfobarGfx
 					
 					switch(this.infobar.getWhichDay().toUpperCase()) {
 					case "DAY":
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$Onstrike" 
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$Onstrike" 
 								+ "$Select_Strike*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 						break;
 					case "NIGHT":
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$Onstrike" 
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$Onstrike" 
 								+ "$Select_Strike*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 						break;	
 					}
 				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$Onstrike" 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$Onstrike" 
 							+ "$Select_Strike*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				}
 			}else {
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSide + "$Onstrike" 
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Center_Section$Batsman" + WhichBatsman + "$Side" + WhichSubSide + "$Onstrike" 
 						+ "$Select_Strike*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 			}
 			
@@ -4541,29 +4584,33 @@ public class InfobarGfx
 				
 				switch(this.infobar.getWhichDay().toUpperCase()) {
 				case "DAY":
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSide + "$BowlerInfo$img_Base1"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side1$BowlerInfo$Img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side2$BowlerInfo$Img_Text1"
 							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 					break;
 				case "NIGHT":
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSide + "$BowlerInfo$img_Base1"
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side1$BowlerInfo$Img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side2$BowlerInfo$Img_Text1"
 							+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSide + "$txt_Name"
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSubSide + "$txt_Name"
 						+ "*GEOM*TEXT SET " + bowlingCard.getPlayer().getTicker_name() + "\0", print_writers);
 //				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + whichSide + "$Bowler_Top_Bottom$Bowler_Grp$Side" 
 //						+ whichSubSide + "_Bowler$DeHigh$txt_PlayerName*GEOM*TEXT SET " + bowlingCard.getPlayer().getTicker_name() + "\0", print_writers);
 			}
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSide + "$txt_Runs"
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSubSide + "$txt_Runs"
 					+ "*GEOM*TEXT SET " + bowlingCard.getWickets() + "-" + bowlingCard.getRuns() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSide + "$txt_Balls"
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSubSide + "$txt_Balls"
 					+ "*GEOM*TEXT SET " + CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()) + "\0", print_writers);
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSide + "$BottomInfo$img_Flag"
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSubSide + "$BottomInfo$img_Flag"
 					+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_FLAGS + bowlingCard.getPlayer().getNationality() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSide + "$BottomInfo$txt_Info"
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Bowler_Section$Side" + whichSubSide + "$BottomInfo$txt_Info"
 					+ "*GEOM*TEXT SET " + "" + "\0", print_writers);
 			
 			if(bowlingCard.getStatus().equalsIgnoreCase(CricketUtil.CURRENT + CricketUtil.BOWLER)) {
@@ -7364,6 +7411,160 @@ public class InfobarGfx
 	}
 	public String populateSection2(List<PrintWriter> print_writers, MatchAllData matchAllData,int WhichSide) {
 		switch(config.getBroadcaster()) {
+		case Constants.TEST_T20:
+			if(infobar.getSection2() != null && !infobar.getSection2().isEmpty()) {
+				
+				switch(this.infobar.getWhichDay().toUpperCase()) {
+				case "DAY":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT1 + "Night" + "\0", print_writers);
+					break;
+				case "NIGHT":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT1 + "Night" + "\0", print_writers);
+					break;	
+				}
+				
+				switch(infobar.getSection2().toUpperCase()) {
+				case "INNING1_SCORE":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$FreeText$txt_Score*GEOM*TEXT SET " + 
+							matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamName4() + ": " + CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "/", false) + "\0", print_writers);
+					break;
+				case "HIS_HER_SCORE":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					if(inning.getInningNumber() == 3) {
+						if(matchAllData.getMatch().getInning().get(0).getBattingTeamId() == matchAllData.getMatch().getInning().get(2).getBattingTeamId()) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "/", false) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(2), "/", false) + "\0", print_writers);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(1), "/", false) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(2), "/", false) + "\0", print_writers);
+						}
+						
+						if(matchAllData.getSetup().getPlayerGender().equalsIgnoreCase("GIRL")) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+						}
+					}else if(inning.getInningNumber() == 4) {
+						if(matchAllData.getMatch().getInning().get(0).getBattingTeamId() == matchAllData.getMatch().getInning().get(3).getBattingTeamId()) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "/", false) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(3), "/", false) + "\0", print_writers);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(1), "/", false) + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
+									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(3), "/", false) + "\0", print_writers);
+						}
+						
+						if(matchAllData.getSetup().getPlayerGender().equalsIgnoreCase("GIRL")) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+						}
+					}
+					break;
+				case "IDENT":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$txt_Score*GEOM*TEXT SET " + matchAllData.getSetup().getMatchIdent() + "\0", print_writers);
+					break;
+				case "SUPER_OVER":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$txt_Score*GEOM*TEXT SET " + "SUPER OVER" + "\0", print_writers);
+					break;
+				case "TOSS":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$txt_Score*GEOM*TEXT SET " + "TOSS: " + CricketFunctions.generateTossResult(matchAllData, CricketUtil.FULL, CricketUtil.FIELD, CricketUtil.SHORT, 
+									CricketUtil.CHOSE).replace(" won the toss & ", " ").toUpperCase() + "\0", print_writers);
+					break;
+				case "RRR":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$txt_Score*GEOM*TEXT SET " + "REQUIRED RUN RATE: " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns(), 0, 
+									CricketFunctions.GetTargetData(matchAllData).getRemaningBall(),2,matchAllData) + "\0", print_writers);
+					break;
+				case "TARGET":
+					if(!matchAllData.getMatch().getInning().get(1).getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)&&
+							!matchAllData.getMatch().getInning().get(3).getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)) {
+						return "populateVizInfobarLeftBottom: Target available in 2nd inning only";
+					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$txt_Score*GEOM*TEXT SET " + "TARGET: " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + (matchAllData.getSetup().getTargetType() != null && 
+							!matchAllData.getSetup().getTargetType().isEmpty() ? " (" + matchAllData.getSetup().getTargetType().toUpperCase() + ")" : "") + "\0", print_writers);
+					break;
+				case "EQUATION_BALL":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "$FreeText$txt_Score*GEOM*TEXT SET " + inning.getBowling_team().getTeamName4() + " NEED " + CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber()) + 
+							"WKT" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber())).toUpperCase()
+							+ " TO WIN" + "\0", print_writers);
+					break;
+				case "EQUATION":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					if(inning.getInningNumber() == 2) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+								+ "$FreeText$txt_Score*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
+										false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+					}else if(inning.getInningNumber() == 3) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+								+ "$FreeText$txt_Score*GEOM*TEXT SET " + CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.SHORT, "", "", 
+										false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+					}else if(inning.getInningNumber() == 4) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+								+ "$FreeText$txt_Score*GEOM*TEXT SET " + inning.getBatting_team().getTeamName4() + " NEED " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + 
+								"RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() 
+								+ " TO WIN" + "\0", print_writers);
+					}
+					break;
+				case "CURR_PARTNERSHIP": case "CRR":
+					inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+					if(inning == null) {
+						return "populateVizInfobarMiddleSection: Inning returned is NULL";
+					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+							+ "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					
+					switch(infobar.getSection1().toUpperCase()) {
+					case "CRR":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+								+ "$FreeText$txt_Score*GEOM*TEXT SET " + "CURRENT RUN RATE: " + 
+								CricketFunctions.generateRunRate(inning.getTotalRuns(),inning.getTotalOvers(), inning.getTotalBalls(), 2,matchAllData) + "\0", print_writers);
+						break;	
+					case "CURR_PARTNERSHIP":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info"
+								+ "$FreeText$txt_Score*GEOM*TEXT SET " + "CURR P'SHIP: " + inning.getPartnerships().get(inning.getPartnerships().size()-1).getTotalRuns() + "*(" + 
+								inning.getPartnerships().get(inning.getPartnerships().size()-1).getTotalBalls() + ")\0", print_writers);
+						break;
+					}
+					break;	
+				}
+			}
+			break;
 		case Constants.AFG_SL_SERIES:
 			if(infobar.getSection2() != null && !infobar.getSection2().isEmpty()) {
 				switch(infobar.getSection2().toUpperCase()) {
@@ -7940,35 +8141,35 @@ public class InfobarGfx
 			switch(this.infobar.getWhichDay().toUpperCase()) {
 			case "DAY":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$TopInfo_Grp$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+						+ "$Style1$TopInfo_Grp$Img_Text3*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$BottomInfo_Grp$First$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+						+ "$Style1$BottomInfo_Grp$First$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$BottomInfo_Grp$Second$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+						+ "$Style1$BottomInfo_Grp$Second$Img_Text3*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$BottomInfo_Grp$Third$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+						+ "$Style1$BottomInfo_Grp$Third$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style3$TopInfo_Grp$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+						+ "$Style3$TopInfo_Grp$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$This_Over$TopInfo_Grp$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+						+ "$This_Over$TopInfo_Grp$Img_Text3*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 				break;
 			case "NIGHT":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$TopInfo_Grp$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+						+ "$Style1$TopInfo_Grp$Img_Text3*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$BottomInfo_Grp$First$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+						+ "$Style1$BottomInfo_Grp$First$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$BottomInfo_Grp$Second$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+						+ "$Style1$BottomInfo_Grp$Second$Img_Text3*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style1$BottomInfo_Grp$Third$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+						+ "$Style1$BottomInfo_Grp$Third$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$Style3$TopInfo_Grp$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+						+ "$Style3$TopInfo_Grp$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-						+ "$This_Over$TopInfo_Grp$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+						+ "$This_Over$TopInfo_Grp$Img_Text3*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 				break;	
 			}
 			
@@ -8312,41 +8513,41 @@ public class InfobarGfx
 							switch(this.infobar.getWhichDay().toUpperCase()) {
 							case "DAY":
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Empty$img_Bas1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 								
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$img_Bas1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$Data$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$Data$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 								
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
 										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Boundaries$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Boundaries$Data$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Boundaries$Data$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 								
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
 										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Wicket$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Wicket$Data$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Wicket$Data$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 								break;
 							case "NIGHT":
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Empty$img_Bas1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 								
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$img_Bas1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$Data$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Runs$Data$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 								
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
 										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Boundaries$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Boundaries$Data$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Boundaries$Data$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 								
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
 										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Wicket$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Wicket$Data$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+										+ "$This_Over$BottomInfo_Grp$Ball_" + (iBall+1) + "$Wicket$Data$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 								break;	
 							}
 							
@@ -12119,6 +12320,31 @@ public class InfobarGfx
 	public String populateSectionAnalyticsAfgSeries(boolean is_this_updating, List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws JsonMappingException, JsonProcessingException, InterruptedException {
 		
 		if(infobar.getSectionAnalytics() != null && !infobar.getSectionAnalytics().isEmpty()) {
+			switch(config.getBroadcaster()) {
+			case Constants.TEST_T20:
+				switch(this.infobar.getWhichDay().toUpperCase()) {
+				case "DAY":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$Img_Text1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					break;
+				case "NIGHT":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$Img_Text1*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+					break;	
+				}
+				break;
+			}
+			
 			switch(infobar.getSectionAnalytics().toUpperCase()) {
 			case "IDENT":
 				switch(config.getBroadcaster()) {
@@ -12147,7 +12373,7 @@ public class InfobarGfx
 				switch(config.getBroadcaster()) {
 				case Constants.TEST_T20:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$1_Line_Text$txt_Title*GEOM*TEXT SET " + freeText + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$1_Line_Text$txt_Title*GEOM*TEXT SET " + freeText.split(",")[3] + "\0", print_writers);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Select_Center_Big_data*FUNCTION*Omo*vis_con SET 1\0", print_writers);
@@ -13485,7 +13711,54 @@ public class InfobarGfx
 						if(i == 22) {
 							i = i+1;
 						}
-						if(iBall <= 28) {
+						if(iBall <= 25) {
+							
+							switch(config.getBroadcaster()) {
+							case Constants.TEST_T20:
+								switch(this.infobar.getWhichDay().toUpperCase()) {
+								case "DAY":
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+									
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Runs$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Runs$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+									
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Boundaries$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Boundaries$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+									
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Wicket$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Wicket$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+									break;
+								case "NIGHT":
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+									
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Runs$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Runs$Img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+									
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Boundaries$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Boundaries$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+									
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Wicket$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
+											+ "$Wicket$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+									break;	
+								}
+								break;
+							}
+							
+							
 							switch (elementss[iBall].toUpperCase()) {
 							case "|":
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$TimeLine$Ball_"

@@ -82,7 +82,7 @@ public class Animation
 			break;
 		case Constants.TEST_T20:
 			switch (whatToProcess.split(",")[0]) {
-			case "Control_F12": case "Shift_F12":
+			case "Control_F12": case "Shift_F12": case "Alt_e":
 			case "Alt_1": case "Alt_3": case "Alt_4": case "Alt_5": case "Alt_7": case "Alt_8": case "Control_2": case "Control_1":
 				return Constants.INFO_BAR;
 			case "m": case "Control_d": case "Control_e": case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K":
@@ -251,9 +251,17 @@ public class Animation
 				break;
 				
 			case "i":
+				
 				if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
-					processAnimation(Constants.FRONT, print_writers, "anim_Infobar$FreeHit_Animation", "START");
+					if(infobar.isFreeHit_on_screen() == false) {
+						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$FreeHit_Animation", "START");
+						infobar.setFreeHit_on_screen(true);
+					}else if(infobar.isFreeHit_on_screen() == true) {
+						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$FreeHit_Animation", "CONTINUE");
+						infobar.setFreeHit_on_screen(false);
+					}
 				}
+				
 				break;
 				
 			case "6": case "Control_4": case "5": case ";":

@@ -8,7 +8,7 @@
 
     <groupId>NewDoadA</groupId>
     <artifactId>NewDoadA</artifactId>
-    <version>1.252</version>
+    <version>1.253</version>
     <packaging>war</packaging>
     <name>NewDoadA</name>
 
@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.cricket</groupId>
             <artifactId>NewCricketLibrary</artifactId>
-            <version>4.44</version>
+            <version>4.45</version>
         </dependency>
 
         <!-- JSoup -->

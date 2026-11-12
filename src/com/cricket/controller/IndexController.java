@@ -811,7 +811,6 @@ public class IndexController
 						return objectMapper.writeValueAsString(this_animation).toString();
 					}
 				}
-				
 				processAnimations(whatToProcess, session_configuration, valueToProcess, print_writers);
 			}else if(whatToProcess.contains("ANIMATE-OUT-SECOND_PLAYING")) {
 				switch (session_configuration.getBroadcaster()) {

@@ -685,6 +685,14 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					status = this_infobarGfx.populateSection1(print_writers, matchAllData, whichSide);
 					break;
+				case Constants.TEST_T20:
+					whichSide = (this_infobarGfx.infobar.getSection2() != null && !this_infobarGfx.infobar.getSection2().isEmpty() 
+		            	&& !this_infobarGfx.infobar.getSection2().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 1;
+					
+					this_infobarGfx.infobar.setSection2(whatToProcess.split(",")[2]);
+					
+					status = this_infobarGfx.populateSection2(print_writers, matchAllData, whichSide);
+					break;
 				case Constants.AFG_SERIES:
 					status = this_infobarGfx.populateSection1(print_writers, matchAllData, whichSide);
 					break;
