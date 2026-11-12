@@ -265,23 +265,50 @@ public class Animation
 				break;
 				
 			case "6": case "Control_4": case "5": case ";":
-				processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$InOut", "START");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$InOut", "START");
 				TimeUnit.MILLISECONDS.sleep(1700);
 				this.whichGraphicOnScreen = whatToProcess;
-				if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
-						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[1])) {
-					processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$Change_Sixes$Hundreds", "START");
-					processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$Change_Sixes$Tens", "START");
-					processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$Change_Sixes$Units", "START");
-				}
-				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[2].
-						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[2])) {
-					processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$Change_Sixes$Tens", "START");
-					processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$Change_Sixes$Units", "START");
-				}
-				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[3].
-						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[3])) {
-					processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$Change_Sixes$Units", "START");
+				switch(config.getBroadcaster()) {
+				case Constants.TEST_T20:
+					if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[0].
+							equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[0])) {
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Director", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Hundreds", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Tens", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Units", "START");
+					}else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
+							equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[1])) {
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Hundreds", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Tens", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Units", "START");
+					}
+					else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[2].
+							equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[2])) {
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Tens", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Units", "START");
+					}
+					else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[3].
+							equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[3])) {
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Units", "START");
+					}
+					break;
+				default:
+					if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[0].
+							equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[0])) {
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Hundreds", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Tens", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Units", "START");
+					}
+					else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
+							equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[1])) {
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Tens", "START");
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Units", "START");
+					}
+					else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[2].
+							equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[2])) {
+						processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes$Units", "START");
+					}
+					break;
 				}
 				break;
 				
@@ -411,11 +438,11 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 		
-			case "y": case "g": case "Control_k": case "Shift_F4": case "k": case "Control_y": case "h": case "Shift_O": 
-			case "Shift_F": case "Control_Shift_F3": case "Control_Shift_R": case "Shift_C": case "Alt_p": case "Alt_b":
+			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
+			case "Control_Shift_R": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J": case "Alt_p":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
-				TimeUnit.MILLISECONDS.sleep(300);
-				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "START");
+				TimeUnit.MILLISECONDS.sleep(500);
+				processAnimation(Constants.FRONT, print_writers, "anim__Bug", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 //			case "Shift_C":
@@ -3385,11 +3412,11 @@ public class Animation
 				break;
 				
 			case "6": case "Control_4": case "5": case ";":
-				processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$InOut", "CONTINUE");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$InOut", "CONTINUE");
 				this.whichGraphicOnScreen = "";
 				TimeUnit.MILLISECONDS.sleep(1000);
-				processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes$Change_Sixes", "SHOW 0.0");
-				processAnimation(Constants.FRONT, print_writers, "Tournament_Sixes", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$Change_Sixes", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "PopUps", "SHOW 0.0");
 				break;
 				
 			case "7":
@@ -3434,11 +3461,12 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 				
-			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":
-			case "Control_Shift_R": case "Control_Shift_F3": case "Shift_C": case "Alt_p": case "Alt_b":
-				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "CONTINUE");
+			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
+			case "Control_Shift_R": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J": case "Alt_p":
+				processAnimation(Constants.FRONT, print_writers, "anim__Bug", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
-				processAnimation(Constants.FRONT, print_writers, "Bugs$In_Out", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim__Bug", "SHOW 0.0");
+				AnimateIn("ArrowUp,", print_writers, config);
 				this.whichGraphicOnScreen = "";
 				break;
 			//LT
@@ -9732,7 +9760,7 @@ public class Animation
 						break;	
 					}
 					break;
-				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
 					case ".": case "/": case "Shift_C": case "Control_Shift_R": case "Control_Shift_F3": case "Control_Shift_J": case "o": case "t":

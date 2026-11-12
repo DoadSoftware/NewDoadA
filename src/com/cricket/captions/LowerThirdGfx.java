@@ -11280,6 +11280,57 @@ public class LowerThirdGfx
 				+ Constants.TEST_T20_RIGHTBASE + whichBase +"\0", print_writers);
     	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$img_Text1*TEXTURE*IMAGE SET " 
 				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+    	
+    	//BUG
+    	for(int i=1;i<=2;i++) {
+    		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Single$BandsAll$img_Base1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE1 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Single$BandsAll$img_Base2*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE2 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Single$DataGrpAll$img_Text1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+        	
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Target$BandsAll$img_Base1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE1 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Target$BandsAll$img_Base2*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE2 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Target$DataGrpAll$img_Text1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+        	
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Split$BandsAll$img_Base1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE1 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Split$BandsAll$img_Base2*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE2 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Split$DataGrpAll$img_Text1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+        	
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Double$BandsAll$img_Base1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE1 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Double$BandsAll$img_Base2*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE2 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$Double$DataGrpAll$img_Text1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+        	
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$PowerPlayBug$BandsAll$img_Base1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE1 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$PowerPlayBug$BandsAll$img_Base2*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE2 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + i + "$PowerPlayBug$DataGrpAll$img_Text1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+        	
+        	//POPUPS
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_RightBase*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_RIGHTBASE + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$band$img_Text1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$base$img_Base1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE1 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$base$img_Base2*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_BASE2 + whichBase +"\0", print_writers);
+        	CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$Tournament_Sixes$Data$img_Text1*TEXTURE*IMAGE SET " 
+    				+ Constants.TEST_T20_TEXT1 + whichBase +"\0", print_writers);
+        	
+    	}
 	}
 
 	private void PopulateL3rdBaseColor(String whatToProcess, int whichSide) {
