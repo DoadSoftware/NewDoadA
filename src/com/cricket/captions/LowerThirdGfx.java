@@ -3738,7 +3738,12 @@ public class LowerThirdGfx
 			switch (config.getBroadcaster().toUpperCase()) {
 			
 			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.AFG_SERIES: case Constants.ACC: 
-			case Constants.TG20: case Constants.APLT20: case Constants.TEST_T20:
+			case Constants.TG20: case Constants.APLT20:
+				lowerThird = new LowerThird("FALL OF WICKETS", inning.getBatting_team().getTeamName1(), "",CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()), 
+						String.valueOf(inning.getTotalRuns()), String.valueOf(inning.getTotalWickets()),2,"",inning.getBatting_team().getTeamBadge(),fowNumber,fowData,
+						new String[]{"WICKETS","SCORE"},null,new String[] {"-136","-105","-69","-32","4","42","78","115","149","184"});
+				break;
+			case Constants.TEST_T20:
 				lowerThird = new LowerThird("FALL OF WICKETS", inning.getBatting_team().getTeamName1(), "",CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()), 
 						String.valueOf(inning.getTotalRuns()), String.valueOf(inning.getTotalWickets()),2,"",inning.getBatting_team().getTeamBadge(),fowNumber,fowData,
 						new String[]{"WICKETS","SCORE"},null,new String[] {"-175","-140","-105","-70","-35","0","35","70","105","140"});
@@ -17192,6 +17197,16 @@ public class LowerThirdGfx
 						"$select_Subline$1$Left*TRANSFORMATION*POSITION*X SET -190 \0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
 						"$select_Subline$1$Right*TRANSFORMATION*POSITION*X SET 190 \0", print_writers);
+				break;
+			case Constants.TEST_T20:
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+						"$select_Subline$1$Left*TRANSFORMATION*POSITION*X SET -30 \0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+						"$select_Subline$2$Left*TRANSFORMATION*POSITION*X SET -30 \0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+						"$select_Subline$3$Left*TRANSFORMATION*POSITION*X SET -30 \0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+						"$select_Subline$4$Left*TRANSFORMATION*POSITION*X SET -30 \0", print_writers);
 				break;
 			}
 			
