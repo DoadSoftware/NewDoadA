@@ -772,7 +772,7 @@ public class LowerThirdGfx
 		status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
 		if(status == Constants.OK) {
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.TEST_T20:
 				PopulateL3rdBaseColor(whatToProcess.split(",")[0], WhichSide);
 				HideAndShowL3rdSubStrapContainers(WhichSide);
 				setPositionOfLT(whatToProcess,WhichSide,config,lowerThird.getNumberOfSubLines());
@@ -850,7 +850,7 @@ public class LowerThirdGfx
 		status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
 		if(status == Constants.OK) {
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.TEST_T20:
 				PopulateL3rdBaseColor(whatToProcess.split(",")[0], WhichSide);
 				HideAndShowL3rdSubStrapContainers(WhichSide);
 				setPositionOfLT(whatToProcess,WhichSide,config,lowerThird.getNumberOfSubLines());
@@ -17186,10 +17186,14 @@ public class LowerThirdGfx
 						+ "$select_Subline$2$Stat$txt_" + (i+1) + "*FUNCTION*Maxsize*DEFAULT_SCALE_X SET 0.33 \0", print_writers);
 			}
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
-					"$select_Subline$1$Left*TRANSFORMATION*POSITION*X SET -190 \0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
-					"$select_Subline$1$Right*TRANSFORMATION*POSITION*X SET 190 \0", print_writers);
+			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20:
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+						"$select_Subline$1$Left*TRANSFORMATION*POSITION*X SET -190 \0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side" + WhichSide +
+						"$select_Subline$1$Right*TRANSFORMATION*POSITION*X SET 190 \0", print_writers);
+				break;
+			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Side"+ WhichSide + 
 					"$select_Subline*FUNCTION*Omo*vis_con SET " + lowerThird.getNumberOfSubLines() + "\0", print_writers);

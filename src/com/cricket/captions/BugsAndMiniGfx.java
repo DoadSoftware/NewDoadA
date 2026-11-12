@@ -2384,6 +2384,12 @@ public class BugsAndMiniGfx
 			    base2Path = Constants.TRI_SERIES_BASE2;
 			    text1Path = Constants.TRI_SERIES_TEXT1;
 			    text2Path = Constants.TRI_SERIES_TEXT2;
+			}else if (config.getBroadcaster().equalsIgnoreCase(Constants.TEST_T20)) {
+			    logoPath = Constants.TEST_T20_BADGES;
+			    base1Path = Constants.TEST_T20_BASE1;
+			    base2Path = Constants.TEST_T20_BASE2;
+			    text1Path = Constants.TEST_T20_TEXT1;
+			    text2Path = Constants.TEST_T20_TEXT1;
 			} else if (config.getBroadcaster().equalsIgnoreCase(Constants.TG20) || 
 					config.getBroadcaster().equalsIgnoreCase(Constants.APLT20)) {
 			    logoPath = Constants.TG20_LOGO;
@@ -3508,7 +3514,7 @@ public class BugsAndMiniGfx
 						+ logoPath + inning.getBatting_team().getTeamBadge()+"\0", print_writers);
 				
 				switch (config.getBroadcaster()) {
-				case Constants.TRI_SERIES:  case Constants.MT20: 
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TEST_T20:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$Side" + WhichSide + "$PowerPlayBug$BaseGrp" + 
 							"$img_Text1*TEXTURE*IMAGE SET " + text1Path  + inning.getBatting_team().getTeamBadge() +"\0", print_writers);
 					break;

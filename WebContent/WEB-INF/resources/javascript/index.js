@@ -7789,7 +7789,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 		}
 		
 		if(whatToProcess == 'Control_F5' || whatToProcess == 'Control_F9'){
-			if($('#selected_broadcaster').val().toUpperCase() != 'AFG_SERIES'){
+			if($('#selected_broadcaster').val().toUpperCase() != 'AFG_SERIES' 
+				&& $('#selected_broadcaster').val().toUpperCase() != 'TEST_T20'){
 				option = document.createElement('input');
 				option.type = 'button';
 				option.name = 'change_on_to_stats';
