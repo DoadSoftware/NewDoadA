@@ -3024,9 +3024,9 @@ public class InfobarGfx
 					+ CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$OversAll$Overs_Grp$txt_OversHead*GEOM*TEXT SET " 
-					+ (inning.getTotalOvers() == 1 && inning.getTotalBalls() == 0 ? "OVER " : "OVERS ") + (inning.getInningNumber() == 1 ? getInningData(1) : 
-						inning.getInningNumber() == 2 ? getInningData(2) : inning.getInningNumber() == 3 ? getInningData(3) : 
-							inning.getInningNumber() == 4 ? getInningData(4) : "") + "\0", print_writers);
+					+ (inning.getTotalOvers() == 1 && inning.getTotalBalls() == 0 ? "OVER " : "OVERS ") + ((inning.getInningNumber() == 1 && !getInningData(1).isEmpty()) ? "(" + getInningData(1) + ")" : 
+						(inning.getInningNumber() == 2 && !getInningData(2).isEmpty()) ? "(" + getInningData(2) + ")" : (inning.getInningNumber() == 3 && !getInningData(3).isEmpty()) ? "(" + getInningData(3) + ")" : 
+							(inning.getInningNumber() == 4 && !getInningData(4).isEmpty()) ? "(" + getInningData(4) + ")" : "") + "\0", print_writers);
 			
 			if(!matchAllData.getSetup().getMatchType().equalsIgnoreCase("T20_TEST")) {
 				if(inning.getInningNumber() == 1) {
@@ -8359,9 +8359,12 @@ public class InfobarGfx
 							+ "$Style1$txt_TopInfo*GEOM*TEXT SET " + "AGGREGATE LOCK - TARGET " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
+							+ "$Style1$First$txt_Text1*GEOM*TEXT SET " + inning.getBatting_team().getTeamName4() + " NEED" + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
 							+ "$Style1$Second$txt_Text1*GEOM*TEXT SET " + CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber()) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-							+ "$Style1$Second$txt_Text1*GEOM*TEXT SET " + "WICKET" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, 
+							+ "$Style1$Third$txt_Text1*GEOM*TEXT SET " + "WICKET" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, 
 									inning.getInningNumber())).toUpperCase() + " TO WIN" + "\0", print_writers);
 					break;
 				case "EQUATION":
@@ -12760,7 +12763,7 @@ public class InfobarGfx
 							"WICKET" + CricketFunctions.Plural(CricketFunctions.getWicketsLeft(matchAllData, inning.getInningNumber())).toUpperCase() + " TO WIN\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$Select_DataType$Equation$txt_DLS*GEOM*TEXT SET \0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$Select_DataType$Equation$Bottom_Line*ACTIVE SET \0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$Select_DataType$Equation$Bottom_Line*ACTIVE SET 0\0", print_writers);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Center_Big_Data$Side" + WhichSide + "$Select_Center_Big_data"
@@ -18219,7 +18222,7 @@ public class InfobarGfx
 	        while ((line = br.readLine()) != null) {
 
 	            if (line.startsWith(searchKey)) {
-	                return "(" + line.substring(searchKey.length()).trim() + ")";
+	                return line.substring(searchKey.length()).trim();
 	            }
 	        }
 
