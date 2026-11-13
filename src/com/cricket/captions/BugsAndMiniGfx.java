@@ -4747,21 +4747,21 @@ public class BugsAndMiniGfx
 				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Batting$AllDesign$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$AllDesign$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
 							IndexController.whichBase + "\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Batting$AllDesign$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$AllDesign$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + 
 							IndexController.whichBase + "\0",print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Batting$AllDataGrp$Header$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$AllDataGrp$Header$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
 							inning.getBatting_team().getTeamBadge() + "\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Batting$AllDataGrp$Header$img_RightBase*TEXTURE*IMAGE SET " + Constants.TEST_T20_RIGHTBASE + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$AllDataGrp$Header$img_RightBase*TEXTURE*IMAGE SET " + Constants.TEST_T20_RIGHTBASE + 
 							IndexController.whichBase + "\0",print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Batting$AllDataGrp$Header$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT1 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$AllDataGrp$Header$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT1 + 
 							(IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
 					
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 0 \0",print_writers);
@@ -5715,20 +5715,20 @@ public class BugsAndMiniGfx
 				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Bowling$AllDesign$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$AllDesign$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
 							IndexController.whichBase + "\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Bowling$AllDesign$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$AllDesign$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + 
 							IndexController.whichBase + "\0",print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Bowling$AllDataGrp$Header$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$AllDataGrp$Header$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + 
 							inning.getBowling_team().getTeamBadge() + "\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Bowling$AllDataGrp$Header$img_RightBase*TEXTURE*IMAGE SET " + Constants.TEST_T20_RIGHTBASE + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$AllDataGrp$Header$img_RightBase*TEXTURE*IMAGE SET " + Constants.TEST_T20_RIGHTBASE + 
 							IndexController.whichBase + "\0",print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Bowling$AllDataGrp$Header$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT1 + 
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$AllDataGrp$Header$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT1 + 
 							(IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "*FUNCTION*Omo*vis_con SET 0\0",print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "*FUNCTION*Omo*vis_con SET 0\0",print_writers);
 					break;
 				default:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select*FUNCTION*Omo*vis_con SET 1 \0",print_writers);

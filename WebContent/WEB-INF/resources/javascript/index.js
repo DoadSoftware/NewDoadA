@@ -344,7 +344,8 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			break;
 			
 		case '1': case '2': case '3': case '4':
-			if(session_match.setup.maxOvers > 0 && session_match.setup.matchType !='TEST' ){
+			//if(session_match.setup.maxOvers > 0 && session_match.setup.matchType !='TEST' ){
+			if(session_match.setup.matchType !='T20_TEST' && session_match.setup.matchType !='TEST' ){
 				switch (dataToProcess) {
 				case '3': case '4': // Key 1 to 4
 					alert("3rd and 4th inning NOT available in a limited over match");
