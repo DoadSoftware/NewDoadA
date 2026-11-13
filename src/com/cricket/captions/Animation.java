@@ -7813,6 +7813,16 @@ public class Animation
 	{
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.TEST_T20:
+			processAnimation(Constants.BACK, print_writers, "AUDIO", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "Loop", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "anim_Ident", "SHOW 0.0");
+			
+			processAnimation(Constants.BACK, print_writers, "anim_Playerprofile", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "Change_PlayerProfile", "SHOW 0.0");
+			
+			processAnimation(Constants.BACK, print_writers, "Anim_FullFrames", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "Change", "SHOW 0.0");
+			
 			if(whatToProcess.contains("CLEAR-ALL")) {
 				processAnimation(Constants.FRONT, print_writers, "sfx_In", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "sfx_Out", "SHOW 0.0");
@@ -8319,13 +8329,26 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
-					case "F1":
+					case "F1": case "Control_F11": case "F2": case "Control_F7": case "Shift_T":
 						previewCommand = "anim_Infobar$Push 1.000 Anim_FullFrames$In_Out$Essentials 3.000 Anim_FullFrames$In_Out$Essentials$In 1.200 "
 								+ "Anim_FullFrames$In_Out$TopTitle 3.000 Anim_FullFrames$In_Out$TopTitle$In 2.320 Anim_FullFrames$In_Out$Title 3.000 "
 								+ "Anim_FullFrames$In_Out$Title$In 1.900 Anim_FullFrames$In_Out$Footer 3.000 Anim_FullFrames$In_Out$Footer$In 2.080 ";
 						switch (whatToProcess.split(",")[0]) {
 						case "F1":
 							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Batting_Card 3.000 Anim_FullFrames$In_Out$Main$Batting_Card$In 1.980";
+							break;
+						case "F2":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Bowling_Card 3.000 Anim_FullFrames$In_Out$Main$Bowling_Card$Bowler 3.000 "
+									+ "Anim_FullFrames$In_Out$Main$Bowling_Card$Bowler$In 3.000";
+							break;
+						case "Control_F11":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Summary 3.000 Anim_FullFrames$In_Out$Main$Summary$In 1.980";
+							break;
+						case "Control_F7":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Teams 3.000 Anim_FullFrames$In_Out$Main$Teams$In 3.000";
+							break;
+						case "Shift_T":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$TeamSingle 3.000 Anim_FullFrames$In_Out$Main$TeamSingle$In 3.000";
 							break;
 						}
 						break;

@@ -246,6 +246,12 @@ public class Caption
 				status = this_fullFramesGfx.populateFFMatchPromo(whichSide, whatToProcess,matchAllData);
 				break;
 			case "Control_F7": // Double Teams
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					System.out.println("whatToProcess--------------------------------"+whatToProcess);
+					this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[2];
+					break;
+				}
 				status = this_fullFramesGfx.PopulateDoubleTeams(whichSide, whatToProcess.split(",")[0], matchAllData);
 				break;
 			case "Shift_K"://FF curr part
@@ -262,7 +268,6 @@ public class Caption
 				break;
 			case "Shift_T":
 				this_fullFramesGfx.this_ALL_FF.whosewon = whatToProcess.split(",")[3];
-				
 				status = this_fullFramesGfx.populatePlayingXI(whichSide, whatToProcess.split(",")[0],
 						Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
 					break;

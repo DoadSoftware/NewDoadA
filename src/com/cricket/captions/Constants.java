@@ -144,6 +144,7 @@ public class Constants
 	
 	public final static String TEST_T20 = "TEST_T20";
 	public final static String TEST_T20_FLAGS = "IMAGE*/Default/Assets/Flags/";
+	public final static String TEST_T20_BALL = "IMAGE*/Default/Assets/";
 	public final static String TEST_T20_BADGES = "IMAGE*/Default/Assets/Logos/";
 	public final static String TEST_T20_LOGOS_BW = "IMAGE*/Default/Assets/Logos_BW/";
 	public final static String TEST_T20_BASE_Ident = "IMAGE*/Default/Essentials/Base/";
