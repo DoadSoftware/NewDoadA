@@ -150,6 +150,7 @@ public class Constants
 	public final static String TEST_T20_RIGHTBASE = "IMAGE*/Default/Assets/RightBase/";
 	public final static String TEST_T20_SCOREBASE = "IMAGE*/Default/Assets/ScoreBase/";
 	public final static String TEST_T20_BASE1 = "IMAGE*/Default/Assets/Base1/";
+	public final static String TEST_T20_BG = "IMAGE*/Default/Assets/BG/";
 	public final static String TEST_T20_TEXT1 = "IMAGE*/Default/Assets/Text1/";
 	public final static String TEST_T20_BASE2 = "IMAGE*/Default/Assets/Base2/";
 	public final static String TEST_T20_TEXT2 = "IMAGE*/Default/Assets/Text2/";

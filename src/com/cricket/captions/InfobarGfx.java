@@ -2828,9 +2828,6 @@ public class InfobarGfx
 					break;
 				}
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$img_Base2"
-						+ "$txt_SubTeamName*GEOM*TEXT SET " + (matchAllData.getSetup().getPlayerGender().equalsIgnoreCase("GIRL") ? "GIRLS XI" : "BOYS XI") + "\0", print_writers);
-				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info2_Gpr$Img_Text1$txt_Info2"
 						+ "*GEOM*TEXT SET " + (inning.getInningNumber() == 1 ? "INNINGS 1 OF 4" : inning.getInningNumber() == 2 ? "INNINGS 2 OF 4" : 
 								inning.getInningNumber() == 3 ? "INNINGS 3 OF 4" : "INNINGS 4 OF 4") + "\0", print_writers);
@@ -2863,12 +2860,23 @@ public class InfobarGfx
 			}
 			
 			if(inning.getInningNumber() == 1) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$img_Base2"
+						+ "$txt_SubTeamName*GEOM*TEXT SET " + (matchAllData.getMatch().getInning().get(0).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL") ? "GIRLS XI" : "BOYS XI") + "\0", print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$txt_Score*GEOM*TEXT SET " 
 						+ matchAllData.getMatch().getInning().get(0).getTotalRuns() + "\0", print_writers);
 			}else if(inning.getInningNumber() == 2) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$img_Base2"
+						+ "$txt_SubTeamName*GEOM*TEXT SET " + (matchAllData.getMatch().getInning().get(1).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL") ? 
+								"GIRLS XI" : "BOYS XI") + "\0", print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$txt_Score*GEOM*TEXT SET " 
 						+ matchAllData.getMatch().getInning().get(1).getTotalRuns() + "\0", print_writers);
 			}else if(inning.getInningNumber() == 3) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$img_Base2"
+						+ "$txt_SubTeamName*GEOM*TEXT SET " + (matchAllData.getMatch().getInning().get(2).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL") ? 
+								"GIRLS XI" : "BOYS XI") + "\0", print_writers);
+				
 				if(matchAllData.getMatch().getInning().get(0).getBattingTeamId() == matchAllData.getMatch().getInning().get(2).getBattingTeamId()) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$txt_Score*GEOM*TEXT SET " 
 							+ (matchAllData.getMatch().getInning().get(0).getTotalRuns() + matchAllData.getMatch().getInning().get(2).getTotalRuns()) + "\0", print_writers);
@@ -2877,6 +2885,14 @@ public class InfobarGfx
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "/", false) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_Score*GEOM*TEXT SET " + 
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(2), "/", false) + "\0", print_writers);
+					
+					if(matchAllData.getMatch().getInning().get(0).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$txt_Score*GEOM*TEXT SET " 
 							+ (matchAllData.getMatch().getInning().get(1).getTotalRuns() + matchAllData.getMatch().getInning().get(2).getTotalRuns()) + "\0", print_writers);
@@ -2885,16 +2901,21 @@ public class InfobarGfx
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(1), "/", false) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_Score*GEOM*TEXT SET " + 
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(2), "/", false) + "\0", print_writers);
+					
+					if(matchAllData.getMatch().getInning().get(1).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+					}
 				}
 				
-				if(matchAllData.getSetup().getPlayerGender().equalsIgnoreCase("GIRL")) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
-				}
 			}else if(inning.getInningNumber() == 4) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$Team_Info$Info1_Gpr$img_Base2"
+						+ "$txt_SubTeamName*GEOM*TEXT SET " + (matchAllData.getMatch().getInning().get(3).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL") ? 
+								"GIRLS XI" : "BOYS XI") + "\0", print_writers);
+				
 				if(matchAllData.getMatch().getInning().get(0).getBattingTeamId() == matchAllData.getMatch().getInning().get(3).getBattingTeamId()) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$txt_Score*GEOM*TEXT SET " 
 							+ (matchAllData.getMatch().getInning().get(0).getTotalRuns() + matchAllData.getMatch().getInning().get(3).getTotalRuns()) + "\0", print_writers);
@@ -2903,6 +2924,14 @@ public class InfobarGfx
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "/", false) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_Score*GEOM*TEXT SET " + 
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(3), "/", false) + "\0", print_writers);
+					
+					if(matchAllData.getMatch().getInning().get(0).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$txt_Score*GEOM*TEXT SET " 
 							+ (matchAllData.getMatch().getInning().get(1).getTotalRuns() + matchAllData.getMatch().getInning().get(3).getTotalRuns()) + "\0", print_writers);
@@ -2911,14 +2940,14 @@ public class InfobarGfx
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(1), "/", false) + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_Score*GEOM*TEXT SET " + 
 							CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(3), "/", false) + "\0", print_writers);
-				}
-				
-				if(matchAllData.getSetup().getPlayerGender().equalsIgnoreCase("GIRL")) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+					
+					if(matchAllData.getMatch().getInning().get(1).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side1$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+					}
 				}
 			}
 			
@@ -7463,19 +7492,27 @@ public class InfobarGfx
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "/", false) + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(2), "/", false) + "\0", print_writers);
+							
+							if(matchAllData.getMatch().getInning().get(0).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							}else {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+							}
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET " + 
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(1), "/", false) + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(2), "/", false) + "\0", print_writers);
-						}
-						
-						if(matchAllData.getSetup().getPlayerGender().equalsIgnoreCase("GIRL")) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-						}else {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							
+							if(matchAllData.getMatch().getInning().get(1).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							}else {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+							}
 						}
 					}else if(inning.getInningNumber() == 4) {
 						if(matchAllData.getMatch().getInning().get(0).getBattingTeamId() == matchAllData.getMatch().getInning().get(3).getBattingTeamId()) {
@@ -7483,19 +7520,27 @@ public class InfobarGfx
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "/", false) + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(3), "/", false) + "\0", print_writers);
+							
+							if(matchAllData.getMatch().getInning().get(0).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							}else {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+							}
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET " + 
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(1), "/", false) + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET " + 
 									CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(3), "/", false) + "\0", print_writers);
-						}
-						
-						if(matchAllData.getSetup().getPlayerGender().equalsIgnoreCase("GIRL")) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-						}else {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							
+							if(matchAllData.getMatch().getInning().get(1).getBattingCard().get(0).getPlayer().getGender().equalsIgnoreCase("GIRL")) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+							}else {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$First_Innings$txt_text1*GEOM*TEXT SET HIS\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$TeamScoreSection$Bottom_Info$Side" + WhichSide + "$Select_Bottom_Info$Double$Second_Innings$txt_text1*GEOM*TEXT SET HER\0", print_writers);
+							}
 						}
 					}
 					break;

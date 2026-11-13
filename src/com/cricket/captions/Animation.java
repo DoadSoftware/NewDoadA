@@ -5194,7 +5194,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "PopUps$Change", "START");
 				break;
 			 case "Control_Shift_U_change_on": case "Control_Shift_V_change_on":
-				processAnimation(Constants.FRONT, print_writers, "PopUp$Change", "START");
+				processAnimation(Constants.FRONT, print_writers, "PopUps$Change", "START");
 				break;
 			 case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":
 			 case "Control_Shift_R": case "Control_Shift_F3": case "Alt_b":
@@ -8300,6 +8300,20 @@ public class Animation
 			String previewCommand = "";
 			if(whichside == 1) {
 				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					switch(whatToProcess.split(",")[0]) {
+					case "F1":
+						previewCommand = "anim_Infobar$Push 1.000 Anim_FullFrames$In_Out$Essentials 3.000 Anim_FullFrames$In_Out$Essentials$In 1.200 "
+								+ "Anim_FullFrames$In_Out$TopTitle 3.000 Anim_FullFrames$In_Out$TopTitle$In 2.320 Anim_FullFrames$In_Out$Title 3.000 "
+								+ "Anim_FullFrames$In_Out$Title$In 1.900 Anim_FullFrames$In_Out$Footer 3.000 Anim_FullFrames$In_Out$Footer$In 2.080 ";
+						switch (whatToProcess.split(",")[0]) {
+						case "F1":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Batting_Card 3.000 Anim_FullFrames$In_Out$Main$Batting_Card$In 1.980";
+							break;
+						}
+						break;
+					}
+					break;
 				case Constants.AFG_SERIES:
 					switch(whatToProcess.split(",")[0]) {
 					case "m": case "Control_m":
@@ -8795,6 +8809,28 @@ public class Animation
 			}else if(whichside == 2) {
 				
 				switch(config.getBroadcaster()) {
+				case Constants.TEST_T20:
+					switch(whatToProcess.split(",")[0]) {
+					case "F1":
+						previewCommand = "Change 1.341 Change$Logo 1.200 Change$Logo$Change_Out 0.500 Change$Logo$Change_In 1.200 Change$Header 1.200 Change$Header$Change_Out 0.500 "
+								+ "Change$Header$Change_In 1.200 Change$SubHeader 0.800 Change$Sponsor 1.000";
+						
+						switch(whichGraphicOnScreen.split(",")[0]) {
+						case "F1":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Batting_Card 3.000 Anim_FullFrames$In_Out$Main$Batting_Card$In 1.980";
+							break;
+						}
+						
+						if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase(whatToProcess.split(",")[0])) {
+							switch(whatToProcess.split(",")[0]) {
+							case "F1":
+								previewCommand = previewCommand + " Change$BattingCard 1.280 Change$BattingCard$Change_Out 0.540 Change$BattingCard$Change_In 1.280";
+								break;
+							}
+						}
+						break;
+					}
+					break;
 				case Constants.AFG_SERIES:
 					switch(whatToProcess.split(",")[0]) {
 					case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
@@ -9269,7 +9305,7 @@ public class Animation
 				}
 			}
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20:
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_FullFrames " + "C:/Temp/Preview.tga " + previewCommand + "\0", print_writer);
 				break;
 			case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC:
@@ -9837,11 +9873,11 @@ public class Animation
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7": case "Control_Alt_F3":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" 
-								+ "/Default/Overlays C:/Temp/Preview.tga Anim_Mini$In_Out 1.260 Anim_Mini$In_Out$In 1.240\0", print_writer);
+								+ "/Default/gfx_Overlays C:/Temp/Preview.tga Anim_Mini$In_Out 1.260 Anim_Mini$In_Out$In 1.240\0", print_writer);
 						
 						TimeUnit.MILLISECONDS.sleep(500);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" 
-								+ "/Default/Overlays C:/Temp/Preview.tga Anim_Mini$In_Out 1.260 Anim_Mini$In_Out$In 1.240\0", print_writer);
+								+ "/Default/gfx_Overlays C:/Temp/Preview.tga Anim_Mini$In_Out 1.260 Anim_Mini$In_Out$In 1.240\0", print_writer);
 						
 						break;
 					}
@@ -9849,7 +9885,7 @@ public class Animation
 					switch(whatToProcess.split(",")[0]) {
 					case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":case "Alt_Shift_F8": case "Alt_F7":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*" 
-								+ "/Default/Overlays C:/Temp/Preview.tga Anim_MiniChange$Change_Out 0.600 Anim_MiniChange$Change_In 1.800\0", print_writer);
+								+ "/Default/gfx_Overlays C:/Temp/Preview.tga Anim_MiniChange$Change_Out 0.600 Anim_MiniChange$Change_In 1.800\0", print_writer);
 						
 						break;
 					}
