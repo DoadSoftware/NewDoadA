@@ -1357,19 +1357,37 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select = document.createElement('select');
 				select.id = select.name = 'selectIdentInfo';
 			
-				session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
-					const opts = (inn.inningNumber == 1)
-						? [{ value: 'TOSS', text: 'Toss' }, { value: 'VENUE', text: 'Venue' }, { value: 'SUPEROVER', text: 'Super Over'}]
-						: [{ value: 'VENUE', text: 'Venue' }, { value: 'TARGET', text: 'Target'},
-						{ value: 'EQUATION', text: 'Equation'},{ value: 'SUPEROVER', text: 'Super Over'},
-						{ value: 'RESULT', text: 'Result'}];
-					
-					opts.forEach(({ value, text }) => {
-						const option = new Option(text, value);
-						select.appendChild(option);
+				switch($('#selected_broadcaster').val().toUpperCase()) {
+				case 'TEST_T20':
+					session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
+						const opts = (inn.inningNumber == 1)
+							? [{ value: 'TOSS', text: 'Toss' }, { value: 'VENUE', text: 'Venue' }, { value: 'SUPEROVER', text: 'Super Over'}]
+							: [{ value: 'VENUE', text: 'Venue' }, { value: 'TARGET', text: 'Target'},
+							{ value: 'EQUATION', text: 'Equation (Lead/Trail)'},{ value: 'EQUATION_BALL', text: 'Equation'},{ value: 'SUPEROVER', text: 'Super Over'},
+							{ value: 'RESULT', text: 'Result'}];
+						
+						opts.forEach(({ value, text }) => {
+							const option = new Option(text, value);
+							select.appendChild(option);
+						});
 					});
-				});
-			
+					break;
+				default:
+					session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
+						const opts = (inn.inningNumber == 1)
+							? [{ value: 'TOSS', text: 'Toss' }, { value: 'VENUE', text: 'Venue' }, { value: 'SUPEROVER', text: 'Super Over'}]
+							: [{ value: 'VENUE', text: 'Venue' }, { value: 'TARGET', text: 'Target'},
+							{ value: 'EQUATION', text: 'Equation'},{ value: 'SUPEROVER', text: 'Super Over'},
+							{ value: 'RESULT', text: 'Result'}];
+						
+						opts.forEach(({ value, text }) => {
+							const option = new Option(text, value);
+							select.appendChild(option);
+						});
+					});
+					break;	
+				}
+				
 				select.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 0)");
 				row.insertCell(cellCount).appendChild(select);
 				setDropdownOptionToSelectOptionArray($(select), 0);
@@ -1399,6 +1417,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				}
 				break;
 			case 'Control_F12':
+				//
 				header_text.innerHTML =  'INFOBAR IDENT';
 				
 				switch($('#selected_broadcaster').val().toUpperCase()) {
@@ -1406,18 +1425,35 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select = document.createElement('select');
 					select.id = select.name = 'selectIdentInfo';
 				
-					session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
-						const opts = (inn.inningNumber == 1)
-							? [{ value: 'VENUE', text: 'Venue' },{ value: 'TOSS', text: 'Toss' }, { value: 'SUPEROVER', text: 'Super Over'}]
-							: [{ value: 'VENUE', text: 'Venue' }, { value: 'TARGET', text: 'Target'}, { value: 'EQUATION', text: 'Equation'},
-								{ value: 'SUPEROVER', text: 'Super Over'},{ value: 'RESULT', text: 'Result'}];
-						
-						opts.forEach(({ value, text }) => {
-							const option = new Option(text, value);
-							select.appendChild(option);
+					switch($('#selected_broadcaster').val().toUpperCase()) {
+					case 'TEST_T20':
+						session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
+							const opts = (inn.inningNumber == 1)
+								? [{ value: 'VENUE', text: 'Venue' },{ value: 'TOSS', text: 'Toss' }, { value: 'SUPEROVER', text: 'Super Over'}]
+								: [{ value: 'VENUE', text: 'Venue' }, { value: 'TARGET', text: 'Target'}, { value: 'EQUATION', text: 'Equation (Lead/Trail)'},{ value: 'EQUATION_BALL', text: 'Equation'},
+									{ value: 'SUPEROVER', text: 'Super Over'},{ value: 'RESULT', text: 'Result'}];
+							
+							opts.forEach(({ value, text }) => {
+								const option = new Option(text, value);
+								select.appendChild(option);
+							});
 						});
-					});
-				
+						break;
+					default:
+						session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
+							const opts = (inn.inningNumber == 1)
+								? [{ value: 'VENUE', text: 'Venue' },{ value: 'TOSS', text: 'Toss' }, { value: 'SUPEROVER', text: 'Super Over'}]
+								: [{ value: 'VENUE', text: 'Venue' }, { value: 'TARGET', text: 'Target'}, { value: 'EQUATION', text: 'Equation'},
+									{ value: 'SUPEROVER', text: 'Super Over'},{ value: 'RESULT', text: 'Result'}];
+							
+							opts.forEach(({ value, text }) => {
+								const option = new Option(text, value);
+								select.appendChild(option);
+							});
+						});
+						break;
+					}
+					
 					select.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 0)");
 					row.insertCell(cellCount).appendChild(select);
 					setDropdownOptionToSelectOptionArray($(select), 0);
@@ -7101,6 +7137,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),0);
 			cellCount = cellCount + 1;
+			
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'TEST_T20':
+				select = document.createElement('select');
+				select.id = 'selectWin';
+				select.name = select.id;
+				
+				option = document.createElement('option');
+				option.value = 'BOY';
+				option.text = 'BOYS WON TOSS';
+				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'GIRL';
+				option.text = 'GIRLS WON TOSS';
+				select.appendChild(option);
+				
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),1);
+				cellCount = cellCount + 1;
+				break;
+			}
 			
 			break;			
 		case 'Control_Shift_F1': case 'Control_Shift_F4':
