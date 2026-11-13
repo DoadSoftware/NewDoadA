@@ -739,16 +739,15 @@ public class Animation
 				}
 				
 				processAnimation(Constants.BACK, print_writers, "Loop", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Header", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$SubHeader", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Sponsor", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Wiipe", "START");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Essentials", "START");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$TopTitle", "START");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Title", "START");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main", "START");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Footer", "START");
 				
 				switch (whatToProcess.split(",")[0]) {
 				case "F1":
-					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "START");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main$Batting_Card", "START");
 					break;
 				case "Control_Shift_F1":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$SplitCard", "START");
@@ -3656,16 +3655,16 @@ public class Animation
 			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
 			case "Alt_Shift_!":	case "Shift_F11": case "Control_F10": case "Shift_F10": case "Control_F1": case "Control_Alt_F1":
 			case "Control_p": case "z": case "x": case "c": case "v": case "Alt_F9":
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "CONTINUE");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "CONTINUE");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Header", "CONTINUE");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$SubHeader", "CONTINUE");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Sponsor", "CONTINUE");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Wiipe", "CONTINUE");
+				
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Essentials", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$TopTitle", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Title", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Footer", "CONTINUE");
 				
 				switch (whatToProcess.split(",")[0]) {
 				case "F1":
-					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "CONTINUE");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main$Batting_Card", "CONTINUE");
 					break;
 				case "Control_Shift_F1":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$SplitCard", "CONTINUE");
