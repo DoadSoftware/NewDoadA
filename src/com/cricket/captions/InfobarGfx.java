@@ -3019,11 +3019,14 @@ public class InfobarGfx
 					+ (inning.getTotalWickets() == 10 ? "" : inning.getTotalWickets()) + "\0", print_writers);
 			
 			
+			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$OversAll$Overs_Grp$txt_Overs*GEOM*TEXT SET " 
 					+ CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()) + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Data_All$ScoreSection$OversAll$Overs_Grp$txt_OversHead*GEOM*TEXT SET " 
-					+ (inning.getTotalOvers() == 1 && inning.getTotalBalls() == 0 ? "OVER" : "OVERS") + "\0", print_writers);
+					+ (inning.getTotalOvers() == 1 && inning.getTotalBalls() == 0 ? "OVER " : "OVERS ") + (inning.getInningNumber() == 1 ? getInningData(1) : 
+						inning.getInningNumber() == 2 ? getInningData(2) : inning.getInningNumber() == 3 ? getInningData(3) : 
+							inning.getInningNumber() == 4 ? getInningData(4) : "") + "\0", print_writers);
 			
 			if(!matchAllData.getSetup().getMatchType().equalsIgnoreCase("T20_TEST")) {
 				if(inning.getInningNumber() == 1) {
@@ -8795,13 +8798,13 @@ public class InfobarGfx
 							}
 						}
 					}
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
-							+ "$Side" + WhichSubSide + "$This_Over$ThisOverAll*FUNCTION*Omo*vis_con SET " + totalOverSize + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$This_Over$select_BallNumber"
+							+ "*FUNCTION*Omo*vis_con SET " + totalOverSize + "\0", print_writers);
 					
 					if(totalOverSize >= 6) {
 						for(int i = (totalOverSize+1);i<=10;i++) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Bowler_Top_Bottom$Bottom_Data"
-									+ "$Side" + WhichSubSide + "$This_Over$ThisOverAll$BallGrp" + i + "$SelectType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$This_Over$select_BallNumber"
+									+ "$Ball_" + i + "$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						}
 					}
 					infobar.setLast_this_over(this_data_str.get(this_data_str.size()-1));
@@ -18203,5 +18206,27 @@ public class InfobarGfx
 	        sb.append(arr[i]);
 	    }
 	    return sb.toString();
+	}
+	public static String getInningData(int inningNumber) {
+
+	    String filePath = "C:\\Sports\\Cricket\\ReduceOver.txt";
+	    String searchKey = "INN" + inningNumber + "-";
+
+	    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+
+	        String line;
+
+	        while ((line = br.readLine()) != null) {
+
+	            if (line.startsWith(searchKey)) {
+	                return "(" + line.substring(searchKey.length()).trim() + ")";
+	            }
+	        }
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+	    return "";
 	}
 }
