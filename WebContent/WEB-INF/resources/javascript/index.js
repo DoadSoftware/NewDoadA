@@ -150,41 +150,33 @@ function initialiseForm(whatToProcess,dataToProcess)
 				        ' [' + parseInt(dataToProcess.match.inning[1].totalOvers) + '.' + parseInt(dataToProcess.match.inning[1].totalBalls) + ']';
 				}
 			 }else if (inn.inningNumber > 2 && inn.inningNumber <= 4 && inn.isCurrentInning=='YES') {
-				    document.getElementById('inning1_teamName').innerHTML = dataToProcess.match.inning[2].batting_team.teamName1;
+				    document.getElementById('inning1_teamName').innerHTML = dataToProcess.match.inning[0].batting_team.teamName1;
+					document.getElementById('inning2_teamName').innerHTML = dataToProcess.match.inning[1].batting_team.teamName1;
 				    var team1 ; var team2 ;
+					
+					team1 = parseInt(dataToProcess.match.inning[0].totalRuns) + (parseInt(dataToProcess.match.inning[0].totalWickets) < 10 
+					      ? "-" + dataToProcess.match.inning[0].totalWickets : "") + " & ";
+					team2 = parseInt(dataToProcess.match.inning[1].totalRuns) + (parseInt(dataToProcess.match.inning[1].totalWickets) < 10 
+					      ? "-" + dataToProcess.match.inning[1].totalWickets : "") + " & ";
+					
 				   if(dataToProcess.match.inning[2].batting_team.teamName1==dataToProcess.match.inning[0].batting_team.teamName1){
-					  team1 = parseInt(dataToProcess.match.inning[0].totalRuns) + 
-				    	 (parseInt(dataToProcess.match.inning[0].totalWickets) < 10 
-				            ? "-" + dataToProcess.match.inning[0].totalWickets 
-				            : "") + " & ";
-				      team2 = parseInt(dataToProcess.match.inning[1].totalRuns) + 
-				    	 (parseInt(dataToProcess.match.inning[1].totalWickets) < 10 
-				            ? "-" + dataToProcess.match.inning[1].totalWickets 
-				            : "") + " & ";
+						document.getElementById('inning1_teamScore_lbl').innerText = team1 + parseInt(dataToProcess.match.inning[2].totalRuns) + 
+					        (parseInt(dataToProcess.match.inning[2].totalWickets) < 10 ? "-" + dataToProcess.match.inning[2].totalWickets : "") + 
+					        ' [' + parseInt(dataToProcess.match.inning[2].totalOvers) + '.' + parseInt(dataToProcess.match.inning[2].totalBalls) + ']';
+
+					    
+					    document.getElementById('inning2_teamScore_lbl').innerText = team2 +  parseInt(dataToProcess.match.inning[3].totalRuns) + 
+					        (parseInt(dataToProcess.match.inning[3].totalWickets) < 10 ? "-" + dataToProcess.match.inning[3].totalWickets : "") + 
+					        ' [' + parseInt(dataToProcess.match.inning[3].totalOvers) + '.' + parseInt(dataToProcess.match.inning[3].totalBalls) + ']';
 				   }else{
-					  team2 = parseInt(dataToProcess.match.inning[0].totalRuns) + 
-				    	 (parseInt(dataToProcess.match.inning[0].totalWickets) < 10 
-				            ? "-" + dataToProcess.match.inning[0].totalWickets 
-				            : "") + " & ";
-				      team1 = parseInt(dataToProcess.match.inning[1].totalRuns) + 
-				    	 (parseInt(dataToProcess.match.inning[1].totalWickets) < 10 
-				            ? "-" + dataToProcess.match.inning[1].totalWickets 
-				            : "") + " & ";
-				   }
-				    document.getElementById('inning1_teamScore_lbl').innerText = 
-				        team1 + parseInt(dataToProcess.match.inning[2].totalRuns) + 
-				        (parseInt(dataToProcess.match.inning[2].totalWickets) < 10 
-				            ? "-" + dataToProcess.match.inning[2].totalWickets 
-				            : "") + 
-				        ' [' + parseInt(dataToProcess.match.inning[2].totalOvers) + '.' + parseInt(dataToProcess.match.inning[2].totalBalls) + ']';
-				
-				    document.getElementById('inning2_teamName').innerHTML = dataToProcess.match.inning[3].batting_team.teamName1;
-				    document.getElementById('inning2_teamScore_lbl').innerText = 
-				         team2 +  parseInt(dataToProcess.match.inning[3].totalRuns) + 
-				        (parseInt(dataToProcess.match.inning[3].totalWickets) < 10 
-				            ? "-" + dataToProcess.match.inning[3].totalWickets 
-				            : "") + 
-				        ' [' + parseInt(dataToProcess.match.inning[3].totalOvers) + '.' + parseInt(dataToProcess.match.inning[3].totalBalls) + ']';
+						document.getElementById('inning1_teamScore_lbl').innerText = team1 + parseInt(dataToProcess.match.inning[3].totalRuns) + 
+						    (parseInt(dataToProcess.match.inning[3].totalWickets) < 10 ? "-" + dataToProcess.match.inning[3].totalWickets : "") + 
+						    ' [' + parseInt(dataToProcess.match.inning[3].totalOvers) + '.' + parseInt(dataToProcess.match.inning[3].totalBalls) + ']';
+		
+						document.getElementById('inning2_teamScore_lbl').innerText = team2 +  parseInt(dataToProcess.match.inning[2].totalRuns) + 
+						    (parseInt(dataToProcess.match.inning[2].totalWickets) < 10 ? "-" + dataToProcess.match.inning[2].totalWickets : "") + 
+						    ' [' + parseInt(dataToProcess.match.inning[2].totalOvers) + '.' + parseInt(dataToProcess.match.inning[2].totalBalls) + ']';
+				   }		    
 				}
 
 			if(inn.isCurrentInning == 'YES'){
@@ -358,32 +350,22 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			document.getElementById('inning1_teamScore_lbl').setAttribute('style', 'font-family: "Bungee-Regular", sans-serif !important;');
 			document.getElementById('inning2_teamScore_lbl').setAttribute('style', 'font-family: "Bungee-Regular", sans-serif !important;');
 				
-			if(dataToProcess == 1 ||dataToProcess == 3){
-				document.getElementById('inning1_teamName').style.backgroundColor ='#990000';
-				document.getElementById('inning1_teamName').style.color ='white';
-				
-				document.getElementById('inning2_teamName').style.backgroundColor ='';
-				document.getElementById('inning2_teamName').style.color ='';
-				
-				document.getElementById('inning2_teamScore_lbl').style.backgroundColor ='';
-				document.getElementById('inning2_teamScore_lbl').style.color ='';
-				
-				document.getElementById('inning1_teamScore_lbl').style.backgroundColor ='#990000';
-				document.getElementById('inning1_teamScore_lbl').style.color ='white';
-				
-				
-			}else if(dataToProcess == 2 ||dataToProcess == 4){
-				document.getElementById('inning2_teamName').style.backgroundColor = '#990000';
-				document.getElementById('inning2_teamName').style.color = 'white';
-								
-				document.getElementById('inning1_teamName').style.backgroundColor ='';
-				document.getElementById('inning1_teamName').style.color ='';
-				
-				document.getElementById('inning1_teamScore_lbl').style.backgroundColor ='';
-				document.getElementById('inning1_teamScore_lbl').style.color ='';
-				
-				document.getElementById('inning2_teamScore_lbl').style.backgroundColor ='#990000';
-				document.getElementById('inning2_teamScore_lbl').style.color ='white';
+			const inn = session_match.match.inning;
+			let active = null;
+			if (dataToProcess == 1) active = 1;
+			else if (dataToProcess == 2) active = 2;
+			else if (dataToProcess == 3) active = inn[2].batting_team.teamName1 == inn[0].batting_team.teamName1 ? 1 : 2;
+			else if (dataToProcess == 4) active = inn[3].batting_team.teamName1 == inn[1].batting_team.teamName1 ? 2 : 1;
+
+			if (active) {
+			  [1, 2].forEach(n => {
+			    const on = n === active;
+			    ['teamName', 'teamScore_lbl'].forEach(part => {
+			      const el = document.getElementById(`inning${n}_${part}`);
+			      el.style.backgroundColor = on ? '#990000' : '';
+			      el.style.color = on ? 'white' : '';
+			    });
+			  });
 			}
 			break;
 			
