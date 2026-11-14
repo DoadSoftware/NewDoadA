@@ -8308,6 +8308,16 @@ public class InfobarGfx
 			
 			if(infobar.getSection3() != null && !infobar.getSection3().isEmpty()) {
 				switch(infobar.getSection3().toUpperCase()) {
+				case "REVIEWS_REMAINING":
+					Review reviewRemaining = CricketFunctions.getReviewRemaining(matchAllData);
+					String[] partss = reviewRemaining.getReviewStatus().split(",");
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
+							+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
+							+ "$Style3$txt_TopInfo*GEOM*TEXT SET " + "REVIEWS REMAINING" + "\r\n" + matchAllData.getSetup().getHomeTeam().getTeamName4() + " : " + 
+							Integer.parseInt(partss[0]) + "    " + matchAllData.getSetup().getAwayTeam().getTeamName4() + " : " + Integer.parseInt(partss[1]) + "\0", print_writers);
+					break;
 				case "BOWLER_REPLACE":
 					isThisOverLimitExceed = true;
 					int Replaced_Player_id = CricketFunctions.SecondLastBowlerId(matchAllData,bowlingCard.getPlayerId());
@@ -8391,9 +8401,11 @@ public class InfobarGfx
 									+ "$Style1$txt_TopInfo*GEOM*TEXT SET " + "AGGREGATE LOCK - TARGET " + CricketFunctions.GetTargetData(matchAllData).getTargetRuns() + "\0", print_writers);
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
+									+ "$Style1$First$txt_Text1*GEOM*TEXT SET " + inning.getBatting_team().getTeamName4() + " NEED" + "\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
 									+ "$Style1$Second$txt_Text1*GEOM*TEXT SET " + CricketFunctions.GetTargetData(matchAllData).getRemaningRuns() + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$Select_RightSectionData"
-									+ "$Style1$Second$txt_Text1*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).
+									+ "$Style1$Third$txt_Text1*GEOM*TEXT SET " + "RUN" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).
 											getRemaningRuns()).toUpperCase() + " TO WIN" + "\0", print_writers);
 						}
 					}

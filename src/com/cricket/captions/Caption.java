@@ -151,6 +151,11 @@ public class Caption
 		if(whatToProcess.contains(",")) {
 			switch (whatToProcess.split(",")[0]) {
 			case "F1": //ScoreCard
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					this_fullFramesGfx.this_ALL_FF.whosewon = whatToProcess.split(",")[2];
+					break;
+				}
 				status = this_fullFramesGfx.PopulateScorecardFF(whichSide, whatToProcess.split(",")[0], matchAllData, Integer.valueOf(whatToProcess.split(",")[1]));
 				break;
 			case "Control_Shift_F4":
@@ -219,6 +224,11 @@ public class Caption
 				}
 				break;	
 			case "F4": //All Partnership
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					this_fullFramesGfx.this_ALL_FF.whosewon = whatToProcess.split(",")[2];
+					break;
+				}
 				status = this_fullFramesGfx.populatePartnership(whichSide, whatToProcess.split(",")[0], matchAllData, Integer.valueOf(whatToProcess.split(",")[1]));
 				break;
 			case "Control_F11": //MATCH SUMMARY

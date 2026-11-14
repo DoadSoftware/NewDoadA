@@ -246,7 +246,16 @@ function processUserSelection(whichInput)
 		$("#select_graphic_options_div").empty();
 		document.getElementById('select_graphic_options_div').style.display = 'none';
 		$("#captions_div").show();
-		document.getElementById("stats-container").innerHTML = "";
+		
+		const statsContainer = document.getElementById("stats-container");
+
+		if (statsContainer) {
+		    statsContainer.innerHTML = "";
+		} else {
+		    console.error("Element with ID 'stats-container' not found!");
+		}
+		
+		//document.getElementById("stats-container").innerHTML = "";
 		break;
 	case 'checkPlayerData':
 		if($(key_press_hidden_input)) {
@@ -407,19 +416,25 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'F1':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
-				case 'AFG_SERIES': case 'TEST_T20':
+				case 'AFG_SERIES':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
+				case 'TEST_T20':
+					addItemsToList(dataToProcess,null);
+					break;	
 				}
 				break;
 			case 'F4': case 'Shift_K':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
-				case 'AFG_SERIES': case 'TEST_T20':
+				case 'AFG_SERIES':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
+				case 'TEST_T20':
+					addItemsToList(dataToProcess,null);
+					break;	
 				}
 				break;
 			case 'Control_F11':
@@ -982,7 +997,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
-	case 'Alt_Shift_L': case 'e': case 'Alt_b':
+	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -2247,8 +2262,19 @@ function addItemsToList(whatToProcess,dataToProcess)
 				break;
 			}			
 			break;
-		case 'Control_F7':
-			header_text.innerHTML = 'DOUBLE TEAMS';
+		case 'Control_F7': case 'F1': case 'F4':
+			switch(whatToProcess) {
+			case 'Control_F7':
+				header_text.innerHTML = 'DOUBLE TEAMS';
+				break;
+			case 'F1':
+				header_text.innerHTML = 'BATTING CARD';
+				break;
+			case 'F4':
+				header_text.innerHTML = 'PARTNERSHIP';
+				break;		
+			}
+			
 
 			select = document.createElement('select');
 			select.id = 'selectGroup';
@@ -3119,7 +3145,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 				option.value = 'LOCAL-TIME';
 				option.text = 'Local Time';
 				select.appendChild(option);
-
+				
+				option = document.createElement('option');
+				option.value = 'REVIEWS_REMAINING';
+				option.text = 'Review';
+				select.appendChild(option);
+								
 				option = document.createElement('option');
 				option.value = 'IDENT';
 				option.text = 'Ident';
@@ -7969,7 +8000,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Control_F7':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
-		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b':
+		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';
