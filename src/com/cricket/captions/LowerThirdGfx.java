@@ -11387,7 +11387,7 @@ public class LowerThirdGfx
 
 							if (IndexController.whichBase.equalsIgnoreCase("Day")) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + whichSide + "$img_Logos*TEXTURE*IMAGE SET "
-										+ Constants.TEST_T20_BADGES + "TLogo_Black" + "\0", print_writers);
+										+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 							} else {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + whichSide + "$img_Logos*TEXTURE*IMAGE SET "
 										+ Constants.TEST_T20_BADGES + logo + "\0", print_writers);

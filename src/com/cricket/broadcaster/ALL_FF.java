@@ -1553,24 +1553,19 @@ public class ALL_FF
 			case "Control_F11": case "Shift_F11": case "Control_F7": case "Shift_F10": case "Control_p": case "z": case "x": case "c": case "v":
 				//Wipe End
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$In$Base1_In$img_Base1*TEXTURE*IMAGE SET " 
-						+ Constants.TEST_T20_BASE1 + "EVENT" + "\0", print_writers);
+						+ Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$In$img_Logos_BW*TEXTURE*IMAGE SET " 
-						+ Constants.TEST_T20_BADGES + "EVENT" + "\0", print_writers);
+						+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$In$Base2_In$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$Out$Base1_In$img_Base1*TEXTURE*IMAGE SET " 
-						+ Constants.TEST_T20_BASE1 + "EVENT" + "\0", print_writers);
+						+ Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$Out$img_Logos_BW*TEXTURE*IMAGE SET " 
-						+ Constants.TEST_T20_BADGES + "EVENT" + "\0", print_writers);
+						+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 				
-				if(IndexController.whichBase.equalsIgnoreCase("Day")) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-							+ Constants.TEST_T20_BADGES + "TLogo_Black" + "\0", print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-							+ Constants.TEST_T20_BADGES + "EVENT" + "\0", print_writers);
-				}
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
+						+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$Out$Base2_In$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
@@ -1592,13 +1587,8 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Text$Side" + WhichSide + "$Style2$txt_Title*GEOM*TEXT SET " 
 								+ "SUMMARY" + "\0", print_writers);
 					
-					if(IndexController.whichBase.equalsIgnoreCase("Day")) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-								+ Constants.TEST_T20_BADGES + "TLogo_Black" + "\0", print_writers);
-					}else {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-								+ Constants.TEST_T20_BADGES + "EVENT" + "\0", print_writers);
-					}
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
+							+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$select_FooterStyle"
 							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
@@ -1624,13 +1614,8 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$TitleGrp$Text$Side" + WhichSide + "$Style1$txt_Title2"
 							+ "*GEOM*TEXT SET " + WhichStyle.toUpperCase() + "S XI\0", print_writers);
 					
-					if(IndexController.whichBase.equalsIgnoreCase("Day")) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-								+ Constants.TEST_T20_BADGES + "TLogo_Black" + "\0", print_writers);
-					}else {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-								+ Constants.TEST_T20_BADGES + "EVENT" + "\0", print_writers);
-					}
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
+							+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Footer$Side" + WhichSide + "$select_FooterStyle"
 							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
@@ -1684,13 +1669,8 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$Base2_In$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
 				
-				if(IndexController.whichBase.equalsIgnoreCase("Day")) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-							+ Constants.TEST_T20_BADGES + "TLogo_Black" + "\0", print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-							+ Constants.TEST_T20_BADGES + "EVENT" + "\0", print_writers);
-				}
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
+						+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Base$GlassBase*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BG + "BG_" + IndexController.whichBase + "\0", print_writers);
@@ -1957,13 +1937,8 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$Out$Base2_In$img_Base1*TEXTURE*IMAGE SET " 
 							+ Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
 					
-					if(IndexController.whichBase.equalsIgnoreCase("Day")) {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-								+ Constants.TEST_T20_BADGES + "TLogo_Black" + "\0", print_writers);
-					}else {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
-								+ Constants.TEST_T20_BADGES + "EVENT" + "\0", print_writers);
-					}
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$EventLogo$Event_Logo*TEXTURE*IMAGE SET " 
+							+ Constants.TEST_T20_BADGES + IndexController.whichBase + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$TopTitleGrp$Text$img_Text1*TEXTURE*IMAGE SET " 
 							+ Constants.TEST_T20_TEXT1 + IndexController.whichBase + "\0", print_writers);
@@ -19060,6 +19035,11 @@ public class ALL_FF
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$Footer$Side" + WhichSide + "$FooterStyle2"
 					+ "$txt_StatHead*GEOM*TEXT SET " +CricketFunctions.generateTossResult(matchAllData, CricketUtil.FULL, CricketUtil.FIELD, CricketUtil.FULL, 
 							CricketUtil.CHOSE).toUpperCase() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$In$img_Logos_BW*TEXTURE*IMAGE SET " 
+					+ Constants.TEST_T20_BADGES + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$WipeAll$Out$img_Logos_BW*TEXTURE*IMAGE SET " 
+					+ Constants.TEST_T20_BADGES + team.getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$Base1_In$img_Base1*TEXTURE*IMAGE SET " 
 					+ Constants.TEST_T20_BASE1 + team.getTeamBadge() + "\0", print_writers);
