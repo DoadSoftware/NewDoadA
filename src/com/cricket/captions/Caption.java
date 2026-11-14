@@ -248,7 +248,6 @@ public class Caption
 			case "Control_F7": // Double Teams
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
-					System.out.println("whatToProcess--------------------------------"+whatToProcess);
 					this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[2];
 					break;
 				}
@@ -272,6 +271,13 @@ public class Caption
 						Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
 					break;
 			case "Control_Shift_F7":
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					this_fullFramesGfx.this_ALL_FF.whichTeam = Integer.valueOf(whatToProcess.split(",")[2]);
+					this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[3];
+					System.out.println("whatToProcess-----------------------------------"+whatToProcess);
+					break;
+				}
 				this_fullFramesGfx.this_ALL_FF.Players = Players;
 				status = this_fullFramesGfx.populateSecondPlayingXI(whichSide, whatToProcess.split(",")[0],
 					Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);

@@ -7148,8 +7148,53 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),2);
 			cellCount = cellCount + 1
 			break;	
-		case 'Control_Shift_F7': case 'Shift_T':
-			header_text.innerHTML = 'FF PLAYING XI';
+			
+			case 'Control_Shift_F7':
+			header_text.innerHTML = 'TEAMS WITH SUBS';
+
+			select = document.createElement('select');
+			select.id = 'selectTeamss';
+			select.name = select.id;
+			session_match.match.inning.forEach(function(inn){
+				if(inn.isCurrentInning == 'YES'){
+					option = document.createElement('option');
+					option.value = inn.battingTeamId;
+					option.text = inn.batting_team.teamName1;
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = inn.bowlingTeamId;
+					option.text = inn.bowling_team.teamName1;
+					select.appendChild(option);
+				}
+			});
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			cellCount = cellCount + 1;
+			
+			select = document.createElement('select');
+			select.id = 'selectGroup';
+			select.name = select.id;
+
+			option = document.createElement('option');
+			option.value = 'BOY';
+			option.text = 'BOY';
+			select.appendChild(option);
+
+			option = document.createElement('option');
+			option.value = 'GIRL';
+			option.text = 'GIRL';
+			select.appendChild(option);
+
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),1);
+			cellCount = cellCount + 1;
+		break;
+			
+		case 'Shift_T':
+			header_text.innerHTML = 'FF PLAYER XI';
 			select = document.createElement('select');
 			select.id = 'selectTeams';
 			select.name = select.id;
@@ -7171,8 +7216,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),0);
 			cellCount = cellCount + 1;
 			
-			switch($('#selected_broadcaster').val().toUpperCase()){
-			case 'TEST_T20':
 				select = document.createElement('select');
 				select.id = 'selectWin';
 				select.name = select.id;
@@ -7191,10 +7234,8 @@ function addItemsToList(whatToProcess,dataToProcess)
 				row.insertCell(cellCount).appendChild(select);
 				setDropdownOptionToSelectOptionArray($(select),1);
 				cellCount = cellCount + 1;
-				break;
-			}
-			
-			break;			
+			break;
+						
 		case 'Control_Shift_F1': case 'Control_Shift_F4':
 			select = document.createElement('select');
 			select.id = 'selectPlayer';

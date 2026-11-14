@@ -719,6 +719,26 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			case "Control_Shift_F7":
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+					TimeUnit.MILLISECONDS.sleep(500);
+					
+					if(audioenabled.equalsIgnoreCase("TRUE")) {
+						processAnimation(Constants.BACK, print_writers, "AUDIO", "START");
+					}
+					
+					processAnimation(Constants.BACK, print_writers, "Loop", "START");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Essentials", "START");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$TopTitle", "START");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Title", "START");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main", "START");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Footer", "START");
+					
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Teams", "START");
+				break;
+				}
+				
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
@@ -730,7 +750,7 @@ public class Animation
 				break;
 			case "F1": case "F2": case "Control_F11": case "Control_F7": case "F4": case "Shift_K": case "Control_Shift_F1":
 			case "Alt_Shift_!": case "Shift_F11": case "Control_F10": case "Shift_F10": case "Control_F1": case "Control_Alt_F1":
-			case "Control_p": case "z": case "x": case "c": case "v": case "Alt_F9": case "Shift_T":
+			case "Control_p": case "z": case "x": case "c": case "v": case "Alt_F9": case "Shift_T": 
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				
@@ -3644,6 +3664,18 @@ public class Animation
 				break;
 				
 			case "Control_Shift_F7":
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Essentials", "CONTINUE");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$TopTitle", "CONTINUE");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Title", "CONTINUE");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Main", "CONTINUE");
+					processAnimation(Constants.BACK, print_writers, "Anim_FullFrames$In_Out$Footer", "CONTINUE");
+					
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$Teams", "CONTINUE");
+					break;
+				}
+				
 				processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$In_Out", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(1000);
 				
@@ -8329,7 +8361,7 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
-					case "F1": case "Control_F11": case "F2": case "Control_F7": case "Shift_T":
+					case "F1": case "Control_F11": case "F2": case "Control_F7": case "Shift_T": case "Control_Shift_F7": 
 						previewCommand = "anim_Infobar$Push 1.000 Anim_FullFrames$In_Out$Essentials 3.000 Anim_FullFrames$In_Out$Essentials$In 1.200 "
 								+ "Anim_FullFrames$In_Out$TopTitle 3.000 Anim_FullFrames$In_Out$TopTitle$In 2.320 Anim_FullFrames$In_Out$Title 3.000 "
 								+ "Anim_FullFrames$In_Out$Title$In 1.900 Anim_FullFrames$In_Out$Footer 3.000 Anim_FullFrames$In_Out$Footer$In 2.080 ";
@@ -8344,7 +8376,7 @@ public class Animation
 						case "Control_F11":
 							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Summary 3.000 Anim_FullFrames$In_Out$Main$Summary$In 1.980";
 							break;
-						case "Control_F7":
+						case "Control_F7": case "Control_Shift_F7": 
 							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Teams 3.000 Anim_FullFrames$In_Out$Main$Teams$In 3.000";
 							break;
 						case "Shift_T":
