@@ -8058,6 +8058,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Bugs", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "SixDistance", "SHOW 0.0");
 				
+				processAnimation(Constants.FRONT, print_writers, "Counter", "SHOW 0.0");
+				
 				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOptions", "SHOW 0.0");
 				
 //				processAnimation(Constants.FRONT, print_writers, "StarLoop", "SHOW 0.0");

@@ -3338,8 +3338,8 @@ public class LowerThirdGfx
 				
 				if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.TEST)) {
 					lowerThird = new LowerThird(CricketFunctions.getbowlingstyle(player.getBowlingStyle()).toUpperCase(), tournament.getPlayer().getFirstname(), 
-							surName,"THIS SEASON", "", "", 2,"",teamName,new String[]{"INNINGS", "WICKETS", "3WI/5WI", "ECONOMY", "BEST"},
-							new String[]{String.valueOf(tournament.getInnings()),String.valueOf(tournament.getWickets()),
+							surName,"THIS SEASON", "", "", 2,"",teamName,new String[]{"MATCHES", "WICKETS", "3WI/5WI", "ECONOMY", "BEST"},
+							new String[]{String.valueOf(tournament.getMatches()),String.valueOf(tournament.getWickets()),
 									(tournament.getThreeWicketHaul() == 0 && tournament.getFiveWicketHaul() == 0 ? "-" : (tournament.getThreeWicketHaul() != 0 ? String.valueOf(tournament.getThreeWicketHaul()) : "-") + "/" + 
 											(tournament.getFiveWicketHaul() != 0 ? String.valueOf(tournament.getFiveWicketHaul()) : "-")),economy,best},null,null,
 							new String[] {"-165","-80","9","97","176"});

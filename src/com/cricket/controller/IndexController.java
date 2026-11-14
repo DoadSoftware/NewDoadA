@@ -326,7 +326,12 @@ public class IndexController
 				this_scene.LoadScene("OVERLAYS", print_writers, session_configuration);
 				this_animation.ResetAnimation("CLEAR-ALL", print_writers, session_configuration);
 				this_caption.this_fullFramesGfx.this_ALL_FF.getColor(session_configuration);
-				this_caption.this_lowerThirdGfx.PopulateL3rdBaseAndTextColor(whichBase);
+				
+				switch (select_broadcaster) {
+				case Constants.TEST_T20:
+					this_caption.this_lowerThirdGfx.PopulateL3rdBaseAndTextColor(whichBase);
+					break;
+				}
 				break;
 			}
 			

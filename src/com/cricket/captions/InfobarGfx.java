@@ -4517,7 +4517,7 @@ public class InfobarGfx
 				isimpactBowlIn = false;
 			} else {
 				populateBowlersData(false, print_writers, whichSide, 1);
-				populateSection3(print_writers, matchAllData, whichSide, 1);
+				populateSection3(print_writers, matchAllData, 1, whichSide);
 			}
 			infobar.setLast_bowler(bowlingCard);
 			break;
@@ -10375,7 +10375,7 @@ public class InfobarGfx
 //					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$BowlerSide$Side" + WhichSide + "$Select_BowlerSide"
 //							+ "*FUNCTION*Omo*vis_con SET 0\0",print_writers);
 					populateInfobarBowler(WhichSide, 1, print_writers, matchAllData);
-					populateSection3(print_writers, matchAllData, WhichSide, 1);
+//					populateSection3(print_writers, matchAllData, 1, WhichSide);
 					break;
 				case "REVIEWS_REMAINING":
 					Review reviewRemaining = CricketFunctions.getReviewRemaining(matchAllData);

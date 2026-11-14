@@ -6795,22 +6795,27 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 
 			$('#selectWicketSequence').on('change', function() { 
-				$('#selectWicketplayer').empty()
-			    session_match.match.inning.forEach(function(inn) {
-			        if (inn.inningNumber == document.getElementById('which_inning').value) {
-			             inn.battingCard.forEach(function(bc) {
-						if (bc.howOutPartTwo && $('#selectWicketSequence option:selected').text().toUpperCase().includes(bc.howOutPartTwo.split(' ')[1])) {
-							option = document.createElement('option');
-			                option.value = bc.playerId;
-			                option.text = bc.player.full_name;    
-			                select.appendChild(option);
-						}   
-			          });
-			        }
-			    });
-			    select.setAttribute('onchange',"setDropdownOptionForWicketBowlerSequence(this, 1)");
-				row.insertCell(1).appendChild(select);
-				setDropdownOptionForWicketBowlerSequence(1);
+			$('#selectWicketplayer').empty()
+			session_match.match.inning.forEach(function(inn) {
+				if (inn.inningNumber == document.getElementById('which_inning').value) {
+					inn.fallsOfWickets.forEach(function(fow) {
+						inn.battingCard.forEach(function(bc) {
+							if (fow.fowPlayerID == bc.playerId) {
+								if (bc.howOutPartTwo && $('#selectWicketSequence option:selected').text().toUpperCase()
+										.includes(bc.howOutPartTwo.split(' ')[1])) {
+									option = document.createElement('option');
+				                    option.value = bc.playerId;
+				                    option.text = bc.player.full_name;
+				                    select.appendChild(option);
+				               	}
+				            }
+				        });
+				     });
+				}
+			});
+			select.setAttribute('onchange',"setDropdownOptionForWicketBowlerSequence(this, 1)");
+			row.insertCell(1).appendChild(select);
+			setDropdownOptionForWicketBowlerSequence(1);
 			}).trigger('change');
 			cellCount = 2;
 			break;

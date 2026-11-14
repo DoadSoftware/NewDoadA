@@ -952,7 +952,7 @@ public class Caption
 						this_infobarGfx.RemainOvers = whatToProcess.split(",")[3];
 					}
 					
-					status = this_infobarGfx.populateSection3(print_writers, matchAllData, 1, whichSide);
+					status = this_infobarGfx.populateSection3(print_writers, matchAllData, whichSide, 1);
 					break;
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.ACC: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					this_infobarGfx.infobar.setSection3(whatToProcess.split(",")[2]);
@@ -961,7 +961,7 @@ public class Caption
 						this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
 					}
 					
-					status = this_infobarGfx.populateSection3(print_writers, matchAllData, whichSide, 1);
+					status = this_infobarGfx.populateSection3(print_writers, matchAllData, 1, whichSide);
 					break;
 				case Constants.BCCI:
 					this_infobarGfx.infobar.setSection4(whatToProcess.split(",")[2]);
