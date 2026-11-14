@@ -4783,7 +4783,7 @@ public class BugsAndMiniGfx
 							IndexController.whichBase + "\0",print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$AllDataGrp$Header$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT1 + 
-							(IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
+							IndexController.whichBase + "\0",print_writers);
 					
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "*FUNCTION*Omo*vis_con SET 1\0",print_writers);
@@ -4904,12 +4904,27 @@ public class BugsAndMiniGfx
 									break;
 								}
 								
+//								if(cont_name.equalsIgnoreCase("$Dehighlight")) {
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//											+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//											+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+//									
+//								}else if(cont_name.equalsIgnoreCase("$Highlight")) {
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//											+ "$Base$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + IndexController.whichBase + "\0",print_writers);
+//									
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//											+ "$Name_GRP$img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
+//									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//											+ "$imgText2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
+//								}
 								switch (config.getBroadcaster().toUpperCase()) {
 								case Constants.TEST_T20:
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
-											+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+											+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + (IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
-											+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+											+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + (IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
 									
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$DataGrp"
 											+ "*FUNCTION*Grid*num_row SET " + batting_size + " \0", print_writers);
@@ -4918,7 +4933,7 @@ public class BugsAndMiniGfx
 											+ "$select_BatRowType*FUNCTION*Omo*vis_con SET " + String.valueOf(omo_numb) + " \0", print_writers);
 											
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name + 
-												"$txt_BatterName*GEOM*TEXT SET " + bc.getPlayer().getTicker_name() + out_not + " \0", print_writers);
+												"$txt_BatterName*GEOM*TEXT SET " + bc.getPlayer().getTicker_name() + " \0", print_writers);
 												
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name + 
 											"$txt_Figures*GEOM*TEXT SET " + bc.getRuns() + "\0", print_writers);
@@ -4959,9 +4974,9 @@ public class BugsAndMiniGfx
 								switch (config.getBroadcaster().toUpperCase()) {
 								case Constants.TEST_T20:
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
-											+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+											+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + (IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
-											+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+											+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + (IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
 									
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$DataGrp"
 											+ "*FUNCTION*Grid*num_row SET " + batting_size + " \0", print_writers);
@@ -4970,7 +4985,7 @@ public class BugsAndMiniGfx
 											+ "$select_BatRowType*FUNCTION*Omo*vis_con SET " + String.valueOf(omo_numb) + " \0", print_writers);
 											
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name + 
-												"$txt_BatterName*GEOM*TEXT SET " + bc.getPlayer().getTicker_name() + out_not + " \0", print_writers);
+												"$txt_BatterName*GEOM*TEXT SET " + bc.getPlayer().getTicker_name() + " \0", print_writers);
 												
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name + 
 											"$txt_Figures*GEOM*TEXT SET " + bc.getRuns() + "\0", print_writers);
@@ -5028,22 +5043,18 @@ public class BugsAndMiniGfx
 								batting_size = batting_size + 1;
 //								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Data$DataGrp"
 //											+ "*FUNCTION*Grid*num_row SET " + batting_size + " \0",print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+										+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + (IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+										+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + (IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") + "\0",print_writers);
+								
 								break;
 							case CricketUtil.NOT_OUT:
 								omo_numb = 2;
 								cont_name = "$Highlight";
 								batting_size = batting_size + 1;
 								
-								break;
-							}
-							
-							if(cont_name.equalsIgnoreCase("$Dehighlight")) {
-								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
-										+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
-								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
-										+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
-								
-							}else if(cont_name.equalsIgnoreCase("$Highlight")) {
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
 										+ "$Base$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + IndexController.whichBase + "\0",print_writers);
 								
@@ -5051,7 +5062,25 @@ public class BugsAndMiniGfx
 										+ "$Name_GRP$img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
 								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
 										+ "$imgText2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
+								
+								break;
 							}
+							
+//							if(cont_name.equalsIgnoreCase("$Dehighlight")) {
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//										+ "$Name_GRP$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//										+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0",print_writers);
+//								
+//							}else if(cont_name.equalsIgnoreCase("$Highlight")) {
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//										+ "$Base$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + IndexController.whichBase + "\0",print_writers);
+//								
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//										+ "$Name_GRP$img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
+//								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name
+//										+ "$imgText2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
+//							}
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$DataGrp"
 									+ "*FUNCTION*Grid*num_row SET " + batting_size + " \0", print_writers);

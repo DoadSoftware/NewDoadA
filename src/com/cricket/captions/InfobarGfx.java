@@ -181,6 +181,7 @@ public class InfobarGfx
 							CricketUtil.FULL, "|", config.getBroadcaster(), false).isMatchFinished() == true) {
 
 							populateInfobarTeamNameScore(true,print_writers,matchAllData,1);
+							populateSection2(print_writers, matchAllData, 1);
 							populateInfoBarResult(print_writers, matchAllData);
 							
 							if (infobar.getSectionAnalytics() == null || infobar.getSectionAnalytics().isEmpty()) {
@@ -235,6 +236,7 @@ public class InfobarGfx
 							}
 							
 							populateSection3(print_writers, matchAllData, 1,1);
+							populateSection2(print_writers, matchAllData, 1);
 							
 							if(infobar.getSection5() != null && !infobar.getSection5().isEmpty() &&!infobar.getSection5().equalsIgnoreCase("BOWLER")) {
 								populateSection5(print_writers, matchAllData, 1);
@@ -1068,6 +1070,9 @@ public class InfobarGfx
 			
 			switch(whatToProcess.split(",")[3].toUpperCase()) {
 			case "DAY":
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$Logo$TLogo*TEXTURE*IMAGE SET " 
+						+ Constants.TEST_T20_BADGES + "Day" + "\0", print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team1$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team2$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
@@ -1084,6 +1089,9 @@ public class InfobarGfx
 						+ Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
 				break;
 			case "NIGHT":
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$DataPart$BottomPartPart$Logo$TLogo*TEXTURE*IMAGE SET " 
+						+ Constants.TEST_T20_BADGES + "Night" + "\0", print_writers);
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team1$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
 						+ Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Team2$TeamNameGrp$Img_Text1*TEXTURE*IMAGE SET " 
@@ -2825,8 +2833,8 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$DisruptiveData$img_Text1*TEXTURE*IMAGE SET " + 
-							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$DisruptiveData$txt_Text*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_BASE2 + "Day" + "\0", print_writers);
@@ -2877,8 +2885,8 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 					
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$DisruptiveData$img_Text1*TEXTURE*IMAGE SET " + 
-							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$EventAnimations$DisruptiveData$txt_Text*TEXTURE*IMAGE SET " + 
+							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$FreeHit_Animations$BaseAll$img_Base2*TEXTURE*IMAGE SET " + 
 							Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
@@ -8815,9 +8823,11 @@ public class InfobarGfx
 					}
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$This_Over$select_BallNumber"
 							+ "*FUNCTION*Omo*vis_con SET " + totalOverSize + "\0", print_writers);
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$This_Over$select_BallNumber"
+//							+ "$Ball_" + totalOverSize + "$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					
 					if(totalOverSize >= 6) {
-						for(int i = (totalOverSize+1);i<=10;i++) {
+						for(int i = (totalOverSize+1);i<=9;i++) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$RightSection$Side" + WhichSide + "$This_Over$select_BallNumber"
 									+ "$Ball_" + i + "$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 						}
@@ -12486,7 +12496,7 @@ public class InfobarGfx
 							Constants.TEST_T20_BASE2 + "Night" + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$Img_Text1*TEXTURE*IMAGE SET " + 
-							Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+							Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 					break;	
 				}
 				break;
@@ -13943,13 +13953,13 @@ public class InfobarGfx
 							case Constants.TEST_T20:
 								switch(this.infobar.getWhichDay().toUpperCase()) {
 								case "DAY":
-									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$TopTexttxt_Name"
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$TopText$txt_Name"
 											+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$txt_Text"
 											+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 									
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
-											+ "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
+											+ "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
 									
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
 											+ "$Runs$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
@@ -13967,13 +13977,13 @@ public class InfobarGfx
 											+ "$Wicket$Img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 									break;
 								case "NIGHT":
-									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$TopTexttxt_Name"
+									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$TopText$txt_Name"
 											+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$txt_Text"
 											+ "*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 									
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
-											+ "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Night" + "\0", print_writers);
+											+ "$Empty$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 									
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side" + WhichSide + "$TimeLine$Ball_" + (i + 1) + ""
 											+ "$Runs$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);

@@ -1670,9 +1670,9 @@ public class ALL_FF
 				
 				//Wipe End
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$Out$Logo_In$img_Logos_BW*TEXTURE*IMAGE SET " 
-						+ Constants.TEST_T20_LOGOS_BW + teamData.getTeamBadge() + "\0", print_writers);
+						+ Constants.TEST_T20_BADGES + teamData.getTeamBadge() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$WipeFinal$In$Logo_In$img_Logos_BW*TEXTURE*IMAGE SET " 
-						+ Constants.TEST_T20_LOGOS_BW + teamData.getTeamBadge() + "\0", print_writers);
+						+ Constants.TEST_T20_BADGES + teamData.getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$TopTitleGrp$Text$txt_Title*GEOM*TEXT SET " 
 						+ matchAllData.getSetup().getTournament() + "\0", print_writers);
