@@ -582,7 +582,7 @@ public class Animation
 
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-			case "Alt_F8": case "F8": case "F10": case "Control_F5": case "Control_F9": 
+			case "Alt_F8": case "F8": case "F10": case "Control_F5": case "Control_F9": case "d": case "e":
 //				if(this.infobar.isInfobar_on_screen() == true || this.specialBugOnScreen.equalsIgnoreCase(CricketUtil.TOSS)) {
 //					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$Overall_Position_Y*"
 //						+ "TRANSFORMATION*POSITION*Y SET -22.0\0",print_writers);
@@ -657,7 +657,7 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
-			case "F9": case "Shift_E": case "d": case "e": case "Alt_d": case "Alt_f":
+			case "F9": case "Shift_E": case "Alt_d": case "Alt_f":
 //				if(this.infobar.isInfobar_on_screen() == true) {
 //					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y*"
 //						+ "TRANSFORMATION*POSITION*Y SET 15.0 \0",print_writers);
@@ -3554,7 +3554,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_Bowling_Option", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
-			case "Alt_F8": case "F8": case "F10": case "Control_F5": case "Control_F9":
+			case "Alt_F8": case "F8": case "F10": case "Control_F5": case "Control_F9": case "d": case "e":
 				processAnimation(Constants.FRONT, print_writers, "anim_Namesuper$InOut", "CONTINUE");
 				
 				AnimateIn("ArrowUp" + ",", print_writers, config); // Shrink infobar
@@ -3610,7 +3610,7 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 				
-			 case "F9": case "Shift_E": case "d": case "e": case "Alt_d": case "Alt_f":
+			 case "F9": case "Shift_E": case "Alt_d": case "Alt_f":
 			
 				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "CONTINUE");
 				
@@ -9424,11 +9424,11 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
-					case "Alt_F8": case "F8": case "F10": case "Control_F5": case "Control_F9":
+					case "Alt_F8": case "F8": case "F10": case "Control_F5": case "Control_F9": case "d": case "e":
 						previewCommand = "anim_Infobar$Push 1.000 anim_Namesuper$InOut 1.200 anim_Namesuper$InOut$Essentials$In 0.900 "
 								+ "anim_Namesuper$InOut$Logo$In 1.000 anim_Namesuper$InOut$Colour$In 1.200";
 						break;
-					 case "F9": case "Shift_E": case "d": case "e": case "Alt_Shift_F3": case "Alt_d": case "Alt_f":
+					 case "F9": case "Shift_E": case "Alt_Shift_F3": case "Alt_d": case "Alt_f":
 						previewCommand = "anim_Infobar$Push 1.000 anim_Lower_Third$InOut 1.500 anim_Lower_Third$InOut$Essentials$In 1.300 "
 								+ "anim_Lower_Third$InOut$Logo$In 1.500";
 						break;
