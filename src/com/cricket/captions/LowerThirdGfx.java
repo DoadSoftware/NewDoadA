@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.cricket.containers.Infobar;
 import com.cricket.containers.L3Griff;
@@ -10178,21 +10179,6 @@ public class LowerThirdGfx
 		    								"$img_Logos*TEXTURE*IMAGE SET " + Constants.TG20_LOGO_BW + "EVENT" + "\0", print_writers);
 		    					}
 	    						break;
-	    					case Constants.TEST_T20:
-	    						if(!lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
-	    							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + WhichSide + 
-		    								"$img_Logos*TEXTURE*IMAGE SET " + logoPath + lowerThird.getWhichTeamFlag() + "\0", print_writers);
-		    					}else if(!lowerThird.getWhichSponsor().isEmpty() && lowerThird.getWhichTeamFlag().isEmpty()) {
-		    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + WhichSide + 
-		    								"$img_Logos*TEXTURE*IMAGE SET " + logoPath + lowerThird.getWhichSponsor() + "\0", print_writers);
-		    					}else if(lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
-		    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + WhichSide + 
-		    								"$img_Logos*TEXTURE*IMAGE SET " + logoPath + lowerThird.getWhichTeamFlag() + "\0", print_writers);
-		    					}else {
-		    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + WhichSide + 
-		    								"$img_Logos*TEXTURE*IMAGE SET " + logoPath + "EVENT" + "\0", print_writers);
-		    					}
-		                		break;
 	    					default:
 	    						if(!lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
 		    						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper_Center$TopLine$LogoAll$Side" + WhichSide + 
@@ -11394,20 +11380,20 @@ public class LowerThirdGfx
             			+ "*TEXTURE*IMAGE SET " + base1Path + lowerThird.getWhichTeamFlag() +"\0", print_writers);
             	break;
 			case "F10":
-            	if(!lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
-            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$img_Bas1"
-	            			+ "*TEXTURE*IMAGE SET " + base1Path + lowerThird.getWhichTeamFlag() +"\0", print_writers);
-				}else if(!lowerThird.getWhichSponsor().isEmpty() && lowerThird.getWhichTeamFlag().isEmpty()) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$img_Bas1"
-	            			+ "*TEXTURE*IMAGE SET " + base1Path + lowerThird.getWhichSponsor() +"\0", print_writers);
-				}else if(lowerThird.getWhichSponsor().isEmpty() && !lowerThird.getWhichTeamFlag().isEmpty()) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$img_Bas1"
-	            			+ "*TEXTURE*IMAGE SET " + base1Path + lowerThird.getWhichTeamFlag() +"\0", print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$img_Bas1"
-	            			+ "*TEXTURE*IMAGE SET " + base1Path + "EVENT" +"\0", print_writers);
-				}
-            	break;
+
+				Stream.of(lowerThird.getWhichTeamFlag(), lowerThird.getWhichSponsor()).filter(s -> !s.isEmpty()).findFirst().ifPresent(logo -> {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + whichSide + "$img_Bas1*TEXTURE*IMAGE SET "
+									+ Constants.TEST_T20_BASE1 + IndexController.whichBase + "\0", print_writers);
+
+							if (IndexController.whichBase.equalsIgnoreCase("Day")) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + whichSide + "$img_Logos*TEXTURE*IMAGE SET "
+										+ Constants.TEST_T20_BADGES + "TLogo_Black" + "\0", print_writers);
+							} else {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TopLine$LogoAll$Side" + whichSide + "$img_Logos*TEXTURE*IMAGE SET "
+										+ Constants.TEST_T20_BADGES + logo + "\0", print_writers);
+							}
+						});
+				break;
 			default:
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TopLine$LogoAll$Side" + whichSide 
 						+ "$img_Base1*TEXTURE*IMAGE SET " + base1Path + lowerThird.getWhichTeamFlag() +"\0", print_writers);
