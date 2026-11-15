@@ -2679,12 +2679,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 		        addOptionData1('CRR', 'Run Rate');
 				addOptionData1('CURR_PARTNERSHIP', 'Partnership');
 				addOptionData1('IDENT', 'Ident');
-
+				addOptionData1('BOUNDARY', 'Boundary');
+				addOptionData1('4', 'Fours This Inning');
+				addOptionData1('6', 'Sixes This Inning');
+				addOptionData1('LAST_WICKET', 'Last Wicket');
+				addOptionData1('BALLS_SINCE_LAST_BOUNDARY', 'Balls Since Last Boundary');
+				
 				session_match.match.inning.forEach(function(inn){
 				    if(inn.isCurrentInning === 'YES'){
 				        if(inn.inningNumber === 1){
 				            addOptionData1('TOSS', 'Toss');
 				        } else if(inn.inningNumber === 2){
+							addOptionData1('AT_THIS_STAGE', 'At This Stage');
 							addOptionData1('INNING1_SCORE', 'Inning 1 Score');
 				            addOptionData1('EQUATION', 'Equation (Trail/Lead)');
 				        } else if(inn.inningNumber === 3){
@@ -3155,6 +3161,36 @@ function addItemsToList(whatToProcess,dataToProcess)
 				option.value = 'IDENT';
 				option.text = 'Ident';
 				select.appendChild(option);
+				
+				option = document.createElement('option');
+				option.value = 'BOUNDARY';
+				option.text = 'Boundary';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = '4';
+				option.text = 'Fours This Inning';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = '6';
+				option.text = 'Sixes This Inning';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'LastXBalls';
+				option.text = 'LastXBalls';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'LAST_WICKET';
+				option.text = 'Last Wicket';
+				select.appendChild(option);
+
+				option = document.createElement('option');
+				option.value = 'BALLS_SINCE_LAST_BOUNDARY';
+				option.text = 'Balls Since Last Boundary';
+				select.appendChild(option);
 
 				session_match.match.inning.forEach(function(inn){
 				    if(inn.isCurrentInning === 'YES'){
@@ -3164,6 +3200,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 							option.text = 'Toss';
 							select.appendChild(option);
 				        } else if(inn.inningNumber === 2){
+							option = document.createElement('option');
+							option.value = 'AT_THIS_STAGE';
+							option.text = 'AT THIS STAGE';
+							select.appendChild(option);
+																					
 							option = document.createElement('option');
 							option.value = 'EQUATION';
 							option.text = 'Equation (Trail/Lead)';
@@ -3196,7 +3237,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						}else if(inn.inningNumber === 4){
 							option = document.createElement('option');
 							option.value = 'EQUATION';
-							option.text = 'Equation Bat';
+							option.text = 'Equation (Trail/Lead)';
 							select.appendChild(option);
 							
 							option = document.createElement('option');
@@ -3837,26 +3878,23 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch($('#selected_broadcaster').val().toUpperCase()){
 					case 'TEST_T20':
 					
-					/*const testT20MatchOptions = [
-					    { value: 'Session_Summary', text: 'This Session (Current)' },
-					    { value: 'AllSession_Summary', text: 'Day All Session' },
-					    { value: 'AllDay_Summary', text: 'Today Match' },
-					    { value: 'Team_Summary', text: 'Team 0s,1s,2s (This Match)' },
-					    { value: 'Team_Summary_Inning', text: 'Team 0s,1s,2s (This Innings)' },
-					    { value: 'Batsman_Summary', text: 'Batsman 0s,1s,2s (This Match)' },
-					    { value: 'Batsman_Summary_Inning', text: 'Batsman 0s,1s,2s (This Innings)' },
-						{ value: 'LUNCH', text: 'Lunch Text' },
-						{ value: 'TEA', text: 'Tea Text' },
-						{ value: 'STUMPS', text: 'Stump Text' },
-					];*/
-
 					const testT20MatchOptions = [
-						];
+					    { value: 'BOUNDARY', text: 'Boundary' },
+					    { value: '4', text: 'Fours This Inning' },
+					    { value: '6', text: 'Sixes This Inning' },
+					    { value: 'LastXBalls', text: 'LastXBalls' },
+					    { value: 'LAST_WICKET', text: 'Last Wicket' },
+					    { value: 'BALLS_SINCE_LAST_BOUNDARY', text: 'Balls Since Last Boundary' },
+						{ value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
+						{ value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },
+					];
+
 					const matchOptions1 = [
 						{ value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
 						{ value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise RunRate' },
 					];
 
+					
 					const dropdownoption1 = [
 					    { value: 'BLANK', text: 'Blank' },
 					    { value: 'IDENT', text: 'Ident' },
@@ -3871,6 +3909,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					session_match.match.inning.forEach(function(inn){
 						if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
 							dropdownoption1.push(
+								{ value: 'AT_THIS_STAGE', text: 'At This Stage' },
 							    { value: 'EQUATION', text: 'Equation (Trail/Lead)'}
 							);
 						}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 3){

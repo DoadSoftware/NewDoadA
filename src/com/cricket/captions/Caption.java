@@ -3,7 +3,7 @@ package com.cricket.captions;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
 
 import com.cricket.containers.LowerThird;
 import com.cricket.model.BattingCard;
@@ -709,8 +709,8 @@ public class Caption
 					status = this_infobarGfx.populateSection1(print_writers, matchAllData, whichSide);
 					break;
 				case Constants.TEST_T20:
-					whichSide = (this_infobarGfx.infobar.getSection2() != null && !this_infobarGfx.infobar.getSection2().isEmpty() 
-		            	&& !this_infobarGfx.infobar.getSection2().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 1;
+//					whichSide = (this_infobarGfx.infobar.getSection2() != null && !this_infobarGfx.infobar.getSection2().isEmpty() 
+//		            	&& !this_infobarGfx.infobar.getSection2().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 1;
 					
 					this_infobarGfx.infobar.setSection2(whatToProcess.split(",")[2]);
 					
@@ -1091,6 +1091,12 @@ public class Caption
 								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
 							}
 							this_infobarGfx.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[3]);
+						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("LastXBalls")) {
+							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("LastXBalls")) {
+								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
+							}
+							this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
 						}
 						this_infobarGfx.infobar.setSectionAnalytics(whatToProcess.split(",")[2]);
 					}else {

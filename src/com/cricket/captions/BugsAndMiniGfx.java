@@ -5987,12 +5987,12 @@ public class BugsAndMiniGfx
 							
 						}else if(cont_names.equalsIgnoreCase("$Highlight")) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$Row" + rows_id + cont_names
-									+ "$Base$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + "Day" + "\0",print_writers);
+									+ "$Base$img_Base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 + IndexController.whichBase + "\0",print_writers);
 							
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$Row" + rows_id + cont_names
-									+ "$Name_Grp$img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + "Day" + "\0",print_writers);
+									+ "$Name_Grp$img_Text2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$Row" + rows_id + cont_names
-									+ "$imgText2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + "Day" + "\0",print_writers);
+									+ "$imgText2*TEXTURE*IMAGE SET " + Constants.TEST_T20_TEXT2 + IndexController.whichBase + "\0",print_writers);
 						}
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Bowling$Row"+rows_id+"$select_BallRowType"
