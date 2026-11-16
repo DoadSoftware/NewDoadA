@@ -8578,7 +8578,7 @@ public class Animation
 					case "m": case "Control_m":
 						previewCommand = "anim_Infobar$Push 1.000 anim_Ident$In_Out$In 1.800";
 						break;
-					case "F1": case "Control_F11": case "F2": case "Control_F7": case "Shift_T": case "F4": case "Control_Shift_F7": 
+					case "F1": case "Control_F11": case "F2": case "Control_F7": case "Shift_T": case "F4": case "Control_Shift_F7":  case "Shift_F11": case "Control_p":
 						previewCommand = "anim_Infobar$Push 1.000 Anim_FullFrames$In_Out$Essentials 3.000 Anim_FullFrames$In_Out$Essentials$In 1.200 "
 								+ "Anim_FullFrames$In_Out$TopTitle 3.000 Anim_FullFrames$In_Out$TopTitle$In 2.320 Anim_FullFrames$In_Out$Title 3.000 "
 								+ "Anim_FullFrames$In_Out$Title$In 1.900 Anim_FullFrames$In_Out$Footer 3.000 Anim_FullFrames$In_Out$Footer$In 2.080 ";
@@ -8593,7 +8593,7 @@ public class Animation
 						case "F4":
 							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$PartnershipList 3.000 Anim_FullFrames$In_Out$Main$PartnershipList$In 1.980";
 							break;	
-						case "Control_F11":
+						case "Control_F11": case "Shift_F11":
 							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Summary 3.000 Anim_FullFrames$In_Out$Main$Summary$In 1.980";
 							break;
 						case "Control_F7": case "Control_Shift_F7": 
@@ -8601,6 +8601,9 @@ public class Animation
 							break;
 						case "Shift_T":
 							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$TeamSingle 3.000 Anim_FullFrames$In_Out$Main$TeamSingle$In 3.000";
+							break;
+						case "Control_p":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Points_Table 3.000 Anim_FullFrames$In_Out$Main$Points_Table$In 3.000";
 							break;
 						}
 						break;
