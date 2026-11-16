@@ -5302,6 +5302,31 @@ public class Animation
 	public String ChangeOn(String whatToProcess,List<PrintWriter> print_writers,Configuration config) throws InterruptedException, IOException
 	{
 		switch (config.getBroadcaster().toUpperCase()) {
+		case Constants.ILT20:
+			switch(whatToProcess.split(",")[0]) {
+			case "F1":
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "START");
+				TimeUnit.MILLISECONDS.sleep(700);
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Logo", "START");
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Header", "START");
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Footer", "START");
+				
+				switch(whichGraphicOnScreen.split(",")[0]) {
+				case "F1":
+					processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "START");
+					break;
+				}
+				
+				if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase(whatToProcess.split(",")[0])) {
+					switch(whatToProcess.split(",")[0]) {
+					case "F1":
+						processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "START");
+						break;
+					}
+				}
+				break;
+			}
+			break;
 		case Constants.TEST_T20:
 			switch (whatToProcess.split(",")[0]) {
 			case "Shift_F12":
@@ -6713,6 +6738,33 @@ public class Animation
 	public String CutBack(String whatToProcess,List<PrintWriter> print_writers, Configuration config) throws InterruptedException, IOException
 	{
 		switch (config.getBroadcaster().toUpperCase()) {
+		case Constants.ILT20:
+			switch(whatToProcess.split(",")[0]) {
+			case "F1":
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "SHOW 0.0");
+				TimeUnit.MILLISECONDS.sleep(700);
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Logo", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Header", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Footer", "SHOW 0.0");
+				
+				switch(whichGraphicOnScreen.split(",")[0]) {
+				case "F1":
+					processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "SHOW 0.0");
+					break;
+				}
+				
+				if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase(whatToProcess.split(",")[0])) {
+					switch(whatToProcess.split(",")[0]) {
+					case "F1":
+						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "SHOW 2.120");
+						processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "SHOW 0.0");
+						break;
+					}
+				}
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
+			}
+			break;
 		case Constants.TEST_T20:
 			switch (whatToProcess.split(",")[0]) {
 			case "Shift_F12":
@@ -8507,6 +8559,20 @@ public class Animation
 			String previewCommand = "";
 			if(whichside == 1) {
 				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ILT20:
+					switch(whatToProcess.split(",")[0]) {
+					case "F1":
+						previewCommand = "anim_FullFrames$In_Out$Essentials$In 0.900 anim_FullFrames$In_Out$Logo$In 1.540 anim_FullFrames$In_Out$Header$In 0.900 "
+								+ "anim_FullFrames$In_Out$Footer$In 2.121";
+						
+						switch(whatToProcess.split(",")[0]) {
+						case "F1":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$BattingCard$In 2.061";
+							break;
+						}
+						break;
+					}
+					break;
 				case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
 					case "m": case "Control_m":
@@ -9035,6 +9101,28 @@ public class Animation
 			}else if(whichside == 2) {
 				
 				switch(config.getBroadcaster()) {
+				case Constants.ILT20:
+					switch(whatToProcess.split(",")[0]) {
+					case "F1":
+						previewCommand = "anim_Change$Base 1.100 anim_Change$Logo 1.040 anim_Change$Header 1.300 anim_Change$Header$Change_Out 0.580 anim_Change$Header$Change_In 1.300 "
+								+ "anim_Change$Footer 1.241 anim_Change$Footer$Change_Out 0.580 anim_Change$Footer$Change_In 1.241";
+						
+						switch(whichGraphicOnScreen.split(",")[0]) {
+						case "F1":
+							previewCommand = previewCommand + " anim_Change$Batting_Card 2.261 anim_Change$Batting_Card$Change_Out 1.020 anim_Change$Batting_Card$Change_In 2.261";
+							break;
+						}
+						
+						if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase(whatToProcess.split(",")[0])) {
+							switch(whatToProcess.split(",")[0]) {
+							case "F1":
+								previewCommand = previewCommand + " anim_Change$Batting_Card 2.261 anim_Change$Batting_Card$Change_Out 1.020 anim_Change$Batting_Card$Change_In 2.261";
+								break;
+							}
+						}
+						break;
+					}
+					break;
 				case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
 					case "F1":

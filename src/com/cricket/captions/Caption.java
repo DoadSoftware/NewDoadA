@@ -3,7 +3,6 @@ package com.cricket.captions;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import com.cricket.containers.LowerThird;
 import com.cricket.model.BattingCard;

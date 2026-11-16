@@ -156,7 +156,8 @@ public class FullFramesGfx
 		this.past_tournament_stats = past_tournament_stats;
 		this.cricketService = cricketService;
 		this_ALL_FF.foreignLanguageData.add(new ForeignLanguageData("", "", "", ""));
-		this_ALL_FF.foreignLanguageOmo.add(new ForeignLanguageData("0", "2", "3", "1"));
+		//this_ALL_FF.foreignLanguageOmo.add(new ForeignLanguageData("0", "2", "3", "1")); //TG20
+		this_ALL_FF.foreignLanguageOmo.add(new ForeignLanguageData("0", "1", "3", "2"));
 	}
 	
 	public String populateSquad(int WhichSide, String whatToProcess,int teamId, MatchAllData matchAllData, int WhichInning) throws Exception

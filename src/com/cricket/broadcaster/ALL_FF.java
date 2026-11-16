@@ -4354,8 +4354,36 @@ public class ALL_FF
 			break;	
 		case Constants.ILT20:
 			switch(whatToProcess) {
-			case "F1": case "F4": case "Shift_K": case "Control_F10": case "Alt_F9": case "Control_F1": case "Alt_Shift_F1":
-			case "Control_Shift_F4":
+			case "F1": case "F4": case "Shift_K": case "Control_F10": case "Alt_F9": case "Control_F1": case "Alt_Shift_F1": case "Control_Shift_F4":
+				Team teamBat = null,teamBall = new Team();
+				switch(whatToProcess) {
+				case "F1": case "F4": case "Shift_K": case "Control_F10": case "Alt_F9": case "Control_F1": case "Alt_Shift_F1": case "Control_Shift_F4":
+					teamBat = inning.getBatting_team();
+					teamBall = inning.getBowling_team();
+					break;
+				}
+				
+				//Wipe Strat/Chnage
+				if(WhichSide == 1) {
+					containerName = "$StartAnimatiom";
+				}else if(WhichSide == 2) {
+					containerName = "$Change";
+				}
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$Animations" + containerName + "$StartWipe$img_Base1*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_BASE1 + teamBat.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$Animations" + containerName + "$StartWipe$img_Base2*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_BASE2 + teamBat.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$Animations" + containerName + "$StartWipe$img_Base3*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_BASE3 + teamBat.getTeamBadge() + "\0", print_writers);
+				
+				//Base Color
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$BG$Side" + WhichSide + "$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_BASE1 + teamBat.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$BG$Side" + WhichSide + "$BaseAll$img_Base2*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_BASE2 + teamBat.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$BG$Side" + WhichSide + "$BaseAll$img_Base3*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_BASE3 + teamBat.getTeamBadge() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide
 						+ "$select_HeaderStyle*FUNCTION*Omo*vis_con SET 0\0", print_writers);
@@ -4365,23 +4393,23 @@ public class ALL_FF
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + 
 						"$select_HeaderStyle$HeaderStyle1$Team2$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
 				
-				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, inning.getBatting_team().getTeamName1(), 
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, teamBat.getTeamName1(), 
 						"", null, 0, foreignLanguageDataList);
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + 
 						"$HeaderStyle1$Team1$English$txt_TeamFirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				
-				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, inning.getBatting_team().getTeamName1(), 
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, teamBat.getTeamName1(), 
 						"", null, 0, foreignLanguageDataList);
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + 
 						"$HeaderStyle1$Team1$English$txt_TeamLastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				
 				
-				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, inning.getBowling_team().getTeamName1(), 
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, teamBall.getTeamName1(), 
 						"", null, 0, foreignLanguageDataList);
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + 
 						"$HeaderStyle1$Team2$English$txt_TeamFirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				
-				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, inning.getBowling_team().getTeamName1(), 
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, teamBall.getTeamName1(), 
 						"", null, 0, foreignLanguageDataList);
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + 
 						"$HeaderStyle1$Team2$English$txt_TeamLastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
@@ -4406,8 +4434,10 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide
 						+ "$HeaderStyle1$Vs$V*GEOM*TEXT SET vs\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$LogoAll$LogoGrp$Side" + WhichSide
-						+ "$img_Logo*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$Glass_Left$BadgeShadows$Side" + WhichSide + "$img_Badges_Shadow"
+						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + teamBat.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$LogoAll$LogoGrp$Side" + WhichSide + "$img_Logo"
+						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + teamBat.getTeamBadge() + "\0", print_writers);
 				break;
 			}
 			switch(config.getBroadcaster()) {
@@ -6792,6 +6822,13 @@ public class ALL_FF
 						break;
 					case CricketUtil.NOT_OUT:
 						containerName = "$Out$Highlight";
+						
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
+								+ "$BattingCard$ScaleY$Row" + rowId + containerName + "$noname*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 
+								+ inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
+								+ "$BattingCard$ScaleY$Row" + rowId + containerName + "$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 
+								+ inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
 								+ "$BattingCard$ScaleY$Row" + rowId + "$select_BatDataType*FUNCTION*Omo*vis_con SET 2\0", print_writers);
