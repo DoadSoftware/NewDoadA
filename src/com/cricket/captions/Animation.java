@@ -5223,6 +5223,52 @@ public class Animation
 				break;	
 			}
 			break;
+		case Constants.ILT20:
+			switch (whatToProcess.split(",")[0]) {
+			case "F1": case "F2": case "Control_F7": case "Control_F11": case "F4": case "Shift_K": case "Control_F10": case "Shift_F10":
+			case "Control_Shift_F1": case "Control_Shift_F2": case "Alt_F9": case "Alt_F11": case "Control_F1": case "Shift_F11":
+			case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5": case "Alt_z":
+				
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				
+				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Header", "CONTINUE");
+				
+				if(!whatToProcess.split(",")[0].equalsIgnoreCase("Shift_K") && !whatToProcess.split(",")[0].equalsIgnoreCase("Alt_F11")) {
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Footer", "CONTINUE");
+				}
+				
+				if(!whatToProcess.split(",")[0].equalsIgnoreCase("Control_Shift_F1") && !whatToProcess.split(",")[0].equalsIgnoreCase("Control_Shift_F2") && 
+						!whatToProcess.split(",")[0].equalsIgnoreCase("Control_p") && !whatToProcess.split(",")[0].equalsIgnoreCase("Control_Shift_F4") && 
+						!whatToProcess.split(",")[0].equalsIgnoreCase("Control_Shift_F5")) {
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "CONTINUE");
+				}
+				
+				if(!whatToProcess.split(",")[0].equalsIgnoreCase("Control_F7") && !whatToProcess.split(",")[0].equalsIgnoreCase("Control_F11") && 
+						!whatToProcess.split(",")[0].equalsIgnoreCase("Alt_F11")) {
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "CONTINUE");
+				}
+				
+				switch (whatToProcess.split(",")[0]) {
+				case "F1":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "CONTINUE");
+					break;
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(1600);
+				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
+				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+					processAnimation(Constants.FRONT, print_writers, "Watermark", "START");
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.BACK, print_writers, "anim_FullFrames", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+			}
+			break;	
 		case Constants.BCCI:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "F12":
