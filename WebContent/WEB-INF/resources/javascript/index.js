@@ -416,7 +416,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'F1':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
-				case 'AFG_SERIES':
+				case 'AFG_SERIES': case 'ILT20':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
@@ -428,7 +428,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'F4': case 'Shift_K':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
-				case 'AFG_SERIES':
+				case 'AFG_SERIES': case 'ILT20':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
@@ -440,7 +440,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Control_F11':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': 
-				case 'AFG_SERIES': case 'TEST_T20':
+				case 'AFG_SERIES': case 'TEST_T20': case 'ILT20':
 					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
@@ -456,6 +456,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 					break;
 				case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES': case 'TEST_T20':
+				case 'ILT20':	
 					addItemsToList(dataToProcess,null);
 					break;	
 				}
@@ -1508,7 +1509,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						break;
 					}
 					break;
-				case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 			        select = document.createElement('select');
 					select.id = select.name = 'selectWhichIdent';
 					[{ value: 'FULL', text: 'Full Name' },
@@ -1729,7 +1730,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			}
 			switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL':  case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
-				case 'AFG_SERIES': case 'TEST_T20':
+				case 'AFG_SERIES': case 'TEST_T20': case 'ILT20':
 				select = document.createElement('select');
 				select.id = 'selectPlayerName';
 				select.name = select.id;
@@ -1793,7 +1794,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.name = select.id;
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TG20': case 'APLT20':
+				case 'TG20': case 'APLT20': case 'ILT20':
 					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
@@ -1927,7 +1928,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch(whatToProcess){
 				case 'Control_d':
 					switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': 
+					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						select = document.createElement('select');
 						select.id = 'selectImage';
 						select.name = select.id;
@@ -2023,7 +2024,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
-			case 'AFG_SERIES': case 'TEST_T20':
+			case 'AFG_SERIES': case 'TEST_T20': case 'ILT20':
 				select = document.createElement('select');
 				select.id = 'selectPlayerName';
 				select.name = select.id;
@@ -2084,7 +2085,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.name = select.id;
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TG20': case 'APLT20':
+				case 'TG20': case 'APLT20': case 'ILT20':
 					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
@@ -2212,7 +2213,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				switch(whatToProcess){
 				case 'Control_e':
 					switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						select = document.createElement('select');
 						select.id = 'selectImage';
 						select.name = select.id;
@@ -2561,7 +2562,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				}
 				
 				break;
-			case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+			case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 		        select = document.createElement('select');
 		        select.id = 'selectLeftBottom';
 		        select.name = select.id;
@@ -2618,7 +2619,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		        cellCount++;
 		        
 		        switch($('#selected_broadcaster').val().toUpperCase()){	
-				case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 					select = document.createElement('select');
 					select.id = 'selectRightBottom';
 					select.name = select.id;
@@ -2770,7 +2771,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		        setDropdownOptionToSelectOptionArray($(select),0);
 		        cellCount++;
 		        break;
-		    case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+		    case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 		    	header_text.innerHTML = ($('#selected_broadcaster').val().toUpperCase() === 'BCCI') ? 
 		    		'LEFT SECTION INFOBAR' : 'INFOBAR - MIDDLE BOTTOM';
 		    
@@ -2954,7 +2955,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.appendChild(option);
 							
 				break;
-			case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+			case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 				header_text.innerHTML = 'INFOBAR - LEFT BATTER EXTRA';
 				
 				select = document.createElement('select');
@@ -3093,7 +3094,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			break;
 		case 'Alt_6':
 			switch($('#selected_broadcaster').val().toUpperCase()){	
-			case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+			case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 				header_text.innerHTML = 'INFOBAR - RIGHT BOWLER EXTRA';
 				
 				select = document.createElement('select');
@@ -3506,7 +3507,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.appendChild(option);
 				
 				break;
-			case 'BCCI': case 'TRI_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+			case 'BCCI': case 'TRI_SERIES': case 'ACC': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 				select = document.createElement('select');
 				select.id = 'selectRightBottom';
 				select.name = select.id;
@@ -3527,7 +3528,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.appendChild(option);
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES': case 'TEST_T20':
+				case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES': case 'TEST_T20': case 'ILT20':
 					option = document.createElement('option');
 					option.value = 'EXTRAS';
 					option.text = 'Extras';
@@ -3670,7 +3671,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			switch($('#selected_broadcaster').val().toUpperCase()){
 			case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES':
-			case 'TEST_T20':
+			case 'TEST_T20': case 'ILT20':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 					case 'AFG_SERIES': case 'TEST_T20':
 						const dropdownoption = [
@@ -3731,7 +3732,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 								}
 							});
 							break;
-						case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20': case 'TG20': case 'APLT20':
+						case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 							dropdown.push(
 							  { value: 'OVER', text: 'This Over' },
 							  { value: 'ECONOMY', text: 'Economy' },
@@ -3771,7 +3772,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 						  select.appendChild(option);
 						});
 						break;
-					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						const options = [
 						  { value: 'BLANK', text: 'Blank' },
 						  { value: 'CURR_PARTNERSHIP', text: 'Current Partnership' },
@@ -3874,7 +3875,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){	
 			case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'ACC': case 'MT20': case 'TG20': case 'APLT20': case 'AFG_SERIES':
-			case 'TEST_T20':
+			case 'TEST_T20': case 'ILT20':
 				switch($('#selected_broadcaster').val().toUpperCase()){
 					case 'TEST_T20':
 					
@@ -4069,7 +4070,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  select.appendChild(option);
 					});
 					break;
-				case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+				case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 					const options = [
 					  { value: 'BLANK', text: 'Blank' },
 					  { value: 'FreeText', text: 'FreeText' },
@@ -5092,7 +5093,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.text = 'ACC';
 					select.appendChild(option);
 					break;	
-				case 'TG20': case 'APLT20':
+				case 'TG20': case 'APLT20': case 'ILT20':
 					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
@@ -5429,7 +5430,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					
 					break;	
-				case 'TG20': case 'APLT20':		
+				case 'TG20': case 'APLT20': case 'ILT20':
 					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
@@ -5823,7 +5824,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.name = select.id;
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						option = document.createElement('option');
 						option.value = 'IT20';
 						option.text = 'T20-I';
@@ -5893,7 +5894,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.name = select.id;
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20':
+					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						option = document.createElement('option');
 						option.value = 'IT20';
 						option.text = 'T20-I';
@@ -6570,7 +6571,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
-			case 'TG20': case 'APLT20':
+			case 'TG20': case 'APLT20': case 'ILT20':
 				option = document.createElement('option');
 				option.value = session_match.setup.homeTeam.teamName4 + ',' + 'BAT';
 				option.text = session_match.setup.homeTeam.teamName3 + '-' + 'BAT';
@@ -7464,7 +7465,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 				var ballsFaced = 30;
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TG20': case 'APLT20':
+				case 'TG20': case 'APLT20': case 'ILT20':
 					ballsFaced = 50;
 					break;
 				}

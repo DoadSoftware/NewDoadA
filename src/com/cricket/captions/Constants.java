@@ -141,6 +141,27 @@ public class Constants
 	public final static String TG20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\TG20\\\\Photos\\\\";
 	public final static String TG20_PHOTO_PATH = "\\c\\Images\\TG20\\Photos\\";
 	
+	public final static String ILT20 = "ILT20";
+	public final static String ILT20_LOGO = "IMAGE*/Default/Essentials/Badges/";
+	public final static String ILT20_LOGO_BW = "IMAGE*/Default/Essentials/Logos_BW/";
+	public final static String ILT20_FLAG = "IMAGE*/Default/Essentials/Flags/";
+	public final static String ILT20_HEROCOLOR = "IMAGE*/Default/Essentials/HeroColur/";
+	public final static String ILT20_ICONBASE = "IMAGE*/Default/Essentials/IconBase/";
+	public final static String ILT20_BASE1 = "IMAGE*/Default/Essentials/Base1/";
+	public final static String ILT20_TEXT1 = "IMAGE*/Default/Essentials/Text1/";
+	public final static String ILT20_BASE2 = "IMAGE*/Default/Essentials/Base2/";
+	public final static String ILT20_TEXT2 = "IMAGE*/Default/Essentials/Text2/";
+	public final static String ILT20_BASE3 = "IMAGE*/Default/Essentials/Base3/";
+	public final static String ILT20_TEXT3 = "IMAGE*/Default/Essentials/Text3/";
+	public final static String ILT20_WEATHERICON = "IMAGE*/Default/Essentials/WeatherIcons/";
+	public final static String ILT20_ICONS = "IMAGE*/Default/Essentials/Icons/";
+	public final static String ILT20_ICONTEXT = "IMAGE*/Default/Essentials/IconText/";
+	public final static String ILT20_SPONSOR = "IMAGE*/Default/Essentials/Sponsors/";
+	public final static String ILT20_TEXTHIGHLIGHT = "IMAGE*/Default/Essentials/Text_Highlight/";
+	
+	public final static String ILT20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\ILT20\\\\Photos\\\\";
+	public final static String ILT20_PHOTO_PATH = "\\c\\Images\\ILT20\\Photos\\";
+	
 	
 	public final static String TEST_T20 = "TEST_T20";
 	public final static String TEST_T20_FLAGS = "IMAGE*/Default/Assets/Flags/";
