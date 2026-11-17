@@ -7170,10 +7170,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectStyle';
 			select.name = select.id;
 			
-			option = document.createElement('option');
-			option.value = 'age';
-			option.text = 'Age';
-			select.appendChild(option);
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'ILT20': 
+				break;
+			default:
+				option = document.createElement('option');
+				option.value = 'age';
+				option.text = 'Age';
+				select.appendChild(option);
+				break;
+			}
 			
 			option = document.createElement('option');
 			option.value = 'batting';
@@ -7194,10 +7200,14 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.id = 'selectType';
 			select.name = select.id;
 			
-			/*option = document.createElement('option');
-			option.value = 'runs';
-			option.text = 'Runs';
-			select.appendChild(option);*/
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'ILT20':
+				option = document.createElement('option');
+				option.value = 'runs';
+				option.text = 'Runs';
+				select.appendChild(option);
+				break;
+			}
 			
 			option = document.createElement('option');
 			option.value = 's/r';

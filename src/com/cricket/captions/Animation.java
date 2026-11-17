@@ -3263,7 +3263,7 @@ public class Animation
 				}
 				break;
 			
-			case "F1":
+			case "F1": case "Alt_F9":
 				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
 					processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
 				}
@@ -3296,6 +3296,9 @@ public class Animation
 				switch (whatToProcess.split(",")[0]) {
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "START");
+					break;
+				case "Alt_F9":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$TeamSingle", "START");
 					break;
 				}
 				processAnimation(Constants.BACK, print_writers, "Loop", "START");
@@ -5255,6 +5258,9 @@ public class Animation
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "CONTINUE");
 					break;
+				case "Alt_F9":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$TeamSingle", "CONTINUE");
+					break;
 				}
 				
 				TimeUnit.MILLISECONDS.sleep(1600);
@@ -5350,7 +5356,7 @@ public class Animation
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.ILT20:
 			switch(whatToProcess.split(",")[0]) {
-			case "F1":
+			case "F1": case "Alt_F9":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "START");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Logo", "START");
@@ -5361,6 +5367,9 @@ public class Animation
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "START");
 					break;
+				case "Alt_F9":
+					processAnimation(Constants.BACK, print_writers, "anim_Change$TeamSingle", "START");
+					break;	
 				}
 				
 				if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase(whatToProcess.split(",")[0])) {
@@ -5368,6 +5377,9 @@ public class Animation
 					case "F1":
 						processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "START");
 						break;
+					case "Alt_F9":
+						processAnimation(Constants.BACK, print_writers, "anim_Change$TeamSingle", "START");
+						break;	
 					}
 				}
 				break;
@@ -6786,7 +6798,7 @@ public class Animation
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.ILT20:
 			switch(whatToProcess.split(",")[0]) {
-			case "F1":
+			case "F1": case "Alt_F9":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "SHOW 0.0");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Logo", "SHOW 0.0");
@@ -6797,6 +6809,9 @@ public class Animation
 				case "F1":
 					processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "SHOW 0.0");
 					break;
+				case "Alt_F9":
+					processAnimation(Constants.BACK, print_writers, "anim_Change$TeamSingle", "SHOW 0.0");
+					break;	
 				}
 				
 				if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase(whatToProcess.split(",")[0])) {
@@ -6805,6 +6820,10 @@ public class Animation
 						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$BattingCard", "SHOW 2.120");
 						processAnimation(Constants.BACK, print_writers, "anim_Change$Batting_Card", "SHOW 0.0");
 						break;
+					case "Alt_F9":
+						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$TeamSingle", "SHOW 2.120");
+						processAnimation(Constants.BACK, print_writers, "anim_Change$TeamSingle", "SHOW 0.0");
+						break;	
 					}
 				}
 				this.whichGraphicOnScreen = whatToProcess;
@@ -8607,13 +8626,16 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
-					case "F1":
+					case "F1": case "Alt_F9":
 						previewCommand = "anim_FullFrames$In_Out$Essentials$In 0.900 anim_FullFrames$In_Out$Logo$In 1.540 anim_FullFrames$In_Out$Header$In 0.900 "
-								+ "anim_FullFrames$In_Out$Footer$In 2.121";
+								+ "anim_FullFrames$In_Out$Footer$In 2.121 ";
 						
 						switch(whatToProcess.split(",")[0]) {
 						case "F1":
 							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$BattingCard$In 2.061";
+							break;
+						case "Alt_F9":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$TeamSingle 2.120 anim_FullFrames$In_Out$Main$TeamSingle$In 2.061";
 							break;
 						}
 						break;
@@ -9152,13 +9174,16 @@ public class Animation
 				switch(config.getBroadcaster()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
-					case "F1":
+					case "F1": case "Alt_F9":
 						previewCommand = "anim_Change$Base 1.100 anim_Change$Logo 1.040 anim_Change$Header 1.300 anim_Change$Header$Change_Out 0.580 anim_Change$Header$Change_In 1.300 "
 								+ "anim_Change$Footer 1.241 anim_Change$Footer$Change_Out 0.580 anim_Change$Footer$Change_In 1.241";
 						
 						switch(whichGraphicOnScreen.split(",")[0]) {
 						case "F1":
 							previewCommand = previewCommand + " anim_Change$Batting_Card 2.261 anim_Change$Batting_Card$Change_Out 1.020 anim_Change$Batting_Card$Change_In 2.261";
+							break;
+						case "Alt_F9":
+							previewCommand = previewCommand + " anim_Change$TeamSingle 2.261 anim_Change$TeamSingle$Change_Out 1.020 anim_Change$TeamSingle$Change_In 2.261";
 							break;
 						}
 						
@@ -9167,6 +9192,9 @@ public class Animation
 							case "F1":
 								previewCommand = previewCommand + " anim_Change$Batting_Card 2.261 anim_Change$Batting_Card$Change_Out 1.020 anim_Change$Batting_Card$Change_In 2.261";
 								break;
+							case "Alt_F9":
+								previewCommand = previewCommand + " anim_Change$TeamSingle 2.261 anim_Change$TeamSingle$Change_Out 1.020 anim_Change$TeamSingle$Change_In 2.261";
+								break;	
 							}
 						}
 						break;
