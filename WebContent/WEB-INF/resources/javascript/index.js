@@ -1509,7 +1509,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 						break;
 					}
 					break;
-				case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
+				case 'ILT20':
+					select = document.createElement('select');
+					select.id = select.name = 'selectIdentInfo';
+
+					session_match.match.inning.filter(inn => inn.isCurrentInning === 'YES').forEach(inn => {
+						const opts = (inn.inningNumber == 1)
+							? [{ value: 'TOSS', text: 'Toss' }, { value: 'VENUE', text: 'Venue' }, { value: 'SUPEROVER', text: 'Super Over'}]
+							: [{ value: 'TARGET', text: 'Target'},{ value: 'VENUE', text: 'Venue' },
+							{ value: 'EQUATION', text: 'Equation'},{ value: 'SUPEROVER', text: 'Super Over'},
+							{ value: 'RESULT', text: 'Result'}];
+						
+						opts.forEach(({ value, text }) => {
+							const option = new Option(text, value);
+							select.appendChild(option);
+						});
+					});
+
+					select.setAttribute('onchange', "setDropdownOptionToSelectOptionArray(this, 0)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select), 0);
+					cellCount++;
+					break;
+				case 'BCCI': case 'TRI_SERIES': case 'AFG_SL_SERIES': case 'MT20': case 'TG20': case 'APLT20':
 			        select = document.createElement('select');
 					select.id = select.name = 'selectWhichIdent';
 					[{ value: 'FULL', text: 'Full Name' },
@@ -2603,10 +2625,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 			            addOption('SUPER_OVER', 'Super Over');
 			            addOption('EXTRAS', 'Extras');
 					}else{
-						addOption('TEAMNAME', 'TeamName');
-			            addOption('VENUE', 'Venue');
-			            addOption('SUPER_OVER', 'Super Over');
-			            addOption('FIRST_INNING_SCORE', '1st Inning Score');
+						//addOption('TEAMNAME', 'TeamName');
+			            //addOption('VENUE', 'Venue');
+			            //addOption('SUPER_OVER', 'Super Over');
+			            //addOption('FIRST_INNING_SCORE', '1st Inning Score');
 					}
 		            
 		            
@@ -2807,10 +2829,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 		            });
 		
 		        } else {
-		            addOption('TEAMNAME', 'TeamName');
-		            addOption('VENUE', 'Venue');
-					
-		            addOption('Ident', 'Ident');
+		            //addOption('TEAMNAME', 'TeamName');
+		            //addOption('VENUE', 'Venue');
+		            //addOption('Ident', 'Ident');
 					addOption('CRR', 'Run Rate');
 		            
 		            session_match.match.inning.forEach(function(inn){
@@ -2822,15 +2843,15 @@ function addItemsToList(whatToProcess,dataToProcess)
 		                        //addOption('EQUATION', 'Equation');
 		                        addOption('TARGET', 'Target');
 		                        addOption('RRR', 'Required Rate');
-								addOption('DLS_PAR_SCORE', 'DLS Par Score');
-								addOption('VJD_PAR_SCORE', 'VJD Par Score');
+								//addOption('DLS_PAR_SCORE', 'DLS Par Score');
+								//addOption('VJD_PAR_SCORE', 'VJD Par Score');
 		                    }
 		                }
 		            });
 		            
-		            addOption('SUPER_OVER', 'Super Over');
+		            //addOption('SUPER_OVER', 'Super Over');
 					//addOption('HYDERABAD', 'HYDERABAD');
-					addOption('GUWAHATI', 'GUWAHATI');
+					//addOption('GUWAHATI', 'GUWAHATI');
 		        }
 		
 		        select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");

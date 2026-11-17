@@ -1013,7 +1013,7 @@ public class IndexController
 				}else if(valueToProcess.split(",")[0].equalsIgnoreCase("Alt_1")) {
 					this_animation.ChangeOn(valueToProcess, print_writers, session_configuration);
 					switch (session_configuration.getBroadcaster()) {
-					case Constants.AFG_SERIES: case Constants.TEST_T20:
+					case Constants.AFG_SERIES: case Constants.TEST_T20: case Constants.ILT20:
 						TimeUnit.MILLISECONDS.sleep(700);
 						break;
 					}

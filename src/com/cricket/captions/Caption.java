@@ -414,6 +414,9 @@ public class Caption
 				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES: case Constants.TEST_T20:
 					this_infobarGfx.infobar.setInfobar_ident_section(whatToProcess.split(",")[2]);
 					break;
+				case Constants.ILT20:
+					this_infobarGfx.infobar.setInfobar_ident_section(whatToProcess.split(",")[2]);
+					break;
 				}
 				status = this_infobarGfx.populateInfobarIdent(print_writers,whatToProcess,matchAllData,whichSide);
 				break;
@@ -423,7 +426,10 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
 					status = this_infobarGfx.infoIdentSection(print_writers, whatToProcess, matchAllData, 1,whichSide);
 					break;
-				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES: case Constants.TEST_T20:
+				case Constants.ILT20:
+					status = this_infobarGfx.infoIdentSection(print_writers, whatToProcess, matchAllData, whichSide,1);
+					break;
+				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES: case Constants.TEST_T20: 
 					status = this_infobarGfx.infoIdentSection(print_writers, whatToProcess, matchAllData, whichSide,1);
 					break;
 				}
@@ -704,7 +710,7 @@ public class Caption
 			case "Alt_1":
 				this_infobarGfx.infobar.setSection1(whatToProcess.split(",")[2]);
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20: case Constants.ILT20:
 					status = this_infobarGfx.populateSection1(print_writers, matchAllData, whichSide);
 					break;
 				case Constants.TEST_T20:
@@ -954,6 +960,7 @@ public class Caption
 					status = this_infobarGfx.populateSection3(print_writers, matchAllData, whichSide, 1);
 					break;
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.ACC: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:
+				case Constants.ILT20:
 					this_infobarGfx.infobar.setSection3(whatToProcess.split(",")[2]);
 					
 					if(whatToProcess.split(",")[2].equalsIgnoreCase("LastXBalls")) {
