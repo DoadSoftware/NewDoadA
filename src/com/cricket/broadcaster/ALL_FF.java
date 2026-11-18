@@ -4396,7 +4396,7 @@ public class ALL_FF
 			break;	
 		case Constants.ILT20:
 			switch(whatToProcess) {
-			case "Alt_F9":
+			case "Alt_F9": case "Shift_T":
 				
 				//Wipe Strat/Chnage
 				if(WhichSide == 1) {

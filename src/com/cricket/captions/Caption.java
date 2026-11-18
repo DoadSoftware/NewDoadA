@@ -275,7 +275,12 @@ public class Caption
 				status = this_fullFramesGfx.populateTarget(whichSide, whatToProcess.split(",")[0], matchAllData, Integer.valueOf(whatToProcess.split(",")[1]));
 				break;
 			case "Shift_T":
-				this_fullFramesGfx.this_ALL_FF.whosewon = whatToProcess.split(",")[3];
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					this_fullFramesGfx.this_ALL_FF.whosewon = whatToProcess.split(",")[3];
+					break;
+				}
+
 				status = this_fullFramesGfx.populatePlayingXI(whichSide, whatToProcess.split(",")[0],
 						Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
 					break;
