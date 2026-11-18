@@ -1225,6 +1225,120 @@ public class FullFramesGfx
 			return status;
 		}
 	}
+	
+	public String populatePlayingXIWithImage(int WhichSide, String whatToProcess,int teamId,MatchAllData matchAllData, int WhichInning) throws Exception
+	{
+		if(teamId == matchAllData.getSetup().getHomeTeamId()) {
+			this_ALL_FF.PlayingXI = matchAllData.getSetup().getHomeSquad();
+			this_ALL_FF.otherSquad = matchAllData.getSetup().getHomeSubstitutes();
+		}else {
+			this_ALL_FF.PlayingXI = matchAllData.getSetup().getAwaySquad();
+			this_ALL_FF.otherSquad = matchAllData.getSetup().getAwaySubstitutes();
+		}
+		
+		this_ALL_FF.Players = cricketService.getAllPlayer();
+		
+		ground = Grounds.stream().filter(grnd -> grnd.getFullname().contains(matchAllData.getSetup().getVenueName())).findAny().orElse(null);
+		if(ground == null) {
+			return "populatePlayingXI: Ground Name [" + matchAllData.getSetup().getVenueName() + "] from database is returning NULL";
+		}
+		
+		if(matchAllData.getMatch().getInning().get(0).getBattingTeamId() == teamId) {
+			WhichType = "BAT";
+		}else if(matchAllData.getMatch().getInning().get(0).getBowlingTeamId() == teamId) {
+			WhichType = "BALL";
+		}
+		
+		this_ALL_FF.team = Teams.stream().filter(tm -> tm.getTeamId() == teamId).findAny().orElse(null);
+		if(this_ALL_FF.team == null) {
+			return "populatePlayingXI: Team id [" + teamId + "] from database is returning NULL";
+		}
+		
+		//--------------------
+		
+		String MatchFileName = null;
+		this_ALL_FF.PlayerId = new ArrayList<Integer>();
+		this_ALL_FF.PlayerIdIn = new ArrayList<Integer>();
+		System.out.println(headToHead.size());
+		if(headToHead.size() > 1) {
+			for (int i = headToHead.size() - 1; i >= 0; i--) {
+			    if (headToHead.get(i).getTeam().getTeamId() == this_ALL_FF.team.getTeamId()) {
+			    	if (MatchFileName == null) {
+			    		MatchFileName = headToHead.get(i).getMatchFileName(); 
+			        }
+			        if (!headToHead.get(i).getMatchFileName().equalsIgnoreCase(MatchFileName)) {
+			            break;
+			        }
+			    }
+			}
+			if (MatchFileName == null) {
+				MatchFileName = matchAllData.getMatch().getMatchFileName();
+	        }
+		}else {
+			MatchFileName = matchAllData.getMatch().getMatchFileName();
+		}
+		
+		if(MatchFileName != null) {
+			Setup setup = new ObjectMapper().readValue(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.SETUP_DIRECTORY + 
+					MatchFileName), Setup.class);
+			
+			for(Player headToHead : (setup.getHomeTeamId()==teamId ? setup.getHomeSquad():setup.getAwaySquad())) {
+				boolean playerFound = false;
+				for (Player ply : this_ALL_FF.PlayingXI) {
+		    	    if(ply.getPlayerId() == headToHead.getPlayerId()) {
+		    	    	playerFound = true;
+		    	    	break;
+		    	    }
+		    	}
+		        if (!playerFound) {  
+//		        	PlayerId.add(headToHead.getPlayerId());
+		        	this_ALL_FF.PlayerId.add(headToHead.getPlayerId());
+		        }else {
+//		        	PlayerIdIn.add(headToHead.getPlayerId());
+		        	this_ALL_FF.PlayerIdIn.add(headToHead.getPlayerId());
+		        }
+			}
+		}
+		System.out.println("IN - " + this_ALL_FF.PlayerIdIn.toString());
+		System.out.println("OUT - " + this_ALL_FF.PlayerId.toString());
+		//-----------------------
+		
+		switch (config.getBroadcaster()) {
+		case Constants.AFG_SL_SERIES:
+			this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(matchAllData.getSetup().getMatchType())).findAny().orElse(null);
+			if(this_ALL_FF.statsType == null) {
+				return "populateSingleTeams: Stats Type not found for profile [" + matchAllData.getSetup().getMatchType() + "]";
+			}
+			
+			this_ALL_FF.statisticsList = new ArrayList<Statistics>();
+			for(Statistics stat : statistics) {
+				if(stat.getStatsTypeId() == this_ALL_FF.statsType.getStatsId()) {
+					stat.setStats_type(this_ALL_FF.statsType);
+					stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+					stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+					this_ALL_FF.statisticsList.add(stat);
+				}
+			}
+			
+			if(this_ALL_FF.statisticsList == null && this_ALL_FF.statisticsList.isEmpty()) {
+				return "populateSingleTeams: Stats List is null";
+			}
+			break;
+		}
+		
+		status = PopulateFfHeader(WhichSide, whatToProcess, matchAllData, WhichInning);
+		if(status == Constants.OK) {
+			status = PopulateFfBody(WhichSide, whatToProcess, matchAllData, WhichInning);
+			if(status == Constants.OK) {
+				return PopulateFfFooter(WhichSide, whatToProcess, matchAllData, WhichInning);
+			} else {
+				return status;
+			}
+		} else {
+			return status;
+		}
+	}
+	
 	public String populatePlayingXI(int WhichSide, String whatToProcess,int teamId,MatchAllData matchAllData, int WhichInning) throws Exception
 	{
 		if(teamId == matchAllData.getSetup().getHomeTeamId()) {
@@ -1427,19 +1541,10 @@ public class FullFramesGfx
 		this_ALL_FF.Teams = Teams;
 		this_ALL_FF.VariousText = VariousText;
 		this_ALL_FF.WhichProfile = (WhichGroup.equalsIgnoreCase("GroupA") ? "GROUP A" : "GROUP B");
-		switch(config.getBroadcaster()) {
-		case Constants.TEST_T20:
-			if(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + CricketUtil.LEAGUETABLE_XML).exists()) {
-				this_ALL_FF.leagueTable = (LeagueTable)JAXBContext.newInstance(LeagueTable.class).createUnmarshaller().unmarshal(
-						new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + CricketUtil.LEAGUETABLE_XML));
-			}
-			break;
-		default:
-			if(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION).exists()) {
-				this_ALL_FF.leagueTable = (LeagueTable)JAXBContext.newInstance(LeagueTable.class).createUnmarshaller().unmarshal(
-						new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION));
-			}
-			break;
+		
+		if(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION).exists()) {
+			this_ALL_FF.leagueTable = (LeagueTable)JAXBContext.newInstance(LeagueTable.class).createUnmarshaller().unmarshal(
+					new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION));
 		}
 		
 		if(this_ALL_FF.leagueTable == null) {
@@ -1746,6 +1851,8 @@ public class FullFramesGfx
 			return this_ALL_FF.TargetBody(print_writers, WhichSide, config, matchAllData, inning);
 		case "Shift_T":
 			return this_ALL_FF.PlayingXISimpleBody(print_writers, whatToProcess, WhichSide, config, matchAllData, inning);
+		case "Shift_F8":
+			return this_ALL_FF.PlayingXIWithImageSimpleBody(print_writers, whatToProcess, WhichSide, config, matchAllData, inning);
 		case "Control_Shift_F7":
 			return this_ALL_FF.PlayingXIBody(print_writers,whatToProcess, WhichSide, config, matchAllData, inning);
 		case "Control_F1":
@@ -1770,7 +1877,7 @@ public class FullFramesGfx
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
-		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I": case "Alt_Shift_U": 
+		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I": case "Alt_Shift_U":  case "Shift_F8":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 

@@ -279,6 +279,17 @@ public class Caption
 				status = this_fullFramesGfx.populatePlayingXI(whichSide, whatToProcess.split(",")[0],
 						Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
 					break;
+			case "Shift_F8":
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.TEST_T20:
+					this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[3];
+					this_fullFramesGfx.this_ALL_FF.whichTeam = Integer.valueOf(whatToProcess.split(",")[2]);
+					System.out.println("whatToProcess------------------------------------" + whatToProcess);
+					break;
+				}
+				status = this_fullFramesGfx.populatePlayingXIWithImage(whichSide, whatToProcess.split(",")[0],
+						Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
+					break;
 			case "Control_Shift_F7":
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
