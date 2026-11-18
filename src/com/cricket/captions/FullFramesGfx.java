@@ -1206,12 +1206,15 @@ public class FullFramesGfx
 		    MatchFileNameHome = matchAllData.getMatch().getMatchFileName();
 		    MatchFileNameAway = matchAllData.getMatch().getMatchFileName();
 		}
-		System.out.println("MatchFileNameHome = " + MatchFileNameHome);
-		System.out.println("MatchFileNameAway = " + MatchFileNameAway);
+//		System.out.println("MatchFileNameHome = " + MatchFileNameHome);
+//		System.out.println("MatchFileNameAway = " + MatchFileNameAway);
+		
 		processDoubleTeamsInAndOutPlayer(MatchFileNameHome, matchAllData.getSetup().getHomeSquad(), this_ALL_FF);
 		processDoubleTeamsInAndOutPlayer(MatchFileNameAway, matchAllData.getSetup().getAwaySquad(), this_ALL_FF);
-		System.out.println("IN - " + this_ALL_FF.PlayerIdIn.toString());
-		System.out.println("OUT - " + this_ALL_FF.PlayerId.toString());
+		
+//		System.out.println("IN - " + this_ALL_FF.PlayerIdIn.toString());
+//		System.out.println("OUT - " + this_ALL_FF.PlayerId.toString());
+
 		status = PopulateFfHeader(WhichSide, whatToProcess, matchAllData, 0);
 		if(status == Constants.OK) {
 			setBasePosition(print_writers, WhichSide, whatToProcess, config);

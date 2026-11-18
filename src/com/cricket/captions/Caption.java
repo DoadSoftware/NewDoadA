@@ -280,7 +280,6 @@ public class Caption
 					this_fullFramesGfx.this_ALL_FF.whosewon = whatToProcess.split(",")[3];
 					break;
 				}
-
 				status = this_fullFramesGfx.populatePlayingXI(whichSide, whatToProcess.split(",")[0],
 						Integer.valueOf(whatToProcess.split(",")[2]), matchAllData, 0);
 					break;
