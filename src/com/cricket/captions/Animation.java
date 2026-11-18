@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.cricket.containers.Infobar;
 import com.cricket.containers.LowerThird;
+import com.cricket.controller.IndexController;
 import com.cricket.model.Configuration;
 import com.cricket.model.MatchAllData;
 import com.cricket.util.CricketFunctions;
@@ -3281,12 +3282,13 @@ public class Animation
 				break;
 				
 			case "F12":
+				matchAllData = IndexController.session_match;
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK1"
+						+ "*VALUE SET 0.0 0.0 0.0\0",print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK2"
+						+ "*VALUE SET -455.0 0.0 0.0\0",print_writers);
+				
 				if(this.infobar.isInfobar_on_screen()) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK1"
-							+ "*VALUE SET 0.0 0.0 0.0\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK2"
-							+ "*VALUE SET -455.0 0.0 0.0\0",print_writers);
-					
 					processAnimation(Constants.FRONT, print_writers, "IdentToNormal", "START");
 					
 					TimeUnit.MILLISECONDS.sleep(300);
@@ -3298,16 +3300,17 @@ public class Animation
 					
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Ident", "SHOW 0.0");
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Normal", "SHOW 2.600");
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK1"
-							+ "*VALUE SET 0.0 0.0 0.0\0",print_writers);
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK2"
-							+ "*VALUE SET -455.0 0.0 0.0\0",print_writers);
 					
+					caption.this_infobarGfx.logosAndBaseColor(print_writers, "F12", matchAllData, 1);
+					processAnimation(Constants.FRONT, print_writers, "Change_Logo", "SHOW 0.0");
+					
+				}else {
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Essentials", "START");
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Logo", "START");
-					processAnimation(Constants.FRONT, print_writers, "ShiftLogoForNormal", "START");
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Normal", "START");
+					
+					TimeUnit.MILLISECONDS.sleep(1500);
+					processAnimation(Constants.FRONT, print_writers, "ShiftLogoForNormal", "START");
 				}
 				
 				processAnimation(Constants.FRONT, print_writers, "Loop", "START");
@@ -3319,7 +3322,24 @@ public class Animation
 				break;
 				
 //-----------------------------------------------------------------------------------------------------------------------------				
-						
+			
+			case "m": case "Control_m":
+				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+					processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
+				}
+				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+				TimeUnit.MILLISECONDS.sleep(500);
+				
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				
+				processAnimation(Constants.BACK, print_writers, "anim_Ident", "START");
+				processAnimation(Constants.BACK, print_writers, "Loop", "START");
+				
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
+				
 			case "F1": case "F2": case "Alt_F9":
 				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
 					processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
@@ -5276,7 +5296,7 @@ public class Animation
 		case Constants.ILT20:
 			switch (whatToProcess.split(",")[0]) {
 			case "Control_F12": case "F12":
-				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Essencials", "CONTINUE");
+				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Essentials", "CONTINUE");
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Logo", "CONTINUE");
 				
 				switch (whatToProcess.split(",")[0]) {
@@ -5314,6 +5334,23 @@ public class Animation
 				caption.this_infobarGfx.infobar.setLast_section3("");
 				caption.this_infobarGfx.infobar.setLast_section4("");
 				caption.this_infobarGfx.infobar.setLast_section5("");
+				break;
+				
+			case "m": case "Control_m":
+				
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				processAnimation(Constants.BACK, print_writers, "anim_Ident", "CONTINUE");
+				
+				TimeUnit.MILLISECONDS.sleep(1600);
+				
+				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
+				processAnimation(Constants.BACK, print_writers, "anim_Ident", "SHOW 0.0");
+				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+					processAnimation(Constants.FRONT, print_writers, "Watermark", "START");
+				}
+				this.whichGraphicOnScreen = "";
 				break;
 			
 			case "F1": case "F2": case "Control_F7": case "Control_F11": case "F4": case "Shift_K": case "Control_F10": case "Shift_F10":
@@ -8498,10 +8535,14 @@ public class Animation
 			this.whichGraphicOnScreen = "";
 			break;
 		case Constants.ILT20:
+			processAnimation(Constants.BACK, print_writers, "anim_Ident", "SHOW 0.0");
+			
 			processAnimation(Constants.BACK, print_writers, "anim_FullFrames", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "anim_Change", "SHOW 0.0");
 			
 			if(whatToProcess.contains("CLEAR-ALL")) {
+				processAnimation(Constants.FRONT, print_writers, "Loop", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar", "SHOW 0.0");
 				
 				this.infobar.setInfobar_on_screen(false);
 				this.infobar.setFreeHit_on_screen(false);
@@ -8740,6 +8781,9 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
+					case "m": case "Control_m":
+						previewCommand = "anim_Infobar$Push 1.000 anim_Ident$In_Out$In 1.100";
+						break;
 					case "F1": case "F2": case "Alt_F9":
 						previewCommand = "anim_FullFrames$In_Out$Essentials$In 0.900 anim_FullFrames$In_Out$Logo$In 1.540 anim_FullFrames$In_Out$Header$In 1.500 "
 								+ "anim_FullFrames$In_Out$Footer$In 2.121 ";

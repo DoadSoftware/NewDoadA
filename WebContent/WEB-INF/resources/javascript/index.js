@@ -2807,52 +2807,78 @@ function addItemsToList(whatToProcess,dataToProcess)
 		            option.text = text;
 		            select.appendChild(option);
 		        };
-		
-		        if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
-		            addOption('DAY_SESSION', 'Day Session');
-		            addOption('LOCAL-TIME', 'Local Time');
-		            addOption('CRR', 'Run Rate');
-		            addOption('LUNCH_TEXT', 'Lunch Text');
-		            addOption('TEA_TEXT', 'Tea Text');
-		
-		            session_match.match.inning.forEach(function(inn){
-		                if(inn.isCurrentInning === 'YES'){
-		                    if(inn.inningNumber === 1){
-		                        addOption('TOSS', 'Toss');
-		                    } else if(inn.inningNumber === 2){
-		                        addOption('FIRST_INNING_SCORE', '1st Inning Score');
-		                    } else if(inn.inningNumber === 4){
-		                        addOption('TARGET', 'Target');
-		                        addOption('RRR', 'Required Rate');
-		                    }
-		                }
-		            });
-		
-		        } else {
-		            //addOption('TEAMNAME', 'TeamName');
-		            //addOption('VENUE', 'Venue');
-		            //addOption('Ident', 'Ident');
+				
+				switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'ILT20':
+					addOption('TEAMNAME', 'TeamName');
+					//addOption('VENUE', 'Venue');
+					//addOption('Ident', 'Ident');
 					addOption('CRR', 'Run Rate');
-		            
-		            session_match.match.inning.forEach(function(inn){
-		                if(inn.isCurrentInning === 'YES'){
-		                    if(inn.inningNumber === 1){
-		                        addOption('TOSS', 'Toss');
-		                    } else {
-		                        //addOption('FIRST_INNING_SCORE', '1st Inning Score');
-		                        //addOption('EQUATION', 'Equation');
-		                        addOption('TARGET', 'Target');
-		                        addOption('RRR', 'Required Rate');
-								//addOption('DLS_PAR_SCORE', 'DLS Par Score');
-								//addOption('VJD_PAR_SCORE', 'VJD Par Score');
-		                    }
-		                }
-		            });
-		            
-		            //addOption('SUPER_OVER', 'Super Over');
-					//addOption('HYDERABAD', 'HYDERABAD');
-					//addOption('GUWAHATI', 'GUWAHATI');
-		        }
+
+					session_match.match.inning.forEach(function(inn){
+					    if(inn.isCurrentInning === 'YES'){
+					        if(inn.inningNumber === 1){
+					            addOption('TOSS', 'Toss');
+					        } else {
+					            addOption('FIRST_INNING_SCORE', '1st Inning Score');
+					            //addOption('EQUATION', 'Equation');
+					            addOption('TARGET', 'Target');
+					            addOption('RRR', 'Required Rate');
+								addOption('DLS_PAR_SCORE', 'DLS Par Score');
+					        }
+					    }
+					});
+
+					addOption('SUPER_OVER', 'Super Over');
+					break;
+				default:
+					if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
+			            addOption('DAY_SESSION', 'Day Session');
+			            addOption('LOCAL-TIME', 'Local Time');
+			            addOption('CRR', 'Run Rate');
+			            addOption('LUNCH_TEXT', 'Lunch Text');
+			            addOption('TEA_TEXT', 'Tea Text');
+
+			            session_match.match.inning.forEach(function(inn){
+			                if(inn.isCurrentInning === 'YES'){
+			                    if(inn.inningNumber === 1){
+			                        addOption('TOSS', 'Toss');
+			                    } else if(inn.inningNumber === 2){
+			                        addOption('FIRST_INNING_SCORE', '1st Inning Score');
+			                    } else if(inn.inningNumber === 4){
+			                        addOption('TARGET', 'Target');
+			                        addOption('RRR', 'Required Rate');
+			                    }
+			                }
+			            });
+
+			        } else {
+			            addOption('TEAMNAME', 'TeamName');
+			            addOption('VENUE', 'Venue');
+			            addOption('Ident', 'Ident');
+						addOption('CRR', 'Run Rate');
+			            
+			            session_match.match.inning.forEach(function(inn){
+			                if(inn.isCurrentInning === 'YES'){
+			                    if(inn.inningNumber === 1){
+			                        addOption('TOSS', 'Toss');
+			                    } else {
+			                        addOption('FIRST_INNING_SCORE', '1st Inning Score');
+			                        addOption('EQUATION', 'Equation');
+			                        addOption('TARGET', 'Target');
+			                        addOption('RRR', 'Required Rate');
+									addOption('DLS_PAR_SCORE', 'DLS Par Score');
+									addOption('VJD_PAR_SCORE', 'VJD Par Score');
+			                    }
+			                }
+			            });
+			            
+			            addOption('SUPER_OVER', 'Super Over');
+						addOption('HYDERABAD', 'HYDERABAD');
+						addOption('GUWAHATI', 'GUWAHATI');
+			        }
+					break;
+				}
 		
 		        select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
 		        row.insertCell(cellCount).appendChild(select);

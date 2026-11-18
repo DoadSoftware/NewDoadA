@@ -435,7 +435,6 @@ public class Caption
 				}
 				break;
 			case "F12":// InfoBar
-				this_infobarGfx.infobar.setInfobar_on_screen(false);
 				this_infobarGfx.infobar.setPowerplay_on_screen(false);
 				
 				this_infobarGfx.BatterTickerName = false;
