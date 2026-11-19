@@ -5285,13 +5285,13 @@ public class ALL_FF
 				
 				break;
 			case "m":
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Footer$select_Language*FUNCTION*Omo*vis_con SET ", 
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Footer$select_Language*FUNCTION*Omo*vis_con SET ", 
 						config, Constants.ILT20, print_writers, foreignLanguageOmo);
 				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata,"FROM", "", null, 1,foreignLanguageDataList);
 				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getVenueName(),
 						"", null, 2, foreignLanguageDataList);
 				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Footer$English$txt_Footer*GEOM*TEXT SET ",
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Footer$English$txt_Footer*GEOM*TEXT SET ",
 						config, Constants.ILT20, print_writers, foreignLanguageData);
 				break;
 			case "Control_m":
@@ -5299,7 +5299,7 @@ public class ALL_FF
 				Calendar cal = Calendar.getInstance();
 				cal.add(Calendar.DATE, +1);
 				
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Footer$select_Language*FUNCTION*Omo*vis_con SET ", 
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Footer$select_Language*FUNCTION*Omo*vis_con SET ", 
 						config, Constants.ILT20, print_writers, foreignLanguageOmo);
 				
 				if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal.getTime()))) {
@@ -5331,7 +5331,7 @@ public class ALL_FF
 					}
 				}
 				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Footer$English$txt_Footer*GEOM*TEXT SET ",
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Footer$English$txt_Footer*GEOM*TEXT SET ",
 						config, Constants.ILT20, print_writers, foreignLanguageData);
 				
 				break;
@@ -18180,15 +18180,17 @@ public class ALL_FF
 				break;
 			}
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Base$Team1$img_Base1*TEXTURE*IMAGE SET " + Constants.ILT20_BASE1 + HomeTeam.getTeamBadge() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Base$Team1$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + HomeTeam.getTeamBadge() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$OutlineText$Team1$txt_TeamName*GEOM*TEXT SET " + HomeTeam.getTeamName1() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$TeamBadge$Team1$Logo$img_TeamBadge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + HomeTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Select_ID_Target*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Base$Team2$img_Base1*TEXTURE*IMAGE SET " + Constants.ILT20_BASE1 + AwayTeam.getTeamBadge() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Base$Team2$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + AwayTeam.getTeamBadge() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$OutlineText$Team2$txt_TeamName*GEOM*TEXT SET " + AwayTeam.getTeamName1() + "\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$TeamBadge$Team2$Logo$img_TeamBadge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + AwayTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Base$Team1$img_Base1*TEXTURE*IMAGE SET " + Constants.ILT20_BASE1 + HomeTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Base$Team1$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + HomeTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$OutlineText$Team1$txt_TeamName*GEOM*TEXT SET " + HomeTeam.getTeamName1() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$TeamBadge$Team1$Logo$img_TeamBadge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + HomeTeam.getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Base$Team2$img_Base1*TEXTURE*IMAGE SET " + Constants.ILT20_BASE1 + AwayTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$Base$Team2$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + AwayTeam.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$OutlineText$Team2$txt_TeamName*GEOM*TEXT SET " + AwayTeam.getTeamName1() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Ident$TeamBadge$Team2$Logo$img_TeamBadge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + AwayTeam.getTeamBadge() + "\0", print_writers);
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$Ident$Main$Footer$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + AwayTeam.getTeamBadge() + "\0", print_writers);
 
