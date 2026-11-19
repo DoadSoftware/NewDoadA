@@ -7416,14 +7416,14 @@ public class ALL_FF
 								+ "$BattingCard$ScaleY$Row" + rowId + "$select_BatDataType*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
-								+ "$BattingCard$ScaleY$Row" + rowId + "$Out$Highlight$English$txt_HowOut1*GEOM*TEXT SET \0", print_writers);
+								+ "$BattingCard$ScaleY$Row" + rowId + "$Out$Highlight$English$txt_FielderName*GEOM*TEXT SET \0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
 								+ "$BattingCard$ScaleY$Row" + rowId + "$Out$Highlight$English$txt_HowOut2*GEOM*TEXT SET \0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
 								+ "$BattingCard$ScaleY$Row" + rowId + "$Out$Highlight$English$txt_BowlerName*GEOM*TEXT SET \0", print_writers);
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
-								+ "$BattingCard$ScaleY$Row" + rowId + "$Out$Highlight$Hindi$txt_HowOut1*GEOM*TEXT SET \0", print_writers);
+								+ "$BattingCard$ScaleY$Row" + rowId + "$Out$Highlight$Hindi$txt_FielderName*GEOM*TEXT SET \0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
 								+ "$BattingCard$ScaleY$Row" + rowId + "$Out$Highlight$Hindi$txt_HowOut2*GEOM*TEXT SET \0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide 
@@ -7436,7 +7436,7 @@ public class ALL_FF
 								+ rowId + "$Out$Highlight$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
 						
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$BattingCard$ScaleY$Row"
-								+ rowId + containerName + "$English$txt_FielderName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								+ rowId + containerName + "$English$txt_HowOut1*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 						break;
 					}
 					
