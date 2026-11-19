@@ -17372,6 +17372,7 @@ public class LowerThirdGfx
 	{
 		String LT_In = "",LT_Out = "",LT_c1 = "",LT_c2 = "",
 				LT_SbIn = "",LT_SbOut = "",LT_Sbc1 = "",LT_Sbc2 = "";
+		
 		switch (config.getBroadcaster().toUpperCase()) {
 		
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.TEST_T20:
@@ -17454,6 +17455,68 @@ public class LowerThirdGfx
 						+ LT_c2 + "\0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y_In_Out$SublineGrp$obj_SublineBase*"
 						+ "ANIMATION*KEY*$SBC2*VALUE SET " + LT_Sbc2 + "\0",print_writers);
+			}
+			break;
+		case Constants.ILT20:
+			String SUB_7A = "",FM_1A = "",INFO_4A = "",INFO_5A = "",
+			TITLE_1A = "",TITLE_2A = "",MAX_1A = "",SUB_4AT = "";
+			
+			switch (subline) {
+			case 0:
+				SUB_7A = "0.0 0.0 0.0";
+				FM_1A = "0.0";
+				INFO_4A = "0.0";
+				INFO_5A = "0.0";
+				
+				TITLE_1A = "0.0 0.0 0.0";
+				TITLE_2A = "0.0 0.0 0.0";
+				MAX_1A = "0";
+				SUB_4AT = "0";
+				break;
+			case 1:
+				SUB_7A = "0.0 0.0 0.0";
+				FM_1A = "48.0";
+				INFO_4A = "44.0";
+				INFO_5A = "24.0";
+				
+				TITLE_1A = "0.0 0.0 0.0";
+				TITLE_2A = "-20.0 0.0 0.0";
+				MAX_1A = "415";
+				SUB_4AT = "-14.5";
+				break;
+			case 2:
+				SUB_7A = "0.0 48.0 0.0";
+				FM_1A = "96.0";
+				INFO_4A = "92.0";
+				INFO_5A = "48.0";
+				
+				TITLE_1A = "0.0 48.0 0.0";
+				TITLE_2A = "0.0 0.0 0.0";
+				MAX_1A = "400";
+				SUB_4AT = "-10.5";
+				break;
+			case 3:
+				SUB_7A = "0.0 96.0 0.0";
+				FM_1A = "144.0";
+				INFO_4A = "140.0";
+				INFO_5A = "72.0";
+				
+				TITLE_1A = "0.0 96.0 0.0";
+				TITLE_2A = "20.0 0.0 0.0";
+				MAX_1A = "385";
+				SUB_4AT = "-6.5";
+				break;
+			case 4:
+				SUB_7A = "0.0 144.0 0.0";
+				FM_1A = "192.0";
+				INFO_4A = "188.0";
+				INFO_5A = "96.0";
+				
+				TITLE_1A = "0.0 144.0 0.0";
+				TITLE_2A = "40.0 0.0 0.0";
+				MAX_1A = "370";
+				SUB_4AT = "-2.5";
+				break;	
 			}
 			break;
 		}
