@@ -1816,7 +1816,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.name = select.id;
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TG20': case 'APLT20': case 'ILT20':
+				case 'TG20': case 'APLT20':
 					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
@@ -1830,6 +1830,30 @@ function addItemsToList(whatToProcess,dataToProcess)
 						break;
 					}
 					break;
+				case 'ILT20':
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'IT20';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'ILT20_CAREER';
+					option.text = 'ILT20 CAREER';
+					select.appendChild(option);
+					switch(whatToProcess){
+					case "Alt_3":
+						option = document.createElement('option');
+						option.value = 'THIS_SERIES';
+						option.text = 'THIS SERIES';
+						select.appendChild(option);
+						break;
+					}
+					break;	
 				case 'AFG_SERIES': case 'TEST_T20':
 					const matchType = session_match.setup.matchType;
 
@@ -1956,13 +1980,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 						select.name = select.id;
 						
 						option = document.createElement('option');
-						option.value = 'WITHOUT';
-						option.text = 'WithOut Image';
+						option.value = 'WITH';
+						option.text = 'With Image';
 						select.appendChild(option);
 						
 						option = document.createElement('option');
-						option.value = 'WITH';
-						option.text = 'With Image';
+						option.value = 'WITHOUT';
+						option.text = 'WithOut Image';
 						select.appendChild(option);
 						
 						select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");

@@ -3422,6 +3422,23 @@ public class Animation
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 				
+			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+					processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
+				}
+				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+				TimeUnit.MILLISECONDS.sleep(500);
+				
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				
+				processAnimation(Constants.BACK, print_writers, "anim_Profile", "START");
+				processAnimation(Constants.BACK, print_writers, "Loop", "START");
+				
+				this.whichGraphicOnScreen = whatToProcess;
+				break;	
+				
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10":
 			case "Control_F11":	case "Shift_K":
 				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
@@ -5460,6 +5477,21 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 			
+			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				processAnimation(Constants.BACK, print_writers, "anim_Profile", "CONTINUE");
+				
+				TimeUnit.MILLISECONDS.sleep(1600);
+				
+				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
+				processAnimation(Constants.BACK, print_writers, "anim_Profile", "SHOW 0.0");
+				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+					processAnimation(Constants.FRONT, print_writers, "Watermark", "START");
+				}
+				this.whichGraphicOnScreen = "";
+				break;
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10":
 			case "Control_F11":	case "Shift_K":
 				
@@ -5629,7 +5661,9 @@ public class Animation
 				}
 				caption.this_infobarGfx.infobar.setLast_sectionAnalytics(caption.this_infobarGfx.infobar.getSectionAnalytics());
 				break;
-				
+			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+				processAnimation(Constants.BACK, print_writers, "Change_Profile", "START");
+				break;
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10":
 			case "Shift_F10": case "Control_F11": case "Shift_K":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "START");
@@ -7146,7 +7180,11 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Change_Section2", "SHOW 0.0");
 				caption.this_infobarGfx.infobar.setLast_section3(caption.this_infobarGfx.infobar.getSection3());
 				break;
+			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+				processAnimation(Constants.BACK, print_writers, "anim_Profile$In_Out", "SHOW 2.120");
+				processAnimation(Constants.BACK, print_writers, "Change_Profile", "SHOW 0.0");
 				
+				break;	
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": 
 			case "Shift_F10": case "Control_F11": case "Shift_K":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "SHOW 0.0");
@@ -9034,8 +9072,13 @@ public class Animation
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
 					case "m": case "Control_m": case "Shift_D":
-						previewCommand = "anim_Infobar$Push 1.000 anim_Ident$In_Out 1.100 anim_Ident$In_Out$In 1.100 anim_Ident$In_Out$In$In 1.100";
+						previewCommand = "anim_Ident$In_Out 1.100 anim_Ident$In_Out$In 1.100";
 						break;
+					case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
+						previewCommand = "anim_Profile$In_Out 2.120 anim_Profile$In_Out$Essentials 2.120 anim_Profile$In_Out$Essentials$In 0.900 anim_Profile$In_Out$Logo 2.120 anim_Profile$In_Out$Logo$In 1.540 anim_Profile$In_Out$Header$In 0.000 "
+								+ "anim_Profile$In_Out$Main$Summary 2.120 anim_Profile$In_Out$Main$Summary$In 1.761";
+						
+						break;	
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11":
 					case "Shift_K":
 						previewCommand = "anim_FullFrames$In_Out$Essentials$In 0.900 anim_FullFrames$In_Out$Logo$In 1.540 anim_FullFrames$In_Out$Header$In 1.500 "

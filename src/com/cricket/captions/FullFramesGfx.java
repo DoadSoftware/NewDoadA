@@ -836,6 +836,7 @@ public class FullFramesGfx
 		
 		switch(config.getBroadcaster()) {
 		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
+		case Constants.ILT20:	
 			this_ALL_FF.ImageType = whatToProcess.split(",")[4];
 			break;
 		}
@@ -1002,6 +1003,26 @@ public class FullFramesGfx
 //					this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
 //					
 //				}
+			}else if(this_ALL_FF.WhichProfile.equalsIgnoreCase("ILT20_CAREER")) {
+				this_ALL_FF.statsType = statsTypes.stream()
+			            .filter(st -> st.getStatsShortName().equalsIgnoreCase("ILT20_CAREER"))
+			            .findAny().orElse(null);
+			        if (this_ALL_FF.statsType == null) {
+			            return "InfoBarPlayerProfile: Stats Type not found for profile [" + this_ALL_FF.WhichProfile + "]";
+			        }
+			        
+			        this_ALL_FF.stat = statistics.stream()
+			            .filter(st -> st.getPlayerID() == this_ALL_FF.FirstPlayerId && this_ALL_FF.statsType.getStatsId() == st.getStatsTypeId())
+			            .findAny().orElse(null);
+			        if (this_ALL_FF.stat == null) {
+			            return "InfoBarPlayerProfile: Stats not found for Player Id [" + this_ALL_FF.FirstPlayerId + "]";
+			        }
+			        
+			        this_ALL_FF.statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+			        this_ALL_FF.stat.setStats_type(this_ALL_FF.statsType);
+			        this_ALL_FF.stat = CricketFunctions.updateTournamentWithH2h(this_ALL_FF.stat, headToHead, matchAllData, CricketUtil.FULL);
+			        this_ALL_FF.stat = CricketFunctions.updateStatisticsWithMatchData(this_ALL_FF.stat, matchAllData, CricketUtil.FULL);
+			        
 			}else if(this_ALL_FF.WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
 				this_ALL_FF.statsType = statsTypes.stream()
 			            .filter(st -> st.getStatsShortName().equalsIgnoreCase("MAHARAJA_CAREER"))
