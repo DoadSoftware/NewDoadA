@@ -900,7 +900,7 @@ public class IndexController
 				processAnimations("ANIMATE-IN-GRAPHICS", session_configuration, "Alt_1,,BATSMAN", print_writers);
 			}
 			break;
-		case Constants.BAN_AFG_SERIES: case Constants.WCL:
+		case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ILT20:
 			if(this_caption.this_infobarGfx.infobar.getSection5() != null && !this_caption.this_infobarGfx.infobar.getSection5().isEmpty()) {
 				this_caption.PopulateGraphics("Alt_5,,BLANK", session_match);
 				this_animation.caption = this_caption;
@@ -934,7 +934,7 @@ public class IndexController
 			
 			this_caption.this_infobarGfx.infobar.setSectionLtAnalytics("");
 			break;	
-		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.ILT20:
+		case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 			if(this_caption.this_infobarGfx.infobar.getSection2() != null && !this_caption.this_infobarGfx.infobar.getSection2().isEmpty()) {
 				this_caption.PopulateGraphics("Alt_2,,BLANK", session_match);
 				this_animation.caption = this_caption;

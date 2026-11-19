@@ -910,7 +910,8 @@ public class Caption
 					}
 					status = this_infobarGfx.populateSection5(print_writers, matchAllData, whichSide);
 					break;
-				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
+				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: 
+				case Constants.APLT20: case Constants.ILT20:
 					whichSide = (this_infobarGfx.infobar.getSection5() != null && !this_infobarGfx.infobar.getSection5().isEmpty() 
 		            && !this_infobarGfx.infobar.getSection5().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 1;
 					
@@ -992,7 +993,7 @@ public class Caption
 			case "Alt_8":
 				switch(config.getBroadcaster()) {
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: 
-				case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20:
+				case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20: case Constants.ILT20:
 					
 					whichSide = ((this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
 		            && !this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 
