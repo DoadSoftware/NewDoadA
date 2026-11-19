@@ -3326,7 +3326,7 @@ public class Animation
 				
 //-----------------------------------------------------------------------------------------------------------------------------				
 			
-			case "m": case "Control_m":
+			case "m": case "Control_m": case "Shift_D":
 				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
 					processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
 				}
@@ -3355,6 +3355,9 @@ public class Animation
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation(Constants.BACK, print_writers, "Audio", "START");
 				}
+				
+				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$gfx_Fullframes", "START");
+				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$gfx_Profile", "START");
 				
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "START");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "START");
@@ -5358,7 +5361,7 @@ public class Animation
 				caption.this_infobarGfx.infobar.setLast_section5("");
 				break;
 				
-			case "m": case "Control_m":
+			case "m": case "Control_m": case "Shift_D":
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation(Constants.BACK, print_writers, "Audio", "START");
@@ -8932,7 +8935,7 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
-					case "m": case "Control_m":
+					case "m": case "Control_m": case "Shift_D":
 						previewCommand = "anim_Infobar$Push 1.000 anim_Ident$In_Out$In 1.100";
 						break;
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11":
