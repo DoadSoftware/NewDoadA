@@ -2810,7 +2810,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'ILT20':
-					addOption('TEAMNAME', 'TeamName');
+					//addOption('TEAMNAME', 'TeamName');
 					//addOption('VENUE', 'Venue');
 					//addOption('Ident', 'Ident');
 					addOption('CRR', 'Run Rate');

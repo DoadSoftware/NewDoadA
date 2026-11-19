@@ -187,36 +187,35 @@ public class InfobarGfx
 //				if(infobar.getLast_section4() != null && !infobar.getLast_section4().isEmpty()) {
 //					populateSection4(print_writers, matchAllData, 1);
 //				}
-//				if(infobar.getLast_section5() != null && !infobar.getLast_section5().isEmpty()) {
-//					populateSection5(print_writers, matchAllData, 1);
-//				}
-//				if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
-//					populateSectionAnalytics(true, print_writers, matchAllData, 1);
-//				}
+				if(infobar.getLast_section5() != null && !infobar.getLast_section5().isEmpty()) {
+					populateSection5(print_writers, matchAllData, 1);
+				}
+				if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
+					populateSectionAnalytics(true, print_writers, matchAllData, 1);
+				}
 				
-//				if(infobar.isInfobar_on_screen()) {
-//					this_targetData = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, 
-//						CricketUtil.FULL, "|", config.getBroadcaster(), false);
-//					if(this_targetData.isMatchFinished() == true) {
-//						System.out.println("HELLO");
-//						this.infobar.setResult_on_screen(true);
-//						this.infobar.setFreeText(Arrays.asList(this_targetData.getTargetOrResult().split("\\|")));
-//						populateInfoBarResult(print_writers, matchAllData);
-//						
-//						if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
-//							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$InOut", "CONTINUE");
-//							this_animation.processAnimation(Constants.FRONT, print_writers, "Fade_For_Analytics", "CONTINUE");
-//							TimeUnit.MILLISECONDS.sleep(400);
-//							this_animation.processAnimation(Constants.FRONT, print_writers, "Infobar_To_Result", "START");
-//							TimeUnit.MILLISECONDS.sleep(2000);
-//							this_animation.processAnimation(Constants.FRONT, print_writers, "Normal", "SHOW 0.0");
-//						}else {
-//							this_animation.processAnimation(Constants.FRONT, print_writers, "Infobar_To_Result", "START");
-//							TimeUnit.MILLISECONDS.sleep(2000);
-//							this_animation.processAnimation(Constants.FRONT, print_writers, "Normal", "SHOW 0.0");
-//						}
-//					}
-//				} 
+				if(infobar.isInfobar_on_screen()) {
+					this_targetData = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, 
+						CricketUtil.FULL, "|", config.getBroadcaster(), false);
+					if(this_targetData.isMatchFinished() == true) {
+						System.out.println("HELLO");
+						this.infobar.setResult_on_screen(true);
+						this.infobar.setFreeText(Arrays.asList(this_targetData.getTargetOrResult().split("\\|")));
+						populateInfoBarResult(print_writers, matchAllData);
+						
+						if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Analytics$In_Out", "CONTINUE");
+							TimeUnit.MILLISECONDS.sleep(400);
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$InfobarToResult", "START");
+							TimeUnit.MILLISECONDS.sleep(2000);
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Normal", "SHOW 0.0");
+						}else {
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$InfobarToResult", "START");
+							TimeUnit.MILLISECONDS.sleep(2000);
+							this_animation.processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Normal", "SHOW 0.0");
+						}
+					}
+				} 
 			}
 			break;
 		case Constants.TEST_T20:
@@ -1208,28 +1207,28 @@ public class InfobarGfx
 		case Constants.ILT20:
 			
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Ident$Team1$NameGrp$TeamName$select_Language*FUNCTION*Omo*vis_con SET ", 
-					config, Constants.TG20, print_writers, foreignLanguageOmo);
+					config, Constants.ILT20, print_writers, foreignLanguageOmo);
 			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, matchAllData.getSetup().getHomeTeam().getTeamName1(), 
 					"", null, 0, foreignLanguageDataList);
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Ident$Team1$NameGrp$TeamName$English$txt_TeamFirstName*GEOM*TEXT SET ", 
-					config, Constants.TG20, print_writers, foreignLanguageData);
+					config, Constants.ILT20, print_writers, foreignLanguageData);
 			
 			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, matchAllData.getSetup().getHomeTeam().getTeamName1(), 
 					"", null, 0, foreignLanguageDataList);
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Ident$Team1$NameGrp$TeamName$English$txt_TeamLastName*GEOM*TEXT SET ", 
-					config, Constants.TG20, print_writers, foreignLanguageData);
+					config, Constants.ILT20, print_writers, foreignLanguageData);
 			
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Ident$Team2$NameGrp$TeamName$select_Language*FUNCTION*Omo*vis_con SET ", 
-					config, Constants.TG20, print_writers, foreignLanguageOmo);
+					config, Constants.ILT20, print_writers, foreignLanguageOmo);
 			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, matchAllData.getSetup().getAwayTeam().getTeamName1(), 
 					"", null, 0, foreignLanguageDataList);
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Ident$Team2$NameGrp$TeamName$English$txt_TeamFirstName*GEOM*TEXT SET ", 
-					config, Constants.TG20, print_writers, foreignLanguageData);
+					config, Constants.ILT20, print_writers, foreignLanguageData);
 			
 			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, matchAllData.getSetup().getAwayTeam().getTeamName1(), 
 					"", null, 0, foreignLanguageDataList);
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Ident$Team2$NameGrp$TeamName$English$txt_TeamLastName*GEOM*TEXT SET ", 
-					config, Constants.TG20, print_writers, foreignLanguageData);
+					config, Constants.ILT20, print_writers, foreignLanguageData);
 			
 			if(WhichSide == 1) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK1*VALUE SET 0.0 0.0 0.0\0",print_writers);
@@ -2100,7 +2099,45 @@ public class InfobarGfx
 	}
 	
 	public String populateInfoBarResult(List<PrintWriter> print_writers, MatchAllData matchAllData) {
+		
+		String matchResult ="", teluguMatchResult = "", hindiMatchResult="",matchName="";
 		switch (config.getBroadcaster()) {
+		case Constants.ILT20:
+			//Logo
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$TeamBadges$Team1$LogoGrp$img_Badges*TEXTURE*IMAGE SET " 
+					+ Constants.ILT20_LOGO + matchAllData.getSetup().getHomeTeam().getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$TeamBadges$Team2$LogoGrp$img_Badges*TEXTURE*IMAGE SET " 
+					+ Constants.ILT20_LOGO + matchAllData.getSetup().getAwayTeam().getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataOut$TopLine$select_Language"
+					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+			matchName = matchAllData.getSetup().getMatchIdent();
+			if (matchName.toUpperCase().contains("MATCH")) {
+			    String[] parts = matchName.split(" ");
+			    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
+			    if (parts.length > 1) {
+			        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
+			    }
+			} else {
+			    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+			}
+			foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataOut$TopLine$English$txt_Title"
+					+ "*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
+			
+			matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
+			hindiMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
+					multilanguagedata).getTeluguText().toUpperCase();
+			
+//			System.out.println("matchResult - " + matchResult);
+//			System.out.println("teluguMatchResult - " + hindiMatchResult);
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataOut$BottomLine$select_Language"
+					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+			foreignLanguageData.add(new ForeignLanguageData(matchResult, hindiMatchResult, "", ""));
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataOut$BottomLine$English$txt_info"
+					+ "*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
+			break;
 		case Constants.TEST_T20:
 			
 			switch(this.infobar.getWhichDay().toUpperCase()) {
@@ -2311,7 +2348,7 @@ public class InfobarGfx
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataPart$TopPartPart$Text$Title$select_Language"
 					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
 			
-			String matchName = matchAllData.getSetup().getMatchIdent();
+			matchName = matchAllData.getSetup().getMatchIdent();
 			if (matchName.toUpperCase().contains("MATCH")) {
 			    String[] parts = matchName.split(" ");
 			    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
@@ -2326,7 +2363,6 @@ public class InfobarGfx
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataPart$TopPartPart$Text$Title$English$txt_Title"
 					+ "*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
 			
-			String matchResult ="", teluguMatchResult = "";
 			matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 			teluguMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
 					multilanguagedata).getTeluguText().toUpperCase();
@@ -2339,6 +2375,7 @@ public class InfobarGfx
 			foreignLanguageData.add(new ForeignLanguageData(matchResult, "", "", teluguMatchResult));
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Result$DataPart$BottomPart$Text$SubTitle$English$txt_SubTitle"
 					+ "*GEOM*TEXT SET ",config, Constants.TG20, print_writers, foreignLanguageData);
+			break;
 		}
 		return Constants.OK;
 	}
