@@ -3496,19 +3496,7 @@ public class Animation
 				caption.this_fullFramesGfx.whichGFX = whatToProcess.split(",")[0];
 				break;
 				
-			case "F7": case "F11": case "Control_s": case "Control_f": case "F5": case "F6": case "Control_F6": case "Shift_F6":
-			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_h": case "Control_a":
-			case "Control_Shift_Q": case "Control_Shift_X": case "Control_Shift_K": 
-			case "Control_c": case "l": case "Alt_Shift_F12":
-				
-				if(this.infobar.isInfobar_on_screen() == true) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y*"
-						+ "TRANSFORMATION*POSITION*Y SET 15.0 \0",print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Overall_Position_Y*"
-							+ "TRANSFORMATION*POSITION*Y SET 0.0 \0",print_writers);
-				}
-				
+			case "F5": case "F9":
 				if(infobar.getInfobar_status() != null) {
 					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
 						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
@@ -3517,8 +3505,8 @@ public class Animation
 					}
 				}
 				
-				processAnimation(Constants.FRONT, print_writers, "anim_Lower_Third", "START");
-				processAnimation(Constants.FRONT, print_writers, "anim_LtChange$HeaderDynamic", "CONTINUE REVERSE");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$In_Out", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Dynamic_ForSubLine", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			}
@@ -5542,6 +5530,22 @@ public class Animation
 				
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+				
+			case "F5": case "F9":
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$In_Out", "CONTINUE");
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						TimeUnit.MILLISECONDS.sleep(1000);
+						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
+						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
+					}
+				}
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Dynamic_ForSubLine", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 			}
@@ -8834,6 +8838,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Loop", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar", "SHOW 0.0");
 				
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird", "SHOW 0.0");
+				
 				this.infobar.setInfobar_on_screen(false);
 				this.infobar.setFreeHit_on_screen(false);
 				this.infobar.setInfobar_pushed(false);
@@ -10258,6 +10264,15 @@ public class Animation
 				}
 				
 				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ILT20:
+					switch(whatToProcess.split(",")[0]) {
+					case "F5": case "F9":
+						previewCommand = "anim_InfoBar$Push 1.000 anim_LowerThird$In_Out$Essentials$In 1.780 anim_LowerThird$In_Out$Base$In 1.300 "
+								+ "anim_LowerThird$In_Out$Title$In 1.600 anim_LowerThird$In_Out$Info$In 1.500 anim_LowerThird$In_Out$Subline$In 1.500 "
+								+ "anim_LowerThird$Dynamic_ForSubLine 0.500";
+						break;
+					}
+					break;
 				case Constants.TEST_T20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Alt_F8": case "F8": case "F10": case "Control_F5": case "Control_F9": case "d": case "e":
@@ -10541,7 +10556,7 @@ public class Animation
 				}
 			}
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.TEST_T20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.TEST_T20: case Constants.ILT20:
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays " + "C:/Temp/Preview.tga " + previewCommand + "\0", print_writer);
 				break;
 			default:
