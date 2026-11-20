@@ -1586,10 +1586,22 @@ public class FullFramesGfx
 		this_ALL_FF.VariousText = VariousText;
 		this_ALL_FF.WhichProfile = (WhichGroup.equalsIgnoreCase("GroupA") ? "GROUP A" : "GROUP B");
 		
-		if(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION).exists()) {
-			this_ALL_FF.leagueTable = (LeagueTable)JAXBContext.newInstance(LeagueTable.class).createUnmarshaller().unmarshal(
-					new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION));
+		switch(config.getBroadcaster()) {
+		case Constants.TEST_T20: 
+			if(new File(CricketUtil.CRICKET_DIRECTORY + "TEST/" + WhichGroup + CricketUtil.XML_EXTENSION).exists()) {
+				this_ALL_FF.leagueTable = (LeagueTable)JAXBContext.newInstance(LeagueTable.class).createUnmarshaller().unmarshal(
+						new File(CricketUtil.CRICKET_DIRECTORY +  "TEST/" + WhichGroup + CricketUtil.XML_EXTENSION));
+			}
+			break;
+		default:
+			if(new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION).exists()) {
+				this_ALL_FF.leagueTable = (LeagueTable)JAXBContext.newInstance(LeagueTable.class).createUnmarshaller().unmarshal(
+						new File(CricketUtil.CRICKET_DIRECTORY + CricketUtil.LEAGUE_TABLE_DIRECTORY + WhichGroup + CricketUtil.XML_EXTENSION));
+			}
+			break;
 		}
+		
+		
 		
 		if(this_ALL_FF.leagueTable == null) {
 			return "populateFFPointsTable : League Table is null";

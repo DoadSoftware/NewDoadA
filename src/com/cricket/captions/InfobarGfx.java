@@ -224,6 +224,8 @@ public class InfobarGfx
 					infoIdentSection(print_writers, "", matchAllData, 1, 1);
 				}else if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
 					if(infobar.isResult_on_screen() == false) {
+						System.out.println("FIRST PRINT---------------------------"+CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, 
+							CricketUtil.FULL, "|", config.getBroadcaster(), false).isMatchFinished());
 						if(CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, 
 							CricketUtil.FULL, "|", config.getBroadcaster(), false).isMatchFinished() == true) {
 
@@ -231,6 +233,8 @@ public class InfobarGfx
 							populateSection2(print_writers, matchAllData, 1);
 							
 							populateInfoBarResult(print_writers, matchAllData);
+							
+							System.out.println("infobar.getSectionAnalytics()=============" + infobar.getSectionAnalytics());
 							
 							if (infobar.getSectionAnalytics() == null || infobar.getSectionAnalytics().isEmpty()) {
 								this_animation.processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$InOut", "CONTINUE");
@@ -2139,7 +2143,7 @@ public class InfobarGfx
 					+ "*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
 			break;
 		case Constants.TEST_T20:
-			
+			System.out.println("SECOND PRINT---------------------------");
 			switch(this.infobar.getWhichDay().toUpperCase()) {
 			case "DAY":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$BaseAll$img_Base1*TEXTURE*IMAGE SET " + 
@@ -2164,11 +2168,27 @@ public class InfobarGfx
 						Constants.TEST_T20_BASE1 + "Day" + "\0", print_writers);
 				break;	
 			}
+			System.out.println("THIRD PRINT---------------------------"+CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", "", 
+					false).getTargetOrResult().toUpperCase());
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side1$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side1$1_Line_Text$txt_Title*GEOM*TEXT SET " + 
-					CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", "", 
-							false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+			if (infobar.getSectionAnalytics() == null || infobar.getSectionAnalytics().isEmpty()) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side1$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side1$1_Line_Text$txt_Title*GEOM*TEXT SET " + 
+						CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", "", false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+			} else {
+				if(infobar.getLast_sectionAnalytics() != null && !infobar.getLast_sectionAnalytics().isEmpty()) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side2$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side2$1_Line_Text$txt_Title*GEOM*TEXT SET " + 
+							CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", "", 
+									false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side1$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$DataAll$Side1$1_Line_Text$txt_Title*GEOM*TEXT SET " + 
+							CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", "", 
+									false).getTargetOrResult().toUpperCase() + "\0", print_writers);
+				}
+			}
+			
 			break;
 		case Constants.AFG_SERIES:
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Overlays$Main$Center$LeftTeamLogo_Ident$img_Logo*TEXTURE*IMAGE SET " 

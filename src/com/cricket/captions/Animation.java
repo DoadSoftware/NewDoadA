@@ -3509,6 +3509,21 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Dynamic_ForSubLine", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+			
+// MINIS-------------------------------------------------------------------------------------------------------
+			case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2":
+				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;	
+				
+// BUGS----------------------------------------------------------------------------------------------------------
+			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
+			case "Control_Shift_R": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J":
+				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+				TimeUnit.MILLISECONDS.sleep(500);
+				processAnimation(Constants.FRONT, print_writers, "Bug", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 			}
 			break;	
 		case Constants.BCCI:
@@ -5546,6 +5561,23 @@ public class Animation
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Dynamic_ForSubLine", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+// MINIS-------------------------------------------------------------------------------------------------------
+			case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2":
+				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;	
+				
+// BUGS------------------------------------------------------------------------------------------------------------
+			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
+			case "Control_Shift_R": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J":
+				processAnimation(Constants.FRONT, print_writers, "Bug", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(700);
+				processAnimation(Constants.FRONT, print_writers, "Bug", "SHOW 0.0");
+				AnimateIn("ArrowUp,", print_writers, config);
 				this.whichGraphicOnScreen = "";
 				break;
 			}
@@ -8840,6 +8872,9 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird", "SHOW 0.0");
 				
+				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Bug", "SHOW 0.0");
+				
 				this.infobar.setInfobar_on_screen(false);
 				this.infobar.setFreeHit_on_screen(false);
 				this.infobar.setInfobar_pushed(false);
@@ -9127,7 +9162,7 @@ public class Animation
 					case "m": case "Control_m":
 						previewCommand = "anim_Infobar$Push 1.000 anim_Ident$In_Out$In 1.800";
 						break;
-					case "F1": case "Control_F11": case "F2": case "Control_F7": case "Shift_T": case "F4": case "Control_Shift_F7":  case "Shift_F11": case "Control_p": case "Shift_F8":
+					case "F1": case "Control_F11": case "F2": case "Control_F7": case "Shift_T": case "F4": case "Control_Shift_F7":  case "Shift_F11": case "Control_p": case "Shift_F8": case "Control_F10":
 						previewCommand = "anim_Infobar$Push 1.000 Anim_FullFrames$In_Out$Essentials 3.000 Anim_FullFrames$In_Out$Essentials$In 1.200 "
 								+ "Anim_FullFrames$In_Out$TopTitle 3.000 Anim_FullFrames$In_Out$TopTitle$In 2.320 Anim_FullFrames$In_Out$Title 3.000 "
 								+ "Anim_FullFrames$In_Out$Title$In 1.900 Anim_FullFrames$In_Out$Footer 3.000 Anim_FullFrames$In_Out$Footer$In 2.080 ";
@@ -9156,6 +9191,9 @@ public class Animation
 							break;
 						case "Control_p":
 							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Points_Table 3.000 Anim_FullFrames$In_Out$Main$Points_Table$In 3.000";
+							break;
+						case "Control_F10":
+							previewCommand = previewCommand + "Anim_FullFrames$In_Out$Main$Manhattan 3.000 Anim_FullFrames$In_Out$Main$Manhattan$In 3.000";
 							break;
 						}
 						break;
