@@ -1785,13 +1785,17 @@ public class InfobarGfx
 				
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$InfoGrp$TopInfo$Side" + WhichSide + "$select_Language"
 						+ "*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
-				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"TO WIN", "", null, 1,foreignLanguageDataList);
-				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata," - ", "", null, 2,foreignLanguageDataList);
-				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, inning.getBatting_team().getTeamName1(), "", null, 
-						3,foreignLanguageDataList);
-				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"NEED", "", null, 4,foreignLanguageDataList);
 				
-				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, inning.getBatting_team().getTeamName1(), "", 
+						null, 0, foreignLanguageDataList);
+				
+//				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"TO WIN", "", null, 1,foreignLanguageDataList);
+//				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata," - ", "", null, 2,foreignLanguageDataList);
+//				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, inning.getBatting_team().getTeamName1(), "", null, 
+//						3,foreignLanguageDataList);
+//				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"NEED", "", null, 4,foreignLanguageDataList);
+//				
+//				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$InfoGrp$TopInfo$Side" + WhichSide + "$English$txt_Info"
 						+ "*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				
@@ -1799,26 +1803,57 @@ public class InfobarGfx
 						+ "*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
 				
 				if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER) && matchAllData.getSetup().getMaxOvers() == 1) {
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.GetTargetData(matchAllData).
-							getTargetRuns()), "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "RUNS", "", null, 2,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OFF", "", null, 3,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf((matchAllData.getSetup().getMaxOvers()*6)), 
-							"", null, 4,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"BALLS", "", null, 5,foreignLanguageDataList);
+					String englishEquation = "NEED " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).
+							getTargetRuns()) + " RUNS TO WIN FROM " + String.valueOf((matchAllData.getSetup().getMaxOvers()*6)) + " BALLS";
+					
+					insertTxt = new ArrayList<String>(); 
+					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()));
+					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()));
+					
+					List<ForeignLanguageData> dataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "NEED RUNS TO WIN FROM " 
+							+ "BALLS", 
+							"", insertTxt, 1, foreignLanguageDataList);
+					
+					foreignLanguageData.add(new ForeignLanguageData(englishEquation, dataList.get(0).getHindiText(), "", ""));
+					
+					//---------------------------------
+					
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.GetTargetData(matchAllData).
+//							getTargetRuns()), "", null, 1,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "RUNS", "", null, 2,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OFF", "", null, 3,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf((matchAllData.getSetup().getMaxOvers()*6)), 
+//							"", null, 4,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"BALLS", "", null, 5,foreignLanguageDataList);
 				}else {
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.GetTargetData(matchAllData).
-							getTargetRuns()), "", null, 1,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "RUNS", "", null, 2,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OFF", "", null, 3,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.GetTargetData(matchAllData).
-							getTargetOvers()), "", null, 4,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OVERS", "", null, 5,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (matchAllData.getSetup().getTargetType() != null && 
-							!matchAllData.getSetup().getTargetType().isEmpty() ? "("+ matchAllData.getSetup().getTargetType().toUpperCase()+")":""), "", null, 6,foreignLanguageDataList);
+					
+					String englishEquation = "NEED " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).
+							getTargetRuns()) + " RUNS TO WIN FROM " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).
+									getTargetOvers()) + " OVERS";
+					
+					insertTxt = new ArrayList<String>(); 
+					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()));
+					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()));
+					
+					List<ForeignLanguageData> dataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "NEED RUNS TO WIN FROM OVERS", 
+							"", insertTxt, 1, foreignLanguageDataList);
+					
+					foreignLanguageData.add(new ForeignLanguageData(englishEquation, dataList.get(0).getHindiText(), "", ""));
+					
+					//-------------------------------
+					
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.GetTargetData(matchAllData).
+//							getTargetRuns()), "", null, 1,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "RUNS", "", null, 2,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OFF", "", null, 3,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.GetTargetData(matchAllData).
+//							getTargetOvers()), "", null, 4,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"OVERS", "", null, 5,foreignLanguageDataList);
+//					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (matchAllData.getSetup().getTargetType() != null && 
+//							!matchAllData.getSetup().getTargetType().isEmpty() ? "("+ matchAllData.getSetup().getTargetType().toUpperCase()+")":""), "", null, 6,foreignLanguageDataList);
 				}
 				
-				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+//				foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$InfoGrp$BottomInfo$Side" + WhichSide + "$English$txt_Info"
 						+ "*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				break;
@@ -2392,7 +2427,7 @@ public class InfobarGfx
 				System.out.println("whatToProcess - " + whatToProcess);
 				
 				this.infobar.setSection1(whatToProcess.split(",")[2]);
-				this.infobar.setSection3(CricketUtil.OVER);
+				this.infobar.setSection3(whatToProcess.split(",")[3]);
 				
 				populatePowerPlay(print_writers, matchAllData);
 				populateCurrentBatsmen(print_writers, matchAllData, 1, 1);
@@ -12024,37 +12059,62 @@ public class InfobarGfx
 						
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Free_Text$TopText$"
 								+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"TO WIN", "", null, 1,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata," - ", "", null, 2,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, inning.getBatting_team().getTeamName1(), "", null, 
-								3,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"NEED", "", null, 4,foreignLanguageDataList);
 						
-						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, inning.getBatting_team().getTeamName1(), "", 
+								null, 0, foreignLanguageDataList);
+						
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"TO WIN", "", null, 1,foreignLanguageDataList);
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata," - ", "", null, 2,foreignLanguageDataList);
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, inning.getBatting_team().getTeamName1(), "", null, 
+//								3,foreignLanguageDataList);
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"NEED", "", null, 4,foreignLanguageDataList);
+//						
+//						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Free_Text$TopText$"
 								+ "English$txt_Head*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 						
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Free_Text$BottomText$"
 								+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
 						
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.
-								GetTargetData(matchAllData).getRemaningBall()), "", null, 1,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"BALL" + 
-								CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), "", null, 2,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.
-								GetTargetData(matchAllData).getRemaningRuns()), "", null, 3,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "RUN" 
-								+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase(), "", null, 4,foreignLanguageDataList);
 						
-						String equationEnglish = String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()) + " RUN" + CricketFunctions.Plural(CricketFunctions.
-								GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " OFF " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) 
-								+ " BALL" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase() 
-								+ (matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty() ? " (" 
-								+ matchAllData.getSetup().getTargetType().toUpperCase() + ")" : "");
+						//--------------------------
 						
-						foreignLanguageData.clear();
-						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
-						foreignLanguageData.get(0).setEnglishText(equationEnglish);
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.
+//								GetTargetData(matchAllData).getRemaningBall()), "", null, 1,foreignLanguageDataList);
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"BALL" + 
+//								CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), "", null, 2,foreignLanguageDataList);
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(CricketFunctions.
+//								GetTargetData(matchAllData).getRemaningRuns()), "", null, 3,foreignLanguageDataList);
+//						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "RUN" 
+//								+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase(), "", null, 4,foreignLanguageDataList);
+//						
+//						String equationEnglish = String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()) + " RUN" + CricketFunctions.Plural(CricketFunctions.
+//								GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " OFF " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) 
+//								+ " BALL" + CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase() 
+//								+ (matchAllData.getSetup().getTargetType() != null && !matchAllData.getSetup().getTargetType().isEmpty() ? " (" 
+//								+ matchAllData.getSetup().getTargetType().toUpperCase() + ")" : "");
+//						
+//						foreignLanguageData.clear();
+//						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+//						foreignLanguageData.get(0).setEnglishText(equationEnglish);
+						
+						//----------------------------
+						
+						String englishEquation = "NEED " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()) + " RUN" 
+								+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN FROM " 
+								+ String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()) + " BALL" 
+								+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase();
+						
+						insertTxt = new ArrayList<String>(); 
+						insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()));
+						insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()));
+						
+						List<ForeignLanguageData> dataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "NEED RUN" 
+								+ CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()).toUpperCase() + " TO WIN FROM BALL" + 
+								CricketFunctions.Plural(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), 
+								"", insertTxt, 1, foreignLanguageDataList);
+						
+						foreignLanguageData.add(new ForeignLanguageData(englishEquation, dataList.get(0).getHindiText(), "", ""));
 						
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Free_Text$BottomText$"
 								+ "English$txt_Head*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
@@ -18712,9 +18772,9 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Equation$Top_Line"
 							+ "$English$txt_Title*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
 					
-					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Equation$Top_Line"
-							+ "$English$txt_Title*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
+//					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+//					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Equation$Top_Line"
+//							+ "$English$txt_Title*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
 					
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "BALL" + CricketFunctions.Plural(CricketFunctions.
 							GetTargetData(matchAllData).getRemaningBall()).toUpperCase(), "", null, 0, foreignLanguageDataList);

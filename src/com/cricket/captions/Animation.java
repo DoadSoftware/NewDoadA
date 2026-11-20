@@ -5671,7 +5671,6 @@ public class Animation
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10":
 			case "Shift_F10": case "Control_F11": case "Shift_K": case "Shift_F11":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_Change$Logo", "START");
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Header", "START");
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Footer", "START");
 				
@@ -5739,6 +5738,8 @@ public class Animation
 						break;
 					}
 				}
+				TimeUnit.MILLISECONDS.sleep(300);
+				processAnimation(Constants.BACK, print_writers, "anim_Change$Logo", "START");
 				break;
 			}
 			break;
