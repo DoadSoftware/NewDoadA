@@ -3576,10 +3576,16 @@ public class Animation
 				
 // BUGS----------------------------------------------------------------------------------------------------------
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
-			case "Control_Shift_R": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J":
+			case "Control_Shift_R": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J": case "r":
 				AnimateIn("ArrowDown,", print_writers, config); // Push infobar
 				TimeUnit.MILLISECONDS.sleep(500);
 				processAnimation(Constants.FRONT, print_writers, "Bug", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
+
+// TOSS BUG----------------------------------------------------------------------------------------------------------
+			case "Alt_p":
+				processAnimation(Constants.FRONT, print_writers, "TossBug", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
 			}
@@ -5662,12 +5668,20 @@ public class Animation
 				break;	
 				
 // BUGS------------------------------------------------------------------------------------------------------------
-			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
+			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "r":
 			case "Control_Shift_R": case "Control_Shift_F3":  case "Shift_C": case "Control_Shift_J":
 				processAnimation(Constants.FRONT, print_writers, "Bug", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.FRONT, print_writers, "Bug", "SHOW 0.0");
 				AnimateIn("ArrowUp,", print_writers, config);
+				this.whichGraphicOnScreen = "";
+				break;
+				
+// TOSS BUG------------------------------------------------------------------------------------------------------------
+			case "Alt_p":
+				processAnimation(Constants.FRONT, print_writers, "TossBug", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(700);
+				processAnimation(Constants.FRONT, print_writers, "TossBug", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 			}
@@ -9001,11 +9015,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_HowOut", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper", "SHOW 0.0");
 				
-				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
-				
+				processAnimation(Constants.FRONT, print_writers, "TossBug", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor", "SHOW 0.0");
-				
-				processAnimation(Constants.FRONT, print_writers, "Bug", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "Watermark", "SHOW 0.0");
 				
