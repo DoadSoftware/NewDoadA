@@ -29,6 +29,8 @@ public class Infobar {
 	private boolean HatTrick_on_screen = false;
 	private boolean forced_powerplay_out = false;
 	
+	private boolean powerplay_pop_up = false;
+	
 	private int player_id,omo_value,highlight;
 	
 	private String infobar_status,infobar_photo,infobat_center_data;
@@ -396,6 +398,12 @@ public class Infobar {
 	}
 	public void setWhichDay(String whichDay) {
 		this.whichDay = whichDay;
+	}
+	public boolean isPowerplay_pop_up() {
+		return powerplay_pop_up;
+	}
+	public void setPowerplay_pop_up(boolean powerplay_pop_up) {
+		this.powerplay_pop_up = powerplay_pop_up;
 	}
 	
 }

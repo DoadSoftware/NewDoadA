@@ -801,7 +801,8 @@ public class IndexController
 			else if(whatToProcess.contains("ANIMATE-IN-GRAPHICS") || whatToProcess.contains("ANIMATE-OUT-GRAPHICS")
 				|| whatToProcess.contains("ANIMATE-OUT-INFOBAR") || whatToProcess.contains("QUIDICH-COMMANDS") || 
 				whatToProcess.contains("ANIMATE-OUT-TAPE") || whatToProcess.contains("ANIMATE-OUT-IDENT") || 
-				whatToProcess.contains("ANIMATE-OUT-TARGET") || whatToProcess.contains("ANIMATE-OUT-BOTTOM")) {
+				whatToProcess.contains("ANIMATE-OUT-TARGET") || whatToProcess.contains("ANIMATE-OUT-BOTTOM")||
+				whatToProcess.contains("ANIMATE-IN-POWERPLAY_POPUP")) {
 
 				if(whatToProcess.contains("ANIMATE-OUT-GRAPHICS")) {
 					switch (valueToProcess.split(",")[0]) {
@@ -1151,6 +1152,8 @@ public class IndexController
 			this_animation.AnimateOut("Control_F8,", print_writers, session_configuration);
 		}else if(whatToProcess.contains("ANIMATE-OUT-TARGET")) {
 			this_animation.AnimateOut("Alt_y,", print_writers, session_configuration);
+		}else if(whatToProcess.contains("ANIMATE-IN-POWERPLAY_POPUP")) {
+			this_animation.AnimateIn("*,", print_writers, session_configuration);
 		}
 	}
 	@ModelAttribute("session_configuration")

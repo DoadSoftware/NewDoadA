@@ -405,6 +405,10 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 		case 'o':
 			processCricketProcedures("ANIMATE-OUT-GRAPHICS", dataToProcess);
 			break;
+		case '*':
+			processCricketProcedures('ANIMATE-IN-POWERPLAY_POPUP');
+			break;
+			
 		default:
 			
 			switch($('#which_inning').val()) {
@@ -5126,6 +5130,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 			select.name = select.id;
 			
 			switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'ILT20':
+					option = document.createElement('option');
+					option.value = 'ILT20_CAREER';
+					option.text = 'ILT20 CAREER';
+					select.appendChild(option);
+	
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+	
+					option = document.createElement('option');
+					option.value = 'ILT20_SEASON_4';
+					option.text = 'ILT20 SEASON 4';
+					select.appendChild(option);
+	
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'IT20';
+					select.appendChild(option);
+	
+					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20':
 				
 					option = document.createElement('option');
@@ -5486,6 +5512,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 					    option.text = optionText[value];
 					    select.appendChild(option);
 					});
+					break;
+				case 'ILT20':
+					option = document.createElement('option');
+					option.value = 'ILT20_CAREER';
+					option.text = 'ILT20 CAREER';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'ILT20_SEASON_4';
+					option.text = 'ILT20 SEASON 4';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'IT20';
+					select.appendChild(option);
+
 					break;
 				case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20':
 					
