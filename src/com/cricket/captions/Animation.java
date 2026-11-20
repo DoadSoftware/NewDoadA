@@ -3496,7 +3496,7 @@ public class Animation
 				caption.this_fullFramesGfx.whichGFX = whatToProcess.split(",")[0];
 				break;
 				
-			case "F5": case "F9":
+			case "F5": case "F9": case "a":
 				if(infobar.getInfobar_status() != null) {
 					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
 						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
@@ -5533,7 +5533,7 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 				
-			case "F5": case "F9":
+			case "F5": case "F9": case "a":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$In_Out", "CONTINUE");
 				
 				if(infobar.getInfobar_status() != null) {
