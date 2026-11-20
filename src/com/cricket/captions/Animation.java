@@ -8988,6 +8988,10 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "anim_FullFrames", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "anim_Change", "SHOW 0.0");
 			
+			processAnimation(Constants.BACK, print_writers, "anim_Profile", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "anim_Profile_LOF", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "anim_LineUpImage", "SHOW 0.0");
+			
 			if(whatToProcess.contains("CLEAR-ALL")) {
 				processAnimation(Constants.FRONT, print_writers, "Loop", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar", "SHOW 0.0");
