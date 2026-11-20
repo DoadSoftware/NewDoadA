@@ -313,6 +313,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 	case 'LOGGER_FORM_KEYPRESS':
 		 document.getElementById('which_keypress').value = dataToProcess;
 		//alert('dataToProcess = ' + dataToProcess);
+		console.log('whichKey = ' + dataToProcess);
 		switch(dataToProcess) {
 		/*case '7':
 			processCricketProcedures('HEAD_TO_HEAD_FILE');
@@ -998,7 +999,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
-	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4':
+	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Control_q':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1735,7 +1736,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				}
 				break;	
 				
-			case "Alt_3": case 'Control_d': case 'Control_3': case 'Control_2': 
+			case "Alt_3": case 'Control_d': case 'Control_3': case 'Control_2': case 'Control_q':
 			switch(whatToProcess){
 				case "Alt_3":
 					header_text.innerHTML = 'INFOBAR - BATTER CAREER';
@@ -1743,6 +1744,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 				case 'Control_d':
 					header_text.innerHTML = 'FF - BATTER CAREER';
 					break;
+				case 'Control_q':
+					header_text.innerHTML = 'LOF - BATTER CAREER';
+					break;	
 				case 'Control_3':
 					header_text.innerHTML = 'LOF - BATTER CAREER';
 					break;
@@ -1832,8 +1836,18 @@ function addItemsToList(whatToProcess,dataToProcess)
 					break;
 				case 'ILT20':
 					option = document.createElement('option');
+					option.value = 'ILT20_CAREER';
+					option.text = 'ILT20 CAREER';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
+					select.appendChild(option);
+					
+					option = document.createElement('option');
+					option.value = 'ILT20_SEASON_4';
+					option.text = 'ILT20 SEASON 4';
 					select.appendChild(option);
 					
 					option = document.createElement('option');
@@ -1841,10 +1855,6 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.text = 'IT20';
 					select.appendChild(option);
 					
-					option = document.createElement('option');
-					option.value = 'ILT20_CAREER';
-					option.text = 'ILT20 CAREER';
-					select.appendChild(option);
 					switch(whatToProcess){
 					case "Alt_3":
 						option = document.createElement('option');
@@ -1972,7 +1982,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				cellCount = cellCount + 1
 				
 				switch(whatToProcess){
-				case 'Control_d':
+				case 'Control_d': case 'Control_q':
 					switch($('#selected_broadcaster').val().toUpperCase()){
 					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						select = document.createElement('select');
@@ -2131,7 +2141,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				select.name = select.id;
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
-				case 'TG20': case 'APLT20': case 'ILT20':
+				case 'TG20': case 'APLT20':
 					option = document.createElement('option');
 					option.value = 'DT20';
 					option.text = 'T20';
@@ -2145,6 +2155,37 @@ function addItemsToList(whatToProcess,dataToProcess)
 						break;
 					}
 					break;
+				case 'ILT20':
+					
+					option = document.createElement('option');
+					option.value = 'ILT20_CAREER';
+					option.text = 'ILT20 CAREER';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'DT20';
+					option.text = 'T20';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'ILT20_SEASON_4';
+					option.text = 'ILT20 SEASON 4';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'IT20';
+					option.text = 'IT20';
+					select.appendChild(option);
+
+					switch(whatToProcess){
+					case "Alt_4":
+						option = document.createElement('option');
+						option.value = 'THIS_SERIES';
+						option.text = 'THIS SERIES';
+						select.appendChild(option);
+						break;
+					}
+					break;	
 				case 'AFG_SERIES': case 'TEST_T20':
 					const matchType = session_match.setup.matchType;
 
@@ -8172,7 +8213,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Control_F7':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
-		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4':
+		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Control_q':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

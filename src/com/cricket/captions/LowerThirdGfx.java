@@ -2123,8 +2123,33 @@ public class LowerThirdGfx
 					break;	
 				}
 				break;		
-			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.TG20: case Constants.APLT20:
+			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.TG20: case Constants.APLT20: case Constants.ILT20:
 				switch (WhichProfile.toUpperCase()) {
+				case "ILT20_CAREER":
+			         statsType = statsTypes.stream()
+			            .filter(st -> st.getStatsShortName().equalsIgnoreCase("ILT20_CAREER"))
+			            .findAny().orElse(null);
+			         
+			         for(StatsType stt : statsTypes) {
+			        	 	System.out.println("stt = " + stt);
+			         }
+			         
+			        if (statsType == null) {
+			            return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
+			        }
+			        
+			        stat = statistics.stream()
+			            .filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId())
+			            .findAny().orElse(null);
+			        if (stat == null) {
+			            return "InfoBarPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
+			        }
+			        
+			        statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("IT20")).findAny().orElse(null);
+					stat.setStats_type(statsType);
+			        stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
+			        stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
+			        break;
 				case "MAHARAJA_CAREER":
 			         statsType = statsTypes.stream()
 			            .filter(st -> st.getStatsShortName().equalsIgnoreCase("MAHARAJA_CAREER"))
@@ -2330,7 +2355,7 @@ public class LowerThirdGfx
 				Data = df_bo.format(average);
 			}
 			
-			if(whatToProcess.split(",")[0].equalsIgnoreCase("F7")) {
+			if(whatToProcess.split(",")[0].equalsIgnoreCase("F7") || whatToProcess.split(",")[0].equalsIgnoreCase("Control_q")) {
 				if(stat.getFifties() == 0) {
 					fifty = "-";
 				}else {
@@ -2390,7 +2415,7 @@ public class LowerThirdGfx
 				
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: 
-				case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES:
+				case Constants.TG20: case Constants.APLT20: case Constants.AFG_SERIES: case Constants.ILT20:
 					
 					if(!WhichStyle.equalsIgnoreCase("Blank")) {
 						short_name = "v " + otherTeam.getTeamName1() + " IN " + (WhichProfile.equalsIgnoreCase("IT20") ? 
@@ -2410,6 +2435,8 @@ public class LowerThirdGfx
 							short_name =  "FIRST-CLASS CAREER";
 						}else if(WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
 							short_name =  "MAHARAJA T20 CAREER";
+						}else if(WhichProfile.equalsIgnoreCase("ILT20_CAREER")) {
+							short_name =  "ILT20 CAREER";
 						}else if(WhichProfile.equalsIgnoreCase("YOUTHODI")) {
 							short_name =  "YOUTH-ODI CAREER";
 						}else {
@@ -2420,9 +2447,9 @@ public class LowerThirdGfx
 					switch (config.getBroadcaster().toUpperCase()) {
 					
 					case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
-						
+					case Constants.ILT20:
 						if(WhichProfile.equalsIgnoreCase("DT20") || WhichProfile.equalsIgnoreCase("IT20") || 
-								WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER")) {
+								WhichProfile.equalsIgnoreCase("MAHARAJA_CAREER") || WhichProfile.equalsIgnoreCase("ILT20_CAREER")) {
 							lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),
 									CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,short_name, "", "", 2,"",team.getTeamBadge(),
 									new String[]{"MATCHES", "RUNS", "50s / 100s", "BEST", "STRIKE RATE"},
