@@ -557,7 +557,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Alt_g':
 				processCricketProcedures("ANIMATE-IN-GRAPHICS", dataToProcess);
 				break;		
-			case 'ArrowDown': case 'ArrowUp': case 'w': case 'i': case 'f': case 's': case '0':	case '8':
+			case 'ArrowDown': case 'ArrowUp': case 'w': case 'i': case 'f': case 's': case '0':	case '8': case 'PageUp': case 'PageDown':
 			case 'ArrowLeft': case 'ArrowRight': case '9': case '.': case 'Alt_e':
 				dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 				processCricketProcedures("ANIMATE-IN-GRAPHICS", dataToProcess);

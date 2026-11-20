@@ -3313,23 +3313,41 @@ public class Animation
 				break;
 			case "s": case "f": case "w": case "0": case "9": case ".":
 				switch(whatToProcess.split(",")[0]) {
-				case "s": case "f":
+				case "s":
 					TeamName = caption.this_infobarGfx.inning.getBatting_team().getTeamBadge();
 					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("s") ? "SIX" : "FOUR");
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
-							+ "*FUNCTION*Omo*vis_con SET " + (whatToProcess.split(",")[0].equalsIgnoreCase("s") ? "1" : "0") + "\0", print_writers);
+							+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					break;
-				case "w": case "0":
+				case "f":
+					TeamName = caption.this_infobarGfx.inning.getBatting_team().getTeamBadge();
+					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("s") ? "SIX" : "FOUR");
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
+							+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+					break;	
+				case "w":
 					TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
 					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT-TRICK");
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
-							+ "*FUNCTION*Omo*vis_con SET " + (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "3" : "0") + "\0", print_writers);
+							+ "*FUNCTION*Omo*vis_con SET 4\0", print_writers);
 					break;
-				case "9": case ".":
+				case "0":
+					TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
+					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT-TRICK");
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
+							+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					break;
+				case "9":
 					TeamName = "EVENT";
 					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "NO BALL" : "WIDE");
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
-							+ "*FUNCTION*Omo*vis_con SET " + (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "1" : "2") + "\0", print_writers);
+							+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					break;
+				case ".":
+					TeamName = "EVENT";
+					Data = (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "NO BALL" : "WIDE");
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
+							+ "*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 					break;
 				}
 				
@@ -3352,6 +3370,23 @@ public class Animation
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Disruptives", "CONTINUE");
 				}
 				break;
+				
+			case "PageUp": case "PageDown":
+				switch(whatToProcess.split(",")[0]) {
+				case "PageUp":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$DP_World$select_Video*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+					break;
+				case "PageDown":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$DP_World$select_Video*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					break;
+				}
+				
+				if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
+					processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "START");
+					TimeUnit.MILLISECONDS.sleep(1200);
+					processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "CONTINUE");
+				}
+				break;	
 				
 //-----------------------------------------------------------------------------------------------------------------------------
 				
@@ -9289,7 +9324,7 @@ public class Animation
 						break;	
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11":
 					case "Shift_K": case "Shift_F11":
-						previewCommand = "anim_FullFrames$In_Out$Essentials$In 0.900 anim_FullFrames$In_Out$Logo$In 1.540 anim_FullFrames$In_Out$Header$In 1.500 "
+						previewCommand = "anim_FullFrames$In_Out$Essentials 0.900 anim_FullFrames$In_Out$Essentials$In 0.900 anim_FullFrames$In_Out$Logo$In 1.540 anim_FullFrames$In_Out$Header$In 1.500 "
 								+ "anim_FullFrames$In_Out$Footer$In 2.121 ";
 						
 						switch(whatToProcess.split(",")[0]) {

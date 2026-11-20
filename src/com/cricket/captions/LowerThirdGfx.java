@@ -14405,7 +14405,7 @@ public class LowerThirdGfx
 					"", null, 11,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"  |   ",
 					"", null, 12,foreignLanguageDataList);
-			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"STRIKE RATE",
+			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"S/R",
 					"", null, 13,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,": ",
 					"", null, 14,foreignLanguageDataList);
