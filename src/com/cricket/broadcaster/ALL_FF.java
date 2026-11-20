@@ -22752,7 +22752,8 @@ public class ALL_FF
 				
 				String role = "";
 				
-				if(PlayingXI.get(rowId1).getCaptainWicketKeeper() != null) {
+				if(PlayingXI.get(rowId1).getCaptainWicketKeeper() != null && 
+						!PlayingXI.get(rowId1).getCaptainWicketKeeper().equalsIgnoreCase("captain")) {
 					role = "KEEPER";
 				}else {
 					if(PlayingXI.get(rowId1).getRole().equalsIgnoreCase("BATSMAN") || 
@@ -22788,15 +22789,15 @@ public class ALL_FF
 					}
 					else if(PlayingXI.get(rowId1).getCaptainWicketKeeper().equalsIgnoreCase(CricketUtil.WICKET_KEEPER)) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$TeamSingle$Row" + rowId + 
-								"$Name$English$txt_Captain*GEOM*TEXT SET (WK)\0", print_writers);
+								"$Name$English$txt_Captain*GEOM*TEXT SET \0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$TeamSingle$Row" + rowId + 
-								"$Name$Hindi$txt_Captain*GEOM*TEXT SET (WK)\0", print_writers);
+								"$Name$Hindi$txt_Captain*GEOM*TEXT SET \0", print_writers);
 					}
 					else if(PlayingXI.get(rowId1).getCaptainWicketKeeper().equalsIgnoreCase("CAPTAIN_WICKET_KEEPER")) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$TeamSingle$Row" + rowId + 
-								"$Name$English$txt_Captain*GEOM*TEXT SET (C/WK)\0", print_writers);
+								"$Name$English$txt_Captain*GEOM*TEXT SET (C)\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$TeamSingle$Row" + rowId + 
-								"$Name$Hindi$txt_Captain*GEOM*TEXT SET (C/WK)\0", print_writers);
+								"$Name$Hindi$txt_Captain*GEOM*TEXT SET (C)\0", print_writers);
 					}
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$TeamSingle$Row" + rowId + 
