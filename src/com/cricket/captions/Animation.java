@@ -3396,6 +3396,33 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "CONTINUE");
 				break;	
 				
+			case "6": case "Control_4": case "5": case ";":
+				processAnimation(Constants.FRONT, print_writers, "anim_Counter$In_Out", "START");
+				TimeUnit.MILLISECONDS.sleep(1700);
+				this.whichGraphicOnScreen = whatToProcess;
+				if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[0].
+						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[0])) {
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Thousands", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Hundreds", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Tens", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Units", "START");
+				}else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[1].
+						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[1])) {
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Hundreds", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Tens", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Units", "START");
+				}
+				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[2].
+						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[2])) {
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Tens", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Units", "START");
+				}
+				else if(!caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-2).split(",")[3].
+						equalsIgnoreCase(caption.this_bugsAndMiniGfx.this_data_str.get(caption.this_bugsAndMiniGfx.this_data_str.size()-1).split(",")[3])) {
+					processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes$Units", "START");
+				}
+				break;
+				
 //-----------------------------------------------------------------------------------------------------------------------------
 			case "Control_Alt_F3":
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor$In_Out", "START");
@@ -5633,6 +5660,14 @@ public class Animation
 				caption.this_infobarGfx.infobar.setLast_section3("");
 				caption.this_infobarGfx.infobar.setLast_section4("");
 				caption.this_infobarGfx.infobar.setLast_section5("");
+				break;
+				
+			case "6": case "Control_4": case "5": case ";":
+				processAnimation(Constants.FRONT, print_writers, "anim_Counter$In_Out", "CONTINUE");
+				this.whichGraphicOnScreen = "";
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "anim_Counter$Change_Sixes", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_Counter", "SHOW 0.0");
 				break;
 				
 			case "m": case "Control_m": case "Shift_D":
@@ -9159,13 +9194,23 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_HowOut", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper", "SHOW 0.0");
 				
-				processAnimation(Constants.FRONT, print_writers, "TossBug", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
+				
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor", "SHOW 0.0");
 				
-				processAnimation(Constants.FRONT, print_writers, "Watermark", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "TossBug", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "ShiftForNameSuper", "SHOW 0.0");
 				
-				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "Bug", "SHOW 0.0");
+				
+				processAnimation(Constants.FRONT, print_writers, "Big_Ticket", "SHOW 0.0");
+				
+				processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "SHOW 0.0");
+				
+				processAnimation(Constants.FRONT, print_writers, "anim_Counter", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_PopUp", "SHOW 0.0");
+				
+				processAnimation(Constants.FRONT, print_writers, "Watermark", "SHOW 0.0");
 				
 				this.infobar.setInfobar_on_screen(false);
 				this.infobar.setFreeHit_on_screen(false);
@@ -10999,6 +11044,10 @@ public class Animation
 						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 									+ "anim_PopUp$InOut 0.600 anim_PopUp$InOut$In 0.600\0", print_writer);
 						 break; 
+					 case "6": case "Control_4": case "5": case ";":
+						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+									+ "anim_Counter$In_Out 1.600 anim_Counter$In_Out$In 1.600\0", print_writer);
+						 break;
 					}
 					break;
 				case Constants.AFG_SERIES:

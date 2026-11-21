@@ -508,7 +508,7 @@ public class Caption
 			case "F10": //NameSuper DB
 				status = this_lowerThirdGfx.populateLTNameSuper(whatToProcess,whichSide, matchAllData);
 				break;
-			case "F7": case "F11": case "Control_q":// L3rd BAT and BALL Profile
+			case "F7": case "F11":// L3rd BAT and BALL Profile
 				status = this_lowerThirdGfx.PopulateL3rdPlayerProfile(whatToProcess,whichSide, matchAllData);
 				break;
 			case "Control_3": case "Control_8":

@@ -1003,7 +1003,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
-	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Control_q':
+	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1740,16 +1740,13 @@ function addItemsToList(whatToProcess,dataToProcess)
 				}
 				break;	
 				
-			case "Alt_3": case 'Control_d': case 'Control_3': case 'Control_2': case 'Control_q':
+			case "Alt_3": case 'Control_d': case 'Control_3': case 'Control_2':
 			switch(whatToProcess){
 				case "Alt_3":
 					header_text.innerHTML = 'INFOBAR - BATTER CAREER';
 					break;
 				case 'Control_d':
 					header_text.innerHTML = 'FF - BATTER CAREER';
-					break;
-				case 'Control_q':
-					header_text.innerHTML = 'LOF - BATTER CAREER';
 					break;	
 				case 'Control_3':
 					header_text.innerHTML = 'LOF - BATTER CAREER';
@@ -2248,7 +2245,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.appendChild(option);
 					
 					switch(whatToProcess){
-					case "Control_e": case 'Control_5':
+					case "Control_e":
 						option = document.createElement('option');
 						option.value = 'DT20';
 						option.text = 'T20';

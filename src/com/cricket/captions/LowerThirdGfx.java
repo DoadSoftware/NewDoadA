@@ -264,13 +264,13 @@ public class LowerThirdGfx
 				impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), playerId);
 				if (!impactType.isEmpty()) {
 					switch(impactType) {
-					case "IMP_IN": case "CON_IN":
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + whichSide 
-								+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 2\0", print_writers);
-						break;
-					case "IMP_OUT": case "CON_OUT":
+					case "IMP_IN": //case "CON_IN":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + whichSide 
 								+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+						break;
+					case "IMP_OUT": //case "CON_OUT":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + whichSide 
+								+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 						break;
 					}
 				}
@@ -285,13 +285,13 @@ public class LowerThirdGfx
 				impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), playerId);
 				if (!impactType.isEmpty()) {
 					switch(impactType) {
-					case "IMP_IN": case "CON_IN":
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TitleGrp$TitleAll$PositionX$Side" + whichSide 
-								+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 2\0", print_writers);
-						break;
-					case "IMP_OUT": case "CON_OUT":
+					case "IMP_IN": //case "CON_IN":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TitleGrp$TitleAll$PositionX$Side" + whichSide 
 								+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+						break;
+					case "IMP_OUT": //case "CON_OUT":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$TitleGrp$TitleAll$PositionX$Side" + whichSide 
+								+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 						break;
 					}
 				}
@@ -302,13 +302,13 @@ public class LowerThirdGfx
 				impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), playerId);
 				if (!impactType.isEmpty()) {
 					switch(impactType) {
-					case "IMP_IN": case "CON_IN":
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$Imapct$select_Impact"
-								+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
-						break;
-					case "IMP_OUT": case "CON_OUT":
+					case "IMP_IN": //case "CON_IN":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$Imapct$select_Impact"
 								+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+						break;
+					case "IMP_OUT": //case "CON_OUT":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$Imapct$select_Impact"
+								+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 						break;
 					}
 				}
@@ -2441,7 +2441,7 @@ public class LowerThirdGfx
 				Data = df_bo.format(average);
 			}
 			
-			if(whatToProcess.split(",")[0].equalsIgnoreCase("F7") || whatToProcess.split(",")[0].equalsIgnoreCase("Control_q")) {
+			if(whatToProcess.split(",")[0].equalsIgnoreCase("F7")) {
 				if(stat.getFifties() == 0) {
 					fifty = "-";
 				}else {

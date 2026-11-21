@@ -4566,14 +4566,8 @@ public class InfobarGfx
 			if (!impactType.isEmpty()) {
 				switch(impactType) {
 				case "IMP_IN": //case "CON_IN":
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$BatsmanGrp_" + WhichBatsman + "$Side" + WhichSide 
-							+ "$Name$Side" + WhichSubSide + "$select_Impact*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BatterSection$BatterGrp" + WhichBatsman + 
-							"$Side" + WhichSide + "$Name$MaxSize*FUNCTION*Maxsize*WIDTH_X SET 170\0", print_writers);
-					break;
-				case "IMP_OUT": //case "CON_OUT":
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$LeftSection$BatsmanGrp_" + WhichBatsman + "$Side" + WhichSide 
-							+ "$Name$Side" + WhichSubSide + "$select_Impact*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+							"$Side" + WhichSide + "$select_Impact*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BatterSection$BatterGrp" + WhichBatsman + 
 							"$Side" + WhichSide + "$Name$MaxSize*FUNCTION*Maxsize*WIDTH_X SET 170\0", print_writers);
 					break;
@@ -5091,14 +5085,14 @@ public class InfobarGfx
 		switch(config.getBroadcaster()) {
 		case Constants.ILT20:
 			if(infobar.getLast_bowler() != null && infobar.getLast_bowler().getPlayerId() != bowlingCard.getPlayerId()) {
-				populateBowlersData(false, print_writers, 2, 1);
+				populateBowlersData(false, print_writers, 2, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 2);
 				
 				this_animation.processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Bowler_Change", "START");
 				this_animation.processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Change_Section2", "START");
 				TimeUnit.MILLISECONDS.sleep(500);
 				
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 1);
 				
 				TimeUnit.MILLISECONDS.sleep(1000);
@@ -5107,14 +5101,14 @@ public class InfobarGfx
 				
 				isimpactBowlIn = false;
 			} else {
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, whichSide, 1);
 			}
 			infobar.setLast_bowler(bowlingCard);
 			break;
 		case Constants.TEST_T20:
 			if(infobar.getLast_bowler() != null && infobar.getLast_bowler().getPlayerId() != bowlingCard.getPlayerId()) {
-				populateBowlersData(false, print_writers, 1, 2);
+				populateBowlersData(false, print_writers, 1, 2, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 2);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5123,7 +5117,7 @@ public class InfobarGfx
 					TimeUnit.MILLISECONDS.sleep(500);
 				}
 				
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 1);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5135,14 +5129,14 @@ public class InfobarGfx
 				
 				isimpactBowlIn = false;
 			} else {
-				populateBowlersData(false, print_writers, whichSide, 1);
+				populateBowlersData(false, print_writers, whichSide, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, whichSide, 1);
 			}
 			infobar.setLast_bowler(bowlingCard);
 			break;
 		case Constants.AFG_SERIES:
 			if(infobar.getLast_bowler() != null && infobar.getLast_bowler().getPlayerId() != bowlingCard.getPlayerId()) {
-				populateBowlersData(false, print_writers, 1, 2);
+				populateBowlersData(false, print_writers, 1, 2, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 2);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5151,7 +5145,7 @@ public class InfobarGfx
 					TimeUnit.MILLISECONDS.sleep(500);
 				}
 				
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 1);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5162,14 +5156,14 @@ public class InfobarGfx
 				
 				isimpactBowlIn = false;
 			} else {
-				populateBowlersData(false, print_writers, whichSide, 1);
+				populateBowlersData(false, print_writers, whichSide, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, whichSide);
 			}
 			infobar.setLast_bowler(bowlingCard);
 			break;
 		case Constants.AFG_SL_SERIES:
 			if(infobar.getLast_bowler() != null && infobar.getLast_bowler().getPlayerId() != bowlingCard.getPlayerId()) {
-				populateBowlersData(false, print_writers, 2, 1);
+				populateBowlersData(false, print_writers, 2, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 2, 1);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5178,7 +5172,7 @@ public class InfobarGfx
 					TimeUnit.MILLISECONDS.sleep(500);
 				}
 				
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 1);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5189,14 +5183,14 @@ public class InfobarGfx
 				
 				isimpactBowlIn = false;
 			} else {
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 1);
 			}
 			infobar.setLast_bowler(bowlingCard);
 			break;
 		case Constants.ACC:
 			if(infobar.getLast_bowler() != null && infobar.getLast_bowler().getPlayerId() != bowlingCard.getPlayerId()) {
-				populateBowlersData(false, print_writers, 2, 1);
+				populateBowlersData(false, print_writers, 2, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 2, 1);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5205,7 +5199,7 @@ public class InfobarGfx
 					TimeUnit.MILLISECONDS.sleep(500);
 				}
 				
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 1);
 				
 				if(infobar.getInfobar_status().equalsIgnoreCase("INFOBAR")) {
@@ -5216,20 +5210,20 @@ public class InfobarGfx
 				
 				isimpactBowlIn = false;
 			} else {
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				populateSection3(print_writers, matchAllData, 1, 1);
 			}
 			infobar.setLast_bowler(bowlingCard);
 			break;
 		case Constants.BAN_AFG_SERIES: case Constants.WCL:
 			if(infobar.getLast_bowler() != null && infobar.getLast_bowler().getPlayerId() != bowlingCard.getPlayerId()) {
-				populateBowlersData(false, print_writers, 2, 1);
+				populateBowlersData(false, print_writers, 2, 1, matchAllData);
 				this_animation.processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Bowler$Change", "START");
 				TimeUnit.MILLISECONDS.sleep(800);
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 				this_animation.processAnimation(Constants.FRONT, print_writers, "Anim_Infobar$Bowler$Change", "SHOW 0.0");
 			} else {
-				populateBowlersData(false, print_writers, 1, 1);
+				populateBowlersData(false, print_writers, 1, 1, matchAllData);
 			}
 			infobar.setLast_bowler(bowlingCard);
 			break;
@@ -5324,7 +5318,7 @@ public class InfobarGfx
 			break;
 		}
 	}
-	public void populateBowlersData(boolean isItUpdating, List<PrintWriter> print_writers, int whichSide, int whichSubSide) throws InterruptedException{
+	public void populateBowlersData(boolean isItUpdating, List<PrintWriter> print_writers, int whichSide, int whichSubSide, MatchAllData matchAllData) throws InterruptedException{
 		
 		switch(config.getBroadcaster()) {
 		case Constants.ILT20:
@@ -5339,6 +5333,23 @@ public class InfobarGfx
 					"$Name$txt_Figures*GEOM*TEXT SET " + bowlingCard.getWickets() + "-" + bowlingCard.getRuns() + "\0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$BowlerSection$Side" + whichSide + 
 					"$Name$txt_Overs*GEOM*TEXT SET " + CricketFunctions.OverBalls(bowlingCard.getOvers(), bowlingCard.getBalls()) + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$BowlerSection$Side" + whichSide + 
+					"$impact$select_Impact*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$BowlerSection$Side" + whichSide + 
+					"$Name$MaxSize*FUNCTION*Maxsize*WIDTH_X SET 215\0", print_writers);
+			
+			impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), bowlingCard.getPlayerId());
+			if (!impactType.isEmpty()) {
+				switch(impactType) {
+				case "IMP_IN": //case "CON_IN":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$BowlerSection$Side" + whichSide + 
+							"$impact$select_Impact*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$BowlerSection$Side" + whichSide + 
+							"$Name$MaxSize*FUNCTION*Maxsize*WIDTH_X SET 155\0", print_writers);
+					break;
+				}
+			}
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$BowlerSection$Side" + whichSide + 
 					"$FlagGrp$img_Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + bowlingCard.getPlayer().getNationality() + "\0", print_writers);
@@ -9502,8 +9513,7 @@ public class InfobarGfx
 					if(this_data_str.get(this_data_str.size()-1) == null) {
 						return "populateSection3: This over data returned invalid";
 					}
-					System.out.println("this_data_str.get(this_data_str.size()-1).split(\",\").length ====00000000==========   " + this_data_str.get(this_data_str.size()-1).split(",").length);
-					System.out.println("this_data_str.get(this_data_str.size()-1)====0=0=0=================== " + this_data_str.get(this_data_str.size()-1).toString());
+					
 					if(this_data_str.get(this_data_str.size()-1).split(",").length <= 7) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$Section2$Side" + WhichSide 
 								+ "$select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
@@ -18350,31 +18360,41 @@ public class InfobarGfx
 					break;
 				case "IDENT":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide 
-							+ "$Select_DataType*FUNCTION*Omo*vis_con SET 1\0", print_writers);
-					
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$2_Line_Text$Text$Maxsize_Title"
-							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
-					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getTournament().trim(),
-						    "", null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$2_Line_Text$Text$Maxsize_Title"
-							+ "$English$txt_Title*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
-					
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$2_Line_Text$Text$Maxsize_Subtitle"
-							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
-					
+							+ "$Select_DataType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					String matchName = matchAllData.getSetup().getMatchIdent();
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$1_Line_Text$Maxsize_Title"
+							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+					
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getTournament().trim(), 
+							"", null, 1, foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ",", "", null, 2, foreignLanguageDataList);
 					if (matchName.toUpperCase().contains("MATCH")) {
-					    String[] parts = matchName.split(" ");
-					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[0], "", null, 1, foreignLanguageDataList);
-					    if (parts.length > 1) {
-					        foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,parts[1], "", null, 2, foreignLanguageDataList);
-					    }
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchName.split(" ")[0], "", null, 3, foreignLanguageDataList);
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchName.split(" ")[1], "", null, 4, foreignLanguageDataList);
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ",", "", null, 5, foreignLanguageDataList);
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "LIVE", "", null, 6, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "FROM", "", null, 7, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getGround().getShortname(), "", 
+								null, 8, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ",", "", null, 9, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getGround().getCity(), 
+								"", null, 10, foreignLanguageDataList);
 					} else {
-					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 1, foreignLanguageDataList);
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchName, "", null, 3, foreignLanguageDataList);
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ",", "", null, 4, foreignLanguageDataList);
+					    foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "LIVE", "", null, 5, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "FROM", "", null, 6, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getGround().getShortname(), "", 
+								null, 7, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ",", "", null, 8, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getGround().getCity(), 
+								"", null, 9, foreignLanguageDataList);
 					}
 					
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$2_Line_Text$Text$Maxsize_Subtitle"
+
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$1_Line_Text$Maxsize_Title"
 							+ "$English$txt_Title*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
 					
 					break;
