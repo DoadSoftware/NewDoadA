@@ -4787,15 +4787,22 @@ public class ALL_FF
 						"$HeaderStyle3$Team2$English$txt_TeamLastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
-						+ "$Team1$English$txt_TeamFirstName*GEOM*TEXT SET \0", print_writers);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + 
+						"$select_HeaderStyle$HeaderStyle3$Team1$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PLAYING XI", "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + 
+						"$HeaderStyle3$Team1$English$txt_TeamFirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
+//						+ "$Team1$English$txt_TeamFirstName*GEOM*TEXT SET \0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
 						+ "$Team1$English$txt_TeamLastName*GEOM*TEXT SET \0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
 						+ "$Team1$Hindi$txt_TeamFirstName*GEOM*TEXT SET \0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
-						+ "$Team1$Hindi$txt_TeamLastName*GEOM*TEXT SET \0", print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
+//						+ "$Team1$Hindi$txt_TeamLastName*GEOM*TEXT SET \0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$Glass_Left$BadgeShadows$Side" + WhichSide + "$img_Badges_Shadow"
 						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + team.getTeamBadge() + "\0", print_writers);

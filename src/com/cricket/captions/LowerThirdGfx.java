@@ -25,6 +25,7 @@ import java.util.stream.Stream;
 import com.cricket.containers.Infobar;
 import com.cricket.containers.L3Griff;
 import com.cricket.containers.LowerThird;
+import com.cricket.containers.PredictorData;
 import com.cricket.controller.IndexController;
 import com.cricket.model.BatBallGriff;
 import com.cricket.model.BattingCard;
@@ -63,6 +64,7 @@ import com.cricket.util.CricketUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -4522,6 +4524,31 @@ public class LowerThirdGfx
 			}
 		}
 	}
+	public String populateWinPredictor(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
+	{
+		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1])).findAny().orElse(null);
+		
+		if(inning == null) {
+			return "populateExtras: Current Inning is Null";
+		}
+		
+//		lowerThird = new LowerThird("INNINGS EXTRAS", "", "",whatToProcess.split(",")[2], "", "",2,"",inning.getBowling_team().getTeamBadge(),new String[]{"WIDES","NO BALLS","BYES","LEG BYES","PENALTIES"},
+//				new String[]{String.valueOf(inning.getTotalWides()),String.valueOf(inning.getTotalNoBalls()),String.valueOf(inning.getTotalByes()),
+//				String.valueOf(inning.getTotalLegByes()),String.valueOf(inning.getTotalPenalties())},null,null,
+//				new String[] {"-175","-97","-11","73","166"});
+		
+		//checkForImpactPlayer(whatToProcess, WhichSide, 0, matchAllData);
+		return ReadPredictor();
+		//status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
+//		if(status == Constants.OK) {
+//			//PopulateL3rdBaseColor(whatToProcess.split(",")[0], WhichSide);
+////			HideAndShowL3rdSubStrapContainers(WhichSide);
+////			setPositionOfLT(whatToProcess,WhichSide,config,lowerThird.getNumberOfSubLines());
+//			return PopulateL3rdBody(WhichSide, whatToProcess.split(",")[0]);
+//		} else {
+//			return status;
+//		}
+	}
 	public String populateL3rdExtras(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		switch (config.getBroadcaster().toUpperCase()) {
@@ -5795,7 +5822,7 @@ public class LowerThirdGfx
 			}
 			break;
 		case Constants.ILT20:
-			lowerThird = new LowerThird("", "PHASEWISE COMPARISON", "","","", "",3,"","EVENT", new String[]{"1 - 6", "7 - 15", "16 - 20"}, new String[]{oneToSixRuns1 + "-" + oneToSixfWkt1 
+			lowerThird = new LowerThird("", "PHASE-WISE COMPARISON", "","","", "",3,"","EVENT", new String[]{"1 - 6", "7 - 15", "16 - 20"}, new String[]{oneToSixRuns1 + "-" + oneToSixfWkt1 
 					+ "," + oneToSixRuns2 + "-" + oneToSixfWkt2, sevenToFifteenRuns1 + "-" + sevenToFifteenWkt1 + "," + sevenToFifteenRuns2 + "-" + sevenToFifteenWkt2,
 					sixteenToTweentyRuns1 + "-" + sixteenToTweentyWkt1 + "," + sixteenToTweentyRuns2 + "-" + sixteenToTweentyWkt2}, new String[] {"OVERS", 
 							inning.getBatting_team().getTeamName1(),inning.getBowling_team().getTeamName1()},null,new String[]{"200","400","600"});
@@ -13942,7 +13969,7 @@ public class LowerThirdGfx
 				
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
 						+ "$select_Subline$1$Title$" + (iStat + 1) + "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
-				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getTitlesText()[iStat].trim().toUpperCase(), 
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getTitlesText()[iStat].trim(), 
 						"", null, 0, foreignLanguageDataList);
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
 						+ "$select_Subline$1$Title$" + (iStat + 1) + "$English$txt_1*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
@@ -13989,7 +14016,7 @@ public class LowerThirdGfx
 			
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[0].split(",")[0],
 				    "", null, 1,foreignLanguageDataList);
-			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "-",
+			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ":",
 				    "", null, 2,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[0].split(",")[1],
 				    "", null, 3,foreignLanguageDataList);
@@ -13997,7 +14024,7 @@ public class LowerThirdGfx
 				    "", null, 4,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[0].split(",")[2],
 				    "", null, 5,foreignLanguageDataList);
-			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "-",
+			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ":",
 				    "", null, 6,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[0].split(",")[3],
 				    "", null, 7,foreignLanguageDataList);
@@ -14013,7 +14040,7 @@ public class LowerThirdGfx
 			
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[1].split(",")[0],
 				    "", null, 1,foreignLanguageDataList);
-			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "-",
+			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ":",
 				    "", null, 2,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[1].split(",")[1],
 				    "", null, 3,foreignLanguageDataList);
@@ -14021,7 +14048,7 @@ public class LowerThirdGfx
 				    "", null, 4,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[1].split(",")[2],
 				    "", null, 5,foreignLanguageDataList);
-			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "-",
+			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, ":",
 				    "", null, 6,foreignLanguageDataList);
 			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getRightText()[1].split(",")[3],
 				    "", null, 7,foreignLanguageDataList);
@@ -20169,5 +20196,96 @@ public class LowerThirdGfx
 	        default:
 	            return number + "th";
 	    }
+	}
+	
+	public String ReadPredictor() {
+		try {
+
+			int Top_Score = 50,total=100;
+			double Mult = 295,ScaleFac1 = 0, ScaleFac2 = 0;
+			
+            ObjectMapper mapper = new ObjectMapper();
+
+            List<PredictorData> predictorList = mapper.readValue(
+                new File("C:\\Sports\\Cricket\\PREDICTOR.json"),
+                new TypeReference<List<PredictorData>>() {}
+            );
+
+            for (PredictorData data : predictorList) {
+
+            	int TotalRuns = data.getTotalRuns();
+            	int Wickets = data.getWickets();
+            	int Target = data.getTarget();
+
+            	int BattingTeamPredictor = Integer.parseInt(data.getPredictor());
+            	int BowlingTeamPredictor = 100 - BattingTeamPredictor;
+
+            	String Overs = data.getOvers();
+            	String Team = data.getTeam();
+            	String PredictedScore = data.getPredictedScore();
+
+                // Now you can use all variables
+
+            	if(BattingTeamPredictor > Top_Score) {
+    				Top_Score = BattingTeamPredictor;
+    			}
+    			if(BowlingTeamPredictor > Top_Score) {
+    				Top_Score = BowlingTeamPredictor;
+    			}
+    			
+    			ScaleFac1 = ((double) BattingTeamPredictor) / total;
+				ScaleFac2 = ((double) BowlingTeamPredictor) / total;
+				
+				System.out.println("ScaleFac1 = " + ScaleFac1);
+				System.out.println("ScaleFac2 = " + ScaleFac2);
+				
+				ScaleFac1 = ScaleFac1*360;
+				ScaleFac2 = ScaleFac2*360;
+				
+                System.out.println("Overs: " + Overs);
+                System.out.println("Total Runs: " + TotalRuns);
+                System.out.println("Wickets: " + Wickets);
+                System.out.println("Target: " + Target);
+                System.out.println("BattingTeamPredictor: " + BattingTeamPredictor);
+                System.out.println("BowlingTeamPredictor: " + BowlingTeamPredictor);
+                System.out.println("Team: " + Team);
+                System.out.println("Predicted Score: " + PredictedScore);
+                
+//                (590 * BattingTeamPredictor) / 100
+                CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header$select_Language"
+                		+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+    			
+                foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						"WIN PREDICTOR", "", null, 0, foreignLanguageDataList);
+    			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header"
+    					+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+    			
+    			
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team1" + 
+						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team1" + 
+						"$txt_Value*GEOM*TEXT SET " + BattingTeamPredictor + "\0", print_writers);
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team1" + 
+						"$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team1" + 
+						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BattingTeamPredictor) / 100) + "\0", print_writers);
+    			
+    			
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team2" + 
+						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team2" + 
+						"$txt_Value*GEOM*TEXT SET " + BowlingTeamPredictor + "\0", print_writers);
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team2" + 
+						"$img_Base3*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+    			
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team2" + 
+						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BowlingTeamPredictor) / 100) + "\0", print_writers);
+    			
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return status = "OK";
 	}
 }

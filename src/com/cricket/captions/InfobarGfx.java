@@ -1851,18 +1851,18 @@ public class InfobarGfx
 //					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"BALLS", "", null, 5,foreignLanguageDataList);
 				}else {
 					
-					String englishEquation = "NEED " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).
+					String englishEquation2 = "NEED " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).
 							getTargetRuns()) + " RUNS TO WIN FROM " + String.valueOf(CricketFunctions.GetTargetData(matchAllData).
 									getTargetOvers()) + " OVERS";
 					
 					insertTxt = new ArrayList<String>(); 
-					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningBall()));
-					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns()));
+					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetOvers()));
+					insertTxt.add(String.valueOf(CricketFunctions.GetTargetData(matchAllData).getTargetRuns()));
 					
 					List<ForeignLanguageData> dataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "NEED RUNS TO WIN FROM OVERS", 
 							"", insertTxt, 1, foreignLanguageDataList);
 					
-					foreignLanguageData.add(new ForeignLanguageData(englishEquation, dataList.get(0).getHindiText(), "", ""));
+					foreignLanguageData.add(new ForeignLanguageData(englishEquation2, dataList.get(0).getHindiText(), "", ""));
 					
 					//-------------------------------
 					
@@ -18758,7 +18758,7 @@ public class InfobarGfx
 					case "PHASE_WISE_RUNRATE":
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Projected$TopLine$Maxsize_Title"
 								+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
-						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PHASE-WISE RUNRATE", "", null, 0, foreignLanguageDataList);
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PHASE-WISE RUN RATE", "", null, 0, foreignLanguageDataList);
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Projected$TopLine$Maxsize_Title"
 								+ "$English$txt_Title*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
 						break;

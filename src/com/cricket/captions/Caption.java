@@ -706,7 +706,14 @@ public class Caption
 				status = this_bugsAndMiniGfx.populateBugResult(whatToProcess,matchAllData,whichSide);
 				break;
 			case "Control_Alt_F3":
-				status = this_bugsAndMiniGfx.populateMiniPhaseWise(whichSide, whatToProcess,matchAllData);
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ILT20:
+					status = this_lowerThirdGfx.populateWinPredictor(whatToProcess,whichSide,matchAllData);
+					break;
+				default:
+					status = this_bugsAndMiniGfx.populateMiniPhaseWise(whichSide, whatToProcess,matchAllData);
+					break;
+				}
 				break;
 			case "Shift_F1":
 				status = this_bugsAndMiniGfx.populateMiniScorecard(whichSide, whatToProcess,matchAllData);

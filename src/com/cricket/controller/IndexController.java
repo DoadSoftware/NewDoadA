@@ -653,6 +653,7 @@ public class IndexController
 						}
 						break;
 					}
+					System.out.println("this_animation.whichGraphicOnScreen ===== " + this_animation.whichGraphicOnScreen);
 					if(this_animation.whichGraphicOnScreen.isEmpty()) {
 						if(!this_animation.specialBugOnScreen.equalsIgnoreCase(CricketUtil.TOSS)) {
 							if(this_animation.infobar.isInfobar_on_screen() == false) {
@@ -771,7 +772,7 @@ public class IndexController
 						}
 						this_caption.whichSide = 2;
 					}
-					
+					System.out.println("valueToProcessvalueToProcessvalueToProcess ======================= " + valueToProcess);
 					this_caption.PopulateGraphics(valueToProcess, session_match);
 					this_animation.caption = this_caption;
 					//Previews

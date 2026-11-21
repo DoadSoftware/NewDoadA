@@ -196,7 +196,7 @@ public class Animation
 			case "Control_F5": case "Control_F9": case "Shift_F6": case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Shift_E":	
 			case "d": case "e": case "Control_h": case "Alt_Shift_F3": case "Control_F3": case "Control_Shift_M": case "Control_a": case "Control_Shift_F10": 
 			case "Control_Shift_B": case "Alt_d": case "Control_Shift_L": case "Control_6": case "Control_Shift_O": case "Control_Shift_Q": case "Control_Shift_X": 
-			case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12": case "Shift_I": case "Control_F2": case "Alt_f":
+			case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12": case "Shift_I": case "Control_F2": case "Alt_f": case "Control_Alt_F3":
 				switch (whatToProcess.split(",")[0]) {
 				case "Alt_F8": case "F8": case "F10": case "j": case "Alt_a": case "Alt_s": // Name super L3rd
 					return Constants.NAME_SUPERS + Constants.LOWER_THIRD;
@@ -3391,15 +3391,16 @@ public class Animation
 					break;
 				}
 				
-				if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
-					processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "START");
-					TimeUnit.MILLISECONDS.sleep(1200);
-					processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "CONTINUE");
-				}
+				processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "START");
+				TimeUnit.MILLISECONDS.sleep(1200);
+				processAnimation(Constants.FRONT, print_writers, "DpWorld_Sponsor", "CONTINUE");
 				break;	
 				
 //-----------------------------------------------------------------------------------------------------------------------------
-				
+			case "Control_Alt_F3":
+				processAnimation(Constants.FRONT, print_writers, "WinPredictor$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 			case "Control_F12":
 				if(this.infobar.isInfobar_on_screen()) {
 					
@@ -3670,6 +3671,18 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "TossBug", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+				
+//			case "Alt_p":
+//				if(!specialBugOnScreen.isEmpty() && specialBugOnScreen != null) {
+//					processAnimation(Constants.FRONT, print_writers, "TossBug", "START");
+//					this.specialBugOnScreen = CricketUtil.TOSS;
+//				}else {
+//					processAnimation(Constants.FRONT, print_writers, "TossBug", "CONTINUE");
+//					this.specialBugOnScreen = "";
+//				}
+////				processAnimation(Constants.FRONT, print_writers, "TossBug", "START");
+//				
+//				break;
 			}
 			break;	
 		case Constants.BCCI:
@@ -5571,6 +5584,11 @@ public class Animation
 			break;
 		case Constants.ILT20:
 			switch (whatToProcess.split(",")[0]) {
+			case "Control_Alt_F3":
+				processAnimation(Constants.FRONT, print_writers, "WinPredictor$In_Out", "CONTINUE");
+				this.whichGraphicOnScreen = "";
+				break;
+				
 			case "Control_F12": case "F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Essentials", "CONTINUE");
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$In_Out$Logo", "CONTINUE");
@@ -10562,6 +10580,7 @@ public class Animation
 					break;
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
+						
 					case "F6": case "Shift_F6": case "Control_F6":
 						if(this.infobar.isInfobar_on_screen() == true) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_HowOut$Position_ScoreBug*"
@@ -10607,6 +10626,9 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
+					case "Control_Alt_F3":
+						previewCommand = "anim_InfoBar$Push 1.000 WinPredictor$In_Out 1.780 WinPredictor$In_Out$In 1.300";
+						break;
 					case "Control_Shift_M": case "Control_Shift_L":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_MatchId$In_Out$In 2.440";
 						break;
@@ -11184,6 +11206,9 @@ public class Animation
 			case Constants.ILT20:
 				switch(whatToProcess.split(",")[0]) {
 				case "Shift_F1": case "Shift_F2":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+							+ "Mini$In_Out 2.100 Mini$In_Out$In 2.021\0", print_writer);
+					TimeUnit.MILLISECONDS.sleep(500);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 							+ "Mini$In_Out 2.100 Mini$In_Out$In 2.021\0", print_writer);
 					break;

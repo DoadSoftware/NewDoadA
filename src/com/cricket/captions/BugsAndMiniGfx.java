@@ -5425,7 +5425,7 @@ public class BugsAndMiniGfx
 						Out_not = "";
 						if(bc.getHowOut() != null) {
 							if(bc.getHowOut().equalsIgnoreCase(CricketUtil.RETIRED_HURT)) {
-								Out_not = "*";
+								Out_not = "";
 							}
 						}
 					}
