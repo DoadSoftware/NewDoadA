@@ -5499,7 +5499,7 @@ public class ALL_FF
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "-", "", null, 2,foreignLanguageDataList);
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (fixture.getLocalTime() != null ? 
 							fixture.getLocalTime() + " - ":""), "", null, 3,foreignLanguageDataList);
-					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getVenueName(),
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
 							"", null, 4, foreignLanguageDataList);
 				}else {
 					cal.add(Calendar.DATE, -1);
@@ -5518,7 +5518,7 @@ public class ALL_FF
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "-", "", null, 3,foreignLanguageDataList);
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, (fixture.getLocalTime() != null ? 
 								fixture.getLocalTime() + " - ":""), "", null, 4,foreignLanguageDataList);
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getVenueName(),
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
 								"", null, 5, foreignLanguageDataList);
 					}
 				}

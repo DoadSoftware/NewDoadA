@@ -2876,9 +2876,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				
 				switch($('#selected_broadcaster').val().toUpperCase()){
 				case 'ILT20':
-					//addOption('TEAMNAME', 'TeamName');
-					//addOption('VENUE', 'Venue');
-					//addOption('Ident', 'Ident');
+					
 					addOption('CRR', 'Run Rate');
 
 					session_match.match.inning.forEach(function(inn){
@@ -2896,6 +2894,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 					});
 
 					addOption('SUPER_OVER', 'Super Over');
+					addOption('DUBAI', 'DUBAI');
+					addOption('UAE', 'UAE');
+					addOption('SHARJAH', 'SHARJAH');
 					break;
 				default:
 					if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
@@ -3651,6 +3652,17 @@ function addItemsToList(whatToProcess,dataToProcess)
 					option.value = 'BOWLER_ECONOMY';
 					option.text = 'Bowler Economy';
 					select.appendChild(option);
+					
+					session_match.match.inning.forEach(function(inn){
+						if(inn.isCurrentInning == 'YES' && inn.inningNumber == 2){
+							
+							option = document.createElement('option');
+							option.value = 'RRR';
+							option.text = 'Req. Run Rate';
+							select.appendChild(option);
+						}
+					});
+					
 					break;
 				case 'ACC':
 					/*option = document.createElement('option');
@@ -3845,7 +3857,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 								}
 							});
 							break;
-						case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
+						case 'BCCI': case 'TRI_SERIES': case 'BAN_AFG_SERIES': case 'WCL': case 'MT20': case 'TG20': case 'APLT20': //case 'ILT20':
 							dropdown.push(
 							  { value: 'OVER', text: 'This Over' },
 							  { value: 'ECONOMY', text: 'Economy' },
@@ -3904,6 +3916,10 @@ function addItemsToList(whatToProcess,dataToProcess)
 								    { value: 'RUN_RATES', text: 'CRR & RRR' },
 								    { value: 'COMPARE', text: 'At This Stage' },
 								    { value: 'EQUATION', text: 'Equation' }
+								);
+							}else if(inn.isCurrentInning == 'YES' && inn.inningNumber == 1){
+								options.push(
+								    { value: 'PROJECTED', text: 'Projected Score' }
 								);
 							}
 						});
