@@ -3683,6 +3683,11 @@ public class Animation
 ////				processAnimation(Constants.FRONT, print_writers, "TossBug", "START");
 //				
 //				break;
+// POP UPS------------------------------------------------------------------------------------------------------------
+			case "Control_Shift_U": case "Control_Shift_V":
+				processAnimation(Constants.FRONT, print_writers, "anim_PopUp$InOut", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+				break;
 			}
 			break;	
 		case Constants.BCCI:
@@ -5811,6 +5816,15 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "TossBug", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.FRONT, print_writers, "TossBug", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+				
+// POP UPS ---------------------------------------------------------------------------------------------------------
+			case "Control_Shift_U": case "Control_Shift_V":
+				processAnimation(Constants.FRONT, print_writers, "anim_PopUp$InOut", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "anim_PopUp", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_PopUp$Out", "SHOW 2.800");
 				this.whichGraphicOnScreen = "";
 				break;
 			}
@@ -10981,6 +10995,10 @@ public class Animation
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 								+ "anim_InfoBar$Push 1.000 Bug$In_Out 0.500 Bug$In_Out$In 0.500\0", print_writer);
 						break;
+					case "Control_Shift_U": case "Control_Shift_V":
+						 CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+									+ "anim_PopUp$InOut 0.600 anim_PopUp$InOut$In 0.600\0", print_writer);
+						 break; 
 					}
 					break;
 				case Constants.AFG_SERIES:
