@@ -12198,8 +12198,13 @@ public class LowerThirdGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$BaseAll$Side" + whichSide + "$img_Base2"
 						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide + "$img_Text1"
-						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				if(lowerThird.getWhichTeamFlag().equalsIgnoreCase("SW")) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide + "$img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide + "$img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InAnimations$img_HeroColur*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_HEROCOLOR + lowerThird.getWhichTeamFlag() + "\0", print_writers);
@@ -12213,8 +12218,13 @@ public class LowerThirdGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$SublineGrp$BaseAll$Side" + whichSide + "$img_Base2"
 						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$SublineGrp$Rows$Side" + whichSide + "$img_Text1"
-						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				if(lowerThird.getWhichTeamFlag().equalsIgnoreCase("SW")) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$SublineGrp$Rows$Side" + whichSide + "$img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$SublineGrp$Rows$Side" + whichSide + "$img_Text1"
+							+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$InAnimations$img_HeroColur*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_HEROCOLOR + lowerThird.getWhichTeamFlag() + "\0", print_writers);
@@ -12225,16 +12235,26 @@ public class LowerThirdGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team1$Team1_Out$img_Base2*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_BASE2 + lowerThird.getHeaderText() + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team1$TeamName$img_Text1*TEXTURE*IMAGE SET " 
-						+ Constants.ILT20_TEXT1 + lowerThird.getHeaderText() + "\0", print_writers);
+				if(lowerThird.getHeaderText().equalsIgnoreCase("SW")) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team1$TeamName$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT2 + lowerThird.getHeaderText() + "\0", print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team1$TeamName$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT1 + lowerThird.getHeaderText() + "\0", print_writers);
+				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team2$Team2_Out$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_BASE1 + lowerThird.getFirstName() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team2$Team2_Out$img_Base2*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_BASE2 + lowerThird.getFirstName() + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team2$TeamName$img_Text1*TEXTURE*IMAGE SET " 
-						+ Constants.ILT20_TEXT1 + lowerThird.getFirstName() + "\0", print_writers);
+				if(lowerThird.getFirstName().equalsIgnoreCase("SW")) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team2$TeamName$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT2 + lowerThird.getFirstName() + "\0", print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LT_Ident$Team2$TeamName$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT1 + lowerThird.getFirstName() + "\0", print_writers);
+				}
 				
 				break;
 			case "F6": case "Shift_F6": case "Control_F6":
@@ -12246,8 +12266,13 @@ public class LowerThirdGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_HowOut$SublineGrp$BaseAll$img_Base2*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_BASE2 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_HowOut$SublineGrp$Rows$img_Text1*TEXTURE*IMAGE SET " 
-						+ Constants.ILT20_TEXT1 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				if(lowerThird.getWhichTeamFlag().equalsIgnoreCase("SW")) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_HowOut$SublineGrp$Rows$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT2 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_HowOut$SublineGrp$Rows$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT1 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
+				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_HowOut$InAnimations$img_HeroColur*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_HEROCOLOR + lowerThird.getWhichTeamFlag() + "\0", print_writers);
