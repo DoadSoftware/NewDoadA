@@ -6035,6 +6035,10 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$SubLine", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Dynamic_ForSubLine", "START");
 				break;
+				
+			 case "Control_Shift_U_change_on": case "Control_Shift_V_change_on":
+				processAnimation(Constants.FRONT, print_writers, "Change", "START");
+				break;
 			}
 			break;
 		case Constants.TEST_T20:
@@ -7581,6 +7585,15 @@ public class Animation
 				
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
+			
+			 case "Control_Shift_U_change_on":
+				 processAnimation(Constants.FRONT, print_writers, "Change", "SHOW 0.0");
+				this.whichGraphicOnScreen = "Control_Shift_U";
+				break;
+			 case "Control_Shift_V_change_on":
+				 processAnimation(Constants.FRONT, print_writers, "Change", "SHOW 0.0");
+				this.whichGraphicOnScreen = "Control_Shift_V";
+				break;	
 			}
 			break;
 		case Constants.TEST_T20:

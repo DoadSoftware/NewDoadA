@@ -13766,7 +13766,7 @@ public class ALL_FF
 						powerPlay = "$PowerPlay";
 					}else {
 						powerplay_omo = 1;
-						powerPlay = "$NonPowerPlay";
+						powerPlay = "$Normal";
 					}
 				}
 				
@@ -13803,7 +13803,7 @@ public class ALL_FF
 							+ "$Manhattan$Bar$Position*FUNCTION*Grid*num_col SET " + rowId1 + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-							+ "$Manhattan$Bar$Position$" + j + "$obj_ScaleY$Normal" + powerPlay + (powerplay_omo == 0 ? "$Img_Manhattan1" : "$Img_Manhattan2") + "*GEOM*height SET 420\0", print_writers);
+							+ "$Manhattan$Bar$Position$" + j + "$obj_ScaleY" + powerPlay + (powerplay_omo == 0 ? "$img_TextCommon" : "$img_Text1") + "*GEOM*height SET 420\0", print_writers);
 					
 					lngth = Math.floor(((1.0 * Integer.valueOf(manhattan.get(j).getOverTotalRuns())) / maxRuns) * 100) / 100.0;
 					
