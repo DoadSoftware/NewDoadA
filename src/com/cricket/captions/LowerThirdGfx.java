@@ -4538,7 +4538,7 @@ public class LowerThirdGfx
 //				new String[] {"-175","-97","-11","73","166"});
 		
 		//checkForImpactPlayer(whatToProcess, WhichSide, 0, matchAllData);
-		return ReadPredictor();
+		return ReadPredictor(matchAllData);
 		//status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
 //		if(status == Constants.OK) {
 //			//PopulateL3rdBaseColor(whatToProcess.split(",")[0], WhichSide);
@@ -20198,7 +20198,7 @@ public class LowerThirdGfx
 	    }
 	}
 	
-	public String ReadPredictor() {
+	public String ReadPredictor(MatchAllData matchAllData) {
 		try {
 
 			int Top_Score = 50,total=100;
@@ -20217,40 +20217,15 @@ public class LowerThirdGfx
             	int Wickets = data.getWickets();
             	int Target = data.getTarget();
 
-            	int BattingTeamPredictor = Integer.parseInt(data.getPredictor());
-            	int BowlingTeamPredictor = 100 - BattingTeamPredictor;
+            	double BattingTeamPredictor = Integer.parseInt(data.getPredictor());
+            	double BowlingTeamPredictor = 100 - BattingTeamPredictor;
+            	int Batresult = (int) BattingTeamPredictor;
+            	int Ballresult = (int) BowlingTeamPredictor;
 
             	String Overs = data.getOvers();
             	String Team = data.getTeam();
             	String PredictedScore = data.getPredictedScore();
 
-                // Now you can use all variables
-
-            	if(BattingTeamPredictor > Top_Score) {
-    				Top_Score = BattingTeamPredictor;
-    			}
-    			if(BowlingTeamPredictor > Top_Score) {
-    				Top_Score = BowlingTeamPredictor;
-    			}
-    			
-    			ScaleFac1 = ((double) BattingTeamPredictor) / total;
-				ScaleFac2 = ((double) BowlingTeamPredictor) / total;
-				
-				System.out.println("ScaleFac1 = " + ScaleFac1);
-				System.out.println("ScaleFac2 = " + ScaleFac2);
-				
-				ScaleFac1 = ScaleFac1*360;
-				ScaleFac2 = ScaleFac2*360;
-				
-                System.out.println("Overs: " + Overs);
-                System.out.println("Total Runs: " + TotalRuns);
-                System.out.println("Wickets: " + Wickets);
-                System.out.println("Target: " + Target);
-                System.out.println("BattingTeamPredictor: " + BattingTeamPredictor);
-                System.out.println("BowlingTeamPredictor: " + BowlingTeamPredictor);
-                System.out.println("Team: " + Team);
-                System.out.println("Predicted Score: " + PredictedScore);
-                
 //                (590 * BattingTeamPredictor) / 100
                 CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header$select_Language"
                 		+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
@@ -20264,7 +20239,7 @@ public class LowerThirdGfx
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team1" + 
 						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team1" + 
-						"$txt_Value*GEOM*TEXT SET " + BattingTeamPredictor + "\0", print_writers);
+						"$txt_Value*GEOM*TEXT SET " + Batresult + "\0", print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team1" + 
 						"$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team1" + 
@@ -20274,12 +20249,29 @@ public class LowerThirdGfx
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team2" + 
 						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team2" + 
-						"$txt_Value*GEOM*TEXT SET " + BowlingTeamPredictor + "\0", print_writers);
+						"$txt_Value*GEOM*TEXT SET " + Ballresult + "\0", print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team2" + 
 						"$img_Base3*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
     			
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team2" + 
 						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BowlingTeamPredictor) / 100) + "\0", print_writers);
+    			
+    			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$MatchNumber$select_Language"
+    					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+		
+				if(matchAllData.getSetup().getMatchIdent().contains("MATCH")){
+		  			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0],
+		  					"", null, 1,foreignLanguageDataList);
+					  
+				  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1],
+						    "", null, 2,foreignLanguageDataList);
+				  	
+				  	foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+			  	}else {
+			  			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getMatchIdent(), "", null, 0, foreignLanguageDataList);
+			  	}
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$MatchNumber"
+						+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
     			
             }
 
