@@ -4800,7 +4800,7 @@ public class ALL_FF
 						+ "$Team1$English$txt_TeamLastName*GEOM*TEXT SET \0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
-						+ "$Team1$Hindi$txt_TeamFirstName*GEOM*TEXT SET \0", print_writers);
+						+ "$Team1$Hindi$txt_TeamLastName*GEOM*TEXT SET \0", print_writers);
 //				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$HeaderGrp$Side" + WhichSide + "$HeaderStyle3"
 //						+ "$Team1$Hindi$txt_TeamLastName*GEOM*TEXT SET \0", print_writers);
 				

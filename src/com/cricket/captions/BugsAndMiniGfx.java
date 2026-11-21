@@ -5595,13 +5595,13 @@ public class BugsAndMiniGfx
 					String impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), bc.getPlayerId());
 					if (!impactType.isEmpty()) {
 						switch(impactType) {
-						case "IMP_IN": case "CON_IN":
+						case "IMP_IN": //case "CON_IN":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
 									+ "$select_BatDataType" +cont_name + "$img_Text1$English$Impact_Sub_Grp$Select_IMP_SUB*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
 									+ "$select_BatDataType" +cont_name + "$img_Text1$Hindi$Impact_Sub_Grp$Select_IMP_SUB*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 							break;
-						case "IMP_OUT": case "CON_OUT":
+						case "IMP_OUT": //case "CON_OUT":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
 									+ "$select_BatDataType" +cont_name + "$img_Text1$English$Impact_Sub_Grp$Select_IMP_SUB*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
@@ -5722,13 +5722,13 @@ public class BugsAndMiniGfx
 					String impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), boc.getPlayerId());
 					if (!impactType.isEmpty()) {
 						switch(impactType) {
-						case "IMP_IN": case "CON_IN":
+						case "IMP_IN": //case "CON_IN":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
 									+ "$select_BatDataType" +cont_name + "$img_Text1$English$Impact_Sub_Grp$Select_IMP_SUB*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
 									+ "$select_BatDataType" +cont_name + "$img_Text1$Hindi$Impact_Sub_Grp$Select_IMP_SUB*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 							break;
-						case "IMP_OUT": case "CON_OUT":
+						case "IMP_OUT": //case "CON_OUT":
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
 									+ "$select_BatDataType" +cont_name + "$img_Text1$English$Impact_Sub_Grp$Select_IMP_SUB*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId  
