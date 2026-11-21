@@ -5938,12 +5938,13 @@ public class BugsAndMiniGfx
 						}
 						break;
 					default :
-						
+						String Out_not = "";
 						switch (config.getBroadcaster().toUpperCase()) {
 						case Constants.TEST_T20:
 							switch (bc.getStatus().toUpperCase()) {
 							case CricketUtil.OUT:
 								omo_numb = 1;
+								Out_not = "";
 								cont_name = "$Dehighlight";
 								batting_size = batting_size + 1;
 //								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini$Side" + WhichSide + "$Select$Bating$AllDataGrp$CardAll$Data$DataGrp"
@@ -5957,6 +5958,7 @@ public class BugsAndMiniGfx
 								break;
 							case CricketUtil.NOT_OUT:
 								omo_numb = 2;
+								Out_not = "*";
 								cont_name = "$Highlight";
 								batting_size = batting_size + 1;
 								
@@ -6035,7 +6037,7 @@ public class BugsAndMiniGfx
 										"$txt_BatterName*GEOM*TEXT SET " + bc.getPlayer().getTicker_name() + " \0", print_writers);
 										
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name + 
-									"$txt_Figures*GEOM*TEXT SET " + bc.getRuns() + "\0", print_writers);
+									"$txt_Figures*GEOM*TEXT SET " + bc.getRuns() + Out_not + "\0", print_writers);
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$Side" + WhichSide + "$Batting$Row" + row_ids + cont_name + 
 									"$txt_Overs*GEOM*TEXT SET " + bc.getBalls() + "\0", print_writers);
 							break;

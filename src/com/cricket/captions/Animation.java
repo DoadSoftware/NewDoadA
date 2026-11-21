@@ -3837,6 +3837,9 @@ public class Animation
 					processAnimation(Constants.FRONT, print_writers, "anim_Infobar$InOut$Normal", "SHOW 1.800");
 					processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Ident_To_Normal", "SHOW 1.620");
 					
+					if(caption.this_infobarGfx.infobar.getLast_sectionAnalytics() != null && !caption.this_infobarGfx.infobar.getLast_sectionAnalytics().isEmpty()) {
+						processAnimation(Constants.FRONT, print_writers, "anim_Infobar$Analytics$InOut", "CONTINUE");
+					}
 					TimeUnit.MILLISECONDS.sleep(1000);
 					processAnimation(Constants.FRONT, print_writers, "anim_Infobar$InOut$Normal", "CONTINUE");
 					break;
