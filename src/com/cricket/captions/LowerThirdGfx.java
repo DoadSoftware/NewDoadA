@@ -13943,7 +13943,7 @@ public class LowerThirdGfx
 		
 		switch(whatToProcess) {
 		case "F5": case "F9": case "Control_a": case "Control_F5": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
-		case "u": case "Shift_F3": case "Shift_F5": case "Alt_F12": case "Control_F3":
+		case "u": case "Shift_F3": case "Shift_F5": case "Alt_F12": case "Control_F3": case "Control_F9":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
 					"$TopText*ACTIVE SET 0 \0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
@@ -20275,7 +20275,7 @@ public class LowerThirdGfx
             );
 
             for (PredictorData data : predictorList) {
-
+            	System.out.println();
             	int TotalRuns = data.getTotalRuns();
             	int Wickets = data.getWickets();
             	int Target = data.getTarget();
