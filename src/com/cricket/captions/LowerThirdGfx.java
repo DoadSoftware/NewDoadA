@@ -253,7 +253,7 @@ public class LowerThirdGfx
 		case Constants.ILT20:
 			switch(whatToProcess.split(",")[0]) {
 			case "Control_a": case "d": case "e": case "Control_h": case "Alt_Shift_F3": case "u": case "Shift_F3": case "Alt_F12": case "Control_F3":
-			case "Alt_Shift_F12":
+			case "Alt_Shift_F12": case "Control_Shift_Q":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + whichSide 
 						+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				break;
@@ -6686,12 +6686,15 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				data = "CURRENT RUN RATE,:,"+CricketFunctions.generateRunRate(inning.getTotalRuns(),inning.getTotalOvers(), inning.getTotalBalls(), 2,matchAllData);
+				break;
 			case Constants.AFG_SERIES:
 				data = "CURRENT RUN RATE: ";
 				data1 = CricketFunctions.generateRunRate(inning.getTotalRuns(),inning.getTotalOvers(), inning.getTotalBalls(), 2,matchAllData);
 				break;
 			default:
-				data = "CURRENT RUN RATE : " + CricketFunctions.generateRunRate(inning.getTotalRuns(),inning.getTotalOvers(), inning.getTotalBalls(), 2,matchAllData);
+				data = "CURRENT RUN RATE: " + CricketFunctions.generateRunRate(inning.getTotalRuns(),inning.getTotalOvers(), inning.getTotalBalls(), 2,matchAllData);
 				break;
 			}
 		}else if(whatToProcess.split(",")[2].equalsIgnoreCase("RRR")){
@@ -6703,6 +6706,10 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				data = "REQUIRED RUN RATE,:,"+CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns(),0,
+						CricketFunctions.GetTargetData(matchAllData).getRemaningBall(),2,matchAllData);
+				break;
 			case Constants.AFG_SERIES:
 				data = "REQUIRED RUN RATE: ";
 				data1 = CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns(),0,
@@ -6778,6 +6785,26 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				if(battingCardList.get(battingCardList.size()-1).getWasHowOutFielderSubstitute() != null) {
+					if(battingCardList.get(battingCardList.size()-1).getWasHowOutFielderSubstitute().equalsIgnoreCase("NO")) {
+						dichowOut = CricketFunctions.generateBattingCardForeignLanguage(battingCardList.get(battingCardList.size()-1).getHowOut(), 
+								battingCardList.get(battingCardList.size()-1).getHowOutPartOne(), battingCardList.get(battingCardList.size()-1).getHowOutPartTwo(), 
+								"", multilanguagedata);
+					}else {
+						dichowOut = CricketFunctions.generateBattingCardForeignLanguage(battingCardList.get(battingCardList.size()-1).getHowOut(), 
+								battingCardList.get(battingCardList.size()-1).getHowOutPartOne(), battingCard.getHowOutPartTwo(), 
+								battingCardList.get(battingCardList.size()-1).getHowOutText(), multilanguagedata);
+					}
+				}else {
+					dichowOut = CricketFunctions.generateBattingCardForeignLanguage(battingCardList.get(battingCardList.size()-1).getHowOut(), 
+							battingCardList.get(battingCardList.size()-1).getHowOutPartOne(), battingCardList.get(battingCardList.size()-1).getHowOutPartTwo(), 
+							"", multilanguagedata);
+				}
+				
+				data = "LAST WICKET,:," + battingCardList.get(battingCardList.size()-1).getPlayer().getTicker_name() + "," +
+						battingCardList.get(battingCardList.size()-1).getRuns() + " (" + battingCardList.get(battingCardList.size()-1).getBalls() + ")";
+				break;
 			case Constants.AFG_SERIES:
 				data = "LAST WICKET : " + how_out_txt + " ";
 				data1 = battingCardList.get(battingCardList.size()-1).getRuns() + " (" + 
@@ -6801,7 +6828,15 @@ public class LowerThirdGfx
 				return "populateGeneric: Partnership size is NULL/Zero";
 			}
 			
-			data = CricketFunctions.ordinal(inning.getPartnerships().get(inning.getPartnerships().size()-1).getPartnershipNumber()) + " WICKET PARTNERSHIP";
+			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				data = "CURRENT PARTNERSHIP,:,"+inning.getPartnerships().get(inning.getPartnerships().size()-1).getTotalRuns()
+						+" ("+inning.getPartnerships().get(inning.getPartnerships().size()-1).getTotalBalls()+")";
+				break;
+			default:
+				data = CricketFunctions.ordinal(inning.getPartnerships().get(inning.getPartnerships().size()-1).getPartnershipNumber()) + " WICKET PARTNERSHIP";
+				break;
+			}
 			
 		}else if(whatToProcess.split(",")[2].equalsIgnoreCase("BOUNDARIES")) {
 			inning = matchAllData.getMatch().getInning().stream().filter(inn -> 
@@ -6812,6 +6847,9 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				data = "INNINGS BOUNDARIES, - ,FOURS,:,"+inning.getTotalFours()+", | ,SIXES,:,"+inning.getTotalSixes();
+				break;
 			case Constants.AFG_SERIES:
 				data = "INNINGS BOUNDARIES - FOURS: " + inning.getTotalFours();
 				data1 = " | SIXES: " + inning.getTotalSixes();
@@ -6830,6 +6868,10 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				data = "CURRENT RUN RATE,:,"+inning.getRunRate()+", | ,REQUIRED RUN RATE,:,"+CricketFunctions.generateRunRate(CricketFunctions.
+						GetTargetData(matchAllData).getRemaningRuns(),0,CricketFunctions.GetTargetData(matchAllData).getRemaningBall(),2,matchAllData);
+				break;
 			case Constants.AFG_SERIES:
 				data = "CURRENT RUN RATE : " + inning.getRunRate();
 				data1 = " | REQUIRED RUN RATE : " + CricketFunctions.generateRunRate(CricketFunctions.GetTargetData(matchAllData).getRemaningRuns(),
@@ -6850,6 +6892,10 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				data = "AT THIS STAGE,"+matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamName1().toUpperCase() + 
+						",WERE," + CricketFunctions.compareInningData(matchAllData,"-", 1 , matchAllData.getEventFile().getEvents());
+				break;
 			case Constants.AFG_SERIES:
 				if(CricketFunctions.compareInningData(matchAllData,"-", 1 , matchAllData.getEventFile().getEvents()).split("-")[1].equalsIgnoreCase("10")) {
 					data = "AT THIS STAGE : " + matchAllData.getMatch().getInning().get(0).getBatting_team().getTeamName1().toUpperCase();
@@ -6880,6 +6926,11 @@ public class LowerThirdGfx
 			lowerThird = new LowerThird(whatToProcess.split(",")[2], inning.getBatting_team().getTeamName1(), data,data1, 
 					"", "",2,"",inning.getBatting_team().getTeamBadge(),null,null,null,null,null);
 			break;
+		case Constants.ILT20:
+			lowerThird = new LowerThird(whatToProcess.split(",")[2], inning.getBatting_team().getTeamName1(), "","", CricketFunctions.getTeamScore(inning, "-", false), 
+					CricketFunctions.OverBalls(inning.getTotalOvers(), inning.getTotalBalls()),2,"",inning.getBatting_team().getTeamBadge(),
+					null,null,new String[]{data},new String[]{""},null);
+			break;
 		default:
 			lowerThird = new LowerThird(whatToProcess.split(",")[2], inning.getBatting_team().getTeamName2(), inning.getBatting_team().getTeamName3(),"", 
 					String.valueOf(inning.getTotalRuns()) + "-" + String.valueOf(inning.getTotalWickets()), 
@@ -6888,9 +6939,15 @@ public class LowerThirdGfx
 			break;
 		}
 		
+		checkForImpactPlayer(whatToProcess, WhichSide, 0, matchAllData);
 		
 		status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
 		if(status == Constants.OK) {
+			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				PopulateL3rdBaseColor(whatToProcess.split(",")[0], WhichSide);
+				break;
+			}
 			HideAndShowL3rdSubStrapContainers(WhichSide);
 			setPositionOfLT(whatToProcess,WhichSide,config,lowerThird.getNumberOfSubLines());
 			
@@ -6981,7 +7038,7 @@ public class LowerThirdGfx
 				}
 				break;
 					
-	    	case "Control_a": case "d": case "e": case "Control_h": case "u": case "Shift_F3": case "Alt_F12": case "Alt_Shift_F12":
+	    	case "Control_a": case "d": case "e": case "Control_h": case "u": case "Shift_F3": case "Alt_F12": case "Alt_Shift_F12": case "Control_Shift_Q":
 	    		
 	    		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + WhichSide + 
 						"$Flag$img_Flag*ACTIVE SET 0\0", print_writers);
@@ -6999,7 +7056,7 @@ public class LowerThirdGfx
 						+ "$Text$English$txt_LastName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 				
 				switch(whatToProcess) {
-				case "Control_h": case "Alt_F12": case "Alt_Shift_F12":
+				case "Control_h": case "Alt_F12": case "Alt_Shift_F12": case "Control_Shift_Q":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$Info$Side" + WhichSide + 
 	    					"$select_Style*FUNCTION*Omo*vis_con SET 1\0",print_writers);
 					
@@ -12195,6 +12252,7 @@ public class LowerThirdGfx
 			switch (whatToProcess) {
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
 			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "F7": case "F11":
+			case "Control_Shift_Q":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$InfoBase_Out$Side" + whichSide + "$img_Base3"
 						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide + "$img_Text3"
@@ -13943,7 +14001,8 @@ public class LowerThirdGfx
 		
 		switch(whatToProcess) {
 		case "F5": case "F9": case "Control_a": case "Control_F5": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
-		case "u": case "Shift_F3": case "Shift_F5": case "Alt_F12": case "Control_F3": case "Control_F9":
+		case "u": case "Shift_F3": case "Shift_F5": case "Alt_F12": case "Control_F3": case "Control_F9": case "Shift_F9":
+		case "Alt_Shift_F12": case "Control_Shift_Q":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
 					"$TopText*ACTIVE SET 0 \0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
@@ -14009,6 +14068,95 @@ public class LowerThirdGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
 					+ "$select_Subline$2$Stat$txt_" + (iStat + 1) + "*GEOM*TEXT SET " + lowerThird.getStatsText()[iStat] + "\0", print_writers);
 			}
+			break;
+		case "Control_Shift_Q":
+			for(BattingCard bc : inning.getBattingCard()) {
+				if(inning.getPartnerships().get(inning.getPartnerships().size() - 1).getFirstBatterNo() == bc.getPlayerId()) {
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+							+ "$1$Left$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+					
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, "", multilanguagedata, bc.getPlayer().getFull_name(),
+						    "", null, 1,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, " ", "", null, 2,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(bc.getRuns()),
+						    "", null, 3,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "("+String.valueOf(bc.getBalls())+")",
+						    "", null, 4,foreignLanguageDataList);
+					
+					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+							+ "$1$Left$English$txt_1*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+				}else if(inning.getPartnerships().get(inning.getPartnerships().size() - 1).getSecondBatterNo() == bc.getPlayerId()) {
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+							+ "$1$Right$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+					
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, "", multilanguagedata, bc.getPlayer().getFull_name(),
+						    "", null, 1,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, " ", "", null, 2,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(bc.getRuns()),
+						    "", null, 3,foreignLanguageDataList);
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "("+String.valueOf(bc.getBalls())+")",
+						    "", null, 4,foreignLanguageDataList);
+					
+					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+							+ "$1$Right$English$txt_1*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
+				}
+			}
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+					+ "$2$Left$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+			
+			switch(lowerThird.getHeaderText().toUpperCase()) {
+			case "CRR": case "RRR": case "CURR_PART": case "BOUNDARIES": case "CRR_RRR":
+				String[] data = lowerThird.getLeftText()[0].split(",");
+				for (int i = 0; i < data.length; i++) {
+					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, data[i], 
+							"", null, (i+1),foreignLanguageDataList);
+				}
+				break;
+			case "COMPARISON":
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[0].split(",")[0], 
+						"", null, 1,foreignLanguageDataList);
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, lowerThird.getLeftText()[0].split(",")[1], 
+						"", null, 2,foreignLanguageDataList);
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[0].split(",")[2], 
+						"", null, 3,foreignLanguageDataList);
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[0].split(",")[3], 
+						"", null, 4,foreignLanguageDataList);
+				break;
+			case "LAST_WICKET":
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[0].split(",")[0], 
+						"", null, 1,foreignLanguageDataList);
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[0].split(",")[1], 
+						"", null, 2,foreignLanguageDataList);
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.TICKERNAME, multilanguagedata, lowerThird.getLeftText()[0].split(",")[2], 
+						"", null, 3,foreignLanguageDataList);
+				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, lowerThird.getLeftText()[0].split(",")[3], 
+						"", null, 4,foreignLanguageDataList);
+				break;
+			}
+			foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+					+ "$2$Left$English$txt_1*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+					+ "$2$Right$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+			switch(lowerThird.getHeaderText().toUpperCase()) {
+			case "LAST_WICKET":
+				foreignLanguageData.add(new ForeignLanguageData(dichowOut.getEnglishText().replace("|", ""), dichowOut.getHindiText().replace("|", ""), 
+						dichowOut.getTamilText().replace("|", ""), dichowOut.getTeluguText().replace("|", "")));
+				break;
+			default:
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
+				break;
+			}
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide 
+					+ "$2$Right$English$txt_1*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
 			break;
 		case "Control_F3"://Comparison
 			//Left

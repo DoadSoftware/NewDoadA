@@ -12407,14 +12407,10 @@ public class InfobarGfx
 									+ "Header_Grp$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 						}
 						
-						
-						
-						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Run_Rates$BottomText$Current_Grp$"
 								+ "Figures_Grp$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Run_Rates$BottomText$Current_Grp$"
 								+ "Figures_Grp$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
-						
 						
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Run_Rates$BottomText$Required_Grp$"
 								+ "Figures_Grp$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
@@ -12462,8 +12458,6 @@ public class InfobarGfx
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Free_Text$BottomText$img_Text1"
 									+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 						}
-						
-						
 						
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$AllSections$Section3$Side" + WhichSide + "$Free_Text$TopText$"
 								+ "select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);

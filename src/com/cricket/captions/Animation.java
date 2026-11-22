@@ -3652,7 +3652,7 @@ public class Animation
 				break;
 				
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
-			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
+			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "Control_Shift_Q":
 				if(this.infobar.isInfobar_on_screen() == true) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_ScoreBug*"
 						+ "TRANSFORMATION*POSITION*X SET 420.0 \0",print_writers);
@@ -5816,7 +5816,7 @@ public class Animation
 				break;
 				
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
-			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
+			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "Control_Shift_Q":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$In_Out", "CONTINUE");
 				
 				if(infobar.getInfobar_status() != null) {
@@ -6080,7 +6080,7 @@ public class Animation
 				break;
 				
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
-			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
+			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "Control_Shift_Q":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Base", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Title", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$TitleInfo", "START");
@@ -7644,7 +7644,7 @@ public class Animation
 				break;
 				
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3": 
-			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
+			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "Control_Shift_Q":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Base", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Title", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$TitleInfo", "SHOW 0.0");
@@ -10760,7 +10760,7 @@ public class Animation
 								+ "anim_LowerThird$Dynamic_ForSubLine 0.500 anim_LowerThird$ChangeForLeftInfo 0.500";
 						break;
 					case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3": 
-					case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
+					case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "Control_Shift_Q":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LowerThird$In_Out$Essentials$In 1.780 anim_LowerThird$In_Out$Base$In 1.300 "
 								+ "anim_LowerThird$In_Out$Title$In 1.600 anim_LowerThird$In_Out$Info$In 1.500 anim_LowerThird$In_Out$Subline$In 1.500 "
 								+ "anim_LowerThird$Dynamic_ForSubLine 0.500";
@@ -10973,7 +10973,7 @@ public class Animation
 								+ "anim_LowerThird$Dynamic_ForSubLine 0.500";
 						break;
 					case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
-					case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
+					case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "Control_Shift_Q":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LowerThird$Change$Base 0.500 anim_LowerThird$Change$Title 0.500 "
 								+ "anim_LowerThird$Change$TitleInfo 0.500 anim_LowerThird$Change$Info 0.500 anim_LowerThird$Change$SubLine 0.500 "
 								+ "anim_LowerThird$Dynamic_ForSubLine 0.500";
