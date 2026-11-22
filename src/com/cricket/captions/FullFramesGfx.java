@@ -1601,8 +1601,6 @@ public class FullFramesGfx
 			break;
 		}
 		
-		
-		
 		if(this_ALL_FF.leagueTable == null) {
 			return "populateFFPointsTable : League Table is null";
 		}
@@ -1613,8 +1611,8 @@ public class FullFramesGfx
 				break;
 			}else {
 				switch(config.getBroadcaster()) {
-				case Constants.TG20: case Constants.APLT20:
-					this_ALL_FF.varText = "TOP F TEAMS QUALIFY FOR SEMI-FINALS";
+				case Constants.TG20: case Constants.APLT20: case Constants.ILT20:
+					this_ALL_FF.varText = "TOP FOURS TEAMS QUALIFY FOR SEMI-FINALS";
 					break;
 				case Constants.AFG_SERIES:
 					this_ALL_FF.varText = "TOP TWO TEAMS WILL PLAY THE FINALS ON 23rd OF OCTOBER";

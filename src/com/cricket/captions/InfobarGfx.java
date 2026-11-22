@@ -9618,6 +9618,9 @@ public class InfobarGfx
 					for(int i=1;i<=totalOverSize;i++) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$Section2$Side" + WhichSide + 
 								"$This_Over$select_BallNumber$Ball" + i + "$select_BallType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$Section2$Side" + WhichSide + 
+								"$This_Over$select_BallNumber$Ball" + i + "$Empty$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBowling_team().getTeamBadge() 
+								+ "\0", print_writers);
 					}
 					
 					if(this_data_str.get(this_data_str.size()-1) == null) {
@@ -9782,6 +9785,9 @@ public class InfobarGfx
 						for(int i = totalOverSize;i<=7;i++) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$Section2$Side" + WhichSide + 
 									"$This_Over$select_BallNumber$Ball" + i + "$select_BallType*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$Section2$Side" + WhichSide + 
+									"$This_Over$select_BallNumber$Ball" + i + "$Empty$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBowling_team().getTeamBadge() 
+									+ "\0", print_writers);
 						}
 					}
 					infobar.setLast_this_over(this_data_str.get(this_data_str.size()-1));

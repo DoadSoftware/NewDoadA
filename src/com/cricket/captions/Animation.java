@@ -3520,7 +3520,7 @@ public class Animation
 				break;	
 				
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10":
-			case "Control_F11":	case "Shift_K": case "Shift_F11":
+			case "Control_F11":	case "Shift_K": case "Shift_F11": case "Control_p":
 				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
 					processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
 				}
@@ -3567,6 +3567,9 @@ public class Animation
 					break;
 				case "Shift_K":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$CurrPartnership", "START");
+					break;
+				case "Control_p":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$PointsTable", "START");
 					break;
 				}
 				processAnimation(Constants.BACK, print_writers, "Loop", "START");
@@ -5703,7 +5706,7 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10":
-			case "Control_F11":	case "Shift_K": case "Shift_F11":
+			case "Control_F11":	case "Shift_K": case "Shift_F11": case "Control_p":
 				
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation(Constants.BACK, print_writers, "Audio", "START");
@@ -5741,6 +5744,9 @@ public class Animation
 					break;
 				case "Shift_K":
 					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$CurrPartnership", "CONTINUE");
+					break;
+				case "Control_p":
+					processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$PointsTable", "CONTINUE");
 					break;
 				}
 				
@@ -5983,7 +5989,7 @@ public class Animation
 				processAnimation(Constants.BACK, print_writers, "Change_Profile", "START");
 				break;
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10":
-			case "Shift_F10": case "Control_F11": case "Shift_K": case "Shift_F11":
+			case "Shift_F10": case "Control_F11": case "Shift_K": case "Shift_F11": case "Control_p":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "START");
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Header", "START");
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Footer", "START");
@@ -6015,6 +6021,9 @@ public class Animation
 					break;
 				case "Shift_K":
 					processAnimation(Constants.BACK, print_writers, "anim_Change$CurrPartnership", "START");
+					break;
+				case "Control_p":
+					processAnimation(Constants.BACK, print_writers, "anim_Change$PointsTable", "START");
 					break;
 				}
 				
@@ -6049,6 +6058,9 @@ public class Animation
 						break;
 					case "Shift_K":
 						processAnimation(Constants.BACK, print_writers, "anim_Change$CurrPartnership", "START");
+						break;
+					case "Control_p":
+						processAnimation(Constants.BACK, print_writers, "anim_Change$PointsTable", "START");
 						break;
 					}
 				}
@@ -7524,7 +7536,7 @@ public class Animation
 				
 				break;	
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": 
-			case "Shift_F10": case "Control_F11": case "Shift_K": case "Shift_F11":
+			case "Shift_F10": case "Control_F11": case "Shift_K": case "Shift_F11": case "Control_p":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "SHOW 0.0");
 				TimeUnit.MILLISECONDS.sleep(700);
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Logo", "SHOW 0.0");
@@ -7558,6 +7570,9 @@ public class Animation
 					break;
 				case "Shift_K":
 					processAnimation(Constants.BACK, print_writers, "anim_Change$CurrPartnership", "SHOW 0.0");
+					break;
+				case "Control_p":
+					processAnimation(Constants.BACK, print_writers, "anim_Change$PointsTable", "SHOW 0.0");
 					break;
 				}
 				
@@ -7598,6 +7613,10 @@ public class Animation
 					case "Shift_K":
 						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$CurrPartnership", "SHOW 2.120");
 						processAnimation(Constants.BACK, print_writers, "anim_Change$CurrPartnership", "SHOW 0.0");
+						break;
+					case "Control_p":
+						processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Main$PointsTable", "SHOW 2.120");
+						processAnimation(Constants.BACK, print_writers, "anim_Change$PointsTable", "SHOW 0.0");
 						break;
 					}
 				}
@@ -9471,7 +9490,7 @@ public class Animation
 						
 						break;	
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11":
-					case "Shift_K": case "Shift_F11":
+					case "Shift_K": case "Shift_F11": case "Control_p":
 						previewCommand = "anim_FullFrames$In_Out$Essentials 0.900 anim_FullFrames$In_Out$Essentials$In 0.900 anim_FullFrames$In_Out$Logo$In 1.540 anim_FullFrames$In_Out$Header$In 1.500 "
 								+ "anim_FullFrames$In_Out$Footer$In 2.121 ";
 						
@@ -9502,6 +9521,9 @@ public class Animation
 							break;
 						case "Shift_K":
 							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$CurrPartnership$In 1.701";
+							break;
+						case "Control_p":
+							previewCommand = previewCommand + "anim_FullFrames$In_Out$Main$PointsTable$In 1.881";
 							break;
 						}
 						break;
@@ -10047,7 +10069,7 @@ public class Animation
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11": case "Shift_K":
-					case "Shift_F11":	
+					case "Shift_F11": case "Control_p":
 						previewCommand = "anim_Change$Base 1.100 anim_Change$Logo 1.040 anim_Change$Header 1.300 anim_Change$Header$Change_Out 0.580 anim_Change$Header$Change_In 1.300 "
 								+ "anim_Change$Footer 1.241 anim_Change$Footer$Change_Out 0.580 anim_Change$Footer$Change_In 1.241";
 						
@@ -10078,6 +10100,9 @@ public class Animation
 							break;
 						case "Shift_K":
 							previewCommand = previewCommand + " anim_Change$CurrPartnership 1.701 anim_Change$CurrPartnership$Change_Out 1.020 anim_Change$CurrPartnership$Change_In 1.701";
+							break;
+						case "Control_p":
+							previewCommand = previewCommand + " anim_Change$PointsTable 1.881 anim_Change$PointsTable$Change_Out 1.020 anim_Change$PointsTable$Change_In 1.881";
 							break;
 						}
 						
@@ -10112,6 +10137,9 @@ public class Animation
 								break;
 							case "Shift_K":
 								previewCommand = previewCommand + " anim_Change$CurrPartnership 1.701 anim_Change$CurrPartnership$Change_Out 1.020 anim_Change$CurrPartnership$Change_In 1.701";
+								break;
+							case "Control_p":
+								previewCommand = previewCommand + " anim_Change$PointsTable 1.881 anim_Change$PointsTable$Change_Out 1.020 anim_Change$PointsTable$Change_In 1.881";
 								break;
 							}
 						}

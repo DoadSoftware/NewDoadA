@@ -31,7 +31,7 @@
         <dependency>
             <groupId>com.cricket</groupId>
             <artifactId>NewCricketLibrary</artifactId>
-            <version>4.58</version>
+            <version>4.57</version>
         </dependency>
 
         <!-- JSoup -->
