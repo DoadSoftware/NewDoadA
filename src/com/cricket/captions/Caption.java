@@ -30,6 +30,8 @@ import com.cricket.model.Team;
 import com.cricket.model.Tournament;
 import com.cricket.model.VariousText;
 import com.cricket.service.CricketService;
+import com.cricket.util.CricketFunctions;
+import com.cricket.util.CricketUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.cricket.model.Staff;
 
@@ -388,6 +390,7 @@ public class Caption
 				break;
 				
 			case "Alt_e":
+				CricketFunctions.getInteractive(matchAllData, "FULL_WRITE", CricketUtil.CRICKET_DIRECTORY);
 				status = this_infobarGfx.powerplay(print_writers, matchAllData);
 				break;
 				
