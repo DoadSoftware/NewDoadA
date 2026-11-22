@@ -1930,7 +1930,7 @@ public class InfobarGfx
 				String matchResult ="", hindiMatchResult = "";
 				matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 				hindiMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
-						multilanguagedata).getHindiText().toUpperCase();
+						multilanguagedata, false).getHindiText().toUpperCase();
 				
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$InfoGrp$BottomInfo$Side" + WhichSide + "$select_Language"
 						+ "*FUNCTION*Omo*vis_con SET ",config, Constants.TG20, print_writers, foreignLanguageOmo);
@@ -2115,7 +2115,7 @@ public class InfobarGfx
 				String matchResult ="", teluguMatchResult = "";
 				matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 				teluguMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
-						multilanguagedata).getTeluguText().toUpperCase();
+						multilanguagedata, false).getTeluguText().toUpperCase();
 				
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$Side" + WhichSide + "$Ident_FullName$DataPart$BottomPart$"
 						+ "Side" + WhichSubSide + "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
@@ -2184,7 +2184,7 @@ public class InfobarGfx
 			
 			matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 			hindiMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
-					multilanguagedata).getHindiText().toUpperCase();
+					multilanguagedata, false).getHindiText().toUpperCase();
 			
 //			System.out.println("matchResult - " + matchResult);
 //			System.out.println("teluguMatchResult - " + hindiMatchResult);
@@ -2438,7 +2438,7 @@ public class InfobarGfx
 			
 			matchResult = CricketFunctions.GenerateMatchSummaryStatus(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 			teluguMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(2, matchAllData, CricketUtil.FULL, "", config.getBroadcaster(), false, 
-					multilanguagedata).getTeluguText().toUpperCase();
+					multilanguagedata, false).getTeluguText().toUpperCase();
 			
 			System.out.println("matchResult - " + matchResult);
 			System.out.println("teluguMatchResult - " + teluguMatchResult);

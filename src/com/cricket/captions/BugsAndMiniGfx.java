@@ -2709,7 +2709,7 @@ public class BugsAndMiniGfx
 					matchResult = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", 
 							config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 					hindiMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", 
-							config.getBroadcaster(), false, multilanguagedata).getHindiText().toUpperCase();
+							config.getBroadcaster(), false, multilanguagedata, false).getHindiText().toUpperCase();
 					
 					if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.SUPER_OVER)) {
 						whichLogo = "EVENT";
@@ -2759,7 +2759,7 @@ public class BugsAndMiniGfx
 				matchResult = CricketFunctions.GenerateMatchSummaryStatus(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", 
 						config.getBroadcaster(), false).getTargetOrResult().toUpperCase();
 				teluguMatchResult = CricketFunctions.GenerateMatchSummaryStatusForeignLanguage(inning.getInningNumber(), matchAllData, CricketUtil.FULL, "", 
-						config.getBroadcaster(), false, multilanguagedata).getTeluguText().toUpperCase();
+						config.getBroadcaster(), false, multilanguagedata, false).getTeluguText().toUpperCase();
 				
 				switch(config.getBroadcaster()) {
 				case Constants.TG20: case Constants.APLT20:
@@ -5927,7 +5927,7 @@ public class BugsAndMiniGfx
 									"$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + inning.getBatting_team().getTeamBadge() + " \0", print_writers);
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId + cont_name +
-									"$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + inning.getBatting_team().getTeamBadge() + " \0", print_writers);
+									"$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + "SW" + " \0", print_writers);
 						}
 					}
 					
@@ -6081,7 +6081,7 @@ public class BugsAndMiniGfx
 									+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + inning.getBowling_team().getTeamBadge() + " \0", print_writers);
 						}else {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Minis$MiniOut$Data$select_RowNumber$BatRow_" + rowId +cont_name
-									+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + inning.getBowling_team().getTeamBadge() + " \0", print_writers);
+									+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + "SW" + " \0", print_writers);
 						}
 					}
 					

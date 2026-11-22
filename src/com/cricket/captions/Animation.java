@@ -3532,9 +3532,6 @@ public class Animation
 					processAnimation(Constants.BACK, print_writers, "Audio", "START");
 				}
 				
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$gfx_Fullframes", "START");
-				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$gfx_Profile", "START");
-				
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Essentials", "START");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Logo", "START");
 				processAnimation(Constants.BACK, print_writers, "anim_FullFrames$In_Out$Header", "START");
@@ -6073,6 +6070,15 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper$Change", "START");
 				break;
 				
+			case "F7": case "F11":
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Base", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Title", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$TitleInfo", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Info", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$SubLine", "START");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Dynamic_ForSubLine", "START");
+				break;
+				
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
 			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Base", "START");
@@ -7626,6 +7632,15 @@ public class Animation
 			//LT
 			case "F8": case "Alt_F8": case "F10":
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper$Change", "SHOW 0.0");
+				break;
+				
+			case "F7": case "F11":
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Base", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Title", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$TitleInfo", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Info", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$SubLine", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Dynamic_ForSubLine", "SHOW 0.0");
 				break;
 				
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3": 
@@ -10951,6 +10966,11 @@ public class Animation
 					case "F8": case "Alt_F8": case "F10":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_NameSuper$Change 0.500 anim_LT_NameSuper$Change$Base 0.500 "
 								+ "anim_LT_NameSuper$Change$Title 0.500 anim_LT_NameSuper$Change$SubLine 0.500";
+						break;
+					case "F7": case "F11":
+						previewCommand = "anim_InfoBar$Push 1.000 anim_LowerThird$Change$Base 0.500 anim_LowerThird$Change$Title 0.500 "
+								+ "anim_LowerThird$Change$TitleInfo 0.500 anim_LowerThird$Change$Info 0.500 anim_LowerThird$Change$SubLine 0.500 "
+								+ "anim_LowerThird$Dynamic_ForSubLine 0.500";
 						break;
 					case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
 					case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
