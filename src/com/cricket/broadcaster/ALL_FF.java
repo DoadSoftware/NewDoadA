@@ -13751,14 +13751,14 @@ public class ALL_FF
 			if(!CricketFunctions.getBallCountStartAndEndRange(matchAllData, inning).isEmpty()) {
 				powerPlayValue = CricketFunctions.getBallCountStartAndEndRange(matchAllData, inning).get(1);
 			}
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+					+ "$Manhattan$Bar$Position*FUNCTION*Grid*num_row SET 1\0", print_writers);
+			
 			int rowId1 = 0;
 			for(int j = 1; j <= matchAllData.getSetup().getMaxOvers(); j++) {
 				rowId1++;
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$Manhattan$Bar$Position$" + rowId1 + "*ACTIVE SET 1\0", print_writers);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
-						+ "$Manhattan$Bar$Position*FUNCTION*Grid*num_row SET 1\0", print_writers);
 				switch (matchAllData.getSetup().getMatchType()) {
 				case CricketUtil.T20_TEST: 
 					if((j*6) <= powerPlayValue) {
@@ -13798,7 +13798,8 @@ public class ALL_FF
 						+ "$Manhattan$Bar$Position$" + j + "$obj_ScaleY$Select_PowerPlay*FUNCTION*Omo*vis_con SET " + powerplay_omo + "\0", print_writers);
 				
 				if(j < manhattan.size()) {
-					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
+							+ "$Manhattan$Bar$Position$" + rowId1 + "*ACTIVE SET 1\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_FullFrame$Main$Shift_For_TopTitle$AllGraphics$Side" + WhichSide 
 							+ "$Manhattan$Bar$Position*FUNCTION*Grid*num_col SET " + rowId1 + "\0", print_writers);
 					
