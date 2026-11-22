@@ -7210,32 +7210,18 @@ public class LowerThirdGfx
 						if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
 							foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"TOMORROW", "", null, 1,foreignLanguageDataList);
     					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-","", null, 2,foreignLanguageDataList);    					  
-    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime(),"", null, 3,foreignLanguageDataList);    					  
-    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-","", null, 4,foreignLanguageDataList);
-    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),"", null, 5,foreignLanguageDataList);
+    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime().split("LOCAL TIME")[0].trim(),
+    					  			"", null, 3,foreignLanguageDataList);
+    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"LOCAL TIME","", null, 4,foreignLanguageDataList);
+    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-","", null, 5,foreignLanguageDataList);
+    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),"", null, 6,foreignLanguageDataList);
 						}else {
 							cal_bengal.add(Calendar.DATE, -1);
 							if(fixture.getDate().equalsIgnoreCase(new SimpleDateFormat("dd-MM-yyyy").format(cal_bengal.getTime()))) {
 								foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"UP NEXT","", null, 1,foreignLanguageDataList);
 		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-", "", null, 2,foreignLanguageDataList);
-	    					  	
-		    					if(lowerThird.getBallsFacedText().contains("MATCH")){
-	    					  		foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getBallsFacedText().split(" ")[0],
-	    	  							    "", null, 3,foreignLanguageDataList);
-		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getBallsFacedText().split(" ")[1],
-		    							    "", null, 4,foreignLanguageDataList);
-		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
-		    							    "", null, 5,foreignLanguageDataList);
-		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"FROM " + fixture.getVenue(),
-		    							    "", null, 6,foreignLanguageDataList);
-	    					  	}else {
-	    					  		foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,lowerThird.getBallsFacedText(),
-	    	  							    "", null, 3,foreignLanguageDataList);
-		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
-		    							    "", null, 4,foreignLanguageDataList);
-		    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"FROM " + fixture.getVenue(),
-		    							    "", null, 5,foreignLanguageDataList);
-	    					  	}
+		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, fixture.getVenue(), 
+		    							"", null, 3,foreignLanguageDataList);
 							}else {
 								newDate = fixture.getDate().split("-")[0];
 								if(Integer.valueOf(newDate) < 10) {
@@ -7251,14 +7237,14 @@ public class LowerThirdGfx
  	  						
 		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-","", null, 3,foreignLanguageDataList);
 		    					  
-		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime(),
+		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getLocalTime().split("LOCAL TIME")[0].trim(),
 		    							"", null, 4,foreignLanguageDataList);
-		    					  	
+		    					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "LOCAL TIME",
+		    							"", null, 5,foreignLanguageDataList);
 	    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-",
-	    							    "", null, 5,foreignLanguageDataList);
-	    					  	
-	    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
 	    							    "", null, 6,foreignLanguageDataList);
+	    					  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,fixture.getVenue(),
+	    							    "", null, 7,foreignLanguageDataList);
 							}
 						}
 						
