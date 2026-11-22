@@ -3268,10 +3268,10 @@ public class Animation
 				break;
 				
 			case "*":
-				if(this.infobar.isInfobar_on_screen() == true && this.infobar.isPowerplay_pop_up() == false) {
+				if(this.infobar.isPowerplay_pop_up() == false) {
 					processAnimation(Constants.FRONT, print_writers, "Big_Ticket$In_Out", "START");
 					this.infobar.setPowerplay_pop_up(true);
-				}else if(this.infobar.isInfobar_on_screen() == true && this.infobar.isPowerplay_pop_up() == true) {
+				}else if(this.infobar.isPowerplay_pop_up() == true) {
 					processAnimation(Constants.FRONT, print_writers, "Big_Ticket$In_Out", "CONTINUE");
 					this.infobar.setPowerplay_pop_up(false);
 				}

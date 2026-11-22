@@ -3,19 +3,18 @@ package com.cricket.captions;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20246,8 +20245,39 @@ public class LowerThirdGfx
 	}
 	
 	public String ReadPredictor(MatchAllData matchAllData) {
+		String match_name = "";
 		try {
+			
+			for(Fixture fix : fixTures) {
+				if(fix.getMatchfilename().equalsIgnoreCase(matchAllData.getMatch().getMatchFileName().replace(".json", ""))) {
+					match_name = fix.getTeamgroup();
+				}
+			}
+			
+            try {
+            	
+                HttpURLConnection conn = (HttpURLConnection) new URL("https://cloud.cricket-21.com/CricketApi/api/master/WinPredictor?matchid=" + match_name + "&type=json").openConnection();
+                conn.setRequestMethod("GET");
+                if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    try (InputStream in = conn.getInputStream()) {
+                        new ObjectMapper()
+                            .writerWithDefaultPrettyPrinter()
+                            .writeValue(new File("C:\\Sports\\Cricket\\PREDICTOR.json"), new ObjectMapper().readTree(in));
+                    }
+                    System.out.println("Saved JSON to: " + "C:\\Sports\\Cricket\\PREDICTOR.json");
+                } else {
+                    System.err.println("Error: HTTP " + conn.getResponseCode());
+                }
 
+                conn.disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            
+            TimeUnit.MILLISECONDS.sleep(2000);
+            
+            
 			int Top_Score = 50,total=100;
 			double Mult = 295,ScaleFac1 = 0, ScaleFac2 = 0;
 			
@@ -20291,6 +20321,13 @@ public class LowerThirdGfx
 						"$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team1" + 
 						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BattingTeamPredictor) / 100) + "\0", print_writers);
+    			
+    			
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header$img_Text3" + 
+						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT3 + "EVENT" + "\0", print_writers);
+    			
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$MatchNumber$img_Text1" + 
+						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + "EVENT" + "\0", print_writers);
     			
     			
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team2" + 
