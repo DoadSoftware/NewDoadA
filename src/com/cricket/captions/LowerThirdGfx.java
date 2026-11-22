@@ -5822,10 +5822,32 @@ public class LowerThirdGfx
 			}
 			break;
 		case Constants.ILT20:
-			lowerThird = new LowerThird("", "PHASE-WISE COMPARISON", "","","", "",3,"","EVENT", new String[]{"1 - 6", "7 - 15", "16 - 20"}, new String[]{oneToSixRuns1 + "-" + oneToSixfWkt1 
-					+ "," + oneToSixRuns2 + "-" + oneToSixfWkt2, sevenToFifteenRuns1 + "-" + sevenToFifteenWkt1 + "," + sevenToFifteenRuns2 + "-" + sevenToFifteenWkt2,
-					sixteenToTweentyRuns1 + "-" + sixteenToTweentyWkt1 + "," + sixteenToTweentyRuns2 + "-" + sixteenToTweentyWkt2}, new String[] {"OVERS", 
-							inning.getBatting_team().getTeamName1(),inning.getBowling_team().getTeamName1()},null,new String[]{"200","400","600"});
+			int size = whatToProcess.split(",")[2].equalsIgnoreCase("WITHOUT_TOTAL") ? 3 : 4;
+
+			String[] overData = new String[size];
+			String[] scoreNumber = new String[size];
+			String[] margin = new String[size];
+			
+			if(whatToProcess.split(",")[2].equalsIgnoreCase("WITHOUT_TOTAL")) {
+				overData = new String[]{"1 - 6", "7 - 15", "16 - 20"};
+				scoreNumber = new String[]{oneToSixRuns1 + "-" + oneToSixfWkt1 + "," + oneToSixRuns2 + "-" + oneToSixfWkt2, 
+						sevenToFifteenRuns1 + "-" + sevenToFifteenWkt1 + "," + sevenToFifteenRuns2 + "-" + sevenToFifteenWkt2,
+						sixteenToTweentyRuns1 + "-" + sixteenToTweentyWkt1 + "," + sixteenToTweentyRuns2 + "-" + sixteenToTweentyWkt2};
+				
+				margin = new String[]{"200","400","600"};
+			}else {
+				overData = new String[]{"1 - 6", "7 - 15", "16 - 20","TOTAL"};
+				scoreNumber = new String[]{oneToSixRuns1 + "-" + oneToSixfWkt1 + "," + oneToSixRuns2 + "-" + oneToSixfWkt2, 
+						sevenToFifteenRuns1 + "-" + sevenToFifteenWkt1 + "," + sevenToFifteenRuns2 + "-" + sevenToFifteenWkt2,
+						sixteenToTweentyRuns1 + "-" + sixteenToTweentyWkt1 + "," + sixteenToTweentyRuns2 + "-" + sixteenToTweentyWkt2,
+						CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(0), "-", false) + "," +
+						CricketFunctions.getTeamScore(matchAllData.getMatch().getInning().get(1), "-", false)};
+				
+				margin = new String[]{"200","350","500","650"};
+			}
+			
+			lowerThird = new LowerThird("", "PHASE-WISE COMPARISON", "","","", "",3,"","EVENT", overData, scoreNumber, new String[] {"OVERS", 
+							inning.getBatting_team().getTeamName1(),inning.getBowling_team().getTeamName1()},null,margin);
 			break;
 		default:
 			if(matchAllData.getSetup().getMatchType().equalsIgnoreCase(CricketUtil.ODI) ||

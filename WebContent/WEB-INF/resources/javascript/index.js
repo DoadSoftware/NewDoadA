@@ -484,17 +484,28 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 				}else{
 					addItemsToList(dataToProcess,null); 
 				}
-				break;	
-			case 'Control_F7':
+				break;
+			case 'Alt_Shift_F3':
 				switch($('#selected_broadcaster').val().toUpperCase()){
-					case 'TEST_T20':
-						addItemsToList(dataToProcess,null); 
-						break;
-					default:
-						dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
-						processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
-						break;
-					}
+				case 'ILT20':
+					addItemsToList(dataToProcess,null);
+					break;
+				default:
+					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
+					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
+					break;	
+				}
+				break;
+			case 'Control_F7':
+			switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'TEST_T20':
+					addItemsToList(dataToProcess,null); 
+					break;
+				default:
+					dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
+					processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
+					break;
+				}
 				break;
 			case 'F12': case 'Alt_1': case 'Alt_2': case 'Alt_6': case "Alt_5": case 'Alt_7': case 'Alt_8': case 'Control_F12': case 'Shift_F12': 
 			case 'F7': case 'F11': case 'Control_s': case 'Control_f': case 'Control_Shift_F1': case 'F8': case 'Alt_F8': case 'F6': case 'Shift_F6': 
@@ -507,12 +518,11 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 				addItemsToList(dataToProcess,null); 
 				break;	
 
-			case "F1": case "F2": case "F4": case "m": case 'Control_F6': case 'Shift_F3': case 'd': case 'Control_h': case 'Alt_Shift_F3': 
-			case 'Control_k': case 'Control_Shift_M': case 'Control_F3': case 'Control_4': case '6': case 'Control_a': case '5': case ';':  
-			case 'Control_Shift_F10': case 'Shift_F1': case 'Shift_F2': case 'Control_6': case 'Control_Shift_B': case 'Control_Shift_R': case 'Control_Shift_F3': 
-			case 'Control_F10':  case 'Shift_F10': case 'Alt_F11': case 'Shift_D': case 'Control_F1': case 'Control_Alt_F1': case 'Alt_Shift_F1': case 'Alt_Shift_Q':
-			case 'Control_5': case 'Control_7': case '7': case 'Alt_Shift_Q': case 'Alt_Shift_F12': case 'Control_F2': case 'Shift_U': case 'Alt_i': case 'Alt_Shift_!':
-			case 'Control_Alt_F3':
+			case "F1": case "F2": case "F4": case "m": case 'Control_F6': case 'Shift_F3': case 'd': case 'Control_h': case 'Control_k': case 'Control_Shift_M': 
+			case 'Control_F3': case 'Control_4': case '6': case 'Control_a': case '5': case ';': case 'Control_Shift_F10': case 'Shift_F1': case 'Shift_F2': 
+			case 'Control_6': case 'Control_Shift_B': case 'Control_Shift_R': case 'Control_Shift_F3': case 'Control_F10':  case 'Shift_F10': case 'Alt_F11': 
+			case 'Shift_D': case 'Control_F1': case 'Control_Alt_F1': case 'Alt_Shift_F1': case 'Alt_Shift_Q': case 'Control_5': case 'Control_7': case '7': 
+			case 'Alt_Shift_Q': case 'Alt_Shift_F12': case 'Control_F2': case 'Shift_U': case 'Alt_i': case 'Alt_Shift_!': case 'Control_Alt_F3':
 				dataToProcess = dataToProcess + ',' + document.getElementById('which_inning').value;
 				processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
 				break;
@@ -1003,7 +1013,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
-	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4':
+	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Alt_Shift_F3':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -2377,6 +2387,29 @@ function addItemsToList(whatToProcess,dataToProcess)
 			option = document.createElement('option');
 			option.value = 'GIRL';
 			option.text = 'GIRL';
+			select.appendChild(option);
+
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),0);
+			cellCount = cellCount + 1;
+			break;
+			
+		case 'Alt_Shift_F3':
+			header_text.innerHTML = 'Phase-Wise Comparison';
+
+			select = document.createElement('select');
+			select.id = 'selectGroup';
+			select.name = select.id;
+
+			option = document.createElement('option');
+			option.value = 'WITHOUT_TOTAL';
+			option.text = 'Without Total';
+			select.appendChild(option);
+
+			option = document.createElement('option');
+			option.value = 'WITH_TOTAL';
+			option.text = 'With Total';
 			select.appendChild(option);
 
 			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
@@ -8274,7 +8307,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Control_F7':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
-		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Control_q':
+		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Control_q': case 'Alt_Shift_F3':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

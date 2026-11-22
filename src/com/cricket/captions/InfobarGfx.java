@@ -1934,7 +1934,7 @@ public class InfobarGfx
 				
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$InfoGrp$BottomInfo$Side" + WhichSide + "$select_Language"
 						+ "*FUNCTION*Omo*vis_con SET ",config, Constants.TG20, print_writers, foreignLanguageOmo);
-				foreignLanguageData.add(new ForeignLanguageData(matchResult, "", "", hindiMatchResult));
+				foreignLanguageData.add(new ForeignLanguageData(matchResult, hindiMatchResult, "", ""));
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Ident$InfoGrp$BottomInfo$Side" + WhichSide + "$English$txt_Info"
 						+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 				break;
@@ -19327,7 +19327,6 @@ public class InfobarGfx
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$TimeLine$TopLine"
 							+ "$English$txt_Text*GEOM*TEXT SET ",config, Constants.ILT20, print_writers, foreignLanguageData);
 					
-					
 					this_data_str = new ArrayList<String>();
 					this_data_str.add(String.join(",",  new ArrayList<>(Arrays.asList(IndexController.MatchStats.getTimeLine().split(",")))
 					        .stream().map(s -> s.replace("WIDE", "WD").replace("NO_BALL", "NB").replace("LEG_BYE", "LB").replace("BYE", "B")
@@ -19405,7 +19404,7 @@ public class InfobarGfx
 								if(elements[iBall].toUpperCase().contains("BOUNDARY")) {
 									if(elements[iBall].toUpperCase().equalsIgnoreCase("6BOUNDARY")||elements[iBall].toUpperCase().equalsIgnoreCase("4BOUNDARY")) {
 										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
-												"$TimeLine$AllBalls$Ball_" + (iBall + 1) + "$Select_DataType*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+												"$TimeLine$AllBalls$Ball_" + (iBall + 1) + "$select_TimeLineBallType*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
 												"$TimeLine$AllBalls$Ball_" + (iBall + 1) + "$Boundaries$select_LineNumber*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 										CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
@@ -19421,7 +19420,7 @@ public class InfobarGfx
 									}
 								}else {
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
-											"$TimeLine$AllBalls$Ball_" + (iBall + 1) + "$Select_DataType*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+											"$TimeLine$AllBalls$Ball_" + (iBall + 1) + "$select_TimeLineBallType*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 									
 									CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
 											"$TimeLine$AllBalls$Ball_" + (iBall + 1) + "$Runs$Base*TEXTURE*IMAGE SET " + Constants.ILT20_BASE1 + "EVENT" + "\0", print_writers);

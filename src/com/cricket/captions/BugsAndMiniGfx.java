@@ -5059,6 +5059,7 @@ public class BugsAndMiniGfx
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, CricketFunctions.ordinal(partnership.getPartnershipNumber()), 
 								"", null, 1,foreignLanguageDataList);
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "WICKET", "", null, 2,foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PARTNERSHIP", "", null, 3,foreignLanguageDataList);
 						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 						CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Double$select_Language$English$Group1$Info01"
 								+ "*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
@@ -5099,11 +5100,6 @@ public class BugsAndMiniGfx
 							
 							foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, " (" + partnership.getTotalBalls() + ")",
 									"", null, 0, foreignLanguageDataList);
-							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Double$select_Language$English$Score$Info04"
-									+ "*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
-							
-							foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(partnership.getTotalRuns()),
-									 "", null, 0, foreignLanguageDataList);
 							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Double$select_Language$English$Score$Info04"
 									+ "*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 						}
