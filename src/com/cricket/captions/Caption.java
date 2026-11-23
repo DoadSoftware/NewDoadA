@@ -872,6 +872,59 @@ public class Caption
 					}
 					status = this_infobarGfx.populateFullSection(print_writers, matchAllData, whichSide);
 					break;
+				case Constants.ILT20:
+					System.out.println("this_infobarGfx.infobar.getSectionLtAnalytics() ====================== " + this_infobarGfx.infobar.getSectionLtAnalytics());
+					System.out.println("whatToProcess ========================= " + whatToProcess);
+					if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
+						switch(whatToProcess.split(",")[0]) {
+						case "Alt_3":
+							if (!this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BAT_PP") ||
+							    this_infobarGfx.PP_Id != Integer.valueOf(whatToProcess.split(",")[2]) ||
+							    !this_infobarGfx.WhichProfile.equalsIgnoreCase(whatToProcess.split(",")[3])) {
+							    
+							    whichSide = 2;
+							} else {
+							    whichSide = 1;
+							}
+							this_infobarGfx.infobar.setSectionAnalytics("BAT_PP");
+							break;
+						case "Alt_4":
+							if (!this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("BALL_PP") ||
+							    this_infobarGfx.PP_Id != Integer.valueOf(whatToProcess.split(",")[2]) ||
+							    !this_infobarGfx.WhichProfile.equalsIgnoreCase(whatToProcess.split(",")[3])) {
+							    
+							    whichSide = 2;
+							} else {
+							    whichSide = 1;
+							}
+							
+							this_infobarGfx.infobar.setSectionAnalytics("BALL_PP");
+							break;
+						}
+						
+						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+						
+					}else {
+						whichSide = 1;
+						
+						switch(whatToProcess.split(",")[0]) {
+						case "Alt_3":
+							this_infobarGfx.infobar.setSectionAnalytics("BAT_PP");
+							break;
+						case "Alt_4":
+							this_infobarGfx.infobar.setSectionAnalytics("BALL_PP");
+							break;
+						}
+						
+						this_infobarGfx.PP_Id = Integer.valueOf(whatToProcess.split(",")[2]);
+						this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
+					}
+					
+					status = this_infobarGfx.populateFullSection(print_writers, matchAllData, whichSide);
+					
+//					status = this_infobarGfx.populateSectionLtAnalytics(print_writers, matchAllData, whichSide);
+					break;	
 				default:
 					System.out.println("this_infobarGfx.infobar.getSectionLtAnalytics() ====================== " + this_infobarGfx.infobar.getSectionLtAnalytics());
 					System.out.println("whatToProcess ========================= " + whatToProcess);

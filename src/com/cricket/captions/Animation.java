@@ -6103,7 +6103,7 @@ public class Animation
 				caption.this_infobarGfx.infobar.setLast_section3(caption.this_infobarGfx.infobar.getSection3());
 				break;
 			case "Alt_3": case "Alt_4": case "Alt_8": case "Control_2": case "Control_1":
-				System.out.println("hheleelele = = = = = = " + caption.this_infobarGfx.infobar.getSectionAnalytics());
+//				System.out.println("hheleelele = = = = = = " + IndexController.this_caption.this_infobarGfx.infobar.getSectionAnalytics());
 				if (caption.this_infobarGfx.infobar.getSectionAnalytics() == null || caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 				    processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Analytics$In_Out", "CONTINUE");
 				} else {
