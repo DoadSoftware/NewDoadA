@@ -274,7 +274,10 @@ function processUserSelection(whichInput)
 	case 'change_on':
 		if($('#which_keypress').val() == 'Shift_T' && $('#selected_broadcaster').val().toUpperCase() == 'T20_MUMBAI'){
 			processCricketProcedures('PLAYING-XI-CHANGE-ON');
-		}else if($('#which_keypress').val() == 'Shift_I' || $('#key_press_hidden_input').val() == 'Shift_I'){
+		}
+		break;
+	case 'change_on_impact':
+		if($('#which_keypress').val() == 'Shift_I' || $('#key_press_hidden_input').val() == 'Shift_I'){
 			processUserSelectionData('IMPACT-CHANGE-ON', 'Shift_I');	
 		}
 		break;
@@ -8214,7 +8217,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		if(whatToProcess == 'Shift_I'){
 			option = document.createElement('input');
 			option.type = 'button';
-			option.name = 'change_on';
+			option.name = 'change_on_impact';
 			option.value = 'Change On';
 		    option.id = option.name;
 		    option.setAttribute('onclick','processUserSelection(this)');

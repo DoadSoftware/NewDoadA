@@ -3445,7 +3445,6 @@ public class Animation
 				break;
 				
 			case "F12":
-				matchAllData = IndexController.session_match;
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK1"
 						+ "*VALUE SET 0.0 0.0 0.0\0",print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$TeamBadges$Team2$ShiftForNormal*ANIMATION*KEY*$SK2"
@@ -3640,6 +3639,37 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
+				break;
+				
+			case "Shift_I":
+				if(whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Shift_I")) {
+					processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$Change", "CONTINUE");
+					
+					TimeUnit.MILLISECONDS.sleep(1500);
+					caption.this_lowerThirdGfx.populateImpact(whichGraphicOnScreen, 2, matchAllData);
+					TimeUnit.MILLISECONDS.sleep(200);
+					processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$Change", "SHOW 0.0");
+					
+				}else {
+					if(this.infobar.isInfobar_on_screen() == true) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+							+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+								+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writers);
+					}
+					
+					if(infobar.getInfobar_status() != null) {
+						if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+							AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+							TimeUnit.MILLISECONDS.sleep(1000);
+							infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+						}
+					}
+					
+					processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$In_Out", "START");
+					this.whichGraphicOnScreen = whatToProcess;
+				}
 				break;
 				
 			case "F7": case "F11":
@@ -5838,6 +5868,22 @@ public class Animation
 				
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+				
+			case "Shift_I":
+				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$In_Out", "CONTINUE");
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						TimeUnit.MILLISECONDS.sleep(1000);
+						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
+						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
+					}
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 				
@@ -9295,6 +9341,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_HowOut", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
 				
@@ -9560,7 +9607,7 @@ public class Animation
 						break;
 					case "Control_Shift_F7":
 						previewCommand = "anim_LineUpImage$In_Out 3.000 anim_LineUpImage$In_Out$Essentials 3.000 anim_LineUpImage$In_Out$Essentials$In 0.900 "
-								+ "anim_LineUpImage$In_Out$Logo 3.000 anim_LineUpImage$In_Out$Logo$In 1.540 anim_LineUpImage$In_Out$Main 3.000 anim_LineUpImage$In_Out$Main$In 3.000";
+								+ "anim_LineUpImage$In_Out$Logo 3.000 anim_LineUpImage$In_Out$Logo$In 1.540 anim_LineUpImage$In_Out$Main 3.000 anim_LineUpImage$In_Out$Main$In 4.720";
 						break;
 						
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11":
