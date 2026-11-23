@@ -7465,24 +7465,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 			setDropdownOptionToSelectOptionArray($(select),0);
 			cellCount = cellCount + 1;
 			
-			select = document.createElement('select');
-			select.id = 'selectGroup';
-			select.name = select.id;
+			switch($('#selected_broadcaster').val().toUpperCase()){
+			case 'TEST_T20':
+				select = document.createElement('select');
+				select.id = 'selectGroup';
+				select.name = select.id;
 
-			option = document.createElement('option');
-			option.value = 'BOY';
-			option.text = 'BOY';
-			select.appendChild(option);
+				option = document.createElement('option');
+				option.value = 'BOY';
+				option.text = 'BOY';
+				select.appendChild(option);
 
-			option = document.createElement('option');
-			option.value = 'GIRL';
-			option.text = 'GIRL';
-			select.appendChild(option);
+				option = document.createElement('option');
+				option.value = 'GIRL';
+				option.text = 'GIRL';
+				select.appendChild(option);
 
-			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
-			row.insertCell(cellCount).appendChild(select);
-			setDropdownOptionToSelectOptionArray($(select),1);
-			cellCount = cellCount + 1;
+				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 1)");
+				row.insertCell(cellCount).appendChild(select);
+				setDropdownOptionToSelectOptionArray($(select),1);
+				cellCount = cellCount + 1;
+				break;	
+			}
 			break;
 		case 'Shift_F8':
 			header_text.innerHTML = 'FF PLAYER XI WITH IMAGE';

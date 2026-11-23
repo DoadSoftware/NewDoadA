@@ -821,7 +821,7 @@ public class IndexController
 				processAnimations(whatToProcess, session_configuration, valueToProcess, print_writers);
 			}else if(whatToProcess.contains("ANIMATE-OUT-SECOND_PLAYING")) {
 				switch (session_configuration.getBroadcaster()) {
-				case Constants.AFG_SERIES: case Constants.TEST_T20:
+				case Constants.AFG_SERIES: case Constants.TEST_T20: case Constants.ILT20:
 					if(this_animation.whichGraphicOnScreen.contains("Control_Shift_F7")) {
 						this_animation.lineUpCount++;
 						if(this_animation.lineUpCount > 2) {
@@ -831,7 +831,7 @@ public class IndexController
 						}
 					}
 					break;
-				case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20: case Constants.ILT20:
+				case Constants.TRI_SERIES: case Constants.MT20: case Constants.TG20: case Constants.APLT20:
 					if(this_animation.whichGraphicOnScreen.contains("Control_Shift_F7")) {
 						this_animation.lineUpCount++;
 //						if(this_animation.lineUpCount == 3) {
