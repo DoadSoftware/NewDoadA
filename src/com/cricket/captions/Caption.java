@@ -873,6 +873,8 @@ public class Caption
 					status = this_infobarGfx.populateFullSection(print_writers, matchAllData, whichSide);
 					break;
 				default:
+					System.out.println("this_infobarGfx.infobar.getSectionLtAnalytics() ====================== " + this_infobarGfx.infobar.getSectionLtAnalytics());
+					System.out.println("whatToProcess ========================= " + whatToProcess);
 					if(this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty()) {
 						switch(whatToProcess.split(",")[0]) {
 						case "Alt_3":

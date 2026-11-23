@@ -6102,7 +6102,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Change_Section2", "START");
 				caption.this_infobarGfx.infobar.setLast_section3(caption.this_infobarGfx.infobar.getSection3());
 				break;
-			case "Alt_8":
+			case "Alt_3": case "Alt_4": case "Alt_8": case "Control_2": case "Control_1":
+				System.out.println("hheleelele = = = = = = " + caption.this_infobarGfx.infobar.getSectionAnalytics());
 				if (caption.this_infobarGfx.infobar.getSectionAnalytics() == null || caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 				    processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Analytics$In_Out", "CONTINUE");
 				} else {
@@ -7665,7 +7666,7 @@ public class Animation
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Change_Section3", "SHOW 0.0");
 				}
 				break;
-			case "Alt_8":
+			case "Alt_3": case "Alt_4": case "Alt_8": case "Control_2": case "Control_1":
 				if(caption.this_infobarGfx.infobar.getSectionAnalytics() != null && !caption.this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) {
 					//TimeUnit.MILLISECONDS.sleep(4000);
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Change_Analytics", "SHOW 0.0");
