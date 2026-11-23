@@ -6100,9 +6100,103 @@ public class BugsAndMiniGfx
 							+ "$select_BatDataType" +cont_name + "$img_Text1$English$txt_BatterName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				}
 			
-			break;
+				break;
+			case "Alt_F7":
+				
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Header$select_Language*FUNCTION*Omo*vis_con SET ", 
+						config, Constants.ILT20, print_writers, foreignLanguageOmo);
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "STANDINGS", "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Header$select_Language$English$txt_Header*GEOM*TEXT SET ", 
+						config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_1$MiniPointsAll$Dehighlight$select_Language"
+						+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "P", "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_1$MiniPointsAll$Dehighlight$English$Stats_Grp"
+						+ "$txt_Text1*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "W", "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_1$MiniPointsAll$Dehighlight$English$Stats_Grp"
+						+ "$txt_Text2*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "L", "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_1$MiniPointsAll$Dehighlight$English$Stats_Grp"
+						+ "$txt_Text3*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "PTS", "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_1$MiniPointsAll$Dehighlight$English$Stats_Grp"
+						+ "$txt_Text4*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				rowId = 1;
+				for(int i=0; i<=leagueTable.getLeagueTeams().size()-1;i++) {
+					rowId++;
+					
+					if(matchAllData.getSetup().getHomeTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())  
+							|| matchAllData.getSetup().getAwayTeam().getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
+						omo = 1;
+						containerName = "$Highlight";
+					}else {
+						omo = 0;
+						containerName = "$Dehighlight";
+					}
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll$select_BatDataType"
+							+ "*FUNCTION*Omo*vis_con SET " + omo + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+							+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+					if(leagueTable.getLeagueTeams().get(i).getQualifiedStatus().trim().equalsIgnoreCase("Q")) {
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "Q", "", null, 0, foreignLanguageDataList);
+					}else {
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(i+1), "", null, 0, foreignLanguageDataList);
+					}
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+							+ "$English$txt_Rank*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					for(Team team : Teams) {
+						if(team.getTeamName4().equalsIgnoreCase(leagueTable.getLeagueTeams().get(i).getTeamName())) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll$img_Base2"
+									+ "*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + "EVENT" + "\0", print_writers);
+							
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+									+ "$img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+							if(omo == 1) {
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+										+ "$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+							}
+
+							foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, team.getTeamName1(), "", 
+									null, 0, foreignLanguageDataList);
+							CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+									+ "$English$txt_Name*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+							break;
+						}
+					}
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(leagueTable.getLeagueTeams().get(i).getPlayed()), "", 
+							null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+							+ "$English$Stats_Grp$txt_Text1*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(leagueTable.getLeagueTeams().get(i).getWon()), "", 
+							null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+							+ "$English$Stats_Grp$txt_Text2*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(leagueTable.getLeagueTeams().get(i).getLost()), "", 
+							null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+							+ "$English$Stats_Grp$txt_Text3*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, String.valueOf(leagueTable.getLeagueTeams().get(i).getPoints()), "", 
+							null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Mini_Pointstable$MiniOut$Data$BatRow_" + rowId + "$MiniPointsAll" + containerName 
+							+ "$English$Stats_Grp$txt_Text4*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+				}
+				break;
 			}
-		break;
+			break;
 		case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.AFG_SERIES: case Constants.TEST_T20:
 			switch (whatToProcess) {
 			case "Control_Alt_F3":

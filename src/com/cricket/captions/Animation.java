@@ -729,10 +729,14 @@ public class Animation
 			break;
 		
 //MINIS-------------------------------------------------------------------------------------------------------
-		case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2":
+		case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":
 			processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "START");
 			this.whichGraphicOnScreen = whatToProcess;
-			break;	
+			break;
+		case "Alt_F7":
+			processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable$In_Out", "START");
+			this.whichGraphicOnScreen = whatToProcess;
+			break;
 			
 //BUGS----------------------------------------------------------------------------------------------------------
 		case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b":
@@ -5955,12 +5959,18 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 // MINIS-------------------------------------------------------------------------------------------------------
-			case "Shift_F1": case "Shift_F2": case "Alt_F7": case "Alt_F1": case "Alt_F2":
+			case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":
 				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "CONTINUE");
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "Mini$In_Out", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
-				break;	
+				break;
+			case "Alt_F7":
+				processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable$In_Out", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable$In_Out", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
 				
 // BUGS------------------------------------------------------------------------------------------------------------
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "r":
@@ -9379,6 +9389,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor", "SHOW 0.0");
 				
@@ -11493,6 +11504,13 @@ public class Animation
 					TimeUnit.MILLISECONDS.sleep(500);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 							+ "Mini$In_Out 2.100 Mini$In_Out$In 2.021\0", print_writer);
+					break;
+				case "Alt_F7":
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+							+ "Mini_Pointstable$In_Out 2.060 Mini_Pointstable$In_Out$In 1.781\0", print_writer);
+					TimeUnit.MILLISECONDS.sleep(500);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+							+ "Mini_Pointstable$In_Out 2.060 Mini_Pointstable$In_Out$In 1.781\0", print_writer);
 					break;
 				}
 				break;
