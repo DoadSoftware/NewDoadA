@@ -4415,6 +4415,43 @@ public class ALL_FF
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$LeftPanelAll$Glass_Left$LeftPanel_Sponsor$Side" + WhichSide
 					+ "$select_Sponsor*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 			switch(whatToProcess) {
+			case "Control_3": case "Control_8":
+//				if(WhichSide == 1) {
+//					containerName = "$StartAnimatiom";
+//				}else if(WhichSide == 2) {
+//					containerName = "$Change";
+//				}
+//				
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations" + containerName + "$StartWipe$img_Base1*TEXTURE*IMAGE SET " 
+//						+ Constants.ILT20_BASE1 + team.getTeamBadge() + "\0", print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations" + containerName + "$StartWipe$img_Base2*TEXTURE*IMAGE SET " 
+//						+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations" + containerName + "$StartWipe$img_Base3*TEXTURE*IMAGE SET " 
+//						+ Constants.ILT20_BASE3 + team.getTeamBadge() + "\0", print_writers);
+//				
+//				//Base Color
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$All$BG$Side" + WhichSide + "$BaseAll$img_Base1*TEXTURE*IMAGE SET " 
+//						+ Constants.ILT20_BASE1 + "EVENT" + "\0", print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$All$BG$Side" + WhichSide + "$BaseAll$img_Base2*TEXTURE*IMAGE SET " 
+//						+ Constants.ILT20_BASE2 + "EVENT" + "\0", print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$All$BG$Side" + WhichSide + "$BaseAll$img_Base3*TEXTURE*IMAGE SET " 
+//						+ Constants.ILT20_BASE3 + "EVENT" + "\0", print_writers);
+				
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row2$Name_grp"
+						+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+				
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.FULLNAME, multilanguagedata, 
+						player.getFull_name(), CricketUtil.FIRSTNAME, null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row2$Name_grp"
+						+ "$English$txt_FirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.SURNAME, multilanguagedata, 
+						player.getSurname(), "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row2$Name_grp"
+						+ "$English$txt_LastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+				break;
+			
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$RightPanel$Row2$Name_grp"
 						+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
@@ -5709,6 +5746,44 @@ public class ALL_FF
 							"", null, 0, foreignLanguageDataList);
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Footer$Side" + WhichSide + "$FooterStyle3$Substitute$" 
 							+ (i+1) + "$SubstituteDataGrp$Name_grp$English$txt_LastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				}
+				break;
+			case "Control_Shift_F7":
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$TopInfo$select_Language"
+						+ "*FUNCTION*Omo*vis_con SET ",config, Constants.TG20, print_writers, foreignLanguageOmo);
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"SUPER SUB OPTIONS","", null,0,foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$TopInfo$English$txt_Overs"
+						+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$Substitute$Select_Subs"
+						+ "*FUNCTION*Omo*vis_con SET " + (otherSquad.size()-1) + "\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterBand$img_Base2*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$img_Text1*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+				
+				for(int i=0;i<=otherSquad.size()-1;i++) {
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$Substitute$" + (i+1) + "$SubstituteDataGrp$img_Base3"
+							+ "*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + team.getTeamBadge() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$Substitute$" + (i+1) + "$SubstituteDataGrp$Name_grp$"
+							+ "img_Text3*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT3 + team.getTeamBadge() + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$Substitute$" + (i+1) + "$SubstituteDataGrp$FlagGrp$"
+							+ "img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + otherSquad.get(i).getNationality() + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$Substitute$" + (i+1) + "$SubstituteDataGrp$"
+							+ "Name_grp$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.TG20, print_writers, foreignLanguageOmo);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.FIRSTNAME, multilanguagedata, otherSquad.get(i).getFirstname(), 
+							"", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$Substitute$" + (i+1) + "$SubstituteDataGrp$"
+							+ "Name_grp$English$txt_FirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, CricketUtil.SURNAME, multilanguagedata, otherSquad.get(i).getSurname(), 
+							"", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$FooterAll$FooterStyle3$Substitute$" + (i+1) + "$SubstituteDataGrp$"
+							+ "Name_grp$English$txt_LastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				}
 				break;
 			case "Shift_K":
@@ -13583,7 +13658,7 @@ public class ALL_FF
 						+ "$img_PlayerImage*TEXTURE*IMAGE SET " + Constants.ILT20_LOCAL_PHOTO_PATH + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$CurrPartnership$Row4$PlayerData$Player_Image"
-						+ "$img_PlayerImage*TEXTURE*IMAGE SET " + Constants.ILT20_LOCAL_PHOTO_PATH + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" 
+						+ "$img_PlayerImage*TEXTURE*IMAGE SET " + Constants.ILT20_LOCAL_PHOTO_PATH + inning.getBatting_team().getTeamName4() + "\\\\" + Constants.RIGHT + "\\\\" 
 						+ partnership.getSecondPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}else {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$CurrPartnership$Row4$PlayerData$Player_Image"
@@ -13591,7 +13666,7 @@ public class ALL_FF
 						+ "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$All$RightPanel$Main$Side" + WhichSide + "$CurrPartnership$Row4$PlayerData$Player_Image"
 						+ "$img_PlayerImage*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + inning.getBatting_team().getTeamName4() 
-						+ "\\\\" + Constants.LEFT + "\\\\" + partnership.getSecondPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						+ "\\\\" + Constants.RIGHT + "\\\\" + partnership.getSecondPlayer().getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 			}
 			break;
 		case Constants.AFG_SERIES:
@@ -20529,6 +20604,198 @@ public class ALL_FF
 						+ "$Name_grp$English$txt_FirstName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 				
 			    CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$RightPanel$Row" + (i+5) + 
+			    		"$Data$txt_Balls*GEOM*TEXT SET " + StatData[i] + "\0", print_writers);
+			}
+			
+			
+			break;
+		}
+		return Constants.OK;
+	}
+	
+	public String PlayerProfileLofBody(List<PrintWriter> print_writers, String whatToProcess, int WhichSide, MatchAllData matchAllData, Configuration config) throws InterruptedException {
+		
+		String[] TitleData = null;
+		String[] StatData = null;
+		String which_role = "";
+		
+		switch (config.getBroadcaster()) {
+		case Constants.ILT20:
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row3$select_Language"
+					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+			
+			if(WhichProfile.equalsIgnoreCase("DT20")) {
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						"T20 CAREER", "", null, 0, foreignLanguageDataList);
+			}else if(WhichProfile.equalsIgnoreCase("IT20")){
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						"T20I CAREER", "", null, 0, foreignLanguageDataList);
+			}else if(WhichProfile.equalsIgnoreCase("ILT20_CAREER")){
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						"DP WORLD ILT20 CAREER", "", null, 0, foreignLanguageDataList);
+			}else if(WhichProfile.equalsIgnoreCase("ILT20_SEASON_4")){
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						"DP WORLD ILT20 SEASON 4", "", null, 0, foreignLanguageDataList);
+			}
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row3$English$txt_FirstName"
+					+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+			
+			
+			if(ImageType.equalsIgnoreCase("WITH")) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1*ACTIVE SET 1\0", print_writers);
+				
+				if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player_Shadow*TEXTURE*IMAGE SET "
+							+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player*TEXTURE*IMAGE SET "
+							+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player_Shadow*TEXTURE*IMAGE SET "
+							+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + player.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player*TEXTURE*IMAGE SET "
+							+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + player.getPhoto()+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+				}else {
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player_Shadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() 
+							+ "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() 
+							+ "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player_Shadow*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() 
+							+ "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + player.getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1$img_Player*TEXTURE*IMAGE SET " + "\\\\" + config.getPrimaryIpAddress() 
+							+ "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + player.getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+				}
+			}else {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row1*ACTIVE SET 0\0", print_writers);
+			}
+			
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations$StartAnimatiom$img_Base1*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE1 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations$StartAnimatiom$img_Base2*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations$StartAnimatiom$img_Base3*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE3 + team.getTeamBadge() + "\0", print_writers);
+			
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations$Change$img_Base1*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE1 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations$Change$img_Base2*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Animations$Change$img_Base3*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE3 + team.getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$BG$Side" + WhichSide + "$img_Base1*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE1 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$BG$Side" + WhichSide + "$img_Base2*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$BG$Side" + WhichSide + "$img_Base3*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE3 + team.getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row2$Name_grp$img_Text1*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row3$img_Text1*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row4$img_Text1*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$LeftPanelAll$LogoAll$Side" + WhichSide + "$img_Logo*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_LOGO + team.getTeamBadge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row2$FlagGrp$img_Base1*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_BASE1 + team.getTeamBadge() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row2$FlagGrp$img-Flag*TEXTURE*IMAGE SET "
+					+ Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row4$txt_Age"
+					+ "*GEOM*TEXT SET \0", print_writers);
+			
+			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row4"
+					+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+			
+			switch(whatToProcess) {
+			case "Control_3":
+				
+				if(player.getBattingStyle().equalsIgnoreCase("LHB")) {
+					which_role = "Batsman_Lefthand";
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+							"LHB", "", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row4$English$txt_FirstName"
+							+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					
+				}else {
+					which_role = "Bat_Icon";
+					
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+							"RHB", "", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row4$English$txt_FirstName"
+							+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+				}
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row4$img_Icon*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_ICONS + which_role + "\0", print_writers);
+				
+				TitleData = new String[] {"MATCHES", "RUNS", "STRIKE RATE", "BEST"};
+				StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getRuns()),
+							CricketFunctions.generateStrikeRate(stat.getRuns(), stat.getBallsFaced(), 0),(stat.getBestScore().equalsIgnoreCase("0") ? "-" : stat.getBestScore())};
+				break;
+			case "Control_8":
+				if(player.getBowlingStyle() == null) {
+					which_role = "Bowler";
+				}else {
+					switch(player.getBowlingStyle()) {
+					case "RF": case "RFM": case "RMF": case "RM": case "RSM": case "LF": case "LFM": case "LMF": case "LM":
+						which_role = "FastBowler";
+						break;
+					case "LSL": case "WSL": case "LCH": case "RLG": case "WSR": case "LSO":
+						which_role = "SpinBowler";
+						break;
+					case "ROB":
+						which_role = "Off_Spin";
+						break;
+					case "RLB":
+						which_role = "Leg_Spin";
+						break;	
+					}
+				}
+				
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						player.getBowlingStyle(), "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row4$English$txt_FirstName"
+						+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$Row4$img_Icon*TEXTURE*IMAGE SET " 
+						+ Constants.ILT20_ICONS + which_role + "\0", print_writers);
+				
+				TitleData = new String[] {"MATCHES", "WICKETS", "ECONOMY", "BEST"};
+				StatData = new String[] {String.valueOf(stat.getMatches()),String.valueOf(stat.getWickets()),
+				        CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(), 2, "-"),(stat.getBestFigures().contains("-") ? stat.getBestFigures() : "-")};
+				break;
+			}
+			
+			for (int i = 0; i < TitleData.length; i++) {
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row" + (i+5) + "$Select_High*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row" + (i+5) + "$img_Base2*TEXTURE*IMAGE SET "
+						+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row" + (i+5) + "$Name_grp$img_Text1*TEXTURE*IMAGE SET "
+						+ Constants.ILT20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row" + (i+5) + "$Data$img_Text1*TEXTURE*IMAGE SET "
+						+ Constants.ILT20_TEXT1 + team.getTeamBadge() + "\0", print_writers);
+				
+				
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row" + (i+5)
+						+ "$Name_grp$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+				
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						TitleData[i], "", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row" + (i+5)
+						+ "$Name_grp$English$txt_FirstName*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+				
+			    CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile_LOF$RightPanel$Row" + (i+5) + 
 			    		"$Data$txt_Balls*GEOM*TEXT SET " + StatData[i] + "\0", print_writers);
 			}
 			

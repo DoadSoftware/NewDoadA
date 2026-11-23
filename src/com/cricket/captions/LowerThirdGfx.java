@@ -1863,32 +1863,6 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
-			case Constants.ILT20:
-				switch (WhichProfile.toUpperCase()) {
-				case "ILT20_CAREER": case "DT20": case "ILT20_SEASON_4": case "IT20":
-					statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile.toUpperCase())).findAny().orElse(null);
-					if(statsType == null) {
-						return "PopulateL3rdPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
-					}
-					
-					stat = statistics.stream().filter(st -> st.getPlayerID() == FirstPlayerId && statsType.getStatsId() == st.getStatsTypeId() 
-							&& st.getSubsStatsType() == null).findAny().orElse(null);
-					if(stat == null) {
-						return "PopulateL3rdPlayerProfile: Stats not found for Player Id [" + FirstPlayerId + "]";
-					}
-					
-					switch (WhichProfile.toUpperCase()) {
-					case "ILT20_CAREER": case "DT20":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
-						stat.setStats_type(statsType);
-						
-						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
-				        stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
-						break;
-					}
-					break;
-				}
-				break;
 			case Constants.ACC:
 				switch (WhichProfile.toUpperCase()) {
 				case "DT20": case "IT20": case "ACC_CAREER":
@@ -2004,11 +1978,6 @@ public class LowerThirdGfx
 				venue = (stat.getBestScoreVenue() != null ? stat.getBestScoreVenue() : "");
 				
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.ILT20:
-					lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,
-							WhichProfile, "", "", 2,player.getNationality(),team.getTeamBadge(),new String[]{"MATCHES", "RUNS", "STRIKE RATE", "BEST"},
-							new String[]{String.valueOf(stat.getMatches()), strikeRate, best},null,null,null);
-					break;
 				case Constants.ACC:
 					if(WhichProfile.equalsIgnoreCase("DT20")) {
 						short_name =  "T20 CAREER";
@@ -2049,8 +2018,6 @@ public class LowerThirdGfx
 					}
 					break;
 				}
-				
-				
 			}	
 			else if(whatToProcess.split(",")[0].equalsIgnoreCase("Control_8")) {
 				if(CricketFunctions.getEconomy(stat.getRunsConceded(), stat.getBallsBowled(),2,"-").equalsIgnoreCase("0.00")) {

@@ -1887,6 +1887,8 @@ public class FullFramesGfx
 			return this_ALL_FF.PlayerProfilePerformanceBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Control_d": case "Control_e":
 			return this_ALL_FF.PlayerProfileBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
+		case "Control_3": case "Control_8":
+			return this_ALL_FF.PlayerProfileLofBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Control_F7":
 			return this_ALL_FF.DoubleTeamsBody(print_writers, whatToProcess, WhichSide, matchAllData, config);
 		case "Alt_z":
@@ -1931,7 +1933,7 @@ public class FullFramesGfx
 		case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1": case "Alt_Shift_F1": case "Shift_Control_F1": case "Shift_Control_F2":
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
-		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I": case "Alt_Shift_U":  case "Shift_F8":
+		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I": case "Alt_Shift_U":  case "Shift_F8": case "Control_3": case "Control_8":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 

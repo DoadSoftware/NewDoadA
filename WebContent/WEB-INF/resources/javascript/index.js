@@ -1996,7 +1996,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				cellCount = cellCount + 1
 				
 				switch(whatToProcess){
-				case 'Control_d': case 'Control_q':
+				case 'Control_d': case 'Control_3':
 					switch($('#selected_broadcaster').val().toUpperCase()){
 					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						select = document.createElement('select');
@@ -2312,7 +2312,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				cellCount = cellCount + 1
 				
 				switch(whatToProcess){
-				case 'Control_e':
+				case 'Control_e': case 'Control_8':
 					switch($('#selected_broadcaster').val().toUpperCase()){
 					case 'TRI_SERIES': case 'MT20': case 'TG20': case 'APLT20': case 'ILT20':
 						select = document.createElement('select');
