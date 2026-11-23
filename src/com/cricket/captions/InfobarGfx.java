@@ -3804,11 +3804,18 @@ public class InfobarGfx
 							+ Constants.ILT20_TEXT2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Normal$img_Text2*TEXTURE*IMAGE SET " 
 							+ Constants.ILT20_TEXT2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$Shrink$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					
 				}else {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Normal$img_Text1*TEXTURE*IMAGE SET " 
 							+ Constants.ILT20_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Normal$img_Text2*TEXTURE*IMAGE SET " 
 							+ Constants.ILT20_TEXT2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$Shrink$img_Text1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT1 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
 				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BatterSection$img_Base1*TEXTURE*IMAGE SET " 
