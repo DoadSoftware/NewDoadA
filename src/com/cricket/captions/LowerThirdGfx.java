@@ -4548,6 +4548,31 @@ public class LowerThirdGfx
 //			return status;
 //		}
 	}
+	public String populateScorePredictor(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
+	{
+		inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getInningNumber() == Integer.valueOf(whatToProcess.split(",")[1])).findAny().orElse(null);
+		
+		if(inning == null) {
+			return "populateExtras: Current Inning is Null";
+		}
+		
+//		lowerThird = new LowerThird("INNINGS EXTRAS", "", "",whatToProcess.split(",")[2], "", "",2,"",inning.getBowling_team().getTeamBadge(),new String[]{"WIDES","NO BALLS","BYES","LEG BYES","PENALTIES"},
+//				new String[]{String.valueOf(inning.getTotalWides()),String.valueOf(inning.getTotalNoBalls()),String.valueOf(inning.getTotalByes()),
+//				String.valueOf(inning.getTotalLegByes()),String.valueOf(inning.getTotalPenalties())},null,null,
+//				new String[] {"-175","-97","-11","73","166"});
+		
+		//checkForImpactPlayer(whatToProcess, WhichSide, 0, matchAllData);
+		return ReadScorePredictor(matchAllData);
+		//status = PopulateL3rdHeader(whatToProcess.split(",")[0],WhichSide);
+//		if(status == Constants.OK) {
+//			//PopulateL3rdBaseColor(whatToProcess.split(",")[0], WhichSide);
+////			HideAndShowL3rdSubStrapContainers(WhichSide);
+////			setPositionOfLT(whatToProcess,WhichSide,config,lowerThird.getNumberOfSubLines());
+//			return PopulateL3rdBody(WhichSide, whatToProcess.split(",")[0]);
+//		} else {
+//			return status;
+//		}
+	}
 	public String populateL3rdExtras(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
 	{
 		switch (config.getBroadcaster().toUpperCase()) {
@@ -14411,6 +14436,12 @@ public class LowerThirdGfx
 		case "Alt_Shift_F3":
 			
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
+					"$2$Left$Maxsize*FUNCTION*Maxsize*DEFAULT_SCALE_X SET 0.7\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
+					"$3$Left$Maxsize*FUNCTION*Maxsize*DEFAULT_SCALE_X SET 0.7\0", print_writers);
+			
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
 					"$select_Subline$2$Title*ACTIVE SET 0 \0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
 					"$select_Subline$3$Title*ACTIVE SET 0 \0", print_writers);
@@ -16223,6 +16254,12 @@ public class LowerThirdGfx
 				L3rdBodyPart(whichSide, whatToProcess);
 				break;
 			case Constants.ILT20:
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
+						"$2$Left$Maxsize*FUNCTION*Maxsize*DEFAULT_SCALE_X SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
+						"$3$Left$Maxsize*FUNCTION*Maxsize*DEFAULT_SCALE_X SET 1\0", print_writers);
+				
 				ILT20L3rdBodyPart(whichSide, whatToProcess);
 				break;
 			case Constants.AFG_SERIES:
@@ -20380,6 +20417,184 @@ public class LowerThirdGfx
 	
 	public String ReadPredictor(MatchAllData matchAllData) {
 		String match_name = "";
+		
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Select_Data" + 
+				"*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+		try {
+			
+			for(Fixture fix : fixTures) {
+				if(fix.getMatchfilename().equalsIgnoreCase(matchAllData.getMatch().getMatchFileName().replace(".json", ""))) {
+					match_name = fix.getTeamgroup();
+				}
+			}
+			
+            try {
+            	
+                HttpURLConnection conn = (HttpURLConnection) new URL("https://cloud.cricket-21.com/CricketApi/api/master/WinPredictor?matchid=" + match_name + "&type=json").openConnection();
+                conn.setRequestMethod("GET");
+                if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    try (InputStream in = conn.getInputStream()) {
+                        new ObjectMapper()
+                            .writerWithDefaultPrettyPrinter()
+                            .writeValue(new File("C:\\Sports\\Cricket\\PREDICTOR.json"), new ObjectMapper().readTree(in));
+                    }
+                    System.out.println("Saved JSON to: " + "C:\\Sports\\Cricket\\PREDICTOR.json");
+                } else {
+                    System.err.println("Error: HTTP " + conn.getResponseCode());
+                }
+
+                conn.disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            
+            TimeUnit.MILLISECONDS.sleep(2000);
+            
+            
+			int Top_Score = 50,total=100;
+			double Mult = 295,ScaleFac1 = 0, ScaleFac2 = 0;
+			
+            ObjectMapper mapper = new ObjectMapper();
+
+            List<PredictorData> predictorList = mapper.readValue(
+                new File("C:\\Sports\\Cricket\\PREDICTOR.json"),
+                new TypeReference<List<PredictorData>>() {}
+            );
+
+            for (PredictorData data : predictorList) {
+            	System.out.println();
+            	int TotalRuns = data.getTotalRuns();
+            	int Wickets = data.getWickets();
+            	int Target = data.getTarget();
+
+            	double BattingTeamPredictor = Integer.parseInt(data.getPredictor());
+            	double BowlingTeamPredictor = 100 - BattingTeamPredictor;
+            	int Batresult = (int) BattingTeamPredictor;
+            	int Ballresult = (int) BowlingTeamPredictor;
+
+            	String Overs = data.getOvers();
+            	String Team = data.getTeam();
+            	String PredictedScore = data.getPredictedScore();
+
+            	CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header$select_Language"
+                		+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
+            	
+            	
+            	if(inning.getInningNumber() == 1) {
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Select_Data" + 
+            				"*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+            		
+            		foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+    						"SCORE PREDICTOR", "", null, 0, foreignLanguageDataList);
+            		CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header"
+        					+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+            		
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Team1" + 
+    						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Bar$Team1" + 
+    						"$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+            		
+            		
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Value$txt_Value" + 
+    						"*GEOM*TEXT SET " + PredictedScore + "\0", print_writers);
+            		
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header$img_Text3" + 
+    						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT3 + "EVENT" + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$MatchNumber$img_Text1" + 
+    						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + "EVENT" + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Team2" + 
+    						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Bar$Team2" + 
+    						"$img_Base3*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data_In02$MatchNumber$select_Language"
+        					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+    		
+    				if(matchAllData.getSetup().getMatchIdent().contains("MATCH")){
+    		  			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0],
+    		  					"", null, 1,foreignLanguageDataList);
+    					  
+    				  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1],
+    						    "", null, 2,foreignLanguageDataList);
+    				  	
+    				  	foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+    			  	}else {
+    			  			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getMatchIdent(), "", null, 0, foreignLanguageDataList);
+    			  	}
+    				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data_In02$MatchNumber"
+    						+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+            	}else {
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Select_Data" + 
+            				"*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+            		
+            		foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+    						"WIN PREDICTOR", "", null, 0, foreignLanguageDataList);
+            		CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header"
+        					+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+            		
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Team1" + 
+    						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Bar$Team1" + 
+    						"$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
+            		
+            		
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Team1" + 
+    						"$txt_Value*GEOM*TEXT SET " + Batresult + "\0", print_writers);
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Bar$Team1" + 
+    						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BattingTeamPredictor) / 100) + "\0", print_writers);
+            		
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Team2" + 
+    						"$txt_Value*GEOM*TEXT SET " + Ballresult + "\0", print_writers);
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Bar$Team2" + 
+    						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BowlingTeamPredictor) / 100) + "\0", print_writers);
+            		
+            		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header$img_Text3" + 
+    						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT3 + "EVENT" + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$MatchNumber$img_Text1" + 
+    						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + "EVENT" + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Team2" + 
+    						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+        			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In$Bar$Team2" + 
+    						"$img_Base3*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
+        			
+        			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data_In$MatchNumber$select_Language"
+        					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+    		
+    				if(matchAllData.getSetup().getMatchIdent().contains("MATCH")){
+    		  			foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[0],
+    		  					"", null, 1,foreignLanguageDataList);
+    					  
+    				  	foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,matchAllData.getSetup().getMatchIdent().split(" ")[1],
+    						    "", null, 2,foreignLanguageDataList);
+    				  	
+    				  	foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
+    			  	}else {
+    			  			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getMatchIdent(), "", null, 0, foreignLanguageDataList);
+    			  	}
+    				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data_In$MatchNumber"
+    						+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+            	}
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return status = "OK";
+	}
+	
+	public String ReadScorePredictor(MatchAllData matchAllData) {
+		String match_name = "";
+		
+		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Select_Data" + 
+				"*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+		
 		try {
 			
 			for(Fixture fix : fixTures) {
@@ -20442,39 +20657,29 @@ public class LowerThirdGfx
                 		+ "*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
     			
                 foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
-						"WIN PREDICTOR", "", null, 0, foreignLanguageDataList);
+						"SCORE PREDICTOR", "", null, 0, foreignLanguageDataList);
     			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header"
     					+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
     			
     			
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team1" + 
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Team1" + 
 						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team1" + 
-						"$txt_Value*GEOM*TEXT SET " + Batresult + "\0", print_writers);
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team1" + 
-						"$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + inning.getBatting_team().getTeamBadge() + "\0", print_writers);
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team1" + 
-						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BattingTeamPredictor) / 100) + "\0", print_writers);
     			
     			
     			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$Header$img_Text3" + 
 						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT3 + "EVENT" + "\0", print_writers);
     			
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$MatchNumber$img_Text1" + 
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$MatchNumber$img_Text1" + 
 						"*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT1 + "EVENT" + "\0", print_writers);
     			
     			
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team2" + 
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Team2" + 
 						"$img_Badge*TEXTURE*IMAGE SET " + Constants.ILT20_LOGO + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Team2" + 
-						"$txt_Value*GEOM*TEXT SET " + Ballresult + "\0", print_writers);
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team2" + 
-						"$img_Base3*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
     			
-    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Bar$Team2" + 
-						"$obj_ScaleX*TRANSFORMATION*SCALING*X SET " + ((BowlingTeamPredictor) / 100) + "\0", print_writers);
+    			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data$Data_In02$Value$txt_Value" + 
+						"*GEOM*TEXT SET " + PredictedScore + "\0", print_writers);
     			
-    			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$MatchNumber$select_Language"
+    			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data_In02$MatchNumber$select_Language"
     					+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
 		
 				if(matchAllData.getSetup().getMatchIdent().contains("MATCH")){
@@ -20488,7 +20693,7 @@ public class LowerThirdGfx
 			  	}else {
 			  			foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, matchAllData.getSetup().getMatchIdent(), "", null, 0, foreignLanguageDataList);
 			  	}
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$MatchNumber"
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$WinPredictor$DataAll$Data_In02$MatchNumber"
 						+ "$English$txt_Header*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
     			
             }

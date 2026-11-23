@@ -197,6 +197,7 @@ public class Animation
 			case "d": case "e": case "Control_h": case "Alt_Shift_F3": case "Control_F3": case "Control_Shift_M": case "Control_a": case "Control_Shift_F10": 
 			case "Control_Shift_B": case "Alt_d": case "Control_Shift_L": case "Control_6": case "Control_Shift_O": case "Control_Shift_Q": case "Control_Shift_X": 
 			case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12": case "Shift_I": case "Control_F2": case "Alt_f": case "Control_Alt_F3":
+			case "Alt_i":	
 				switch (whatToProcess.split(",")[0]) {
 				case "Alt_F8": case "F8": case "F10": case "j": case "Alt_a": case "Alt_s": // Name super L3rd
 					return Constants.NAME_SUPERS + Constants.LOWER_THIRD;
@@ -3424,7 +3425,7 @@ public class Animation
 				break;
 				
 //-----------------------------------------------------------------------------------------------------------------------------
-			case "Control_Alt_F3":
+			case "Control_Alt_F3": case "Alt_i":
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
@@ -5633,7 +5634,7 @@ public class Animation
 			break;
 		case Constants.ILT20:
 			switch (whatToProcess.split(",")[0]) {
-			case "Control_Alt_F3":
+			case "Control_Alt_F3": case "Alt_i":
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor$In_Out", "CONTINUE");
 				this.whichGraphicOnScreen = "";
 				break;
@@ -10808,7 +10809,7 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
-					case "Control_Alt_F3":
+					case "Control_Alt_F3": case "Alt_i":
 						previewCommand = "anim_InfoBar$Push 1.000 WinPredictor$In_Out 1.780 WinPredictor$In_Out$In 1.300";
 						break;
 					case "Control_Shift_M": case "Control_Shift_L":

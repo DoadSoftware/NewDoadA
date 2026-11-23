@@ -557,7 +557,14 @@ public class Caption
 				status = this_lowerThirdGfx.populateAllSession(whatToProcess, whichSide, matchAllData);
 				break;
 			case "Alt_i": //SESSION WISE
-				status = this_lowerThirdGfx.populateSummaryDaybyDay(whatToProcess, whichSide, matchAllData);
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ILT20:
+					status = this_lowerThirdGfx.populateScorePredictor(whatToProcess,whichSide,matchAllData);
+					break;
+				default:
+					status = this_lowerThirdGfx.populateSummaryDaybyDay(whatToProcess, whichSide, matchAllData);
+					break;
+				}
 				break;
 			case "b": //MATCH STATISTICS
 				status = this_lowerThirdGfx.populateMatchStatistics(whatToProcess, whichSide, matchAllData);
@@ -1005,11 +1012,11 @@ public class Caption
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: 
 				case Constants.APLT20: case Constants.AFG_SERIES: case Constants.TEST_T20: case Constants.ILT20:
 					
-					whichSide = ((this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
-		            && !this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 
-		            	(this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty() 
-			            && !this_infobarGfx.infobar.getSectionLtAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 1);
-					
+//					whichSide = ((this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+//		            && !this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 
+//		            	(this_infobarGfx.infobar.getSectionLtAnalytics() != null && !this_infobarGfx.infobar.getSectionLtAnalytics().isEmpty() 
+//			            && !this_infobarGfx.infobar.getSectionLtAnalytics().equalsIgnoreCase(whatToProcess.split(",")[2])) ? 2 : 1);
+					whichSide = ((this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty()) ? 2 : 1);
 					if(!whatToProcess.split(",")[2].equalsIgnoreCase("BLANK")) {
 						this_infobarGfx.bowlerOnScreen = false;
 						this_infobarGfx.batterOnScreen = false;

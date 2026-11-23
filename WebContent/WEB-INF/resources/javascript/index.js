@@ -2930,6 +2930,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					addOption('DUBAI', 'DUBAI');
 					addOption('UAE', 'UAE');
 					addOption('SHARJAH', 'SHARJAH');
+					addOption('ABUDHABI', 'ABU DHABI');
 					break;
 				default:
 					if(session_match.setup.matchType === 'TEST' || session_match.setup.matchType === 'FC'){
