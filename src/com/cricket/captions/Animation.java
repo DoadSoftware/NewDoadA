@@ -311,7 +311,15 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Disruptives", "CONTINUE");
 			}
 			break;
-		case "s": case "f": case "w": case "0": case "9": case ".": case "Control_F8": case "Alt_/":
+		case "Alt_/":
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
+					+ "*FUNCTION*Omo*vis_con SET 5\0", print_writers);
+			
+			if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
+				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$DisruptiveCharacters", "START");
+			}
+			break;
+		case "s": case "f": case "w": case "0": case "9": case ".": case "Control_F8":
 			switch(whatToProcess.split(",")[0]) {
 			case "s":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
@@ -337,10 +345,7 @@ public class Animation
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 				break;
-			case "Alt_/":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
-						+ "*FUNCTION*Omo*vis_con SET 5\0", print_writers);
-				break;
+			
 			case "Control_F8":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 6\0", print_writers);
