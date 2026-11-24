@@ -4027,16 +4027,21 @@ public class BugsAndMiniGfx
 					default:
 						switch (config.getBroadcaster()) {
 						case Constants.TEST_T20:
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$img_RightBase*TEXTURE*IMAGE SET " + Constants.TEST_T20_RIGHTBASE + 
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$img_RightBase*TEXTURE*IMAGE SET " 
+						+ Constants.TEST_T20_RIGHTBASE + 
 									IndexController.whichBase +"\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$img_Base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1  + 
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$img_Base1*TEXTURE*IMAGE SET " 
+									+ Constants.TEST_T20_BASE1  + 
 									(IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") +"\0", print_writers);
 							
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$img_base1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$img_base1*TEXTURE*IMAGE SET " 
+							+ Constants.TEST_T20_BASE1 
 									+ IndexController.whichBase +"\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$img_base2*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE2 
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$img_base2*TEXTURE*IMAGE SET " 
+									+ Constants.TEST_T20_BASE2 
 									+ IndexController.whichBase +"\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$img_base1_Mask*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$base$img_base1_Mask*TEXTURE*IMAGE SET " 
+									+ Constants.TEST_T20_BASE1 
 									+ IndexController.whichBase +"\0", print_writers);
 							
 							
@@ -4045,7 +4050,8 @@ public class BugsAndMiniGfx
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$Side" + WhichSide + "$ScoreGrp$img_Text1*TEXTURE*IMAGE SET " + Constants.TEST_T20_BASE1 
 									+ (IndexController.whichBase.equalsIgnoreCase("Day") ? "Night" : "Day") +"\0", print_writers);
 							
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$Badge$img_Base1*TEXTURE*IMAGE SET " + base1Path  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$Badge$img_Base1*TEXTURE*IMAGE SET " 
+									+ base1Path  + inning.getBowling_team().getTeamBadge() +"\0", print_writers);
 							
 							break;
 						default:
@@ -4075,7 +4081,8 @@ public class BugsAndMiniGfx
 //								+ inning.getBowling_team().getTeamBadge() +"\0", print_writers);
 	//
 //						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$img_Base2*TEXTURE*IMAGE SET IMAGE*/Default/Essentials/Textures/Color01\0", print_writers);
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$txt_Header*GEOM*TEXT SET " + battingCard.getPlayer().getTicker_name()+ "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$PopUps$POP_UP$band$txt_Header*GEOM*TEXT SET " 
+								+ bowlingCard.getPlayer().getTicker_name()+ "\0", print_writers);
 						
 						break;
 					}

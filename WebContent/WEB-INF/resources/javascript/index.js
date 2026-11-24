@@ -7533,6 +7533,25 @@ function addItemsToList(whatToProcess,dataToProcess)
 			row.insertCell(cellCount).appendChild(select);
 			setDropdownOptionToSelectOptionArray($(select),1);
 			cellCount = cellCount + 1;
+			
+			select = document.createElement('select');
+			select.id = 'selectRoleAge';
+			select.name = select.id;
+
+			option = document.createElement('option');
+			option.value = 'ROLE';
+			option.text = 'ROLE';
+			select.appendChild(option);
+
+			option = document.createElement('option');
+			option.value = 'AGE';
+			option.text = 'AGE';
+			select.appendChild(option);
+
+			select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
+			row.insertCell(cellCount).appendChild(select);
+			setDropdownOptionToSelectOptionArray($(select),2);
+			cellCount = cellCount + 1;
 			break;
 			
 		case 'Shift_T':
@@ -7679,6 +7698,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 				break;
 			}
 			let num = 0;
+			let fillPlayers = null;
 			
 			switch(whatToProcess){
 			case 'Alt_k':
@@ -7759,23 +7779,59 @@ function addItemsToList(whatToProcess,dataToProcess)
 				break;
 			
 			default:
-				select = document.createElement('select');
-				select.id = 'selectPlayerName';
-				select.name = select.id;
-				num = 0;
-				for(i=0;i<dataToProcess.length;i++){
-					if(num<5){
-						option = document.createElement('option');
-			            option.value = (num+1)+ "_" + dataToProcess[i].playerId;
-			            option.text = dataToProcess[i].player.full_name;
-			            select.appendChild(option);
-			            num++;
-					}
+				switch($('#selected_broadcaster').val().toUpperCase()){ 
+				case 'TEST_T20':
+					select = document.createElement('select');
+					select.id = 'selectPlayerName';
+					select.name = select.id;
+
+					var playerSelectEl = select;
+
+					fillPlayers = function(gender){
+						console.log('new-------------------------------------'+JSON.stringify(dataToProcess.slice(0, 3)));
+						playerSelectEl.innerHTML = '';
+						num = 0;
+						for(i=0;i<dataToProcess.length;i++){
+							if(gender && dataToProcess[i].player.gender != gender){
+								continue;
+							}
+							if(num<5){
+								option = document.createElement('option');
+								option.value = (num+1)+ "_" + dataToProcess[i].playerId;
+								option.text = dataToProcess[i].player.full_name;
+								playerSelectEl.appendChild(option);
+								num++;
+							}
+						}
+					};
+					fillPlayers('');
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),0);
+					cellCount = cellCount + 1
+					break;
+				default:
+				    select = document.createElement('select');
+				    select.id = 'selectPlayerName';
+				    select.name = select.id;
+				    num = 0;
+				    for(i=0;i<dataToProcess.length;i++){
+				        if(num<5){
+				            option = document.createElement('option');
+				            option.value = (num+1)+ "_" + dataToProcess[i].playerId;
+				            option.text = dataToProcess[i].player.full_name;
+				            select.appendChild(option);
+				            num++;
+				        }
+				    }
+				    select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
+				    row.insertCell(cellCount).appendChild(select);
+				    setDropdownOptionToSelectOptionArray($(select),0);
+				    cellCount = cellCount + 1
+					break;
 				}
-				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 0)");
-				row.insertCell(cellCount).appendChild(select);
-				setDropdownOptionToSelectOptionArray($(select),0);
-				cellCount = cellCount + 1
+				
 			break;
 			}
 			
@@ -7821,6 +7877,57 @@ function addItemsToList(whatToProcess,dataToProcess)
 					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 2)");
 					row.insertCell(cellCount).appendChild(select);
 					setDropdownOptionToSelectOptionArray($(select),2);
+					cellCount = cellCount + 1;
+					break;
+				}
+				switch($('#selected_broadcaster').val().toUpperCase()){
+				case 'TEST_T20':
+					select = document.createElement('select');
+					select.id = 'selectGender';
+					select.name = select.id;
+					
+					option = document.createElement('option');
+					option.value = '';
+					option.text = '';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'BOY';
+					option.text = 'BOY';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'GIRL';
+					option.text = 'GIRL';
+					select.appendChild(option);
+
+					select.addEventListener('change', function(){
+						fillPlayers(this.value);   
+						setDropdownOptionToSelectOptionArray($('#selectPlayerName'), 0);
+						setDropdownOptionToSelectOptionArray($(this), 2);
+					});
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),2);
+					select.dispatchEvent(new Event('change'));
+					cellCount = cellCount + 1;
+
+					select = document.createElement('select');
+					select.id = 'selectPhoto';
+					select.name = select.id;
+
+					option = document.createElement('option');
+					option.value = 'WITHOUT';
+					option.text = 'WITHOUT Photo';
+					select.appendChild(option);
+
+					option = document.createElement('option');
+					option.value = 'WITH';
+					option.text = 'WITH Photo';
+					select.appendChild(option);
+
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 3)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),3);
 					cellCount = cellCount + 1;
 					break;
 				}

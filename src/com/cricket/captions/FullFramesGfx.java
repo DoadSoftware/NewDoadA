@@ -1649,7 +1649,7 @@ public class FullFramesGfx
 		default:
 			switch (config.getBroadcaster()) {
 			case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:	
-			case Constants.AFG_SERIES:
+			case Constants.AFG_SERIES: case Constants.TEST_T20:
 				if(whatToProcess.split(",")[3].equalsIgnoreCase("WITHOUT_CURRENT")) {
 					this_ALL_FF.tournaments = past_tournament_stats;
 				}else if(whatToProcess.split(",")[3].equalsIgnoreCase("WITH_CURRENT")) {
@@ -1667,6 +1667,14 @@ public class FullFramesGfx
 		if(this_ALL_FF.tournaments == null) {
 			return "populateLeaderBoard : Tournament Stats is Null";
 		}
+		String key = whatToProcess.split(",")[0];
+		if(Constants.TEST_T20.equalsIgnoreCase(config.getBroadcaster()) && (key.equals("z") || key.equals("x") || key.equals("c") || key.equals("v"))
+				&& this_ALL_FF.WhichStyle != null && !this_ALL_FF.WhichStyle.isEmpty()) {
+
+			this_ALL_FF.tournaments = this_ALL_FF.tournaments.stream().filter(t -> t.getPlayer() != null 
+					&& this_ALL_FF.WhichStyle.trim().equalsIgnoreCase(t.getPlayer().getGender())).collect(java.util.stream.Collectors.toCollection(ArrayList::new));
+		}
+		this_ALL_FF.tournaments.forEach(t -> System.out.println(t.getPlayer().getFull_name() + " = " + t.getPlayer().getGender()));
 		
 		switch (whatToProcess.split(",")[0]) {
 		case "z": 

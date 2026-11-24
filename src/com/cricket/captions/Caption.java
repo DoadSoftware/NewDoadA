@@ -299,6 +299,7 @@ public class Caption
 			case "Shift_F8":
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TEST_T20:
+					this_fullFramesGfx.this_ALL_FF.WhichRoleAge = whatToProcess.split(",")[4];
 					this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[3];
 					this_fullFramesGfx.this_ALL_FF.whichTeam = Integer.valueOf(whatToProcess.split(",")[2]);
 					System.out.println("whatToProcess------------------------------------" + whatToProcess);
@@ -381,6 +382,12 @@ public class Caption
 					switch(config.getBroadcaster()) {
 					case Constants.APLT20:
 						this_fullFramesGfx.this_ALL_FF.WhichProfile = whatToProcess.split(",")[4];
+						break;
+					case Constants.TEST_T20:
+						if(whatToProcess.split(",").length > 5) {
+							this_fullFramesGfx.this_ALL_FF.WhichStyle = whatToProcess.split(",")[4];
+							this_fullFramesGfx.this_ALL_FF.WhichProfile = whatToProcess.split(",")[5];
+						}
 						break;
 					}
 					break;
