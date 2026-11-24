@@ -4947,7 +4947,7 @@ public class ALL_FF
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$LeftPanelAll$Glass_Left$LeftPanel_Sponsor$Side" + WhichSide
 						+ "$select_Sponsor*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$LeftPanelAll$Glass_Left$Header$img_Text1$select_Language"
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_LineUpImage$All$LeftPanelAll$Glass_Left$Header$Select_Language"
 						+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
 				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"PLAYING XI","", null, 1,foreignLanguageDataList);
 				foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata," - ","", null, 2,foreignLanguageDataList);
