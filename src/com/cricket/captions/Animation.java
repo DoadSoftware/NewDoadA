@@ -284,6 +284,7 @@ public class Animation
 			if(this.infobar.isInfobar_on_screen() == true && !this.infobar.isInfobar_pushed()) {
 				if(infobar.isFreeHit_on_screen() == false) {
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Disruptives", "START");
+					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$DisruptiveCharacters", "START");
 					infobar.setFreeHit_on_screen(true);
 				}else if(infobar.isFreeHit_on_screen() == true) {
 					processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Disruptives", "CONTINUE");
@@ -322,34 +323,41 @@ public class Animation
 		case "s": case "f": case "w": case "0": case "9": case ".": case "Control_F8":
 			switch(whatToProcess.split(",")[0]) {
 			case "s":
+				TeamName = caption.this_infobarGfx.inning.getBatting_team().getTeamBadge();
+				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("s") ? "SIX" : "FOUR");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				break;
 			case "f":
+				TeamName = caption.this_infobarGfx.inning.getBatting_team().getTeamBadge();
+				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("s") ? "SIX" : "FOUR");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 				break;	
 			case "w":
+				TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
+				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT-TRICK");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 4\0", print_writers);
 				break;
 			case "0":
+				TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
+				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT-TRICK");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				break;
 			case "9":
+				TeamName = "EVENT";
+				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "NO BALL" : "WIDE");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 8\0", print_writers);
 				break;
 			case ".":
+				TeamName = "EVENT";
+				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "NO BALL" : "WIDE");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 				break;
-			
-			case "Control_F8":
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
-						+ "*FUNCTION*Omo*vis_con SET 6\0", print_writers);
-				break;	
 			}
 			
 			for(int i=1;i<=10;i++) {

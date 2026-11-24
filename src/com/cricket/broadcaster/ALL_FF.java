@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.ArrayList;
@@ -42,6 +45,7 @@ import com.cricket.model.VariousText;
 import com.cricket.service.CricketService;
 import com.cricket.util.CricketFunctions;
 import com.cricket.util.CricketUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ALL_FF 
 {
@@ -22244,6 +22248,45 @@ public class ALL_FF
 		return Constants.OK;
 	}
 	
+	public String BeltBody(List<PrintWriter> print_writers, String whatToProcess, int WhichSide, MatchAllData matchAllData, Configuration config) throws InterruptedException {
+		
+		String match_name = "1";
+		try {
+			
+			switch(WhichProfile.toUpperCase()) {
+			case "GREEN_BELT":
+				match_name = "1";
+				break;
+			case "WHITE_BELT":
+				match_name = "2";
+				break;
+			case "RED_BELT":
+				match_name = "3";
+				break;
+			case "BLUE_BELT":
+				match_name = "4";
+				break;	
+			}
+			
+            HttpURLConnection conn = (HttpURLConnection) new URL("https://dz8zbd8amw7pd.cloudfront.net/ILT20/feeds/Comp/3472/LeaderBoard" + match_name + ".json").openConnection();
+            conn.setRequestMethod("GET");
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                try (InputStream in = conn.getInputStream()) {
+                    new ObjectMapper()
+                        .writerWithDefaultPrettyPrinter()
+                        .writeValue(new File("C:\\Sports\\Cricket\\PREDICTOR.json"), new ObjectMapper().readTree(in));
+                }
+                System.out.println("Saved JSON to: " + "C:\\Sports\\Cricket\\PREDICTOR.json");
+            } else {
+                System.err.println("Error: HTTP " + conn.getResponseCode());
+            }
+
+            conn.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return Constants.OK;
+	}
 	public String SquadBody(List<PrintWriter> print_writers, String whatToProcess, int WhichSide, MatchAllData matchAllData, Configuration config) throws InterruptedException {
 		
 		switch (config.getBroadcaster()) {	

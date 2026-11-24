@@ -1816,6 +1816,22 @@ public class FullFramesGfx
 			return status;
 		}
 	}
+	public String populateBelt(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception 
+	{
+		this_ALL_FF.WhichProfile = whatToProcess.split(",")[2];
+		
+		status = PopulateFfHeader(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
+		if(status == Constants.OK) {
+			status = PopulateFfBody(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
+			if(status == Constants.OK) {
+				return PopulateFfFooter(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
+			} else {
+				return status;
+			}
+		} else {
+			return status;
+		}
+	}
 	public String PopulateFfBody(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception {
 		switch(whatToProcess) {
 		case "F1":
@@ -1931,7 +1947,9 @@ public class FullFramesGfx
 		case "Alt_k": case "Control_Shift_F8":
 			return this_ALL_FF.LeaderBoardBody(print_writers, WhichSide,whatToProcess, config, matchAllData, inning);
 		case "Shift_P": case "Shift_Q":
-			return this_ALL_FF.ThisSeriesBody(print_writers, WhichSide,whatToProcess, config, matchAllData, inning);	
+			return this_ALL_FF.ThisSeriesBody(print_writers, WhichSide,whatToProcess, config, matchAllData, inning);
+		case "Control_F8":
+			return this_ALL_FF.BeltBody(print_writers, whatToProcess, WhichSide, matchAllData, config);	
 		}
 		return Constants.OK;
 	}
