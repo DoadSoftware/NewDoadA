@@ -6476,7 +6476,6 @@ public class InfobarGfx
 		switch(config.getBroadcaster()) {
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
 		case Constants.ILT20:
-			System.out.println("config.getBroadcaster() ============ " + config.getBroadcaster());
 			populateSectionAnalytics(false,print_writers, matchAllData, WhichSide);
 			break;
 		case Constants.AFG_SERIES: case Constants.TEST_T20:
@@ -18761,7 +18760,7 @@ public class InfobarGfx
 					switch (config.getBroadcaster().toUpperCase()) {
 					case Constants.ILT20:
 						switch (WhichProfile.toUpperCase()) {
-						case "DT20": case "IT20": case "IT20_CAREER": case "ILT20_SEASON_4":
+						case "DT20": case "IT20": case "ILT20_CAREER": case "ILT20_SEASON_4":
 							statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase(WhichProfile)).findAny().orElse(null);
 							if(statsType == null) {
 								return "InfoBarPlayerProfile: Stats Type not found for profile [" + WhichProfile + "]";
@@ -18787,7 +18786,7 @@ public class InfobarGfx
 //									stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);
 								}
 								break;
-							case "IT20_CAREER":
+							case "ILT20_CAREER":
 								statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 								stat.setStats_type(statsType);
 								stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
@@ -21958,7 +21957,7 @@ public class InfobarGfx
 						stat.setStats_type(statsType);
 						break;
 					case "ILT20_CAREER":
-						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("ILT20_CAREER")).findAny().orElse(null);
+						statsType = statsTypes.stream().filter(st -> st.getStatsShortName().equalsIgnoreCase("DT20")).findAny().orElse(null);
 						stat.setStats_type(statsType);
 						stat = CricketFunctions.updateTournamentWithH2h(stat, headToHead, matchAllData, CricketUtil.FULL);
 						stat = CricketFunctions.updateStatisticsWithMatchData(stat, matchAllData, CricketUtil.FULL);

@@ -1234,26 +1234,28 @@ function addItemsToList(whatToProcess,dataToProcess)
 		    setDropdownOptionToSelectOptionArray($(selectionsIn), 2);
 		    cellCount++;
 		    
-		    if($('#selected_broadcaster').val() == 'MT20'){
+			switch($('#selected_broadcaster').val()){
+			case 'MT20': case 'ILT20':
 				select = document.createElement('select');
 				select.id = 'selectPhotoImpact';
 				select.name = select.id;
-		
+				
+				option = document.createElement('option');
+				option.value = 'WITH_PHOTO';
+				option.text = 'WITH PHOTO' ;
+				select.appendChild(option);
+
 				option = document.createElement('option');
 				option.value = 'WITHOUT_PHOTO';
 				option.text = 'WITHOUT PHOTO' ;
 				select.appendChild(option);
 								
-				option = document.createElement('option');
-				option.value = 'WITH_PHOTO';
-				option.text = 'WITH PHOTO' ;
-				select.appendChild(option);
-				
 				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 3)");
 				row.insertCell(cellCount).appendChild(select);
 				setDropdownOptionToSelectOptionArray($(select),3);
 				removeSelectDuplicates(select.id);
 				cellCount = cellCount + 1;
+				break;	
 			}
 		    break;
 		case 'Alt_z':

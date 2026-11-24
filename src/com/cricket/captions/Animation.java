@@ -10918,6 +10918,15 @@ public class Animation
 									+ "TRANSFORMATION*POSITION*X SET 0.0 \0",print_writer);
 						}
 						break;
+					case "Shift_I":
+						if(this.infobar.isInfobar_on_screen() == true) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+								+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writer);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+									+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
+						}
+						break;
 					case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
 					case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
 						if(this.infobar.isInfobar_on_screen() == true) {
@@ -10951,6 +10960,9 @@ public class Animation
 					case "F8": case "Alt_F8": case "F10":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_NameSuper$In_Out$Essentials$In 1.780 anim_LT_NameSuper$In_Out$Base$In 1.300 "
 								+ "anim_LT_NameSuper$In_Out$Title$In 1.600 anim_LT_NameSuper$In_Out$Subline$In 1.500";
+						break;
+					case "Shift_I":
+						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_Impact_Sub$In_Out$In 1.780";
 						break;
 					case "F7": case "F11":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LowerThird$In_Out$Essentials$In 1.780 anim_LowerThird$In_Out$Base$In 1.300 "

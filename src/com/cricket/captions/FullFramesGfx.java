@@ -1944,6 +1944,7 @@ public class FullFramesGfx
 		case "Shift_P": case "Shift_Q":	case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y":
 		case "Alt_Shift_W": case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z":
 		case "Alt_k": case "Control_Shift_F8": case "Alt_Shift_!": case "Alt_Shift_I": case "Alt_Shift_U":  case "Shift_F8": case "Control_3": case "Control_8":
+		case "Control_Shift_F2":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateHeader(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
@@ -1960,7 +1961,7 @@ public class FullFramesGfx
 		case "Shift_K": case "Control_F10": case "Shift_F10": case "Control_Shift_F7": case "Alt_F9": case "Alt_F11": case "Control_F1":
 		case "Shift_F11": case "Control_Alt_F1": case "Alt_Shift_F1": case "Control_p": case "Control_Shift_F4": case "Control_Shift_F5":
 		case "Shift_T": case "Control_Shift_F1": case "Control_Shift_D": case "Alt_z": case "Alt_k": case "z": case "x": case "c": case "v": 
-		case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Control_Shift_F8":
+		case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": case "Control_Shift_F8": case "Control_Shift_F2":
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.BCCI:
 				return this_FC_FF.populateFooter(print_writers, WhichSide, whatToProcess, matchAllData, inning, config, multilanguagedata, 
