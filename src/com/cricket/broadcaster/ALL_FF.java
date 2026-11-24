@@ -5945,7 +5945,10 @@ public class ALL_FF
 						
 						foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
 					}else {
-						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,statsType.getStatsFullName().toUpperCase(), "", null, 1, foreignLanguageDataList);
+						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,
+								(statsType.getStatsFullName().toUpperCase().equalsIgnoreCase("DOMESTIC T20") ? "T20" : 
+								statsType.getStatsFullName().toUpperCase().equalsIgnoreCase("INTERNATIONAL T20") ? "IT20" : 
+								statsType.getStatsFullName().toUpperCase()), "", null, 1, foreignLanguageDataList);
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,"-", "", null, 2, foreignLanguageDataList);
 						foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata,WhichStyle.toUpperCase(), "", null, 3, foreignLanguageDataList);
 						

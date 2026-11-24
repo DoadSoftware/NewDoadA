@@ -265,6 +265,10 @@ public class Animation
 			
 		case "i":
 			TeamName = "EVENT";
+			
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
+					+ "*FUNCTION*Omo*vis_con SET 7\0", print_writers);
+			
 			for(int i=1;i<=10;i++) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$DisruptiveAnimations$noname$img_Text_Highlight$Text_"
 						+ i + "$txt_Text*GEOM*TEXT SET " + "FREE-HIT" + "\0", print_writers);
@@ -307,44 +311,40 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Disruptives", "CONTINUE");
 			}
 			break;
-		case "s": case "f": case "w": case "0": case "9": case ".":
+		case "s": case "f": case "w": case "0": case "9": case ".": case "Control_F8": case "Alt_/":
 			switch(whatToProcess.split(",")[0]) {
 			case "s":
-				TeamName = caption.this_infobarGfx.inning.getBatting_team().getTeamBadge();
-				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("s") ? "SIX" : "FOUR");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				break;
 			case "f":
-				TeamName = caption.this_infobarGfx.inning.getBatting_team().getTeamBadge();
-				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("s") ? "SIX" : "FOUR");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 				break;	
 			case "w":
-				TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
-				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT-TRICK");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 4\0", print_writers);
 				break;
 			case "0":
-				TeamName = caption.this_infobarGfx.inning.getBowling_team().getTeamBadge();
-				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("w") ? "WICKET" : "HAT-TRICK");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				break;
 			case "9":
-				TeamName = "EVENT";
-				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "NO BALL" : "WIDE");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
-						+ "*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+						+ "*FUNCTION*Omo*vis_con SET 8\0", print_writers);
 				break;
 			case ".":
-				TeamName = "EVENT";
-				Data = (whatToProcess.split(",")[0].equalsIgnoreCase("9") ? "NO BALL" : "WIDE");
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
 						+ "*FUNCTION*Omo*vis_con SET 3\0", print_writers);
 				break;
+			case "Alt_/":
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
+						+ "*FUNCTION*Omo*vis_con SET 5\0", print_writers);
+				break;
+			case "Control_F8":
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Disruptive+Characters$select_Event"
+						+ "*FUNCTION*Omo*vis_con SET 6\0", print_writers);
+				break;	
 			}
 			
 			for(int i=1;i<=10;i++) {
@@ -735,6 +735,10 @@ public class Animation
 			break;
 		case "Alt_F7":
 			processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable$In_Out", "START");
+			this.whichGraphicOnScreen = whatToProcess;
+			break;
+		case "Control_Shift_F10":
+			processAnimation(Constants.FRONT, print_writers, "Mini_Manhattan$In_Out", "START");
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
 			
@@ -5971,6 +5975,12 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable$In_Out", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
+			case "Control_Shift_F10":
+				processAnimation(Constants.FRONT, print_writers, "Mini_Manhattan$In_Out", "CONTINUE");
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "Mini_Manhattan$In_Out", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
 				
 // BUGS------------------------------------------------------------------------------------------------------------
 			case "Shift_O": case "Control_k": case "k": case "g": case "y": case "Control_y": case "h": case "Shift_F4": case "Shift_F":case "Alt_b": case "r":
@@ -9395,6 +9405,7 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "Mini_Manhattan", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor", "SHOW 0.0");
 				
@@ -10920,6 +10931,9 @@ public class Animation
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
+					case "Control_Shift_F10":
+						previewCommand = "Mini_Manhattan$In_Out 2.000 Mini_Manhattan$In_Out$In 2.140 Mini_Manhattan$In_Out$In$In 2.140";
+						break;
 					case "Control_Alt_F3": case "Alt_i":
 						previewCommand = "anim_InfoBar$Push 1.000 WinPredictor$In_Out 1.780 WinPredictor$In_Out$In 1.300";
 						break;
