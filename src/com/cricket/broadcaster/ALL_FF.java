@@ -20,6 +20,7 @@ import java.util.stream.IntStream;
 
 import com.cricket.captions.Constants;
 import com.cricket.containers.FullFrames;
+import com.cricket.containers.LeaderBoardPlayer;
 import com.cricket.controller.IndexController;
 import com.cricket.model.BattingCard;
 import com.cricket.model.BestStats;
@@ -47,12 +48,25 @@ import com.cricket.util.CricketFunctions;
 import com.cricket.util.CricketUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 public class ALL_FF 
 {
 	public int omo=0,rowId=0,Top_Score=50,whichInning,FirstPlayerId,numberOfRows = 0,rowId1 =0,plyr_count=0,whichTeam;
 	public double Mult=0,ScaleFac1=0,ScaleFac2=0;
 	public String containerName,how_out_txt="",Left_Batsman="",Right_Batsman="",WhichType,WhichProfile, containerName2, containerName1,
-			ImageType="",WhichStyle,WhichRoleAge,containerName_2,varText = "",whichtype = "",containerName_1,sponsor;
+			ImageType="",WhichStyle,WhichRoleAge,containerName_2,varText = "",whichtype = "",containerName_1,sponsor,Belt_name = "1",WhichBelt = "";
 	
 	public Player player;
 	public Team team,otherTeam;
@@ -92,6 +106,9 @@ public class ALL_FF
 	public List<ForeignLanguageData> foreignLanguageDataList;
 	public List<ForeignLanguageData> foreignLanguageData = new ArrayList<ForeignLanguageData>();
 	public List<ForeignLanguageData> foreignLanguageOmo = new ArrayList<ForeignLanguageData>();
+	
+	private static final HttpClient CLIENT = HttpClient.newHttpClient();
+	private static final ObjectMapper MAPPER = new ObjectMapper();
 	
 	public static String getOrdinalMatch(String matchNumber) {
 	    // matchNumber looks like "match 01"
@@ -22250,38 +22267,40 @@ public class ALL_FF
 	
 	public String BeltBody(List<PrintWriter> print_writers, String whatToProcess, int WhichSide, MatchAllData matchAllData, Configuration config) throws InterruptedException {
 		
-		String match_name = "1";
+		Belt_name = "1";
+		String fileName;
 		try {
-			
-			switch(WhichProfile.toUpperCase()) {
+			System.out.println("WhichBelt.toUpperCase() ===================== " + WhichBelt.toUpperCase());
+			switch(WhichBelt.toUpperCase()) {
 			case "GREEN_BELT":
-				match_name = "1";
+				Belt_name = "1";
 				break;
 			case "WHITE_BELT":
-				match_name = "2";
+				Belt_name = "2";
 				break;
 			case "RED_BELT":
-				match_name = "3";
+				Belt_name = "3";
 				break;
 			case "BLUE_BELT":
-				match_name = "4";
+				Belt_name = "4";
 				break;	
 			}
+			getLeaderBoard(Belt_name);
 			
-            HttpURLConnection conn = (HttpURLConnection) new URL("https://dz8zbd8amw7pd.cloudfront.net/ILT20/feeds/Comp/3472/LeaderBoard" + match_name + ".json").openConnection();
-            conn.setRequestMethod("GET");
-            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                try (InputStream in = conn.getInputStream()) {
-                    new ObjectMapper()
-                        .writerWithDefaultPrettyPrinter()
-                        .writeValue(new File("C:\\Sports\\Cricket\\PREDICTOR.json"), new ObjectMapper().readTree(in));
-                }
-                System.out.println("Saved JSON to: " + "C:\\Sports\\Cricket\\PREDICTOR.json");
-            } else {
-                System.err.println("Error: HTTP " + conn.getResponseCode());
-            }
+			switch (WhichBelt.toUpperCase()) {
+			    case "GREEN_BELT": fileName = "C:\\Sports\\Cricket\\LeaderBoard1.json"; break;
+			    case "WHITE_BELT": fileName = "C:\\Sports\\Cricket\\LeaderBoard2.json"; break;
+			    case "RED_BELT":   fileName = "C:\\Sports\\Cricket\\LeaderBoard3.json"; break;
+			    case "BLUE_BELT":  fileName = "C:\\Sports\\Cricket\\LeaderBoard4.json"; break;
+			    default: throw new IllegalArgumentException("Unknown belt: " + WhichBelt);
+			}
 
-            conn.disconnect();
+			List<LeaderBoardPlayer> players = LeaderBoardPlayer.readFile(fileName);
+
+			for (LeaderBoardPlayer p : players) {
+			    System.out.println(p.player + " " + p.runs + " " + p.getAnyPoints());
+			}
+			
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24228,7 +24247,7 @@ public class ALL_FF
 				
 				if(PlayingXI.get(rowId1).getCaptainWicketKeeper() != null && 
 						!PlayingXI.get(rowId1).getCaptainWicketKeeper().equalsIgnoreCase("captain")) {
-					role = "KEEPER";
+					role = "BAT/WK";
 				}else {
 					if(PlayingXI.get(rowId1).getRole().equalsIgnoreCase("BATSMAN") || 
 							PlayingXI.get(rowId1).getRole().equalsIgnoreCase("BAT/KEEPER")) {
@@ -27546,6 +27565,39 @@ public class ALL_FF
 	    }
 
 	    return "";
+	}
+	public JsonNode getLeaderBoard(String beltName) throws Exception {
+	    String url = "https://dz8zbd8amw7pd.cloudfront.net/ILT20/feeds/Comp/3472/LeaderBoard" + beltName + ".json";
+	    Path folder = Paths.get("C:\\Sports\\Cricket");
+	    Path file = folder.resolve("LeaderBoard" + beltName + ".json");
+	    Path tmp = folder.resolve("LeaderBoard" + beltName + ".json.tmp");
+
+	    Files.createDirectories(folder);
+
+	    // Step 1: download and save to folder
+	    HttpRequest request = HttpRequest.newBuilder()
+	            .uri(URI.create(url))
+	            .header("Accept", "application/json")
+	            .header("User-Agent", "Mozilla/5.0")
+	            .GET()
+	            .build();
+
+	    HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
+	    if (response.statusCode() != 200) {
+	        throw new RuntimeException("HTTP " + response.statusCode());
+	    }
+
+	    String body = response.body().trim();
+	    // strip JSONP wrapper if present
+	    if (!body.startsWith("{") && !body.startsWith("[")) {
+	        body = body.substring(body.indexOf('(') + 1, body.lastIndexOf(')'));
+	    }
+
+	    Files.writeString(tmp, body, StandardCharsets.UTF_8);
+	    Files.move(tmp, file, StandardCopyOption.REPLACE_EXISTING);
+
+	    // Step 2: read from the saved file
+	    return MAPPER.readTree(Files.readString(file, StandardCharsets.UTF_8));
 	}
 }
 	

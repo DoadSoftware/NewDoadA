@@ -10957,7 +10957,7 @@ public class Animation
 						previewCommand = "Mini_Manhattan$In_Out 2.000 Mini_Manhattan$In_Out$In 2.140 Mini_Manhattan$In_Out$In$In 2.140";
 						break;
 					case "Control_Alt_F3": case "Alt_i":
-						previewCommand = "anim_InfoBar$Push 1.000 WinPredictor$In_Out 1.780 WinPredictor$In_Out$In 1.300";
+						previewCommand = "anim_InfoBar$Push 1.000 WinPredictor$In_Out 1.600 WinPredictor$In_Out$In 1.600";
 						break;
 					case "Control_Shift_M": case "Control_Shift_L":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_MatchId$In_Out$In 2.440";

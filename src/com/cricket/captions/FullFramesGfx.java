@@ -1818,7 +1818,7 @@ public class FullFramesGfx
 	}
 	public String populateBelt(int WhichSide, String whatToProcess, MatchAllData matchAllData, int WhichInning) throws Exception 
 	{
-		this_ALL_FF.WhichProfile = whatToProcess.split(",")[2];
+		this_ALL_FF.WhichBelt = whatToProcess.split(",")[3];
 		
 		status = PopulateFfHeader(WhichSide, whatToProcess.split(",")[0], matchAllData, WhichInning);
 		if(status == Constants.OK) {

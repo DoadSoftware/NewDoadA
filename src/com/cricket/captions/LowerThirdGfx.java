@@ -6124,31 +6124,48 @@ public class LowerThirdGfx
 			break;
 		}
 		
-		for (int j = 1; j < manhattan.size(); j++) {
-			if(manhattan.get(j).getInningNumber() == WhichInning) {
-				if(Integer.valueOf(manhattan.get(j).getOverTotalRuns()) > maxRuns){
-					maxRuns = Integer.valueOf(manhattan.get(j).getOverTotalRuns()); // 33 runs came off 34th over
-				}
-				while (maxRuns % 3 != 0) {     // 5 label in y-axis
-			 		maxRuns = maxRuns + 1;    // keep incrementing till max runs is divisible by 5. maxRuns = 35
+		switch(config.getBroadcaster()) {
+		case Constants.ILT20:
+			for (int j = 1; j < manhattan.size(); j++) {
+				if(manhattan.get(j).getInningNumber() == WhichInning) {
+					if(Integer.valueOf(manhattan.get(j).getOverTotalRuns()) > maxRuns){
+						maxRuns = Integer.valueOf(manhattan.get(j).getOverTotalRuns()); // 33 runs came off 34th over
+					}
+					while (maxRuns % 5 != 0) {     // 5 label in y-axis
+				 		maxRuns = maxRuns + 1;    // keep incrementing till max runs is divisible by 5. maxRuns = 35
+					}
 				}
 			}
-		}
-		
-		for(int i = 1; i <= 5;i++) {
-			runsIncr = maxRuns / 5; // 35/5=7 -> Y axis will be plot like 6,12,18,24,30 & 36
 			
-			switch(config.getBroadcaster()) {
-			case Constants.ILT20:
+			for(int i = 1; i <= 5;i++) {
+				runsIncr = maxRuns / 5; // 35/5=7 -> Y axis will be plot like 6,12,18,24,30 & 36
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Mini_Manhattan$Data$Runs_Axis$Runs_Data$txt_" + i + 
 						"*GEOM*TEXT SET " + runsIncr*(i) + "\0", print_writers);
-				break;	
-			default:
+			}
+			break;	
+		default:
+			for (int j = 1; j < manhattan.size(); j++) {
+				if(manhattan.get(j).getInningNumber() == WhichInning) {
+					if(Integer.valueOf(manhattan.get(j).getOverTotalRuns()) > maxRuns){
+						maxRuns = Integer.valueOf(manhattan.get(j).getOverTotalRuns()); // 33 runs came off 34th over
+					}
+					while (maxRuns % 3 != 0) {     // 5 label in y-axis
+				 		maxRuns = maxRuns + 1;    // keep incrementing till max runs is divisible by 5. maxRuns = 35
+					}
+				}
+			}
+			
+			for(int i = 1; i <= 3;i++) {
+				runsIncr = maxRuns / 3; // 35/5=7 -> Y axis will be plot like 6,12,18,24,30 & 36
+				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Manhattan$BarAll$Runs_Axis$Runs_Data$txt_" + i + 
 						"*GEOM*TEXT SET " + runsIncr*(i) + "\0", print_writers);
-				break;
 			}
+			break;
 		}
+		
+		
 		
 		switch(config.getBroadcaster()) {
 		case Constants.ILT20:
