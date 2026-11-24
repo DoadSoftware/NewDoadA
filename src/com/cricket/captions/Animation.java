@@ -11526,7 +11526,7 @@ public class Animation
 			switch (config.getBroadcaster().toUpperCase()) {
 			case Constants.ILT20:
 				switch(whatToProcess.split(",")[0]) {
-				case "Shift_F1": case "Shift_F2":
+				case "Shift_F1": case "Shift_F2": case "Alt_F1": case "Alt_F2":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 							+ "Mini$In_Out 2.100 Mini$In_Out$In 2.021\0", print_writer);
 					TimeUnit.MILLISECONDS.sleep(500);

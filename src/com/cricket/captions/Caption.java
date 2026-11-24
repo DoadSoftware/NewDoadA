@@ -502,7 +502,7 @@ public class Caption
 					status = this_lowerThirdGfx.PopulateBatBallGriff(whatToProcess,whichSide, matchAllData);
 					break;
 				case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20: 
-				case Constants.AFG_SERIES:
+				case Constants.AFG_SERIES: case Constants.ILT20:
 					status = this_bugsAndMiniGfx.populateGriff(whatToProcess,whichSide, matchAllData);
 					break;	
 				}
