@@ -23194,7 +23194,7 @@ public class ALL_FF
 				
 				if(PlayingXI.get(rowId1).getCaptainWicketKeeper() != null && 
 						!PlayingXI.get(rowId1).getCaptainWicketKeeper().equalsIgnoreCase("captain")) {
-					role = "KEEPER";
+					role = "BAT/WK";
 				}else {
 					if(PlayingXI.get(rowId1).getRole().equalsIgnoreCase("BATSMAN") || 
 							PlayingXI.get(rowId1).getRole().equalsIgnoreCase("BAT/KEEPER")) {
