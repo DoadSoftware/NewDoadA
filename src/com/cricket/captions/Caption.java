@@ -167,7 +167,7 @@ public class Caption
 				break;
 			case "Control_Shift_F1":
 				switch (config.getBroadcaster().toUpperCase()) {
-				case Constants.AFG_SL_SERIES: case Constants.AFG_SERIES:
+				case Constants.AFG_SL_SERIES: case Constants.AFG_SERIES: case Constants.ILT20:
 					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
 					this_fullFramesGfx.this_ALL_FF.WhichType = whatToProcess.split(",")[3];
 					this_fullFramesGfx.this_ALL_FF.Players = Players;
@@ -211,18 +211,29 @@ public class Caption
 			    		Integer.valueOf(whatToProcess.split(",")[1]));
 				break;
 			case "Control_Shift_F2":
-				if(this_anim.whichGraphicOnScreen.isEmpty() || this_anim.whichGraphicOnScreen.equalsIgnoreCase("F2")) {
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ILT20:
 					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
 					this_fullFramesGfx.this_ALL_FF.WhichType = whatToProcess.split(",")[3];
 					this_fullFramesGfx.this_ALL_FF.Players = Players;
-					if(!this_anim.whichGraphicOnScreen.equalsIgnoreCase("F2")) {
-						status = this_fullFramesGfx.PopulateBowlingCardFF(whichSide, "F2", matchAllData, Integer.valueOf(whatToProcess.split(",")[1]));
+					status = this_fullFramesGfx.PopulateBowlingCardBallPerformerFF(whichSide, whatToProcess.split(",")[0], matchAllData, 
+				    		Integer.valueOf(whatToProcess.split(",")[1]));
+					break;
+				default:
+					if(this_anim.whichGraphicOnScreen.isEmpty() || this_anim.whichGraphicOnScreen.equalsIgnoreCase("F2")) {
+						this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf(whatToProcess.split(",")[2]);
+						this_fullFramesGfx.this_ALL_FF.WhichType = whatToProcess.split(",")[3];
+						this_fullFramesGfx.this_ALL_FF.Players = Players;
+						if(!this_anim.whichGraphicOnScreen.equalsIgnoreCase("F2")) {
+							status = this_fullFramesGfx.PopulateBowlingCardFF(whichSide, "F2", matchAllData, Integer.valueOf(whatToProcess.split(",")[1]));
+						}
+						status = this_fullFramesGfx.PopulateBallPerformerFF(whichSide, whatToProcess.split(",")[0], matchAllData, 
+							Integer.valueOf(whatToProcess.split(",")[1]));
+					} else {
+						status = "Ball performer is available on blank screen or when FF bowling card is on screen";
 					}
-					status = this_fullFramesGfx.PopulateBallPerformerFF(whichSide, whatToProcess.split(",")[0], matchAllData, 
-						Integer.valueOf(whatToProcess.split(",")[1]));
-				} else {
-					status = "Ball performer is available on blank screen or when FF bowling card is on screen";
 				}
+				
 				break;	
 			case "F4": //All Partnership
 				switch (config.getBroadcaster().toUpperCase()) {
