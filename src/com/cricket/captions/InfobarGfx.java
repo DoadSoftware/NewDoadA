@@ -19659,7 +19659,7 @@ public class InfobarGfx
 					break;
 				case "PHASE_WISE_SCORE": case "PHASE_WISE_RUNRATE":
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide 
-							+ "$Select_DataType*FUNCTION*Omo*vis_con SET 7\0", print_writers);
+							+ "$Select_DataType*FUNCTION*Omo*vis_con SET 9\0", print_writers);
 					
 					if(inning.getInningNumber()==1) {
 						phaseWiseScore = IndexController.MatchStats.getHomeFirstPowerPlay().getTotalRuns()+","+IndexController.MatchStats.getHomeFirstPowerPlay().getTotalWickets()+"_"+
