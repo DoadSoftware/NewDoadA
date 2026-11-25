@@ -1878,6 +1878,16 @@ function addItemsToList(whatToProcess,dataToProcess)
 						option.value = 'THIS_SERIES';
 						option.text = 'THIS SERIES';
 						select.appendChild(option);
+						
+						option = document.createElement('option');
+						option.value = 'ILT20_BOUNDARY_CAREER';
+						option.text = 'ILT20 BOUNDARY CAREER';
+						select.appendChild(option);
+
+						option = document.createElement('option');
+						option.value = 'ILT20_BOUNDARY';
+						option.text = 'THIS SEASON BOUNDARY';
+						select.appendChild(option);
 						break;
 					}
 					break;	
@@ -4251,7 +4261,9 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'TIMELINE', text: 'TimeLine' },
 					  { value: 'PHASE_WISE_SCORE', text: 'PhaseWise Score' },
 					  { value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise Run-Rates' },
-					  //{ value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
+					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
+					  { value: 'BowlerTimeLine', text: 'Bowler TimeLine' },
+					  { value: 'BATSMANBOUNDARY', text: 'BATSMAN BOUNDARY' },
 					  { value: 'BatMileStone', text: 'Batter MileStone' },
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
 					];

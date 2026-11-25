@@ -687,7 +687,7 @@ public class Animation
 			}
 			break;
 			
-		case "F7": case "F11":
+		case "F7": case "F11": case "Control_s": case "Control_f":
 			if(this.infobar.isInfobar_on_screen() == true) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_ScoreBug*"
 					+ "TRANSFORMATION*POSITION*X SET 420.0 \0",print_writers);
@@ -5943,7 +5943,7 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 				
-			case "F7": case "F11":
+			case "F7": case "F11": case "Control_s": case "Control_f":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$In_Out", "CONTINUE");
 				
 				if(infobar.getInfobar_status() != null) {
@@ -6237,7 +6237,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper$Change", "START");
 				break;
 				
-			case "F7": case "F11":
+			case "F7": case "F11": case "Control_s": case "Control_f":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Base", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Title", "START");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$TitleInfo", "START");
@@ -7808,7 +7808,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper$Change", "SHOW 0.0");
 				break;
 				
-			case "F7": case "F11":
+			case "F7": case "F11": case "Control_s": case "Control_f":
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Base", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$Title", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LowerThird$Change$TitleInfo", "SHOW 0.0");
@@ -10917,7 +10917,7 @@ public class Animation
 									+ "TRANSFORMATION*POSITION*X SET 0.0 \0",print_writer);
 						}
 						break;
-					case "F7": case "F11":
+					case "F7": case "F11": case "Control_s": case "Control_f":
 						if(this.infobar.isInfobar_on_screen() == true) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$Position_ScoreBug*"
 								+ "TRANSFORMATION*POSITION*X SET 340.0 \0",print_writer);
@@ -10972,7 +10972,7 @@ public class Animation
 					case "Shift_I":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_Impact_Sub$In_Out$In 1.780";
 						break;
-					case "F7": case "F11":
+					case "F7": case "F11": case "Control_s": case "Control_f":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LowerThird$In_Out$Essentials$In 1.780 anim_LowerThird$In_Out$Base$In 1.300 "
 								+ "anim_LowerThird$In_Out$Title$In 1.600 anim_LowerThird$In_Out$Info$In 1.500 anim_LowerThird$In_Out$Subline$In 1.500 "
 								+ "anim_LowerThird$Dynamic_ForSubLine 0.500 anim_LowerThird$ChangeForLeftInfo 0.500";
@@ -11185,7 +11185,7 @@ public class Animation
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_NameSuper$Change 0.500 anim_LT_NameSuper$Change$Base 0.500 "
 								+ "anim_LT_NameSuper$Change$Title 0.500 anim_LT_NameSuper$Change$SubLine 0.500";
 						break;
-					case "F7": case "F11":
+					case "F7": case "F11": case "Control_s": case "Control_f":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LowerThird$Change$Base 0.500 anim_LowerThird$Change$Title 0.500 "
 								+ "anim_LowerThird$Change$TitleInfo 0.500 anim_LowerThird$Change$Info 0.500 anim_LowerThird$Change$SubLine 0.500 "
 								+ "anim_LowerThird$Dynamic_ForSubLine 0.500";

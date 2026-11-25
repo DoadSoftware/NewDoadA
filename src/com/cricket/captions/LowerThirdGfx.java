@@ -257,7 +257,7 @@ public class LowerThirdGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + whichSide 
 						+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				break;
-			case "F5": case "F9": case "Control_F5": case "Control_F9": case "Shift_F5": case "Shift_F9": case "F7": case "F11":
+			case "F5": case "F9": case "Control_F5": case "Control_F9": case "Shift_F5": case "Shift_F9": case "F7": case "F11": case "Control_s": case "Control_f":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + whichSide 
 						+ "$Imapct$select_Impact*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 				impactType = CricketFunctions.checkBatAndBallImpactInOutPlayer(matchAllData.getEventFile().getEvents(), playerId);
@@ -3323,7 +3323,7 @@ public class LowerThirdGfx
 		if(addPastDataToCurr == null) {
 			return "addPastDataToCurr is Null";
 		}
-		System.out.println("HElllo");
+		
 		for(Tournament tourn : addPastDataToCurr) {
 			for(BestStats bs : tourn.getBatsman_best_Stats()) {
 				top_batsman_beststats.add(bs);
@@ -3368,7 +3368,7 @@ public class LowerThirdGfx
 					best = "-";
 				}
 			}
-			System.out.println("tournament-------------------------"+best);
+			
 			if(CricketFunctions.generateStrikeRate(tournament.getRuns(), 
 					tournament.getBallsFaced(), 1).trim().isEmpty()) {
 				bat_sr = "-"; 
@@ -3401,6 +3401,12 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,
+						"THIS SEASON", "", "", 2,player.getNationality(),team.getTeamBadge(),new String[]{"MATCHES", "RUNS", "50s/100s", "STRIKE RATE", "BEST"},
+						new String[]{String.valueOf(tournament.getMatches()), String.format("%,d\n", tournament.getRuns()) , fifties + " / " + hundred, bat_sr, best},null,null,
+						new String[] {"0","150","300","500","650"});
+				break;
 			case Constants.TEST_T20:
 				lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),CricketUtil.FULL, true, false).toUpperCase(), tournament.getPlayer().getFirstname(), surName, 
 						"THIS SEASON", "", "", 2, "",teamName, new String[]{"MATCHES", "RUNS", "50s / 100s", "AVERAGE", "BEST"},new String[]{String.valueOf(tournament.getMatches()), 
@@ -3484,6 +3490,13 @@ public class LowerThirdGfx
 			}
 			
 			switch (config.getBroadcaster().toUpperCase()) {
+			case Constants.ILT20:
+				lowerThird = new LowerThird(CricketFunctions.getbattingstyle(player.getBattingStyle(),CricketUtil.FULL, true, false).toUpperCase(), player.getFirstname(), surName,
+						"THIS SEASON", "", "", 2,player.getNationality(),team.getTeamBadge(),new String[]{"MATCHES", "WICKETS", "3WI/5WI", "ECONOMY", "BEST"},
+						new String[]{String.valueOf(tournament.getMatches()), String.valueOf(tournament.getWickets()),(tournament.getThreeWicketHaul() == 0 && tournament.getFiveWicketHaul() == 0 ? 
+						"-" : (tournament.getThreeWicketHaul() != 0 ? String.valueOf(tournament.getThreeWicketHaul()) : "-") + "/" + (tournament.getFiveWicketHaul() != 0 ? 
+						String.valueOf(tournament.getFiveWicketHaul()) : "-")),economy,best},null,null,new String[] {"0","150","300","500","650"});
+				break;
 			case Constants.TEST_T20:
 				lowerThird = new LowerThird(CricketFunctions.getbowlingstyle(player.getBowlingStyle()).toUpperCase(), tournament.getPlayer().getFirstname(), surName, "THIS SEASON", 
 						"", "", 2, "",teamName, new String[]{"MATCHES", "WICKETS", "3WI/5WI", "ECONOMY", "BEST"},new String[]{String.valueOf(tournament.getMatches()),
@@ -7177,7 +7190,7 @@ public class LowerThirdGfx
 	    switch (config.getBroadcaster().toUpperCase()) {
 	    case Constants.ILT20:
 	    	switch(whatToProcess) {
-	    	case "F5": case "F9": case "Control_F5": case "Control_F9": case "Shift_F5": case "Shift_F9": case "F7": case "F11":
+	    	case "F5": case "F9": case "Control_F5": case "Control_F9": case "Shift_F5": case "Shift_F9": case "F7": case "F11": case "Control_s": case "Control_f":
 	    		
 	    		CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$TitleGrp$TitleAll$PositionX$Side" + WhichSide + 
 						"$Flag$img_Flag*ACTIVE SET 1\0", print_writers);
@@ -12457,7 +12470,7 @@ public class LowerThirdGfx
 //				break;
 			case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
 			case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12": case "F7": case "F11":
-			case "Control_Shift_Q":
+			case "Control_Shift_Q": case "Control_s": case "Control_f":
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$InfoBase_Out$Side" + whichSide + "$img_Base3"
 						+ "*TEXTURE*IMAGE SET " + Constants.ILT20_BASE3 + lowerThird.getWhichTeamFlag() + "\0", print_writers);
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide + "$img_Text3"
@@ -14239,7 +14252,7 @@ public class LowerThirdGfx
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
 					"$BottomText*ACTIVE SET 0 \0", print_writers);
 			break;
-		case "F7": case "F11":
+		case "F7": case "F11": case "Control_s": case "Control_f":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
 					"$TopText*ACTIVE SET 1 \0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
@@ -14247,8 +14260,6 @@ public class LowerThirdGfx
 			
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide +
 					"$TopText$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.TG20, print_writers, foreignLanguageOmo);
-			
-			System.out.println("lowerThird.getSubTitle() - " + lowerThird.getSubTitle());
 			
 			if(lowerThird.getSubTitle().equalsIgnoreCase("DT20")) {
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
@@ -14259,6 +14270,9 @@ public class LowerThirdGfx
 			}else if(lowerThird.getSubTitle().equalsIgnoreCase("ILT20_CAREER") || lowerThird.getSubTitle().equalsIgnoreCase("ILT20_SEASON_4")){
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
 						"DP WORLD ILT20", "", null, 0, foreignLanguageDataList);
+			}else if(lowerThird.getSubTitle().equalsIgnoreCase("THIS SEASON")){
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						"", "", null, 0, foreignLanguageDataList);
 			}
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide + 
 					"$TopText$English$txt_Text*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
@@ -14269,6 +14283,9 @@ public class LowerThirdGfx
 			if(lowerThird.getSubTitle().equalsIgnoreCase("ILT20_SEASON_4")){
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
 						"SEASON 4", "", null, 0, foreignLanguageDataList);
+			}else if(lowerThird.getSubTitle().equalsIgnoreCase("THIS SEASON")){
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+						"THIS SEASON", "", null, 0, foreignLanguageDataList);
 			}else {
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
 						"CAREER", "", null, 0, foreignLanguageDataList);
@@ -14279,7 +14296,7 @@ public class LowerThirdGfx
 		}
 		
 		switch(whatToProcess) {
-		case "F5": case "F9": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "F7": case "F11":
+		case "F5": case "F9": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "F7": case "F11": case "Control_s": case "Control_f":
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
 					"$select_Subline$2$Title*ACTIVE SET 0 \0", print_writers);
 			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$SublineGrp$Rows$Side" + whichSide +
