@@ -614,7 +614,46 @@ public class Animation
 			processAnimation(Constants.FRONT, print_writers, "anim_LT_MatchId$In_Out", "START");
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
+		case "Control_Shift_B":
+			if(this.infobar.isInfobar_on_screen() == true) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$Position_ScoreBug*"
+					+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writers);
+			}else {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$Position_ScoreBug*"
+						+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writers);
+			}
 			
+			if(infobar.getInfobar_status() != null) {
+				if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+					AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+					TimeUnit.MILLISECONDS.sleep(1000);
+					infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+				}
+			}
+			
+			processAnimation(Constants.FRONT, print_writers, "anim_NextToBat$In_Out", "START");
+			this.whichGraphicOnScreen = whatToProcess;
+			break;
+		case "Control_Shift_O":
+			if(this.infobar.isInfobar_on_screen() == true) {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
+					+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writers);
+			}else {
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
+						+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writers);
+			}
+			
+			if(infobar.getInfobar_status() != null) {
+				if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+					AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+					TimeUnit.MILLISECONDS.sleep(1000);
+					infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+				}
+			}
+			
+			processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI$In_Out", "START");
+			this.whichGraphicOnScreen = whatToProcess;
+			break;	
 		case "F6": case "Shift_F6": case "Control_F6":
 			if(this.infobar.isInfobar_on_screen() == true) {
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_HowOut$Position_ScoreBug*"
@@ -5904,7 +5943,36 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_MatchId", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
+			case "Control_Shift_B":
+				processAnimation(Constants.FRONT, print_writers, "anim_NextToBat$In_Out", "CONTINUE");
 				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						TimeUnit.MILLISECONDS.sleep(1000);
+						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
+						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
+					}
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "anim_NextToBat$In_Out", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+			case "Control_Shift_O":
+				processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI$In_Out", "CONTINUE");
+				
+				if(infobar.getInfobar_status() != null) {
+					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+						TimeUnit.MILLISECONDS.sleep(1000);
+						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
+						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
+					}
+				}
+				
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI$In_Out", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;	
 			case "F6": case "Shift_F6": case "Control_F6":
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_HowOut$In_Out", "CONTINUE");
 				
@@ -9440,6 +9508,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI", "SHOW 0.0");
+
 				processAnimation(Constants.FRONT, print_writers, "anim_NextToBat", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
@@ -10940,6 +11009,24 @@ public class Animation
 									+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
 						}
 						break;
+					case "Control_Shift_O":
+						if(this.infobar.isInfobar_on_screen() == true) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
+								+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writer);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
+									+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
+						}
+						break;
+					case "Control_Shift_B":
+						if(this.infobar.isInfobar_on_screen() == true) {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$Position_ScoreBug*"
+								+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writer);
+						}else {
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NextToBat$Position_ScoreBug*"
+									+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
+						}
+						break;	
 					case "F8": case "Alt_F8": case "F10":
 						if(this.infobar.isInfobar_on_screen() == true) {
 							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_NameSuper$Position_ScoreBug*"
@@ -10994,6 +11081,12 @@ public class Animation
 					case "Control_Shift_M": case "Control_Shift_L":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_MatchId$In_Out$In 2.440";
 						break;
+					case "Control_Shift_B":
+						previewCommand = "anim_InfoBar$Push 1.000 anim_NextToBat$In_Out$In 1.780";
+						break;
+					case "Control_Shift_O":
+						previewCommand = "anim_InfoBar$Push 1.000 anim_PlayingXI$In_Out$In 1.780";
+						break;	
 					case "F6": case "Shift_F6": case "Control_F6":
 						previewCommand = "anim_InfoBar$Push 1.000 anim_LT_HowOut$In_Out$In 1.780";
 						break;

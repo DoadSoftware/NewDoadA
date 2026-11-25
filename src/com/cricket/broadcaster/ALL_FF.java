@@ -20827,8 +20827,14 @@ public class ALL_FF
 			
 //			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$txt_Age"
 //					+ "*GEOM*TEXT SET " + player.getAge() + "\0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
+					+ "*GEOM*TEXT SET \0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$Hindi$txt_FirstName"
+					+ "*GEOM*TEXT SET \0", print_writers);
 			
-			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$txt_Age"
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
+					+ "*GEOM*TEXT SET \0", print_writers);
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$Hindi$txt_FirstName"
 					+ "*GEOM*TEXT SET \0", print_writers);
 			
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4"
@@ -20840,18 +20846,23 @@ public class ALL_FF
 				if(player.getBattingStyle().equalsIgnoreCase("LHB")) {
 					which_role = "Batsman_Lefthand";
 					
-					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
-							"LHB", "", null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
-							+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+//					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+//							"LHB", "", null, 0, foreignLanguageDataList);
+//					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
+//							+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$txt_Age"
+							+ "*GEOM*TEXT SET LHB\0", print_writers);
 				}else {
 					which_role = "Bat_Icon";
 					
-					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
-							"RHB", "", null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
-							+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+//					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+//							"RHB", "", null, 0, foreignLanguageDataList);
+//					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
+//							+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$txt_Age"
+							+ "*GEOM*TEXT SET RHB\0", print_writers);
 				}
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$img_Icon*TEXTURE*IMAGE SET " 
@@ -20914,10 +20925,13 @@ public class ALL_FF
 					}
 				}
 				
-				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
-						player.getBowlingStyle(), "", null, 0, foreignLanguageDataList);
-				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
-						+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+//				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
+//						player.getBowlingStyle(), "", null, 0, foreignLanguageDataList);
+//				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$English$txt_FirstName"
+//						+ "*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
+				
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$txt_Age"
+						+ "*GEOM*TEXT SET " + player.getBowlingStyle() + "\0", print_writers);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Profile$Row4$img_Icon*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_ICONS + which_role + "\0", print_writers);

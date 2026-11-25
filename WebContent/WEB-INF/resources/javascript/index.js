@@ -2946,7 +2946,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					            addOption('TOSS', 'Toss');
 					        } else {
 					            addOption('FIRST_INNING_SCORE', '1st Inning Score');
-					            //addOption('EQUATION', 'Equation');
+					            addOption('EQUATION', 'Equation');
 					            addOption('TARGET', 'Target');
 					            addOption('RRR', 'Required Rate');
 								addOption('DLS_PAR_SCORE', 'DLS Par Score');
