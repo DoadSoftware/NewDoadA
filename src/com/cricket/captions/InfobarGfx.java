@@ -18892,8 +18892,11 @@ public class InfobarGfx
 					}else if(WhichProfile.equalsIgnoreCase("ILT20_CAREER")) {
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "DP WORLD ILT20 CAREER", 
 								"", null, 0, foreignLanguageDataList);
+					}else if(WhichProfile.equalsIgnoreCase("ILT20_SEASON_4")) {
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "DP WORLD ILT20 SEASON 4", 
+								"", null, 0, foreignLanguageDataList);
 					}else if(WhichProfile.equalsIgnoreCase("THIS_SERIES")){
-						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "THIS SEASON", 
+						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "DP WORLD ILT20 SEASON 5", 
 								"", null, 0, foreignLanguageDataList);
 					}else if(WhichProfile.equalsIgnoreCase("ILT20_BOUNDARY_CAREER")) {
 						foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "DP WORLD ILT20 CAREER BOUNDARIES", 

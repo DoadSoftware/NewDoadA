@@ -14272,7 +14272,7 @@ public class LowerThirdGfx
 						"DP WORLD ILT20", "", null, 0, foreignLanguageDataList);
 			}else if(lowerThird.getSubTitle().equalsIgnoreCase("THIS SEASON")){
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
-						"", "", null, 0, foreignLanguageDataList);
+						"DP WORLD ILT20", "", null, 0, foreignLanguageDataList);
 			}
 			CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_LowerThird$InfoGrp$DataAll$Side" + whichSide + 
 					"$TopText$English$txt_Text*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
@@ -14285,7 +14285,7 @@ public class LowerThirdGfx
 						"SEASON 4", "", null, 0, foreignLanguageDataList);
 			}else if(lowerThird.getSubTitle().equalsIgnoreCase("THIS SEASON")){
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
-						"THIS SEASON", "", null, 0, foreignLanguageDataList);
+						"SEASON 5", "", null, 0, foreignLanguageDataList);
 			}else {
 				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, 
 						"CAREER", "", null, 0, foreignLanguageDataList);
