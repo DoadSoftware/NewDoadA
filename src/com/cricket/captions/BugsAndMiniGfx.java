@@ -71,6 +71,7 @@ public class BugsAndMiniGfx
 	public static int  index_Player =0;
 	int rowId=0, omo_num=0;
 	String cont_name = "",text_name = "",stats_text="";
+	public Player outPlayer,inPlayer;
 	
 	@JsonIgnore
 	public List<PrintWriter> print_writers; 
@@ -382,6 +383,28 @@ public class BugsAndMiniGfx
 			}
 		}
 		if(PopulateBugBody(WhichSide, whatToProcess,matchAllData) == Constants.OK) {
+			status = Constants.OK;
+		}
+		return status;
+	}
+	
+	public String populateImpact(String whatToProcess,int WhichSide,MatchAllData matchAllData) throws InterruptedException, JsonMappingException, JsonProcessingException
+	{
+		if (matchAllData == null || matchAllData.getMatch() == null || matchAllData.getMatch().getInning() == null) {
+			return status;
+		} else {
+			inning = matchAllData.getMatch().getInning().stream().filter(inn -> inn.getIsCurrentInning().equalsIgnoreCase(CricketUtil.YES)).findAny().orElse(null);
+			
+			if(inning == null) {
+				return status;
+			}
+		}
+		team = Teams.stream().filter(tm -> tm.getTeamId() == Integer.valueOf(whatToProcess.split(",")[2])).findAny().orElse(null);
+		
+		outPlayer =  Players.stream().filter(plyr -> plyr.getPlayerId() == Integer.valueOf(whatToProcess.split(",")[3])).findAny().orElse(null);
+		inPlayer =  Players.stream().filter(plyr -> plyr.getPlayerId() == Integer.valueOf(whatToProcess.split(",")[4])).findAny().orElse(null);
+		
+		if(PopulateBugBody(WhichSide, whatToProcess, matchAllData) == Constants.OK) {
 			status = Constants.OK;
 		}
 		return status;
@@ -3597,6 +3620,81 @@ public class BugsAndMiniGfx
 					break;
 				}
 				
+				break;
+			case "Control_i":
+				switch (config.getBroadcaster()) {
+				case Constants.ILT20:
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$HeaderBase$img_Base3*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_BASE3 + team.getTeamBadge() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$HeaderBase$img_Base2*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$Header$Side1$img_Text3*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT3 + team.getTeamBadge() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$Header$Side2$img_Text3*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_TEXT3 + team.getTeamBadge() + "\0", print_writers);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$DataBaseIn$img_Base1*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_BASE1 + team.getTeamBadge() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$DataBaseIn$img_Base2*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_BASE2 + team.getTeamBadge() + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$DataBaseIn$img_Base3*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_BASE3 + team.getTeamBadge() + "\0", print_writers);
+					
+					//IN
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$MainPositionY$Header$Header_In$Side1$"
+							+ "Name_flag_Out$Name_flag_In$img_Text3$Maxsize$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, "", multilanguagedata, inPlayer.getFull_name(), 
+							"", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$MainPositionY$Header$Header_In$Side1$"
+							+ "Name_flag_Out$Name_flag_In$img_Text3$Maxsize$English$txt_Header*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$Header$Side1$MaxSize$"
+							+ "English$txt_Header*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$Header$Side1$Flag$img_Flag"
+							+ "*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + inPlayer.getNationality() + " \0", print_writers);
+					
+					if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_1$img_Player*TEXTURE*IMAGE SET "
+								+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_1$img_Player*TEXTURE*IMAGE SET "
+								+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + "SMALL" + "\\\\" + inPlayer.getPhoto() 
+								+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
+								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
+								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + "SMALL" + "\\\\" 
+								+ inPlayer.getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					}
+					
+					//OUT
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$MainPositionY$Header$Header_In$Side2$"
+							+ "Name_flag_Out$Name_flag_In$img_Text3$Maxsize$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, "", multilanguagedata, outPlayer.getFull_name(), 
+							"", null, 0, foreignLanguageDataList);
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$MainPositionY$Header$Header_In$Side2$"
+							+ "Name_flag_Out$Name_flag_In$img_Text3$Maxsize$English$txt_Header*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$Header$Side2$Flag$img_Flag*TEXTURE*IMAGE SET " 
+							+ Constants.ILT20_FLAG + outPlayer.getNationality() + " \0", print_writers);
+					
+					if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
+								+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
+								+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + "SMALL" + "\\\\" + outPlayer.getPhoto() 
+								+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					}else {
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
+								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
+								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + "SMALL" + "\\\\" 
+								+ outPlayer.getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+					}
+					
+					break;
+				}
 				break;
 			case "Control_Shift_U": 
 				switch (config.getBroadcaster()) {

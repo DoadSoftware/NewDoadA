@@ -590,6 +590,9 @@ public class IndexController
 			if(whatToProcess.toUpperCase().equalsIgnoreCase("IMPACT-CHANGE-ON")) {
 				this_animation.AnimateIn("Shift_I", print_writers, session_configuration);
 			}
+			if(whatToProcess.toUpperCase().equalsIgnoreCase("IMPACT_POP_UP-CHANGE-ON")) {
+				this_animation.AnimateIn("Control_i", print_writers, session_configuration);
+			}
 			if(whatToProcess.toUpperCase().equalsIgnoreCase("PLAYING-XI-CHANGE-ON")) {
 				this_animation.AnimateIn("Shift_T", print_writers, session_configuration);
 			}

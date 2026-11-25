@@ -444,6 +444,9 @@ public class Caption
 				}
 				status = this_lowerThirdGfx.populateImpact(whatToProcess, whichSide, matchAllData);
 				break;
+			case "Control_i":
+				status = this_bugsAndMiniGfx.populateImpact(whatToProcess, whichSide, matchAllData);
+				break;
 				
 			case "Control_F12":
 				switch (config.getBroadcaster().toUpperCase()) {

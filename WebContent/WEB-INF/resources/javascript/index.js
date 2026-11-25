@@ -281,6 +281,11 @@ function processUserSelection(whichInput)
 			processUserSelectionData('IMPACT-CHANGE-ON', 'Shift_I');	
 		}
 		break;
+	case 'change_on_impact_pop_up':
+		if($('#which_keypress').val() == 'Control_i' || $('#key_press_hidden_input').val() == 'Control_i'){
+			processUserSelectionData('IMPACT_POP_UP-CHANGE-ON', 'Control_i');
+		}
+		break;
 	case 'pop_up_change_on':
 		dataToProcess = $('#which_keypress').val() + '_change_on' + ',' + selected_options.toString();
 		processCricketProcedures("POPULATE-GRAPHICS", dataToProcess);
@@ -312,6 +317,9 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 	switch (whatToProcess) {
 	case 'IMPACT-CHANGE-ON':
 		processCricketProcedures('IMPACT-CHANGE-ON');
+		break;
+	case 'IMPACT_POP_UP-CHANGE-ON':
+		processCricketProcedures('IMPACT_POP_UP-CHANGE-ON');
 		break;
 	case 'LOGGER_FORM_KEYPRESS':
 		 document.getElementById('which_keypress').value = dataToProcess;
@@ -518,7 +526,7 @@ function processUserSelectionData(whatToProcess,dataToProcess)
 			case 'Shift_P': case 'Shift_Q': case 'Alt_F1': case 'Alt_F2': case 'Control_c': case 'Control_Shift_X': case 'Control_Shift_K': case 'Shift_T': 
 			case 'Shift_C': case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Shift_I': case 'Alt_f': case '/': case 'Shift_F8':
 			case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Alt_Shift_L': case 'Alt_b':
-			case 'Control_F8':	
+			case 'Control_F8': case 'Control_i':
 				addItemsToList(dataToProcess,null); 
 				break;	
 
@@ -1017,7 +1025,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 	case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Alt_Shift_Z': case 'Alt_Shift_Y':
 	case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8': case '/':
 	case 'Control_j': case 'Alt_w': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1': case "Alt_Shift_I": case 'Alt_Shift_U':
-	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Alt_Shift_F3': case 'Control_F8':
+	case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Alt_Shift_F3': case 'Control_F8': case 'Control_i':
 		$("#captions_div").hide();
 		$('#select_graphic_options_div').empty();
    		initialiseSelectedOptionsList();
@@ -1127,7 +1135,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 			
 		    $('#selectStats').trigger('change');
 		    break;
-		case 'Shift_I':
+		case 'Shift_I': case 'Control_i':
 		    header_text.innerHTML = 'IMPACT PLAYER';
 		
 		    // Team select
@@ -1235,27 +1243,31 @@ function addItemsToList(whatToProcess,dataToProcess)
 		    setDropdownOptionToSelectOptionArray($(selectionsIn), 2);
 		    cellCount++;
 		    
-			switch($('#selected_broadcaster').val()){
-			case 'MT20': case 'ILT20':
-				select = document.createElement('select');
-				select.id = 'selectPhotoImpact';
-				select.name = select.id;
-				
-				option = document.createElement('option');
-				option.value = 'WITH_PHOTO';
-				option.text = 'WITH PHOTO' ;
-				select.appendChild(option);
+			switch(whatToProcess){
+			case 'Shift_I':
+				switch($('#selected_broadcaster').val()){
+				case 'MT20': case 'ILT20':
+					select = document.createElement('select');
+					select.id = 'selectPhotoImpact';
+					select.name = select.id;
+					
+					option = document.createElement('option');
+					option.value = 'WITH_PHOTO';
+					option.text = 'WITH PHOTO' ;
+					select.appendChild(option);
 
-				option = document.createElement('option');
-				option.value = 'WITHOUT_PHOTO';
-				option.text = 'WITHOUT PHOTO' ;
-				select.appendChild(option);
-								
-				select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 3)");
-				row.insertCell(cellCount).appendChild(select);
-				setDropdownOptionToSelectOptionArray($(select),3);
-				removeSelectDuplicates(select.id);
-				cellCount = cellCount + 1;
+					option = document.createElement('option');
+					option.value = 'WITHOUT_PHOTO';
+					option.text = 'WITHOUT PHOTO' ;
+					select.appendChild(option);
+									
+					select.setAttribute('onchange',"setDropdownOptionToSelectOptionArray(this, 3)");
+					row.insertCell(cellCount).appendChild(select);
+					setDropdownOptionToSelectOptionArray($(select),3);
+					removeSelectDuplicates(select.id);
+					cellCount = cellCount + 1;
+					break;	
+				}
 				break;	
 			}
 		    break;
@@ -8392,6 +8404,31 @@ function addItemsToList(whatToProcess,dataToProcess)
 	    	cellCount = cellCount + 1;
 		}
 		
+		if(whatToProcess == 'Control_i'){
+			
+			option = document.createElement('input');
+			option.type = 'button';
+			option.name = 'change_on_impact_pop_up';
+			option.value = 'Change On';
+		    option.id = option.name;
+		    option.setAttribute('onclick','processUserSelection(this)');
+		    
+		    div = document.createElement('div');
+		    div.append(option);
+		    
+		    option = document.createElement('input');
+			option.type = 'hidden';
+			option.name = 'key_press_hidden_input';
+			option.id = option.name;
+			option.value = whatToProcess;
+
+		    div.append(option);
+		    
+		    row.insertCell(cellCount).appendChild(div);
+	    	cellCount = cellCount + 1;
+		}
+		
+		
 		if((whatToProcess == 'Control_Shift_U' || whatToProcess == 'Control_Shift_V')){
 			option = document.createElement('input');
 			option.type = 'button';
@@ -8470,7 +8507,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 		case 'l': case 'Alt_Shift_F4': case 'Alt_d': case 'r': case 'Control_Shift_D': case 'Alt_z': case 'Alt_Shift_K': case 'Alt_Shift_X': case 'Alt_Shift_T': case 'Alt_Shift_V': case 'Control_F7':
 		case 'Alt_Shift_Z': case 'Alt_Shift_Y': case 'Alt_Shift_C': case 'Alt_Shift_B': case 'Alt_k': case 'Shift_I': case "Control_Shift_F8": case 'Alt_f': case 'Control_3': case 'Control_8':
 		case '/': case 'Control_j': case 'Alt_w': case 'Shift_U': case 'Alt_i': case 'Shift_A': case 'Shift_R': case 'Alt_j': case 'Alt_h': case 'Alt_Shift_O': case 'Control_2': case 'Control_1':
-		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Control_q': case 'Alt_Shift_F3': case 'Control_F8':
+		case "Alt_Shift_I": case 'Alt_Shift_U': case 'Alt_Shift_L': case 'e': case 'Alt_b': case 'F1': case 'F4': case 'Control_q': case 'Alt_Shift_F3': case 'Control_F8': case 'Control_i':
 			option = document.createElement('input') 
 			option.type = 'button';
 			option.name = 'populate_btn';

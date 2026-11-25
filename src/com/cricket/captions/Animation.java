@@ -656,6 +656,16 @@ public class Animation
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
 			
+		case "Control_i":
+			if(whichGraphicOnScreen.equalsIgnoreCase("Control_i")) {
+				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub$Change", "START");
+				this.whichGraphicOnScreen = whatToProcess;
+			}else {
+				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub$In_Out", "START");
+				this.whichGraphicOnScreen = whatToProcess.split(",")[0];
+			}
+			break;
+			
 		case "Shift_I":
 			if(whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Shift_I")) {
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$Change", "CONTINUE");
@@ -3549,7 +3559,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "LT_BowlingOption$InOut", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 				break;
-				
+					
 			case "Shift_I":
 				 if(infobar.getInfobar_status() != null) {
 						if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
@@ -5924,6 +5934,14 @@ public class Animation
 				
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper", "SHOW 0.0");
+				this.whichGraphicOnScreen = "";
+				break;
+				
+			case "Control_i":
+				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub$In_Out", "CONTINUE");
+				
+				TimeUnit.MILLISECONDS.sleep(1000);
+				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;
 				
