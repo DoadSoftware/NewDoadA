@@ -3876,22 +3876,22 @@ public class InfobarGfx
 						+ "*GEOM*TEXT SET " + inning.getBowling_team().getTeamName4() + "\0", print_writers);
 				
 				
-//				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink"
-//						+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
-//				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, team.getTeamName1(), 
-//						"", null, 0, foreignLanguageDataList);
-//				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink"
-//						+ "$English$txt_TeamFirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
-//				
-//				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, team.getTeamName1(), 
-//						"", null, 0, foreignLanguageDataList);
-//				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink"
-//						+ "$English$txt_TeamLastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink"
+						+ "$select_Language*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_2, multilanguagedata, inning.getBatting_team().getTeamName1(), 
+						"", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink"
+						+ "$English$txt_TeamFirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 				
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink$txt_TeamFirstName"
-						+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName2() + "\0", print_writers);
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink$txt_TeamLastName"
-						+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName3() + "\0", print_writers);
+				foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, CricketUtil.TEAMNAME_3, multilanguagedata, inning.getBatting_team().getTeamName1(), 
+						"", null, 0, foreignLanguageDataList);
+				CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink"
+						+ "$English$txt_TeamLastName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+				
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink$txt_TeamFirstName"
+//						+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName2() + "\0", print_writers);
+//				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$ScoreSection$DataAll$Shrink$txt_TeamLastName"
+//						+ "*GEOM*TEXT SET " + inning.getBatting_team().getTeamName3() + "\0", print_writers);
 				
 			}
 			

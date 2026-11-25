@@ -2450,14 +2450,14 @@ public class BugsAndMiniGfx
 							+ "*FUNCTION*Omo*vis_con SET ", config, Constants.ILT20, print_writers, foreignLanguageOmo);
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "SIX DISTANCE", "", 
 							null, 0, foreignLanguageDataList);
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Single$DataGrpAll$select_Language$English$Info01"
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Single$DataGrpAll$select_Language$English$Info02"
 							+ "*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 					
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, whatToProcess.split(",")[2], "", null, 1,foreignLanguageDataList);
 					foreignLanguageDataList = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, "METERS", "", null, 
 							2, foreignLanguageDataList);
 					foreignLanguageData.add(CricketFunctions.MergeForeignLanguageDataListToSingleObject(foreignLanguageDataList));
-					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Single$DataGrpAll$select_Language$English$Info02"
+					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Single$DataGrpAll$select_Language$English$Info01"
 							+ "*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 					
 					

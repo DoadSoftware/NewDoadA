@@ -5762,6 +5762,9 @@ public class Animation
 			case "Control_Alt_F3": case "Alt_i":
 				processAnimation(Constants.FRONT, print_writers, "WinPredictor$In_Out", "CONTINUE");
 				this.whichGraphicOnScreen = "";
+				
+				TimeUnit.MILLISECONDS.sleep(1800);
+				processAnimation(Constants.FRONT, print_writers, "WinPredictor$In_Out", "SHOW 0.0");
 				break;
 				
 			case "Control_F12": case "F12":
