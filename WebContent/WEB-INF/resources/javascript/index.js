@@ -4279,7 +4279,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'BatMileStone', text: 'Batter MileStone' },
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
 					  { value: 'FOW', text: 'Fall Of Wickets' },
-					  //{ value: 'THIS_OVER_SPEED', text: 'This Over Speed' },
+					  { value: 'SPEED_THIS_OVER', text: 'Speed This Over' },
 					];
 					
 					session_match.match.inning.forEach(function(inn){

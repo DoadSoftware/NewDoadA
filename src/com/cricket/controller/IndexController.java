@@ -825,7 +825,12 @@ public class IndexController
 			}else if(whatToProcess.contains("ANIMATE-OUT-SECOND_PLAYING")) {
 				switch (session_configuration.getBroadcaster()) {
 				case Constants.ILT20:
-					this_animation.processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$In_Out", "CONTINUE");
+					this_animation.lineUpCount++;
+					if(this_animation.lineUpCount > 2) {
+						this_animation.processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$Change$Change_In", "CONTINUE");
+					} else {
+						this_animation.processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$In_Out", "CONTINUE");
+					}
 					break;
 				case Constants.AFG_SERIES: case Constants.TEST_T20:
 					if(this_animation.whichGraphicOnScreen.contains("Control_Shift_F7")) {

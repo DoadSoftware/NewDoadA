@@ -6160,6 +6160,10 @@ public class Animation
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				processAnimation(Constants.BACK, print_writers, "Change_Profile", "START");
 				break;
+			case "Control_Shift_F7":
+				processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$Change", "START");
+				break;
+				
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": 
 			case "Control_F11": case "Shift_K": case "Shift_F11": case "Control_p": case "Control_Shift_F1": case "Control_Shift_F2":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "START");
@@ -7724,8 +7728,8 @@ public class Animation
 			case "Control_d": case "Control_e": case "Shift_P": case "Shift_Q":
 				processAnimation(Constants.BACK, print_writers, "anim_Profile$In_Out", "SHOW 2.120");
 				processAnimation(Constants.BACK, print_writers, "Change_Profile", "SHOW 0.0");
-				
-				break;	
+				break;
+					
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": 
 			case "Control_F11": case "Shift_K": case "Shift_F11": case "Control_p": case "Control_Shift_F1": case "Control_Shift_F2":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "SHOW 0.0");
@@ -9424,6 +9428,8 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "anim_Profile_LOF", "SHOW 0.0");
 			processAnimation(Constants.BACK, print_writers, "anim_LineUpImage", "SHOW 0.0");
 			
+			processAnimation(Constants.BACK, print_writers, "anim_Leaderboard", "SHOW 0.0");
+			
 			if(whatToProcess.contains("CLEAR-ALL")) {
 				processAnimation(Constants.FRONT, print_writers, "Loop", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar", "SHOW 0.0");
@@ -9433,6 +9439,8 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_HowOut", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_NameSuper", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI", "SHOW 0.0");
+				processAnimation(Constants.FRONT, print_writers, "anim_NextToBat", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "Mini", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "Mini_Pointstable", "SHOW 0.0");
@@ -9451,6 +9459,8 @@ public class Animation
 				
 				processAnimation(Constants.FRONT, print_writers, "anim_Counter", "SHOW 0.0");
 				processAnimation(Constants.FRONT, print_writers, "anim_PopUp", "SHOW 0.0");
+				
+				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub", "SHOW 0.0");
 				
 				processAnimation(Constants.FRONT, print_writers, "Watermark", "SHOW 0.0");
 				
@@ -10293,6 +10303,10 @@ public class Animation
 				switch(config.getBroadcaster()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
+					case "Control_Shift_F7":
+						previewCommand = "anim_LineUpImage$Change$Change_In 5.060 anim_LineUpImage$Change$Out 0.640 anim_LineUpImage$Change$Base 0.700";
+						break;
+					
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11": case "Shift_K":
 					case "Shift_F11": case "Control_p": case "Control_Shift_F1": case "Control_Shift_F2":
 						previewCommand = "anim_Change$Base 1.100 anim_Change$Logo 1.040 anim_Change$Header 1.300 anim_Change$Header$Change_Out 0.580 anim_Change$Header$Change_In 1.300 "
