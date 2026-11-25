@@ -4263,9 +4263,11 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'PHASE_WISE_RUNRATE', text: 'PhaseWise Run-Rates' },
 					  { value: 'BatsmanTimeLine', text: 'Batter TimeLine' },
 					  { value: 'BowlerTimeLine', text: 'Bowler TimeLine' },
-					  { value: 'BATSMANBOUNDARY', text: 'BATSMAN BOUNDARY' },
+					  { value: 'BATSMANBOUNDARY', text: 'Batter Boundary' },
 					  { value: 'BatMileStone', text: 'Batter MileStone' },
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
+					  { value: 'FOW', text: 'Fall Of Wickets' },
+					  //{ value: 'THIS_OVER_SPEED', text: 'This Over Speed' },
 					];
 					
 					session_match.match.inning.forEach(function(inn){
