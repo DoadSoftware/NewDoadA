@@ -204,7 +204,7 @@ public class Animation
 			case "d": case "e": case "Control_h": case "Alt_Shift_F3": case "Control_F3": case "Control_Shift_M": case "Control_a": case "Control_Shift_F10": 
 			case "Control_Shift_B": case "Alt_d": case "Control_Shift_L": case "Control_6": case "Control_Shift_O": case "Control_Shift_Q": case "Control_Shift_X": 
 			case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12": case "Control_F2": case "Alt_f": case "Control_Alt_F3":
-			case "Alt_i":	
+			case "Alt_i": case "Control_F8":
 				switch (whatToProcess.split(",")[0]) {
 				case "Alt_F8": case "F8": case "F10": case "j": case "Alt_a": case "Alt_s": // Name super L3rd
 					return Constants.NAME_SUPERS + Constants.LOWER_THIRD;
@@ -327,7 +327,7 @@ public class Animation
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$DisruptiveCharacters", "START");
 			}
 			break;
-		case "s": case "f": case "w": case "0": case "9": case ".": case "Control_F8":
+		case "s": case "f": case "w": case "0": case "9": case ".":
 			switch(whatToProcess.split(",")[0]) {
 			case "s":
 				TeamName = caption.this_infobarGfx.inning.getBatting_team().getTeamBadge();
@@ -523,6 +523,23 @@ public class Animation
 			
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
+			
+		case "Control_F8":
+			if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+				processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
+			}
+			AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+			TimeUnit.MILLISECONDS.sleep(500);
+			
+			if(audioenabled.equalsIgnoreCase("TRUE")) {
+				processAnimation(Constants.BACK, print_writers, "Audio", "START");
+			}
+			
+			processAnimation(Constants.BACK, print_writers, "anim_Leaderboard", "START");
+			processAnimation(Constants.BACK, print_writers, "Loop", "START");
+			
+			this.whichGraphicOnScreen = whatToProcess;
+			break;	
 			
 		case "Control_3": case "Control_8":
 			if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
@@ -5860,6 +5877,21 @@ public class Animation
 				}
 				this.whichGraphicOnScreen = "";
 				break;
+			case "Control_F8":
+				if(audioenabled.equalsIgnoreCase("TRUE")) {
+					processAnimation(Constants.BACK, print_writers, "Audio", "START");
+				}
+				processAnimation(Constants.BACK, print_writers, "anim_Leaderboard", "CONTINUE");
+				
+				TimeUnit.MILLISECONDS.sleep(1600);
+				
+				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
+				processAnimation(Constants.BACK, print_writers, "anim_Leaderboard", "SHOW 0.0");
+				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
+					processAnimation(Constants.FRONT, print_writers, "Watermark", "START");
+				}
+				this.whichGraphicOnScreen = "";
+				break;	
 				
 			case "Control_3": case "Control_8":
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
@@ -9521,6 +9553,7 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "anim_LineUpImage", "SHOW 0.0");
 			
 			processAnimation(Constants.BACK, print_writers, "anim_Leaderboard", "SHOW 0.0");
+			processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal", "SHOW 0.0");
 			
 			if(whatToProcess.contains("CLEAR-ALL")) {
 				processAnimation(Constants.FRONT, print_writers, "Loop", "SHOW 0.0");
@@ -9801,6 +9834,10 @@ public class Animation
 						previewCommand = "anim_Profile$In_Out 2.120 anim_Profile$In_Out$Essentials 2.120 anim_Profile$In_Out$Essentials$In 0.900 anim_Profile$In_Out$Logo 2.120 "
 								+ "anim_Profile$In_Out$Logo$In 1.540 anim_Profile$In_Out$Header$In 0.000 anim_Profile$In_Out$Main$Summary 2.120 anim_Profile$In_Out$Main$Summary$In 1.761";
 						break;
+					case "Control_F8":
+						previewCommand = "anim_Leaderboard$In_Out 2.120 anim_Leaderboard$In_Out$Essentials 2.120 anim_Leaderboard$In_Out$Essentials$In 0.900 anim_Leaderboard$In_Out$Logo 2.120 "
+								+ "anim_Leaderboard$In_Out$Logo$In 1.540 anim_Leaderboard$In_Out$Main$Summary 2.120 anim_Leaderboard$In_Out$Main$Summary$In 1.761 anim_Leaderboard$Belt 0.0";
+						break;	
 					case "Control_3": case "Control_8":
 						previewCommand = "anim_Profile_LOF$In_Out 2.120 anim_Profile_LOF$In_Out$Essentials 2.120 anim_Profile_LOF$In_Out$Essentials$In 0.900 anim_Profile_LOF$In_Out$Logo 2.120 "
 								+ "anim_Profile_LOF$In_Out$Logo$In 1.540 anim_Profile_LOF$In_Out$Main$Summary 2.120 anim_Profile_LOF$In_Out$Main$Summary$In 1.761";

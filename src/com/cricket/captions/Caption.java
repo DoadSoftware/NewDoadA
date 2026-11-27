@@ -395,6 +395,8 @@ public class Caption
 				status = this_fullFramesGfx.populateLeaderBoard(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "Control_F8":
+				this_fullFramesGfx.this_ALL_FF.Players = Players;
+				this_fullFramesGfx.this_ALL_FF.Teams = Teams;
 				status = this_fullFramesGfx.populateBelt(whichSide, whatToProcess, matchAllData, 0);
 				break;
 			case "Shift_P": case "Shift_Q":

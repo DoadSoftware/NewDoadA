@@ -158,6 +158,7 @@ public class Constants
 	public final static String ILT20_ICONTEXT = "IMAGE*/Default/Essentials/IconText/";
 	public final static String ILT20_SPONSOR = "IMAGE*/Default/Essentials/Sponsors/";
 	public final static String ILT20_TEXTHIGHLIGHT = "IMAGE*/Default/Essentials/Text_Highlight/";
+	public final static String ILT20_BELT = "IMAGE*/Default/Essentials/Belts/";
 	
 	public final static String ILT20_LOCAL_PHOTO_PATH = "C:\\\\Images\\\\ILT20\\\\Photos\\\\";
 	public final static String ILT20_PHOTO_PATH = "\\c\\Images\\ILT20\\Photos\\";
