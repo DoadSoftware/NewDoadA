@@ -22427,9 +22427,9 @@ public class ALL_FF
 							"$English$NameGrp$txt_FirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, 
 							team.getTeamName1(), "", null, 0, foreignLanguageDataList);
@@ -22513,9 +22513,9 @@ public class ALL_FF
 					
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, 
 							team.getTeamName1(), "", null, 0, foreignLanguageDataList);
