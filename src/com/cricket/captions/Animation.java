@@ -190,7 +190,7 @@ public class Animation
 			case "Control_F10": case "Shift_F10": case "Shift_K": case "Control_F1": case "Shift_F11": case "Control_p": case "Control_Alt_F1":
 			case "Alt_Shift_F1": case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_Z": case "Control_Shift_Y": 
 			case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_P": case "Shift_Q": case "Control_Shift_D": case "Alt_z": case "Alt_k":
-			case "Control_Shift_F8": case "Shift_T": case "Control_q": case "Control_3": case "Control_8":
+			case "Control_Shift_F8": case "Shift_T": case "Control_q": case "Control_3": case "Control_8": case "Control_F8":
 				return Constants.FULL_FRAMER;	
 			case "Shift_I":
 				switch (config.getBroadcaster().toUpperCase()) {
@@ -204,7 +204,7 @@ public class Animation
 			case "d": case "e": case "Control_h": case "Alt_Shift_F3": case "Control_F3": case "Control_Shift_M": case "Control_a": case "Control_Shift_F10": 
 			case "Control_Shift_B": case "Alt_d": case "Control_Shift_L": case "Control_6": case "Control_Shift_O": case "Control_Shift_Q": case "Control_Shift_X": 
 			case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12": case "Control_F2": case "Alt_f": case "Control_Alt_F3":
-			case "Alt_i": case "Control_F8":
+			case "Alt_i":
 				switch (whatToProcess.split(",")[0]) {
 				case "Alt_F8": case "F8": case "F10": case "j": case "Alt_a": case "Alt_s": // Name super L3rd
 					return Constants.NAME_SUPERS + Constants.LOWER_THIRD;
@@ -5937,7 +5937,7 @@ public class Animation
 				}
 				this.whichGraphicOnScreen = "";
 				
-				
+				break;
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10":
 			case "Control_F11":	case "Shift_K": case "Shift_F11": case "Control_p": case "Control_Shift_F1": case "Control_Shift_F2":
 				
@@ -9835,8 +9835,8 @@ public class Animation
 								+ "anim_Profile$In_Out$Logo$In 1.540 anim_Profile$In_Out$Header$In 0.000 anim_Profile$In_Out$Main$Summary 2.120 anim_Profile$In_Out$Main$Summary$In 1.761";
 						break;
 					case "Control_F8":
-						previewCommand = "anim_Leaderboard$In_Out 2.120 anim_Leaderboard$In_Out$Essentials 2.120 anim_Leaderboard$In_Out$Essentials$In 0.900 anim_Leaderboard$In_Out$Logo 2.120 "
-								+ "anim_Leaderboard$In_Out$Logo$In 1.540 anim_Leaderboard$In_Out$Main$Summary 2.120 anim_Leaderboard$In_Out$Main$Summary$In 1.761 anim_Leaderboard$Belt 0.0";
+						previewCommand = "anim_Leaderboard$In_Out 5.180 anim_Leaderboard$In_Out$Essentials 5.180 anim_Leaderboard$In_Out$Essentials$In 3.960 anim_Leaderboard$In_Out$Logo 5.180 "
+								+ "anim_Leaderboard$In_Out$Logo$In 4.100 anim_Leaderboard$In_Out$Main$Summary 5.180 anim_Leaderboard$In_Out$Main$Summary$In 4.821 anim_Leaderboard$Belt 0.0";
 						break;	
 					case "Control_3": case "Control_8":
 						previewCommand = "anim_Profile_LOF$In_Out 2.120 anim_Profile_LOF$In_Out$Essentials 2.120 anim_Profile_LOF$In_Out$Essentials$In 0.900 anim_Profile_LOF$In_Out$Logo 2.120 "

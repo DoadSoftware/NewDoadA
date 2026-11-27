@@ -25612,6 +25612,8 @@ public class ALL_FF
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row0$ProfileAll$Team_grp$img_Text1$English"
 					+ "$select_StatNumber*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row0$ProfileAll$Team_grp$img_Text1$Hindi"
+						+ "$select_StatNumber*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
 				for(int i = 0; i <= top_batsman_beststat.size() - 1 ; i++) {
 					rowId = rowId + 1;
@@ -25724,7 +25726,9 @@ public class ALL_FF
 						+ "$English$NameGrp$select_StatNumber$1$txt_Title1*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row0$ProfileAll$Team_grp$img_Text1$English"
-					+ "$select_StatNumber*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+						+ "$select_StatNumber*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row0$ProfileAll$Team_grp$img_Text1$Hindi"
+							+ "$select_StatNumber*FUNCTION*Omo*vis_con SET 1\0", print_writers);
 				
 				for(int i = 0; i <= top_bowler_beststats.size() - 1 ; i++) {
 					rowId = rowId + 1;
@@ -25860,6 +25864,8 @@ public class ALL_FF
 						+ "$English$NameGrp$select_StatNumber$2$txt_Title2*GEOM*TEXT SET ", config, Constants.TG20, print_writers, foreignLanguageData);
 				
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row0$ProfileAll$Team_grp$img_Text1$English"
+						+ "$select_StatNumber*FUNCTION*Omo*vis_con SET 2\0", print_writers);
+				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row0$ProfileAll$Team_grp$img_Text1$Hindi"
 						+ "$select_StatNumber*FUNCTION*Omo*vis_con SET 2\0", print_writers);
 				
 				for(int i = 0; i <= tournaments.size() - 1 ; i++) {
