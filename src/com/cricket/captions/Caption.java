@@ -439,15 +439,18 @@ public class Caption
 				break;	
 				
 			case "Shift_I":
-				if(this_lowerThirdGfx.chnageOn == false && whichSide == 1) {
-					this_lowerThirdGfx.impactPlayerData = whatToProcess;
+				switch(config.getBroadcaster()) {
+				case Constants.ILT20:
+					status = this_bugsAndMiniGfx.populateImpact(whatToProcess, whichSide, matchAllData);
+					break;
+				default:
+					if(this_lowerThirdGfx.chnageOn == false && whichSide == 1) {
+						this_lowerThirdGfx.impactPlayerData = whatToProcess;
+					}
+					status = this_lowerThirdGfx.populateImpact(whatToProcess, whichSide, matchAllData);
+					break;
 				}
-				status = this_lowerThirdGfx.populateImpact(whatToProcess, whichSide, matchAllData);
-				break;
-			case "Control_i":
-				status = this_bugsAndMiniGfx.populateImpact(whatToProcess, whichSide, matchAllData);
-				break;
-				
+				break;	
 			case "Control_F12":
 				switch (config.getBroadcaster().toUpperCase()) {
 				case Constants.TRI_SERIES:  case Constants.MT20: case Constants.AFG_SL_SERIES: case Constants.TG20: case Constants.APLT20:

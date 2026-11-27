@@ -3621,7 +3621,7 @@ public class BugsAndMiniGfx
 				}
 				
 				break;
-			case "Control_i":
+			case "Shift_I":
 				switch (config.getBroadcaster()) {
 				case Constants.ILT20:
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$HeaderBase$img_Base3*TEXTURE*IMAGE SET " 

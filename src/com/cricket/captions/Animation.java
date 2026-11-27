@@ -192,11 +192,18 @@ public class Animation
 			case "Control_Shift_F4": case "Control_Shift_F5": case "Shift_P": case "Shift_Q": case "Control_Shift_D": case "Alt_z": case "Alt_k":
 			case "Control_Shift_F8": case "Shift_T": case "Control_q": case "Control_3": case "Control_8":
 				return Constants.FULL_FRAMER;	
+			case "Shift_I":
+				switch (config.getBroadcaster().toUpperCase()) {
+				case Constants.ILT20:
+					return Constants.BUGS;
+				default:
+					return Constants.LOWER_THIRD;
+				}
 			case "F5": case "F6": case "F7": case "F8": case "F9": case "F10": case "F11": case "Alt_F8": case "Control_s": case "Control_f": case "Control_F6": 
 			case "Control_F5": case "Control_F9": case "Shift_F6": case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Shift_E":	
 			case "d": case "e": case "Control_h": case "Alt_Shift_F3": case "Control_F3": case "Control_Shift_M": case "Control_a": case "Control_Shift_F10": 
 			case "Control_Shift_B": case "Alt_d": case "Control_Shift_L": case "Control_6": case "Control_Shift_O": case "Control_Shift_Q": case "Control_Shift_X": 
-			case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12": case "Shift_I": case "Control_F2": case "Alt_f": case "Control_Alt_F3":
+			case "Control_Shift_K": case "Control_c": case "l": case "Alt_Shift_F12": case "Control_F2": case "Alt_f": case "Control_Alt_F3":
 			case "Alt_i":	
 				switch (whatToProcess.split(",")[0]) {
 				case "Alt_F8": case "F8": case "F10": case "j": case "Alt_a": case "Alt_s": // Name super L3rd
@@ -652,21 +659,11 @@ public class Animation
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
 		case "Control_Shift_O":
-			if(this.infobar.isInfobar_on_screen() == true) {
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
-					+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writers);
-			}else {
-				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
-						+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writers);
-			}
+			CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
+					+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writers);
 			
-			if(infobar.getInfobar_status() != null) {
-				if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-					AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
-					TimeUnit.MILLISECONDS.sleep(1000);
-					infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
-				}
-			}
+			AnimateIn("ArrowDown,", print_writers, config); // Push infobar
+			TimeUnit.MILLISECONDS.sleep(500);
 			
 			processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI$In_Out", "START");
 			this.whichGraphicOnScreen = whatToProcess;
@@ -712,45 +709,43 @@ public class Animation
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
 			
-		case "Control_i":
-			if(whichGraphicOnScreen.equalsIgnoreCase("Control_i")) {
+		case "Shift_I":
+			if(whichGraphicOnScreen.equalsIgnoreCase("Shift_I")) {
 				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub$Change", "START");
 				this.whichGraphicOnScreen = whatToProcess;
 			}else {
 				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub$In_Out", "START");
 				this.whichGraphicOnScreen = whatToProcess.split(",")[0];
 			}
-			break;
 			
-		case "Shift_I":
-			if(whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Shift_I")) {
-				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$Change", "CONTINUE");
-				
-				TimeUnit.MILLISECONDS.sleep(1500);
-				caption.this_lowerThirdGfx.populateImpact(whichGraphicOnScreen, 2, matchAllData);
-				TimeUnit.MILLISECONDS.sleep(200);
-				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$Change", "SHOW 0.0");
-				
-			}else {
-				if(this.infobar.isInfobar_on_screen() == true) {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
-						+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writers);
-				}else {
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
-							+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writers);
-				}
-				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
-						TimeUnit.MILLISECONDS.sleep(1000);
-						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
-					}
-				}
-				
-				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$In_Out", "START");
-				this.whichGraphicOnScreen = whatToProcess;
-			}
+//			if(whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Shift_I")) {
+//				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$Change", "CONTINUE");
+//				
+//				TimeUnit.MILLISECONDS.sleep(1500);
+//				caption.this_lowerThirdGfx.populateImpact(whichGraphicOnScreen, 2, matchAllData);
+//				TimeUnit.MILLISECONDS.sleep(200);
+//				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$Change", "SHOW 0.0");
+//				
+//			}else {
+//				if(this.infobar.isInfobar_on_screen() == true) {
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+//						+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writers);
+//				}else {
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+//							+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writers);
+//				}
+//				
+//				if(infobar.getInfobar_status() != null) {
+//					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+//						AnimateIn("ArrowLeft" + ",", print_writers, config); // Shrink infobar
+//						TimeUnit.MILLISECONDS.sleep(1000);
+//						infobar.setInfobar_status(Constants.SHRUNK_INFOBAR);
+//					}
+//				}
+//				
+//				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$In_Out", "START");
+//				this.whichGraphicOnScreen = whatToProcess;
+//			}
 			break;
 			
 		case "F7": case "F11": case "Control_s": case "Control_f":
@@ -5996,15 +5991,11 @@ public class Animation
 			case "Control_Shift_O":
 				processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI$In_Out", "CONTINUE");
 				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						TimeUnit.MILLISECONDS.sleep(1000);
-						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
-						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
-					}
-				}
+				TimeUnit.MILLISECONDS.sleep(500);
 				
-				TimeUnit.MILLISECONDS.sleep(1000);
+				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
+				
+				TimeUnit.MILLISECONDS.sleep(500);
 				processAnimation(Constants.FRONT, print_writers, "anim_PlayingXI$In_Out", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
 				break;	
@@ -6040,28 +6031,26 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 				
-			case "Control_i":
+			case "Shift_I":
 				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub$In_Out", "CONTINUE");
 				
 				TimeUnit.MILLISECONDS.sleep(1000);
 				processAnimation(Constants.FRONT, print_writers, "anim_POPUp_Impact_Sub", "SHOW 0.0");
 				this.whichGraphicOnScreen = "";
-				break;
 				
-			case "Shift_I":
-				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$In_Out", "CONTINUE");
-				
-				if(infobar.getInfobar_status() != null) {
-					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
-						TimeUnit.MILLISECONDS.sleep(1000);
-						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
-						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
-					}
-				}
-				
-				TimeUnit.MILLISECONDS.sleep(1000);
-				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub", "SHOW 0.0");
-				this.whichGraphicOnScreen = "";
+//				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub$In_Out", "CONTINUE");
+//				
+//				if(infobar.getInfobar_status() != null) {
+//					if(!infobar.getInfobar_status().equalsIgnoreCase(Constants.FORCED+Constants.SHRUNK_INFOBAR)) {
+//						TimeUnit.MILLISECONDS.sleep(1000);
+//						AnimateIn("ArrowRight" + ",", print_writers, config); // Restore infobar
+//						infobar.setInfobar_status(Constants.TWO_LINER_INFOBAR);
+//					}
+//				}
+//				
+//				TimeUnit.MILLISECONDS.sleep(1000);
+//				processAnimation(Constants.FRONT, print_writers, "anim_LT_Impact_Sub", "SHOW 0.0");
+//				this.whichGraphicOnScreen = "";
 				break;
 				
 			case "F7": case "F11": case "Control_s": case "Control_f":
@@ -10412,7 +10401,8 @@ public class Animation
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Control_Shift_F7":
-						previewCommand = "anim_LineUpImage$Change$Change_In 5.060 anim_LineUpImage$Change$Out 0.640 anim_LineUpImage$Change$Base 0.700";
+						previewCommand = "anim_LineUpImage$Change$Change_In 5.060 anim_LineUpImage$Change$Change_In$Essentials 5.060 anim_LineUpImage$Change$Change_In$Logo 5.060 "
+								+ "anim_LineUpImage$Change$Change_In$Main 5.060 anim_LineUpImage$Change$Out 0.640 anim_LineUpImage$Change$Base 0.700";
 						break;
 					
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11": case "Shift_K":
@@ -10462,8 +10452,8 @@ public class Animation
 								previewCommand = previewCommand + " anim_Change$Batting_Card 2.261 anim_Change$Batting_Card$Change_Out 1.020 anim_Change$Batting_Card$Change_In 2.261";
 								break;
 							case "Alt_F9": case "Shift_T":
-								if(whatToProcess.split(",")[0].equalsIgnoreCase("Alt_F9") && 
-										whatToProcess.split(",")[0].equalsIgnoreCase("Shift_T")) {
+								if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Alt_F9") && 
+										!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Shift_T")) {
 									previewCommand = previewCommand + " anim_Change$TeamSingle 2.261 anim_Change$TeamSingle$Change_Out 1.020 anim_Change$TeamSingle$Change_In 2.261";
 								}
 								break;	
@@ -10483,7 +10473,10 @@ public class Animation
 								previewCommand = previewCommand + " anim_Change$Worm 2.180 anim_Change$Worm$Change_Out 0.580 anim_Change$Worm$Change_In 2.180 anim_Change$Worm$Change_In$Runs 2.180";
 								break;
 							case "Control_F11": case "Shift_F11":
-								previewCommand = previewCommand + " anim_Change$Summary 2.321 anim_Change$Summary$Change_Out 1.020 anim_Change$Summary$Change_In 2.321";
+								if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Control_F11") && 
+										!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Shift_F11")) {
+									previewCommand = previewCommand + " anim_Change$Summary 2.321 anim_Change$Summary$Change_Out 1.020 anim_Change$Summary$Change_In 2.321";
+								}
 								break;
 							case "Shift_K":
 								previewCommand = previewCommand + " anim_Change$CurrPartnership 1.701 anim_Change$CurrPartnership$Change_Out 1.020 anim_Change$CurrPartnership$Change_In 1.701";
@@ -10492,8 +10485,8 @@ public class Animation
 								previewCommand = previewCommand + " anim_Change$PointsTable 1.881 anim_Change$PointsTable$Change_Out 1.020 anim_Change$PointsTable$Change_In 1.881";
 								break;
 							case "Control_Shift_F1": case "Control_Shift_F2":
-								if(whatToProcess.split(",")[0].equalsIgnoreCase("Control_Shift_F1") && 
-										whatToProcess.split(",")[0].equalsIgnoreCase("Control_Shift_F2")) {
+								if(!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Control_Shift_F1") && 
+										!whichGraphicOnScreen.split(",")[0].equalsIgnoreCase("Control_Shift_F2")) {
 									previewCommand = previewCommand + " anim_Change$BattingCard_Performer 2.061 anim_Change$BattingCard_Performer$Change_Out 1.020 "
 											+ "anim_Change$BattingCard_Performer$Change_In 2.061";
 								}
@@ -11049,13 +11042,8 @@ public class Animation
 						}
 						break;
 					case "Control_Shift_O":
-						if(this.infobar.isInfobar_on_screen() == true) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
-								+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writer);
-						}else {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
-									+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
-						}
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_PlayingXI$Position_ScoreBug*"
+								+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
 						break;
 					case "Control_Shift_B":
 						if(this.infobar.isInfobar_on_screen() == true) {
@@ -11084,15 +11072,15 @@ public class Animation
 									+ "TRANSFORMATION*POSITION*X SET 0.0 \0",print_writer);
 						}
 						break;
-					case "Shift_I":
-						if(this.infobar.isInfobar_on_screen() == true) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
-								+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writer);
-						}else {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
-									+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
-						}
-						break;
+//					case "Shift_I":
+//						if(this.infobar.isInfobar_on_screen() == true) {
+//							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+//								+ "TRANSFORMATION*POSITION*X SET 590.0 \0",print_writer);
+//						}else {
+//							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Impact_Sub$Position_ScoreBug*"
+//									+ "TRANSFORMATION*POSITION*X SET 80.0 \0",print_writer);
+//						}
+//						break;
 					case "F5": case "F9": case "Control_a": case "Control_F5": case "Control_F9": case "d": case "e": case "Control_h": case "Alt_Shift_F3":
 					case "u": case "Shift_F3": case "Shift_F5": case "Shift_F9": case "Alt_F12": case "Control_F3": case "Alt_Shift_F12":
 						if(this.infobar.isInfobar_on_screen() == true) {
@@ -11474,6 +11462,10 @@ public class Animation
 				switch(config.getBroadcaster().toUpperCase()){
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
+					case "Shift_I":
+						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
+								+ "anim_InfoBar$Push 1.000 anim_POPUp_Impact_Sub$In_Out$In 1.600 \0", print_writer);
+						break;
 					case "Alt_p":
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER PREVIEW SCENE*/Default/gfx_Overlays C:/Temp/Preview.tga "
 								+ "anim_InfoBar$Push 1.000 TossBug$In_Out 0.720 TossBug$In_Out$In 0.714\0", print_writer);
