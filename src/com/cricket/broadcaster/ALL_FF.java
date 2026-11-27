@@ -22402,7 +22402,7 @@ public class ALL_FF
 				for (LeaderBoardPlayer p : players) {
 					rowId = rowId + 1;
 					
-					for(Player pl : Players) {
+					for(Player pl : IndexController.session_players) {
 						if (Objects.equals(pl.getAe_Id(), p.playerId)) {
 						    player = pl;
 						    break;
@@ -22485,7 +22485,7 @@ public class ALL_FF
 					
 					//player = Players.stream().filter(plyr -> plyr.getAe_Id() == p.playerId).findAny().orElse(null);
 					
-					for(Player pl : Players) {
+					for(Player pl : IndexController.session_players) {
 						if (Objects.equals(pl.getAe_Id(), p.playerId)) {
 						    player = pl;
 						    break;
