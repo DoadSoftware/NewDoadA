@@ -6286,6 +6286,7 @@ public class Animation
 				break;
 			case "Control_Shift_F7":
 				processAnimation(Constants.BACK, print_writers, "anim_LineUpImage$Change", "START");
+				TimeUnit.MILLISECONDS.sleep(3500);
 				break;
 				
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": 
@@ -10438,8 +10439,10 @@ public class Animation
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
 					case "Control_Shift_F7":
-						previewCommand = "anim_LineUpImage$Change$Change_In 5.060 anim_LineUpImage$Change$Change_In$Essentials 5.060 anim_LineUpImage$Change$Change_In$Logo 5.060 "
-								+ "anim_LineUpImage$Change$Change_In$Main 5.060 anim_LineUpImage$Change$Out 0.640 anim_LineUpImage$Change$Base 0.700";
+						previewCommand = "anim_LineUpImage$Change 5.940 anim_LineUpImage$Change$Change_In 5.060 anim_LineUpImage$Change$Change_In$Essentials 5.060 "
+								+ "anim_LineUpImage$Change$Change_In$Essentials$In 0.960 anim_LineUpImage$Change$Change_In$Logo 5.060 anim_LineUpImage$Change$Change_In$Logo$In 1.600 "
+								+ "anim_LineUpImage$Change$Change_In$Main 5.060 anim_LineUpImage$Change$Change_In$Main$In 5.040 anim_LineUpImage$Change$Out 0.640 "
+								+ "anim_LineUpImage$Change$Out1 0.940 anim_LineUpImage$Change$Out2 0.880 anim_LineUpImage$Change$Base 0.700";
 						break;
 					
 					case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": case "Control_F11": case "Shift_K":
