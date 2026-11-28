@@ -6473,7 +6473,7 @@ public class InfobarGfx
 		}
 		return Constants.OK;
 	}
-	public String populateFullSection(List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws JsonMappingException, JsonProcessingException, InterruptedException {
+	public String populateFullSection(List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws InterruptedException, IOException {
 		switch(config.getBroadcaster()) {
 		case Constants.TRI_SERIES:  case Constants.MT20: case Constants.BAN_AFG_SERIES: case Constants.WCL: case Constants.ACC: case Constants.TG20: case Constants.APLT20:
 		case Constants.ILT20:
@@ -17143,7 +17143,7 @@ public class InfobarGfx
 		}
 		return Constants.OK;
 	}
-	public String populateSectionAnalytics(boolean is_this_updating, List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws JsonMappingException, JsonProcessingException, InterruptedException {
+	public String populateSectionAnalytics(boolean is_this_updating, List<PrintWriter> print_writers, MatchAllData matchAllData, int WhichSide) throws InterruptedException, IOException {
 		switch(config.getBroadcaster()) {
 		case Constants.ACC:
 			if(infobar.getSectionAnalytics() != null && !infobar.getSectionAnalytics().isEmpty()) {
@@ -18762,6 +18762,237 @@ public class InfobarGfx
 		case Constants.ILT20:
 			if(infobar.getSectionAnalytics() != null && !infobar.getSectionAnalytics().isEmpty()) {
 				switch(infobar.getSectionAnalytics().toUpperCase()) {
+				case "EXCELS_DATA":
+					
+					List<Map<String, String>> rows = CricketFunctions.readExcelsData(matchAllData);
+					Map<String, String> row = rows.stream().filter(m -> m.get("order").equals(WhichProfile)).findFirst().orElse(null);
+					
+					if (row != null) {
+						if(row.get("ContainerToUse") != null) {
+							switch(row.get("ContainerToUse")) {
+							case "BottomComparison":
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" 
+										+ WhichSide + "$Select_DataType*FUNCTION*Omo*vis_con SET 15\0",print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Name$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Info$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_1$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_1$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_2$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_3$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_3$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Name$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "","", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Name$English$txt_First_Name*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Name$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, "", multilanguagedata, row.get("EnglishText1"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Name$English$txt_Last_Name*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Info$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText2"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Info$English$txt_Text*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_1$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText3"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_1$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02$Stat_1"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText4") + "\0",print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_2$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText5"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_2$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_3$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText6"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02"
+										+ "$Stat_3$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data02$Stat_3"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText7") + "\0",print_writers);
+								break;
+							case "FourBottomStats":
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
+										"$Select_DataType*FUNCTION*Omo*vis_con SET 14\0",print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Name$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Info$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_1$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_1$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_2$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_2$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_3$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_3$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_4$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_4$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Name$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "","", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Name$English$txt_First_Name*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Name$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, "", multilanguagedata, row.get("EnglishText1"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Name$English$txt_Last_Name*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Info$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText2"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Info$English$txt_Text*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_1$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText3"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_1$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01$Stat_1"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText4") + "\0",print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_2$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText5"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_2$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01$Stat_2"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText6") + "\0",print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_3$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText7"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_3$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01$Stat_3"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText8") + "\0",print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_4$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText9"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01"
+										+ "$Stat_4$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data01$Stat_4"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText10") + "\0",print_writers);
+								break;
+							case "ThreeBottomStats":
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + 
+										"$Select_DataType*FUNCTION*Omo*vis_con SET 16\0",print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Name$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Info$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_1$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_1$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_2$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_2$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_3$img_Base2*TEXTURE*IMAGE SET " + Constants.ILT20_BASE2 + row.get("TeamColourToUse") + "\0", print_writers);
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_3$img_Text2*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + row.get("TeamColourToUse") + "\0", print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Name$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "","", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Name$English$txt_First_Name*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Name$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.PLAYER, "", multilanguagedata, row.get("EnglishText1"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Name$English$txt_Last_Name*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Info$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText2"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Info$English$txt_Text*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_1$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText3"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_1$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03$Stat_1"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText4") + "\0",print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_2$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText5"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_2$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03$Stat_2"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText6") + "\0",print_writers);
+								
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_3$Stats$select_Language*FUNCTION*Omo*vis_con SET ",config, Constants.ILT20, print_writers, foreignLanguageOmo);
+								foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.DICTIONARY, "", multilanguagedata, row.get("EnglishText7"),"", null, 0, foreignLanguageDataList);
+								CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03"
+										+ "$Stat_3$Stats$English$txt_StatHead*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
+								
+								CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Normal$Analytics$Side" + WhichSide + "$Player_Multi_Data03$Stat_3"
+										+ "$txt_StatValue*GEOM*TEXT SET " + row.get("EnglishText8") + "\0",print_writers);
+								break;
+							}	
+						}
+					}
+					
+					break;
 				case "BAT_PP": case "BALL_PP":
 					
 					int k =0;

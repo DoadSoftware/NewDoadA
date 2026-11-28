@@ -708,6 +708,8 @@ function processCricketProcedures(whatToProcess,dataToProcess)
 							setInfoBarStatsDropdown("FreeTextDb",data);
 						}else if(valueToProcess.includes("Sponsor")){
 							setSponsorDropdown("Sponsor",data);
+						}else if(valueToProcess.includes("EXCELS_DATA")){
+							setExcelsDataDropdown("EXCELS_DATA",data);
 						}
 					}else{
 						setPlayerInDropdown(data);
@@ -871,6 +873,49 @@ function setInfoBarStatsDropdown(type, data) {
       $(freeTextSelect).trigger('change');
     });
   }
+}
+function setExcelsDataDropdown(type, data) {
+  if (type !== "EXCELS_DATA" || !Array.isArray(data)) return;
+  const cell = document.getElementById('ExcelsData');
+  if (!cell) return;
+
+  cell.innerHTML =
+    `<select id="excelsDataDropdown" style="display:none"><option value="0"></option></select>
+     <div id="exWrap" style="position:relative;min-width:350px">
+       <div id="exBtn" style="border:1px solid #999;background:#fff;padding:6px 8px;cursor:pointer;min-height:20px">&nbsp;</div>
+       <div id="exPanel" style="display:none;position:absolute;left:0;right:0;z-index:9999;background:#fff;border:1px solid #999">
+         <input id="exSearch" placeholder="Search..." style="width:100%;box-sizing:border-box;padding:6px;border:0;border-bottom:1px solid #ccc">
+         <div id="exList" style="max-height:260px;overflow-y:auto"></div>
+       </div>
+     </div>`;
+
+  const sel = $('#excelsDataDropdown')[0], btn = $('#exBtn'), panel = $('#exPanel'),
+        search = $('#exSearch'), list = $('#exList');
+
+  data.forEach(d => sel.add(new Option(d.prompt, d.order)));
+
+  function render(text) {
+    const words = text.toLowerCase().split(/\s+/).filter(Boolean);
+    list.empty();
+    data.filter(d => words.every(w => String(d.prompt).toLowerCase().includes(w)))
+        .slice(0, 200).forEach(d => $('<div style="padding:5px 8px;cursor:pointer">').text(d.prompt)
+          .hover(function () { $(this).css('background', '#cfe6f7'); }, function () { $(this).css('background', ''); })
+          .on('mousedown', () => choose(d)).appendTo(list));
+    if (!list.children().length) list.text('No match');
+  }
+  function choose(d) {
+    sel.value = d.order;
+    btn.text(d.prompt);
+    setDropdownOptionToSelectOptionArray($(sel), 1);
+    panel.hide();
+  }
+
+  btn.on('click', () => { panel.toggle(); search.val(''); render(''); search.focus(); });
+  search.on('input', function () { render(this.value); })
+        .on('keydown', e => { if (e.key === 'Enter') list.children().first().trigger('mousedown'); });
+  $(document).on('mousedown', e => { if (!$(e.target).closest('#exWrap').length) panel.hide(); });
+
+  setDropdownOptionToSelectOptionArray($(sel), 1);
 }
 function setSponsorDropdown(type, data) {
   if (type === "Sponsor" && Array.isArray(data)) {
@@ -4275,6 +4320,7 @@ function addItemsToList(whatToProcess,dataToProcess)
 					  { value: 'BallMileStone', text: 'Bowler MileStone' },
 					  { value: 'FOW', text: 'Fall Of Wickets' },
 					  { value: 'SPEED_THIS_OVER', text: 'Speed This Over' },
+					  { value: 'EXCELS_DATA', text: 'Excels Data' },
 					];
 					
 					session_match.match.inning.forEach(function(inn){
@@ -4611,6 +4657,12 @@ function addItemsToList(whatToProcess,dataToProcess)
 						row.insertCell(1).appendChild(xballselect);
 						setDropdownOptionToSelectOptionArray($(xballselect),1);
 						cellCount = 2;
+					}
+					else if(this.value == 'EXCELS_DATA'){
+						row.insertCell(1).id = 'ExcelsData';
+						cellCount = 2;
+						processCricketProcedures("GRAPHICS-OPTIONS_DATA", whatToProcess + "," +
+							(this.value || $(this).find('option').first().val()));
 					}
 				});
 				select.dispatchEvent(new Event('change'));	

@@ -3660,11 +3660,12 @@ public class BugsAndMiniGfx
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_1$img_Player*TEXTURE*IMAGE SET "
 								+ Constants.ILT20_LOCAL_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + "SMALL" + "\\\\" + inPlayer.getPhoto() 
 								+ CricketUtil.PNG_EXTENSION + "\0", print_writers);
+						
 					}else {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
-								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
+								+ "\\\\" + config.getPrimaryIpAddress() + "\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + Constants.BLANK + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$POPUp_Impact_Sub$MiniOut$DataAll$Data$Side_2$img_Player*TEXTURE*IMAGE SET "
-								+ "\\\\" + config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + "SMALL" + "\\\\" 
+								+ "\\\\" + config.getPrimaryIpAddress() + "\\" + Constants.ILT20_PHOTO_PATH + "\\\\" + team.getTeamName4() + "\\\\" + "SMALL" + "\\\\" 
 								+ inPlayer.getPhoto() + CricketUtil.PNG_EXTENSION + "\0", print_writers);
 					}
 					

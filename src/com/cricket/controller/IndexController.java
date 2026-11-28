@@ -18,9 +18,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import java.io.FileInputStream;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -1242,6 +1249,8 @@ public class IndexController
 	  				return (List<T>) cricketService.getInfobarStats();
 	  			case "Sponsor":
 	  				return (List<T>) cricketService.getSponsor();
+	  			case "EXCELS_DATA":
+	  				return (List<T>) CricketFunctions.readExcelsData(session_match);
 	  			}
 			 }
 		  break;
@@ -1402,7 +1411,7 @@ public class IndexController
 		}
 		return null;
 	}
-	
+
 	public void GetVariousDBData(String typeOfUpdate, Configuration config) throws StreamReadException, DatabindException, 
 		IllegalAccessException, InvocationTargetException, JAXBException, IOException, CloneNotSupportedException, 
 		InterruptedException, URISyntaxException, jakarta.xml.bind.JAXBException

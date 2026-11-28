@@ -22408,6 +22408,8 @@ public class ALL_FF
 						    break;
 						}
 					}
+					System.out.println(p.playerId);
+					
 					//player = Players.stream().filter(plyr -> plyr.getAe_Id() == p.playerId).findAny().orElse(null);
 					
 					if (player != null) {

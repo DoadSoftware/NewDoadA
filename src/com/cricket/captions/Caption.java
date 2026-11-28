@@ -1221,6 +1221,13 @@ public class Caption
 								whichSide = (this_infobarGfx.FirstPlayerId > 0 && this_infobarGfx.FirstPlayerId != Integer.valueOf(whatToProcess.split(",")[3])) ? 2 : 1;
 							}
 							this_infobarGfx.lastXballs = Integer.valueOf(whatToProcess.split(",")[3]);
+						}else if(whatToProcess.split(",")[2].equalsIgnoreCase("EXCELS_DATA")) {
+							if(this_infobarGfx.infobar.getSectionAnalytics() != null && !this_infobarGfx.infobar.getSectionAnalytics().isEmpty() 
+									&& this_infobarGfx.infobar.getSectionAnalytics().equalsIgnoreCase("EXCELS_DATA")) {
+								whichSide = (this_infobarGfx.WhichProfile != null && !this_infobarGfx.WhichProfile.isEmpty() && 
+										!this_infobarGfx.WhichProfile.equalsIgnoreCase(whatToProcess.split(",")[3])) ? 2 : 1;
+							}
+							this_infobarGfx.WhichProfile = whatToProcess.split(",")[3];
 						}
 						this_infobarGfx.infobar.setSectionAnalytics(whatToProcess.split(",")[2]);
 					}else {
