@@ -3098,6 +3098,8 @@ public class BugsAndMiniGfx
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$All$Single$DataGrpAll$select_Language$English$Info03*GEOM*TEXT SET " 
 							+ CricketFunctions.getPowerPlayScore(inning, inning.getInningNumber(), "-", matchAllData) + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$Bugs$All$Single$DataGrpAll$select_Language$Hindi$Info03*GEOM*TEXT SET " 
+							+ CricketFunctions.getPowerPlayScore(inning, inning.getInningNumber(), "-", matchAllData) + "\0", print_writers);
 					
 //					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData("", "", multilanguagedata, "", "", null, 0, foreignLanguageDataList);
 //					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*FRONT_LAYER*TREE*$Bugs$All$Single$DataGrpAll$select_Language$English$Info03"

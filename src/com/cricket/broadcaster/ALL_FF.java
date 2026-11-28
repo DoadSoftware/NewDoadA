@@ -25881,45 +25881,45 @@ public class ALL_FF
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row" + rowId + "$LeaderBoardAll$Data$"
 							+ "img_Text1*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT3 + "EVENT" +"\0", print_writers);
 					
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row" + rowId + "$LeaderBoardAll$Highlight"
+							+ "$Select_High*FUNCTION*Omo*vis_con SET 1\0", print_writers);
+					
 					if(FirstPlayerId == tournaments.get(i).getPlayer().getPlayerId()) {
 						
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row" + rowId + "$LeaderBoardAll$Highlight"
-								+ "$Select_High*FUNCTION*Omo*vis_con SET 1\0", print_writers);
-						
 						if(config.getPrimaryIpAddress().equalsIgnoreCase(Constants.LOCALHOST)) {
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player"
 									+ "*TEXTURE*IMAGE SET " + Constants.ILT20_LOCAL_PHOTO_PATH + Constants.BLANK + CricketUtil.PNG_EXTENSION +"\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player_Shadow"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player_Shadow"
 									+ "*TEXTURE*IMAGE SET " + Constants.ILT20_LOCAL_PHOTO_PATH + Constants.BLANK + CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player"
 									+ "*TEXTURE*IMAGE SET " + Constants.ILT20_LOCAL_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
 									+ "\\\\" + Constants.LEFT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() + CricketUtil.PNG_EXTENSION +"\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player_Shadow"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player_Shadow"
 									+ "*TEXTURE*IMAGE SET " + Constants.ILT20_LOCAL_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer().getTeamId() - 1).getTeamName4() 
 									+ "\\\\" + Constants.LEFT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() + CricketUtil.PNG_EXTENSION +"\0", print_writers);
 
 						}else {
 							
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player"
 									+ "*TEXTURE*IMAGE SET " + "\\\\"+config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + Constants.BLANK 
 									+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player_Shadow"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player_Shadow"
 									+ "*TEXTURE*IMAGE SET " + "\\\\"+config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + Constants.BLANK 
 									+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 							
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player"
 									+ "*TEXTURE*IMAGE SET " + "\\\\"+config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer()
 											.getTeamId() - 1).getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 									+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
-							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$PlayerImage$img_Player_Shadow"
+							CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$ImageGrp$Side" + WhichSide + "$PlayerImage$img_Player_Shadow"
 									+ "*TEXTURE*IMAGE SET " + "\\\\"+config.getPrimaryIpAddress() + "\\\\" + Constants.ILT20_PHOTO_PATH + Teams.get(tournaments.get(i).getPlayer()
 											.getTeamId() - 1).getTeamName4() + "\\\\" + Constants.LEFT + "\\\\" + tournaments.get(i).getPlayer().getPhoto() 
 									+ CricketUtil.PNG_EXTENSION +"\0", print_writers);
 						}
 					}else {
-						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row" + rowId + "$LeaderBoardAll$Highlight"
-								+ "$Select_High*FUNCTION*Omo*vis_con SET 0\0", print_writers);
+//						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row" + rowId + "$LeaderBoardAll$Highlight"
+//								+ "$Select_High*FUNCTION*Omo*vis_con SET 0\0", print_writers);
 					}
 					
 					CricketFunctions.DoadWriteVariousLanguageTextToEachViz("RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard_Normal$RightPanel$Main$Row" + rowId + "$LeaderBoardAll$Name_grp"

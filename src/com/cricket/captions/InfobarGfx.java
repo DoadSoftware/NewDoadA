@@ -3846,8 +3846,8 @@ public class InfobarGfx
 				CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$img_Base1*TEXTURE*IMAGE SET " 
 						+ Constants.ILT20_BASE1 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 				
-				if(inning.getBatting_team().getTeamName4().equalsIgnoreCase("GG") || 
-						inning.getBatting_team().getTeamName4().equalsIgnoreCase("SW")) {
+				if(inning.getBowling_team().getTeamName4().equalsIgnoreCase("GG") || 
+						inning.getBowling_team().getTeamName4().equalsIgnoreCase("SW")) {
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$TeamName$img_Text1"
 							+ "*TEXTURE*IMAGE SET " + Constants.ILT20_TEXT2 + inning.getBowling_team().getTeamBadge() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$gfx_Infobar$Push$Normal$AllSections$BowlingTeamGrp$Speed$img_Text1"

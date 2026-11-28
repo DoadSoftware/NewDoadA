@@ -6296,7 +6296,13 @@ public class LowerThirdGfx
 							+ "*FUNCTION*Omo*vis_con SET " + manhattan.get(j).getOverTotalWickets() + "\0", print_writers);
 					break;	
 				default:
-					lngth = ((40.4 * Integer.valueOf(manhattan.get(j).getOverTotalRuns())) / maxRuns);
+					
+					lngth = ((1.0 * Integer.valueOf(manhattan.get(j).getOverTotalRuns())) / maxRuns);
+					
+//					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Fullframes$RightPanel$Side" + WhichSide + "$Manhattan$Bar$" + j + 
+//							"$obj_ScaleY*TRANSFORMATION*SCALING*Y SET " + lngth + "\0", print_writers);
+//					
+//					lngth = ((40.4 * Integer.valueOf(manhattan.get(j).getOverTotalRuns())) / maxRuns);
 					
 					if(lngth == 0) {
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Manhattan$BarAll$Bar$" + j + "$obj_ScaleY" + powerPlay + value
@@ -6305,8 +6311,8 @@ public class LowerThirdGfx
 						CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Manhattan$BarAll$Bar$" + j + "$obj_ScaleY" + powerPlay + value
 								+ "*ACTIVE SET 1\0", print_writers);
 					}
-					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Manhattan$BarAll$Bar$" + j + "$obj_ScaleY" + powerPlay + "$Bar"
-							+ "*GEOM*height SET " + lngth + "\0", print_writers);
+					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Manhattan$BarAll$Bar$" + j + "$obj_ScaleY"
+							+ "*TRANSFORMATION*SCALING*Y SET " + lngth + "\0", print_writers);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*FRONT_LAYER*TREE*$LT_Manhattan$BarAll$Bar$" + j + "$Wkt" + powerPlay + "$Select_Wickets"
 							+ "*FUNCTION*Omo*vis_con SET " + manhattan.get(j).getOverTotalWickets() + "\0", print_writers);

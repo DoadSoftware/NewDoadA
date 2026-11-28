@@ -586,6 +586,13 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$In_Out", "START");
 			processAnimation(Constants.BACK, print_writers, "Loop", "START");
 			
+			switch (whatToProcess.split(",")[0]) {
+			 case "z": case "x": case "c": case "v": case "Control_z": case "Control_x":
+				 processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight" + whatToProcess.split(",")[2].split("_")[0] + "_In", "START");
+				 this.prevWhichPlayer = whatToProcess.split(",")[2].split("_")[0];
+				break;
+			}
+			
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
 			
@@ -5928,10 +5935,21 @@ public class Animation
 				}
 				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$In_Out", "CONTINUE");
 				
+				switch (whatToProcess.split(",")[0]) {
+				 case "z": case "x": case "c": case "v": case "Control_z": case "Control_x":
+					// processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight" + whatToProcess.split(",")[2].split("_")[0] + "_Out", "SHOW 1.574");
+					processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight"+whatToProcess.split(",")[2].split("_")[0] + "_Out", "START");
+					this.prevWhichPlayer = "";
+					this.whichPlayer = "";
+					break;
+				}
 				TimeUnit.MILLISECONDS.sleep(1600);
 				
 				AnimateIn("ArrowUp,", print_writers, config); // Push infobar
 				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight"+whatToProcess.split(",")[2].split("_")[0] + "_Out", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight"+whatToProcess.split(",")[2].split("_")[0] + "_In", "SHOW 0.0");
+				
 				if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
 					processAnimation(Constants.FRONT, print_writers, "Watermark", "START");
 				}
@@ -6246,6 +6264,15 @@ public class Animation
 		switch (config.getBroadcaster().toUpperCase()) {
 		case Constants.ILT20:
 			switch(whatToProcess.split(",")[0]) {
+			case "Control_x": case "Control_z": case "z": case "x": case "c": case "v": case "Control_c": case "Control_v":
+				
+				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight" + prevWhichPlayer + "_Out", "CONTINUE");
+				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Change_Image" , "START");
+				
+				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight" + whatToProcess.split(",")[2].split("_")[0] + "_In", "SHOW 0.0");
+				processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight" + whatToProcess.split(",")[2].split("_")[0] + "_In", "START");
+				prevWhichPlayer = whatToProcess.split(",")[2].split("_")[0];
+				break;
 			case "Shift_F12":
 				processAnimation(Constants.FRONT, print_writers, "anim_InfoBar$Ident_Change", "START");
 				break;
@@ -7854,7 +7881,21 @@ public class Animation
 				processAnimation(Constants.BACK, print_writers, "anim_Profile$In_Out", "SHOW 2.120");
 				processAnimation(Constants.BACK, print_writers, "Change_Profile", "SHOW 0.0");
 				break;
-					
+			case "Control_x": case "Control_z": case "z": case "x": case "c": case "v":
+				 
+				 processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Change_Image", "SHOW 0.0");
+				
+//				 for(int iPlyr = 1; iPlyr <= 5; iPlyr++) {
+//					 if(iPlyr == Integer.valueOf(prevWhichPlayer)) {
+//						 processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Side1$Player" + iPlyr, "SHOW 1.740");
+//					 } else {
+//						 processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Side1$Player" + iPlyr, "SHOW 0.00");
+//					 }
+//				 }
+//				processAnimation(Constants.BACK, print_writers, "LeaderBoardHighlight$Side2", "SHOW 0.0");
+				 
+				 this.whichGraphicOnScreen = whatToProcess;
+				 break;		
 			case "F1": case "F2": case "Alt_F9": case "Shift_T": case "Control_F7": case "F4": case "Control_F10": case "Shift_F10": 
 			case "Control_F11": case "Shift_K": case "Shift_F11": case "Control_p": case "Control_Shift_F1": case "Control_Shift_F2":
 				processAnimation(Constants.BACK, print_writers, "anim_Change$Base", "SHOW 0.0");
@@ -10438,6 +10479,11 @@ public class Animation
 				switch(config.getBroadcaster()) {
 				case Constants.ILT20:
 					switch(whatToProcess.split(",")[0]) {
+					case "z": case "x": case "c": case "v": case "Control_z": case "Control_x":
+						previewCommand = "anim_LeaderboardNormal$In_Out 2.120 anim_LeaderboardNormal$In_Out$Essentials 2.120 anim_LeaderboardNormal$In_Out$Essentials$In 0.900 "
+								+ "anim_LeaderboardNormal$In_Out$Main$Summary 2.120 anim_LeaderboardNormal$In_Out$Main$Summary$In 1.761 anim_LeaderboardNormal$Change_Image 1.281 "
+								+ "anim_LeaderboardNormal$Highlight" + whatToProcess.split(",")[2].split("_")[0] + "_In 0.860 anim_LeaderboardNormal$Highlight" + prevWhichPlayer + "_Out 0.860";
+						break;
 					case "Control_Shift_F7":
 						previewCommand = "anim_LineUpImage$Change 5.940 anim_LineUpImage$Change$Change_In 5.060 anim_LineUpImage$Change$Change_In$Essentials 5.060 "
 								+ "anim_LineUpImage$Change$Change_In$Essentials$In 0.960 anim_LineUpImage$Change$Change_In$Logo 5.060 anim_LineUpImage$Change$Change_In$Logo$In 1.600 "
