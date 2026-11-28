@@ -572,7 +572,7 @@ public class Animation
 			this.whichGraphicOnScreen = whatToProcess;
 			break;
 			
-		case "z": case "x": case "c": case "v": case "Control_z": case "Control_x":
+		case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_F8":
 			if(this.watermarkOnScreen.equalsIgnoreCase("WATERMARK")) {
 				processAnimation(Constants.FRONT, print_writers, "Watermark", "CONTINUE");
 			}
@@ -587,7 +587,7 @@ public class Animation
 			processAnimation(Constants.BACK, print_writers, "Loop", "START");
 			
 			switch (whatToProcess.split(",")[0]) {
-			 case "z": case "x": case "c": case "v": case "Control_z": case "Control_x":
+			 case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_F8":
 				 processAnimation(Constants.BACK, print_writers, "anim_LeaderboardNormal$Highlight" + whatToProcess.split(",")[2].split("_")[0] + "_In", "START");
 				 this.prevWhichPlayer = whatToProcess.split(",")[2].split("_")[0];
 				break;
@@ -5929,7 +5929,7 @@ public class Animation
 				this.whichGraphicOnScreen = "";
 				break;
 				
-			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x":
+			case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_F8":
 				if(audioenabled.equalsIgnoreCase("TRUE")) {
 					processAnimation(Constants.BACK, print_writers, "Audio", "START");
 				}
@@ -9888,7 +9888,7 @@ public class Animation
 						previewCommand = "anim_LineUpImage$In_Out 3.000 anim_LineUpImage$In_Out$Essentials 3.000 anim_LineUpImage$In_Out$Essentials$In 0.900 "
 								+ "anim_LineUpImage$In_Out$Logo 3.000 anim_LineUpImage$In_Out$Logo$In 1.540 anim_LineUpImage$In_Out$Main 3.000 anim_LineUpImage$In_Out$Main$In 4.720";
 						break;
-					case "z": case "x": case "c": case "v": case "Control_z": case "Control_x":
+					case "z": case "x": case "c": case "v": case "Control_z": case "Control_x": case "Control_Shift_F8":
 						previewCommand = "anim_LeaderboardNormal$In_Out 2.120 anim_LeaderboardNormal$In_Out$Essentials 2.120 anim_LeaderboardNormal$In_Out$Essentials$In 0.900 "
 								+ "anim_LeaderboardNormal$In_Out$Main$Summary 2.120 anim_LeaderboardNormal$In_Out$Main$Summary$In 1.761";
 						break;

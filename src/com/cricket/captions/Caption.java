@@ -373,7 +373,13 @@ public class Caption
 					this_fullFramesGfx.this_ALL_FF.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
 					this_fullFramesGfx.this_ALL_FF.whichtype = whatToProcess.split(",")[3];
 					this_fullFramesGfx.this_ALL_FF.whichTeam = Integer.valueOf(whatToProcess.split(",")[4]);
-					this_fullFramesGfx.this_ALL_FF.WhichProfile = whatToProcess.split(",")[5];
+					switch(config.getBroadcaster()) {
+					case Constants.ILT20:
+						break;
+					default:
+						this_fullFramesGfx.this_ALL_FF.WhichProfile = whatToProcess.split(",")[5];
+						break;
+					}
 					break;
 				default:
 					this_fullFramesGfx.FirstPlayerId = Integer.valueOf((whatToProcess.split(",")[2]).split("_")[1]);
