@@ -22402,7 +22402,7 @@ public class ALL_FF
 				for (LeaderBoardPlayer p : players) {
 					rowId = rowId + 1;
 					
-					for(Player pl : Players) {
+					for(Player pl : IndexController.session_players) {
 						if (Objects.equals(pl.getAe_Id(), p.playerId)) {
 						    player = pl;
 						    break;
@@ -22429,9 +22429,9 @@ public class ALL_FF
 							"$English$NameGrp$txt_FirstName*GEOM*TEXT SET ", config, Constants.ILT20, print_writers, foreignLanguageData);
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, 
 							team.getTeamName1(), "", null, 0, foreignLanguageDataList);
@@ -22487,7 +22487,7 @@ public class ALL_FF
 					
 					//player = Players.stream().filter(plyr -> plyr.getAe_Id() == p.playerId).findAny().orElse(null);
 					
-					for(Player pl : Players) {
+					for(Player pl : IndexController.session_players) {
 						if (Objects.equals(pl.getAe_Id(), p.playerId)) {
 						    player = pl;
 						    break;
@@ -22515,9 +22515,9 @@ public class ALL_FF
 					
 					
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$English$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					CricketFunctions.DoadWriteCommandToAllViz("-1 RENDERER*BACK_LAYER*TREE*$gfx_Leaderboard$RightPanel$Main$Row" + rowId + "$Name_grp"
-							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + player.getNationality() + "\0", print_writers);
+							+ "$Hindi$FlagGrp$img-Flag*TEXTURE*IMAGE SET " + Constants.ILT20_FLAG + player.getNationality() + "\0", print_writers);
 					
 					foreignLanguageData = CricketFunctions.AssembleMultiLanguageData(CricketUtil.TEAM, "", multilanguagedata, 
 							team.getTeamName1(), "", null, 0, foreignLanguageDataList);
